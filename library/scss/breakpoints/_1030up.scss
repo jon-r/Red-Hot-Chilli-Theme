@@ -1,0 +1,48 @@
+/******************************************************************
+ Site Name:
+ Author:
+
+ Stylesheet: Desktop Stylsheet
+
+ This is the desktop size. It's larger than an iPad so it will only
+ be seen on the Desktop.
+
+ ******************************************************************/
+.wrap {
+	width: 1040px;
+}
+
+.top-nav {
+	font-size: 1em;
+	position: static;
+	background: #510a09;
+	width: 100%;
+	height: 48px;
+	li {
+		float: right;
+		width: auto;
+		@include transition(all 0.3s ease-out);
+	}
+	&:hover {
+		width: 100%;
+	}
+	&:before {
+		display: none;
+	}
+}
+
+.nav-btn {
+	li {
+	width: calc(25% - 4px);
+	}
+	li:hover span {
+		padding-left: 2em;
+	}
+	span {
+		@include transition(all 0.3s ease-out);
+	}
+}
+
+.sci-google-widget {
+	padding: 18px 0;
+}
