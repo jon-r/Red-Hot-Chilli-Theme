@@ -17,21 +17,22 @@
 	<?php include( "sidebar-left.php"); ?>
 	<!-- probably change from sidebar to topbar -->
 <!-------content---------------------------------------------------------->
-	<article id="category-list" >
+	<article id="products-list" >
+      <h1>Title PH</h1>
 
 
 	<?php
 //!!!! PLACEHOLDER FILTERS, will be put in pageURLs
-$filter = $_GET["f"] ?: 'search';
+//$filter = $_GET["f"] ?: 'search';
 
-$filterCategories = $_GET["cat"] ? [$_GET["cat"]] : null;
+$filterCategories = $_GET["cat"] ? $_GET["cat"] : null;
 $filterSearch = $_GET["search"] ?: null;
 $filterLatest = $_GET["latest"] ?: false;
 
-echo $filter." = ".$filterSearch."<br>";
+//echo $filter." = ".$filterSearch."<br>";
 
-echo http_build_query(['search' => ['gas','oven']]);
-echo var_dump($_GET["search"]);
+//echo http_build_query(['search' => ['gas','oven']]);
+//echo var_dump($_GET["search"]);
 
 //$query = filterPage($filter, $filterCategories);
 
