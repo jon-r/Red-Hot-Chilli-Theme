@@ -28,7 +28,7 @@ $filterCategories = $_GET["cat"] ? [$_GET["cat"]] : null;
 $filterSearch = $_GET["search"] ?: null;
 $filterLatest = $_GET["latest"] ?: false;
 
-echo $filter." = ".$filterCategories."<br>";
+echo $filter." = ".$filterSearch."<br>";
 
 echo http_build_query(['search' => ['gas','oven']]);
 echo var_dump($_GET["search"]);

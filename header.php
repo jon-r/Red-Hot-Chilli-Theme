@@ -38,7 +38,7 @@
 		<?php // end analytics ?>
 
 		<?php //getting Databases, custom functions
-			include( "jr_global-functions.php");
+			include( "JR_Shop/JR_Shop_Core.php");
 		?>
 
 	</head>
@@ -61,6 +61,7 @@
 
 				<form action="?page_id=16">
 					<label for="search">Search</label>
+					<input type="hidden" name="page_id" value="16">
 					<input type="search" name="search">
 					<button type="submit">GO</button>
 				</form>
