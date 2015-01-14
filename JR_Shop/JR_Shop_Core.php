@@ -36,7 +36,8 @@ SECURITY:
 
 */
 
-global $wpdb, $categoriesList, $itemsList, $groupsList, $itemCount, $itemCountMin, $stainlessList;
+global $wpdb, $categoriesList, $itemsList, $groupsList, $itemCount, $itemCountMin,
+	$stainlessList, $brandsListMajor, $brandsListFull;
 
 /* Settings \
 \ This should be the only section to that needs editing  */
@@ -51,7 +52,7 @@ $itemCountMin = 4;
 
 
 /* GETS \
-\ Links to the function pages.*/
+\ Links to the function pages and arrays.*/
 
 include('JR_Security.php');
 

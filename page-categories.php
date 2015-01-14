@@ -38,15 +38,14 @@ $filterLatest = $_GET["latest"] ?: false;
 
 echo "<hr>";
 
-//var_dump($stainlessList);
-var_dump (isStainless($filterCategories));
+var_dump($brandsListFull);
 
 var_dump( categoryFilter(
 
 	$fLatest = $filterLatest,
 
-	$fSearch = $filterSearch,
-	$fBrand	= null,				$fCategory = $filterCategories,
+	$rawSearch = $filterSearch,
+	$fBrand	= null,				$rawCategory = $filterCategories,
 
 	$fLength = null,			$fPrice = null
 ));

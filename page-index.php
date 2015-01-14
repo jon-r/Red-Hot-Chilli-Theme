@@ -31,9 +31,7 @@
 <!-------content---------------------------------------------------------->
 
 	<article id="Groups-List" >
-		<?php
-var_dump($groupsList);
-foreach($groupsList as $x => $group) {
+		<?php foreach($groupsList as $x => $group) {
 //				$group = 'g';
 //				unset($group['keyword']);
 				$link = http_build_query(['g' => $group]);

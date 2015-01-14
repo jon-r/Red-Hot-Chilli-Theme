@@ -15,13 +15,16 @@ filters:
   Stainless steel (break into sink/table/shelving)
   AllItems = get all
 */
-
 //get category array
 $categoriesList = $wpdb->get_results("SELECT * FROM rhc_categories;", ARRAY_A);
 
 //get keywords arrays
 $groupsList = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` = 'group'");
-$stainlessList = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` = 'stainless'");
+$stainlessList = 	 $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` = 'stainless'");
+$brandsListMajor = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` = 'brand'");
+//full list takes all the unique brands, for validation only.
+//using this for the search filter could trigger generic words
+$brandsListFull = array_unique($wpdb->get_col("SELECT `Brand` FROM `networked db` WHERE `Brand` != '0'"));
 
 //sorts the category pages
 function isGroup($group) {
@@ -30,21 +33,19 @@ function isGroup($group) {
   };
 };
 
-//sorts stainless pages
-function isStainless($fCategory) {
-	global $stainlessList;
-	return in_array($fCategory, $stainlessList);
-};
-
 //wpdb query generator
 function categoryFilter(
   $fLatest = false,
-  $fSearch = null,  $fBrand = null,  $fCategory = null,
+  $rawSearch = null,	$fBrand = null,	$rawCategory = null,
   $fLength = null,  $fPrice = null
 ) {
   global $wpdb, $itemCount, $categoriesList, $stainlessList;
 
-  $fStainless = in_array($fCategory, $stainlessList); //  ? true : false;
+	//gets validations before using in the mysql
+	$fCategory = jr_validate_category($rawCategory);
+	$fStainless = jr_validate_stainless($rawCategory);
+	$fSearch = jr_search_sanitise($rawSearch);
+	$fRHC = jr_validate_RHC($rawSearch);
 
   //default strings
   $queryStart = "SELECT `RHC`, `ProductName`, `Image`, `Price`, `Power`, `SalePrice` FROM `networked db` ";
@@ -53,13 +54,15 @@ function categoryFilter(
   //setup LIKE parts of the query
   $searchPart = str_replace(" ", "|", $fSearch);
   $strSearch = $fSearch ?
-    "`ProductName` REGEXP '$searchPart' OR `Power` REGEXP '$searchPart' OR `Brand` REGEXP '$searchPart'" : null;
+    "`ProductName` REGEXP '$searchPart' OR `Power` REGEXP '$searchPart' OR `Brand` REGEXP '$searchPart' "  : null;
   $strCategory = $fCategory ?
     "`Category` LIKE '$fCategory' OR `Cat1` LIKE '$fCategory' OR `Cat2` LIKE '$fCategory' OR `Cat3` LIKE '$fCategory'" : null;
   $strCategorySS = $fCategory ?
     "`Category` LIKE '$fCategory'" : null;
   $strBrand = $fBrand ?
     "`Brand` LIKE $fBrand" : null;
+	$strRHC = $fRHC ?
+    "`RHC` LIKE $fRHC" : null;
 
   //setup RANGE parts of query.
   $strLength = $fLength ? "`TableinFeet` BETWEEN $fLength[0] AND $fLength[1]" : null;
@@ -73,7 +76,10 @@ function categoryFilter(
     $queryEnd = " `Sold` = 0 ORDER BY `RHCs` DESC";
   } elseif ($fLatest) {
     $queryEnd = "WHERE `Sold` = 0 ORDER BY `RHC` DESC LIMIT $itemCount";
-  } else {
+	} elseif ($fRHC) {
+		$queryMid = "WHERE `RHC` = '$fRHC'";
+		$queryEnd = null;
+	} else {
     $queryMid = ($strCategory || $strSearch || $strBrand || $strPrice) ?
       " WHERE (".implode(") OR (", array_filter([$strCategory, $strSearch, $strBrand, $strPrice])).") AND" : " WHERE";
   }
@@ -81,9 +87,10 @@ function categoryFilter(
   //combine all
   $queryFull = $queryStart.$queryMid.$queryEnd;
 
- return $wpdb->get_results($queryFull, ARRAY_A);
+	return $wpdb->get_results($queryFull, ARRAY_A);
   /*debug return*/
-//return $queryFull;
+//	return $queryFull;
+
 }
 
 

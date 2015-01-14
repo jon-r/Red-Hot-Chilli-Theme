@@ -111,7 +111,7 @@ HEADER STYLES
 .header {
 	@include css-gradient($RHC-LightRed, $RHC-MedRed);
 	width: 100%;
-	height: 64px;
+	height: 128px;
 }
 
 #inner-header {

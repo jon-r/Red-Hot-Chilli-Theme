@@ -6,16 +6,23 @@ SEARCH:
     > the triggers are loose guides, prefer that they are skipped unless 90% likely to be what the customer is looking for.
     > mainly helps with common multi word phrases, that an A OR B would break on ("three phase", "blue seal" "oven range")
 
-  > An RHC number points at the specific item
-  > stainless steel keywords from the options file point at a search for stainless tables/sinks/etc
-  > category keywords point to that category;
-  > major brand keywords point to the "filtered by brand"
-  > other common phrases will be combined as single strings
-  > everything else will be a generic search for "A" OR "B" of whats been typed. */
+Priority:
+  1 > major brand keywords point to the "filtered by brand" (matching unique brands in network db);
+	2 > category keywords point to that category (matching to category_db);
+	3 > power (matching keywords_db)
+	3 > stainless steel keywords from keywords_db point at a search for stainless tables/sinks/etc (matching keywords_db)
+  4 > everything else will be a generic search for "A" OR "B" of whats been typed.
 
-function JR_Shop_Search($searchRaw) {
+*/
 
+
+function jr_smart_search($searchTerm) {
+	global $brandsList;
+
+	//major brands.
+
+
+	return $out;
 }
-
 
 ?>

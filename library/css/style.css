@@ -984,28 +984,19 @@ and it will create a button dependant on those variables.
 /******************************************************************
 Site Name:
 Author:
-
 Stylesheet: Form Styles
-
 We put all the form and button styles in here to setup a consistent
 look. If we need to customize them, we can do this in the main
 stylesheets and just override them. Easy Peasy.
-
 You're gonna see a few data-uri thingies down there. If you're not
 sure what they are, check this link out:
 http://css-tricks.com/data-uris/
 If you want to create your own, use this helpful link:
 http://websemantics.co.uk/online_tools/image_to_data_uri_convertor/
-
 ******************************************************************/
 /*********************
 INPUTS
 *********************/
-form {
-  background: #510a09;
-  padding: 5px 0;
-  width: calc(100% - 20px); }
-
 input[type="text"],
 input[type="password"],
 input[type="datetime"],
@@ -1023,19 +1014,24 @@ input[type="color"],
 select,
 textarea,
 .field {
-  margin: 0 0 14px -10px;
+  float: left;
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 12px;
+  margin-bottom: 14px;
   font-size: 1em;
-  color: #2c1010;
+  color: black;
+  border-radius: 3px;
   vertical-align: middle;
   box-shadow: none;
   border: 0;
-  width: calc(100% + 20px);
+  width: 100%;
+  max-width: 400px;
   font-family: "PT Sans", Helvetica, Arial, sans-serif;
   background-color: #eaedf2;
-  box-shadow: inset 0 4px 5px 2px #b8bdc4;
   -webkit-transition: background-color 0.24s ease-in-out;
-  transition: background-color 0.24s ease-in-out;
-  border-radius: 0 5px 5px 5px; }
+  transition: background-color 0.24s ease-in-out; }
   input[type="text"]:focus, input[type="text"]:active,
   input[type="password"]:focus,
   input[type="password"]:active,
@@ -1069,7 +1065,8 @@ textarea,
   textarea:active,
   .field:focus,
   .field:active {
-    background-color: #f7f8fa; }
+    background-color: #f7f8fa;
+    outline: none; }
   input[type="text"].error, input[type="text"].is-invalid,
   input[type="password"].error,
   input[type="password"].is-invalid,
@@ -1253,42 +1250,13 @@ textarea,
     .field.is-disabled:active {
       background-color: #d5edf8; }
 
-label, input[type="submit"] {
-  min-width: 100px;
-  background-color: #510a09;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#a60100), to(#510a09));
-  background-image: -webkit-linear-gradient(top, #a60100, #510a09);
-  background-image: -moz-linear-gradient(top, #a60100, #510a09);
-  background-image: -o-linear-gradient(top, #a60100, #510a09);
-  background-image: linear-gradient(to bottom, #a60100, #510a09);
-  margin: 0 -5px 0 -10px;
-  border: 0;
-  color: #BFCBDB; }
-
-label {
-  border-radius: 5px 5px 0 0; }
-
-input[type="submit"] {
-  font-size: 2em;
-  float: right;
-  margin-right: 5px;
-  border-radius: 5px; }
-
-input, label, select {
-  display: inline-block;
-  float: left;
-  height: 40px;
-  line-height: 40px;
-  padding: 0 12px; }
-
 input[type="password"] {
   letter-spacing: 0.3em; }
 
 textarea {
-  resize: none;
-  min-height: 60px;
-  line-height: 1.5em;
-  border-radius: 0 5px 5px 5px; }
+  max-width: 100%;
+  min-height: 120px;
+  line-height: 1.5em; }
 
 select {
   -webkit-appearance: none;
@@ -1401,7 +1369,7 @@ HEADER STYLES
   background-image: -o-linear-gradient(top, #a60100, #510a09);
   background-image: linear-gradient(to bottom, #a60100, #510a09);
   width: 100%;
-  height: 64px; }
+  height: 128px; }
 
 #inner-header {
   overflow: visible; }
