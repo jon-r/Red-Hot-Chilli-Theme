@@ -6,4 +6,15 @@
   > Light security whitlelist sanitises the input to prevent injection just in case.
 */
 
+//whiteLists for the security.
+//currently selects only letters, numbers, and the symbols '" /+-
+$searchFilter = "['\" /+-]|\w";
+
+//validates categories, makes sure exists
+function jr_validate_category() {
+
+};
+
+//
+
 ?>

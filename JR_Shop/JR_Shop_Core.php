@@ -36,38 +36,18 @@ SECURITY:
 
 */
 
-global $wpdb, $categoriesList, $itemsList, $groupsList, $itemCount, $itemCountMin, $categoriesStainless;
+global $wpdb, $categoriesList, $itemsList, $groupsList, $itemCount, $itemCountMin, $stainlessList;
 
 /* Settings \
 \ This should be the only section to that needs editing  */
 
-//These are the main categories.
-$groupsList = [
-//'website-URL' => 'Category'
-  'cook-heat' => 'Cooking & Hot Storage',
-  'food-prep' => 'Food Preparation & Cleaning',
-  'furnishings' => 'Furniture & Front of House',
-  'chilled' => 'Refrigeration & Cold Storage',
-  'stainless-steel' => 'Stainless Steel Fabrications',
-  'specialist' => 'Specialist Cooking'
-];
-
-//how many items per page before pagination kicks in. Also limits the "new items" page.
+//how many items per page before pagination kicks in. Also limits the "new items" page. NYI
 $itemCount = 20;
 
 //How many items before the "try elsewhere" kicks in. NYI
 $itemCountMin = 4;
 
-//stainless category mini-filter. all the categories that point at the stainless steel part of the database
-$categoriesStainless = [
-  'Sinks',
-  'Worktops',
-  'Shelving & Gantries'
-];
 
-//whiteLists for the security.
-//currently selects only letters, numbers, and the symbols '" /+-
-$searchFilter = "['\" /+-]|\w";
 
 
 /* GETS \

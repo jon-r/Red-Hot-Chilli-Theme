@@ -1,19 +1,5 @@
 <?php
 
-//----------set global variables-----------------------------------------------------------------
-
-global $wpdb, $categoriesList, $itemsList;
-
-//get category array
-$categoriesList = $wpdb->get_results("SELECT * FROM rhc_categories;", ARRAY_A);
-
-//sorts the category pages
-function isGroup($group) {
-  return function ($category) use ($group) {
-    return ($category[CategoryGroup] == $group);
-  };
-};
-
 //----------------ItemList filter functions---------------------------------------------------------
 /*
 ~need to look into setting up the benches page with categories. needs whole new functions?
@@ -30,14 +16,35 @@ filters:
   AllItems = get all
 */
 
+//get category array
+$categoriesList = $wpdb->get_results("SELECT * FROM rhc_categories;", ARRAY_A);
+
+//get keywords arrays
+$groupsList = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` = 'group'");
+$stainlessList = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` = 'stainless'");
+
+//sorts the category pages
+function isGroup($group) {
+  return function ($category) use ($group) {
+    return ($category[CategoryGroup] == $group);
+  };
+};
+
+//sorts stainless pages
+function isStainless($fCategory) {
+	global $stainlessList;
+	return in_array($fCategory, $stainlessList);
+};
+
+//wpdb query generator
 function categoryFilter(
   $fLatest = false,
   $fSearch = null,  $fBrand = null,  $fCategory = null,
   $fLength = null,  $fPrice = null
 ) {
-  global $wpdb, $itemCount, $categoriesList, $categoriesStainless;
+  global $wpdb, $itemCount, $categoriesList, $stainlessList;
 
-  $fStainless = in_array($fCategory[0], $categoriesStainless); //  ? true : false;
+  $fStainless = in_array($fCategory, $stainlessList); //  ? true : false;
 
   //default strings
   $queryStart = "SELECT `RHC`, `ProductName`, `Image`, `Price`, `Power`, `SalePrice` FROM `networked db` ";
@@ -50,7 +57,7 @@ function categoryFilter(
   $strCategory = $fCategory ?
     "`Category` LIKE '$fCategory' OR `Cat1` LIKE '$fCategory' OR `Cat2` LIKE '$fCategory' OR `Cat3` LIKE '$fCategory'" : null;
   $strCategorySS = $fCategory ?
-    "`Category` LIKE $fCategory" : null;
+    "`Category` LIKE '$fCategory'" : null;
   $strBrand = $fBrand ?
     "`Brand` LIKE $fBrand" : null;
 
@@ -75,9 +82,8 @@ function categoryFilter(
   $queryFull = $queryStart.$queryMid.$queryEnd;
 
  return $wpdb->get_results($queryFull, ARRAY_A);
-  //debug return
- //return $queryFull;
-
+  /*debug return*/
+//return $queryFull;
 }
 
 

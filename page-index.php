@@ -31,17 +31,21 @@
 <!-------content---------------------------------------------------------->
 
 	<article id="Groups-List" >
-		<?php foreach($groupsList as $url => $group) {
-				echo '<a href="?page_id=24&g='.$url.'" >';
+		<?php
+var_dump($groupsList);
+foreach($groupsList as $x => $group) {
+//				$group = 'g';
+//				unset($group['keyword']);
+				$link = http_build_query(['g' => $group]);
+				echo '<a href="?page_id=24&'.$link.'" >';
 				echo '<h2>'.$group.'</h2>';
 				echo '</a>';
 				echo '<ul>';
-
-				$categoriesListFiltered = array_filter ($categoriesList, isGroup($url));
+				$categoriesListFiltered = array_filter ($categoriesList, isGroup($group));
 
 				foreach ($categoriesListFiltered as $category) {
-					echo isGroup($category,$url) ?
-						'<li><a href="?page_id=16&q='.$category[RefName].'&pg=1" >'.$category[Name].'</a></li>' : null;
+					$link = http_build_query(['cat' => $category[Name]]);
+					echo '<li><a href="?page_id=16&'.$link.'&pg=1" >'.$category[Name].'</a></li>' ;
 				}
 				echo '</ul>';
 			}?>

@@ -2,13 +2,14 @@
 
 		<?php dynamic_sidebar( 'sidebar1' ); ?>
 
-		<?php foreach($groupsList as $url => $group) {
-				echo '<a href="?page_id=24&g='.$url.'" >';
+		<?php foreach($groupsList as $x => $group) {
+				$link = http_build_query(['g' => $group]);
+				echo '<a href="?page_id=24&'.$link.'" >';
 				echo '<h3>'.$group.'</h3>';
 				echo '</a>';
 				echo '<ul>';
 
-				$categoriesListFiltered = array_filter ($categoriesList, isGroup($url));
+				$categoriesListFiltered = array_filter ($categoriesList, isGroup($group));
 
 				foreach ($categoriesListFiltered as $category) {
 					$link = http_build_query(['cat' => $category[Name]]);
