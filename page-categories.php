@@ -18,14 +18,12 @@
 	<!-- probably change from sidebar to topbar -->
 <!-------content---------------------------------------------------------->
 	<article id="products-list" >
-      <h1>Title PH</h1>
-
+    <h1>Title PH</h1>
+		<a href="?page_id=16&new=1&pg=1" >NEW</a> <a href="?page_id=16&soon=1&pg=1" >Soon</a><br>
+		<a href="?page_id=16&sold=1&pg=1" >Sold 30days</a> <a href="?page_id=16&all=1&pg=1" >All</a>
 
 	<?php
 
-$filterCategories = $_GET["cat"];
-$filterSearch = $_GET["search"];
-$filterLatest = $_GET["latest"];
 
 //echo $filter." = ".$filterSearch."<br>";
 
@@ -36,13 +34,16 @@ $filterLatest = $_GET["latest"];
 
 echo "<hr>";
 
+//var_dump ($brandsListFull);
+
 var_dump( categoryFilter(
-	$fLatest = 		$filterLatest,
-	$rawSearch = 	$filterSearch,
-	$fBrand	= 		null,
-	$rawCategory = $filterCategories,
-	$fLength = 		null,
-	$fPrice = 		null
+	$fLatest = 		$_GET["new"],
+	$fAll =				$_GET["all"],
+	$fSoon =			$_GET["soon"],
+	$fRecentSold =$_GET["sold"],
+	$rawSearch = 	$_GET["search"],
+	$rawBrand	= 	$_GET["brand"],
+	$rawCategory =$_GET["cat"]
 ));
 
 /*

@@ -9,8 +9,7 @@ SEARCH:
 Priority:
  	0 > major
  	1 > major brand keywords point to the "filtered by brand" (matching unique brands in network db);
-	2 > category keywords point to that category (matching to category_db);
-	3 > power (matching keywords_db)
+	2 > power (matching keywords_db)
 	3 > stainless steel keywords from keywords_db point at a search for stainless tables/sinks/etc (matching keywords_db)
   4 > everything else will be a generic search for "A" OR "B" of whats been typed.
 
@@ -18,20 +17,33 @@ Priority:
 
 
 function jr_smart_search($searchTerm) {
+	global $brandsListMajor;
 
-	$urlStart = 'http://jon-pc/redhotchilli/?page_id=16&';
+	$urlStart = 'http://jon-pc/redhotchilli/?';
+	$urlEnd = null;
 
 //RHCs first
 	if (stripos($searchTerm, "rhc") === 0) {
 		$urlStart = 'http://jon-pc/redhotchilli/?page_id=21&';
-		$urlMid = 'r='.str_replace('rhc', '', $searchTerm);
-//} elseif () {
-
+		$urlEnd = http_build_query([
+			'r' => str_replace('rhc', '', $searchTerm),
+			'page_id' => '21'
+		]);
+	} elseif (in_array(ucwords($searchTerm) , $brandsListMajor)) {
+		$urlEnd = http_build_query([
+			'brand' => $searchTerm,
+			'page_id' => '16'
+		]);
+//} elseif (stainless steel) {
 	} else {
-		$urlMid = http_build_query(['search' => $searchTerm]);
+		$urlEnd = http_build_query([
+			'search' => $searchTerm,
+			'page_id' => '16'
+		]);
+//if blank?
 	}
 	//$searchSTR
-	return wp_redirect( $urlStart.$urlMid  , 301 );
+	return wp_redirect( $urlStart.$urlEnd  , 301 );
 }
 
 ?>

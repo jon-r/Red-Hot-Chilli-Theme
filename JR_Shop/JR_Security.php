@@ -23,14 +23,12 @@ function jr_validate_stainless($rawStainless) {
 
 //validates RHC numbers
 //TODO RHCs
-function jr_validate_RHC($rawSearch){
-	return (strpos($rawSearch, 'rhc') !== FALSE) ? str_replace('rhc', '', $rawSearch) : null;
-};
+
 
 //validates brands
 function jr_validate_brand($rawBrand) {
 	global $brandsListFull;
-	return in_array($rawBrand, $brandsListFull);
+	return in_array(ucwords($rawBrand), $brandsListFull) ? ucwords($rawBrand) : null;
 };
 
 /* sanitises the search, accepting only alphanumeric , replacing everything esle with a "?".
@@ -40,7 +38,7 @@ If its not a legit symbol (eg. mysql injection) then the ? will wipe out all dan
 
 This happens after the "smart auto complete" since they will vailidate against actual data */
 
-function jr_search_sanitise($rawSearch) {
+function jr_validate_search($rawSearch) {
 	return preg_replace("/[^[:alnum:][:space:]]/ui", '.?', $rawSearch);
 }
 
