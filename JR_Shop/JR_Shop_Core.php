@@ -36,23 +36,13 @@ SECURITY:
 
 */
 
-global $wpdb, $categoriesList, $itemsList, $groupsList, $itemCount, $itemCountMin,
-	$stainlessList, $brandsListMajor, $brandsListFull;
-
-/* Settings \
-\ This should be the only section to that needs editing  */
-
-//how many items per page before pagination kicks in. Also limits the "new items" page. NYI
-$itemCount = 20;
-
-//How many items before the "try elsewhere" kicks in. NYI
-$itemCountMin = 4;
 
 
 
 
 /* GETS \
 \ Links to the function pages and arrays.*/
+include('JR_Global_Variables.php');
 
 include('JR_Security.php');
 

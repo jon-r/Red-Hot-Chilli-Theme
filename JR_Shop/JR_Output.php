@@ -68,7 +68,6 @@ function rhcCompile($ref){
   //$out[sold] = $ref[Sold] ? "SOLD" : null;
   $out[condition] = $ref[Condition] != " " ? $ref[Condition] : null;
 
-  //puts all the above into an array, to be used wherever
   return $out;
 }
 

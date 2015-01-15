@@ -6,15 +6,11 @@
   > Light security whitlelist sanitises the input to prevent injection just in case.
 */
 
-//whiteLists for the security.
-//currently selects only letters, numbers, and the symbols '" /+-
-$searchFilter = "['\" /+-]|\w";
 
 //validates categories, makes sure exists
 function jr_validate_category($rawCategory) {
-	global $wpdb;
-	$categoriesList = $wpdb->get_col("SELECT `name` FROM `rhc_categories`");
-	return in_array($rawCategory, $categoriesList) ? $rawCategory : null ;
+	global $categoriesListColumn;
+	return in_array($rawCategory, $categoriesListColumn) ? $rawCategory : null ;
 };
 
 //validates stainless pages,

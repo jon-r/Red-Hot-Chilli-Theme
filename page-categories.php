@@ -22,12 +22,10 @@
 
 
 	<?php
-//!!!! PLACEHOLDER FILTERS, will be put in pageURLs
-//$filter = $_GET["f"] ?: 'search';
 
-$filterCategories = $_GET["cat"] ? $_GET["cat"] : null;
-$filterSearch = $_GET["search"] ?: null;
-$filterLatest = $_GET["latest"] ?: false;
+$filterCategories = $_GET["cat"];
+$filterSearch = $_GET["search"];
+$filterLatest = $_GET["latest"];
 
 //echo $filter." = ".$filterSearch."<br>";
 
@@ -38,16 +36,13 @@ $filterLatest = $_GET["latest"] ?: false;
 
 echo "<hr>";
 
-var_dump($brandsListFull);
-
 var_dump( categoryFilter(
-
-	$fLatest = $filterLatest,
-
-	$rawSearch = $filterSearch,
-	$fBrand	= null,				$rawCategory = $filterCategories,
-
-	$fLength = null,			$fPrice = null
+	$fLatest = 		$filterLatest,
+	$rawSearch = 	$filterSearch,
+	$fBrand	= 		null,
+	$rawCategory = $filterCategories,
+	$fLength = 		null,
+	$fPrice = 		null
 ));
 
 /*

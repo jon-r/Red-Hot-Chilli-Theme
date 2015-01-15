@@ -59,9 +59,9 @@
 					<?php // if you'd like to use the site description you can un-comment it below ?>
 					<?php // bloginfo('description'); ?>
 
-				<form action="?page_id=16">
+				<form action="">
 					<label for="search">Search</label>
-					<input type="hidden" name="page_id" value="16">
+					<input type="hidden" name="page_id" value="29">
 					<input type="search" name="search">
 					<button type="submit">GO</button>
 				</form>

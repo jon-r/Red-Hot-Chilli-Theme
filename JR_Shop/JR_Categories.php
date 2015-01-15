@@ -15,29 +15,15 @@ filters:
   Stainless steel (break into sink/table/shelving)
   AllItems = get all
 */
-//get category array
-$categoriesList = $wpdb->get_results("SELECT * FROM rhc_categories;", ARRAY_A);
-
-//get keywords arrays
-$groupsList = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` = 'group'");
-$stainlessList = 	 $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` = 'stainless'");
-$brandsListMajor = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` = 'brand'");
-//full list takes all the unique brands, for validation only.
-//using this for the search filter could trigger generic words
-$brandsListFull = array_unique($wpdb->get_col("SELECT `Brand` FROM `networked db` WHERE `Brand` != '0'"));
-
-//sorts the category pages
-function isGroup($group) {
-  return function ($category) use ($group) {
-    return ($category[CategoryGroup] == $group);
-  };
-};
 
 //wpdb query generator
 function categoryFilter(
-  $fLatest = false,
-  $rawSearch = null,	$fBrand = null,	$rawCategory = null,
-  $fLength = null,  $fPrice = null
+	$fLatest = 		false,
+	$rawSearch = 	null,
+	$fBrand	= 		null,
+	$rawCategory = null,
+	$fLength = 		null,
+	$fPrice = 		null
 ) {
   global $wpdb, $itemCount, $categoriesList, $stainlessList;
 
