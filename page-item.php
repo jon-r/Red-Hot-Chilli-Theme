@@ -29,53 +29,11 @@
 
 	echo "<hr>";
 
-	$jrShop = rhcCompile($itemList); ?>
 
 
-	<h1><?php echo $jrShop[name] ?></h1>
-	<h3>Ref: <?php echo $jrShop[rhc] ?></h3>
+	$jrShop = rhcCompile($itemList,'full');
 
-	<article>
-		<img width="500px" src="<?php echo $jrShop[imgFirst] ?>" />
-
-		<ul>
-			<?php foreach ($jrShop[imgAll] as $list) {
-			echo "<li><img src='".$list."' style='height:250px' /></li>";
-		} ?>
-		</ul>
-	</article>
-
-	<article>
-		<h1><?php echo $jrShop[price] ?></h1>
-		<h3><?php echo $jrShop[vatPrice] ?></h3>
-		<?php if($jrShop[reduction]) {
-			echo "<H3>SALE!</H3>";
-			echo "<p>".$jrShop[reduction]."</p>";
-		} ?>
-
-		<?php echo $jrShop[power] ?>
-		<h2><?php echo $jrShop[watt] ?></h2>
-
-		<h1><?php echo $jrShop[brand] ?></h1>
-		<h2><?php echo $jrShop[model] ?></h2>
-
-<!--		wishlish, shopping cart buttons -->
-	</article>
-
-	<article>
-		<h3>About</h3>
-		<p><?php echo $jrShop[desc] ?></p>
-		<h3>Specs</h3>
-		<p><?php echo $jrShop[fullSizes] ?></p>
-		<p><?php echo $jrShop[extra] ?></p>
-		<p><?php echo $jrShop[condition] ?></p>
-
-<!--	ask about button -->
-
-		<p>Full Inspection at our showroom in Warrington, Cheshire available
-			<br>Please contact us for a competitive delivery quote to the UK and overseas
-			<br>All appliances are fully checked and tested by our engineers before going on sale</p>
-	</article>
+	var_dump($jrShop); ?>
 
 </section>
 

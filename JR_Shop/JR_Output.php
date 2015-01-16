@@ -3,90 +3,112 @@
 // ----------------------array compiler-----------------------------------------------------------
 // Converts raw databases into useful "chunks" of text
 //$ref = associative array generated from the database/filters
-function rhcCompile($ref){
-  //changeto permalinks eventually
-  $out[weblink] = "?page_id=21&r=".$ref[RHC];
+//new plan: keep this function as minimal as possible, returning just minimal strings. do the design in the templates
+function imgSrcRoot($itemType,$itemName) {
+	return '../redhotchilli/wp-content/uploads/'.$itemType.'/'.$itemName;
+}
 
-  $out[rhc] = "RHC".$ref[RHC];
+function rhcCompile($ref,$detail){
+	//min = basic detail - things not for sale atm
+	if ($detail == 'min' || 'lite' || 'full') {
+		//change to permalinks eventually
+		$out[webLink] = http_build_query(['page_id' => 21,
+																			'r' => $ref[RHC],
+																			'n' => $ref[ProductName]]);
+		$out[rhc] = "RHC".$ref[RHC];
+		$out[name] = $ref[ProductName];
+		$imgLocation = imgSrcRoot('gallery',$ref[Image]);
+		$out[imgFirst] = $imgLocation.".jpg";
+		$out[comingsoon] = $ref[IsSoon];
+		$out[sold] = $ref[Sold];
+	};
+	//lite page = categories page
+	if ($detail == 'lite' || 'full') {
+	  if ($ref[Category] == 'Fridges' ) {
+			$out[chilled] = '<img src="'.imgSrcRoot('icons',$ref[Category]).'.png" />';
+		} else {
+			$out[chilled] = null;
+		};
+		if ($ref[Power] != 0 || " ") {
+			$powerIconLocation = imgSrcRoot('icons',$ref[Power]).".png";
+			$out[power] = file_exists ($powerIconLocation) ?
+				"<img src='$powerIconLocation' />" : null;
+		};
+		$out[price] = $ref[Price];
+		$out[sale] = $ref[IsSale];
+	};
+	//full = single, full categories
+	if ($detail == 'full') {
+		if ($ref[Brand] != "0") {
+			$brandIconLocation = imgSrcRoot('icons',$ref[Brand]).".jpg";
+			$out[brand] = file_exists ( $brandIconLocation ) ? "<img src='$brandIconLocation' />" : "Brand: ".$ref[Brand];
+			$out[brandLink] = http_build_query(['page_id' => 16,
+																					'brand' => $ref[Brand]]);
+		} else {
+			$out[brand] = null;
+			$out[brandLink] = null;
+		};
+		if ($ref[Wattage] > 0 && $ref[Wattage] < 1500) {
+			$out[watt] = $ref[Wattage]." watts";
+		} elseif ($ref[Wattage] > 1500 ) {
+			$out[watt] = ($ref[Wattage] / 1000)."kw";
+		} else {
+			$out[watt] = null;
+		};
+		$out[categoryLink] = http_build_query(['page_id' => 16,
+																					 'cat' => $ref[Category]]);
+		$out[imgAll] = glob($imgLocation.'*');
+		//TODO maybe create a mini dimension cube from these? thinking 3d css
+		$out[height] = $ref[Height] != 0 ? $ref[Height] : null;
+		$out[width] = $ref[Width] != 0 ? $ref[Width] : null;
+		$out[depth] = $ref[Depth] != 0 ? $ref[Depth] : null;
+		$out[hFull] = $ref[Height] != 0 ? $ref[Height]."mm / ".ceil($ref[Height] / 25.4)." inches" : null;
+		$out[wFull] = $ref[Width] != 0 ? $ref[Width]."mm / ".ceil($ref[Width] / 25.4)." inches" : null;
+		$out[dFull] = $ref[Depth] != 0 ? $ref[Depth]."mm / ".ceil($ref[Depth] / 25.4)." inches" : null;
+		$out[desc] =
+			($ref['Line 1'] != " " ? $ref['Line 1']."<br>" : null).
+			($ref['Line 2'] != " " ? $ref['Line 2']."<br>" : null).
+			($ref['Line 3'] != " " ? $ref['Line 3'] : null);
+		$out[count] = $ref[Quantity] > 1 ? $ref[Quantity]." in Stock" : null;
+		$out[model] = $ref[Model] != "0" ? "Model: ".$ref[Model] : null;
+		$out[extra] = $ref[ExtraMeasurements] != " " ? $ref[ExtraMeasurements] : null;
+		$out[condition] = $ref[Condition] != " " ? $ref[Condition] : null;
 
-  $out[name] = $ref[ProductName];
-
-  //sale if sale>0, normal price if sale=0
-  $correctPrice = $ref[SalePrice] == 0 ? $ref[Price] : $ref[SalePrice];
-  //get the listing price to show, including sales and SOLD.
-  $out[price] = "£".$correctPrice." + VAT";
-
-  //get % reduction if saleprice exists
-  $out[reduction] = $ref[SalePrice] != 0 ?
-    "(Down from £".$ref[Price].", saving you "
-    .round(($ref[Price] - $ref[SalePrice]) / $ref[Price] * 100, 0)."%)" : null;
-
-  //get VAT price
-  $out[vatPrice] = "(£".($correctPrice * 1.2)." incl. VAT)";
-
-  $imgLocation = '../redhotchilli/wp-content/uploads/gallery/'.$ref[Image];
-  //gets first image. need to fix something for a b c d e
-  $out[imgFirst] = $imgLocation.".jpg";
-
-  //gets list of all images.
-  $out[imgAll] = glob($imgLocation.'*');
-
-  //get dimensions in mm/inches output. TODO maybe create a mini dimension cube from these? thinking 3d css
-  $out[height] = $ref[Height] != 0 ? "Height: ".$ref[Height]."mm / ".ceil($ref[Height] / 25.4)." inches" : null;
-  $out[width] = $ref[Width] != 0 ? "Width: ".$ref[Width]."mm / ".ceil($ref[Width] / 25.4)." inches" : null;
-  $out[depth] = $ref[Depth] != 0 ? "Depth: ".$ref[Depth]."mm / ".ceil($ref[Depth] / 25.4)." inches" : null;
-
-  $out[fullSizes] = $out[height]."<br>".$out[width]."<br>".$out[depth];
-
-  //get brand of the item as icon or text. if there is a logo in the folder, use that.
-  $brandIconLocation = '../redhotchilli/wp-content/uploads/icons/'.str_replace(" ", "-", $ref[Brand]).".jpg";
-  $out[brand] = $ref[Brand] != "0" ? (file_exists ( $brandIconLocation ) ?
-    "<img src='$brandIconLocation' />" :
-    "Brand: ".$ref[Brand]) : null;
-  //TODO link to the "sort by brand" page
-
-  //get wattage if exists. goes to KW if above 1500w
-  $out[watt] = $ref[Wattage] != 0 ? ($ref[Wattage] > 1500 ? ($ref[Wattage] / 1000)."kw" : $ref[Wattage]." watts") : null;
-
-  //get power of the item as icon, else leave blank.
-  $powerIconLocation = '../redhotchilli/wp-content/uploads/icons/'.str_replace(" ", "-", $ref[Power]).".png";
-  $out[power] = file_exists ($powerIconLocation) ?
-    "<img src='$powerIconLocation' />" : null;
-
-  //concatenate description into one string
-  $out[desc] =
-    ($ref[Line1] != " " ? $ref[Line1]."<br>" : null).
-    ($ref[Line2] != " " ? $ref[Line2]."<br>" : null).
-    ($ref[Line3] != " " ? $ref[Line3] : null);
-
-  //show quantity only if more than one
-  $out[count] = $ref[Quantity] > 1 ? $ref[Quantity]." in Stock" : null;
-
-  //the rest are just "show if exists". wouldnt need, but DB cant have blanks. sold is temp removed
-  $out[model] = $ref[Model] != "0" ? "Model: ".$ref[Model] : null;
-  $out[extra] = $ref[ExtraMeasurements] != " " ? $ref[ExtraMeasurements] : null;
-  //$out[sold] = $ref[Sold] ? "SOLD" : null;
-  $out[condition] = $ref[Condition] != " " ? $ref[Condition] : null;
-
+	}
   return $out;
 }
 
-//cutback function, for pages with less info to show
-function rhcCompileLite($ref){
-  $out[weblink] = "?page_id=21&r=".$ref[RHC];
-  $out[rhc] = "RHC".$ref[RHC];
-  $out[name] = $ref[ProductName];
-  $correctPrice = $ref[SalePrice] == 0 ? $ref[Price] : $ref[SalePrice];
-  $out[price] = "£".$correctPrice." + VAT";
-  $out[reduction] = $ref[SalePrice] != 0 ? "(Was £".$ref[Price].")" :	null;
-  $imgLocation = '../redhotchilli/wp-content/uploads/gallery/'.$ref[Image];
-  $out[imgFirst] = $imgLocation.".jpg";
-  $powerIconLocation = '../redhotchilli/wp-content/uploads/icons/'.str_replace(" ", "-", $ref[Power]).".png";
-  $out[power] = file_exists ($powerIconLocation) ? "<img src='$powerIconLocation' />" : null;
-  //$out[sold] = $ref[Sold] ? "SOLD" : null;
-  return $out;
-}
+/*
+MIN
 
+$ref[RHC],
+$ref[ProductName]]);
+$ref[Image];
+$ref[IsSoon];
+$ref[Sold];
 
+LITE
+(above+)
+$ref[Category]
+$ref[Power]
+$ref[Price];
+$ref[IsSale];
+
+FULL
+(above+)
+$ref[Brand]
+$ref[Wattage]
+$ref[Category]
+$ref[Height]
+$ref[Width]
+$ref[Depth]
+$ref[Height]
+$ref[Line1]
+$ref[Line2]
+$ref[Line3]
+$ref[Quantity]
+$ref[Model]
+$ref[ExtraMeasurements]
+$ref[Condition] */
 
 ?>
