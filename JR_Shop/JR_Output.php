@@ -4,10 +4,6 @@
 // Converts raw databases into useful "chunks" of text
 //$ref = associative array generated from the database/filters
 //new plan: keep this function as minimal as possible, returning just minimal strings. do the design in the templates
-function imgSrcRoot($itemType,$itemName) {
-  return '../redhotchilli/wp-content/uploads/'.$itemType.'/'.$itemName;
-}
-
 function rhcCompile($ref,$detail){
   //min = basic detail - things not for sale atm
   if ($detail == 'min' || 'lite' || 'full') {

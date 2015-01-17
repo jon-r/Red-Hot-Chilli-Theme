@@ -9,19 +9,10 @@
 
 <?php get_header(); ?>
 
-<section id="main">
-<!-------banner + nav---------------------------------------------------------->
-  <?php include( "sidebar-left.php"); ?>
-<!-------content---------------------------------------------------------->
+<section>
 
-<?php
-  $itemList = $wpdb->get_row("SELECT * FROM `networked db` WHERE RHC = $_GET[r]", ARRAY_A);
+<?php include( "JR_Shop-elements/items-full.php"); ?>
 
-  echo "<hr>";
-
-  $jrShop = rhcCompile($itemList,'full');
-
-  var_dump($jrShop); ?>
 </section>
 
 <?php get_footer(); ?>
