@@ -18,13 +18,12 @@ Priority:
 
 function jr_smart_search($searchTerm) {
 	global $brandsListMajor;
-
-	$urlStart = 'http://jon-pc/redhotchilli/?';
+//need to set this as variable since bouncing to and from pcs/servers
+	$urlStart = 'http://localhost/rhc_online/?';
 	$urlEnd = null;
 
 //RHCs first
 	if (stripos($searchTerm, "rhc") === 0) {
-		$urlStart = 'http://jon-pc/redhotchilli/?page_id=21&';
 		$urlEnd = http_build_query([
 			'r' => str_replace('rhc', '', $searchTerm),
 			'page_id' => '21'

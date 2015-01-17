@@ -30,13 +30,13 @@ FULL
 
 //wpdb query generator
 function categoryFilter(
-	$fLatest = 			false,
-	$fAll =					false,
-	$fSoon =				false,
-	$fRecentSold =  false,
-	$rawSearch = 		null,
-	$rawBrand	= 		null,
-	$rawCategory = 	null
+  $fLatest =  false,
+  $fAll =     false,
+  $fSoon =    false,
+  $fRecentSold = false,
+  $rawSearch =  null,
+  $rawBrand	= null,
+  $rawCategory =  null
 ) {
   global $wpdb, $itemCount, $categoriesList, $stainlessList;
 

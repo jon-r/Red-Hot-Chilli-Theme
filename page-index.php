@@ -30,25 +30,22 @@
 	</article>
 <!-------content---------------------------------------------------------->
 
-	<article id="Groups-List" >
-		<?php foreach($groupsList as $x => $group) {
-//				$group = 'g';
-//				unset($group['keyword']);
-				$link = http_build_query(['g' => $group]);
-				echo '<a href="?page_id=24&'.$link.'" >';
-				echo '<h2>'.$group.'</h2>';
-				echo '</a>';
-				echo '<ul>';
-				$categoriesListFiltered = array_filter ($categoriesList, isGroup($group));
+  <article id="Groups-List" >
+    <?php foreach($groupsList as $x => $group) {
+            $link = http_build_query(['g' => $group]);
+            echo '<a href="?page_id=24&'.$link.'" >';
+            echo '<h2>'.$group.'</h2>';
+            echo '</a>';
+            echo '<ul>';
+            $categoriesListFiltered = array_filter ($categoriesList, isGroup($group));
 
-				foreach ($categoriesListFiltered as $category) {
-					$link = http_build_query(['cat' => $category[Name]]);
-					echo '<li><a href="?page_id=16&'.$link.'&pg=1" >'.$category[Name].'</a></li>' ;
-				}
-				echo '</ul>';
-			}?>
-
-	</article>
+            foreach ($categoriesListFiltered as $category) {
+                $link = http_build_query(['cat' => $category[Name]]);
+                echo '<li>'.var_dump($category).'</li>' ;
+            }
+            echo '</ul>';
+        }?>
+  </article>
 
 </section>
 
