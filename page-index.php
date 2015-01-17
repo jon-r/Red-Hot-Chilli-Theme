@@ -16,21 +16,18 @@
 
 <?php get_header(); ?>
 
+<?php include( "sidebar-left.php"); ?>
+<!--  change from sidebar to topbar. leaving here so i dont forget -->
 
-<section id="main">
+<section>
 
-<!-------banner + nav---------------------------------------------------------->
-	<?php include( "sidebar-left.php"); ?>
+  <article>
+    <div>
+      banner here
+    </div>
+  </article>
 
-
-	<article id="index-banner" >
-		<div id="index-banner-inner" class="cf">
-			banner here
-		</div>
-	</article>
-<!-------content---------------------------------------------------------->
-
-  <article id="Groups-List" >
+  <article>
     <?php foreach($groupsList as $x => $group) {
             $link = http_build_query(['g' => $group]);
             echo '<a href="?page_id=24&'.$link.'" >';

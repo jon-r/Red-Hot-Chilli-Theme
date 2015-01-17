@@ -50,16 +50,16 @@
 
   <div id="container">
 
-    <header class="header" role="banner">
+    <header role="banner">
 
-      <div id="logo" class="wrap">
+      <div>
         <?php // to use a image just replace the bloginfo( 'name') with your img src and remove the surrounding <p>?>
         <a href="<?php echo home_url(); ?>" rel="nofollow">
           <img  src="<?php echo get_template_directory_uri(); ?>/library/images/RHC_Logo_Transparent.png" alt="PH_Banner" />
         </a>
       </div>
 
-      <form action="">
+      <form>
         <label for="search">Search</label>
         <input type="hidden" name="page_id" value="30">
         <input type="search" name="search">
