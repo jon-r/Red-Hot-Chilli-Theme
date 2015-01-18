@@ -7,7 +7,7 @@ function isGroup($group) {
   return function ($category) use ($group) {
     return ($category[CategoryGroup] == $group);
   };
-};
+}
 
 function groupFilter($group) {
   global $categoriesList;
@@ -22,10 +22,8 @@ function groupFilter($group) {
 ~add sorting settings later
 */
 
-
-
 //wpdb query generator
-function categoryFilter( $safeArr ) {
+function jr_category_filter( $safeArr ) {
 
   global $wpdb, $itemCount;
   $fLatest =      $safeArr['new'];
@@ -42,9 +40,9 @@ function categoryFilter( $safeArr ) {
   $searchPart = str_replace(" ", "|", $fSearch);
   $strSearch = $fSearch ?
     "`ProductName` REGEXP '$searchPart' OR `Power` REGEXP '$searchPart' OR `Brand` REGEXP '$searchPart' "  : null;
-  $strCategory = $fCategory ?
+  $strCategory = ($fCategory && ! $fStainless) ?
     "`Category` LIKE '$fCategory' OR `Cat1` LIKE '$fCategory' OR `Cat2` LIKE '$fCategory' OR `Cat3` LIKE '$fCategory' " : null;
-  $strCategorySS = $fCategory ?
+  $strCategorySS = $fStainless ?
     "`Category` LIKE '$fCategory' " : null;
   $strBrand = $fBrand ?
     "`Brand` LIKE '$fBrand' " : null;
@@ -53,17 +51,16 @@ function categoryFilter( $safeArr ) {
   if ($fSoon || $fRecentSold) {
     $queryStart = "SELECT `RHC`, `ProductName`, `Image`, `IsSoon`, `Sold` FROM `networked db` ";
   } elseif ($fStainless) {
-    $queryStart = "SELECT `RHCs`, `ProductName`, `Price` FROM `benchessinksdb` ";
+    $queryStart = "SELECT `RHCs`, `ProductName`, `Price`, `TableinFeet` FROM `benchessinksdb` ";
   } else {
-    $queryStart = "SELECT `RHC`, `ProductName`, `Image`, `IsSoon`, `Sold`,
-    `Category`, `Power`, `Price`, `IsSale` FROM `networked db` ";
+    $queryStart = "SELECT `RHC`, `ProductName`, `Image`, `IsSoon`, `Sold`, `Category`, `Power`, `Price`, `IsSale` FROM `networked db` ";
   };
 
   //the query "middle". what is the data filtered by?
-  if ($fCategory || $fSearch) {
-    $queryMid = "WHERE (".implode(") OR (", array_filter([$strCategory, $strSearch])).") AND ";
-  } elseif ($fStainless) {
-    $queryMid = "WHERE ".implode(") OR (", array_filter([$strCategorySS]))." AND ";
+  if ($fCategory || $fSearch || $fStainless) {
+    $queryMid = "WHERE (".implode(") OR (", array_filter([$strCategory, $strSearch, $strCategorySS])).") AND ";
+ // } elseif ($fStainless) {
+ // $queryMid = "WHERE ".implode(") OR (", array_filter([$strCategorySS]))." AND ";
   } elseif ($fBrand) {
     $queryMid = "WHERE $strBrand AND ";
   } else {
@@ -91,7 +88,7 @@ function categoryFilter( $safeArr ) {
 
   return $wpdb->get_results($queryFull, ARRAY_A);
   /*debug return*/
-  //return $queryFull;
+//  return $queryFull;
 
 }
 

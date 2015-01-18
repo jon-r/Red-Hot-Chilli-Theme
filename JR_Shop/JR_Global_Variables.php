@@ -33,8 +33,12 @@ $categoriesListColumn = $wpdb->get_col("SELECT `name` FROM `rhc_categories`");
 
 /*img location \
 \ potentially changed when proper urls are named */
-function imgSrcRoot($itemType,$itemName) {
-  return '../redhotchilli/wp-content/uploads/'.$itemType.'/'.$itemName;
+function imgSrcRoot($itemType,$itemName,$filetype = null) {
+  return '<img src="'.site_url().'/wp-content/uploads/'.$itemType.'/'.$itemName.'.'.$filetype.'" />';
+}
+
+function imgSrcURL($itemType,$itemName) {
+  return site_url().'/wp-content/uploads/'.$itemType.'/'.$itemName;
 }
 
 ?>
