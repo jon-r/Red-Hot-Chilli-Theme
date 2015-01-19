@@ -12,7 +12,7 @@ function jr_shop_compile($ref,$detail) {
         //need to consider "stainless full"
         webLink     => http_build_query(
           ['page_id' => 21, 'r' => $ref[RHCs], 's' => 1, 'n' => $ref[ProductName]]),
-        rhcs        => "RHCs".$ref[RHCs],
+        rhc         => "RHCs".$ref[RHCs],
         name        => $ref[ProductName],
         // need to generate ss image location. would help in shop too.
         imgFirst    => imgSrcRoot('gallery',$ref[Image],'jpg'),
@@ -72,6 +72,6 @@ function jr_shop_compile($ref,$detail) {
   $out = array_merge ($out1,$out2,$out3);
 
   return $out;
-}
+};
 
 ?>

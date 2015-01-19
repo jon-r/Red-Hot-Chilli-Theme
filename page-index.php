@@ -8,7 +8,7 @@
 
 <?php get_header(); ?>
 
-<?php include( "sidebar-left.php"); ?>
+<?php // include( "sidebar-left.php"); ?>
 <!--  change from sidebar to topbar. leaving on index page so i dont forget -->
 
 <section>

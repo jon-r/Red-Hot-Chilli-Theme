@@ -12,12 +12,12 @@
   <?php
       foreach ($filteredCategories as $category) :
         $link = http_build_query(['cat' => $category[Name], 'page_id' => 16]);
-        $imgUrl = imgSrcRoot('thumbnails',$category[Name]).".jpg";
+        $imgUrl = imgSrcRoot('thumbnails',$category[Name],'jpg');
   ?>
 
     <li>
       <a href="?<?php echo $link ?>&pg=1" >
-        <img src="<?php echo $imgUrl ?>" />
+        <?php echo $imgUrl ?>
         <h2><?php echo $category[Name] ?></h2>
       </a>
     </li>
