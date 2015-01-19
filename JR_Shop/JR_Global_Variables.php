@@ -33,7 +33,7 @@ $categoriesListColumn = $wpdb->get_col("SELECT `name` FROM `rhc_categories`");
 
 /*img location \
 \ potentially changed when proper urls are named */
-function imgSrcRoot($itemType,$itemName,$filetype = null) {
+function imgSrcRoot($itemType,$itemName,$filetype) {
   return '<img src="'.site_url().'/wp-content/uploads/'.$itemType.'/'.$itemName.'.'.$filetype.'" />';
 }
 
