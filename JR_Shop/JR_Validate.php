@@ -27,10 +27,15 @@ function jr_validate_category_params($getArr) {
 //-------------------------------
 
 //validates keywords
-function jr_validate_keywords($rawIn, $keywordGroup) {
-  global $wpdb;
-  $whitelist = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` LIKE '$keywordGroup'");
-  return in_array($rawIn, $whitelist) ? $rawIn : null  ;
+function jr_validate_keywords($rawIn) {
+  global $keywords;
+  return in_array($rawIn, $keywords) ?: $rawIn;
+}
+
+//validates group
+function jr_validate_group($rawGroup) {
+  global $groupsList;
+  return in_array($rawGroup, $groupsList) ? $rawGroup : null;
 }
 
 //validates categories, makes sure exists
@@ -54,12 +59,24 @@ function jr_validate_brand($rawBrand) {
   return in_array(ucwords($rawBrand), $brandsListFull) ? ucwords($rawBrand) : null;
 };
 
-/* sanitises the search, accepting only alphanumeric , replacing everything esle with a "?".
+//validatesRHC
+function jr_validate_rhc($rawRHC) {
+  global $rhcColumn;
+  return in_array($rawRHC, $rhcColumn) ? $rawRHC : null;
+};
 
-The goal is that if its a legit symbol in the search (eg. ',&,-) then a '?' will still pick them up in the regexp search.
-If its not a legit symbol (eg. mysql injection) then the ? will wipe out all dangerous options.
+//validatesRHCs
+function jr_validate_rhcs($rawRHC) {
+  global $rhcsColumn;
+  return in_array($rawRHC, $rhcsColumn) ? $rawRHC : null;
+};
 
-This happens after the "smart auto complete" since they all vailidate against actual data */
+/*
+*  sanitises the search, accepting only alphanumeric , replacing everything esle with a "?".
+*  The goal is that if its a legit symbol in the search (eg. ',&,-) then a '?' will still pick them up in the regexp search.
+*  If its not a legit symbol (eg. mysql injection) then the ? will wipe out all dangerous options.
+*  This happens after the "smart auto complete" since they all vailidate against actual data
+*/
 
 function jr_validate_search($rawSearch) {
   return preg_replace("/[^[:alnum:][:space:]]/ui", '.?', $rawSearch);

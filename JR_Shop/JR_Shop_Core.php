@@ -44,13 +44,13 @@ SECURITY:
 \ Links to the function pages and arrays.*/
 include('JR_Global_Variables.php');
 
-include('JR_Security.php');
+include('JR_Validate.php');
 
 include('JR_Search.php');
 
-include('JR_Categories.php');
+include('JR_Queries.php');
 
-include('JR_Output.php');
+include('JR_Outputs.php');
 
 //perhaps a widget? or have functions generate the php so only function needed
 

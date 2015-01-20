@@ -1,28 +1,43 @@
 <?php
 
-//----------CategoryList filter function------------------------------------------------
+global $wpdb, $categoriesList, $groupsList, $stainlessList, $brandsListMajor, $keywords,
+      $categoriesListColumn, $brandsListFull, $rhcColumn, $rhcsColumn;
+//get category array
+$categoriesList = $wpdb->get_results("SELECT * FROM rhc_categories;", ARRAY_A);
 
-//returns if item in group. one level deeper than the normal IN_ARRAY
-function isGroup($group) {
-  return function ($category) use ($group) {
-    return ($category[CategoryGroup] == $group);
-  };
-}
+//get keyword columns. For Smart Search
+$groupsList = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` = 'group'");
 
-function groupFilter($group) {
-  global $categoriesList;
-  return array_filter ($categoriesList, isGroup($group));
-}
+$stainlessList = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` = 'stainless'");
+
+$brandsListMajor = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` = 'brand'");
 
 
+/*Validation Querys \
+\ for validation only. */
+$brandsListFull = array_unique($wpdb->get_col("SELECT `Brand` FROM `networked db` WHERE `Brand` != '0' AND SOLD = 0"));
+$categoriesListColumn = $wpdb->get_col("SELECT `name` FROM `rhc_categories`");
+$rhcColumn = $wpdb->get_col("SELECT `rhc` FROM `networked db`");
+$rhcsColumn = $wpdb->get_col("SELECT `rhcs` FROM `benchessinksdb`");
+$keywords = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` LIKE '$keywordGroup'");
 
-//----------------ItemList filter functions---------------------------------------------------------
+
+//----------------wpdb query generator---------------------------------------------------
 /*
 ~need to look into setting up the benches page with categories. needs whole new functions?
 ~add sorting settings later
 */
 
-//wpdb query generator
+function jr_item_query($safeRHC, $SS = null) {
+  global $wpdb;
+  if ($SS) {
+    $queryFull = $wpdb->get_row("SELECT `RHCs`, `ProductName`, `Category`, `Height`, `Width`, `Depth`, `Price`, `Quantity`, `TableinFeet`, `Line1` FROM `benchessinksdb` WHERE RHCs = $safeRHC", ARRAY_A);
+  } else {
+    $queryFull = $wpdb->get_row("SELECT `RHC`, `ProductName`, `Image`, `Price`, `Height`, `Width`, `Depth`, `Model`, `Brand`, `Wattage`, `Power`, `ExtraMeasurements`, `Line 1`, `Line 2`, `Line 3`, `Condition/Damages`, `Sold`, `Quantity`, `Category`, `Cat1`, `Cat2`, `Cat3`, `IsSale`, `IsSoon` FROM `networked db` WHERE RHC = $safeRHC", ARRAY_A);
+  }
+  return $queryFull;
+}
+
 function jr_category_filter( $safeArr ) {
 
   global $wpdb, $itemCount;
@@ -59,8 +74,6 @@ function jr_category_filter( $safeArr ) {
   //the query "middle". what is the data filtered by?
   if ($fCategory || $fSearch || $fStainless) {
     $queryMid = "WHERE (".implode(") OR (", array_filter([$strCategory, $strSearch, $strCategorySS])).") AND ";
- // } elseif ($fStainless) {
- // $queryMid = "WHERE ".implode(") OR (", array_filter([$strCategorySS]))." AND ";
   } elseif ($fBrand) {
     $queryMid = "WHERE $strBrand AND ";
   } else {

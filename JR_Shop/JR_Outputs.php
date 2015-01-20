@@ -1,37 +1,46 @@
 <?php
 
-// ----------------------array compiler-----------------------------------------------------------
-// Converts raw databases into useful "chunks" of text
-//$ref = associative array generated from the database/filters
-//new plan: keep this function as minimal as possible, returning just minimal strings. do the design in the templates
+
+
+// ----------------------array compiler--------------------------------------------------
+// Converts raw databases (associative) into useful "chunks" of text
+
 function jr_shop_compile($ref,$detail) {
-  $out1 = $out2 = $out3 = []; //need to declare empty arrays
+  $out1 = $out2 = []; //need to declare empty arrays
   switch ($detail) {
-    case 'stainless':
+    case 'ssFull' :
       $out1 = [
-        //need to consider "stainless full"
+  //      height      => $ref[Height] ?: null,
+  //      width       => $ref[Width] ?: null,
+  //      depth       => $ref[Height] ?: null,
+        hFull       => $ref[Height] ? $ref[Height]."mm / ".ceil($ref[Height] / 25.4)." inches" : null,
+        wFull       => $ref[Width] ? $ref[Width]."mm / ".ceil($ref[Width] / 25.4)." inches" : null,
+        dFull       => $ref[Depth] ? $ref[Depth]."mm / ".ceil($ref[Depth] / 25.4)." inches" : null,
+        desc        => ($ref['Line1'] != " " ? $ref['Line 1']."<br>" : null),
+        quantity    => $ref[Quantity] > 1 ? $ref[Quantity]." in Stock" : null,
+        categoryLink => http_build_query(['page_id' => 16, 'cat' => $ref[Category]])
+      ];
+    case 'stainless':
+      $out2 = [
         webLink     => http_build_query(
-          ['page_id' => 21, 'r' => $ref[RHCs], 's' => 1, 'n' => $ref[ProductName]]),
+          ['page_id' => 21, 'r' => $ref[RHCs], 'n' => $ref[ProductName], 'x' => 1]),
         rhc         => "RHCs".$ref[RHCs],
         name        => $ref[ProductName],
         // need to generate ss image location. would help in shop too.
         imgFirst    => imgSrcRoot('gallery',$ref[Image],'jpg'),
         price       => $ref[Price],
-        feet        => $ref[TableinFeet]
+        icon       => '<div>'.$ref[TableinFeet].'ft</div>'
       ];
-      break;
+    break;
     case 'full':
       $brandIconLocation = imgSrcRoot('icons',$ref[Brand],'jpg');
-      switch ($ref[Brand]) {
-        case file_exists ($brandIconLocation):
-          $brandCheck = $brandIconLocation;
-          break;
-        case $ref[Brand] :
-          $brandCheck = "Brand: ".$ref[Brand];
-          break;
-        default;
-          $brandCheck = null;
-      }
+      if (file_exists ($brandIconLocation)) {
+        $brandCheck = $brandIconLocation;
+      } elseif ($ref[Brand]) {
+        $brandCheck = "Brand: ".$ref[Brand];
+      } else {
+        $brandCheck = null;
+      };
       if ($ref[Wattage] >= 1500) {
         $wattCheck = ($ref[Wattage] / 1000)."kw";
       } elseif ($ref[Wattage] < 1500 && $ref[Wattage] > 0) {
@@ -40,9 +49,9 @@ function jr_shop_compile($ref,$detail) {
         $wattCheck = null;
       }
       $out1 = [
-        height      => $ref[Height] ?: null,
-        width       => $ref[Width] ?: null,
-        depth       => $ref[Height] ?: null,
+ //       height      => $ref[Height] ?: null,
+ //       width       => $ref[Width] ?: null,
+  //      depth       => $ref[Height] ?: null,
         hFull       => $ref[Height] ? $ref[Height]."mm / ".ceil($ref[Height] / 25.4)." inches" : null,
         wFull       => $ref[Width] ? $ref[Width]."mm / ".ceil($ref[Width] / 25.4)." inches" : null,
         dFull       => $ref[Depth] ? $ref[Depth]."mm / ".ceil($ref[Depth] / 25.4)." inches" : null,
@@ -58,7 +67,6 @@ function jr_shop_compile($ref,$detail) {
         categoryLink => http_build_query(['page_id' => 16, 'cat' => $ref[Category]]),
         imgAll      => glob('wp-content/uploads/gallery/'.$ref[Image].'*')
       ];
-
     case 'med':
       $catArray = [ $ref[Category], $ref[cat1], $ref[cat2], $ref[cat3] ];
       if (in_array('Fridges', $catArray)) {
@@ -68,39 +76,57 @@ function jr_shop_compile($ref,$detail) {
       } elseif ($ref[Power]) {
         $iconCheck = imgSrcRoot('icons',$ref[Power],'png');
       };
-
-
+      if ($ref[IsSoon]) {
+        $infoCheck = "<div>Coming Soon</div>";
+      } elseif ($ref[isSale]) {
+        $infoCheck = "<div>Sale</div>";
+      } elseif ($ref[Sold]) {
+        $infoCheck = "<div>Sold</div>";
+      };
       $out2 = [
-        //fridge      => in_array('Fridges', $catArray) ? imgSrcRoot('icons','fridge','png'): null,
-        //freezer     => in_array('Freezers', $catArray) ? imgSrcRoot('icons','freezer','png'): null,
-        //power       => ($ref[Power] != 0 || " ") ? imgSrcRoot('icons',$ref[Power],'png'): null,
         icon        => $iconCheck,
         price       => $ref[Price],
-     //   sale        => $ref[IsSale]
-      ];
-    case 'min':
-      if ($ref[IsSoon]) {
-        $infoCheck = "Coming Soon";
-      } elseif ($ref[isSale]) {
-        $infoCheck = "Sale";
-      } elseif ($ref[Sold]) {
-        $infoCheck = "Sold";
-      };
-      $out3 = [
         webLink     => http_build_query(
           ['page_id' => 21, 'r' => $ref[RHC], 'n' => $ref[ProductName]]),
         rhc         => "RHC".$ref[RHC],
         name        => $ref[ProductName],
         imgFirst    => imgSrcRoot('gallery',$ref[Image],'jpg'),
         info        => $infoCheck
-       // comingsoon  => $ref[IsSoon],
-       // sold        => $ref[Sold]
       ];
-    };
+    break;
+  };
 
-  $out = array_merge ($out1,$out2,$out3);
+  $out = array_merge ($out1,$out2);
 
   return $out;
 };
+
+// ----------------------category title builder------------------------------------------
+// Makes the title
+
+
+// ----------------------breadcrumb builder----------------------------------------------
+// Makes the breadcrumbs
+
+function jr_page_crumbles ($page_id,$safeGet) {
+
+  $crumbs[0] = ['Home' => site_url()]
+
+  switch ($page_id) {
+    case ('21'):
+      // 3 = item, 2 = category, 1 = group
+      break;
+    case ('16'):
+      // 2 = category, 1 = group
+      break;
+    case ('24'):
+      $crumbs[1] = [$safeGet => site_url()."/?".$link1];
+      break;
+    default:
+    //  1 = page name
+  };
+
+  return $crumbs;
+}
 
 ?>
