@@ -1,11 +1,31 @@
 <?php
-global $itemCount, $itemCountMin;
+global $itemCount, $itemCountMin, $filterDescription;
 
 //how many items before pagination. Also limits "new items" page. NYI
 $itemCount = 20;
 
 //How many items before the "try elsewhere" kicks in. NYI
 $itemCountMin = 4;
+
+
+/*Category Text \
+\ phrases for the category page */
+$filterDescription = [
+  'new'   => 'Fresh off the workshop floor, this equipment is cleaned and ready to go.<br>
+              Enquire quickly, stock can go as soon as it comes in!',
+
+  'soon'  => 'Stock that has just entered our workshops. <br>
+              If interested, *link*call*link* us today and grab a bargain as soon as its ready.',
+
+  'sold'  => 'Don\'t worry if you were to late to get the item you wanted, there may be another soming soon <br>
+              *link*call*link* us today and reserve what you need before it goes again!',
+
+  'sale'  => 'Surplus stock, or equipment with a few extra dents.<br>
+              We make sure everything works fully before going online, so get it cheap today!',
+
+  'search' =>'Still can\'t find what you were looking for? *link*call*link* our team today and see if we can help'
+];
+
 
 /*img location \
 \ potentially changed when proper urls are named */
@@ -23,6 +43,7 @@ function isGroup($group) {
     return ($category[CategoryGroup] == $group);
   };
 }
+
 
 function groupFilter($group) {
   global $categoriesList;

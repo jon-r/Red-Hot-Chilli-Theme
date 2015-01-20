@@ -48,6 +48,7 @@ function jr_shop_compile($ref,$detail) {
       } else {
         $wattCheck = null;
       }
+
       $out1 = [
  //       height      => $ref[Height] ?: null,
  //       width       => $ref[Width] ?: null,
@@ -101,8 +102,65 @@ function jr_shop_compile($ref,$detail) {
   return $out;
 };
 
-// ----------------------category title builder------------------------------------------
-// Makes the title
+// ----------------------category header builder------------------------------------------
+// Makes the category header
+function jr_category_header( $safeArr , $count) {
+
+  global $wpdb, $filterDescription, $categoriesList;
+  $fLatest =      $safeArr['new'];
+  $fAll =         $safeArr[all]; //currently is all by default
+  $fSoon =        $safeArr[soon];
+  $fRecentSold =  $safeArr[sold];
+  $fSale =        $safeArr[sale];
+  $fSearch =      $safeArr[search];
+  $fBrand	=     $safeArr[brand];
+  $fCategory =    $safeArr[cat];
+  $fStainless =   $safeArr[stainless];
+
+
+  $out[title1] = "All Products";
+  $out[title2] = $count > 100 ? "(100+ Results)" : "(".$count." Results)";
+
+
+  if ($fLatest) {
+    $out[title1] = "Just In";
+    $out[description] = $filterDescription['new'];
+
+  } elseif ($fSoon) {
+    $out[title1] = "Products Coming Soon";
+    $out[description] = $filterDescription[soon];
+
+  } elseif ($fRecentSold) {
+    $out[title1] = "Just Missed";
+    $out[description] = $filterDescription[sold];
+
+  } elseif ($fSale) {
+    $out[title1] = "Special Offers";
+    $out[description] = $filterDescription[sale];
+
+  } elseif ($fSearch) {
+    $out[title1] = "Search Results for '".preg_replace("/[^ [:alnum:][:space:]]/ui", '', $_GET[search])."'";
+    $out[description] = $filterDescription[search];
+
+  } elseif ($fBrand) {
+    $out[title1] = "Displaying Products from ".$fBrand;
+    $brandIconLocation = imgSrcRoot('icons',$fBrand,'jpg');
+    if (file_exists ($brandIconLocation)) {
+      $out[imgUrl] = $brandIconLocation;
+    };
+
+  } elseif ($fCategory) {
+    $out[title1] = "Displaying all ".$fCategory;
+    $out[imgUrl] = imgSrcRoot('thumbnails',$fCategory,'jpg');
+    $categoryDetails = jr_category_row( $fCategory );
+    $out[description] = $categoryDetails[CategoryDescription];
+  };
+
+  return $out;
+};
+
+
+//CategoryDescription
 
 
 // ----------------------breadcrumb builder----------------------------------------------
@@ -110,7 +168,7 @@ function jr_shop_compile($ref,$detail) {
 
 function jr_page_crumbles ($page_id,$safeGet) {
 
-  $crumbs[0] = ['Home' => site_url()]
+  $crumbs[0] = ['Home' => site_url()];
 
   switch ($page_id) {
     case ('21'):

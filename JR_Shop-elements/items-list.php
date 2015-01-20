@@ -4,15 +4,24 @@
 */
 ?>
 
-<?php $safeArr = jr_validate_category_params($_GET); ?>
-<?php $categoryList = jr_category_filter($safeArr); ?>
+<?php
+$safeArr = jr_validate_category_params($_GET);
+$categoryList = jr_category_filter($safeArr);
+$itemCount = count($categoryList);
+$header = jr_category_header( $safeArr , $itemCount);
+?>
 
-<h1>Title PH</h1>
+  <header>
+  <h1><?php echo $header[title1] ?></h1><h2><?php echo $header[title2] ?></h2>
+  <div><?php echo $header[description] ?></div><?php echo $header[imgURL] ?>
+    <hr>
+  </header>
 
 <article>
 
-  <?php foreach ($categoryList as $item) :
-    var_dump($item);
+  <?php
+  foreach ($categoryList as $item) :
+   // var_dump($item);
     if ($safeArr['stainless']) {
       $shop_item = jr_shop_compile($item,'stainless');
     } else {

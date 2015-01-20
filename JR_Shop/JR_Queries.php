@@ -12,6 +12,7 @@ $stainlessList = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keyw
 
 $brandsListMajor = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` = 'brand'");
 
+//get array
 
 /*Validation Querys \
 \ for validation only. */
@@ -36,6 +37,11 @@ function jr_item_query($safeRHC, $SS = null) {
     $queryFull = $wpdb->get_row("SELECT `RHC`, `ProductName`, `Image`, `Price`, `Height`, `Width`, `Depth`, `Model`, `Brand`, `Wattage`, `Power`, `ExtraMeasurements`, `Line 1`, `Line 2`, `Line 3`, `Condition/Damages`, `Sold`, `Quantity`, `Category`, `Cat1`, `Cat2`, `Cat3`, `IsSale`, `IsSoon` FROM `networked db` WHERE RHC = $safeRHC", ARRAY_A);
   }
   return $queryFull;
+}
+
+function jr_category_row( $safeCategory ) {
+  global $wpdb;
+  return $wpdb->get_row("SELECT * FROM `rhc_categories` WHERE `Name` LIKE '$safeCategory'", ARRAY_A);
 }
 
 function jr_category_filter( $safeArr ) {
