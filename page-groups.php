@@ -11,6 +11,8 @@
 
 <section>
 
+  <?php include( "JR_Shop-elements/menu-breadcrumbs.php"); ?>
+
   <?php include( "JR_Shop-elements/categories-list.php"); ?>
 
 </section>

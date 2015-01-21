@@ -11,8 +11,14 @@ _________________________________________________________
                       > SPECIAL PAGE(S)
 */
 
-
-
-
+$breadLinks = jr_page_crumbles ($_GET['page_id'],$safeArr);
 ?>
+
+<nav>
+<?php
+foreach ($breadLinks as $name => $link) {
+  echo ' > <a href="'.$link.'" >'.$name."</a>";
+}
+?>
+</nav>
 

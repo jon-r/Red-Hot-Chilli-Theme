@@ -19,7 +19,7 @@ Priority:
 function jr_smart_search($searchTerm) {
 	global $brandsListMajor;
 //need to set this as variable since bouncing to and from pcs/servers
-	$urlStart = 'http://localhost/rhc_online/?';
+	$urlStart = home_url().'/?';
 	$urlEnd = null;
 
 //RHCs first

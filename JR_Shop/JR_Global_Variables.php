@@ -44,10 +44,15 @@ function isGroup($group) {
   };
 }
 
-
 function groupFilter($group) {
   global $categoriesList;
   return array_filter ($categoriesList, isGroup($group));
+}
+
+function getUrl() {
+  $url  = @( $_SERVER["HTTPS"] != 'on' ) ? 'http://'.$_SERVER["SERVER_NAME"] :  'https://'.$_SERVER["SERVER_NAME"];
+  $url .= $_SERVER["REQUEST_URI"];
+  return $url;
 }
 
 ?>

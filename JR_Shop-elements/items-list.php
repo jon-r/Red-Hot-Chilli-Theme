@@ -5,16 +5,14 @@
 ?>
 
 <?php
-$safeArr = jr_validate_category_params($_GET);
 $categoryList = jr_category_filter($safeArr);
 $itemCount = count($categoryList);
 $header = jr_category_header( $safeArr , $itemCount);
 ?>
 
   <header>
-  <h1><?php echo $header[title1] ?></h1><h2><?php echo $header[title2] ?></h2>
-  <div><?php echo $header[description] ?></div><?php echo $header[imgURL] ?>
-    <hr>
+    <h1><?php echo $header[title1] ?></h1><h2><?php echo $header[title2] ?></h2>
+    <div><?php echo $header[description] ?></div><?php echo $header[imgURL] ?>
   </header>
 
 <article>

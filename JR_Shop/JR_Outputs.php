@@ -164,37 +164,46 @@ function jr_category_header( $safeArr , $count) {
 // ----------------------breadcrumb builder----------------------------------------------
 // Makes the breadcrumbs
 
-
-
+//maybe use simlar for the page titles? Or better yet, this could make the titles and then the bread gets the title
 function jr_page_crumbles ($page_id,$safeArr) {
 
-  $crumbs[0] = ['Home', site_url()];
+  $crumbs['Home'] = home_url();
 
-  if ($page_id = '21') {
+  if ($page_id == '21') {
     $link = http_build_query(['cat' => $safeArr[cat], 'page_id' => 16]);
-    $crumbs[1] = [$safeArr => site_url()."/?".$link];
-    $crumbs[2] = [$safeArr[n], ''];
-  } elseif ($page_id = '16') {
+    $crumbs[$safeArr[cat]] = site_url()."/?".$link;
+    $crumbs[$safeArr[name]] = getUrl();
+
+  } elseif ($page_id == '16') {
     if ($safeArr['new']) {
-      $crumbs[1] = "Just In";
+      $crumbs['Just In'] = getUrl();
+
     } elseif ($safeArr[soon]) {
-      $crumbs[1] = "Coming Soon";
+      $crumbs['Coming Soon'] = getUrl();
+
     } elseif ($safeArr[sold]) {
-      $crumbs[1] = "Sold";
+      $crumbs['Sold'] = getUrl();
+
     } elseif ($safeArr[sale]) {
-      $crumbs[1] = "Sales";
+      $crumbs['Sales'] = getUrl();
+
     } elseif ($safeArr[search]) {
-      $crumbs[1] = "Search";
-    } elseif ($$safeArr[brand]) {
-      $crumbs[1] = $safeArr[brand];
+      $crumbs['Search'] = getUrl();
+
+    } elseif ($safeArr[brand]) {
+      $crumbs[$safeArr[brand]] = getUrl();
+
     } elseif ($safeArr[cat]) {
-      $crumbs[1] = $safeArr[cat];
+      $crumbs[$safeArr[cat]] = getUrl();
+    } else {
+      $crumbs['All Products'] = getUrl();
     };
-  //filter titles?
+
   } else {
-    //get static page name
+    $crumbs[bloginfo()] = getUrl();
   }
 
+//  $crumbs['new'] = $page_id;
   return $crumbs;
 }
 

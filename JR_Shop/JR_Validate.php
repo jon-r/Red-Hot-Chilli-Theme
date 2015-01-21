@@ -31,6 +31,7 @@ function jr_validate_item_params($getArr) {
   };
   $out['cat'] =  jr_validate_category($getArr['cat']);
   $out['ss'] = $getArr['x'] ?: false;
+  $out['name'] = $getArr['n'];
 
   return $out;
 }
