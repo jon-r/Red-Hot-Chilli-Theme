@@ -17,13 +17,12 @@ function jr_shop_compile($ref,$detail) {
         wFull       => $ref[Width] ? $ref[Width]."mm / ".ceil($ref[Width] / 25.4)." inches" : null,
         dFull       => $ref[Depth] ? $ref[Depth]."mm / ".ceil($ref[Depth] / 25.4)." inches" : null,
         desc        => ($ref['Line1'] != " " ? $ref['Line 1']."<br>" : null),
-        quantity    => $ref[Quantity] > 1 ? $ref[Quantity]." in Stock" : null,
-        categoryLink => http_build_query(['page_id' => 16, 'cat' => $ref[Category]])
+        quantity    => $ref[Quantity] > 1 ? $ref[Quantity]." in Stock" : null
       ];
     case 'stainless':
       $out2 = [
         webLink     => http_build_query(
-          ['page_id' => 21, 'r' => $ref[RHCs], 'n' => $ref[ProductName], 'x' => 1]),
+          ['page_id' => 21, 'cat' => $ref[Category], 'r' => $ref[RHCs], 'n' => $ref[ProductName], 'x' => 1]),
         rhc         => "RHCs".$ref[RHCs],
         name        => $ref[ProductName],
         // need to generate ss image location. would help in shop too.
@@ -65,7 +64,6 @@ function jr_shop_compile($ref,$detail) {
         condition   => $ref[Condition] != " " ? $ref[Condition] : null,
         brand       => $brandCheck,
         watt        => $wattCheck,
-        categoryLink => http_build_query(['page_id' => 16, 'cat' => $ref[Category]]),
         imgAll      => glob('wp-content/uploads/gallery/'.$ref[Image].'*')
       ];
     case 'med':
@@ -88,7 +86,7 @@ function jr_shop_compile($ref,$detail) {
         icon        => $iconCheck,
         price       => $ref[Price],
         webLink     => http_build_query(
-          ['page_id' => 21, 'r' => $ref[RHC], 'n' => $ref[ProductName]]),
+          ['page_id' => 21, 'cat' => $ref[Category], 'r' => $ref[RHC], 'n' => $ref[ProductName]]),
         rhc         => "RHC".$ref[RHC],
         name        => $ref[ProductName],
         imgFirst    => imgSrcRoot('gallery',$ref[Image],'jpg'),
@@ -153,7 +151,7 @@ function jr_category_header( $safeArr , $count) {
     $out[title1] = "Displaying all ".$fCategory;
     $out[imgUrl] = imgSrcRoot('thumbnails',$fCategory,'jpg');
     $categoryDetails = jr_category_row( $fCategory );
-    $out[description] = $categoryDetails[CategoryDescription];
+    $out[description] = $categoryDetails[CategoryDescription] ?: null;
   };
 
   return $out;
@@ -166,23 +164,36 @@ function jr_category_header( $safeArr , $count) {
 // ----------------------breadcrumb builder----------------------------------------------
 // Makes the breadcrumbs
 
-function jr_page_crumbles ($page_id,$safeGet) {
 
-  $crumbs[0] = ['Home' => site_url()];
 
-  switch ($page_id) {
-    case ('21'):
-      // 3 = item, 2 = category, 1 = group
-      break;
-    case ('16'):
-      // 2 = category, 1 = group
-      break;
-    case ('24'):
-      $crumbs[1] = [$safeGet => site_url()."/?".$link1];
-      break;
-    default:
-    //  1 = page name
-  };
+function jr_page_crumbles ($page_id,$safeArr) {
+
+  $crumbs[0] = ['Home', site_url()];
+
+  if ($page_id = '21') {
+    $link = http_build_query(['cat' => $safeArr[cat], 'page_id' => 16]);
+    $crumbs[1] = [$safeArr => site_url()."/?".$link];
+    $crumbs[2] = [$safeArr[n], ''];
+  } elseif ($page_id = '16') {
+    if ($safeArr['new']) {
+      $crumbs[1] = "Just In";
+    } elseif ($safeArr[soon]) {
+      $crumbs[1] = "Coming Soon";
+    } elseif ($safeArr[sold]) {
+      $crumbs[1] = "Sold";
+    } elseif ($safeArr[sale]) {
+      $crumbs[1] = "Sales";
+    } elseif ($safeArr[search]) {
+      $crumbs[1] = "Search";
+    } elseif ($$safeArr[brand]) {
+      $crumbs[1] = $safeArr[brand];
+    } elseif ($safeArr[cat]) {
+      $crumbs[1] = $safeArr[cat];
+    };
+  //filter titles?
+  } else {
+    //get static page name
+  }
 
   return $crumbs;
 }

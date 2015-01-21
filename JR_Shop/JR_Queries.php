@@ -72,7 +72,7 @@ function jr_category_filter( $safeArr ) {
   if ($fSoon || $fRecentSold) {
     $queryStart = "SELECT `RHC`, `ProductName`, `Image`, `IsSoon`, `Sold` FROM `networked db` ";
   } elseif ($fStainless) {
-    $queryStart = "SELECT `RHCs`, `ProductName`, `Price`, `TableinFeet` FROM `benchessinksdb` ";
+    $queryStart = "SELECT `RHCs`, `ProductName`, `Price`, `Category`,  `TableinFeet` FROM `benchessinksdb` ";
   } else {
     $queryStart = "SELECT `RHC`, `ProductName`, `Image`, `IsSoon`, `Sold`, `Category`, `Power`, `Price`, `IsSale` FROM `networked db` ";
   };

@@ -21,8 +21,19 @@ function jr_validate_category_params($getArr) {
     'brand' => jr_validate_brand($getArr['brand']) ];
 
   return $out;
-
 };
+
+function jr_validate_item_params($getArr) {
+  if ($getArr['x']) {
+    $out['rhc'] = jr_validate_rhcs($getArr['r']);
+  } else {
+    $out['rhc'] = jr_validate_rhc($getArr['r']);
+  };
+  $out['cat'] =  jr_validate_category($getArr['cat']);
+  $out['ss'] = $getArr['x'] ?: false;
+
+  return $out;
+}
 
 //-------------------------------
 
