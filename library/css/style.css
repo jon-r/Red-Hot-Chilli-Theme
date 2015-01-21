@@ -25,6 +25,7 @@ start style on a blank slate.
 * 2. Prevent iOS text size adjust after orientation change, without disabling
 * user zoom.
 */
+@import url(http://fonts.googleapis.com/css?family=PT+Sans|Kreon:700);
 html {
   font-family: sans-serif;
   /* 1 */
@@ -377,13 +378,118 @@ td,
 th {
   padding: 0; }
 
+/* "super" globals -----------------------------------------------------------*/
+*, *::before {
+  box-sizing: border-box; }
+
+/*
+.profile-pic {
+  float: left;
+  width: 250px;
+  @include jr-size(phone) { width: 100% ;}
+  @include jr-size(tablet) { width: 125px; }
+  @include jr-size(screen) { float: none; }
+}
+*/
+h1, h2, h3, h4, a, p {
+  text-rendering: optimizelegibility;
+  line-height: 1.2;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: inherit;
+  font-smooth: always; }
+
+h1, h2, h3, h4 {
+  font-family: "Kreon", Cambria, Times New Roman, Times, serif;
+  padding-bottom: 0.25rem; }
+
+a, p {
+  font-family: "PT+Sans", Helvetica, Arial, sans-serif; }
+
+h1 {
+  font-size: 2.5em; }
+
+h2 {
+  font-size: 1.75em; }
+
+h3 {
+  font-size: 1.25em; }
+
+h4 {
+  font-size: 1.1em;
+  text-align: center; }
+
+a {
+  font-size: 1.1em; }
+
+/*---Grid---------------------------------------------------------------------*/
+.menu-main {
+  margin: 0.5rem 0 0 0.5rem; }
+
+.menu-main {
+  width: calc(50% - 0.75rem);
+  float: left; }
+
 /*********************
 IMPORTING LAYOUTS
 Standard page layouts. Default style for all pages
 *********************/
+/*----Page Core --------------------------------------------------------------*/
+html {
+  font-size: 14px; }
+  @media only screen and (min-width: 482px) {
+    html {
+      font-size: 16px; } }
+  @media only screen and (min-width: 1031px) {
+    html {
+      font-size: 18px; } }
+  @media only screen and (min-width: 1240px) {
+    html {
+      font-size: 20px; } }
+
+body {
+  padding: 0 0 50px 0;
+  min-height: 100%;
+  line-height: 1.2em;
+  background-color: #bf4040; }
+
+section {
+  background-color: #f3f2f2; }
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0.5rem 0; }
+  @media only screen and (min-width: 1240px) {
+    .container {
+      max-width: 1200px; } }
+
+.page-header {
+  width: 100%;
+  background-image: linear-gradient(#821717, #300303);
+  height: 6rem; }
+  .page-header img {
+    height: 5rem;
+    position: relative; }
+  .page-header form {
+    float: right; }
+
+.menu-main {
+  padding: 0.5rem;
+  height: 2rem;
+  overflow: hidden;
+  background: #222; }
+  @media only screen and (min-width: 482px) {
+    .menu-main {
+      width: calc(33.33333% - 0.66667rem);
+      float: left; } }
+  @media only screen and (min-width: 1031px) {
+    .menu-main {
+      width: calc(16.66667% - 0.58333rem);
+      float: left; } }
+
 /*********************
 IMPORTING ELEMENTS
 Page specific items.
 *********************/
-
-/*# sourceMappingURL=style.css.map */

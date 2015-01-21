@@ -48,16 +48,13 @@
 
 <body <?php body_class(); ?>>
 
-  <div id="container">
+  <header class="page-header" role="banner">
+    <div class="container" >
 
-    <header role="banner">
-
-      <div>
-        <?php // to use a image just replace the bloginfo( 'name') with your img src and remove the surrounding <p>?>
-        <a href="<?php echo home_url(); ?>" rel="nofollow">
-          <img  src="<?php echo get_template_directory_uri(); ?>/library/images/RHC_Logo_Transparent.png" alt="PH_Banner" />
-        </a>
-      </div>
+      <?php // to use a image just replace the bloginfo( 'name') with your img src and remove the surrounding <p>?>
+      <a href="<?php echo home_url(); ?>" rel="nofollow">
+        <?php echo imgSrcRoot('rhc','RHC_Logo_transparent','png'); ?>
+      </a>
 
       <form>
         <label for="search">Search</label>
@@ -66,5 +63,11 @@
         <button type="submit">GO</button>
       </form>
 
+    </div>
 
-    </header>
+  </header>
+
+
+    <?php include( "JR_Shop-elements/menu-main.php"); ?>
+    <?php include( "JR_Shop-elements/menu-breadcrumbs.php"); ?>
+  </div>

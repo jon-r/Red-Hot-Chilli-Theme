@@ -1,0 +1,55 @@
+/* "super" globals -----------------------------------------------------------*/
+@function jr-rhc-color($n) {
+  $saturation: 10% * (10 - $n);
+  $lightness: 10% * $n;
+  @return hsl(0, $saturation, $lightness);
+}
+
+$NO-USE-example: hsl(5, 50%, 25%);
+
+$jr-margin: 0.5rem;
+
+@function jr-margin($n: 1) {
+  @return $n * 0.5rem;
+}
+
+*, *::before {
+  box-sizing: border-box;
+}
+
+
+//media query setup-----------------------------------------------------------*/
+
+//base size (min);
+$break-xs: 320px;
+//tablet
+$break-s: 481px;
+//screen
+$break-m: 1030px;
+//hd screen
+$break-l: 1240px;
+
+@mixin jr_size($media) {
+  @if $media == phone {
+    @media only screen and (max-width: $break-s) { @content; }
+  }
+  @if $media == tablet {
+    @media only screen and (min-width: $break-s + 1) { @content; }
+  }
+  @else if $media == screen {
+    @media only screen and (min-width: $break-m + 1) { @content; }
+  }
+  @else if $media == screen-hd {
+    @media only screen and (min-width: $break-l) { @content; }
+  }
+}
+
+/*
+.profile-pic {
+  float: left;
+  width: 250px;
+  @include jr-size(phone) { width: 100% ;}
+  @include jr-size(tablet) { width: 125px; }
+  @include jr-size(screen) { float: none; }
+}
+*/

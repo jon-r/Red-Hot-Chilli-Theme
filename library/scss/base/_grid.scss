@@ -1,0 +1,31 @@
+/*---Grid---------------------------------------------------------------------*/
+@mixin jr-grid($spanCount, $fullCount, $custom: null) {
+  $A: $spanCount * 100% / $fullCount;
+  $B: jr-margin() * ($fullCount + 1) / $fullCount;
+  @if $custom == edgeless {
+    $B: jr-margin() * ($fullCount - 1) / $fullCount;
+    width: calc(#{$A} - #{$B});
+    margin: 0 jr-margin() jr-margin() 0;
+    &:nth-child(#{$fullCount}) {
+      margin: 0 0 jr-margin() 0;
+    }
+  }
+  @else {
+    width: calc(#{$A} - #{$B});
+  }
+  float: left;
+}
+
+%grid-margins {
+  margin: jr-margin() 0 0 jr-margin();
+}
+
+%grid-1-1 {
+  @extend %grid-margins;
+  @include jr-grid(1,1);
+}
+
+%grid-1-2 {
+  @extend %grid-margins;
+  @include jr-grid(1,2);
+}

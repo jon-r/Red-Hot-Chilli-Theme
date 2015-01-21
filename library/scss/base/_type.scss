@@ -1,0 +1,60 @@
+@import url(http://fonts.googleapis.com/css?family=PT+Sans|Kreon:700);
+
+$sans-serif: "PT+Sans", Helvetica, Arial, sans-serif;
+$serif: "Kreon", Cambria, Times New Roman, Times, serif;
+
+%text-reset {
+  text-rendering: optimizelegibility;
+  line-height: 1.2;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: inherit;
+  // -webkit-font-smoothing: antialiased;
+  font-smooth: always;
+}
+
+%h-font {
+  font-family: $serif;
+  padding-bottom: 0.25rem;
+}
+
+%p-font {
+  font-family: $sans-serif;
+}
+
+h1 {
+  @extend %text-reset;
+  @extend %h-font;
+  font-size: 2.5em;
+}
+
+h2 {
+  @extend %text-reset;
+  @extend %h-font;
+  font-size: 1.75em;
+}
+
+h3 {
+  @extend %text-reset;
+  @extend %h-font;
+  font-size: 1.25em;
+}
+
+h4 {
+  @extend %text-reset;
+  @extend %h-font;
+  font-size: 1.1em;
+  text-align: center;
+}
+
+a {
+  @extend %text-reset;
+  @extend %p-font;
+  font-size: 1.1em;
+}
+
+p {
+  @extend %text-reset;
+  @extend %p-font;
+}

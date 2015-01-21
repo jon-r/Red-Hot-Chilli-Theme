@@ -2,7 +2,7 @@
 
 <article>
 
-  <?php foreach($groupsList as $x => $group) :
+  <?php foreach($groupsList as $group) :
       $link = http_build_query(['g' => $group, 'page_id' => 24]);
       $categoriesListFiltered = array_filter ($categoriesList, isGroup($group));
     ?>

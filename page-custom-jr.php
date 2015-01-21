@@ -7,9 +7,10 @@
 
 <?php get_header(); ?>
 
+
+
 <section>
 
-  <?php include( "JR_Shop-elements/menu-breadcrumbs.php"); ?>
 
 
 </section>
