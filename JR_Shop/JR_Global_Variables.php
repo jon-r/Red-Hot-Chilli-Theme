@@ -1,5 +1,5 @@
 <?php
-global $itemCount, $itemCountMin, $filterDescription;
+global $itemCount, $itemCountMin, $filterDescription, $categoryFilterArr;
 
 //how many items before pagination. Also limits "new items" page. NYI
 $itemCount = 20;
@@ -26,6 +26,22 @@ $filterDescription = [
   'search' =>'Still can\'t find what you were looking for? *link*call*link* our team today and see if we can help'
 ];
 
+function jr_category_info($catType) {
+  $categoryFilterArr = [
+    'New'   => 'Fresh off the workshop floor, this equipment is cleaned and ready to go.<br>
+                Enquire quickly, stock can go as soon as it comes in!',
+    'Soon'  => 'Stock that has just entered our workshops.<br>
+                If interested, *link*call*link* us today and grab a bargain as soon as its ready.',
+    'Sold'  => 'Don\'t worry if you were to late to get the item you wanted, there may be another soming soon <br>
+                *link*call*link* us today and reserve what you need before it goes again!',
+    'Sale'  =>  'Surplus stock, or equipment with a few extra dents.<br>
+                 We make sure everything works fully before going online, so get it cheap today!',
+    'Search' => 'Still can\'t find what you were looking for? *link*call*link* our team today and see if we can help',
+    'All'   =>  'We buy and sell new items each week, and can\'t always keep the new site up to date.<br>
+                 If there is anything in particular you are looking for, feel free to *link*call*link* us and we\'ll see what we can find.'
+  ];
+  return $categoryFilterArr[$catType];
+}
 
 /*img location \
 \ potentially changed when proper urls are named */

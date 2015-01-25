@@ -36,10 +36,6 @@ SECURITY:
 
 */
 
-
-
-
-
 /* GETS \
 \ Links to the function pages and arrays.*/
 include('JR_Global_Variables.php');
@@ -52,5 +48,8 @@ include('JR_Queries.php');
 
 include('JR_Outputs.php');
 
-//perhaps a widget? or have functions generate the php so only function needed
+// initial page in the header
+global $safeArr;
+$safeArr = jr_validate_params($_GET);
+
 

@@ -9,10 +9,9 @@
 
 <?php get_header(); ?>
 
-<?php $safeArr = jr_validate_item_params($_GET); ?>
+<section class="container">
 
-
-<section>
+  <?php include( "JR_Shop-elements/nav-bar.php"); ?>
 
   <?php include( "JR_Shop-elements/items-full.php"); ?>
 

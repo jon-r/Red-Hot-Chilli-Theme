@@ -6,21 +6,22 @@
 
 <?php
 $categoryList = jr_category_filter($safeArr);
-$itemCount = count($categoryList);
-$header = jr_category_header( $safeArr , $itemCount);
+$count = count($categoryList);
+$itemCount = $count > 100 ? "(100+ Results)" : "(".$count." Results)";
 ?>
 
-  <header>
-    <h1><?php echo $header[title1] ?></h1><h2><?php echo $header[title2] ?></h2>
-    <div><?php echo $header[description] ?></div><?php echo $header[imgURL] ?>
-  </header>
+
 
 <article>
+  <header>
+    <h1><?php echo $safeArr[pgName] ?></h1><h2><?php echo $itemCount ?></h2>
+    <div><?php echo $safeArr[description] ?></div><?php echo $safeArr[imgURL] ?>
+  </header>
 
   <?php
   foreach ($categoryList as $item) :
-   // var_dump($item);
-    if ($safeArr['stainless']) {
+    var_dump($item);
+    if ($safeArr[pgType] == 'CategorySS') {
       $shop_item = jr_shop_compile($item,'stainless');
     } else {
       $shop_item = jr_shop_compile($item,'med');

@@ -7,15 +7,12 @@
 
 <!-------header---------------------------------------------------------->
 <?php get_header(); ?>
-<?php $safeArr = jr_validate_category_params($_GET); ?>
-
 
 <!-------banner + nav---------------------------------------------------------->
-these to go into menu <br>
 
+<section class="container">
 
-<section>
-
+  <?php include( "JR_Shop-elements/nav-bar.php"); ?>
 
   <?php include( "JR_Shop-elements/items-list.php"); ?>
 

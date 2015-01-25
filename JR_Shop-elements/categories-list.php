@@ -1,12 +1,12 @@
 
 <?php
-  $safeGroup = jr_validate_group($_GET[g]);
-  $filteredCategories = groupFilter($safeGroup);
+ // $safeGroup = jr_validate_group($_GET[g]);
+  $filteredCategories = groupFilter($safeArr[group]);
 ?>
 
-<h1><?php echo $safeGroup ?></h1>
-<article>
 
+<article>
+  <h1><?php echo $safeArr[group] ?></h1>
   <ul>
 
   <?php foreach ($filteredCategories as $category) :

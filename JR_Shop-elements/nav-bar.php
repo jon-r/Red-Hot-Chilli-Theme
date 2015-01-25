@@ -1,8 +1,15 @@
-<div class="container" >
+<?php /* list of groups on menu + custom links */
+ /*
+  [RHC ICON]          [SEARCH ]           [other links]
+_________________________________________________________
+[MENU BUTTON]  [ HOME > GROUP > CATEGORY > ITEM ]
+                      > SPECIAL PAGE(S)
+*/
+?>
 
+<?php $homeCheck = (getUrl() == site_url()."/"); ?>
 
-
-<?php /* list of groups on menu + custom links */ ?>
+<div class="container <?php echo is_front_page()  ? 'home' : null ?>" >
 
   <nav class="menu-main" >
     <h2>Our Store</h2>
@@ -25,7 +32,6 @@
       </li>
 
     <?php endforeach ?>
-
       <li><a href="?page_id=16&new=1&pg=1" >NEW Items</a></li>
       <li><a href="?page_id=16&soon=1&pg=1" >Coming Soon</a></li>
       <li><a href="?page_id=16&sold=1&pg=1" >Recently Sold</a></li>
@@ -34,16 +40,22 @@
       <?php // wp menu starts here. functions.php for setup --> ?>
       <?php dynamic_sidebar( 'sidebar1' ); ?>
   </nav>
-
-
-<?php $breadLinks = jr_page_crumbles ($_GET['page_id'],$safeArr); ?>
-
-  <div class="bread">
+  <?php if ( is_front_page() )  : ?>
+  <nav class="menu-carousel">
+    <div>
+      banner here
+    </div>
+  </nav>
+  <?php else : ?>
+  <nav class="menu-breadcrumbs">
     <?php
-    foreach ($breadLinks as $name => $link) {
-      echo ' > <a href="'.$link.'" >'.$name."</a>";
-    }
+      $breadLinks = jr_page_crumbles ($safeArr);
+      foreach ($breadLinks as $breadSlices) {
+        foreach ($breadSlices as $name => $link) {
+          echo $link ? ' > <a href="'.$link.'" >'.$name."</a>" : null;
+        }
+      }
+      endif;
     ?>
-  </div>
-
+  </nav>
 </div>

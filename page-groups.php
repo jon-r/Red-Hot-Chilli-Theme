@@ -9,12 +9,9 @@
 
 <?php get_header(); ?>
 
+<section class="container">
 
-
-
-<section>
-
-
+  <?php include( "JR_Shop-elements/nav-bar.php"); ?>
 
   <?php include( "JR_Shop-elements/categories-list.php"); ?>
 

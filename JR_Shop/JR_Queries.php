@@ -47,38 +47,40 @@ function jr_category_row( $safeCategory ) {
 function jr_category_filter( $safeArr ) {
 
   global $wpdb, $itemCount;
-  $fLatest =      $safeArr['new'];
-  $fAll =         $safeArr['all']; //currently is all by default
-  $fSoon =        $safeArr['soon'];
-  $fRecentSold =  $safeArr['sold'];
-  $fSale =        $safeArr['sale'];
+  $fType = $safeArr[pgType];
+
+  //$fLatest =      $safeArr['new'];
+  //$fAll =         $safeArr['all']; //currently is all by default
+  //$fSoon =        $safeArr['soon'];
+  //$fRecentSold =  $safeArr['sold'];
+  //$fSale =        $safeArr['sale'];
   $fSearch =      $safeArr['search'];
   $fBrand	=     $safeArr['brand'];
   $fCategory =    $safeArr['cat'];
-  $fStainless =   $safeArr['stainless'];
+  //$fStainless =   $safeArr['ss'];
 
   //setup LIKE parts of the query
   $searchPart = str_replace(" ", "|", $fSearch);
-  $strSearch = $fSearch ?
+  $strSearch = ($fType == 'Search') ?
     "`ProductName` REGEXP '$searchPart' OR `Power` REGEXP '$searchPart' OR `Brand` REGEXP '$searchPart' "  : null;
-  $strCategory = ($fCategory && ! $fStainless) ?
+  $strCategory = ($fType == 'Category') ?
     "`Category` LIKE '$fCategory' OR `Cat1` LIKE '$fCategory' OR `Cat2` LIKE '$fCategory' OR `Cat3` LIKE '$fCategory' " : null;
-  $strCategorySS = $fStainless ?
+  $strCategorySS = ($fType == 'CategorySS')  ?
     "`Category` LIKE '$fCategory' " : null;
-  $strBrand = $fBrand ?
+  $strBrand = ($fType == 'Brand') ?
     "`Brand` LIKE '$fBrand' " : null;
 
   //the query "start". what data are we getting?
-  if ($fSoon || $fRecentSold) {
+  if ($fType == 'Soon' || $fType == 'Sold') {
     $queryStart = "SELECT `RHC`, `ProductName`, `Image`, `IsSoon`, `Sold` FROM `networked db` ";
-  } elseif ($fStainless) {
+  } elseif ($fType == 'CategorySS') {
     $queryStart = "SELECT `RHCs`, `ProductName`, `Price`, `Category`,  `TableinFeet` FROM `benchessinksdb` ";
   } else {
     $queryStart = "SELECT `RHC`, `ProductName`, `Image`, `IsSoon`, `Sold`, `Category`, `Power`, `Price`, `IsSale` FROM `networked db` ";
   };
 
   //the query "middle". what is the data filtered by?
-  if ($fCategory || $fSearch || $fStainless) {
+  if ($fType == 'Category' || $fType == 'Search' || $fType == 'CategorySS') {
     $queryMid = "WHERE (".implode(") OR (", array_filter([$strCategory, $strSearch, $strCategorySS])).") AND ";
   } elseif ($fBrand) {
     $queryMid = "WHERE $strBrand AND ";
@@ -87,15 +89,15 @@ function jr_category_filter( $safeArr ) {
   };
 
   //the query end. how is the data sorted?
-  if ($fSoon) {
+  if ($fType == 'Soon' ) {
     $queryEnd = "(`LiveonRHC` = 0 AND `IsSoon` = 1) ORDER BY `RHC` DESC";
-  } elseif ($fSale) {
+  } elseif ($fType == 'Sale' ) {
     $queryEnd = "(`LiveonRHC` = 1 AND `IsSale` = 1 AND `Sold` = 0) ORDER BY `RHC` DESC";
-  } elseif ($fRecentSold) {
+  } elseif ($fType == 'Sold' ) {
     $queryEnd = "`Sold` = 1 ORDER BY `DateSold` DESC LIMIT $itemCount";
-  } elseif ($fStainless) {
+  } elseif ($fType == 'CategorySS') {
     $queryEnd = "`Sold` = 0 ORDER BY `RHCs` DESC";
-  } elseif ($fLatest) {
+  } elseif ($fType == 'New') {
     $queryEnd = "(`LiveonRHC` = 1 AND `Sold` = 0) ORDER BY `RHC` DESC LIMIT $itemCount";
   } else {
     $queryEnd =   "(`LiveonRHC` = 1 AND `Sold` = 0) ORDER BY `RHC` DESC";
@@ -107,7 +109,7 @@ function jr_category_filter( $safeArr ) {
 
   return $wpdb->get_results($queryFull, ARRAY_A);
   /*debug return*/
-//  return $queryFull;
+  //return $queryFull;
 
 }
 

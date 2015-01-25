@@ -5,33 +5,78 @@
   > no personal details are to be keeped on internet databases
   > Light security whitlelist sanitises the input to prevent injection just in case.
 */
+function jr_validate_params($get) {
+  $out = null;
 
-//get url filter parameters and validate them for filter functions. also sets the defaults
-function jr_validate_category_params($getArr) {
-  $out = [
-    'new'   => $getArr['new'] ?: false,
-    'all'   => $getArr['all'] ?: false,
-    'soon'  => $getArr['soon'] ?: false,
-    'sold'  => $getArr['sold'] ?: false,
-    'sale'  => $getArr['sale'] ?: false,
+  if ($get[page_id] == null) {//home page
+    $out[pgName] = $out[pgType] = 'Home';
 
-    'search' => jr_validate_search($getArr['search']),
-    'cat'   => jr_validate_category($getArr['cat']),
-    'stainless' => jr_validate_stainless($getArr['cat']),
-    'brand' => jr_validate_brand($getArr['brand']) ];
+  } elseif ($get[page_id] == '24') {//groups page
+    $out[pgType] = 'Group';
+    $out[pgName] = $out[group] = jr_validate_group($get[g]);
 
-  return $out;
-};
+  } elseif ($get[page_id] == '16') {//catgories page
+    if ($get['new']) {
+      $out[pgType] = 'New';
+      $out[pgName] = 'Just In';
 
-function jr_validate_item_params($getArr) {
-  if ($getArr['x']) {
-    $out['rhc'] = jr_validate_rhcs($getArr['r']);
+    } elseif ($get['soon']) {
+      $out[pgType] = 'Soon';
+      $out[pgName] = 'Coming Soon';
+
+    } elseif ($get['sold']) {
+      $out[pgName] = $out[pgType] = 'Sold';
+
+    } elseif ($get['sale']) {
+      $out[pgType] = 'Sale';
+      $out[pgName] = 'Special Offers';
+
+    } elseif ($get['search']) {
+      $out[pgType] = 'Search';
+      $out[search] = jr_validate_search($get['search']);
+      $readableSearch = preg_replace("/[^[:alnum:][:space:]]/ui", ' ', $get['search']);
+      $out[pgName] = 'Search Results for \''.$readableSearch.'\'';
+
+    } elseif ($get['brand']) {
+      $out[pgType] = 'Brand';
+      $out[brand] =  jr_validate_brand($get['brand']);
+      $out[pgName] = 'Products from '.$out[brand];
+      $brandIconLocation = imgSrcRoot('icons',$out[brand],'jpg');
+      if (file_exists ($brandIconLocation)) {
+        $out[imgUrl] = $brandIconLocation;
+      };
+
+    } elseif ($get['cat'] && !jr_validate_stainless($get['cat'])) {
+      $out[pgType] = 'Category';
+      $out[pgName] = $out[cat] = jr_validate_category($get['cat']);
+
+    } elseif (jr_validate_stainless($get['cat'])) {
+      $out[pgType] = 'CategorySS';
+      $out[pgName] = $out[cat] = jr_validate_category($get['cat']);
+
+    } else {
+      $out[pgType] = 'All';
+      $out[pgName] = 'All Products';
+
+    };
+    if ($out[pgType] == 'Category' || $out[pgType] == 'CategorySS') {
+      $out[imgUrl] = imgSrcRoot('thumbnails',$fCategory,'jpg');
+      $categoryDetails = jr_category_row( $fCategory );
+      $out[description] = $categoryDetails[CategoryDescription] ?: null;
+    } else {
+      $out[description] = jr_category_info($out[pgType]);
+
+    }
+  } elseif ($get[page_id] == '21') {
+    $out[pgType] = 'Item';
+    $out[rhc] = $get['x'] ? jr_validate_rhc($get['r']) : jr_validate_rhc($get['r']);
+    $out[cat] = jr_validate_category($get['cat']);
+    $out[ss] = $get['x'] ?: false;
+    $out[pgName] = $get['n'];
+
   } else {
-    $out['rhc'] = jr_validate_rhc($getArr['r']);
+    $out[pgType] = $out[pgName] = 'Page Name';
   };
-  $out['cat'] =  jr_validate_category($getArr['cat']);
-  $out['ss'] = $getArr['x'] ?: false;
-  $out['name'] = $getArr['n'];
 
   return $out;
 }

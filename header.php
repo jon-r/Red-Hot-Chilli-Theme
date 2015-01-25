@@ -14,7 +14,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <title>
-    <?php wp_title( ''); ?>
+    <?php wp_title(); ?>
   </title>
 
   <?php // mobile meta (hooray!) ?>
@@ -51,14 +51,13 @@
   <header class="page-header" role="banner">
     <div class="container" >
 
-      <?php // to use a image just replace the bloginfo( 'name') with your img src and remove the surrounding <p>?>
       <a href="<?php echo home_url(); ?>" rel="nofollow">
         <?php echo imgSrcRoot('rhc','RHC_Logo_transparent','png'); ?>
       </a>
 
       <form>
         <label for="search">Search</label>
-        <input type="hidden" name="page_id" value="29">
+        <input type="hidden" name="page_id" value="30">
         <input type="search" name="search">
         <button type="submit">GO</button>
       </form>
@@ -67,7 +66,3 @@
 
   </header>
 
-
-    <?php include( "JR_Shop-elements/menu-main.php"); ?>
-    <?php include( "JR_Shop-elements/menu-breadcrumbs.php"); ?>
-  </div>
