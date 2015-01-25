@@ -1,0 +1,90 @@
+nav {
+  height: 2rem;
+ overflow: hidden;
+}
+
+.home nav {
+  height:15rem;
+}
+
+.menu-main {
+  background-color: white;
+  font-size: 0.8rem;
+  position: relative;
+  h2, li {
+    padding:0 jr-margin(0.5);
+  }
+  h2 {
+    line-height: 2rem;
+    width:100%;
+    background-color:jr-rhc-color(5);
+  }
+  li {
+    line-height: 1.5rem;
+  }
+  li > ul {
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    top:2rem;
+    left:100%;
+    display:none;
+  }
+  li:hover {
+    background-color: #eee;
+  }
+  li:hover > ul {
+    display: block;
+  }
+
+  @extend %grid-1-1;
+
+  @include jr-size(tablet) {
+    @include jr-grid(1,3);
+  };
+  @include jr-size(screen) {
+    @include jr-grid(1,5);
+  };
+//  @include jr-size(screen-hd) { @include jr-grid(1,12) };
+}
+
+.menu-breadcrumbs {
+  @extend %grid-1-1;
+  background-color:jr-rhc-color(8.5);
+
+  a {
+    line-height: 2rem;
+    padding: 0 0.5rem 0 1rem;
+    vertical-align:bottom;
+    position: relative;
+    &::after, &::before {
+      content: " ";
+      display: block;
+      width: 0;
+      height: 0;
+      border-top: 1.5rem solid transparent;
+      border-bottom: 1.5rem solid transparent;
+      border-left: 0.5rem solid jr-rhc-color(8.5);
+      position: absolute;
+      top: 50%;
+      margin-top: -1.5rem;
+      left: 100%;
+      z-index: 2;
+    }
+    &::before {
+      margin-left:1px;
+      border-left-color: jr-rhc-color(9.5);
+    }
+    &:last-of-type {
+      background-color: jr-rhc-color(8);
+    };
+    &:last-of-type::after {
+      border-left-color: jr-rhc-color(8);
+    }
+  }
+  @include jr-size(tablet) {
+    @include jr-grid(2,3);
+  };
+  @include jr-size(screen) {
+    @include jr-grid(4,5)};
+}

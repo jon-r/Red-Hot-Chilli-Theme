@@ -10,7 +10,7 @@
   <div>
 
     <a href="?<?php echo $link ?>" >
-      <img src="somepic.jpg" alt="<?php echo $group ?>" />
+      <img src="somepic.jpg" />
       <h2><?php echo $group ?></h2>
     </a>
 

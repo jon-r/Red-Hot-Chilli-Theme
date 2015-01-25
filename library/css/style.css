@@ -378,9 +378,14 @@ td,
 th {
   padding: 0; }
 
-/* "super" globals -----------------------------------------------------------*/
+/* "super globals" -----------------------------------------------------------*/
 *, *::before {
   box-sizing: border-box; }
+
+ul {
+  padding: 0;
+  list-style: none;
+  margin: 0; }
 
 /*
 .profile-pic {
@@ -402,9 +407,10 @@ h1, h2, h3, h4, a, p {
 
 h1, h2, h3, h4 {
   font-family: "Kreon", Cambria, Times New Roman, Times, serif;
-  padding-bottom: 0.25rem; }
+  padding-bottom: 0.25rem;
+  display: inline-block; }
 
-a, p {
+p {
   font-family: "PT+Sans", Helvetica, Arial, sans-serif; }
 
 h1 {
@@ -421,14 +427,16 @@ h4 {
   text-align: center; }
 
 a {
-  font-size: 1.1em; }
+  font-family: inherit;
+  font-size: 1.1em;
+  display: inline-block; }
 
 /*---Grid---------------------------------------------------------------------*/
-.menu-main {
+article, .menu-main, .menu-breadcrumbs {
   margin: 0.5rem 0 0 0.5rem; }
 
-.menu-main {
-  width: calc(50% - 0.75rem);
+article, .menu-main, .menu-breadcrumbs {
+  width: calc(100% - 1rem);
   float: left; }
 
 /*********************
@@ -437,30 +445,34 @@ Standard page layouts. Default style for all pages
 *********************/
 /*----Page Core --------------------------------------------------------------*/
 html {
-  font-size: 14px; }
+  font-size: 12px; }
   @media only screen and (min-width: 482px) {
     html {
-      font-size: 16px; } }
+      font-size: 14px; } }
   @media only screen and (min-width: 1031px) {
     html {
-      font-size: 18px; } }
+      font-size: 16px; } }
   @media only screen and (min-width: 1240px) {
     html {
-      font-size: 20px; } }
+      font-size: 18px; } }
 
 body {
   padding: 0 0 50px 0;
   min-height: 100%;
   line-height: 1.2em;
-  background-color: #bf4040; }
+  background-color: #a32929; }
 
 section {
-  background-color: #f3f2f2; }
+  background-color: #f3f2f2;
+  position: relative; }
 
 .container {
   max-width: 1000px;
-  margin: 0 auto;
-  padding: 0.5rem 0; }
+  margin: 0 auto 0.5rem; }
+  .container:after {
+    content: "";
+    display: table;
+    clear: both; }
   @media only screen and (min-width: 1240px) {
     .container {
       max-width: 1200px; } }
@@ -475,21 +487,84 @@ section {
   .page-header form {
     float: right; }
 
-.menu-main {
-  padding: 0.5rem;
+nav {
   height: 2rem;
-  overflow: hidden;
-  background: #222; }
+  overflow: hidden; }
+
+.home nav {
+  height: 15rem; }
+
+.menu-main {
+  background-color: white;
+  font-size: 0.8rem;
+  position: relative; }
+  .menu-main h2, .menu-main li {
+    padding: 0 0.25rem; }
+  .menu-main h2 {
+    line-height: 2rem;
+    width: 100%;
+    background-color: #bf4040; }
+  .menu-main li {
+    line-height: 1.5rem; }
+  .menu-main li > ul {
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    top: 2rem;
+    left: 100%;
+    display: none; }
+  .menu-main li:hover {
+    background-color: #eee; }
+  .menu-main li:hover > ul {
+    display: block; }
   @media only screen and (min-width: 482px) {
     .menu-main {
       width: calc(33.33333% - 0.66667rem);
       float: left; } }
   @media only screen and (min-width: 1031px) {
     .menu-main {
-      width: calc(16.66667% - 0.58333rem);
+      width: calc(20% - 0.6rem);
+      float: left; } }
+
+.menu-breadcrumbs {
+  background-color: #ded3d3; }
+  .menu-breadcrumbs a {
+    line-height: 2rem;
+    padding: 0 0.5rem 0 1rem;
+    vertical-align: bottom;
+    position: relative; }
+    .menu-breadcrumbs a::after, .menu-breadcrumbs a::before {
+      content: " ";
+      display: block;
+      width: 0;
+      height: 0;
+      border-top: 1.5rem solid transparent;
+      border-bottom: 1.5rem solid transparent;
+      border-left: 0.5rem solid #ded3d3;
+      position: absolute;
+      top: 50%;
+      margin-top: -1.5rem;
+      left: 100%;
+      z-index: 2; }
+    .menu-breadcrumbs a::before {
+      margin-left: 1px;
+      border-left-color: #f3f2f2; }
+    .menu-breadcrumbs a:last-of-type {
+      background-color: #d6c2c2; }
+    .menu-breadcrumbs a:last-of-type::after {
+      border-left-color: #d6c2c2; }
+  @media only screen and (min-width: 482px) {
+    .menu-breadcrumbs {
+      width: calc(66.66667% - 0.83333rem);
+      float: left; } }
+  @media only screen and (min-width: 1031px) {
+    .menu-breadcrumbs {
+      width: calc(80% - 0.9rem);
       float: left; } }
 
 /*********************
 IMPORTING ELEMENTS
 Page specific items.
 *********************/
+
+/*# sourceMappingURL=style.css.map */

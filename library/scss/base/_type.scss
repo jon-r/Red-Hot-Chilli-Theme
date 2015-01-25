@@ -10,13 +10,13 @@ $serif: "Kreon", Cambria, Times New Roman, Times, serif;
   padding: 0;
   text-decoration: none;
   color: inherit;
-  // -webkit-font-smoothing: antialiased;
   font-smooth: always;
 }
 
 %h-font {
   font-family: $serif;
   padding-bottom: 0.25rem;
+  display: inline-block;
 }
 
 %p-font {
@@ -46,12 +46,13 @@ h4 {
   @extend %h-font;
   font-size: 1.1em;
   text-align: center;
-}
+  }
 
 a {
   @extend %text-reset;
-  @extend %p-font;
+  font-family: inherit;
   font-size: 1.1em;
+  display: inline-block;
 }
 
 p {

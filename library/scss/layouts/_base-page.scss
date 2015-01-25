@@ -1,30 +1,33 @@
 /*----Page Core --------------------------------------------------------------*/
 
 html {
-  font-size: 14px;
-  @include jr-size(tablet) { font-size: 16px; };
-  @include jr-size(screen) { font-size: 18px; };
-  @include jr-size(screen-hd) { font-size: 20px; };
+  font-size: 12px;
+  @include jr-size(tablet) { font-size: 14px; };
+  @include jr-size(screen) { font-size: 16px; };
+  @include jr-size(screen-hd) { font-size: 18px; };
 }
 
 body {
   padding: 0 0 50px 0;
   min-height: 100%;
   line-height: 1.2em;
-  background-color: jr-rhc-color(5);
+  background-color: jr-rhc-color(4);
 
 }
 
 section {
   background-color: jr-rhc-color(9.5);
+  position: relative;
+}
+
+article {
+  @extend %grid-1-1;
 }
 
 .container {
-
   max-width: 1000px;
-  margin: 0 auto;
-  padding:$jr-margin 0;
-
+  margin: 0 auto $jr-margin;
+  @include cf();
   @include jr-size(screen-hd) { max-width:1200px };
 }
 
@@ -42,19 +45,7 @@ section {
   }
 }
 
-.menu-main {
-  padding: $jr-margin;
-  height: 2rem;
-  overflow:hidden;
-  background:#222;
 
-  @extend %grid-1-2;
-
-  @include jr-size(tablet) { @include jr-grid(1,3)};
-  @include jr-size(screen) { @include jr-grid(1,6)};
-//  @include jr-size(screen-hd) { @include jr-grid(1,12) };
-
-}
 
 //  @include jr-size(phone) { width: 100% ;}
 //  @include jr-size(tablet) { width: 125px; }
