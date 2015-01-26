@@ -9,7 +9,7 @@
 <?php get_header(); ?>
 
 
-<section class="container home">
+<section class="container">
 
   <?php include( "JR_Shop-elements/nav-bar.php"); ?>
 

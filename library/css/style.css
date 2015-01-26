@@ -387,6 +387,9 @@ ul {
   list-style: none;
   margin: 0; }
 
+a {
+  display: block; }
+
 /*
 .profile-pic {
   float: left;
@@ -431,13 +434,13 @@ a {
   font-size: 1.1em;
   display: inline-block; }
 
-/*---Grid---------------------------------------------------------------------*/
-article, .menu-main, .menu-breadcrumbs {
+/*---Grid + Gutter margins-------------------------------------------------------------*/
+article, .menu-main, .menu-breadcrumbs, .menu-carousel {
   margin: 0.5rem 0 0 0.5rem; }
 
-article, .menu-main, .menu-breadcrumbs {
-  width: calc(100% - 1rem);
-  float: left; }
+article, .menu-main, .menu-breadcrumbs, .menu-carousel {
+  float: left;
+  width: calc(100% - 1rem); }
 
 /*********************
 IMPORTING LAYOUTS
@@ -491,12 +494,15 @@ nav {
   height: 2rem;
   overflow: hidden; }
 
-.home nav {
-  height: 15rem; }
+@media only screen and (min-width: 482px) {
+  .home {
+    height: auto; } }
+@media only screen and (min-width: 1031px) {
+  .home {
+    height: 18rem; } }
 
 .menu-main {
   background-color: white;
-  font-size: 0.8rem;
   position: relative; }
   .menu-main h2, .menu-main li {
     padding: 0 0.25rem; }
@@ -505,26 +511,43 @@ nav {
     width: 100%;
     background-color: #bf4040; }
   .menu-main li {
-    line-height: 1.5rem; }
-  .menu-main li > ul {
-    position: absolute;
-    background-color: white;
-    width: 100%;
-    top: 2rem;
-    left: 100%;
-    display: none; }
-  .menu-main li:hover {
-    background-color: #eee; }
-  .menu-main li:hover > ul {
-    display: block; }
+    line-height: 1.9rem;
+    border-bottom: solid 1px #eee; }
+    .menu-main li ul {
+      position: absolute;
+      top: 2rem;
+      left: 100%;
+      display: none;
+      border-left: 2px solid #eee; }
+    .menu-main li:active {
+      background-color: #eee; }
+  .menu-main ul {
+    overflow-y: auto; }
   @media only screen and (min-width: 482px) {
     .menu-main {
-      width: calc(33.33333% - 0.66667rem);
-      float: left; } }
+      width: calc(33.33333% - 0.66667rem); }
+      .menu-main ul {
+        width: 100%; }
+      .menu-main li:hover {
+        background-color: #eee;
+        transition-delay: 300ms; }
+        .menu-main li:hover ul {
+          display: block; }
+      .menu-main:hover {
+        width: calc(66.66667% - 0.83333rem);
+        margin-right: calc(-100%/3 + 2px); }
+        .menu-main:hover ul {
+          width: 50%;
+          height: 100%; }
+        .menu-main:hover li ul {
+          left: 50%; } }
   @media only screen and (min-width: 1031px) {
     .menu-main {
-      width: calc(20% - 0.6rem);
-      float: left; } }
+      font-size: 0.8rem;
+      width: calc(20% - 0.6rem); }
+      .menu-main:hover {
+        width: calc(40% - 0.7rem);
+        margin-right: calc(-20% + 2px); } }
 
 .menu-breadcrumbs {
   background-color: #ded3d3; }
@@ -555,12 +578,21 @@ nav {
       border-left-color: #d6c2c2; }
   @media only screen and (min-width: 482px) {
     .menu-breadcrumbs {
-      width: calc(66.66667% - 0.83333rem);
-      float: left; } }
+      width: calc(66.66667% - 0.83333rem); } }
   @media only screen and (min-width: 1031px) {
     .menu-breadcrumbs {
-      width: calc(80% - 0.9rem);
-      float: left; } }
+      width: calc(80% - 0.9rem); } }
+
+.menu-carousel {
+  background-color: #ded3d3;
+  height: 12rem; }
+  @media only screen and (min-width: 482px) {
+    .menu-carousel {
+      width: calc(66.66667% - 0.83333rem); } }
+  @media only screen and (min-width: 1031px) {
+    .menu-carousel {
+      height: 18rem;
+      width: calc(80% - 0.9rem); } }
 
 /*********************
 IMPORTING ELEMENTS

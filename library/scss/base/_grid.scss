@@ -1,7 +1,6 @@
-/*---Grid---------------------------------------------------------------------*/
+/*---Grid + Gutter margins-------------------------------------------------------------*/
 @mixin jr-grid($spanCount, $fullCount, $custom: null) {
   $A: $spanCount * 100% / $fullCount;
-  $B: $jr-margin * ($spanCount / $fullCount) + $jr-margin;
   @if $custom == edgeless {
     $B: $jr-margin * ($fullCount - 1) / $fullCount;
     width: calc(#{$A} - #{$B});
@@ -11,27 +10,23 @@
     }
   }
   @else {
+    $B: $jr-margin * (1 + ($spanCount / $fullCount));
     width: calc(#{$A} - #{$B});
   }
-  float: left;
 }
-
-
-
-
-
-
 
 %grid-margins {
   margin: $jr-margin 0 0 $jr-margin;
 }
 
 %grid-1-1 {
+  float: left;
   @extend %grid-margins;
   @include jr-grid(1,1);
 }
 
 %grid-1-2 {
+  float: left;
   @extend %grid-margins;
   @include jr-grid(1,2);
 }

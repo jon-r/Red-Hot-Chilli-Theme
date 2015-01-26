@@ -7,12 +7,9 @@ _________________________________________________________
 */
 ?>
 
-<?php $homeCheck = (getUrl() == site_url()."/"); ?>
-
-
-<nav class="menu-main" >
+<nav class="menu-main <?php echo is_front_page() ? 'home' : null ?>" >
   <h2>Browse</h2>
-  <ul >
+  <ul id='menu'>
   <?php foreach($groupsList as $group) :
       $link = http_build_query(['g' => $group, 'page_id' => 24]);
       $categoriesListFiltered = array_filter ($categoriesList, isGroup($group));
@@ -39,8 +36,10 @@ _________________________________________________________
         <li><a href="?page_id=16&all=1&pg=1" >All Items</a></li>
       </ul>
     </li>
-    <?php // wp menu starts here. functions.php for setup --> ?>
-    <?php dynamic_sidebar( 'sidebar1' ); ?>
+    <li><a>Other Services</a>
+      <?php // wp menu starts here. functions.php for setup --> ?>
+      <?php dynamic_sidebar( 'sidebar1' ); ?>
+    </li>
   </ul>
 
 </nav>

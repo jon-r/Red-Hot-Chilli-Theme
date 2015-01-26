@@ -23,6 +23,10 @@ ul {
   margin:0;
 }
 
+a {
+  display:block;
+}
+
 @mixin cf() {
   &:after {
     content: "";
