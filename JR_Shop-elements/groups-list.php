@@ -11,7 +11,7 @@
 
     <a href="?<?php echo $link ?>" >
       <img src="somepic.jpg" />
-      <h2><?php echo $group ?></h2>
+      <h3><?php echo $group ?></h3>
     </a>
 
     <ul>

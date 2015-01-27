@@ -5,7 +5,8 @@
 ?>
 
 
-<article>
+<article class="shop-grid category">
+
   <h1><?php echo $safeArr[group] ?></h1>
   <ul>
 

@@ -1,13 +1,21 @@
+/*vars---------------------------------------------------------------------------------*/
+
 var menuMainBtn  = document.getElementById('js-menuMainBtn');
 var menuMain  = document.getElementById('js-menuMain');
-var menu
+
+
+/*functions----------------------------------------------------------------------------*/
 
 function menuToggleOpen() {
   menuMain.classList.toggle('open');
-
 }
 
+
+/*triggers-----------------------------------------------------------------------------*/
+
 menuMainBtn.onclick = menuToggleOpen;
+
+
 
 
 /*-----maybe delete below------------------------------------------------------------*/

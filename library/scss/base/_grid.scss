@@ -36,3 +36,16 @@
   @extend %grid-margins;
   @include jr-grid(1,3);
 }
+/*---Flex------------------------------------------------------------------------------*/
+
+
+%flex-parent {
+  display:flex;
+  flex-wrap: wrap;
+  padding-left: $jr-margin;
+}
+
+%flex-child {
+  flex: 1 1 100%;
+  margin: 0 $jr-margin $jr-margin 0;
+}

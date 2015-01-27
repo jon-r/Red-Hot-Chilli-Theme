@@ -7,7 +7,7 @@
 
 $NO-USE-example: hsl(5, 50%, 25%);
 
-$jr-margin: 0.5rem;
+$jr-margin: 1rem;
 
 @function jr-margin($n: 1) {
   @return $n * 0.5rem;

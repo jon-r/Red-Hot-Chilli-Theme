@@ -1,18 +1,149 @@
-nav {
-  height: 2rem;
- overflow: hidden;
-  &:active, &:hover {
-    transition: 300ms ease;
-  }
+/*- menu parts -----------------------------------------------------------------------*/
 
+nav {
+  @extend %flex-parent;
+  div {
+    height: 2rem;
+    overflow: hidden;
+  }
 }
 
 .menu-main {
-  @extend %grid-1-1;
-  float:left;
+  z-index: 3;
+  background:white;
+  position: relative;
+  width:100%;
+  margin-bottom: $jr-margin;
+
+  &.open {
+    height: auto;
+  }
+
+  h2 {
+    width:100%;
+    background-color:jr-rhc-color(5);
+    padding-left: $jr-margin;
+    line-height: 2rem;
+
+  }
+
+  li {
+    padding-left: $jr-margin;
+
+    &:active, &:hover {
+      background-color: #e0e0e0;
+    }
+  }
+
+  ul {
+    line-height: 2rem;
+    ul {
+      display:none;
+      position:absolute;
+      left:40%;
+      width: 60%;
+      top:2rem;
+      overflow-y:auto;
+      border-left: 1px solid #e0e0e0;
+      height:calc(100% - 2rem);
+      background-color: #eee;
+    }
+  }
+
+  @include jr-size(phoneOnly) {
+    text-align: center;
+  }
+
+  @include jr-size(tabletOnly) {
+    li {
+      width:50%;
+      float:left;
+    }
+  }
+
+  @include jr-size(screen) {
+    font-size: 0.9rem;
+    width:20%;
+    &.menu-home, &.open {
+      height:18rem;
+      margin-bottom: -15rem;
+      &:hover {
+        width: 50%;
+        transition: 300ms ease;
+        margin-right: -30%;
+      }
+      li:hover {
+        ul {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.menu-carousel, .menu-breadcrumbs {
+  @extend %flex-child;
+  background-color:jr-rhc-color(8.5);
+  overflow: hidden;
+
+  @include jr-size(screen) {
+    flex:1;
+    margin-left: $jr-margin;
+  };
+}
+
+.menu-carousel {
+  height:18rem;
+}
+
+.menu-breadcrumbs {
+
+  a {
+    line-height: 2rem;
+    padding: 0 0.5rem 0 1rem;
+    vertical-align:bottom;
+    position: relative;
+
+    &::after, &::before {
+      content: " ";
+      display: block;
+      width: 0;
+      height: 0;
+      border-top: 1.5rem solid transparent;
+      border-bottom: 1.5rem solid transparent;
+      border-left: 0.5rem solid jr-rhc-color(8.5);
+      position: absolute;
+      top: 50%;
+      margin-top: -1.5rem;
+      left: 100%;
+      z-index: 2;
+    }
+
+    &::before {
+      margin-left:1px;
+      border-left-color: jr-rhc-color(9.5);
+    }
+
+    &:last-of-type {
+      background-color: jr-rhc-color(8);
+    };
+
+    &:last-of-type::after {
+      border-left-color: jr-rhc-color(8);
+    }
+  }
+}
+
+/*
+.menu-main {
+  flex:1 1 100%;
   position:relative;
   z-index: 3;
   background-color: white;
+
+  &:active, &:hover {
+    transition: 300ms ease;
+  }
 
   h2, h3, li {
     padding:0 jr-margin(0.5);
@@ -26,7 +157,7 @@ nav {
     color: jr-rhc-color(5);
   }
   li {
-    &:active {
+    &:active, &:hover {
       background-color: #e0e0e0;
     }
   }
@@ -52,14 +183,17 @@ nav {
       float:left;
     }
   }
-
   @include jr-size(tablet) {
-    @include jr-grid(1,5);
+    flex: 1 1 20%;
+
+    &:hover {
+      flex: 1 1 40%;
+    }
   }
+
   @include jr-size(screen) {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     li:hover {
-      background-color: #e0e0e0;
       ul {
         display: block;
       }
@@ -84,8 +218,6 @@ nav {
   @include jr-size(screen) {
     height:18rem;
     &:hover {
-      @include jr-grid(1,2);
-      margin-right: calc(-30% + 2px);
       ul ul {
         width:60%;
       }
@@ -94,7 +226,6 @@ nav {
 }
 
 .menu-breadcrumbs {
-  @extend %grid-1-1;
   background-color:jr-rhc-color(8.5);
 
   a {
@@ -127,9 +258,6 @@ nav {
       border-left-color: jr-rhc-color(8);
     }
   }
-  @include jr-size(tablet) {
-    @include jr-grid(4,5)
-      }
 }
 
 .menu-carousel {
@@ -141,3 +269,4 @@ nav {
     @include jr-grid(4,5)
   };
 }
+*/

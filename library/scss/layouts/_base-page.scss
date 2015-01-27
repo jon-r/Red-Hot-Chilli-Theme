@@ -1,10 +1,10 @@
 /*----Page Core --------------------------------------------------------------*/
 
 html {
-  font-size: 12px;
-  @include jr-size(tablet) { font-size: 14px; };
+  font-size: 14px;
+ // @include jr-size(tablet) { font-size: 14px; };
   @include jr-size(screen) { font-size: 16px; };
-  @include jr-size(screen-hd) { font-size: 18px; };
+ // @include jr-size(screen-hd) { font-size: 18px; };
 }
 
 body {
@@ -18,23 +18,18 @@ body {
 section {
   background-color: jr-rhc-color(9.5);
   position: relative;
+  padding-top: $jr-margin;
 }
 
 article {
 
 }
 
-.list {
-  div {
-    @extend %grid-1-3;
-    background-color: white;
-  }
-}
+
 
 .container {
   max-width: 1000px;
   margin: 0 auto $jr-margin;
-  @include cf();
   @include jr-size(screen-hd) { max-width:1200px };
 }
 

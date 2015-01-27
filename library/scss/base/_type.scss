@@ -14,7 +14,6 @@ $serif: "Kreon", Cambria, Times New Roman, Times, serif;
 
 %h-font {
   font-family: $serif;
-  padding-bottom: 0.25rem;
   display: inline-block;
 }
 
@@ -26,6 +25,7 @@ h1 {
   @extend %text-reset;
   @extend %h-font;
   font-size: 2.5em;
+  padding-bottom: 0.25em;
 }
 
 h2 {
@@ -50,10 +50,13 @@ h4 {
 a {
   @extend %text-reset;
   font-family: inherit;
-  font-size: 1.1em;
+  font-size: 1em;
   display: inline-block;
-  color: jr-rhc-color(2);
+  color: jr-rhc-color(1);
   font-weight: bold;
+  &:hover {
+    color: jr-rhc-color(3);
+  }
 }
 
 p {

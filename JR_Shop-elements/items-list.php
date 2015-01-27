@@ -12,7 +12,8 @@ $itemCount = $count > 100 ? "(100+ Results)" : "(".$count." Results)";
 
 
 
-<article>
+<article class="shop-grid item">
+
   <header>
     <h1><?php echo $safeArr[pgName] ?></h1><h2><?php echo $itemCount ?></h2>
     <div><?php echo $safeArr[description] ?></div><?php echo $safeArr[imgURL] ?>

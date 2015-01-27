@@ -157,7 +157,8 @@ function bones_scripts_and_styles() {
 		using the google cdn. That way it stays cached
 		and your site will load faster.
 		*/
-		wp_enqueue_script( 'jquery' );
+		wp_deregister_script( 'jquery' );
+        wp_register_script( 'jquery', ( 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js' ), false, null, true );
 		wp_enqueue_script( 'bones-js' );
 
 	}
