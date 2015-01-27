@@ -55,10 +55,13 @@ Page specific items.
 //product groups (front page)
 @import "elements/groups";
 
+//shop list defaults
+@import "elements/shop-lists";
+
 //product categories (groups page, some on front page too)
 @import "elements/categories";
 
-//product items (search + filtered results. also the single items)
+//product single items)
 @import "elements/items";
 
 //front page carousel banner thingy. i dunno what to make yet...

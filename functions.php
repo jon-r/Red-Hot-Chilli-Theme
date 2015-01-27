@@ -120,8 +120,8 @@ function bones_register_sidebars() {
 		'description' => __( 'The first (primary) sidebar.', 'bonestheme' ),
 		'before_widget' => '',
 		'after_widget' => '',
-		'before_title' => '',
-		'after_title' => '',
+		'before_title' => '<a><h3>',
+		'after_title' => '</a></h3>',
 	));
 	register_sidebar(array(
 		'id' => 'sidebar-contact',

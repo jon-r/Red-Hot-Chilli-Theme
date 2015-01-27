@@ -8,7 +8,6 @@ $serif: "Kreon", Cambria, Times New Roman, Times, serif;
   line-height: 1.2;
   margin: 0;
   padding: 0;
-  text-decoration: none;
   color: inherit;
   font-smooth: always;
 }
@@ -53,6 +52,8 @@ a {
   font-family: inherit;
   font-size: 1.1em;
   display: inline-block;
+  color: jr-rhc-color(2);
+  font-weight: bold;
 }
 
 p {

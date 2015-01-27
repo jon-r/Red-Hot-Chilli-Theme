@@ -38,7 +38,7 @@ _________________________________________________________
         <li><a href="?page_id=16&all=1&pg=1" >All Items</a></li>
       </ul>
     </li>
-    <li><a>Other Services</a>
+    <li>Other Services
       <?php // wp menu starts here. functions.php for setup --> ?>
       <?php dynamic_sidebar( 'sidebar1' ); ?>
     </li>

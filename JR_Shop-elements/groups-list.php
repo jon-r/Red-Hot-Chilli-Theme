@@ -1,6 +1,6 @@
 <?php /* list of groups on front page */ ?>
 
-<article>
+<article class="shop-grid group">
 
   <?php foreach($groupsList as $group) :
       $link = http_build_query(['g' => $group, 'page_id' => 24]);

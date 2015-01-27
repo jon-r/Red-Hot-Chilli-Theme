@@ -404,7 +404,6 @@ h1, h2, h3, h4, a, p {
   line-height: 1.2;
   margin: 0;
   padding: 0;
-  text-decoration: none;
   color: inherit;
   font-smooth: always; }
 
@@ -432,15 +431,25 @@ h4 {
 a {
   font-family: inherit;
   font-size: 1.1em;
-  display: inline-block; }
+  display: inline-block;
+  color: #5c0a0a;
+  font-weight: bold; }
 
 /*---Grid + Gutter margins-------------------------------------------------------------*/
-article, .menu-main, .menu-breadcrumbs, .menu-carousel {
+.menu-main, .menu-breadcrumbs, .menu-carousel, .shop-grid div, .shop-grid li, .list div {
   margin: 0.5rem 0 0 0.5rem; }
 
-article, .menu-main, .menu-breadcrumbs, .menu-carousel {
+.menu-main, .menu-breadcrumbs, .menu-carousel, .shop-grid div {
   float: left;
   width: calc(100% - 1rem); }
+
+.shop-grid li {
+  float: left;
+  width: calc(50% - 0.75rem); }
+
+.list div {
+  float: left;
+  width: calc(33.33333% - 0.66667rem); }
 
 /*********************
 IMPORTING LAYOUTS
@@ -468,6 +477,9 @@ body {
 section {
   background-color: #f3f2f2;
   position: relative; }
+
+.list div {
+  background-color: white; }
 
 .container {
   max-width: 1000px;
@@ -563,7 +575,7 @@ nav {
 .menu-breadcrumbs {
   background-color: #ded3d3; }
   .menu-breadcrumbs a {
-    line-height: 2rem;
+    line-height: 2;
     padding: 0 0.5rem 0 1rem;
     vertical-align: bottom;
     position: relative; }
@@ -602,5 +614,27 @@ nav {
 IMPORTING ELEMENTS
 Page specific items.
 *********************/
+.shop-grid.group img {
+  height: 4rem;
+  background: #ddd; }
 
-/*# sourceMappingURL=style.css.map */
+/*-- Groups Layout -----------------------------------------------------------*/
+.shop-grid:after {
+  content: "";
+  display: table;
+  clear: both; }
+.shop-grid div {
+  background-color: white;
+  padding: 0.5rem; }
+  @media only screen and (min-width: 482px) {
+    .shop-grid div {
+      width: calc(50% - 0.75rem); } }
+  @media only screen and (min-width: 1031px) {
+    .shop-grid div {
+      width: calc(33.33333% - 0.66667rem); } }
+  .shop-grid div a {
+    width: 100%; }
+.shop-grid li {
+  float: left; }
+.shop-grid img {
+  width: 100%; }
