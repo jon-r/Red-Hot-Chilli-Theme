@@ -493,61 +493,72 @@ section {
 nav {
   height: 2rem;
   overflow: hidden; }
-
-@media only screen and (min-width: 482px) {
-  .home {
-    height: auto; } }
-@media only screen and (min-width: 1031px) {
-  .home {
-    height: 18rem; } }
+  nav:active, nav:hover {
+    transition: 300ms ease; }
 
 .menu-main {
-  background-color: white;
-  position: relative; }
-  .menu-main h2, .menu-main li {
-    padding: 0 0.25rem; }
+  float: left;
+  position: relative;
+  z-index: 3;
+  background-color: white; }
+  .menu-main h2, .menu-main h3, .menu-main li {
+    padding: 0 0.25rem;
+    line-height: 2rem; }
   .menu-main h2 {
-    line-height: 2rem;
     width: 100%;
     background-color: #bf4040; }
-  .menu-main li {
-    line-height: 1.9rem;
-    border-bottom: solid 1px #eee; }
-    .menu-main li ul {
-      position: absolute;
-      top: 2rem;
-      left: 100%;
-      display: none;
-      border-left: 2px solid #eee; }
-    .menu-main li:active {
-      background-color: #eee; }
+  .menu-main h3 {
+    color: #bf4040; }
+  .menu-main li:active {
+    background-color: #e0e0e0; }
   .menu-main ul {
     overflow-y: auto; }
+    .menu-main ul ul {
+      position: absolute;
+      top: 2rem;
+      left: 40%;
+      display: none;
+      border-left: 1px solid #e0e0e0;
+      height: calc(100% - 2rem);
+      background-color: #eee; }
+  @media only screen and (max-width: 481px) {
+    .menu-main {
+      font-size: 1.2rem;
+      text-align: center; } }
+  @media only screen and (min-width: 482px) and (max-width: 1030px) {
+    .menu-main li {
+      width: 50%;
+      float: left; } }
   @media only screen and (min-width: 482px) {
     .menu-main {
-      width: calc(33.33333% - 0.66667rem); }
-      .menu-main ul {
-        width: 100%; }
-      .menu-main li:hover {
-        background-color: #eee;
-        transition-delay: 300ms; }
-        .menu-main li:hover ul {
-          display: block; }
-      .menu-main:hover {
-        width: calc(66.66667% - 0.83333rem);
-        margin-right: calc(-100%/3 + 2px); }
-        .menu-main:hover ul {
-          width: 50%;
-          height: 100%; }
-        .menu-main:hover li ul {
-          left: 50%; } }
+      width: calc(20% - 0.6rem); } }
   @media only screen and (min-width: 1031px) {
     .menu-main {
-      font-size: 0.8rem;
-      width: calc(20% - 0.6rem); }
-      .menu-main:hover {
-        width: calc(40% - 0.7rem);
-        margin-right: calc(-20% + 2px); } }
+      font-size: 0.8rem; }
+      .menu-main li:hover {
+        background-color: #e0e0e0; }
+        .menu-main li:hover ul {
+          display: block; } }
+
+.open {
+  height: 18rem; }
+  @media only screen and (min-width: 482px) and (max-width: 1030px) {
+    .open {
+      width: calc(100% - 1rem);
+      margin-right: calc(0.5rem - 80%);
+      height: 10rem; } }
+  @media only screen and (min-width: 1031px) {
+    .open {
+      width: calc(20% - 0.6rem); } }
+
+@media only screen and (min-width: 1031px) {
+  .menu-home, .menu-not-home.open {
+    height: 18rem; }
+    .menu-home:hover, .menu-not-home.open:hover {
+      width: calc(50% - 0.75rem);
+      margin-right: calc(-30% + 2px); }
+      .menu-home:hover ul ul, .menu-not-home.open:hover ul ul {
+        width: 60%; } }
 
 .menu-breadcrumbs {
   background-color: #ded3d3; }
@@ -578,20 +589,13 @@ nav {
       border-left-color: #d6c2c2; }
   @media only screen and (min-width: 482px) {
     .menu-breadcrumbs {
-      width: calc(66.66667% - 0.83333rem); } }
-  @media only screen and (min-width: 1031px) {
-    .menu-breadcrumbs {
       width: calc(80% - 0.9rem); } }
 
 .menu-carousel {
   background-color: #ded3d3;
-  height: 12rem; }
-  @media only screen and (min-width: 482px) {
-    .menu-carousel {
-      width: calc(66.66667% - 0.83333rem); } }
+  height: 18rem; }
   @media only screen and (min-width: 1031px) {
     .menu-carousel {
-      height: 18rem;
       width: calc(80% - 0.9rem); } }
 
 /*********************

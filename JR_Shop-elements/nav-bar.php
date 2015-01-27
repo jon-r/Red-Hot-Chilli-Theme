@@ -7,18 +7,19 @@ _________________________________________________________
 */
 ?>
 
-<nav class="menu-main <?php echo is_front_page() ? 'home' : null ?>" >
-  <h2>Browse</h2>
-  <ul id='menu'>
+<nav id="js-menuMain" class="menu-main <?php echo is_front_page() ? 'menu-home' : 'menu-not-home' ?>" >
+  <h2 id="js-menuMainBtn">Browse</h2>
+  <ul class='menu-main-primary'>
   <?php foreach($groupsList as $group) :
       $link = http_build_query(['g' => $group, 'page_id' => 24]);
       $categoriesListFiltered = array_filter ($categoriesList, isGroup($group));
     ?>
 
     <li>
-      <a href="?<?php echo $link ?>" ><?php echo $group ?></a>
+      <?php echo $group ?>
+      <ul>
+        <a href="?<?php echo $link ?>" ><h3><?php echo $group ?></h3></a>
 
-      <ul class="menu-main-categories">
         <?php foreach ($categoriesListFiltered as $category) :
             $link = http_build_query(['cat' => $category[Name], 'page_id' => 16]);
         ?>
@@ -28,8 +29,9 @@ _________________________________________________________
     </li>
 
   <?php endforeach ?>
-    <li><a>Featured</a>
+    <li>Featured
       <ul>
+        <a><h3>Featured</h3></a>
         <li><a href="?page_id=16&new=1&pg=1" >NEW Items</a></li>
         <li><a href="?page_id=16&soon=1&pg=1" >Coming Soon</a></li>
         <li><a href="?page_id=16&sold=1&pg=1" >Recently Sold</a></li>
@@ -43,13 +45,17 @@ _________________________________________________________
   </ul>
 
 </nav>
-<?php if ( is_front_page() )  : ?>
+
+<?php if ( is_front_page() ): ?>
+
 <nav class="menu-carousel">
   <div>
     banner here
   </div>
 </nav>
-<?php else : ?>
+
+<?php else: ?>
+
 <nav class="menu-breadcrumbs">
   <?php
     $breadLinks = jr_page_crumbles ($safeArr);
@@ -58,6 +64,8 @@ _________________________________________________________
         echo $link ? '<a href="'.$link.'" ><h4>'.$name."</h4></a>" : null;
       }
     }
-    endif;
   ?>
 </nav>
+
+<?php endif; ?>
+

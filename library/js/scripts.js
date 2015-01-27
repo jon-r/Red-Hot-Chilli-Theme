@@ -1,3 +1,16 @@
+var menuMainBtn  = document.getElementById('js-menuMainBtn');
+var menuMain  = document.getElementById('js-menuMain');
+var menu
+
+function menuToggleOpen() {
+  menuMain.classList.toggle('open');
+
+}
+
+menuMainBtn.onclick = menuToggleOpen;
+
+
+/*-----maybe delete below------------------------------------------------------------*/
 /*
  * Bones Scripts File
  * Author: Eddie Machado

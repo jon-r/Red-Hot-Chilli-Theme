@@ -48,11 +48,14 @@ $break-m: 1030px;
 $break-l: 1240px;
 
 @mixin jr_size($media) {
-  @if $media == phone {
+  @if $media == phoneOnly {
     @media only screen and (max-width: $break-s) { @content; }
   }
   @if $media == tablet {
     @media only screen and (min-width: $break-s + 1) { @content; }
+  }
+  @if $media == tabletOnly {
+    @media only screen and (min-width: $break-s + 1) and (max-width: $break-m) { @content; }
   }
   @else if $media == screen {
     @media only screen and (min-width: $break-m + 1) { @content; }
