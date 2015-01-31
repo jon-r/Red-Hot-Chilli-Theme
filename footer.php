@@ -1,6 +1,6 @@
           <footer role="contentinfo">
 
-            <div id="inner-footer" >
+            <div class="container" >
 
               <nav role="navigation">
                 <?php wp_nav_menu(array(

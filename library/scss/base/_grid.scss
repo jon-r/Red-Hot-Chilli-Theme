@@ -38,14 +38,18 @@
 }
 /*---Flex------------------------------------------------------------------------------*/
 
-
 %flex-parent {
   display:flex;
   flex-wrap: wrap;
-  padding-left: $jr-margin;
+  justify-content: space-around;
 }
 
 %flex-child {
-  flex: 1 1 100%;
-  margin: 0 $jr-margin $jr-margin 0;
+  flex-basis: calc(100% - #{$jr-margin});
+//  margin: 0 $jr-margin $jr-margin 0;
+  margin-bottom: $jr-margin
+}
+
+@mixin jr-flex($rows) {
+  flex-basis: calc(#{100%/$rows} - #{$jr-margin})
 }

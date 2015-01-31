@@ -2,56 +2,63 @@
 
 nav {
   @extend %flex-parent;
+  @extend %section-overflow;
   div {
     height: 2rem;
-    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(#222,0.5);
   }
+
 }
 
 .menu-main {
-  z-index: 3;
   background:white;
   position: relative;
-  width:100%;
+  z-index: 3;
   margin-bottom: $jr-margin;
+  width:calc(100% - #{$jr-margin});
 
   &.open {
     height: auto;
   }
 
   h2 {
+    z-index: 10;
     width:100%;
     background-color:jr-rhc-color(5);
+    color: jr-rhc-color(1);
     padding-left: $jr-margin;
     line-height: 2rem;
-
   }
 
   li {
     padding-left: $jr-margin;
-
     &:active, &:hover {
       background-color: #e0e0e0;
     }
   }
 
   ul {
+    overflow: hidden;
+    height: calc(100% - 2rem);
     line-height: 2rem;
     ul {
       display:none;
       position:absolute;
-      left:40%;
-      width: 60%;
-      top:2rem;
-      overflow-y:auto;
+      left:100%;
+      width: 100%;
+      top:0;
       border-left: 1px solid #e0e0e0;
-      height:calc(100% - 2rem);
-      background-color: #eee;
+      height:auto;
+      min-height:100%;
+      background-color:#eee;
     }
   }
 
   @include jr-size(phoneOnly) {
-    text-align: center;
+    h2, li {
+      text-align: center;
+      padding-left: 0;
+    }
   }
 
   @include jr-size(tabletOnly) {
@@ -63,18 +70,21 @@ nav {
 
   @include jr-size(screen) {
     font-size: 0.9rem;
-    width:20%;
+    @include jr-flex(5);
     &.menu-home, &.open {
       height:18rem;
       margin-bottom: -15rem;
       &:hover {
-        width: 50%;
         transition: 300ms ease;
-        margin-right: -30%;
       }
       li:hover {
         ul {
           display: block;
+          box-shadow: 0 0 4px rgba(#222,0.6);
+          top: -5px;
+          min-height: calc(100% + 10px);
+          width: 120%;
+          font-size: 1.1rem;
         }
       }
     }
@@ -87,13 +97,15 @@ nav {
   overflow: hidden;
 
   @include jr-size(screen) {
-    flex:1;
-    margin-left: $jr-margin;
+    @include jr-flex(1.25);
   };
 }
 
 .menu-carousel {
-  height:18rem;
+  height:12rem;
+  @include jr-size(screen) {
+    height: 18rem;
+  }
 }
 
 .menu-breadcrumbs {
@@ -103,6 +115,7 @@ nav {
     padding: 0 0.5rem 0 1rem;
     vertical-align:bottom;
     position: relative;
+    width:20%;
 
     &::after, &::before {
       content: " ";
@@ -133,140 +146,3 @@ nav {
     }
   }
 }
-
-/*
-.menu-main {
-  flex:1 1 100%;
-  position:relative;
-  z-index: 3;
-  background-color: white;
-
-  &:active, &:hover {
-    transition: 300ms ease;
-  }
-
-  h2, h3, li {
-    padding:0 jr-margin(0.5);
-    line-height: 2rem;
-  }
-  h2 {
-    width:100%;
-    background-color:jr-rhc-color(5);
-  }
-  h3 {
-    color: jr-rhc-color(5);
-  }
-  li {
-    &:active, &:hover {
-      background-color: #e0e0e0;
-    }
-  }
-  ul {
-    overflow-y: auto;
-    ul {
-      position: absolute;
-      top:2rem;
-      left:40%;
-      display:none;
-      border-left: 1px solid #e0e0e0;
-      height:calc(100% - 2rem);
-      background-color: #eee;
-    }
-  }
-  @include jr-size(phoneOnly) {
-    font-size: 1.2rem;
-    text-align: center;
-  }
-  @include jr-size(tabletOnly) {
-    li {
-      width:50%;
-      float:left;
-    }
-  }
-  @include jr-size(tablet) {
-    flex: 1 1 20%;
-
-    &:hover {
-      flex: 1 1 40%;
-    }
-  }
-
-  @include jr-size(screen) {
-    font-size: 0.7rem;
-    li:hover {
-      ul {
-        display: block;
-      }
-    }
-  }
-}
-
-.open {
-    height:18rem;
-
-  @include jr-size(tabletOnly) {
-    @include jr-grid(1,1);
-    margin-right: calc(#{$jr-margin} - 80%);
-    height:10rem;
-  }
-  @include jr-size(screen) {
-    @include jr-grid(1,5);
-  }
-}
-
-.menu-home, .menu-not-home.open {
-  @include jr-size(screen) {
-    height:18rem;
-    &:hover {
-      ul ul {
-        width:60%;
-      }
-    }
-  }
-}
-
-.menu-breadcrumbs {
-  background-color:jr-rhc-color(8.5);
-
-  a {
-    line-height: 2;
-    padding: 0 0.5rem 0 1rem;
-    vertical-align:bottom;
-    position: relative;
-    &::after, &::before {
-      content: " ";
-      display: block;
-      width: 0;
-      height: 0;
-      border-top: 1.5rem solid transparent;
-      border-bottom: 1.5rem solid transparent;
-      border-left: 0.5rem solid jr-rhc-color(8.5);
-      position: absolute;
-      top: 50%;
-      margin-top: -1.5rem;
-      left: 100%;
-      z-index: 2;
-    }
-    &::before {
-      margin-left:1px;
-      border-left-color: jr-rhc-color(9.5);
-    }
-    &:last-of-type {
-      background-color: jr-rhc-color(8);
-    };
-    &:last-of-type::after {
-      border-left-color: jr-rhc-color(8);
-    }
-  }
-}
-
-.menu-carousel {
-  @extend %grid-1-1;
-  background-color:jr-rhc-color(8.5);
-  height:18rem;
-
-  @include jr-size(screen) {
-    @include jr-grid(4,5)
-  };
-}
-*/

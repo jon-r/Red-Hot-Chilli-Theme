@@ -1,4 +1,4 @@
-/*-- Groups Layout -----------------------------------------------------------*/
+/*-- default list Layout -----------------------------------------------------------*/
 
 .shop-grid {
   @extend %flex-parent;
@@ -6,15 +6,7 @@
     @extend %flex-child;
     background-color: white;
     padding: $jr-margin;
-    @include jr-size(tablet) {
-      flex: 1 1 40%;
-    }
-    @include jr-size(screen) {
-      flex: 1 1 30%;
-    }
-    a {
-      width: 100%;
-    }
+    box-shadow: 0 2px 4px rgba(#222,0.5);
   }
   ul {
     border-top: 2px solid #e0e0e0;
@@ -29,3 +21,36 @@
     width: 100%;
   }
 }
+
+/*-- specific list Layout -----------------------------------------------------------*/
+
+.shop-grid.group {
+
+  //temp till image, to set hieght
+  img {
+    height:4rem;
+    background:#ddd;
+  }
+  //temp over
+  div {
+    @include jr-size(tablet) {
+      @include jr-flex(2);
+    }
+    @include jr-size(screen) {
+      @include jr-flex(3);
+    }
+  }
+}
+
+.shop-grid.category {
+
+  div {
+    @include jr-size(tablet) {
+      @include jr-flex(3);
+    }
+    @include jr-size(screen) {
+      @include jr-flex(4);
+    }
+  }
+}
+

@@ -8,36 +8,24 @@ html {
 }
 
 body {
-  padding: 0 0 50px 0;
+  padding: 0;
   min-height: 100%;
   line-height: 1.2em;
   background-color: jr-rhc-color(4);
 
 }
 
-section {
-  background-color: jr-rhc-color(9.5);
-  position: relative;
-  padding-top: $jr-margin;
-}
-
-article {
-
-}
-
-
-
 .container {
   max-width: 1000px;
-  margin: 0 auto $jr-margin;
+  margin:  0 auto;
   @include jr-size(screen-hd) { max-width:1200px };
 }
 
 .page-header {
   width:100%;
   background-image: linear-gradient(jr-rhc-color(3), jr-rhc-color(1));
-  height: 6rem;
-
+  height: 7rem;
+  padding:$jr-margin;
   img {
     height: 5rem;
     position:relative;
@@ -46,6 +34,33 @@ article {
     float:right;
   }
 }
+
+section {
+  background-color: jr-rhc-color(9.5);
+  position: relative;
+  padding-top: $jr-margin;
+  box-shadow: 0 0 10px jr-rhc-color(1);
+
+}
+
+%section-overflow {
+  @include jr-size(screen) {
+    margin: 0 #{$jr-margin * -1};
+  };
+}
+
+article {
+  @extend %section-overflow;
+}
+
+footer {
+  background-color: jr-rhc-color(2);
+  height: 7rem;
+  padding:$jr-margin;
+}
+
+
+
 
 
 

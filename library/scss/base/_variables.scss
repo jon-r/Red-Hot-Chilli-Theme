@@ -23,8 +23,10 @@ ul {
   margin:0;
 }
 
-a {
+div > a, li > a {
   display:block;
+  height:100%;
+  width:100%;
 }
 
 @mixin cf() {

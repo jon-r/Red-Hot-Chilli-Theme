@@ -48,12 +48,9 @@ h4 {
   }
 
 a {
-  @extend %text-reset;
   font-family: inherit;
-  font-size: 1em;
   display: inline-block;
   color: jr-rhc-color(1);
-  font-weight: bold;
   &:hover {
     color: jr-rhc-color(3);
   }
