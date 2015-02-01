@@ -24,7 +24,7 @@ _________________________________________________________
           <?php foreach ($categoriesListFiltered as $category) :
               $link = http_build_query(['cat' => $category[Name], 'page_id' => 16]);
           ?>
-          <li><a href="?<?php echo $link ?>" ><?php echo $category[Name] ?></a></li>
+          <li  class="box-link"><a href="?<?php echo $link ?>" ><?php echo $category[Name] ?></a></li>
           <?php endforeach ?>
         </ul>
       </li>
@@ -32,7 +32,7 @@ _________________________________________________________
     <?php endforeach ?>
       <li>Featured
         <ul>
-          <a><h3>Featured</h3></a>
+          <h3><a>Featured</a></h3>
           <li><a href="?page_id=16&new=1&pg=1" >NEW Items</a></li>
           <li><a href="?page_id=16&soon=1&pg=1" >Coming Soon</a></li>
           <li><a href="?page_id=16&sold=1&pg=1" >Recently Sold</a></li>

@@ -387,11 +387,6 @@ ul {
   list-style: none;
   margin: 0; }
 
-div > a, li > a {
-  display: block;
-  height: 100%;
-  width: 100%; }
-
 /*
 .profile-pic {
   float: left;
@@ -409,7 +404,7 @@ h1, h2, h3, h4, p {
   color: inherit;
   font-smooth: always; }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, .icon-placeholder {
   font-family: "Kreon", Cambria, Times New Roman, Times, serif;
   display: inline-block; }
 
@@ -439,7 +434,7 @@ a {
 
 /*---Grid + Gutter margins-------------------------------------------------------------*/
 /*---Flex------------------------------------------------------------------------------*/
-nav, .shop-grid {
+.section-header, nav, .shop-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around; }
@@ -461,7 +456,6 @@ html {
 
 body {
   padding: 0;
-  min-height: 100%;
   line-height: 1.2em;
   background-color: #a32929; }
 
@@ -490,8 +484,14 @@ section {
   box-shadow: 0 0 10px #300303; }
 
 @media only screen and (min-width: 1031px) {
-  article, nav {
+  .section-header, article, nav {
     margin: 0 -1rem; } }
+
+.section-header {
+  background: #c27070;
+  margin-bottom: 1rem; }
+  .section-header h3 {
+    flex-basis: calc(100% - 1rem); }
 
 footer {
   background-color: #5c0a0a;
@@ -511,17 +511,6 @@ nav div {
   width: calc(100% - 1rem); }
   .menu-main.open {
     height: auto; }
-  .menu-main h2 {
-    z-index: 10;
-    width: 100%;
-    background-color: #bf4040;
-    color: #300303;
-    padding-left: 1rem;
-    line-height: 2rem; }
-  .menu-main li {
-    padding-left: 1rem; }
-    .menu-main li:active, .menu-main li:hover {
-      background-color: #e0e0e0; }
   .menu-main ul {
     overflow: hidden;
     height: calc(100% - 2rem);
@@ -536,6 +525,20 @@ nav div {
       height: auto;
       min-height: 100%;
       background-color: #eee; }
+  .menu-main h2 {
+    z-index: 10;
+    width: 100%;
+    background-color: #bf4040;
+    color: #300303;
+    padding-left: 1rem;
+    line-height: 2rem; }
+  .menu-main li, .menu-main h3 {
+    padding-left: 1rem; }
+    .menu-main li:active, .menu-main li:hover, .menu-main h3:active, .menu-main h3:hover {
+      background-color: #e0e0e0; }
+  .menu-main a, .menu-main h3 {
+    height: 100%;
+    width: 100%; }
   @media only screen and (max-width: 481px) {
     .menu-main h2, .menu-main li {
       text-align: center;
@@ -578,8 +581,7 @@ nav div {
   line-height: 2rem;
   padding: 0 0.5rem 0 1rem;
   vertical-align: bottom;
-  position: relative;
-  width: 20%; }
+  position: relative; }
   .menu-breadcrumbs a::after, .menu-breadcrumbs a::before {
     content: " ";
     display: block;
@@ -607,6 +609,7 @@ Page specific items.
 *********************/
 /*-- default list Layout -----------------------------------------------------------*/
 .shop-grid div {
+  position: relative;
   background-color: white;
   padding: 1rem;
   box-shadow: 0 2px 4px rgba(34, 34, 34, 0.5); }
@@ -618,7 +621,8 @@ Page specific items.
   width: 50%;
   float: left; }
 .shop-grid img {
-  width: 100%; }
+  width: 100%;
+  margin: 0 auto; }
 
 /*-- specific list Layout -----------------------------------------------------------*/
 .shop-grid.group img {
@@ -631,11 +635,22 @@ Page specific items.
   .shop-grid.group div {
     flex-basis: calc(33.33333% - 1rem); } }
 
+.shop-grid.category a, .shop-grid.item a {
+  height: 100%;
+  width: 100%; }
 @media only screen and (min-width: 482px) {
-  .shop-grid.category div {
+  .shop-grid.category div, .shop-grid.item div {
     flex-basis: calc(33.33333% - 1rem); } }
 @media only screen and (min-width: 1031px) {
-  .shop-grid.category div {
+  .shop-grid.category div, .shop-grid.item div {
     flex-basis: calc(25% - 1rem); } }
+
+.icon-placeholder {
+  position: absolute;
+  width: 30%;
+  display: block;
+  right: 1rem;
+  font-size: 2rem;
+  bottom: 1rem; }
 
 /*# sourceMappingURL=style.css.map */

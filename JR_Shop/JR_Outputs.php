@@ -28,7 +28,7 @@ function jr_shop_compile($ref,$detail) {
         // need to generate ss image location. would help in shop too.
         imgFirst    => imgSrcRoot('gallery',$ref[Image],'jpg'),
         price       => $ref[Price],
-        icon       => '<div>'.$ref[TableinFeet].'ft</div>'
+        icon       => $ref[TableinFeet].'ft'
       ];
     break;
     case 'full':

@@ -9,7 +9,6 @@ html {
 
 body {
   padding: 0;
-  min-height: 100%;
   line-height: 1.2em;
   background-color: jr-rhc-color(4);
 
@@ -40,13 +39,23 @@ section {
   position: relative;
   padding-top: $jr-margin;
   box-shadow: 0 0 10px jr-rhc-color(1);
-
 }
 
 %section-overflow {
   @include jr-size(screen) {
     margin: 0 #{$jr-margin * -1};
   };
+}
+
+.section-header {
+  background: jr-rhc-color(6);
+  @extend %section-overflow;
+  margin-bottom: $jr-margin;
+  @extend %flex-parent;
+  @extend %section-overflow;
+  h3 {
+    @include jr-flex(1);
+  }
 }
 
 article {

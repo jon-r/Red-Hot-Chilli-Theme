@@ -4,6 +4,7 @@
   @extend %flex-parent;
   div {
     @extend %flex-child;
+    position: relative;
     background-color: white;
     padding: $jr-margin;
     box-shadow: 0 2px 4px rgba(#222,0.5);
@@ -19,6 +20,7 @@
   }
   img {
     width: 100%;
+    margin: 0 auto;
   }
 }
 
@@ -42,7 +44,11 @@
   }
 }
 
-.shop-grid.category {
+.shop-grid.category, .shop-grid.item {
+  a {
+    height: 100%;
+    width: 100%;
+  }
 
   div {
     @include jr-size(tablet) {
@@ -52,5 +58,19 @@
       @include jr-flex(4);
     }
   }
+}
+
+.shop-grid.item i {
+}
+
+//To Do - set up as icons and sprites
+.icon-placeholder {
+  position:absolute;
+  width:30%;
+  display: block;
+  right:$jr-margin;
+  font-size: 2rem;
+  bottom:$jr-margin;
+  @extend %h-font;
 }
 
