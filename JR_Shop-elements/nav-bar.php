@@ -30,18 +30,36 @@ _________________________________________________________
       </li>
 
     <?php endforeach ?>
+<?php // wp menus start here. admin for setup --> ?>
       <li>Featured
-        <ul>
-          <h3><a>Featured</a></h3>
-          <li><a href="?page_id=16&new=1&pg=1" >NEW Items</a></li>
-          <li><a href="?page_id=16&soon=1&pg=1" >Coming Soon</a></li>
-          <li><a href="?page_id=16&sold=1&pg=1" >Recently Sold</a></li>
-          <li><a href="?page_id=16&all=1&pg=1" >All Items</a></li>
-        </ul>
+        <?php wp_nav_menu(array(
+          'container' => '',                           // remove nav container
+          'container_class' => '',                 // class of container (should you choose to use it)
+          'menu' => __( 'Featured Menu Links', 'bonestheme' ),  // nav name
+          'menu_class' => '',               // adding custom nav class
+          'theme_location' => 'featured-menu',                 // where it's located in the theme
+          'before' => '',                                 // before the menu
+          'after' => '',                                  // after the menu
+          'link_before' => '',                            // before each link
+          'link_after' => '',                             // after each link
+          'depth' => 0,                                   // limit the depth of the nav
+          'fallback_cb' => ''                             // fallback function (if there is one)
+        )); ?>
       </li>
       <li>Other Services
-        <?php // wp menu starts here. functions.php for setup --> ?>
-        <?php dynamic_sidebar( 'sidebar1' ); ?>
+        <?php wp_nav_menu(array(
+          'container' => '',                           // remove nav container
+          'container_class' => '',                 // class of container (should you choose to use it)
+          'menu' => __( 'Services Menu links', 'bonestheme' ),  // nav name
+          'menu_class' => '',               // adding custom nav class
+          'theme_location' => 'services-menu',                 // where it's located in the theme
+          'before' => '',                                 // before the menu
+          'after' => '',                                  // after the menu
+          'link_before' => '',                            // before each link
+          'link_after' => '',                             // after each link
+          'depth' => 0,                                   // limit the depth of the nav
+          'fallback_cb' => ''                             // fallback function (if there is one)
+        )); ?>
       </li>
     </ul>
 

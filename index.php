@@ -1,4 +1,11 @@
+
+
+is this even needed? i'll leave this here until it breaks...
+
+<?php /*
+
 <?php get_header(); ?>
+
 
 			<div id="content">
 
@@ -68,5 +75,8 @@
 
 			</div>
 
-
 <?php get_footer(); ?>
+
+ */ ?>
+
+

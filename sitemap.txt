@@ -1,0 +1,151 @@
+plan for the website. 
+
+-- site map -----------------------------------------------------------------------------|
+
+(((Page Name [template-name] (features/parameters))))
+
+--index--------------------------
+
+*Index [page-index] 
+
+--shop---------------------------
+  *Groups         [page-groups] (get=x)
+    *Categories   [page-categories] (cat=x)
+      *items      [page-items] (rhc=x)      
+      
+  *Search
+
+  Featured
+    Sales(1-9)    [page-categories] (sale=1-9) NYI
+    *Sold          [page-categories] (sold=1)
+    *New           [page-categories] (new=1)
+    *Soon          [page-categories] (soon=1)
+    Brands        [page-groups] (cat=brand)
+      *Brand-x     [page-categories] (brand=x)
+    
+  *All             [page-categories] ()
+
+--static-------------------------
+  About           [page]  (pdf book)
+  
+  Contact         [page-contact]
+  
+  Services
+    Leasing       [page]
+    Buy New       [page]
+    Spares        [page]
+    Design/Quotes [page] 
+    Sell to us    [page]
+    
+  Terms           [page]
+  
+  404             [404]
+  
+  Sitemap         [page] (auto generated map?)
+  
+  ----------template layouts-------------------------------------------------------------|
+  
+[page-index]
+<head>
+<section>
+  <nav>
+  <featured>
+  <groups-list>
+<foot>
+
+[page-groups]
+<head>
+<section>
+  <nav>
+  <category-list>
+<foot>
+
+[page-categories]
+<head>
+<section>
+  <nav>
+  <item-list>
+  <if >4 items> 
+    <contact RE filter type>
+<foot>
+
+[page-items]
+<head>
+<section>
+  <nav>
+  <item-full>
+  <sidebar-item>
+    <contact RE RHC###>
+    <custom-content>  
+<foot>
+
+[page]
+<head>
+<section>
+  <nav>
+  <custom-content>
+  <contact RE this page>
+<foot>
+
+[page-contact]
+<head>
+<section>
+  <nav>
+  <custom-content>
+  <map>
+  <contact RE ' '>
+  <sidebar-contact>
+    <social>
+    <address>
+    <hours>
+<foot>
+
+[404]
+<head>
+<section>
+  <nav>
+  <404 message>
+<foot>
+
+[delete images page (admin section)]
+-scans for and lists all images on site from sold items
+-option to delete them
+("sold list > get img ref") -> (for each, list images glob) -> (tick boxes to delete said images)
+http://stackoverflow.com/questions/15005899/delete-image-from-folder-php
+
+------ full breakdown--------------------------------------------------------------------|
+head>
+  head-menu
+nav>
+  breadcrumbs
+  carousel
+  menu
+featured-links>
+groups-list>
+foot>
+  foot-menu
+category-list>
+item-list>
+  if items less than 4 > contact RE filter type>
+item-full>
+sidebar-item>
+  contact RE RHC###>
+  custom-content-item>  
+custom-content-default>
+contact RE default>
+custom-content-contact>
+map>
+contact RE ' '>
+sidebar-contact>
+  social>
+  address>
+  hours>
+404 page>
+
+----plugins------------------------------------------------------------------------------|
+contact forms
+menu images
+pdf viewer
+sitemap
+back-end table editor
+image uploader (custom built, powershell)

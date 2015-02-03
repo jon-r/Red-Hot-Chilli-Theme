@@ -214,9 +214,11 @@ function bones_theme_support() {
 	// registering wp3+ menus
 	register_nav_menus(
 		array(
-			'main-nav' => __( 'The Main Menu', 'bonestheme' ),   // main nav in header
-			'footer-links' => __( 'Footer Links', 'bonestheme' ), // secondary nav in footer
-			'front-image-links' => __( 'Front Page Image Links', 'bonestheme' ) // big picture link menu
+			'services-menu' => __( 'Services Menu links', 'bonestheme'),
+            'featured-menu' => __( 'Featured Menu Links', 'bonestheme' ),
+            'front-page-list' => __( 'Front Page Links', 'bonestheme'),
+			'header-links' => __( 'Header Links', 'bonestheme' ),
+			'footer-links' => __( 'Footer Links', 'bonestheme' )
 		)
 	);
 } /* end bones theme support */

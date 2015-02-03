@@ -1,5 +1,5 @@
 <?php
-/* Template Name: Filtered Items Page
+/* Template Name: Categories Page
 *
 * Listing all items sorted by Filter
 */
