@@ -1,0 +1,106 @@
+Sprite1
+64x
+	shopping cart (nyi)
+	arrow
+	load spinner?
+	search
+	fb
+	twitter
+	email
+	phone
+	X
+	burger
+128x
+	power
+		3p
+		1p
+		gas
+		lpg
+		dual
+	chilled
+		fridge
+		freezer
+		both
+	sold
+	sale ?
+	soon
+	new
+
+sprite2
+480x64 (index headers)
+	cooking
+	food prep
+	furniture
+	chilled
+	stainless steel
+	specialist
+240x64 (menu BG faded)
+	cooking
+	food prep
+	furniture
+	chilled
+	stainless steel
+	specialist
+
+single pics
+320x
+	"image coming soon"
+	categories
+		Bain Maries
+		Blenders
+		Boiling Plates
+		Bottle Coolers
+		Cash Tills
+		Chilled Displays
+		Coffee Preparation
+		Combi & Steam & Convection
+		Décor
+		Displays
+		Extraction Equipment
+		Freezers
+		Fridges
+		Fryers
+		Glass & Dishwashers
+		Grills & Griddles
+		Heated Serveries
+		Hot Cupboards
+		Ice Machines
+		Microwaves
+		Mixers
+		Oriental
+		Other Food Prep
+		Other Stainless Steel
+		Oven Ranges
+		Pasta Boilers
+		Pie Warmers
+		Pizza Ovens
+		Potato Ovens
+		Prep Fridges
+		Processors
+		Shelving & Gantries
+		Sinks
+		Slicers
+		Soft Furnishings
+		Tables & Chairs
+		Walk-In Units
+		Water Boilers
+		Worktops
+	major brands (can add more later. set these as the keywords)
+		Vulcan
+		Lincat
+		Falcon
+		King Edward
+		Blue Seal
+		Hoshizaki
+		Williams
+		Valentine
+		WinterHalter
+		Buffalo
+		Parry
+		Middleby Marshal
+		Autonumis
+		Osborne
+		Victor
+		Crypto Peerless
+		Hobart
+		Pitco

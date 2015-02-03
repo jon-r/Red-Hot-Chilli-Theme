@@ -10,7 +10,13 @@
 <h2><?php the_title(); ?></h2>
   <article>
 
-  <?php the_content(); ?>
+  <?php the_content();
+
+foreach ($brandsListFull  as $brand) {
+  echo $brand.'<br>';
+}
+
+    ?>
 
   </article>
 
