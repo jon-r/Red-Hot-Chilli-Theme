@@ -26,18 +26,18 @@ function jr_smart_search($searchTerm) {
 	if (stripos($searchTerm, "rhc") === 0) {
 		$urlEnd = http_build_query([
 			'r' => str_replace('rhc', '', $searchTerm),
-			'page_id' => '21'
+			'page_id' => jr_page('item')
 		]);
 	} elseif (in_array(ucwords($searchTerm) , $brandsListMajor)) {
 		$urlEnd = http_build_query([
 			'brand' => $searchTerm,
-			'page_id' => '16'
+			'page_id' => jr_page('cat')
 		]);
 //} elseif (stainless steel) {
 	} else {
 		$urlEnd = http_build_query([
 			'search' => $searchTerm,
-			'page_id' => '16'
+			'page_id' => jr_page('cat')
 		]);
 //if blank?
 	}

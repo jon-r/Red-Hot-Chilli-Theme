@@ -47,17 +47,11 @@ function jr_category_row( $safeCategory ) {
 function jr_category_filter( $safeArr ) {
 
   global $wpdb, $itemCount;
-  $fType = $safeArr[pgType];
+  $fType = $safeArr['pgType'];
 
-  //$fLatest =      $safeArr['new'];
-  //$fAll =         $safeArr['all']; //currently is all by default
-  //$fSoon =        $safeArr['soon'];
-  //$fRecentSold =  $safeArr['sold'];
-  //$fSale =        $safeArr['sale'];
   $fSearch =      $safeArr['search'];
   $fBrand	=     $safeArr['brand'];
   $fCategory =    $safeArr['cat'];
-  //$fStainless =   $safeArr['ss'];
 
   //setup LIKE parts of the query
   $searchPart = str_replace(" ", "|", $fSearch);

@@ -11,12 +11,12 @@
 <article class="shop-grid category">
 
   <?php foreach ($filteredCategories as $category) :
-    $link = http_build_query(['cat' => $category[Name], 'page_id' => 16]);
+    $link = http_build_query(['cat' => $category[Name], 'page_id' => jr_page('cat')]);
     $imgUrl = imgSrcRoot('thumbnails',$category[Name],'jpg');
   ?>
 
     <div>
-      <a href="?<?php echo $link ?>&pg=1" >
+      <a href="?<?php echo $link ?>" >
         <?php echo $imgUrl ?>
         <h2><?php echo $category[Name] ?></h2>
       </a>

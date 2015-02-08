@@ -11,11 +11,11 @@ function jr_validate_params($get) {
   if ($get[page_id] == null) {//home page
     $out[pgName] = $out[pgType] = 'Home';
 
-  } elseif ($get[page_id] == '24') {//groups page
+  } elseif ($get[page_id] == jr_page('grp')) {
     $out[pgType] = 'Group';
     $out[pgName] = $out[group] = jr_validate_group($get[g]);
 
-  } elseif ($get[page_id] == '16') {//catgories page
+  } elseif ($get[page_id] == jr_page('cat')) {
     if ($get['new']) {
       $out[pgType] = 'New';
       $out[pgName] = 'Just In';
@@ -57,7 +57,6 @@ function jr_validate_params($get) {
     } else {
       $out[pgType] = 'All';
       $out[pgName] = 'All Products';
-
     };
     if ($out[pgType] == 'Category' || $out[pgType] == 'CategorySS') {
       $out[imgUrl] = imgSrcRoot('thumbnails',$fCategory,'jpg');
@@ -67,7 +66,7 @@ function jr_validate_params($get) {
       $out[description] = jr_category_info($out[pgType]);
 
     }
-  } elseif ($get[page_id] == '21') {
+  } elseif ($get[page_id] == jr_page('item')) {
     $out[pgType] = 'Item';
     $out[rhc] = $get['x'] ? jr_validate_rhc($get['r']) : jr_validate_rhc($get['r']);
     $out[cat] = jr_validate_category($get['cat']);
@@ -75,7 +74,7 @@ function jr_validate_params($get) {
     $out[pgName] = $get['n'];
 
   } else {
-    $out[pgType] = $out[pgName] = 'Page Name';
+    $out[pgType] = $out[pgName] = 'Page Name'; //get the page title
   };
 
   return $out;

@@ -57,7 +57,7 @@
 
       <form>
         <label for="search">Search</label>
-        <input type="hidden" name="page_id" value="30">
+        <input type="hidden" name="page_id" value="<?php echo jr_page('srch') ?>">
         <input type="search" name="search">
         <button type="submit">GO</button>
       </form>

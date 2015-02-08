@@ -12,7 +12,7 @@ _________________________________________________________
     <h2 id="js-menuMainBtn">Browse</h2>
     <ul class='menu-main-primary'>
     <?php foreach($groupsList as $group) :
-        $link = http_build_query(['g' => $group, 'page_id' => 24]);
+        $link = http_build_query(['g' => $group, 'page_id' => jr_page('grp')]);
         $categoriesListFiltered = array_filter ($categoriesList, isGroup($group));
       ?>
 
@@ -22,7 +22,7 @@ _________________________________________________________
           <a href="?<?php echo $link ?>" ><h3><?php echo $group ?></h3></a>
 
           <?php foreach ($categoriesListFiltered as $category) :
-              $link = http_build_query(['cat' => $category[Name], 'page_id' => 16]);
+              $link = http_build_query(['cat' => $category[Name], 'page_id' => jr_page('cat')]);
           ?>
           <li  class="box-link"><a href="?<?php echo $link ?>" ><?php echo $category[Name] ?></a></li>
           <?php endforeach ?>

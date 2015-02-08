@@ -40,6 +40,8 @@ SECURITY:
 \ Links to the function pages and arrays.*/
 include('JR_Global_Variables.php');
 
+include('JR_Development_Variables.php');
+
 include('JR_Validate.php');
 
 include('JR_Search.php');
