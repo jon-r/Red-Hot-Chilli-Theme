@@ -34,7 +34,7 @@ function jr_item_query($safeRHC, $SS = null) {
   if ($SS) {
     $queryFull = $wpdb->get_row("SELECT `RHCs`, `ProductName`, `Category`, `Height`, `Width`, `Depth`, `Price`, `Quantity`, `TableinFeet`, `Line1` FROM `benchessinksdb` WHERE RHCs = $safeRHC", ARRAY_A);
   } else {
-    $queryFull = $wpdb->get_row("SELECT `RHC`, `ProductName`, `Image`, `Price`, `Height`, `Width`, `Depth`, `Model`, `Brand`, `Wattage`, `Power`, `ExtraMeasurements`, `Line 1`, `Line 2`, `Line 3`, `Condition/Damages`, `Sold`, `Quantity`, `Category`, `Cat1`, `Cat2`, `Cat3`, `IsSale`, `IsSoon` FROM `networked db` WHERE RHC = $safeRHC", ARRAY_A);
+    $queryFull = $wpdb->get_row("SELECT `RHC`, `ProductName`, `Image`, `Price`, `Height`, `Width`, `Depth`, `Model`, `Brand`, `Wattage`, `Power`, `ExtraMeasurements`, `Line 1`, `Line 2`, `Line 3`, `Condition/Damages`, `Sold`, `Quantity`, `Category`, `Cat1`, `Cat2`, `Cat3`, `SalePrice`, `IsSoon` FROM `networked db` WHERE RHC = $safeRHC", ARRAY_A);
   }
   return $queryFull;
 }
@@ -70,7 +70,7 @@ function jr_category_filter( $safeArr ) {
   } elseif ($fType == 'CategorySS') {
     $queryStart = "SELECT `RHCs`, `ProductName`, `Price`, `Category`,  `TableinFeet` FROM `benchessinksdb` ";
   } else {
-    $queryStart = "SELECT `RHC`, `ProductName`, `Image`, `IsSoon`, `Sold`, `Category`, `Power`, `Price`, `IsSale` FROM `networked db` ";
+    $queryStart = "SELECT `RHC`, `ProductName`, `Image`, `IsSoon`, `Sold`, `Category`, `Power`, `Price`, `SalePrice` FROM `networked db` ";
   };
 
   //the query "middle". what is the data filtered by?
@@ -86,7 +86,7 @@ function jr_category_filter( $safeArr ) {
   if ($fType == 'Soon' ) {
     $queryEnd = "(`LiveonRHC` = 0 AND `IsSoon` = 1) ORDER BY `RHC` DESC";
   } elseif ($fType == 'Sale' ) {
-    $queryEnd = "(`LiveonRHC` = 1 AND `IsSale` = 1 AND `Sold` = 0) ORDER BY `RHC` DESC";
+    $queryEnd = "(`LiveonRHC` = 1 AND `SalePrice` > 0 AND `Sold` = 0) ORDER BY `RHC` DESC";
   } elseif ($fType == 'Sold' ) {
     $queryEnd = "`Sold` = 1 ORDER BY `DateSold` DESC LIMIT $itemCount";
   } elseif ($fType == 'CategorySS') {
