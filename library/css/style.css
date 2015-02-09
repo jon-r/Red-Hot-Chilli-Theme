@@ -432,7 +432,6 @@ a {
   a:hover {
     color: #821717; }
 
-/*---Grid + Gutter margins-------------------------------------------------------------*/
 /*---Flex------------------------------------------------------------------------------*/
 .section-header, nav, .shop-grid {
   display: flex;
@@ -484,14 +483,13 @@ section {
   box-shadow: 0 0 10px #300303; }
 
 @media only screen and (min-width: 1031px) {
-  .section-header, article, nav {
+  article, nav, .shop-grid {
     margin: 0 -1rem; } }
 
 .section-header {
-  background: #c27070;
-  margin-bottom: 1rem; }
+  margin: 1rem; }
   .section-header h3 {
-    flex-basis: calc(100% - 1rem); }
+    text-align: right; }
 
 footer {
   background-color: #5c0a0a;

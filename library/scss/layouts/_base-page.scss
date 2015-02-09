@@ -47,14 +47,12 @@ section {
   };
 }
 
+
 .section-header {
-  background: jr-rhc-color(6);
-  @extend %section-overflow;
-  margin-bottom: $jr-margin;
+  margin: $jr-margin;
   @extend %flex-parent;
-  @extend %section-overflow;
   h3 {
-    @include jr-flex(1);
+	  text-align: right;
   }
 }
 

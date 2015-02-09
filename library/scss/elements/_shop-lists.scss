@@ -2,9 +2,10 @@
 
 .shop-grid {
   @extend %flex-parent;
+  @extend %section-overflow;
   div {
     @extend %flex-child;
-    position: relative;
+	position: relative;
     background-color: white;
     padding: $jr-margin;
     box-shadow: 0 2px 4px rgba(#222,0.5);
