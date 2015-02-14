@@ -15,7 +15,7 @@ $itemCount = $count > 100 ? "(100+ Results)" : "(".$count." Results)";
   <div><?php echo $safeArr[description] ?></div><?php echo $safeArr[imgURL] ?>
 </header>
 
-<article class="shop-grid item">
+<article class="shop-grid items">
 
 
 
@@ -34,8 +34,8 @@ $itemCount = $count > 100 ? "(100+ Results)" : "(".$count." Results)";
       <?php echo $shop_item[imgFirst] ?>
       <?php echo $shop_item[info] ?>
       <i class="icon-placeholder"><?php echo $shop_item[icon] ?></i>
-      <p>ref: <?php echo $shop_item[rhc] ?></p>
-      <?php echo $shop_item[price] ? "<p>£".$shop_item[price]."+ VAT</p>" : null ?>
+      <?php echo $shop_item[rhc] ?>
+      <?php echo $shop_item[price] ?>
     </a>
   </div>
 <?php endforeach ?>

@@ -4,19 +4,16 @@ nav {
   @extend %flex-parent;
   @extend %section-overflow;
   div {
+    @extend %flex-child;
     height: 2rem;
-    box-shadow: 0 2px 4px rgba(#222,0.5);
+//    box-shadow: 0 2px 4px rgba(#222,0.5);
+//    width:calc(100% - #{$jr-margin});
   }
 
 }
 
 .menu-main {
-  background:white;
-  position: relative;
   z-index: 3;
-  margin-bottom: $jr-margin;
-  width:calc(100% - #{$jr-margin});
-
   &.open {
     height: auto;
   }
@@ -97,7 +94,6 @@ nav {
 }
 
 .menu-carousel, .menu-breadcrumbs {
-  @extend %flex-child;
   background-color:jr-rhc-color(8.5);
   overflow: hidden;
 
@@ -149,4 +145,32 @@ nav {
       border-left-color: jr-rhc-color(8);
     }
   }
+}
+
+.menu-featured {
+    @extend %flex-parent;
+    @extend %section-overflow;
+
+  li {
+    @extend %flex-child;
+    @include jr-flex(2);
+    @include jr-size(tablet) {
+      @include jr-flex(4);
+    }
+  }
+  h3 {
+    position:absolute;
+    width: 100%;
+    bottom:0;
+    background:white;
+    left:0;
+    padding: 1rem;
+  }
+  img {
+    height: 100%;
+    /*overwriting plugin*/
+    width: 100% !important;
+    padding:0 !important;
+  }
+
 }

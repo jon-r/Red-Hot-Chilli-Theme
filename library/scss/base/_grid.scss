@@ -1,4 +1,4 @@
-/*---Flex------------------------------------------------------------------------------*/
+/*---Frame Grid Defaults---------------------------------------------------------------*/
 
 %flex-parent {
   display:flex;
@@ -7,9 +7,13 @@
 }
 
 %flex-child {
-  flex-basis: calc(100% - #{$jr-margin});
+ // flex: 1;
 //  margin: 0 $jr-margin $jr-margin 0;
-  margin-bottom: $jr-margin
+  position: relative;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(#222,0.5);
+  margin-bottom: $jr-margin;
+  width:calc(100% - #{$jr-margin});
 }
 
 @mixin jr-flex($rows) {

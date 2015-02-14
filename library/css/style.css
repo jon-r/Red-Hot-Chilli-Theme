@@ -432,15 +432,18 @@ a {
   a:hover {
     color: #821717; }
 
-/*---Flex------------------------------------------------------------------------------*/
-.section-header, nav, .shop-grid {
+/*---Frame Grid Defaults---------------------------------------------------------------*/
+.section-header, nav, .menu-featured, .shop-grid, .item-gallery {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around; }
 
-.menu-carousel, .menu-breadcrumbs, .shop-grid div {
-  flex-basis: calc(100% - 1rem);
-  margin-bottom: 1rem; }
+nav div, .menu-featured li, .shop-grid > div {
+  position: relative;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(34, 34, 34, 0.5);
+  margin-bottom: 1rem;
+  width: calc(100% - 1rem); }
 
 /*********************
 IMPORTING LAYOUTS
@@ -456,7 +459,8 @@ html {
 body {
   padding: 0;
   line-height: 1.2em;
-  background-color: #a32929; }
+  background-color: #a32929;
+  min-width: 320px; }
 
 .container {
   max-width: 1000px;
@@ -483,7 +487,7 @@ section {
   box-shadow: 0 0 10px #300303; }
 
 @media only screen and (min-width: 1031px) {
-  article, nav, .shop-grid {
+  article, nav, .menu-featured, .shop-grid {
     margin: 0 -1rem; } }
 
 .section-header {
@@ -498,15 +502,10 @@ footer {
 
 /*- menu parts -----------------------------------------------------------------------*/
 nav div {
-  height: 2rem;
-  box-shadow: 0 2px 4px rgba(34, 34, 34, 0.5); }
+  height: 2rem; }
 
 .menu-main {
-  background: white;
-  position: relative;
-  z-index: 3;
-  margin-bottom: 1rem;
-  width: calc(100% - 1rem); }
+  z-index: 3; }
   .menu-main.open {
     height: auto; }
   .menu-main ul {
@@ -601,16 +600,31 @@ nav div {
   .menu-breadcrumbs a:last-of-type::after {
     border-left-color: #d6c2c2; }
 
+.menu-featured li {
+  flex-basis: calc(50% - 1rem); }
+  @media only screen and (min-width: 482px) {
+    .menu-featured li {
+      flex-basis: calc(25% - 1rem); } }
+.menu-featured h3 {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background: white;
+  left: 0;
+  padding: 1rem; }
+.menu-featured img {
+  height: 100%;
+  /*overwriting plugin*/
+  width: 100% !important;
+  padding: 0 !important; }
+
 /*********************
 IMPORTING ELEMENTS
 Page specific items.
 *********************/
 /*-- default list Layout -----------------------------------------------------------*/
-.shop-grid div {
-  position: relative;
-  background-color: white;
-  padding: 1rem;
-  box-shadow: 0 2px 4px rgba(34, 34, 34, 0.5); }
+.shop-grid > div {
+  padding: 1rem; }
 .shop-grid ul {
   border-top: 2px solid #e0e0e0;
   padding-top: 1rem; }
@@ -622,7 +636,7 @@ Page specific items.
   width: 100%;
   margin: 0 auto; }
 
-/*-- specific list Layout -----------------------------------------------------------*/
+/*-- group list Layout -----------------------------------------------------------*/
 .shop-grid.group img {
   height: 4rem;
   background: #ddd; }
@@ -633,16 +647,18 @@ Page specific items.
   .shop-grid.group div {
     flex-basis: calc(33.33333% - 1rem); } }
 
-.shop-grid.category a, .shop-grid.item a {
+/*-- category list Layout -----------------------------------------------------------*/
+.shop-grid.category a, .shop-grid.items a {
   height: 100%;
   width: 100%; }
 @media only screen and (min-width: 482px) {
-  .shop-grid.category div, .shop-grid.item div {
-    flex-basis: calc(33.33333% - 1rem); } }
+  .shop-grid.category div, .shop-grid.items div {
+    flex-basis: calc(50% - 1rem); } }
 @media only screen and (min-width: 1031px) {
-  .shop-grid.category div, .shop-grid.item div {
+  .shop-grid.category div, .shop-grid.items div {
     flex-basis: calc(25% - 1rem); } }
 
+/*-- items list Layout -----------------------------------------------------------*/
 .icon-placeholder {
   position: absolute;
   width: 30%;
@@ -650,5 +666,24 @@ Page specific items.
   right: 1rem;
   font-size: 2rem;
   bottom: 1rem; }
+
+/*-- single item Layout -----------------------------------------------------------*/
+@media only screen and (min-width: 482px) {
+  .item-images {
+    flex-basis: calc(50% - 1rem); } }
+@media only screen and (min-width: 1031px) {
+  .item-images {
+    flex-basis: calc(33.33333% - 1rem); } }
+
+.item-gallery li {
+  flex-basis: calc(25% - 1rem); }
+
+@media only screen and (min-width: 482px) {
+  .item-description {
+    flex-basis: calc(50% - 1rem); } }
+
+@media only screen and (min-width: 1031px) {
+  .item-sidebar {
+    flex-basis: calc(16.66667% - 1rem); } }
 
 /*# sourceMappingURL=style.css.map */

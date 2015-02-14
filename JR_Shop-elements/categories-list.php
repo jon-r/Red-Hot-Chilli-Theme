@@ -24,4 +24,4 @@
 
   <?php endforeach ?>
 
-  </article>
+</article>

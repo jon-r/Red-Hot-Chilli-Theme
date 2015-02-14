@@ -13,9 +13,9 @@ function jr_shop_compile($ref,$detail) {
   //      height      => $ref[Height] ?: null,
   //      width       => $ref[Width] ?: null,
   //      depth       => $ref[Height] ?: null,
-        hFull       => $ref[Height] ? $ref[Height]."mm / ".ceil($ref[Height] / 25.4)." inches" : null,
-        wFull       => $ref[Width] ? $ref[Width]."mm / ".ceil($ref[Width] / 25.4)." inches" : null,
-        dFull       => $ref[Depth] ? $ref[Depth]."mm / ".ceil($ref[Depth] / 25.4)." inches" : null,
+        hFull       => $ref[Height] ? "Height: ".$ref[Height]."mm / ".ceil($ref[Height] / 25.4)." inches" : null,
+        wFull       => $ref[Width] ? "Width: ".$ref[Width]."mm / ".ceil($ref[Width] / 25.4)." inches" : null,
+        dFull       => $ref[Depth] ? "Depth: ".$ref[Depth]."mm / ".ceil($ref[Depth] / 25.4)." inches" : null,
         desc        => ($ref['Line1'] != " " ? $ref['Line 1']."<br>" : null),
         quantity    => $ref[Quantity] > 1 ? $ref[Quantity]." in Stock" : null
       ];
@@ -23,11 +23,11 @@ function jr_shop_compile($ref,$detail) {
       $out2 = [
         webLink     => http_build_query(
           ['page_id' => jr_page('item'), 'cat' => $ref[Category], 'r' => $ref[RHCs], 'n' => $ref[ProductName], 'x' => 1]),
-        rhc         => "RHCs".$ref[RHCs],
+        rhc         => "Ref: RHCs".$ref[RHCs],
         name        => $ref[ProductName],
         // need to generate ss image location. would help in shop too.
         imgFirst    => imgSrcRoot('gallery',$ref[Image],'jpg'),
-        price       => $ref[Price],
+        price       => $ref[Price] ? "£".$ref[Price]." + VAT" : "Price Coming Soon" ,
         icon       => $ref[TableinFeet].'ft'
       ];
     break;
@@ -52,19 +52,19 @@ function jr_shop_compile($ref,$detail) {
  //       height      => $ref[Height] ?: null,
  //       width       => $ref[Width] ?: null,
   //      depth       => $ref[Height] ?: null,
-        hFull       => $ref[Height] ? $ref[Height]."mm / ".ceil($ref[Height] / 25.4)." inches" : null,
-        wFull       => $ref[Width] ? $ref[Width]."mm / ".ceil($ref[Width] / 25.4)." inches" : null,
-        dFull       => $ref[Depth] ? $ref[Depth]."mm / ".ceil($ref[Depth] / 25.4)." inches" : null,
+        hFull       => $ref[Height] ? "Height: ".$ref[Height]."mm / ".ceil($ref[Height] / 25.4)." inches" : null,
+        wFull       => $ref[Width] ? "Width: ".$ref[Width]."mm / ".ceil($ref[Width] / 25.4)." inches" : null,
+        dFull       => $ref[Depth] ? "Depth: ".$ref[Depth]."mm / ".ceil($ref[Depth] / 25.4)." inches" : null,
         desc        => ($ref['Line 1'] != " " ? $ref['Line 1']."<br>" : null).
                       ($ref['Line 2'] != " " ? $ref['Line 2']."<br>" : null).
                       ($ref['Line 3'] != " " ? $ref['Line 3'] : null),
         quantity    => $ref[Quantity] > 1 ? $ref[Quantity]." in Stock" : null,
-        model       => $ref[Model],
+        model       => $ref[Model] ? "Model: ".$ref[Model] : null,
         extra       => $ref[ExtraMeasurements],
         condition   => $ref[Condition] != " " ? $ref[Condition] : null,
         brand       => $brandCheck,
         watt        => $wattCheck,
-        imgAll      => glob('wp-content/uploads/gallery/'.$ref[Image].'*')
+        imgAll      => glob('images/gallery/'.$ref[Image].'*')
       ];
     case 'med':
       $catArray = [ $ref[Category], $ref[cat1], $ref[cat2], $ref[cat3] ];
@@ -84,10 +84,10 @@ function jr_shop_compile($ref,$detail) {
       };
       $out2 = [
         icon        => $iconCheck,
-        price       => $ref[Price],
+        price       => $ref[Price] ? "£".$ref[Price]." + VAT" : "Price Coming Soon" ,
         webLink     => http_build_query(
           ['page_id' => jr_page('item'), 'cat' => $ref[Category], 'r' => $ref[RHC], 'n' => $ref[ProductName]]),
-        rhc         => "RHC".$ref[RHC],
+        rhc         => "ref: RHC".$ref[RHC],
         name        => $ref[ProductName],
         imgFirst    => imgSrcRoot('gallery',$ref[Image],'jpg'),
         info        => $infoCheck

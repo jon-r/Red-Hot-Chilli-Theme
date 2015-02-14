@@ -3,12 +3,9 @@
 .shop-grid {
   @extend %flex-parent;
   @extend %section-overflow;
-  div {
+  & > div {
     @extend %flex-child;
-	position: relative;
-    background-color: white;
     padding: $jr-margin;
-    box-shadow: 0 2px 4px rgba(#222,0.5);
   }
   ul {
     border-top: 2px solid #e0e0e0;
@@ -25,7 +22,7 @@
   }
 }
 
-/*-- specific list Layout -----------------------------------------------------------*/
+/*-- group list Layout -----------------------------------------------------------*/
 
 .shop-grid.group {
 
@@ -45,7 +42,9 @@
   }
 }
 
-.shop-grid.category, .shop-grid.item {
+/*-- category list Layout -----------------------------------------------------------*/
+
+.shop-grid.category, .shop-grid.items {
   a {
     height: 100%;
     width: 100%;
@@ -53,7 +52,7 @@
 
   div {
     @include jr-size(tablet) {
-      @include jr-flex(3);
+      @include jr-flex(2);
     }
     @include jr-size(screen) {
       @include jr-flex(4);
@@ -61,7 +60,9 @@
   }
 }
 
-.shop-grid.item i {
+/*-- items list Layout -----------------------------------------------------------*/
+
+.shop-grid.items i {
 }
 
 //To Do - set up as icons and sprites
@@ -75,3 +76,36 @@
   @extend %h-font;
 }
 
+/*-- single item Layout -----------------------------------------------------------*/
+
+.shop-grid.single {}
+
+.item-images {
+  @include jr-size(tablet) {
+    @include jr-flex(2);
+  }
+  @include jr-size(screen) {
+    @include jr-flex(3);
+  }
+}
+
+.item-gallery {
+  @extend %flex-parent;
+  li {
+    @include jr-flex(4);
+  }
+
+}
+
+.item-description {
+  @include jr-size(tablet) {
+    @include jr-flex(2);
+  }
+
+}
+
+.item-sidebar {
+  @include jr-size(screen) {
+    @include jr-flex(6);
+  }
+}

@@ -52,11 +52,11 @@ function jr_category_info($catType) {
 /*img location \
 \ potentially changed when proper urls are named */
 function imgSrcRoot($itemType,$itemName,$filetype) {
-  return '<img src="'.site_url().'/images/'.$itemType.'/'.$itemName.'.'.$filetype.'" />';
+  return '<img src="images/'.$itemType.'/'.$itemName.'.'.$filetype.'" />';
 }
 
 function imgSrcURL($itemType,$itemName) {
-  return site_url().'/images/'.$itemType.'/'.$itemName;
+  return 'images/'.$itemType.'/'.$itemName;
 }
 
 //returns if item in group. one level deeper than the normal IN_ARRAY

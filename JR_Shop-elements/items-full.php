@@ -6,22 +6,65 @@
 
 if ($safeArr[ss]) {
     $itemList = jr_item_query($safeArr[rhc], 1);
-    $jrShop = jr_shop_compile($itemList,'ssFull');
+    $shop_item = jr_shop_compile($itemList,'ssFull');
   } else {
     $itemList = jr_item_query($safeArr[rhc]);
-    $jrShop = jr_shop_compile($itemList,'full');
+    $shop_item = jr_shop_compile($itemList,'full');
   }
 ?>
 
-<header class="section-header">
-  <h1><?php echo $safeArr[pgName]; ?></h1>
-  <h3>Ref: RHC<?php echo $safeArr[rhc] ?></h3>
-</header>
-<article>
+<article class="shop-grid single" >
 
-<?php
+  <div class="item-images" >
+    <?php echo $shop_item[imgFirst] ?>
+    <?php echo $shop_item[info] ?>
 
-  var_dump($jrShop);
+    <ul class="item-gallery" >
+    <?php foreach ($shop_item[imgAll] as $galleryImg) : ?>
+      <li><img src="<?php echo $galleryImg ?>" ></li>
+    <?php endforeach ?>
+    </ul>
+  </div>
+
+  <div class="item-description" >
+    <h1><?php echo $shop_item[name]; ?></h1>
+    <h3><?php echo $shop_item[rhc] ?></h3>
+    <h4><?php echo $shop_item[price] ?></h4>
+
+    <?php echo $shop_item[desc] ?>
+    <?php echo $shop_item[condition] ?>
+
+
+    <div class="item-dimensions">
+      <?php echo $shop_item[hFull] ?>
+      <?php echo $shop_item[wFull] ?>
+      <?php echo $shop_item[dFull] ?>
+      <?php echo $shop_item[extra] ?>
+    </div>
+    <?php if ($shop_item[icon]) : ?>
+    <div class="item-power">
+      <i class="icon-placeholder"><?php echo $shop_item[icon] ?></i>
+      <h4><?php echo $shop_item[watt] ?></h4>
+    </div>
+    <?php endif ?>
+
+
+  </div>
+  <div class="item-sidebar">
+    <h4><?php echo $shop_item[quantity] ?></h4>
+    <button>Ask us</button>
+    <button>Shopping List (nyi)</button>
+    <button>Buy Now (nyi)</button>
+    <?php echo $shop_item[brand] ?>
+    <?php echo $shop_item[model] ?>
+
+
+
+  </div>
+
+  <?php
+
+  var_dump($shop_item);
 
 
   ?>
