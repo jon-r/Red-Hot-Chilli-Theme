@@ -7,7 +7,6 @@ $itemCount = 20;
 //How many items before the "try elsewhere" kicks in. NYI
 $itemCountMin = 4;
 
-
 /*Category Text \
 \ phrases for the category page
 $filterDescription = [
@@ -52,11 +51,21 @@ function jr_category_info($catType) {
 /*img location \
 \ potentially changed when proper urls are named */
 function imgSrcRoot($itemType,$itemName,$filetype) {
-  return '<img src="images/'.$itemType.'/'.$itemName.'.'.$filetype.'" />';
+  return 'images/'.$itemType.'/'.$itemName.'.'.$filetype;
 }
 
 function imgSrcURL($itemType,$itemName) {
   return 'images/'.$itemType.'/'.$itemName;
+}
+
+//Image sizes for generated
+function imgSize($size) {
+  $sizeArr = [
+    'thumb' => 150,
+    'tile'  => 480,
+    'base'  => 1600
+  ];
+  return $sizeArr[$size];
 }
 
 //returns if item in group. one level deeper than the normal IN_ARRAY

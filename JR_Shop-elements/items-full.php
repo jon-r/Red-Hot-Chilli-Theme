@@ -16,14 +16,17 @@ if ($safeArr[ss]) {
 <article class="shop-grid single" >
 
   <div class="item-images" >
-    <?php echo $shop_item[imgFirst] ?>
+
+    <img src="<?php echo img_resize($shop_item[imgFirst], 'tile') ?>" >
     <?php echo $shop_item[info] ?>
 
     <ul class="item-gallery" >
     <?php foreach ($shop_item[imgAll] as $galleryImg) : ?>
-      <li><img src="<?php echo $galleryImg ?>" ></li>
+
+      <li><img src="<?php echo img_resize($galleryImg, 'thumb') ?>" ></li>
     <?php endforeach ?>
     </ul>
+
   </div>
 
   <div class="item-description" >
@@ -43,7 +46,7 @@ if ($safeArr[ss]) {
     </div>
     <?php if ($shop_item[icon]) : ?>
     <div class="item-power">
-      <i class="icon-placeholder"><?php echo $shop_item[icon] ?></i>
+      <i class="icon-placeholder"><img src="<?php echo $shop_item[icon] ?>" ></i>
       <h4><?php echo $shop_item[watt] ?></h4>
     </div>
     <?php endif ?>

@@ -41,6 +41,8 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# maunally ignored
 /library/scss/OLD/
 /.archive/
 /JR_Shop/JR_Development_Variables.php

@@ -119,4 +119,33 @@ function jr_page_crumbles ($safeArr) {
   return $crumbs;
 }
 
+// ----------------------image-manipulation----------------------------------------------
+// generates resized images. Maybe put the "image remove" here too?
+
+
+// to be load on first requirement, does nothing once the file has been made.
+//this also (conveniently) used to dump the "coming soon"
+function img_resize ($src, $size) {
+  $img = wp_get_image_editor( $src );
+  $newSrc = str_replace("gallery", "gallery-$size", $src);
+  $reSize = imgSize($size);
+  $out = $newSrc;
+  if (file_exists($newSrc) && file_exists($src)) {
+    $dateCheck = filemtime($newSrc) < filemtime($src);
+    if ($dateCheck) {
+      $img->resize( $reSize, $reSize, false );
+      $img->set_quality( 60 );
+      $img->save($newSrc);
+    }
+  } elseif (file_exists($src)) {
+    $img->resize( $reSize, $reSize, false );
+    $img->set_quality( 60 );
+    $img->save($newSrc);
+  } else {
+    $out = imgSrcRoot(icons,ComingSoon,jpg);
+  }
+
+  return $out;
+}
+
 ?>

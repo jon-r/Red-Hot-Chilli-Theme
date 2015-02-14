@@ -31,9 +31,9 @@ $itemCount = $count > 100 ? "(100+ Results)" : "(".$count." Results)";
   <div>
     <a href="?<?php echo $shop_item[webLink] ?>" >
       <h3><?php echo $shop_item[name] ?></h3>
-      <?php echo $shop_item[imgFirst] ?>
+      <img src="<?php echo img_resize($shop_item[imgFirst], 'tile') ?>" >
       <?php echo $shop_item[info] ?>
-      <i class="icon-placeholder"><?php echo $shop_item[icon] ?></i>
+      <i class="icon-placeholder"><img src="<?php echo $shop_item[icon] ?>" ></i>
       <?php echo $shop_item[rhc] ?>
       <?php echo $shop_item[price] ?>
     </a>
