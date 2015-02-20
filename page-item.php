@@ -13,11 +13,7 @@
 
   <?php include( "JR_Shop-elements/nav-bar.php"); ?>
 
-
-
-    <?php include( "JR_Shop-elements/items-full.php"); ?>
-
-  </article>
+  <?php include( "JR_Shop-elements/items-full.php"); ?>
 
 </section>
 

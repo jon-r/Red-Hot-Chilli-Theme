@@ -11,8 +11,10 @@ $itemCount = $count > 100 ? "(100+ Results)" : "(".$count." Results)";
 ?>
 
 <header class="section-header">
-  <h1><?php echo $safeArr[pgName] ?></h1><h3><?php echo $itemCount ?></h3>
-  <div><?php echo $safeArr[description] ?></div><?php echo $safeArr[imgURL] ?>
+  <h1><?php echo $safeArr[pgName] ?></h1>
+  <h3><?php echo $itemCount ?></h3>
+  <p><?php echo $safeArr[description] ?></p>
+  <?php echo $safeArr[imgURL] ?>
 </header>
 
 <article class="shop-grid items">

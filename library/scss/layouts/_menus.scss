@@ -2,14 +2,16 @@
 
 nav {
   @extend %flex-parent;
-  @extend %section-overflow;
   div {
-    @extend %flex-child;
+    @extend %flex-tile;
     height: 2rem;
 //    box-shadow: 0 2px 4px rgba(#222,0.5);
 //    width:calc(100% - #{$jr-margin});
   }
 
+  @include jr-size(screen) {
+    margin: 0 #{$jr-margin * -1};
+  };
 }
 
 .menu-main {
@@ -149,10 +151,9 @@ nav {
 
 .menu-featured {
     @extend %flex-parent;
-    @extend %section-overflow;
 
   li {
-    @extend %flex-child;
+    @extend %flex-tile;
     @include jr-flex(2);
     @include jr-size(tablet) {
       @include jr-flex(4);

@@ -13,12 +13,15 @@ if ($safeArr[ss]) {
   }
 ?>
 
+<header class="section-header">
+  <h1><?php echo $shop_item[name]; ?></h1>
+  <h2><?php echo $shop_item[price] ?></h2>
+  <h3><?php echo $shop_item[rhc] ?></h3>
+</header>
+
 <article class="shop-grid single" >
 
   <div class="item-images" >
-
-    <img src="<?php echo img_resize($shop_item[imgFirst], 'tile') ?>" >
-    <?php echo $shop_item[info] ?>
 
     <ul class="item-gallery" >
     <?php foreach ($shop_item[imgAll] as $galleryImg) : ?>
@@ -30,20 +33,22 @@ if ($safeArr[ss]) {
   </div>
 
   <div class="item-description" >
-    <h1><?php echo $shop_item[name]; ?></h1>
-    <h3><?php echo $shop_item[rhc] ?></h3>
-    <h4><?php echo $shop_item[price] ?></h4>
+
+    <img src="<?php echo img_resize($shop_item[imgFirst], 'tile') ?>" >
+    <?php echo $shop_item[info] ?>
+
 
     <?php echo $shop_item[desc] ?>
     <?php echo $shop_item[condition] ?>
 
 
-    <div class="item-dimensions">
-      <?php echo $shop_item[hFull] ?>
-      <?php echo $shop_item[wFull] ?>
-      <?php echo $shop_item[dFull] ?>
-      <?php echo $shop_item[extra] ?>
-    </div>
+    <ul class="item-dimensions">
+      <li><?php echo $shop_item[hFull] ?></li>
+      <li><?php echo $shop_item[wFull] ?></li>
+      <li><?php echo $shop_item[dFull] ?></li>
+      <li><?php echo $shop_item[extra] ?></li>
+    </ul>
+
     <?php if ($shop_item[icon]) : ?>
     <div class="item-power">
       <i class="icon-placeholder"><img src="<?php echo $shop_item[icon] ?>" ></i>

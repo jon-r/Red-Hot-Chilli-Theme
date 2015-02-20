@@ -2,19 +2,17 @@
 
 .shop-grid {
   @extend %flex-parent;
-  @extend %section-overflow;
   & > div {
-    @extend %flex-child;
+    @extend %flex-tile;
     padding: $jr-margin;
   }
   ul {
+    @extend %flex-parent;
     border-top: 2px solid #e0e0e0;
     padding-top: $jr-margin;
   }
   li {
-    line-height: 2;
-    width: 50%;
-    float: left;
+    line-height: 1.5;
   }
   img {
     width: 100%;
@@ -32,6 +30,10 @@
     background:#ddd;
   }
   //temp over
+  li {
+    @include jr-flex(2);
+  }
+
   div {
     @include jr-size(tablet) {
       @include jr-flex(2);
@@ -85,14 +87,14 @@
     @include jr-flex(2);
   }
   @include jr-size(screen) {
-    @include jr-flex(3);
+    @include jr-flex(4);
   }
 }
 
 .item-gallery {
   @extend %flex-parent;
   li {
-    @include jr-flex(4);
+    @include jr-flex(2);
   }
 
 }
@@ -101,11 +103,13 @@
   @include jr-size(tablet) {
     @include jr-flex(2);
   }
-
+  li {
+    @include jr-flex(1);
+  }
 }
 
 .item-sidebar {
   @include jr-size(screen) {
-    @include jr-flex(6);
+    @include jr-flex(4);
   }
 }

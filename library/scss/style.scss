@@ -52,17 +52,10 @@ IMPORTING ELEMENTS
 Page specific items.
 *********************/
 
-//product groups (front page)
-@import "elements/groups";
 
 //shop list defaults
 @import "elements/shop-lists";
 
-//product categories (groups page, some on front page too)
-@import "elements/categories";
-
-//product single items)
-@import "elements/items";
 
 //front page carousel banner thingy. i dunno what to make yet...
 @import "elements/carousel";

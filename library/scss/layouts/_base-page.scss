@@ -41,23 +41,24 @@ section {
   box-shadow: 0 0 10px jr-rhc-color(1);
 }
 
-%section-overflow {
-  @include jr-size(screen) {
-    margin: 0 #{$jr-margin * -1};
-  };
-}
-
-
 .section-header {
-  margin: $jr-margin;
+  margin:$jr-margin #{$jr-margin / 2};
+  padding:$jr-margin;
+  @extend %flex-tile;
   @extend %flex-parent;
+  justify-content: space-between;
+
   h3 {
-	  text-align: right;
+    @include jr-flex(1);
+    color: rgba(black, 0.5);
+  }
+  p {
+    @include jr-flex(1);
   }
 }
 
 article {
-  @extend %section-overflow;
+
 }
 
 footer {
