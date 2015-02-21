@@ -2,9 +2,7 @@
 
 html {
   font-size: 14px;
- // @include jr-size(tablet) { font-size: 14px; };
   @include jr-size(screen) { font-size: 16px; };
- // @include jr-size(screen-hd) { font-size: 18px; };
 }
 
 body {
@@ -14,17 +12,12 @@ body {
   min-width: 320px;
 }
 
-.container {
-  max-width: 1000px;
-  margin:  0 auto;
-  @include jr-size(screen-hd) { max-width:1200px };
-}
 
 .page-header {
   width:100%;
   background-image: linear-gradient(jr-rhc-color(3), jr-rhc-color(1));
   height: 7rem;
-  padding:$jr-margin;
+  padding: $jr-margin;
   img {
     height: 5rem;
     position:relative;
@@ -44,16 +37,14 @@ section {
 .section-header {
   margin:$jr-margin #{$jr-margin / 2};
   padding:$jr-margin;
-  @extend %flex-tile;
+  @extend %grid-tile;
   @extend %flex-parent;
   justify-content: space-between;
-
-  h3 {
-    @include jr-flex(1);
-    color: rgba(black, 0.5);
+  h3, p {
+    @include jr-flex(1, 1);
   }
-  p {
-    @include jr-flex(1);
+  h3 {
+    color: jr-rhc-color(5);
   }
 }
 

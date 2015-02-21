@@ -8,9 +8,9 @@ _________________________________________________________
 ?>
 <nav>
 
-  <div id="js-menuMain" class="menu-main<?php echo is_front_page() ? ' menu-home' : null ?>" >
+  <div id="js-menuMain" class="nav-main<?php echo is_front_page() ? ' home' : null ?>" >
     <h2 id="js-menuMainBtn">Browse</h2>
-    <ul class='menu-main-primary'>
+    <ul>
     <?php foreach($groupsList as $group) :
         $link = http_build_query(['g' => $group, 'page_id' => jr_page('grp')]);
         $categoriesListFiltered = array_filter ($categoriesList, isGroup($group));
@@ -67,13 +67,13 @@ _________________________________________________________
 
   <?php if ( is_front_page() ): ?>
 
-  <div class="menu-carousel">
+  <div class="nav-carousel">
       banner here
   </div>
 
   <?php else: ?>
 
-  <div class="menu-breadcrumbs">
+  <div class="nav-breadcrumbs">
     <?php
       $breadLinks = jr_page_crumbles ($safeArr);
       foreach ($breadLinks as $breadSlices) {

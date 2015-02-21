@@ -8,28 +8,7 @@ $itemCount = 20;
 $itemCountMin = 4;
 
 /*Category Text \
-\ phrases for the category page
-$filterDescription = [
-  'new'   => 'Fresh off the workshop floor, this equipment is cleaned and ready to go.<br>
-              Enquire quickly, stock can go as soon as it comes in!',
-
-  'soon'  => 'Stock that has just entered our workshops. <br>
-              If interested, *link*call*link* us today and grab a bargain as soon as its ready.',
-
-  'sold'  => 'Don\'t worry if you were to late to get the item you wanted, there may be another soming soon <br>
-              *link*call*link* us today and reserve what you need before it goes again!',
-
-  'sale'  => 'Surplus stock, or equipment with a few extra dents.<br>
-              We make sure everything works fully before going online, so get it cheap today!',
-
-  'search' =>'Still can\'t find what you were looking for? *link*call*link* our team today and see if we can help'
-];*/
-
-//$featuredTbl = [
-//  ['ref' => 'new', 'Name' => 'New Items', 'Url' => '?page_id=16&new=1&pg=1']
-//  ['ref' => 'soon', 'Name' => 'Coming Soon', 'Url' => '?page_id=16&new=1&pg=1']
-//  ]
-//]
+\ phrases for the category page */
 
 function jr_category_info($catType) {
   $categoryFilterArr = [

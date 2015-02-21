@@ -41,6 +41,9 @@ IMPORTING LAYOUTS
 Standard page layouts. Default style for all pages
 *********************/
 
+//common styles.
+@import "layouts/common";
+
 //page core. includes header/footer
 @import "layouts/base-page";
 
@@ -52,13 +55,11 @@ IMPORTING ELEMENTS
 Page specific items.
 *********************/
 
+//front page, including carousel banner
+@import "pages/index";
 
 //shop list defaults
-@import "elements/shop-lists";
-
-
-//front page carousel banner thingy. i dunno what to make yet...
-@import "elements/carousel";
+@import "pages/shop-lists";
 
 //contact form(s)
-@import "elements/contact";
+@import "pages/contact";

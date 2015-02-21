@@ -378,24 +378,6 @@ td,
 th {
   padding: 0; }
 
-/* "super globals" -----------------------------------------------------------*/
-*, *::before {
-  box-sizing: border-box; }
-
-ul {
-  padding: 0;
-  list-style: none;
-  margin: 0; }
-
-/*
-.profile-pic {
-  float: left;
-  width: 250px;
-  @include jr-size(phone) { width: 100% ;}
-  @include jr-size(tablet) { width: 125px; }
-  @include jr-size(screen) { float: none; }
-}
-*/
 h1, h2, h3, h4, p {
   text-rendering: optimizelegibility;
   line-height: 1.2;
@@ -432,23 +414,38 @@ a {
   a:hover {
     color: #821717; }
 
-/*---Frame Grid Defaults---------------------------------------------------------------*/
+/*********************
+IMPORTING LAYOUTS
+Standard page layouts. Default style for all pages
+*********************/
+/*--- common page elements + defaults -------------------------------------------------*/
+*, *::before {
+  box-sizing: border-box; }
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto; }
+  @media only screen and (min-width: 1240px) {
+    .container {
+      max-width: 1200px; } }
+
+ul {
+  padding: 0;
+  list-style: none;
+  margin: 0; }
+
 .section-header, nav, .menu-featured, .shop-grid, .shop-grid ul, .item-gallery {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around; }
 
-.section-header, nav div, .menu-featured li, .shop-grid > div {
+.section-header, [class^=nav-], .menu-featured li, .shop-grid div {
   position: relative;
   background-color: white;
   box-shadow: 0 2px 4px rgba(34, 34, 34, 0.5);
   margin-bottom: 1rem;
   width: calc(100% - 1rem); }
 
-/*********************
-IMPORTING LAYOUTS
-Standard page layouts. Default style for all pages
-*********************/
 /*----Page Core --------------------------------------------------------------*/
 html {
   font-size: 14px; }
@@ -461,13 +458,6 @@ body {
   line-height: 1.2em;
   background-color: #a32929;
   min-width: 320px; }
-
-.container {
-  max-width: 1000px;
-  margin: 0 auto; }
-  @media only screen and (min-width: 1240px) {
-    .container {
-      max-width: 1200px; } }
 
 .page-header {
   width: 100%;
@@ -490,11 +480,10 @@ section {
   margin: 1rem 0.5rem;
   padding: 1rem;
   justify-content: space-between; }
-  .section-header h3 {
-    flex-basis: calc(100% - 1rem);
-    color: rgba(0, 0, 0, 0.5); }
-  .section-header p {
+  .section-header h3, .section-header p {
     flex-basis: calc(100% - 1rem); }
+  .section-header h3 {
+    color: #bf4040; }
 
 footer {
   background-color: #5c0a0a;
@@ -502,88 +491,84 @@ footer {
   padding: 1rem; }
 
 /*- menu parts -----------------------------------------------------------------------*/
-nav div {
-  height: 2rem; }
 @media only screen and (min-width: 1031px) {
   nav {
     margin: 0 -1rem; } }
 
-.menu-main {
+[class^=nav-] {
+  height: 2rem; }
+
+.nav-main {
   z-index: 3; }
-  .menu-main.open {
+  .nav-main.open {
     height: auto; }
-  .menu-main ul {
+  .nav-main ul {
     overflow: hidden;
     height: calc(100% - 2rem);
     line-height: 2rem; }
-    .menu-main ul ul {
-      display: none;
-      position: absolute;
-      left: 100%;
-      width: 100%;
-      top: 0;
-      border-left: 1px solid #e0e0e0;
-      height: auto;
-      min-height: 100%;
-      background-color: #eee; }
-  .menu-main h2 {
+  .nav-main h2 {
     z-index: 10;
     width: 100%;
     background-color: #bf4040;
     color: #300303;
     padding-left: 1rem;
     line-height: 2rem; }
-  .menu-main li, .menu-main h3 {
+  .nav-main li, .nav-main h3 {
     padding-left: 1rem; }
-    .menu-main li:active, .menu-main li:hover, .menu-main h3:active, .menu-main h3:hover {
+    .nav-main li:active, .nav-main li:hover, .nav-main h3:active, .nav-main h3:hover {
       background-color: #e0e0e0; }
-  .menu-main a, .menu-main h3 {
-    height: 100%;
+  .nav-main a, .nav-main h3 {
     width: 100%; }
   @media only screen and (max-width: 481px) {
-    .menu-main h2, .menu-main li {
+    .nav-main h2, .nav-main li {
       text-align: center;
       padding-left: 0; } }
   @media only screen and (min-width: 482px) and (max-width: 1030px) {
-    .menu-main li {
+    .nav-main li {
       width: 50%;
       float: left; } }
   @media only screen and (min-width: 1031px) {
-    .menu-main {
+    .nav-main {
       font-size: 0.9rem;
       flex-basis: calc(20% - 1rem); }
-      .menu-main.menu-home, .menu-main.open {
+      .nav-main.home, .nav-main.open {
         height: 18rem;
         margin-bottom: -15rem; }
-        .menu-main.menu-home:hover, .menu-main.open:hover {
+        .nav-main.home:hover, .nav-main.open:hover {
           transition: 300ms ease; }
-        .menu-main.menu-home li:hover ul, .menu-main.open li:hover ul {
-          display: block;
+        .nav-main.home li ul, .nav-main.open li ul {
+          display: none;
+          position: absolute;
+          left: 0;
+          background-color: #eee;
           box-shadow: 0 0 4px rgba(34, 34, 34, 0.6);
           top: -5px;
           min-height: calc(100% + 10px);
           width: 120%;
-          font-size: 1.1rem; } }
+          left: 100%;
+          font-size: 1.1rem; }
+        .nav-main.home li:hover ul, .nav-main.open li:hover ul {
+          display: block; } }
 
-.menu-carousel, .menu-breadcrumbs {
+.nav-carousel, .nav-breadcrumbs {
   background-color: #ded3d3;
   overflow: hidden; }
   @media only screen and (min-width: 1031px) {
-    .menu-carousel, .menu-breadcrumbs {
+    .nav-carousel, .nav-breadcrumbs {
       flex-basis: calc(80% - 1rem); } }
 
-.menu-carousel {
+.nav-carousel {
   height: 12rem; }
   @media only screen and (min-width: 1031px) {
-    .menu-carousel {
+    .nav-carousel {
       height: 18rem; } }
 
-.menu-breadcrumbs a {
+.nav-breadcrumbs a {
   line-height: 2rem;
   padding: 0 0.5rem 0 1rem;
   vertical-align: bottom;
   position: relative; }
-  .menu-breadcrumbs a::after, .menu-breadcrumbs a::before {
+  .nav-breadcrumbs a::after, .nav-breadcrumbs a::before {
     content: " ";
     display: block;
     width: 0;
@@ -596,14 +581,18 @@ nav div {
     margin-top: -1.5rem;
     left: 100%;
     z-index: 2; }
-  .menu-breadcrumbs a::before {
+  .nav-breadcrumbs a::before {
     margin-left: 1px;
     border-left-color: #f3f2f2; }
-  .menu-breadcrumbs a:last-of-type {
+  .nav-breadcrumbs a:last-of-type {
     background-color: #d6c2c2; }
-  .menu-breadcrumbs a:last-of-type::after {
+  .nav-breadcrumbs a:last-of-type::after {
     border-left-color: #d6c2c2; }
 
+/*********************
+IMPORTING ELEMENTS
+Page specific items.
+*********************/
 .menu-featured li {
   flex-basis: calc(50% - 1rem); }
   @media only screen and (min-width: 482px) {
@@ -622,13 +611,15 @@ nav div {
   width: 100% !important;
   padding: 0 !important; }
 
-/*********************
-IMPORTING ELEMENTS
-Page specific items.
-*********************/
 /*-- default list Layout -----------------------------------------------------------*/
-.shop-grid > div {
+.shop-grid div {
   padding: 1rem; }
+  @media only screen and (min-width: 482px) {
+    .shop-grid div {
+      flex-basis: calc(50% - 1rem); } }
+  @media only screen and (min-width: 1031px) {
+    .shop-grid div {
+      flex-basis: calc(33.33333% - 1rem); } }
 .shop-grid ul {
   border-top: 2px solid #e0e0e0;
   padding-top: 1rem; }
@@ -644,23 +635,11 @@ Page specific items.
   background: #ddd; }
 .shop-grid.group li {
   flex-basis: calc(50% - 1rem); }
-@media only screen and (min-width: 482px) {
-  .shop-grid.group div {
-    flex-basis: calc(50% - 1rem); } }
-@media only screen and (min-width: 1031px) {
-  .shop-grid.group div {
-    flex-basis: calc(33.33333% - 1rem); } }
 
 /*-- category list Layout -----------------------------------------------------------*/
 .shop-grid.category a, .shop-grid.items a {
   height: 100%;
   width: 100%; }
-@media only screen and (min-width: 482px) {
-  .shop-grid.category div, .shop-grid.items div {
-    flex-basis: calc(50% - 1rem); } }
-@media only screen and (min-width: 1031px) {
-  .shop-grid.category div, .shop-grid.items div {
-    flex-basis: calc(25% - 1rem); } }
 
 /*-- items list Layout -----------------------------------------------------------*/
 .icon-placeholder {
@@ -691,3 +670,5 @@ Page specific items.
 @media only screen and (min-width: 1031px) {
   .item-sidebar {
     flex-basis: calc(25% - 1rem); } }
+
+/*# sourceMappingURL=style.css.map */

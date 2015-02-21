@@ -2,9 +2,15 @@
 
 .shop-grid {
   @extend %flex-parent;
-  & > div {
-    @extend %flex-tile;
+  div {
+    @extend %grid-tile;
     padding: $jr-margin;
+    @include jr-size(tablet) {
+      @include jr-flex(1, 2);
+    }
+    @include jr-size(screen) {
+      @include jr-flex(1, 3);
+    }
   }
   ul {
     @extend %flex-parent;
@@ -31,17 +37,10 @@
   }
   //temp over
   li {
-    @include jr-flex(2);
+    @include jr-flex(1, 2);
   }
 
-  div {
-    @include jr-size(tablet) {
-      @include jr-flex(2);
-    }
-    @include jr-size(screen) {
-      @include jr-flex(3);
-    }
-  }
+
 }
 
 /*-- category list Layout -----------------------------------------------------------*/
@@ -50,15 +49,6 @@
   a {
     height: 100%;
     width: 100%;
-  }
-
-  div {
-    @include jr-size(tablet) {
-      @include jr-flex(2);
-    }
-    @include jr-size(screen) {
-      @include jr-flex(4);
-    }
   }
 }
 
@@ -84,32 +74,32 @@
 
 .item-images {
   @include jr-size(tablet) {
-    @include jr-flex(2);
+    @include jr-flex(1, 2);
   }
   @include jr-size(screen) {
-    @include jr-flex(4);
+    @include jr-flex(1, 4);
   }
 }
 
 .item-gallery {
   @extend %flex-parent;
   li {
-    @include jr-flex(2);
+    @include jr-flex(1, 2);
   }
 
 }
 
 .item-description {
   @include jr-size(tablet) {
-    @include jr-flex(2);
+    @include jr-flex(1, 2);
   }
   li {
-    @include jr-flex(1);
+    @include jr-flex(1, 1);
   }
 }
 
 .item-sidebar {
   @include jr-size(screen) {
-    @include jr-flex(4);
+    @include jr-flex(1, 4);
   }
 }

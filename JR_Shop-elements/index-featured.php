@@ -1,17 +1,5 @@
 <?php
   // featured items on front page
-
-
-$arg = array(
-	'methods' => array(
-		'resize',
-		'save'
-	)
-);
-$img_editor_test = wp_image_editor_supports($arg);
-if ($img_editor_test !== false) {
-	echo "Image Editing  Supported!";} else {echo "no image edit" ;}
-
 ?>
 
 
