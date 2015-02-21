@@ -10,16 +10,16 @@ $count = count($categoryList);
 $itemCount = $count > 100 ? "(100+ Results)" : "(".$count." Results)";
 ?>
 
-<header class="section-header">
-  <h1><?php echo $safeArr[pgName] ?></h1>
-  <h3><?php echo $itemCount ?></h3>
-  <p><?php echo $safeArr[description] ?></p>
-  <?php echo $safeArr[imgURL] ?>
-</header>
+
 
 <article class="shop-grid items">
 
-
+  <header class="article-header">
+    <h1><?php echo $safeArr[pgName] ?></h1>
+    <h3><?php echo $itemCount ?></h3>
+    <p><?php echo $safeArr[description] ?></p>
+    <?php echo $safeArr[imgURL] ?>
+  </header>
 
   <?php
   foreach ($categoryList as $item) :
@@ -33,11 +33,16 @@ $itemCount = $count > 100 ? "(100+ Results)" : "(".$count." Results)";
   <div>
     <a href="?<?php echo $shop_item[webLink] ?>" >
       <h3><?php echo $shop_item[name] ?></h3>
+      <p>
+        <?php echo $shop_item[rhc] ?><br>
+        <?php echo $shop_item[price] ?>
+      </p>
       <img src="<?php echo img_resize($shop_item[imgFirst], 'tile') ?>" >
       <?php echo $shop_item[info] ?>
+      <button>View More</button>
+      <?php if ($shop_item[icon]) : ?>
       <i class="icon-placeholder"><img src="<?php echo $shop_item[icon] ?>" ></i>
-      <?php echo $shop_item[rhc] ?>
-      <?php echo $shop_item[price] ?>
+      <?php endif ?>
     </a>
   </div>
 <?php endforeach ?>

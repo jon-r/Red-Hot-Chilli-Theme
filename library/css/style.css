@@ -409,6 +409,7 @@ h4 {
 
 a {
   font-family: inherit;
+  text-decoration: none;
   display: inline-block;
   color: #300303; }
   a:hover {
@@ -429,29 +430,35 @@ Standard page layouts. Default style for all pages
     .container {
       max-width: 1200px; } }
 
+button {
+  background-color: #a32929;
+  border: none;
+  color: white;
+  height: 1.5rem;
+  width: calc(100% - 1rem); }
+
 ul {
   padding: 0;
   list-style: none;
   margin: 0; }
 
-.section-header, nav, .menu-featured, .shop-grid, .shop-grid ul, .item-gallery {
+article, nav, .menu-featured, .shop-grid ul, .item-images, .item-sidebar {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around; }
+  justify-content: space-around;
+  align-items: flex-start; }
 
-.section-header, [class^=nav-], .menu-featured li, .shop-grid div {
-  position: relative;
-  background-color: white;
+button, nav div, .menu-featured li {
   box-shadow: 0 2px 4px rgba(34, 34, 34, 0.5);
-  margin-bottom: 1rem;
-  width: calc(100% - 1rem); }
+  position: relative;
+  margin-bottom: 1rem; }
 
 /*----Page Core --------------------------------------------------------------*/
 html {
   font-size: 14px; }
   @media only screen and (min-width: 1031px) {
     html {
-      font-size: 16px; } }
+      font-size: 18px; } }
 
 body {
   padding: 0;
@@ -471,18 +478,16 @@ body {
     float: right; }
 
 section {
-  background-color: #f3f2f2;
+  background-color: white;
   position: relative;
   padding-top: 1rem;
   box-shadow: 0 0 10px #300303; }
 
-.section-header {
-  margin: 1rem 0.5rem;
-  padding: 1rem;
-  justify-content: space-between; }
-  .section-header h3, .section-header p {
-    flex-basis: calc(100% - 1rem); }
-  .section-header h3 {
+.article-header {
+  margin: 1rem;
+  border-bottom: 2px solid #e8e3e3;
+  flex-basis: calc(100% - 1rem); }
+  .article-header h3 {
     color: #bf4040; }
 
 footer {
@@ -491,19 +496,17 @@ footer {
   padding: 1rem; }
 
 /*- menu parts -----------------------------------------------------------------------*/
-@media only screen and (min-width: 1031px) {
-  nav {
-    margin: 0 -1rem; } }
-
-[class^=nav-] {
+nav div {
   height: 2rem; }
 
 .nav-main {
-  z-index: 3; }
+  z-index: 3;
+  flex-basis: calc(100% - 1rem); }
   .nav-main.open {
     height: auto; }
   .nav-main ul {
     overflow: hidden;
+    background-color: white;
     height: calc(100% - 2rem);
     line-height: 2rem; }
   .nav-main h2 {
@@ -513,11 +516,15 @@ footer {
     color: #300303;
     padding-left: 1rem;
     line-height: 2rem; }
-  .nav-main li, .nav-main h3 {
+  .nav-main li,
+  .nav-main h3 {
     padding-left: 1rem; }
-    .nav-main li:active, .nav-main li:hover, .nav-main h3:active, .nav-main h3:hover {
+    .nav-main li:active, .nav-main li:hover,
+    .nav-main h3:active,
+    .nav-main h3:hover {
       background-color: #e0e0e0; }
-  .nav-main a, .nav-main h3 {
+  .nav-main a,
+  .nav-main h3 {
     width: 100%; }
   @media only screen and (max-width: 481px) {
     .nav-main h2, .nav-main li {
@@ -529,30 +536,33 @@ footer {
       float: left; } }
   @media only screen and (min-width: 1031px) {
     .nav-main {
-      font-size: 0.9rem;
-      flex-basis: calc(20% - 1rem); }
+      font-size: 0.8rem; }
+      .nav-main li ul {
+        display: none;
+        position: absolute;
+        left: 0;
+        background-color: #eee;
+        box-shadow: 0 0 4px rgba(34, 34, 34, 0.6);
+        top: -5px;
+        min-height: calc(100% + 10px);
+        width: 120%;
+        left: 100%;
+        font-size: 1.1rem; }
+      .nav-main li:hover ul {
+        display: block; }
       .nav-main.home, .nav-main.open {
         height: 18rem;
         margin-bottom: -15rem; }
         .nav-main.home:hover, .nav-main.open:hover {
-          transition: 300ms ease; }
-        .nav-main.home li ul, .nav-main.open li ul {
-          display: none;
-          position: absolute;
-          left: 0;
-          background-color: #eee;
-          box-shadow: 0 0 4px rgba(34, 34, 34, 0.6);
-          top: -5px;
-          min-height: calc(100% + 10px);
-          width: 120%;
-          left: 100%;
-          font-size: 1.1rem; }
-        .nav-main.home li:hover ul, .nav-main.open li:hover ul {
-          display: block; } }
+          transition: 300ms ease; } }
+  @media only screen and (min-width: 1031px) {
+    .nav-main {
+      flex-basis: calc(20% - 1rem); } }
 
 .nav-carousel, .nav-breadcrumbs {
   background-color: #ded3d3;
-  overflow: hidden; }
+  overflow: hidden;
+  flex-basis: calc(100% - 1rem); }
   @media only screen and (min-width: 1031px) {
     .nav-carousel, .nav-breadcrumbs {
       flex-basis: calc(80% - 1rem); } }
@@ -593,16 +603,20 @@ footer {
 IMPORTING ELEMENTS
 Page specific items.
 *********************/
-.menu-featured li {
-  flex-basis: calc(50% - 1rem); }
-  @media only screen and (min-width: 482px) {
-    .menu-featured li {
-      flex-basis: calc(25% - 1rem); } }
+@media only screen and (max-width: 481px) {
+  .menu-featured li {
+    flex-basis: calc(50% - 1rem); } }
+@media only screen and (min-width: 482px) {
+  .menu-featured li {
+    flex-basis: calc(33.33333% - 1rem); } }
+@media only screen and (min-width: 1031px) {
+  .menu-featured li {
+    flex-basis: calc(25% - 1rem); } }
 .menu-featured h3 {
   position: absolute;
   width: 100%;
   bottom: 0;
-  background: white;
+  background-color: #e8e3e3;
   left: 0;
   padding: 1rem; }
 .menu-featured img {
@@ -613,15 +627,9 @@ Page specific items.
 
 /*-- default list Layout -----------------------------------------------------------*/
 .shop-grid div {
+  position: relative;
   padding: 1rem; }
-  @media only screen and (min-width: 482px) {
-    .shop-grid div {
-      flex-basis: calc(50% - 1rem); } }
-  @media only screen and (min-width: 1031px) {
-    .shop-grid div {
-      flex-basis: calc(33.33333% - 1rem); } }
 .shop-grid ul {
-  border-top: 2px solid #e0e0e0;
   padding-top: 1rem; }
 .shop-grid li {
   line-height: 1.5; }
@@ -634,14 +642,31 @@ Page specific items.
   height: 4rem;
   background: #ddd; }
 .shop-grid.group li {
+  font-size: 0.7rem;
   flex-basis: calc(50% - 1rem); }
+@media only screen and (min-width: 482px) {
+  .shop-grid.group div {
+    flex-basis: calc(50% - 1rem); } }
+@media only screen and (min-width: 1031px) {
+  .shop-grid.group div {
+    flex-basis: calc(33.33333% - 1rem); } }
 
 /*-- category list Layout -----------------------------------------------------------*/
 .shop-grid.category a, .shop-grid.items a {
   height: 100%;
   width: 100%; }
+@media only screen and (min-width: 482px) {
+  .shop-grid.category div, .shop-grid.items div {
+    flex-basis: calc(50% - 1rem); } }
+@media only screen and (min-width: 1031px) {
+  .shop-grid.category div, .shop-grid.items div {
+    flex-basis: calc(25% - 1rem); } }
 
 /*-- items list Layout -----------------------------------------------------------*/
+.shop-grid.items p {
+  text-align: center;
+  color: #bf4040; }
+
 .icon-placeholder {
   position: absolute;
   width: 30%;
@@ -652,23 +677,44 @@ Page specific items.
 
 /*-- single item Layout -----------------------------------------------------------*/
 @media only screen and (min-width: 482px) {
-  .item-images {
+  .shop-grid.single li {
     flex-basis: calc(50% - 1rem); } }
 @media only screen and (min-width: 1031px) {
-  .item-images {
-    flex-basis: calc(25% - 1rem); } }
+  .shop-grid.single li {
+    flex-basis: calc(100% - 1rem); } }
 
-.item-gallery li {
-  flex-basis: calc(50% - 1rem); }
+.item-images {
+  flex-basis: calc(100% - 1rem); }
+  @media only screen and (max-width: 481px) {
+    .item-images img {
+      flex-basis: calc(25% - 1rem); } }
+  @media only screen and (min-width: 482px) {
+    .item-images img {
+      flex-basis: calc(16.66667% - 1rem); } }
+  @media only screen and (min-width: 1031px) {
+    .item-images img {
+      flex-basis: calc(100% - 1rem); } }
+  @media only screen and (min-width: 1031px) {
+    .item-images {
+      flex-basis: calc(16.66667% - 1rem); } }
 
 @media only screen and (min-width: 482px) {
-  .item-description {
+  .item-focus {
     flex-basis: calc(50% - 1rem); } }
-.item-description li {
-  flex-basis: calc(100% - 1rem); }
+@media only screen and (min-width: 1031px) {
+  .item-focus {
+    flex-basis: calc(50% - 1rem); } }
 
+@media only screen and (min-width: 482px) {
+  .item-sidebar {
+    flex-basis: calc(50% - 1rem); } }
 @media only screen and (min-width: 1031px) {
   .item-sidebar {
-    flex-basis: calc(25% - 1rem); } }
+    flex-basis: calc(33.33333% - 1rem); } }
+.item-sidebar button {
+  flex-basis: calc(100% - 1rem); }
+  @media only screen and (min-width: 1031px) {
+    .item-sidebar button {
+      flex-basis: calc(50% - 1rem); } }
 
 /*# sourceMappingURL=style.css.map */

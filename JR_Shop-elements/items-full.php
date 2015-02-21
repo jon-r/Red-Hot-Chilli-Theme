@@ -13,26 +13,31 @@ if ($safeArr[ss]) {
   }
 ?>
 
-<header class="section-header">
-  <h1><?php echo $shop_item[name]; ?></h1>
-  <h2><?php echo $shop_item[price] ?></h2>
-  <h3><?php echo $shop_item[rhc] ?></h3>
-</header>
-
 <article class="shop-grid single" >
 
-  <div class="item-images" >
+  <header class="article-header">
+    <h1><?php echo $shop_item[name]; ?></h1><br>
+    <h3><?php echo $shop_item[rhc] ?></h3>
+  </header>
 
-    <ul class="item-gallery" >
-    <?php foreach ($shop_item[imgAll] as $galleryImg) : ?>
-
-      <li><img src="<?php echo img_resize($galleryImg, 'thumb') ?>" ></li>
-    <?php endforeach ?>
+  <div class="item-sidebar">
+    <h2><?php echo $shop_item[price] ?></h2><br>
+    <h4><?php echo $shop_item[quantity] ?></h4>
+    <button>Ask us</button>
+    <button>Shopping List (nyi)</button>
+    <button>Buy Now (nyi)</button>
+    <?php echo $shop_item[brand] ?>
+    <?php echo $shop_item[model] ?>
+    <ul class="item-dimensions">
+      <li><?php echo $shop_item[hFull] ?></li>
+      <li><?php echo $shop_item[wFull] ?></li>
+      <li><?php echo $shop_item[dFull] ?></li>
+      <li><?php echo $shop_item[extra] ?></li>
     </ul>
 
   </div>
 
-  <div class="item-description" >
+  <div class="item-focus" >
 
     <img src="<?php echo img_resize($shop_item[imgFirst], 'tile') ?>" >
     <?php echo $shop_item[info] ?>
@@ -41,13 +46,6 @@ if ($safeArr[ss]) {
     <?php echo $shop_item[desc] ?>
     <?php echo $shop_item[condition] ?>
 
-
-    <ul class="item-dimensions">
-      <li><?php echo $shop_item[hFull] ?></li>
-      <li><?php echo $shop_item[wFull] ?></li>
-      <li><?php echo $shop_item[dFull] ?></li>
-      <li><?php echo $shop_item[extra] ?></li>
-    </ul>
 
     <?php if ($shop_item[icon]) : ?>
     <div class="item-power">
@@ -58,23 +56,13 @@ if ($safeArr[ss]) {
 
 
   </div>
-  <div class="item-sidebar">
-    <h4><?php echo $shop_item[quantity] ?></h4>
-    <button>Ask us</button>
-    <button>Shopping List (nyi)</button>
-    <button>Buy Now (nyi)</button>
-    <?php echo $shop_item[brand] ?>
-    <?php echo $shop_item[model] ?>
 
+  <div class="item-images" >
 
+    <?php foreach ($shop_item[imgAll] as $galleryImg) : ?>
+
+      <img src="<?php echo img_resize($galleryImg, 'thumb') ?>" >
+    <?php endforeach ?>
 
   </div>
-
-  <?php
-
-  var_dump($shop_item);
-
-
-  ?>
-
 </article>

@@ -2,102 +2,94 @@
 
 nav {
   @extend %flex-parent;
-
-  @include jr-size(screen) {
-    margin: 0 #{$jr-margin * -1};
-  };
+  div {
+    @extend %make-it-pop;
+    height: 2rem;
+  }
 }
 
-[class^=nav-] {
-  @extend %grid-tile;
-  height: 2rem;
-}
+
 
 .nav-main {
   z-index: 3;
   &.open {
     height: auto;
   }
-
   ul {
     overflow: hidden;
+    background-color: white;
     height: calc(100% - 2rem);
     line-height: 2rem;
   }
-
   h2 {
     z-index: 10;
-    width:100%;
-    background-color:jr-rhc-color(5);
+    width: 100%;
+    background-color: jr-rhc-color(5);
     color: jr-rhc-color(1);
     padding-left: $jr-margin;
     line-height: 2rem;
   }
-
-  li, h3 {
+  li,
+  h3 {
     padding-left: $jr-margin;
     &:active, &:hover {
       background-color: #e0e0e0;
     }
   }
-
-  a, h3 {
-    width:100%;
+  a,
+  h3 {
+    width: 100%;
   }
-
   @include jr-size(phoneOnly) {
     h2, li {
       text-align: center;
       padding-left: 0;
     }
   }
-
   @include jr-size(tabletOnly) {
     li {
-      width:50%;
-      float:left;
+      width: 50%;
+      float: left;
     }
   }
-
   @include jr-size(screen) {
-    font-size: 0.9rem;
-    @include jr-flex(1, 5);
-    &.home, &.open {
-      height:18rem;
+    font-size: 0.8rem;
+    li {
+      ul {
+        display: none;
+        position: absolute;
+        left: 0;
+        background-color: #eee;
+        box-shadow: 0 0 4px rgba(#222, 0.6);
+        top: -5px;
+        min-height: calc(100% + 10px);
+        width: 120%;
+        left: 100%;
+        font-size: 1.1rem;
+      }
+    }
+    li:hover {
+      ul {
+        display: block;
+      }
+    }
+    &.home,
+    &.open {
+      height: 18rem;
       margin-bottom: -15rem;
       &:hover {
         transition: 300ms ease;
       }
-      li {
-        ul {
-          display:none;
-          position:absolute;
-          left: 0;
-          background-color:#eee;
-          box-shadow: 0 0 4px rgba(#222,0.6);
-          top: -5px;
-          min-height: calc(100% + 10px);
-          width: 120%;
-          left:100%;
-          font-size: 1.1rem;
-        }
-      }
-      li:hover {
-        ul {
-          display: block;
-        }
-      }
     }
   }
+  @include jr-flex-responsive(5);
 }
 
 .nav-carousel, .nav-breadcrumbs {
   background-color:jr-rhc-color(8.5);
   overflow: hidden;
 
-  @include jr-size(screen) {
-    @include jr-flex(4, 5);
-  };
+  @include jr-flex-responsive(1.25);
 }
 
 .nav-carousel {

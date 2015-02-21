@@ -5,7 +5,7 @@ function jr_page($pgtype) {
 		'grp' =>	'24',
 		'cat' =>	'16',
 		'item' =>	'21',
-		'srch' =>	'29'
+		'srch' =>	'30'
 	];
 	return $pageNum[$pgtype];
 }

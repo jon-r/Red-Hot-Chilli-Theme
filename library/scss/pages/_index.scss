@@ -1,19 +1,19 @@
 .menu-featured {
   @extend %flex-parent;
-
   li {
-    @extend  %grid-tile;
-    @include jr-flex(1, 2);
-
-    @include jr-size(tablet) {
-      @include jr-flex(1, 4);
-    }
+    @extend %make-it-pop;
+    @include jr-flex-responsive(4,3,2);
+//    @include jr-flex(1, 2);
+//
+//    @include jr-size(tablet) {
+//      @include jr-flex(1, 4);
+//    }
   }
   h3 {
     position:absolute;
     width: 100%;
     bottom:0;
-    background:white;
+    background-color: jr-rhc-color(9);
     left:0;
     padding: 1rem;
   }

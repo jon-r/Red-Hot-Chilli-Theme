@@ -10,6 +10,15 @@
   @include jr-size(screen-hd) { max-width:1200px };
 }
 
+button {
+  background-color: jr-rhc-color(4);
+  border: none;
+  color: white;
+  height:1.5rem;
+  width: calc(100% - #{$jr-margin});
+  @extend %make-it-pop;
+}
+
 ul {
   padding:0;
   list-style: none;
@@ -20,16 +29,11 @@ ul {
   display:flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  align-items: flex-start;
 }
 
-%grid-tile {
-  position: relative;
-  background-color: white;
+%make-it-pop {
   box-shadow: 0 2px 4px rgba(#222,0.5);
+  position: relative;
   margin-bottom: $jr-margin;
-  width:calc(100% - #{$jr-margin});
-}
-
-@mixin jr-flex($rows, $full) {
-  flex-basis: calc(#{$rows*100%/$full} - #{$jr-margin})
 }

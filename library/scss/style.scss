@@ -27,14 +27,12 @@ start style on a blank slate.
 // normalize: git.io/normalize
 @import "base/normalize";
 
-// Sass variables
+// Sassy variables
 @import "base/variables";
 
 // typography
 @import "base/type";
 
-// the grid
-@import "base/grid";
 
 /*********************
 IMPORTING LAYOUTS
@@ -48,7 +46,7 @@ Standard page layouts. Default style for all pages
 @import "layouts/base-page";
 
 //navigation menu(s). shopping cart/wishlist to go here to (eventually)
-@import "layouts/menus";
+@import "layouts/nav";
 
 /*********************
 IMPORTING ELEMENTS

@@ -2,7 +2,7 @@
 
 html {
   font-size: 14px;
-  @include jr-size(screen) { font-size: 16px; };
+  @include jr-size(screen) { font-size: 18px; };
 }
 
 body {
@@ -11,7 +11,6 @@ body {
   background-color: jr-rhc-color(4);
   min-width: 320px;
 }
-
 
 .page-header {
   width:100%;
@@ -28,28 +27,23 @@ body {
 }
 
 section {
-  background-color: jr-rhc-color(9.5);
+  background-color: white;
   position: relative;
   padding-top: $jr-margin;
   box-shadow: 0 0 10px jr-rhc-color(1);
 }
 
-.section-header {
-  margin:$jr-margin #{$jr-margin / 2};
-  padding:$jr-margin;
-  @extend %grid-tile;
+article {
   @extend %flex-parent;
-  justify-content: space-between;
-  h3, p {
-    @include jr-flex(1, 1);
-  }
+}
+
+.article-header {
+  margin:$jr-margin;
+  border-bottom: 2px solid jr-rhc-color(9);
+  @include jr-flex(1, 1);
   h3 {
     color: jr-rhc-color(5);
   }
-}
-
-article {
-
 }
 
 footer {
@@ -57,12 +51,3 @@ footer {
   height: 7rem;
   padding:$jr-margin;
 }
-
-
-
-
-
-
-//  @include jr-size(phone) { width: 100% ;}
-//  @include jr-size(tablet) { width: 125px; }
-//  @include jr-size(screen) { float: none; }
