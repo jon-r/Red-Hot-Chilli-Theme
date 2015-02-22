@@ -2,15 +2,21 @@
 
 <article class="shop-grid group">
 
+  <header class="article-header" >
+    <h1>Catering Equipment For Sale</h1><br>
+    <h3><a href="?all=1&page_id=16">Click here to View All</a></h3>
+  </header>
+
   <?php foreach($groupsList as $group) :
       $link = http_build_query(['g' => $group, 'page_id' => jr_page('grp')]);
       $categoriesListFiltered = array_filter ($categoriesList, isGroup($group));
-    ?>
+      $groupHeaderImg = imgSrcRoot('icons','header-'.strtok($group, ' '),'png');
+  ?>
 
   <div>
 
     <a href="?<?php echo $link ?>" >
-      <img src="somepic.jpg" alt="<?php echo $group ?>"/>
+      <img src="<?php echo $groupHeaderImg ?>" alt="<?php echo $group ?>"/>
     </a>
 
     <ul>

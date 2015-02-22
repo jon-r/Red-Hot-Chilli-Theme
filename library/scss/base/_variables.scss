@@ -1,4 +1,5 @@
 
+
 @function jr-rhc-color($n) {
   $saturation: 10% * (10 - $n);
   $lightness: 10% * $n;

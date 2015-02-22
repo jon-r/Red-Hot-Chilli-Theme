@@ -4,12 +4,10 @@ $sans-serif: "PT+Sans", Helvetica, Arial, sans-serif;
 $serif: "Kreon", Cambria, Times New Roman, Times, serif;
 
 %text-reset {
-  text-rendering: optimizelegibility;
   line-height: 1.2;
   margin: 0;
   padding: 0;
   color: inherit;
-  font-smooth: always;
 }
 
 %h-font {
@@ -50,8 +48,7 @@ h4 {
 a {
   font-family: inherit;
   text-decoration: none;
-  display: inline-block;
-  color: jr-rhc-color(1);
+  color: inherit;
   &:hover {
     color: jr-rhc-color(3);
   }

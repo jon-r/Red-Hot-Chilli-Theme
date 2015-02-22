@@ -134,12 +134,12 @@ function img_resize ($src, $size) {
     $dateCheck = filemtime($newSrc) < filemtime($src);
     if ($dateCheck) {
       $img->resize( $reSize, $reSize, false );
-      $img->set_quality( 60 );
+      $img->set_quality( 80 );
       $img->save($newSrc);
     }
   } elseif (file_exists($src)) {
     $img->resize( $reSize, $reSize, false );
-    $img->set_quality( 60 );
+    $img->set_quality( 80 );
     $img->save($newSrc);
   } else {
     $out = imgSrcRoot(icons,ComingSoon,jpg);

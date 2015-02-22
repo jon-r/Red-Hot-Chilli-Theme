@@ -12,6 +12,7 @@ nav {
 
 .nav-main {
   z-index: 3;
+  @include jr-icon(search, 0, 80%);
   &.open {
     height: auto;
   }

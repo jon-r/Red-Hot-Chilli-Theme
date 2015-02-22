@@ -3,7 +3,10 @@
 .shop-grid {
   div {
     position: relative;
-    padding: $jr-margin;
+
+  }
+  a {
+    width: 100%;
   }
 
   ul {
@@ -25,17 +28,16 @@
 
 .shop-grid.group {
 
-  //temp till image, to set hieght
-  img {
-    height:4rem;
-    background:#ddd;
-  }
-  //temp over
+
   li {
-    font-size: 0.7rem;
+
     @include jr-flex(1, 2);
+    @include jr-size(screen) {
+      font-size: 0.8rem;
+    }
   }
   div {
+    @extend %make-it-pop;
     @include jr-flex-responsive(3,2);
   }
 
@@ -46,7 +48,6 @@
 .shop-grid.category, .shop-grid.items {
   a {
     height: 100%;
-    width: 100%;
   }
   div {
     @include jr-flex-responsive(4,2);
@@ -57,10 +58,12 @@
 /*-- items list Layout -----------------------------------------------------------*/
 
 .shop-grid.items {
-
-
+  padding: $jr-margin;
+  h3 {
+    min-height: 3rem;
+  }
   p {
-    text-align: center;
+//    text-align: center;
     color: jr-rhc-color(5);
   }
 }

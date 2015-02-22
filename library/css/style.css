@@ -379,12 +379,10 @@ th {
   padding: 0; }
 
 h1, h2, h3, h4, p {
-  text-rendering: optimizelegibility;
   line-height: 1.2;
   margin: 0;
   padding: 0;
-  color: inherit;
-  font-smooth: always; }
+  color: inherit; }
 
 h1, h2, h3, h4, .icon-placeholder {
   font-family: "Kreon", Cambria, Times New Roman, Times, serif;
@@ -410,11 +408,11 @@ h4 {
 a {
   font-family: inherit;
   text-decoration: none;
-  display: inline-block;
-  color: #300303; }
+  color: inherit; }
   a:hover {
     color: #821717; }
 
+/*-------------------------sprite layouts + settings ----------------------------------*/
 /*********************
 IMPORTING LAYOUTS
 Standard page layouts. Default style for all pages
@@ -448,7 +446,7 @@ article, nav, .menu-featured, .shop-grid ul, .item-images, .item-sidebar {
   justify-content: space-around;
   align-items: flex-start; }
 
-button, nav div, .menu-featured li {
+button, nav div, .menu-featured li, .shop-grid.group div {
   box-shadow: 0 2px 4px rgba(34, 34, 34, 0.5);
   position: relative;
   margin-bottom: 1rem; }
@@ -501,7 +499,17 @@ nav div {
 
 .nav-main {
   z-index: 3;
+  position: relative;
   flex-basis: calc(100% - 1rem); }
+  .nav-main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 80%;
+    background: url(/rhc_online/images/icons/RHC-Icons.png) no-repeat -320px 0px;
+    width: 64px;
+    height: 64px;
+    transform: scale(0.5); }
   .nav-main.open {
     height: auto; }
   .nav-main ul {
@@ -627,8 +635,9 @@ Page specific items.
 
 /*-- default list Layout -----------------------------------------------------------*/
 .shop-grid div {
-  position: relative;
-  padding: 1rem; }
+  position: relative; }
+.shop-grid a {
+  width: 100%; }
 .shop-grid ul {
   padding-top: 1rem; }
 .shop-grid li {
@@ -638,12 +647,11 @@ Page specific items.
   margin: 0 auto; }
 
 /*-- group list Layout -----------------------------------------------------------*/
-.shop-grid.group img {
-  height: 4rem;
-  background: #ddd; }
 .shop-grid.group li {
-  font-size: 0.7rem;
   flex-basis: calc(50% - 1rem); }
+  @media only screen and (min-width: 1031px) {
+    .shop-grid.group li {
+      font-size: 0.8rem; } }
 @media only screen and (min-width: 482px) {
   .shop-grid.group div {
     flex-basis: calc(50% - 1rem); } }
@@ -653,8 +661,7 @@ Page specific items.
 
 /*-- category list Layout -----------------------------------------------------------*/
 .shop-grid.category a, .shop-grid.items a {
-  height: 100%;
-  width: 100%; }
+  height: 100%; }
 @media only screen and (min-width: 482px) {
   .shop-grid.category div, .shop-grid.items div {
     flex-basis: calc(50% - 1rem); } }
@@ -663,9 +670,12 @@ Page specific items.
     flex-basis: calc(25% - 1rem); } }
 
 /*-- items list Layout -----------------------------------------------------------*/
-.shop-grid.items p {
-  text-align: center;
-  color: #bf4040; }
+.shop-grid.items {
+  padding: 1rem; }
+  .shop-grid.items h3 {
+    min-height: 3rem; }
+  .shop-grid.items p {
+    color: #bf4040; }
 
 .icon-placeholder {
   position: absolute;

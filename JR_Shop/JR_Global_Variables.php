@@ -2,7 +2,7 @@
 global $itemCount, $itemCountMin, $filterDescription, $categoryFilterArr;
 
 //how many items before pagination. Also limits "new items" page. NYI
-$itemCount = 20;
+$itemCount = 24;
 
 //How many items before the "try elsewhere" kicks in. NYI
 $itemCountMin = 4;
