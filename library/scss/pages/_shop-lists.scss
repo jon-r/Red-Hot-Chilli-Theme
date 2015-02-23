@@ -19,7 +19,8 @@
   }
 
   img {
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
     margin: 0 auto;
   }
 }
@@ -61,11 +62,57 @@
   padding: $jr-margin;
   h3 {
     min-height: 3rem;
+    width:100%;
   }
   p {
 //    text-align: center;
     color: jr-rhc-color(5);
   }
+}
+
+.shop-grid div, .shop-grid h3 {
+
+}
+
+.items .sold {
+  @include jr-icon(sold);
+  border:solid red 1px;
+}
+.items .sale {
+  @include jr-icon(sale);
+}
+.items .new {
+  @include jr-icon(new);
+}
+.items .soon {
+  @include jr-icon(soon);
+}
+
+
+
+.items .single-phase {
+  @include jr-icon(single-phase);
+}
+.items .three-phase {
+  @include jr-icon(three-phase);
+}
+.items .natural-gas {
+  @include jr-icon(natural-gas);
+}
+.items .lpg {
+  @include jr-icon(lpg);
+}
+.items .dual-fuel {
+  @include jr-icon(dual-fuel);
+}
+.items .freezer {
+  @include jr-icon(freezer);
+}
+.items .fridge {
+  @include jr-icon(fridge);
+}
+.items .fridge-freezer {
+  @include jr-icon(fridge-freezer);
 }
 
 //To Do - set up as icons and sprites

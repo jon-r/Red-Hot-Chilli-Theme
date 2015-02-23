@@ -1,7 +1,7 @@
 /*-------------------------sprite layouts + settings ----------------------------------*/
 
 //temp link for image-relativity;
-$siteLink: /rhc_online ;
+$siteLink: /redhotchilli;
 
 //icon coords
 
@@ -37,9 +37,9 @@ $iconMap: (
   expand-w: 1 13 1,
 
   //power
-  electric: 4 0 2,
+  single-phase: 4 0 2,
   three-phase: 4 4 2,
-  nat-gas: 4 8 2,
+  natural-gas: 4 8 2,
   lpg: 4 12 2,
   dual-fuel: 4 0 6,
 
@@ -49,10 +49,10 @@ $iconMap: (
   fridge-freezer: 4 12 6,
 
   //banner flags. note to offset by x+8 y+8
-  banner-sale: 2 0 10,
-  banner-sold: 2 2 10,
-  banner-soon: 2 4 10,
-  banner-new: 2 6 10,
+  sale: 2 0 10,
+  sold: 2 2 10,
+  soon: 2 4 10,
+  new: 2 6 10,
 
   //social
   facebook: 2 0 12,
@@ -63,37 +63,78 @@ $iconMap: (
   loader: 2 14 10
 );
 
-//TO DO positioning (left, right, bottom-right) OR base it on type of icon? (navicon: right, banner:right-offset, power: bottom-right)
 
-@mixin jr_icon($iconRef,$top:0,$left:0) {
+//// credit to http://hugogiraudel.com/2013/08/05/offsets-sass-mixin/
+//@mixin position($args) {
+//  @each $o in top right bottom left {
+//        $i: index($args, $o);
+//
+//    @if $i and $i + 1< = length($args) {
+//          #{$o}: nth($args, $i + 1);
+//    }
+//  }
+//}
+
+$iconTypeMap: (
+  nav-icon: top 0 right 0,
+  banner: top -8px right -8px,
+  power-icon: bottom 0 right 0,
+  loader: top 0 left 0,
+);
+
+@mixin jr-icon-base($iconType) {
+  position: relative;
+  &::before {
+    content:'';
+    position:absolute;
+    background-image: url(#{$siteLink + '/images/icons/RHC-Icons.png'});
+    background-repeat: no-repeat;
+    right: 0;
+    @if $iconType == nav-icon {
+      transform-origin: right;
+      transform: scale(0.5);
+    } @else if $iconType == power-icon {
+      bottom: 0;
+      transform-origin:bottom right;
+      transform: scale(0.5);
+    } @else if $iconType == banner {
+      top: -8px;
+      right: -8px;
+    }
+  }
+}
+
+@mixin jr-icon($iconRef) {
   $sprite-scale: 64px;
   $sprite-ref: map-get($iconMap, $iconRef);
   $sprite-size: nth($sprite-ref, 1) * 64px;
-  $sprite-coord-x: -(nth($sprite-ref, 2) * $sprite-size);
-  $sprite-coord-y: -(nth($sprite-ref, 3) * $sprite-size);
+  $sprite-coord-x: -(nth($sprite-ref, 2) * $sprite-scale);
+  $sprite-coord-y: -(nth($sprite-ref, 3) * $sprite-scale);
 
   position: relative;
 
-  @if $iconRef == loader {
-    $sprite-coord-y: -(nth($sprite-ref, 3) * $sprite-size / 5);
-    background: url(#{$siteLink + '/images/icons/RHC-Icons.png'}) no-repeat $sprite-coord-x $sprite-coord-y;
-    //damn you wordpress css
-    width: $sprite-size;
-    height: #{$sprite-size / 5};
-    //animate me
-  } @else {
+  &::before {
 
-    &::before {
-      content:'';
-      position:absolute;
-      top:$top;
-      left:$left;
-      background: url(#{$siteLink + '/images/icons/RHC-Icons.png'}) no-repeat $sprite-coord-x $sprite-coord-y;
+    @if $iconRef == loader {
+  //    background: url('/../images/icons/RHC-Icons.png') no-repeat $sprite-coord-x $sprite-coord-y;
+      //wordpress css in wierd place forcing root relative
+      width: $sprite-size;
+      height: #{$sprite-size / 5};
+      //animate me
+    } @else {
+      background-position:$sprite-coord-x $sprite-coord-y;
       width: $sprite-size;
       height: $sprite-size;
-      transform: scale(0.5);
+  //    transform: scale(0.5);
+      //look into linking origin with the variable?
+      transform-origin: right;
+
+
     }
+
   }
+
+
 
 }
 

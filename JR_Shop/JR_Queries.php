@@ -1,7 +1,7 @@
 <?php
 
 global $wpdb, $categoriesList, $groupsList, $stainlessList, $brandsListMajor, $keywords,
-      $categoriesListColumn, $brandsListFull, $rhcColumn, $rhcsColumn;
+      $categoriesListColumn, $brandsListFull, $rhcColumn, $rhcsColumn, $rhcListNew;
 //get category array
 $categoriesList = $wpdb->get_results("SELECT * FROM rhc_categories;", ARRAY_A);
 
@@ -12,7 +12,8 @@ $stainlessList = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keyw
 
 $brandsListMajor = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` = 'brand'");
 
-//get array
+//get new items
+$rhcListNew = $wpdb->get_col("SELECT `rhc` FROM `networked db` WHERE (`LiveonRHC` = 1 AND `Sold` = 0) ORDER BY `rhc` DESC LIMIT $itemCount") ;
 
 /*Validation Querys \
 \ for validation only. */
@@ -66,9 +67,9 @@ function jr_category_filter( $safeArr ) {
 
   //the query "start". what data are we getting?
   if ($fType == 'Soon' || $fType == 'Sold') {
-    $queryStart = "SELECT `RHC`, `ProductName`, `Image`, `IsSoon`, `Sold` FROM `networked db` ";
+    $queryStart = "SELECT `RHC`, `ProductName`, `Price`, `Image`, `IsSoon`, `Sold`, `Power` FROM `networked db` ";
   } elseif ($fType == 'CategorySS') {
-    $queryStart = "SELECT `RHCs`, `ProductName`, `Price`, `Category`,  `TableinFeet` FROM `benchessinksdb` ";
+    $queryStart = "SELECT `RHCs`, `ProductName`, `Price`, `Category`, `TableinFeet` FROM `benchessinksdb` ";
   } else {
     $queryStart = "SELECT `RHC`, `ProductName`, `Image`, `IsSoon`, `Sold`, `Category`, `Power`, `Price`, `SalePrice` FROM `networked db` ";
   };
@@ -106,8 +107,5 @@ function jr_category_filter( $safeArr ) {
   //return $queryFull;
 
 }
-
-
-
 
 ?>

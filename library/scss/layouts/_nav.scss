@@ -9,10 +9,10 @@ nav {
 }
 
 
-
 .nav-main {
   z-index: 3;
-  @include jr-icon(search, 0, 80%);
+  @include jr-icon(arrow);
+  @include jr-icon-base(nav-icon);
   &.open {
     height: auto;
   }

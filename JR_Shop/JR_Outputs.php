@@ -6,6 +6,7 @@
 // Converts raw databases (associative) into useful "chunks" of text
 
 function jr_shop_compile($ref,$detail) {
+  global $rhcListNew;
   $out1 = $out2 = []; //need to declare empty arrays
   switch ($detail) {
     case 'ssFull' :
@@ -68,20 +69,24 @@ function jr_shop_compile($ref,$detail) {
       ];
     case 'med':
       $catArray = [ $ref[Category], $ref[cat1], $ref[cat2], $ref[cat3] ];
-      if (in_array('Fridges', $catArray)) {
-        $iconCheck = imgSrcRoot('icons','fridge','png');
+      if (in_array('Fridges', $catArray) && in_array('Freezers', $catArray)) {
+        $iconCheck = 'fridge-freezer';
+      } elseif (in_array('Fridges', $catArray)) {
+        $iconCheck = 'fridge';
       } elseif (in_array('Freezers', $catArray)) {
-        $iconCheck = imgSrcRoot('icons','freezer','png');
+        $iconCheck = 'freezer';
       } elseif ($ref[Power]) {
-        $iconCheck = imgSrcRoot('icons',$ref[Power],'png');
+        $iconCheck = str_replace(' ', '-', $ref[Power]);
       };
       if ($ref[IsSoon]) {
-        $infoCheck = "<div>Coming Soon</div>";
+        $infoCheck = "soon";
       } elseif ($ref[isSale]) {
-        $infoCheck = "<div>Sale</div>";
+        $infoCheck = "sale";
       } elseif ($ref[Sold]) {
-        $infoCheck = "<div>Sold</div>";
-      };
+        $infoCheck = "sold";
+      } elseif (in_array($ref[RHC], $rhcListNew)) {
+        $infoCheck = "new";
+      }
       $out2 = [
         icon        => $iconCheck,
         price       => $ref[Price] ? "£".$ref[Price]." + VAT" : "Price Coming Soon" ,

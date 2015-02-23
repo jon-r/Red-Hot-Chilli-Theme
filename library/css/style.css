@@ -500,15 +500,20 @@ nav div {
 .nav-main {
   z-index: 3;
   position: relative;
+  position: relative;
   flex-basis: calc(100% - 1rem); }
+  .nav-main::before {
+    background-position: -256px 0px;
+    width: 64px;
+    height: 64px;
+    transform-origin: right; }
   .nav-main::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 80%;
-    background: url(/rhc_online/images/icons/RHC-Icons.png) no-repeat -320px 0px;
-    width: 64px;
-    height: 64px;
+    background-image: url(/redhotchilli/images/icons/RHC-Icons.png);
+    background-repeat: no-repeat;
+    right: 0;
+    transform-origin: right;
     transform: scale(0.5); }
   .nav-main.open {
     height: auto; }
@@ -643,7 +648,8 @@ Page specific items.
 .shop-grid li {
   line-height: 1.5; }
 .shop-grid img {
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
   margin: 0 auto; }
 
 /*-- group list Layout -----------------------------------------------------------*/
@@ -673,9 +679,107 @@ Page specific items.
 .shop-grid.items {
   padding: 1rem; }
   .shop-grid.items h3 {
-    min-height: 3rem; }
+    min-height: 3rem;
+    width: 100%; }
   .shop-grid.items p {
     color: #bf4040; }
+
+.items .sold {
+  position: relative;
+  border: solid red 1px; }
+  .items .sold::before {
+    background-position: -128px -640px;
+    width: 128px;
+    height: 128px;
+    transform-origin: right; }
+
+.items .sale {
+  position: relative; }
+  .items .sale::before {
+    background-position: 0px -640px;
+    width: 128px;
+    height: 128px;
+    transform-origin: right; }
+
+.items .new {
+  position: relative; }
+  .items .new::before {
+    background-position: -384px -640px;
+    width: 128px;
+    height: 128px;
+    transform-origin: right; }
+
+.items .soon {
+  position: relative; }
+  .items .soon::before {
+    background-position: -256px -640px;
+    width: 128px;
+    height: 128px;
+    transform-origin: right; }
+
+.items .single-phase {
+  position: relative; }
+  .items .single-phase::before {
+    background-position: 0px -128px;
+    width: 256px;
+    height: 256px;
+    transform-origin: right; }
+
+.items .three-phase {
+  position: relative; }
+  .items .three-phase::before {
+    background-position: -256px -128px;
+    width: 256px;
+    height: 256px;
+    transform-origin: right; }
+
+.items .natural-gas {
+  position: relative; }
+  .items .natural-gas::before {
+    background-position: -512px -128px;
+    width: 256px;
+    height: 256px;
+    transform-origin: right; }
+
+.items .lpg {
+  position: relative; }
+  .items .lpg::before {
+    background-position: -768px -128px;
+    width: 256px;
+    height: 256px;
+    transform-origin: right; }
+
+.items .dual-fuel {
+  position: relative; }
+  .items .dual-fuel::before {
+    background-position: 0px -384px;
+    width: 256px;
+    height: 256px;
+    transform-origin: right; }
+
+.items .freezer {
+  position: relative; }
+  .items .freezer::before {
+    background-position: -256px -384px;
+    width: 256px;
+    height: 256px;
+    transform-origin: right; }
+
+.items .fridge {
+  position: relative; }
+  .items .fridge::before {
+    background-position: -512px -384px;
+    width: 256px;
+    height: 256px;
+    transform-origin: right; }
+
+.items .fridge-freezer {
+  position: relative; }
+  .items .fridge-freezer::before {
+    background-position: -768px -384px;
+    width: 256px;
+    height: 256px;
+    transform-origin: right; }
 
 .icon-placeholder {
   position: absolute;
@@ -726,5 +830,3 @@ Page specific items.
   @media only screen and (min-width: 1031px) {
     .item-sidebar button {
       flex-basis: calc(50% - 1rem); } }
-
-/*# sourceMappingURL=style.css.map */

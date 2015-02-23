@@ -27,20 +27,22 @@ $itemNumber = 0;
       $shop_item=jr_shop_compile($item, 'med');
     };
   ?>
-  <div>
+  <div class="<?php echo ($shop_item[icon]); ?>" >
     <a href="?<?php echo $shop_item[webLink] ?>">
-      <h3><?php echo $shop_item[name] ?></h3>
+      <h3 class="<?php echo ($shop_item[info]) ?>"><?php echo $shop_item[name] ?></h3>
       <?php echo ($itemNumber % $itemCount == 0 ) ? "Counter-".($itemNumber/$itemCount) : null; ?>
       <p>
         <?php echo $shop_item[rhc] ?>
         <br>
         <?php echo $shop_item[price] ?>
       </p>
-      <img src="<?php echo img_resize($shop_item[imgFirst], 'tile') ?>">
-      <?php echo $shop_item[info] ?>
-      <?php if ($shop_item[icon]) : ?>
+      <img src="<?php echo img_resize($shop_item[imgFirst], 'tile') ?>" >
+      <?php //echo $shop_item[info] ?>
+<!--
+      <?php// if ($shop_item[icon]) : ?>
       <i class="icon-placeholder"><img src="<?php echo $shop_item[icon] ?>" ></i>
-      <?php endif ?>
+      <?php// endif ?>
+-->
     </a>
   </div>
   <?php endforeach ?>
