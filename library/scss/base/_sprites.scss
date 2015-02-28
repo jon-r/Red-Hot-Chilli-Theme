@@ -1,7 +1,7 @@
 /*-------------------------sprite layouts + settings ----------------------------------*/
 
 //temp link for image-relativity;
-$siteLink: /redhotchilli;
+$siteLink: /rhc_online;
 
 //icon coords
 
@@ -64,16 +64,6 @@ $iconMap: (
 );
 
 
-//// credit to http://hugogiraudel.com/2013/08/05/offsets-sass-mixin/
-//@mixin position($args) {
-//  @each $o in top right bottom left {
-//        $i: index($args, $o);
-//
-//    @if $i and $i + 1< = length($args) {
-//          #{$o}: nth($args, $i + 1);
-//    }
-//  }
-//}
 
 $iconTypeMap: (
   nav-icon: top 0 right 0,
@@ -82,29 +72,82 @@ $iconTypeMap: (
   loader: top 0 left 0,
 );
 
-@mixin jr-icon-base($iconType) {
+//serparating core pseudo parts to keep dry css
+@mixin jr-icon($pseudo, $icon: none, $master: false) {
+
+  @if $master == true {
+    position: relative;
+    &::#{$pseudo} {
+      content: '';
+      position: absolute;
+      background-image: url(#{$siteLink + '/images/icons/RHC-Icons.png'});
+      background-repeat: no-repeat;
+
+      @if $icon != "none" {
+        @include jr-icon-coords($icon);
+      }
+
+      @content;
+    }
+  }
+  @else {
+    &::#{$pseudo} {
+      @if $icon != "none" {
+        @include jr-icon-coords($icon);
+      }
+
+      @content;
+    }
+  }
+}
+
+@mixin jr-icon-coords($iconRef) {
+  $sprite-scale: 64px;
+  $sprite-ref: map-get($iconMap, $iconRef);
+  $sprite-size: nth($sprite-ref, 1) * $sprite-scale;
+  $sprite-coord-x: -(nth($sprite-ref, 2) * $sprite-scale);
+  $sprite-coord-y: -(nth($sprite-ref, 3) * $sprite-scale);
+
+  @if $iconRef == "loader" {
+    width: $sprite-size;
+    height: #{ $sprite-size / 5 };
+    //animate me
+  }
+  @else {
+    background-position: $sprite-coord-x $sprite-coord-y;
+    width: $sprite-size;
+    height: $sprite-size;
+  }
+}
+
+
+
+
+
+@mixin old-jr-icon-base() {
   position: relative;
   &::before {
     content:'';
     position:absolute;
     background-image: url(#{$siteLink + '/images/icons/RHC-Icons.png'});
     background-repeat: no-repeat;
-    right: 0;
-    @if $iconType == nav-icon {
-      transform-origin: right;
-      transform: scale(0.5);
-    } @else if $iconType == power-icon {
-      bottom: 0;
-      transform-origin:bottom right;
-      transform: scale(0.5);
-    } @else if $iconType == banner {
-      top: -8px;
-      right: -8px;
-    }
+ //   right: 0;
+    @content;
+//    @if $iconType == nav-icon {
+//      transform-origin: right;
+//      transform: scale(0.5);
+//    } @else if $iconType == power-icon {
+//      bottom: 0;
+//      transform-origin:bottom right;
+//      transform: scale(0.5);
+//    } @else if $iconType == banner {
+//      top: -8px;
+//      right: -8px;
+//    }
   }
 }
 
-@mixin jr-icon($iconRef) {
+@mixin old-jr-icon($iconRef) {
   $sprite-scale: 64px;
   $sprite-ref: map-get($iconMap, $iconRef);
   $sprite-size: nth($sprite-ref, 1) * 64px;
@@ -127,7 +170,7 @@ $iconTypeMap: (
       height: $sprite-size;
   //    transform: scale(0.5);
       //look into linking origin with the variable?
-      transform-origin: right;
+  //    transform-origin: right;
 
 
     }

@@ -65,4 +65,5 @@ if ($safeArr[ss]) {
     <?php endforeach ?>
 
   </div>
+  <?php var_dump($shop_item) ?>
 </article>

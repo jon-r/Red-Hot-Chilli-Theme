@@ -3,7 +3,12 @@
 .shop-grid {
   div {
     position: relative;
-
+    background-color: white;
+    @extend %make-it-pop;
+  }
+  h3 {
+    min-height: 3.5rem;
+    width:100%;
   }
   a {
     width: 100%;
@@ -29,7 +34,6 @@
 
 .shop-grid.group {
 
-
   li {
 
     @include jr-flex(1, 2);
@@ -38,7 +42,6 @@
     }
   }
   div {
-    @extend %make-it-pop;
     @include jr-flex-responsive(3,2);
   }
 
@@ -51,6 +54,7 @@
     height: 100%;
   }
   div {
+    padding: 1rem;
     @include jr-flex-responsive(4,2);
   }
 
@@ -59,11 +63,6 @@
 /*-- items list Layout -----------------------------------------------------------*/
 
 .shop-grid.items {
-  padding: $jr-margin;
-  h3 {
-    min-height: 3rem;
-    width:100%;
-  }
   p {
 //    text-align: center;
     color: jr-rhc-color(5);
@@ -74,56 +73,48 @@
 
 }
 
-.items .sold {
-  @include jr-icon(sold);
-  border:solid red 1px;
-}
-.items .sale {
-  @include jr-icon(sale);
-}
-.items .new {
-  @include jr-icon(new);
-}
-.items .soon {
-  @include jr-icon(soon);
-}
-
-
-
-.items .single-phase {
-  @include jr-icon(single-phase);
-}
-.items .three-phase {
-  @include jr-icon(three-phase);
-}
-.items .natural-gas {
-  @include jr-icon(natural-gas);
-}
-.items .lpg {
-  @include jr-icon(lpg);
-}
-.items .dual-fuel {
-  @include jr-icon(dual-fuel);
-}
-.items .freezer {
-  @include jr-icon(freezer);
-}
-.items .fridge {
-  @include jr-icon(fridge);
-}
-.items .fridge-freezer {
-  @include jr-icon(fridge-freezer);
+.shop-grid div {
+  @include jr-icon(before, none, $master: true) {
+    right:-9px;
+    top: 4rem;
+  }
+  @include jr-icon(after, none, $master: true) {
+    bottom: $jr-margin;
+    right:$jr-margin;
+    transform: scale(0.33);
+    transform-origin: bottom right;
+  }
 }
 
-//To Do - set up as icons and sprites
-.icon-placeholder {
-  position:absolute;
-  width:30%;
-  display: block;
-  right:$jr-margin;
-  font-size: 2rem;
-  bottom:$jr-margin;
-  @extend %h-font;
+$icon-list: (
+  single-phase
+  three-phase
+  natural-gas
+  lpg
+  dual-fuel
+  freezer
+  fridge
+  fridge-freezer
+);
+
+
+@each $item-icon in $icon-list {
+  .items .#{$item-icon} {
+    @include jr-icon(after, $item-icon, $master: false);
+  }
+}
+
+$info-list: (
+  sale
+  sold
+  soon
+  new
+);
+
+@each $item-icon in $info-list {
+  .items .#{$item-icon} {
+    @include jr-icon(before, $item-icon, $master: false);
+  }
 }
 
 /*-- single item Layout -----------------------------------------------------------*/
@@ -153,4 +144,8 @@
   button {
     @include jr-flex-responsive(2);
   }
+}
+
+.load-marker {
+  border: solid 2px pink;
 }

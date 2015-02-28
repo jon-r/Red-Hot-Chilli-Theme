@@ -76,7 +76,7 @@ function jr_shop_compile($ref,$detail) {
       } elseif (in_array('Freezers', $catArray)) {
         $iconCheck = 'freezer';
       } elseif ($ref[Power]) {
-        $iconCheck = str_replace(' ', '-', $ref[Power]);
+        $iconCheck = str_replace(' ', '-', strtolower($ref[Power]));
       };
       if ($ref[IsSoon]) {
         $infoCheck = "soon";

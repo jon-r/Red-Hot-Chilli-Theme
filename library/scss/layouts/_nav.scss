@@ -11,17 +11,31 @@ nav {
 
 .nav-main {
   z-index: 3;
-  @include jr-icon(arrow);
-  @include jr-icon-base(nav-icon);
+
+  &:not(.home) {
+    @include jr-icon(before, arrow, $master: true) {
+      top: 0.2rem;
+      right:0.5rem;
+      transform:  scale(0.5);
+      transform-origin: top right;
+    }
+  }
+
   &.open {
     height: auto;
+
+    @include jr-icon(before, close) {
+      top: 0.1rem;
+    }
   }
+
   ul {
     overflow: hidden;
     background-color: white;
     height: calc(100% - 2rem);
     line-height: 2rem;
   }
+
   h2 {
     z-index: 10;
     width: 100%;
@@ -30,29 +44,32 @@ nav {
     padding-left: $jr-margin;
     line-height: 2rem;
   }
-  li,
-  h3 {
+
+  li, h3 {
     padding-left: $jr-margin;
     &:active, &:hover {
       background-color: #e0e0e0;
     }
   }
-  a,
-  h3 {
+
+  a, h3 {
     width: 100%;
   }
+
   @include jr-size(phoneOnly) {
     h2, li {
       text-align: center;
       padding-left: 0;
     }
   }
+
   @include jr-size(tabletOnly) {
     li {
       width: 50%;
       float: left;
     }
   }
+
   @include jr-size(screen) {
     font-size: 0.8rem;
     li {
@@ -64,16 +81,19 @@ nav {
         box-shadow: 0 0 4px rgba(#222, 0.6);
         top: -5px;
         min-height: calc(100% + 10px);
+        height:auto;
         width: 120%;
         left: 100%;
         font-size: 1.1rem;
       }
     }
+
     li:hover {
       ul {
         display: block;
       }
     }
+
     &.home,
     &.open {
       height: 18rem;

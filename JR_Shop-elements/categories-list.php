@@ -17,8 +17,8 @@
 
     <div>
       <a href="?<?php echo $link ?>" >
+        <h3><?php echo $category[Name] ?></h3>
         <img src="<?php echo $imgUrl ?>" >
-        <h2><?php echo $category[Name] ?></h2>
       </a>
     </div>
 

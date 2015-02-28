@@ -35,11 +35,13 @@ section {
 
 article {
   @extend %flex-parent;
+  background-image:linear-gradient(white 6rem, jr-rhc-color(9.5) 8rem);
 }
 
 .article-header {
+  height:6rem;
   margin:$jr-margin;
-  border-bottom: 2px solid jr-rhc-color(9);
+ // border-bottom: 2px solid jr-rhc-color(9);
   @include jr-flex(1, 1);
   h3 {
     color: jr-rhc-color(5);
