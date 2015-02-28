@@ -1,8 +1,14 @@
 /*vars---------------------------------------------------------------------------------*/
+var itemNumber = 24;
+//as in the php ($itemNumber)
 
 var menuMainBtn  = document.getElementById('js-menuMainBtn');
 var menuMain  = document.getElementById('js-menuMain');
 
+var lazyImages = document.querySelectorAll('.items div');
+var loadMarker = document.getElementsByClassName('load-marker');
+
+var isScrolling = 0;
 
 /*functions----------------------------------------------------------------------------*/
 
@@ -10,13 +16,33 @@ function menuToggleOpen() {
   menuMain.classList.toggle('open');
 }
 
+//function addLoader
+
+function addLoader() {
+  for (x in loadMarker) {
+    x.parentNode.insertBefore()
+  }
+}
+
+function scrollPing() {
+  var scrollThrottle = 200;
+
+  if(!isScrolling) {
+
+    console.log(document.scrollTop);
+  }
+
+}
 
 /*triggers-----------------------------------------------------------------------------*/
+
+//window.onload =
 
 menuMainBtn.onclick = menuToggleOpen;
 
 
 
+/*------------------------------------------------------------------------------------*/
 
 /*-----maybe delete below------------------------------------------------------------*/
 /*

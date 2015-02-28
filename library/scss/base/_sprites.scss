@@ -21,6 +21,7 @@ $iconMap: (
   talk: 1 3 1,
   email: 1 4 1,
   expand: 1 5 1,
+  arrow-r: 1 6 0,
 
   //white
   close-w: 1 8 0,
@@ -35,6 +36,7 @@ $iconMap: (
   talk-w: 1 11 1,
   email-w: 1 12 1,
   expand-w: 1 13 1,
+  arrow-r-w: 1 14 0,
 
   //power
   single-phase: 4 0 2,
@@ -60,10 +62,8 @@ $iconMap: (
   linkedin: 2 4 12,
 
   //loader. special case since animated
-  loader: 2 14 10
+  loader: 2 14 12
 );
-
-
 
 $iconTypeMap: (
   nav-icon: top 0 right 0,
@@ -108,76 +108,14 @@ $iconTypeMap: (
   $sprite-coord-x: -(nth($sprite-ref, 2) * $sprite-scale);
   $sprite-coord-y: -(nth($sprite-ref, 3) * $sprite-scale);
 
+  background-position: $sprite-coord-x $sprite-coord-y;
+  width: $sprite-size;
+
   @if $iconRef == "loader" {
-    width: $sprite-size;
     height: #{ $sprite-size / 5 };
-    //animate me
+
   }
   @else {
-    background-position: $sprite-coord-x $sprite-coord-y;
-    width: $sprite-size;
     height: $sprite-size;
   }
 }
-
-
-
-
-
-@mixin old-jr-icon-base() {
-  position: relative;
-  &::before {
-    content:'';
-    position:absolute;
-    background-image: url(#{$siteLink + '/images/icons/RHC-Icons.png'});
-    background-repeat: no-repeat;
- //   right: 0;
-    @content;
-//    @if $iconType == nav-icon {
-//      transform-origin: right;
-//      transform: scale(0.5);
-//    } @else if $iconType == power-icon {
-//      bottom: 0;
-//      transform-origin:bottom right;
-//      transform: scale(0.5);
-//    } @else if $iconType == banner {
-//      top: -8px;
-//      right: -8px;
-//    }
-  }
-}
-
-@mixin old-jr-icon($iconRef) {
-  $sprite-scale: 64px;
-  $sprite-ref: map-get($iconMap, $iconRef);
-  $sprite-size: nth($sprite-ref, 1) * 64px;
-  $sprite-coord-x: -(nth($sprite-ref, 2) * $sprite-scale);
-  $sprite-coord-y: -(nth($sprite-ref, 3) * $sprite-scale);
-
-  position: relative;
-
-  &::before {
-
-    @if $iconRef == loader {
-  //    background: url('/../images/icons/RHC-Icons.png') no-repeat $sprite-coord-x $sprite-coord-y;
-      //wordpress css in wierd place forcing root relative
-      width: $sprite-size;
-      height: #{$sprite-size / 5};
-      //animate me
-    } @else {
-      background-position:$sprite-coord-x $sprite-coord-y;
-      width: $sprite-size;
-      height: $sprite-size;
-  //    transform: scale(0.5);
-      //look into linking origin with the variable?
-  //    transform-origin: right;
-
-
-    }
-
-  }
-
-
-
-}
-

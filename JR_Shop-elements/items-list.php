@@ -6,7 +6,8 @@
 
 <?php
 $categoryList = jr_category_filter($safeArr);
-$itemNumber = 0;
+$itemNumber = $chunkNumber = 0;
+$itemsListChunk = array_chunk($categoryList, $itemCount);
 ?>
 
 
@@ -19,9 +20,12 @@ $itemNumber = 0;
     <?php echo $safeArr[imgURL] ?>
   </header>
 
-  <?php foreach ($categoryList as $item) :
+  <?php foreach ($itemsListChunk as $listPartial) :
+  $chunkNumber++;
+  ?>
+  <?php foreach ($listPartial as $item) :
     $itemNumber++;
-    $loadMarker = ($itemNumber % ($itemCount + 1) == 0 ) ? 'load-marker' : null;
+    $loadMarker = ($itemNumber % $itemCount == 0 ) ? 'load-marker' : null;
     if ($safeArr[pgType] == 'CategorySS' ) {
       $shop_item = jr_shop_compile($item, 'stainless');
     } else {
@@ -37,10 +41,19 @@ $itemNumber = 0;
         <br>
         <?php echo $shop_item[price] ?>
       </p>
-      <img src="<?php echo img_resize($shop_item[imgFirst], 'tile'); ?>" alt="<?php echo $shop_item[name] ?>" >
+      <img src="<?php echo imgSrcRoot('icons',lincat,'jpg'); ?>" data-load="<?php echo img_resize($shop_item[imgFirst], 'tile'); ?>" alt="<?php echo $shop_item[name] ?>" >
     </a>
   </div>
-  <?php endforeach ?>
+  <?php
+    endforeach;
+    if ($listPartial != end($itemsListChunk) && count($itemsListChunk) > 1) :
+  ?>
+  <span class="items-loader"><?php echo "chunk ".$chunkNumber; ?></span>
+  <?php
+    endif;
+    endforeach;
+  ?>
+
 
 </article>
 

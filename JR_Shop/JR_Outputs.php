@@ -1,7 +1,6 @@
 <?php
 
 
-
 // ----------------------array compiler--------------------------------------------------
 // Converts raw databases (associative) into useful "chunks" of text
 

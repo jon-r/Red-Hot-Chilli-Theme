@@ -814,4 +814,24 @@ Page specific items.
 .load-marker {
   border: solid 2px pink; }
 
+@keyframes loader-animate {
+  0% {
+    background-position: -896px -768px; }
+  100% {
+    background-position: -896px -888px; } }
+.items-loader {
+  flex-basis: calc(100% - 1rem);
+  position: relative;
+  height: 32px; }
+  .items-loader::before {
+    content: '';
+    position: absolute;
+    background-image: url(/rhc_online/images/icons/RHC-Icons.png);
+    background-repeat: no-repeat;
+    background-position: -896px -768px;
+    width: 128px;
+    height: 25.6px;
+    left: calc(50% - 48px - 1rem);
+    animation: loader-animate 0.4s steps(5) alternate infinite; }
+
 /*# sourceMappingURL=style.css.map */

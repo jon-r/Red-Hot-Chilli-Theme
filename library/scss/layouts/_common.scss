@@ -25,6 +25,7 @@ ul {
   margin:0;
 }
 
+
 %flex-parent {
   display:flex;
   flex-wrap: wrap;
@@ -36,8 +37,4 @@ ul {
   box-shadow: 0 2px 4px rgba(#222,0.5);
   position: relative;
   margin-bottom: $jr-margin;
-}
-
-%has-icon {
-
 }
