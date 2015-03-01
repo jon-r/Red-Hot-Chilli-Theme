@@ -616,6 +616,12 @@ nav div {
   .nav-breadcrumbs a:last-of-type::after {
     border-left-color: #d6c2c2; }
 
+.nav-paginate {
+  flex-basis: calc(100% - 1rem);
+  background-color: #f3f2f2; }
+  .nav-paginate div {
+    background-color: white; }
+
 /*********************
 IMPORTING ELEMENTS
 Page specific items.
@@ -811,10 +817,12 @@ Page specific items.
     .item-sidebar button {
       flex-basis: calc(50% - 1rem); } }
 
-.load-marker {
-  border: solid 2px pink; }
-
 @keyframes loader-animate {
+  0% {
+    background-position: -896px -768px; }
+  100% {
+    background-position: -896px -888px; } }
+@-webkit-keyframes loader-animate {
   0% {
     background-position: -896px -768px; }
   100% {
@@ -832,6 +840,7 @@ Page specific items.
     width: 128px;
     height: 25.6px;
     left: calc(50% - 48px - 1rem);
-    animation: loader-animate 0.4s steps(5) alternate infinite; }
+    animation: loader-animate 0.4s steps(5) alternate infinite;
+    -webkit-animation: loader-animate 0.4s steps(5) alternate infinite; }
 
 /*# sourceMappingURL=style.css.map */

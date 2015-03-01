@@ -13,7 +13,7 @@ $stainlessList = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keyw
 $brandsListMajor = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` = 'brand'");
 
 //get new items
-$rhcListNew = $wpdb->get_col("SELECT `rhc` FROM `networked db` WHERE (`LiveonRHC` = 1 AND `Sold` = 0) ORDER BY `rhc` DESC LIMIT $itemCount") ;
+$rhcListNew = $wpdb->get_col("SELECT `rhc` FROM `networked db` WHERE (`LiveonRHC` = 1 AND `Sold` = 0) ORDER BY `rhc` DESC LIMIT $itemCountMax") ;
 
 /*Validation Querys \
 \ for validation only. */
@@ -47,7 +47,7 @@ function jr_category_row( $safeCategory ) {
 
 function jr_category_filter( $safeArr ) {
 
-  global $wpdb, $itemCount;
+  global $wpdb, $itemCountMax;
   $fType = $safeArr['pgType'];
 
   $fSearch =      $safeArr['search'];
@@ -89,11 +89,11 @@ function jr_category_filter( $safeArr ) {
   } elseif ($fType == 'Sale' ) {
     $queryEnd = "(`LiveonRHC` = 1 AND `SalePrice` > 0 AND `Sold` = 0) ORDER BY `RHC` DESC";
   } elseif ($fType == 'Sold' ) {
-    $queryEnd = "`Sold` = 1 ORDER BY `DateSold` DESC LIMIT $itemCount";
+    $queryEnd = "`Sold` = 1 ORDER BY `DateSold` DESC LIMIT $itemCountMax";
   } elseif ($fType == 'CategorySS') {
     $queryEnd = "`Sold` = 0 ORDER BY `RHCs` DESC";
   } elseif ($fType == 'New') {
-    $queryEnd = "(`LiveonRHC` = 1 AND `Sold` = 0) ORDER BY `RHC` DESC LIMIT $itemCount";
+    $queryEnd = "(`LiveonRHC` = 1 AND `Sold` = 0) ORDER BY `RHC` DESC LIMIT $itemCountMax";
   } else {
     $queryEnd =   "(`LiveonRHC` = 1 AND `Sold` = 0) ORDER BY `RHC` DESC";
   };

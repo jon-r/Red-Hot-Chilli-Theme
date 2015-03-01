@@ -157,3 +157,12 @@ nav {
     }
   }
 }
+
+.nav-paginate {
+  @include jr-flex(1,1);
+  background-color: jr-rhc-color(9.5);
+
+  div {
+    background-color: white;
+  }
+}

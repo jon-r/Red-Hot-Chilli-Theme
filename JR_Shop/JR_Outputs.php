@@ -2,7 +2,7 @@
 
 
 // ----------------------array compiler--------------------------------------------------
-// Converts raw databases (associative) into useful "chunks" of text
+// Converts raw databases (associative) into useful blocks of text
 
 function jr_shop_compile($ref,$detail) {
   global $rhcListNew;
@@ -116,12 +116,34 @@ function jr_page_crumbles ($safeArr) {
     $crumbs[1] = [$safeArr[cat] => site_url()."/?".$link];
     $crumbs[2] = [$safeArr[pgName] => getUrl()];
   } else {
-    $crumbs[1] = [$safeArr[pgName] => getUrl()];
+    $crumbs[1] = [$safeArr[pgName] => jr_pg_set()];
   };
 
 //  $crumbs['new'] = $_GET[$page_id];
   return $crumbs;
 }
+
+// ----------------------pg-clips--------------------------------------------------------
+// tweaks the 'pg' number from page urls. specifically for category page navigation
+// can produce numbers outside range. paginate links should be hidden if at max/min
+
+function jr_pg_set ($pgSet = null, $pgCap = 1) {
+  $url = strtok(getUrl(), '?');
+  $arrParams = $_GET;
+  if (is_int($pgSet)) {
+    $arrParams['pg'] = $pgSet;
+  } elseif ($pgSet == 'plus') {
+    $arrParams['pg'] <= $pgCap ? $arrParams['pg']++ : $arrParams['pg'];
+  } elseif ($pgSet == 'minus') {
+    $arrParams['pg'] > 1 ? $arrParams['pg']-- : $arrParams['pg'];
+  } else {
+    unset($arrParams['pg']);
+  }
+
+  $urlQueries = http_build_query($arrParams);
+  return $url.'?'.$urlQueries;
+}
+
 
 // ----------------------image-manipulation----------------------------------------------
 // generates resized images. Maybe put the "image remove" here too?
@@ -152,4 +174,8 @@ function img_resize ($src, $size) {
   return $out;
 }
 
+
+
 ?>
+
+

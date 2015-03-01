@@ -16,27 +16,22 @@ function menuToggleOpen() {
   menuMain.classList.toggle('open');
 }
 
-//function addLoader
-
-function addLoader() {
-  for (x in loadMarker) {
-    x.parentNode.insertBefore()
+function scrollScan() {
+  if ( undefined === throttle_id ) {
+    return;
   }
-}
+  throttle_id = window.setTimeout(
+    function() {
 
-function scrollPing() {
-  var scrollThrottle = 200;
-
-  if(!isScrolling) {
-
-    console.log(document.scrollTop);
-  }
-
+    },
+    250
+  );
 }
 
 /*triggers-----------------------------------------------------------------------------*/
 
 //window.onload =
+window.onscroll = scrollScan;
 
 menuMainBtn.onclick = menuToggleOpen;
 

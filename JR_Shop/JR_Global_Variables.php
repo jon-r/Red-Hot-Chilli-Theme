@@ -1,8 +1,8 @@
 <?php
-global $itemCount, $itemCountMin, $filterDescription, $categoryFilterArr;
+global $itemCountMax, $itemCountMin, $filterDescription, $categoryFilterArr;
 
-//how many items before pagination. Also limits "new items" page. NYI
-$itemCount = 24;
+//how many items before pagination. Also limits some pages.
+$itemCountMax = 24;
 
 //How many items before the "try elsewhere" kicks in. NYI
 $itemCountMin = 4;
@@ -37,12 +37,11 @@ function imgSrcURL($itemType,$itemName) {
   return 'images/'.$itemType.'/'.$itemName;
 }
 
-//Image sizes for generated
+//Image sizes for generated. need to wipe gallery-thumb/gallery-tile folders if these are changed
 function imgSize($size) {
   $sizeArr = [
     'thumb' => 150,
-    'tile'  => 480,
-    'base'  => 1600
+    'tile'  => 480
   ];
   return $sizeArr[$size];
 }

@@ -146,11 +146,11 @@ $info-list: (
   }
 }
 
-.load-marker {
-  border: solid 2px pink;
-}
-
 @keyframes loader-animate {
+  0%    {background-position: -896px -768px};
+  100%  {background-position: -896px -888px};
+}
+@-webkit-keyframes loader-animate {
   0%    {background-position: -896px -768px};
   100%  {background-position: -896px -888px};
 }
@@ -161,6 +161,7 @@ $info-list: (
   @include jr-icon(before, loader, $master: true) {
     left: calc(50% - 48px - 1rem);
     animation: loader-animate 0.4s steps(5) alternate infinite;
+    -webkit-animation: loader-animate 0.4s steps(5) alternate infinite;
   };
   height:32px;
 }
