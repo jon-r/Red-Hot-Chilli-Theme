@@ -5,11 +5,11 @@
 <?php
 
 if ($safeArr[ss]) {
-    $itemList = jr_item_query($safeArr[rhc], 1);
-    $shop_item = jr_shop_compile($itemList,'ssFull');
+    $item = jr_item_query($safeArr[rhc], 1);
+    $shop_item = jr_shop_compile($item,'ssFull');
   } else {
-    $itemList = jr_item_query($safeArr[rhc]);
-    $shop_item = jr_shop_compile($itemList,'full');
+    $item = jr_item_query($safeArr[rhc]);
+    $shop_item = jr_shop_compile($item,'full');
   }
 ?>
 
@@ -37,26 +37,21 @@ if ($safeArr[ss]) {
 
   </div>
 
-  <div class="item-focus" >
+  <div class="item-focus <?php echo trim($shop_item[info].' '.$shop_item[icon]); ?>" >
 
     <img src="<?php echo img_resize($shop_item[imgFirst], 'tile') ?>" >
-    <?php echo $shop_item[info] ?>
-
 
     <?php echo $shop_item[desc] ?>
     <?php echo $shop_item[condition] ?>
 
 
     <?php if ($shop_item[icon]) : ?>
-    <div class="item-power">
-      <i class="icon-placeholder"><img src="<?php echo $shop_item[icon] ?>" ></i>
       <h4><?php echo $shop_item[watt] ?></h4>
-    </div>
     <?php endif ?>
 
 
   </div>
-
+<?php if (!$safeArr[ss]) : ?>
   <div class="item-images" >
 
     <?php foreach ($shop_item[imgAll] as $galleryImg) : ?>
@@ -65,5 +60,6 @@ if ($safeArr[ss]) {
     <?php endforeach ?>
 
   </div>
+  <?php endif ?>
   <?php var_dump($shop_item) ?>
 </article>

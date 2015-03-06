@@ -7,7 +7,8 @@
 <?php
 $categoryList = jr_category_filter($safeArr);
 $pageNumber = $_GET['pg'] ?: 1;
-$itemCountCheck = count($categoryList) >= $itemCountMax;
+$itemCountCheckMax = count($categoryList) > $itemCountMax;
+$itemCountCheckMin = count($categoryList) <= $itemCountMin;
 $splitList = $itemCountCheck ? array_chunk($categoryList, $itemCountMax) : array($categoryList);
 $pageCount = count($splitList );
 
@@ -48,24 +49,31 @@ $pageCount = count($splitList );
 
   <?php endforeach ?>
 
+  <?php if ($itemCountCheckMin) : ?>
+<div>
+  <p>No enough form</p>
+</div>
+
+<?php endif ?>
+
 </article>
 
-<?php if ($itemCountCheck) : ?>
+<?php if ($itemCountCheckMax) : ?>
 
 <nav class="nav-paginate" >
   <div>
     <?php if ($pageNumber > 1) : ?>
-    <a href="<?php  echo jr_pg_set(1) ?>" >first</a>
-    <a href="<?php  echo jr_pg_set(minus) ?>" >prev</a>
+    <a href="<?php  echo jr_pg_set(1) ?>" ><h4>&laquo;</h4></a>
+    <a href="<?php  echo jr_pg_set(minus) ?>" >&lsaquo;</a>
     <?php endif ?>
 
     <?php for ($i = 1; $i <= $pageCount; $i++) : ?>
-    <a href="<?php  echo jr_pg_set($i) ?>" ><?php  echo $i ?></a>
+    <a <?php echo jr_is_pg($i) ? 'class="active"' : null ?> href="<?php  echo jr_pg_set($i) ?>" ><h4><?php  echo $i ?></h4></a>
     <?php endfor ?>
 
     <?php if ($pageNumber < $pageCount) : ?>
-    <a href="<?php  echo jr_pg_set(plus) ?>" >next</a>
-    <a href="<?php  echo jr_pg_set($pageCount) ?>" >last</a>
+    <a href="<?php  echo jr_pg_set(plus) ?>" ><h4>&rsaquo;</h4></a>
+    <a href="<?php  echo jr_pg_set($pageCount) ?>" ><h4>&raquo;</h4></a>
     <?php endif ?>
   </div>
 </nav>

@@ -42,7 +42,7 @@ $break-l: 1240px;
 //flex-----------------------------------------------------------------------------------
 
 @mixin jr-flex($rows, $full) {
-  flex-basis: calc(#{$rows*100%/$full} - #{$jr-margin})
+  flex: 0 0 calc(#{$rows*100%/$full} - #{$jr-margin});
 }
 
 @mixin jr-flex-responsive($screen, $tablet:1, $phone:1) {

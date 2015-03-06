@@ -120,14 +120,20 @@ nav {
   }
 }
 
-.nav-breadcrumbs {
-
+.nav-breadcrumbs, .nav-paginate {
   a {
     line-height: 2rem;
-    padding: 0 0.5rem 0 1rem;
-    vertical-align:bottom;
+    padding: 0 1rem;
     position: relative;
+    display: inline-block;
+  }
+}
 
+.nav-breadcrumbs {
+  h4 {
+    padding-left: 0.5rem;
+  }
+  a {
     &::after, &::before {
       content: " ";
       display: block;
@@ -164,5 +170,8 @@ nav {
 
   div {
     background-color: white;
+  }
+  a.active, a:hover {
+    background-color: jr-rhc-color(9);
   }
 }

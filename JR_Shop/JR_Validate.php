@@ -69,9 +69,9 @@ function jr_validate_params($get) {
     }
   } elseif ($get[page_id] == jr_page('item')) {
     $out[pgType] = 'Item';
-    $out[rhc] = $get['x'] ? jr_validate_rhc($get['r']) : jr_validate_rhc($get['r']);
+    $out[rhc] = $get['x'] ? jr_validate_rhcs($get['r']) : jr_validate_rhc($get['r']);
     $out[cat] = jr_validate_category($get['cat']);
-    $out[ss] = $get['x'] ?: false;
+    $out[ss] = $get['x'] ? true : false;
     $out[pgName] = $get['n'];
 
   } else {

@@ -47,7 +47,7 @@
     <div class="container" >
 
       <a href="<?php echo home_url(); ?>" rel="nofollow">
-        <?php echo imgSrcRoot('rhc','RHC_Logo_transparent','png'); ?>
+        <img src="<?php echo imgSrcRoot('rhc','RHC_Logo_transparent','png'); ?>" />
       </a>
 
       <form>

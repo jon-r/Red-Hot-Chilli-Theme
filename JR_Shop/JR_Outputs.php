@@ -25,7 +25,6 @@ function jr_shop_compile($ref,$detail) {
           ['page_id' => jr_page('item'), 'cat' => $ref[Category], 'r' => $ref[RHCs], 'n' => $ref[ProductName], 'x' => 1]),
         rhc         => "Ref: RHCs".$ref[RHCs],
         name        => $ref[ProductName],
-        // need to generate ss image location. would help in shop too.
         imgFirst    => imgSrcRoot('gallery',$ref[Image],'jpg'),
         price       => $ref[Price] ? "£".$ref[Price]." + VAT" : "Price Coming Soon" ,
         icon       => $ref[TableinFeet].'ft'
@@ -144,6 +143,11 @@ function jr_pg_set ($pgSet = null, $pgCap = 1) {
   return $url.'?'.$urlQueries;
 }
 
+// gets the current page, taking into account no pg value = 1
+function jr_is_pg($pgNum) {
+  $getPg = $_GET['pg'] ? $_GET['pg'] : 1;
+  return $getPg == $pgNum ? true : false;
+}
 
 // ----------------------image-manipulation----------------------------------------------
 // generates resized images. Maybe put the "image remove" here too?

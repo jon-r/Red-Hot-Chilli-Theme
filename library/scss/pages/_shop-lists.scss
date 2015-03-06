@@ -24,8 +24,7 @@
   }
 
   img {
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
     margin: 0 auto;
   }
 }
@@ -35,7 +34,6 @@
 .shop-grid.group {
 
   li {
-
     @include jr-flex(1, 2);
     @include jr-size(screen) {
       font-size: 0.8rem;
@@ -99,7 +97,7 @@ $icon-list: (
 
 
 @each $item-icon in $icon-list {
-  .items .#{$item-icon} {
+  .shop-grid .#{$item-icon} {
     @include jr-icon(after, $item-icon, $master: false);
   }
 }
@@ -112,7 +110,7 @@ $info-list: (
 );
 
 @each $item-icon in $info-list {
-  .items .#{$item-icon} {
+  .shop-grid .#{$item-icon} {
     @include jr-icon(before, $item-icon, $master: false);
   }
 }
@@ -130,6 +128,7 @@ $info-list: (
   @extend %flex-parent;
   img {
     @include jr-flex-responsive(1,6,4);
+    justify-content: flex-start
   }
   @include jr-flex-responsive(6);
 }
@@ -140,6 +139,7 @@ $info-list: (
 
 .item-sidebar {
   @include jr-flex-responsive(3,2);
+  align-items: flex-start;
   @extend %flex-parent;
   button {
     @include jr-flex-responsive(2);
