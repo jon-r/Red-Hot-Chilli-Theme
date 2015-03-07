@@ -1,33 +1,68 @@
 /*-- default list Layout -----------------------------------------------------------*/
 
 .shop-grid {
+
   div {
-    position: relative;
+ //   position: relative;
+
+    border: $jr-border;
     background-color: white;
     @extend %make-it-pop;
   }
   h3 {
-    min-height: 3.5rem;
-    width:100%;
+    border-bottom: $jr-border;
   }
+  aside {
+    position: absolute;
+    bottom: 0;
+    border-top: $jr-border;
+  }
+
+  h3, aside {
+    width:100%;
+    min-height: 3rem;
+    background-color: $jr-colour-hover;
+    padding: 0.1rem 1rem;
+  }
+
   a {
     width: 100%;
+    font-size: 0.8rem;
+  }
+  span {
+    display: block;
+    &:last-child {
+      color:$jr-colour-emphasis;
+    }
   }
 
   ul {
     @extend %flex-parent;
-    padding-top: $jr-margin;
   }
 
   li {
     line-height: 1.5;
+
   }
 
   img {
     width: 100%;
-    margin: 0 auto;
+    margin-bottom: 2rem;
+  }
+
+  @include jr-icon(before, none, $master: true) {
+    right:-9px;
+    top: 4rem;
+  }
+  @include jr-icon(after, none, $master: true) {
+    bottom: 0.1rem;
+    right:0.1rem;
+    transform: scale(0.33);
+    transform-origin: bottom right;
   }
 }
+
+
 
 /*-- group list Layout -----------------------------------------------------------*/
 
@@ -36,7 +71,10 @@
   li {
     @include jr-flex(1, 2);
     @include jr-size(screen) {
-      font-size: 0.8rem;
+
+    }
+    &:hover {
+      background-color: $jr-colour-hover;
     }
   }
   div {
@@ -46,25 +84,55 @@
 }
 
 /*-- category list Layout -----------------------------------------------------------*/
+.shop-grid.category {
+
+}
 
 .shop-grid.category, .shop-grid.items {
+
   a {
     height: 100%;
   }
   div {
-    padding: 1rem;
     @include jr-flex-responsive(4,2);
   }
 
 }
 
-/*-- items list Layout -----------------------------------------------------------*/
+/*-- single item Layout -----------------------------------------------------------*/
+
+.shop-grid.single {
+  li {
+    @include jr-flex-responsive(1,2);
+  }
+}
+
+.item-images {
+
+  @extend %flex-parent;
+  img {
+    @include jr-flex-responsive(1,6,4);
+  }
+  @include jr-flex-responsive(6);
+}
+
+.item-focus {
+  @include jr-flex-responsive(2,2);
+}
+
+.item-sidebar {
+  @include jr-flex-responsive(3,2);
+  @extend %flex-parent;
+  button {
+    @include jr-flex-responsive(2);
+  }
+}
+
+
+/*-- icons sprite Layout -----------------------------------------------------------*/
 
 .shop-grid.items {
-  p {
-//    text-align: center;
-    color: jr-rhc-color(5);
-  }
+
 }
 
 .shop-grid div, .shop-grid h3 {
@@ -72,16 +140,7 @@
 }
 
 .shop-grid div {
-  @include jr-icon(before, none, $master: true) {
-    right:-9px;
-    top: 4rem;
-  }
-  @include jr-icon(after, none, $master: true) {
-    bottom: $jr-margin;
-    right:$jr-margin;
-    transform: scale(0.33);
-    transform-origin: bottom right;
-  }
+
 }
 
 $icon-list: (
@@ -114,55 +173,24 @@ $info-list: (
     @include jr-icon(before, $item-icon, $master: false);
   }
 }
-
-/*-- single item Layout -----------------------------------------------------------*/
-
-.shop-grid.single {
-  li {
-    @include jr-flex-responsive(1,2);
-  }
-}
-
-.item-images {
-
-  @extend %flex-parent;
-  img {
-    @include jr-flex-responsive(1,6,4);
-    justify-content: flex-start
-  }
-  @include jr-flex-responsive(6);
-}
-
-.item-focus {
-  @include jr-flex-responsive(2,2);
-}
-
-.item-sidebar {
-  @include jr-flex-responsive(3,2);
-  align-items: flex-start;
-  @extend %flex-parent;
-  button {
-    @include jr-flex-responsive(2);
-  }
-}
-
-@keyframes loader-animate {
-  0%    {background-position: -896px -768px};
-  100%  {background-position: -896px -888px};
-}
-@-webkit-keyframes loader-animate {
-  0%    {background-position: -896px -768px};
-  100%  {background-position: -896px -888px};
-}
-
-
-.items-loader {
-  @include jr-flex(1,1);
-  @include jr-icon(before, loader, $master: true) {
-    left: calc(50% - 48px - 1rem);
-    animation: loader-animate 0.4s steps(5) alternate infinite;
-    -webkit-animation: loader-animate 0.4s steps(5) alternate infinite;
-  };
-  height:32px;
-}
+//
+//@keyframes loader-animate {
+//  0%    {background-position: -896px -768px};
+//  100%  {background-position: -896px -888px};
+//}
+//@-webkit-keyframes loader-animate {
+//  0%    {background-position: -896px -768px};
+//  100%  {background-position: -896px -888px};
+//}
+//
+//
+//.items-loader {
+//  @include jr-flex(1,1);
+//  @include jr-icon(before, loader, $master: true) {
+//    left: calc(50% - 48px - 1rem);
+//    animation: loader-animate 0.4s steps(5) alternate infinite;
+//    -webkit-animation: loader-animate 0.4s steps(5) alternate infinite;
+//  };
+//  height:32px;
+//}
 

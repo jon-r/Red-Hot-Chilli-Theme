@@ -6,7 +6,7 @@ _________________________________________________________
                       > SPECIAL PAGE(S)
 */
 ?>
-<nav>
+<nav class="top-nav">
 
   <div id="js-menuMain" class="nav-main<?php echo is_front_page() ? ' home' : null ?>" >
     <h2 id="js-menuMainBtn">Browse</h2>
@@ -16,10 +16,8 @@ _________________________________________________________
         $categoriesListFiltered = array_filter ($categoriesList, isGroup($group));
       ?>
 
-      <li>
-        <?php echo $group ?>
+      <li><h4><?php echo $group ?></h4>
         <ul>
-          <a href="?<?php echo $link ?>" ><h3><?php echo $group ?></h3></a>
 
           <?php foreach ($categoriesListFiltered as $category) :
               $link = http_build_query(['cat' => $category[Name], 'page_id' => jr_page('cat')]);
@@ -31,7 +29,7 @@ _________________________________________________________
 
     <?php endforeach ?>
 <?php // wp menus start here. admin for setup --> ?>
-      <li>Featured
+      <li><h4>Featured</h4>
         <?php wp_nav_menu(array(
           'container' => '',                           // remove nav container
           'container_class' => '',                 // class of container (should you choose to use it)
@@ -46,7 +44,7 @@ _________________________________________________________
           'fallback_cb' => ''                             // fallback function (if there is one)
         )); ?>
       </li>
-      <li>Other Services
+      <li><h4>Other Services</h4>
         <?php wp_nav_menu(array(
           'container' => '',                           // remove nav container
           'container_class' => '',                 // class of container (should you choose to use it)

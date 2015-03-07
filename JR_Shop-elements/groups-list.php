@@ -3,8 +3,8 @@
 <article class="shop-grid group">
 
   <header class="article-header" >
-    <h1>Catering Equipment For Sale</h1><br>
-    <h3><a href="?all=1&page_id=16">Click here to View All</a></h3>
+    <h1>Catering Equipment For Sale</h1>
+    <a href="?all=1&page_id=16">Click here to View All</a>
   </header>
 
   <?php foreach($groupsList as $group) :

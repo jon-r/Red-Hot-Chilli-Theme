@@ -49,8 +49,9 @@ a {
   font-family: inherit;
   text-decoration: none;
   color: inherit;
+  display: inline-block;
   &:hover {
-    color: jr-rhc-color(3);
+    color: $jr-colour-hover-text;
   }
 }
 

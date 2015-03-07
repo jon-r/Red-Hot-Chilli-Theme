@@ -67,7 +67,7 @@ function jr_category_filter( $safeArr ) {
   } elseif ($fType == 'CategorySS') {
     $queryStart = "SELECT `RHCs`, `ProductName`, `Price`, `Image`, `Category`, `TableinFeet` FROM `benchessinksdb` ";
   } else {
-    $queryStart = "SELECT `RHC`, `ProductName`, `Image`, `IsSoon`, `Sold`, `Category`, `Power`, `Price`, `SalePrice` FROM `networked db` ";
+    $queryStart = "SELECT `RHC`, `ProductName`, `Image`, `IsSoon`, `Sold`, `Category`, `Power`, `Price`, `SalePrice`, `Quantity` FROM `networked db` ";
   };
 
   //the query "middle". what is the data filtered by?

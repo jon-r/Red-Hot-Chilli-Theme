@@ -8,15 +8,23 @@ html {
 body {
   padding: 0;
   line-height: 1.2em;
-  background-color: jr-rhc-color(4);
+  background-color: $jr-colour-bg;
   min-width: 320px;
 }
 
-.page-header {
+.page-header, .page-footer {
+  position: relative;
   width:100%;
-  background-image: linear-gradient(jr-rhc-color(3), jr-rhc-color(1));
+  background-color:jr-grey(2);
+  border: 0 solid $jr-colour-emphasis;
   height: 7rem;
   padding: $jr-margin;
+  box-shadow: 0 2px 4px rgba($jr-colour-shadow,0.5);
+  z-index: 5;
+}
+
+.page-header {
+  border-bottom-width: 5px;
   img {
     height: 5rem;
     position:relative;
@@ -27,29 +35,21 @@ body {
 }
 
 section {
-  background-color: white;
+  background-color: $jr-colour-bg-text;
   position: relative;
-  padding-top: $jr-margin;
-  box-shadow: 0 0 10px jr-rhc-color(1);
+  box-shadow: 0 5px 10px $jr-colour-shadow;
 }
 
 article {
   @extend %flex-parent;
-  background-image:linear-gradient(white 6rem, jr-rhc-color(9.5) 8rem);
+//  background-image:linear-gradient($jr-colour-bg-text 7rem, jr-grey(8.5) 9rem);
 }
 
 .article-header {
-  height:6rem;
-  margin:$jr-margin;
- // border-bottom: 2px solid jr-rhc-color(9);
+  margin: 1rem $jr-margin;
   @include jr-flex(1, 1);
-  h3 {
-    color: jr-rhc-color(5);
-  }
 }
 
-footer {
-  background-color: jr-rhc-color(2);
-  height: 7rem;
-  padding:$jr-margin;
+.page-footer {
+  border-top-width: 5px;
 }

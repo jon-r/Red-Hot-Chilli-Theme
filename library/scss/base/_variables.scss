@@ -1,4 +1,28 @@
+//@function jr-blue($n) {
+//  $saturation: 10% * (10 - $n);
+//  $lightness: 10% * $n;
+//  @return hsl(215, $saturation, $lightness);
+//}
 
+
+@function jr-red($n) {
+  $saturation: 10% * (10 - $n);
+  $lightness: 10% * $n;
+  @return hsl(0, $saturation, $lightness);
+}
+
+$jr-colour-emphasis: jr-red(5);
+
+@function jr-grey($n) {
+  $lightness: 10% * $n;
+  @return hsl(215, 10%, $lightness);
+}
+
+$jr-colour-bg: jr-grey(3);
+$jr-colour-bg-text: jr-grey(9.5);
+$jr-colour-shadow: jr-grey(1);
+$jr-colour-hover: jr-grey(9);
+$jr-colour-hover-text: jr-grey(3);
 
 @function jr-rhc-color($n) {
   $saturation: 10% * (10 - $n);
@@ -6,9 +30,12 @@
   @return hsl(0, $saturation, $lightness);
 }
 
-$NO-USE-example: hsl(5, 50%, 25%);
+$lol: hsl(215, 5%, 25%);
 
-$jr-margin: 1rem;
+$NO-USE-example: hsl(215, 50%, 25%);
+
+$jr-margin: 1.5rem;
+$jr-border: 1px solid jr-grey(8);
 
 //media query setup-----------------------------------------------------------*/
 

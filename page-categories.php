@@ -10,6 +10,7 @@
 
 <!-------banner + nav---------------------------------------------------------->
 
+
 <section class="container">
 
   <?php include( "JR_Shop-elements/nav-bar.php"); ?>

@@ -3,17 +3,12 @@
   li {
     @extend %make-it-pop;
     @include jr-flex-responsive(4,3,2);
-//    @include jr-flex(1, 2);
-//
-//    @include jr-size(tablet) {
-//      @include jr-flex(1, 4);
-//    }
   }
   h3 {
     position:absolute;
     width: 100%;
     bottom:0;
-    background-color: jr-rhc-color(9);
+    background-color: white;
     left:0;
     padding: 1rem;
   }

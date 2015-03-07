@@ -2,28 +2,51 @@
 
 nav {
   @extend %flex-parent;
+  cursor: pointer;
   div {
-    @extend %make-it-pop;
     height: 2rem;
+    background-color: white;
+  }
+
+  a {
+    line-height: 2rem;
+    padding: 0 1.5rem;
+    position: relative;
+    display: inline-block;
+    &.active, &:active, &:hover {
+      background-color: $jr-colour-hover;
+    }
   }
 }
 
+.top-nav {
+  a {
+    @include jr-icon(before, arrow-r, $master: true) {
+      top: 0.5rem;
+      left:0.2rem;
+      transform:  scale(0.3);
+      transform-origin: top left;
+    }
+  }
+}
 
 .nav-main {
-  z-index: 3;
 
+  z-index: 6;
+  margin-left:  -4px;
+  @extend %make-it-pop;
   &:not(.home) {
     @include jr-icon(before, arrow, $master: true) {
       top: 0.2rem;
-      right:0.5rem;
+      left:0.5rem;
       transform:  scale(0.5);
-      transform-origin: top right;
+      transform-origin: top left;
     }
   }
 
   &.open {
     height: auto;
-
+    transition: 300ms ease;
     @include jr-icon(before, close) {
       top: 0.1rem;
     }
@@ -31,28 +54,31 @@ nav {
 
   ul {
     overflow: hidden;
-    background-color: white;
     height: calc(100% - 2rem);
     line-height: 2rem;
+  }
+  h4 {
+    padding-left: 0.5rem;
   }
 
   h2 {
     z-index: 10;
+    text-align: center;
     width: 100%;
-    background-color: jr-rhc-color(5);
+    background-color: $jr-colour-emphasis;
     color: jr-rhc-color(1);
-    padding-left: $jr-margin;
     line-height: 2rem;
+    padding:0.25rem 0.5rem 0;
+    margin-top: -0.25rem;
   }
 
-  li, h3 {
-    padding-left: $jr-margin;
+  li {
     &:active, &:hover {
-      background-color: #e0e0e0;
+      background-color: $jr-colour-hover;
     }
   }
 
-  a, h3 {
+  a {
     width: 100%;
   }
 
@@ -71,20 +97,22 @@ nav {
   }
 
   @include jr-size(screen) {
+    width: 250px;
     font-size: 0.8rem;
     li {
       ul {
         display: none;
         position: absolute;
         left: 0;
-        background-color: #eee;
+        background-color: white;
         box-shadow: 0 0 4px rgba(#222, 0.6);
-        top: -5px;
-        min-height: calc(100% + 10px);
+        min-height: calc(100% + 15px);
         height:auto;
-        width: 120%;
-        left: 100%;
+        top:-10px;
+        width: 200%;
+        left: 98%;
         font-size: 1.1rem;
+        z-index: 10;
       }
     }
 
@@ -97,81 +125,44 @@ nav {
     &.home,
     &.open {
       height: 18rem;
-      margin-bottom: -15rem;
-      &:hover {
-        transition: 300ms ease;
-      }
+      margin-bottom: -14.5rem;
     }
   }
-  @include jr-flex-responsive(5);
 }
 
 .nav-carousel, .nav-breadcrumbs {
-  background-color:jr-rhc-color(8.5);
+  border-bottom: $jr-border;
   overflow: hidden;
+  flex: 1 1 100%;
+  @include jr-size(screen) {
 
-  @include jr-flex-responsive(1.25);
+    flex:1 1 calc(100% - 250px);
+  }
 }
 
 .nav-carousel {
-  height:12rem;
-  @include jr-size(screen) {
-    height: 18rem;
-  }
+  height: 18em;
+  margin-bottom: $jr-margin;
 }
+
+
 
 .nav-breadcrumbs, .nav-paginate {
   a {
-    line-height: 2rem;
-    padding: 0 1rem;
-    position: relative;
-    display: inline-block;
+   border-left: $jr-border;
   }
+
 }
 
 .nav-breadcrumbs {
-  h4 {
-    padding-left: 0.5rem;
-  }
-  a {
-    &::after, &::before {
-      content: " ";
-      display: block;
-      width: 0;
-      height: 0;
-      border-top: 1.5rem solid transparent;
-      border-bottom: 1.5rem solid transparent;
-      border-left: 0.5rem solid jr-rhc-color(8.5);
-      position: absolute;
-      top: 50%;
-      margin-top: -1.5rem;
-      left: 100%;
-      z-index: 2;
-    }
 
-    &::before {
-      margin-left:1px;
-      border-left-color: jr-rhc-color(9.5);
-    }
-
-    &:last-of-type {
-      background-color: jr-rhc-color(8);
-    };
-
-    &:last-of-type::after {
-      border-left-color: jr-rhc-color(8);
-    }
-  }
 }
 
-.nav-paginate {
-  @include jr-flex(1,1);
-  background-color: jr-rhc-color(9.5);
-
-  div {
-    background-color: white;
+.items-nav {
+  a{
+    float: left;
   }
-  a.active, a:hover {
-    background-color: jr-rhc-color(9);
+  div {
+    @extend %make-it-pop;
   }
 }

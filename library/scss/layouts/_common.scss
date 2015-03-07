@@ -11,7 +11,7 @@
 }
 
 button {
-  background-color: jr-rhc-color(4);
+  background-color: $jr-colour-emphasis;
   border: none;
   color: white;
   height:1.5rem;
@@ -25,16 +25,15 @@ ul {
   margin:0;
 }
 
-
 %flex-parent {
   display:flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content:space-around;
   align-items:stretch;
 }
 
 %make-it-pop {
-  box-shadow: 0 2px 4px rgba(#222,0.5);
+  box-shadow: 0 2px 4px rgba($jr-colour-shadow,0.5);
   position: relative;
   margin-bottom: $jr-margin;
 }

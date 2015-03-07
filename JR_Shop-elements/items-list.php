@@ -9,7 +9,7 @@ $categoryList = jr_category_filter($safeArr);
 $pageNumber = $_GET['pg'] ?: 1;
 $itemCountCheckMax = count($categoryList) > $itemCountMax;
 $itemCountCheckMin = count($categoryList) <= $itemCountMin;
-$splitList = $itemCountCheck ? array_chunk($categoryList, $itemCountMax) : array($categoryList);
+$splitList = $itemCountCheckMax ? array_chunk($categoryList, $itemCountMax) : array($categoryList);
 $pageCount = count($splitList );
 
 
@@ -36,13 +36,14 @@ $pageCount = count($splitList );
 
       <h3><?php echo $shop_item[name] ?></h3>
 
-      <p>
-        <?php echo $shop_item[rhc] ?>
-        <br>
-        <?php echo $shop_item[price] ?>
-      </p>
-
       <img src="<?php echo img_resize($shop_item[imgFirst], 'tile'); ?>" alt="<?php echo $shop_item[name] ?>" >
+
+      <aside>
+        <span><?php echo $shop_item[rhc] ?></span>
+        <span><?php echo $item[Quantity] > 1 ? $item[Quantity]." in stock" : null ?></span>
+        <span><?php echo $shop_item[price] ?></span>
+      </aside>
+
     </a>
 
   </div>
@@ -58,13 +59,13 @@ $pageCount = count($splitList );
 
 </article>
 
-<?php if ($itemCountCheckMax) : ?>
+  <?php if ($itemCountCheckMax) : ?>
 
-<nav class="nav-paginate" >
-  <div>
+<nav class="items-nav" >
+  <div class="nav-paginate" >
     <?php if ($pageNumber > 1) : ?>
     <a href="<?php  echo jr_pg_set(1) ?>" ><h4>&laquo;</h4></a>
-    <a href="<?php  echo jr_pg_set(minus) ?>" >&lsaquo;</a>
+    <a href="<?php  echo jr_pg_set(minus) ?>" ><h4>&lsaquo;</h4></a>
     <?php endif ?>
 
     <?php for ($i = 1; $i <= $pageCount; $i++) : ?>
