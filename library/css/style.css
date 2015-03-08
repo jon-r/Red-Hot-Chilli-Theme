@@ -446,13 +446,13 @@ button, article > div, .nav-main, .items-nav div, .menu-featured li {
   padding: 0.1rem 1rem; }
 
 /*--- grid ----------------------------------------------------------------------------*/
-article, nav, .menu-featured, .shop-grid.group ul {
+.page-header .container, article, nav, .menu-featured {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: stretch; }
 
-.shop-grid div, .menu-featured li, .article-header {
+.shop-grid div, .menu-featured li, .page-header img, .header-icon, .header-social, .header-menu, .article-header {
   flex: 0 0 calc(100% - 1.5rem); }
 
 @media only screen and (min-width: 482px) {
@@ -468,6 +468,13 @@ article, nav, .menu-featured, .shop-grid.group ul {
 @media only screen and (min-width: 1031px) {
   .menu-featured li {
     flex: 0 0 calc(25% - 1.5rem); } }
+
+@media only screen and (min-width: 482px) {
+  .page-header img, .header-icon, .header-social, .header-menu {
+    flex: 0 0 calc(33.33333% - 1.5rem); } }
+@media only screen and (min-width: 1031px) {
+  .page-header img, .header-icon, .header-social, .header-menu {
+    flex: 0 0 calc(16.66667% - 1.5rem); } }
 
 .shop-grid.group li {
   flex: 0 0 calc(50% - 1.5rem); }
@@ -485,6 +492,14 @@ body {
   background-color: #454b54;
   min-width: 320px; }
 
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative; }
+  @media only screen and (min-width: 1240px) {
+    .container {
+      max-width: 1200px; } }
+
 .page-header, .page-footer {
   position: relative;
   width: 100%;
@@ -499,21 +514,12 @@ body {
   border-bottom-width: 5px; }
   .page-header img {
     height: 5rem;
-    position: relative; }
-  .page-header form {
-    float: right; }
+    position: ab; }
 
 section {
   background-color: #f1f2f4;
   position: relative;
   box-shadow: 0 5px 10px #17191c; }
-
-.container {
-  max-width: 1000px;
-  margin: 0 auto; }
-  @media only screen and (min-width: 1240px) {
-    .container {
-      max-width: 1200px; } }
 
 article > div {
   background-color: white;
@@ -545,10 +551,11 @@ article > div {
 /*- menu parts -----------------------------------------------------------------------*/
 nav {
   cursor: pointer; }
+  nav div {
+    background-color: white; }
 
 div[class^=nav-] {
-  height: 2rem;
-  background-color: white; }
+  height: 2rem; }
   div[class^=nav-] a {
     line-height: 2rem;
     padding: 0 1.5rem;
@@ -647,17 +654,17 @@ div[class^=nav-] {
         height: 18rem;
         margin-bottom: -14.5rem; } }
 
-.nav-carousel,
+.carousel,
 .nav-breadcrumbs {
   border-bottom: 1px solid #c7cbd1;
   overflow: hidden;
   flex: 1 1 100%; }
   @media only screen and (min-width: 1031px) {
-    .nav-carousel,
+    .carousel,
     .nav-breadcrumbs {
       flex: 1 1 auto; } }
 
-.nav-carousel {
+.carousel {
   height: 18em;
   margin-bottom: 1.5rem; }
 

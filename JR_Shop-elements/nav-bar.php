@@ -32,31 +32,19 @@ _________________________________________________________
       <li><h4>Featured</h4>
         <?php wp_nav_menu(array(
           'container' => '',                           // remove nav container
-          'container_class' => '',                 // class of container (should you choose to use it)
           'menu' => __( 'Featured Menu Links', 'bonestheme' ),  // nav name
-          'menu_class' => '',               // adding custom nav class
-          'theme_location' => 'featured-menu',                 // where it's located in the theme
-          'before' => '',                                 // before the menu
-          'after' => '',                                  // after the menu
-          'link_before' => '',                            // before each link
-          'link_after' => '',                             // after each link
-          'depth' => 0,                                   // limit the depth of the nav
-          'fallback_cb' => ''                             // fallback function (if there is one)
+          'menu_class' => '',                          // adding custom nav class
+          'theme_location' => 'featured-menu',         // where it's located in the theme
+          'fallback_cb' => ''                          // fallback function (if there is one)
         )); ?>
       </li>
       <li><h4>Other Services</h4>
         <?php wp_nav_menu(array(
           'container' => '',                           // remove nav container
-          'container_class' => '',                 // class of container (should you choose to use it)
           'menu' => __( 'Services Menu links', 'bonestheme' ),  // nav name
-          'menu_class' => '',               // adding custom nav class
-          'theme_location' => 'services-menu',                 // where it's located in the theme
-          'before' => '',                                 // before the menu
-          'after' => '',                                  // after the menu
-          'link_before' => '',                            // before each link
-          'link_after' => '',                             // after each link
-          'depth' => 0,                                   // limit the depth of the nav
-          'fallback_cb' => ''                             // fallback function (if there is one)
+          'menu_class' => '',                          // adding custom nav class
+          'theme_location' => 'services-menu',         // where it's located in the theme
+          'fallback_cb' => ''                          // fallback function (if there is one)
         )); ?>
       </li>
     </ul>
@@ -65,7 +53,7 @@ _________________________________________________________
 
   <?php if ( is_front_page() ): ?>
 
-  <div class="nav-carousel">
+  <div class="carousel">
       banner here
   </div>
 

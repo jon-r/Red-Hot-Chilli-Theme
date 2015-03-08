@@ -70,22 +70,22 @@ $break-l: 1240px;
   flex: 0 0 calc(#{$rows*100%/$full} - #{$jr-margin});
 }
 
-@mixin jr-flex-responsive($screen, $tablet:1, $phone:1) {
-
-  @if ($phone > 1) {
-    @include jr-size(phoneOnly) {
-      @include jr-flex(1, $phone);
-    }
-  }
-  @if ($tablet > 1) {
-    @include jr-size(tablet) {
-      @include jr-flex(1, $tablet);
-    }
-  } @else {
-    @include jr-flex(1,1);
-  }
-  @include jr-size(screen) {
-    @include jr-flex(1, $screen);
-  }
-}
+//@mixin jr-flex-responsive($screen, $tablet:1, $phone:1) {
+//
+//  @if ($phone > 1) {
+//    @include jr-size(phoneOnly) {
+//      @include jr-flex(1, $phone);
+//    }
+//  }
+//  @if ($tablet > 1) {
+//    @include jr-size(tablet) {
+//      @include jr-flex(1, $tablet);
+//    }
+//  } @else {
+//    @include jr-flex(1,1);
+//  }
+//  @include jr-size(screen) {
+//    @include jr-flex(1, $screen);
+//  }
+//}
 

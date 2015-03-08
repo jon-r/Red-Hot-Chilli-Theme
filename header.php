@@ -46,18 +46,28 @@
   <header class="page-header" role="banner">
     <div class="container" >
 
-      <a href="<?php echo home_url(); ?>" rel="nofollow">
+      <a class="header-icon" href="<?php echo home_url(); ?>" rel="nofollow">
         <img src="<?php echo imgSrcRoot('rhc','RHC_Logo_transparent','png'); ?>" />
       </a>
 
+      <div class="header-social" >social here</div>
 
+      <menu class="header-menu">
+        <form>
+          <label for="search">Search</label>
+          <input type="hidden" name="page_id" value="<?php echo jr_page('srch') ?>">
+          <input type="search" name="search">
+          <button type="submit">GO</button>
+        </form>
+        <?php wp_nav_menu(array(
+        'container' => '',                              // remove nav container
+        'menu' => __( 'Header Links', 'bonestheme' ),   // nav name
+        'menu_class' => '',                             // adding custom nav class
+        'theme_location' => 'header-links',             // where it's located in the theme
+        'fallback_cb' => ''                             // fallback function
+        )); ?>
 
-      <form>
-        <label for="search">Search</label>
-        <input type="hidden" name="page_id" value="<?php echo jr_page('srch') ?>">
-        <input type="search" name="search">
-        <button type="submit">GO</button>
-      </form>
+      </menu>
 
     </div>
   </header>

@@ -12,6 +12,13 @@ body {
   min-width: 320px;
 }
 
+.container {
+  max-width: 1000px;
+  margin:  0 auto;
+  position: relative;
+  @include jr-size(screen-hd) { max-width:1200px };
+}
+
 .page-header, .page-footer {
   position: relative;
   width:100%;
@@ -25,13 +32,20 @@ body {
 
 .page-header {
   border-bottom-width: 5px;
+
+  .container {
+    @extend %flex-parent;
+  }
+
   img {
     height: 5rem;
-    position:relative;
+    position:ab;
+    @extend %flex-6;
   }
-  form {
-    float:right;
-  }
+}
+
+.header-icon, .header-social, .header-menu {
+  @extend %flex-6;
 }
 
 section {
@@ -40,14 +54,10 @@ section {
   box-shadow: 0 5px 10px $jr-colour-shadow;
 }
 
-.container {
-  max-width: 1000px;
-  margin:  0 auto;
-  @include jr-size(screen-hd) { max-width:1200px };
-}
-
 article {
+
   @extend %flex-parent;
+
   & > div {
     background-color: white;
     @extend %make-it-pop;

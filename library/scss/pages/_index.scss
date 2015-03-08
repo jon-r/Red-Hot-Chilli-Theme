@@ -11,10 +11,10 @@
     }
   }
   h3 {
+    @extend %header-block;
     position:absolute;
     bottom:0;
-    @extend %header-block;
-    left:0;
+    left: 0;
     border-top: $jr-border;
   }
   img {

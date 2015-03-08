@@ -19,7 +19,7 @@
       <img src="<?php echo $groupHeaderImg ?>" alt="<?php echo $group ?>"/>
     </a>
 
-    <ul>
+    <ul class="flex-parent">
       <?php foreach ($categoriesListFiltered as $category) :
           $link = http_build_query(['cat' => $category[Name], 'page_id' => jr_page('cat')]);
       ?>

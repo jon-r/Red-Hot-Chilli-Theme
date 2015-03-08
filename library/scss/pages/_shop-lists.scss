@@ -2,6 +2,7 @@
 
 .shop-grid,
 .shop-full {
+
   img {
     width: 100%;
     margin-bottom: 2rem;
@@ -37,9 +38,6 @@
 /*-- group list Layout -----------------------------------------------------------*/
 
 .shop-grid.group {
-  ul {
-    @extend %flex-parent;
-  }
   li {
     line-height: 1.5;
     @extend %flex-2-fixed;
