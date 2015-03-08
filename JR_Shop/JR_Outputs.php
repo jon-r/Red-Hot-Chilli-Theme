@@ -57,7 +57,6 @@ function jr_shop_compile($ref,$detail) {
         desc        => ($ref['Line 1'] != " " ? $ref['Line 1']."<br>" : null).
                       ($ref['Line 2'] != " " ? $ref['Line 2']."<br>" : null).
                       ($ref['Line 3'] != " " ? $ref['Line 3'] : null),
-        quantity    => $ref[Quantity] ? $ref[Quantity]." in Stock" : null,
         model       => $ref[Model] ? "Model: ".$ref[Model] : null,
         extra       => $ref[ExtraMeasurements],
         condition   => $ref[Condition] != " " ? $ref[Condition] : null,
@@ -93,7 +92,8 @@ function jr_shop_compile($ref,$detail) {
         rhc         => "ref: RHC".$ref[RHC],
         name        => $ref[ProductName],
         imgFirst    => imgSrcRoot('gallery',$ref[Image],'jpg'),
-        info        => $infoCheck
+        info        => $infoCheck,
+        quantity    => $ref[Quantity] > 1 ? $ref[Quantity]." in Stock" : null
       ];
     break;
   };

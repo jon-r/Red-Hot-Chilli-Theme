@@ -50,6 +50,8 @@
         <img src="<?php echo imgSrcRoot('rhc','RHC_Logo_transparent','png'); ?>" />
       </a>
 
+
+
       <form>
         <label for="search">Search</label>
         <input type="hidden" name="page_id" value="<?php echo jr_page('srch') ?>">

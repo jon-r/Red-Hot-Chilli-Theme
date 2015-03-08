@@ -1,13 +1,16 @@
 /*-- default list Layout -----------------------------------------------------------*/
 
+.shop-grid,
+.shop-full {
+  img {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+}
+
 .shop-grid {
-
-  div {
- //   position: relative;
-
-    border: $jr-border;
-    background-color: white;
-    @extend %make-it-pop;
+  h3, aside {
+    @extend %header-block;
   }
   h3 {
     border-bottom: $jr-border;
@@ -15,164 +18,97 @@
   aside {
     position: absolute;
     bottom: 0;
-    border-top: $jr-border;
+    font-size: 0.8rem;
+    background-color: white;
   }
-
-  h3, aside {
-    width:100%;
-    min-height: 3rem;
-    background-color: $jr-colour-hover;
-    padding: 0.1rem 1rem;
-  }
-
   a {
     width: 100%;
-    font-size: 0.8rem;
   }
   span {
     display: block;
     &:last-child {
-      color:$jr-colour-emphasis;
+      color: $jr-colour-emphasis;
     }
   }
+  div {
+    @extend %flex-3;
+  }
+}
+/*-- group list Layout -----------------------------------------------------------*/
 
+.shop-grid.group {
   ul {
     @extend %flex-parent;
   }
-
   li {
     line-height: 1.5;
-
+    @extend %flex-2-fixed;
+    &:hover {
+      background-color: $jr-colour-hover;
+    }
   }
 
-  img {
-    width: 100%;
-    margin-bottom: 2rem;
-  }
+}
+/*-- category list Layout -----------------------------------------------------------*/
 
+.shop-grid.category,
+.shop-grid.items {
+  a {
+    height: 100%;
+  }
+}
+/*-- single item Layout -----------------------------------------------------------*/
+
+.item-header {
+  @extend %header-block;
+  border-bottom: $jr-border;
+}
+/*-- icons sprite Layout -----------------------------------------------------------*/
+
+article > div {
   @include jr-icon(before, none, $master: true) {
-    right:-9px;
+    right: -9px;
     top: 4rem;
   }
-  @include jr-icon(after, none, $master: true) {
+  @include jr-icon(after,
+  none,
+  $master: true) {
     bottom: 0.1rem;
-    right:0.1rem;
+    right: 0.1rem;
     transform: scale(0.33);
     transform-origin: bottom right;
   }
 }
 
-
-
-/*-- group list Layout -----------------------------------------------------------*/
-
-.shop-grid.group {
-
-  li {
-    @include jr-flex(1, 2);
-    @include jr-size(screen) {
-
-    }
-    &:hover {
-      background-color: $jr-colour-hover;
-    }
-  }
-  div {
-    @include jr-flex-responsive(3,2);
-  }
-
-}
-
-/*-- category list Layout -----------------------------------------------------------*/
-.shop-grid.category {
-
-}
-
-.shop-grid.category, .shop-grid.items {
-
-  a {
-    height: 100%;
-  }
-  div {
-    @include jr-flex-responsive(4,2);
-  }
-
-}
-
-/*-- single item Layout -----------------------------------------------------------*/
-
-.shop-grid.single {
-  li {
-    @include jr-flex-responsive(1,2);
-  }
-}
-
-.item-images {
-
-  @extend %flex-parent;
-  img {
-    @include jr-flex-responsive(1,6,4);
-  }
-  @include jr-flex-responsive(6);
-}
-
-.item-focus {
-  @include jr-flex-responsive(2,2);
-}
-
-.item-sidebar {
-  @include jr-flex-responsive(3,2);
-  @extend %flex-parent;
-  button {
-    @include jr-flex-responsive(2);
-  }
-}
-
-
-/*-- icons sprite Layout -----------------------------------------------------------*/
-
-.shop-grid.items {
-
-}
-
-.shop-grid div, .shop-grid h3 {
-
-}
-
-.shop-grid div {
-
-}
-
 $icon-list: (
-  single-phase
-  three-phase
-  natural-gas
-  lpg
-  dual-fuel
-  freezer
-  fridge
+  single-phase,
+  three-phase,
+  natural-gas,
+  lpg,
+  dual-fuel,
+  freezer,
+  fridge,
   fridge-freezer
 );
 
-
 @each $item-icon in $icon-list {
-  .shop-grid .#{$item-icon} {
+  article .#{$item-icon} {
     @include jr-icon(after, $item-icon, $master: false);
   }
 }
 
 $info-list: (
-  sale
-  sold
-  soon
+  sale,
+  sold,
+  soon,
   new
 );
-
 @each $item-icon in $info-list {
-  .shop-grid .#{$item-icon} {
+  article .#{$item-icon} {
     @include jr-icon(before, $item-icon, $master: false);
   }
 }
+
 //
 //@keyframes loader-animate {
 //  0%    {background-position: -896px -768px};
@@ -193,4 +129,3 @@ $info-list: (
 //  };
 //  height:32px;
 //}
-

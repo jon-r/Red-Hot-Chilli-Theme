@@ -4,12 +4,6 @@
   box-sizing: border-box;
 }
 
-.container {
-  max-width: 1000px;
-  margin:  0 auto;
-  @include jr-size(screen-hd) { max-width:1200px };
-}
-
 button {
   background-color: $jr-colour-emphasis;
   border: none;
@@ -25,6 +19,21 @@ ul {
   margin:0;
 }
 
+%make-it-pop {
+  box-shadow: 0 2px 4px rgba($jr-colour-shadow,0.5);
+  position: relative;
+  margin-bottom: $jr-margin;
+}
+
+%header-block {
+  width: 100%;
+  background-color: $jr-colour-hover;
+  min-height: 3rem;
+  padding: 0.1rem 1rem;
+}
+
+/*--- grid ----------------------------------------------------------------------------*/
+
 %flex-parent {
   display:flex;
   flex-wrap: wrap;
@@ -32,8 +41,24 @@ ul {
   align-items:stretch;
 }
 
-%make-it-pop {
-  box-shadow: 0 2px 4px rgba($jr-colour-shadow,0.5);
-  position: relative;
-  margin-bottom: $jr-margin;
+%flex-1 {
+  @include jr-flex(1,1);
+}
+
+@for $i from 2 through 6 {
+  %flex-#{$i} {
+    @extend %flex-1;
+
+    @if $i > 2 {
+      $half-i: ceil($i / 2);
+      @include jr-size(tablet) { @include jr-flex(1,$half-i) };
+    }
+
+    @include jr-size(screen) { @include jr-flex(1,$i) };
+
+  }
+}
+
+%flex-2-fixed {
+  @include jr-flex(1,2);
 }

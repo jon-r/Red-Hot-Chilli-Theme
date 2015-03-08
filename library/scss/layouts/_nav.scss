@@ -4,10 +4,14 @@ nav {
   @extend %flex-parent;
   cursor: pointer;
   div {
-    height: 2rem;
-    background-color: white;
+
   }
 
+}
+
+div[class^=nav-] {
+  height: 2rem;
+  background-color: white;
   a {
     line-height: 2rem;
     padding: 0 1.5rem;
@@ -23,27 +27,25 @@ nav {
   a {
     @include jr-icon(before, arrow-r, $master: true) {
       top: 0.5rem;
-      left:0.2rem;
-      transform:  scale(0.3);
+      left: 0.2rem;
+      transform: scale(0.3);
       transform-origin: top left;
     }
   }
 }
 
 .nav-main {
-
   z-index: 6;
-  margin-left:  -4px;
+  margin-left: -4px;
   @extend %make-it-pop;
   &:not(.home) {
     @include jr-icon(before, arrow, $master: true) {
       top: 0.2rem;
-      left:0.5rem;
-      transform:  scale(0.5);
+      left: 0.5rem;
+      transform: scale(0.5);
       transform-origin: top left;
     }
   }
-
   &.open {
     height: auto;
     transition: 300ms ease;
@@ -51,7 +53,6 @@ nav {
       top: 0.1rem;
     }
   }
-
   ul {
     overflow: hidden;
     height: calc(100% - 2rem);
@@ -60,7 +61,6 @@ nav {
   h4 {
     padding-left: 0.5rem;
   }
-
   h2 {
     z-index: 10;
     text-align: center;
@@ -68,34 +68,29 @@ nav {
     background-color: $jr-colour-emphasis;
     color: jr-rhc-color(1);
     line-height: 2rem;
-    padding:0.25rem 0.5rem 0;
+    padding: 0.25rem 0.5rem 0;
     margin-top: -0.25rem;
   }
-
   li {
     &:active, &:hover {
       background-color: $jr-colour-hover;
     }
   }
-
   a {
     width: 100%;
   }
-
   @include jr-size(phoneOnly) {
     h2, li {
       text-align: center;
       padding-left: 0;
     }
   }
-
   @include jr-size(tabletOnly) {
     li {
       width: 50%;
       float: left;
     }
   }
-
   @include jr-size(screen) {
     width: 250px;
     font-size: 0.8rem;
@@ -107,21 +102,19 @@ nav {
         background-color: white;
         box-shadow: 0 0 4px rgba(#222, 0.6);
         min-height: calc(100% + 15px);
-        height:auto;
-        top:-10px;
+        height: auto;
+        top: -10px;
         width: 200%;
         left: 98%;
         font-size: 1.1rem;
         z-index: 10;
       }
     }
-
     li:hover {
       ul {
         display: block;
       }
     }
-
     &.home,
     &.open {
       height: 18rem;
@@ -130,13 +123,13 @@ nav {
   }
 }
 
-.nav-carousel, .nav-breadcrumbs {
+.nav-carousel,
+.nav-breadcrumbs {
   border-bottom: $jr-border;
   overflow: hidden;
   flex: 1 1 100%;
   @include jr-size(screen) {
-
-    flex:1 1 calc(100% - 250px);
+    flex: 1 1 auto;
   }
 }
 
@@ -145,21 +138,15 @@ nav {
   margin-bottom: $jr-margin;
 }
 
-
-
-.nav-breadcrumbs, .nav-paginate {
+.nav-breadcrumbs,
+.nav-paginate {
   a {
-   border-left: $jr-border;
+    border-left: $jr-border;
   }
-
-}
-
-.nav-breadcrumbs {
-
 }
 
 .items-nav {
-  a{
+  a {
     float: left;
   }
   div {

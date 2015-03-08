@@ -40,7 +40,7 @@ $pageCount = count($splitList );
 
       <aside>
         <span><?php echo $shop_item[rhc] ?></span>
-        <span><?php echo $item[Quantity] > 1 ? $item[Quantity]." in stock" : null ?></span>
+        <span><?php echo $shop_item[quantity] ?: null ?></span>
         <span><?php echo $shop_item[price] ?></span>
       </aside>
 

@@ -2,21 +2,31 @@
   @extend %flex-parent;
   li {
     @extend %make-it-pop;
-    @include jr-flex-responsive(4,3,2);
+    @extend %flex-4;
+    height: 120px;
+    overflow: hidden;
+    background-color: $jr-colour-bg;
+    @include jr-size(screen) {
+      height: auto;
+    }
   }
   h3 {
     position:absolute;
-    width: 100%;
     bottom:0;
-    background-color: white;
+    @extend %header-block;
     left:0;
-    padding: 1rem;
+    border-top: $jr-border;
   }
   img {
+    position: relative;
     height: 100%;
+    margin-top: -25%;
     /*overwriting plugin*/
     width: 100% !important;
     padding:0 !important;
+    @include jr-size(screen) {
+      margin-top: 0;
+    }
   }
 
 }

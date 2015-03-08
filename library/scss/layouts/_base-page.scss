@@ -40,14 +40,34 @@ section {
   box-shadow: 0 5px 10px $jr-colour-shadow;
 }
 
+.container {
+  max-width: 1000px;
+  margin:  0 auto;
+  @include jr-size(screen-hd) { max-width:1200px };
+}
+
 article {
   @extend %flex-parent;
-//  background-image:linear-gradient($jr-colour-bg-text 7rem, jr-grey(8.5) 9rem);
+  & > div {
+    background-color: white;
+    @extend %make-it-pop;
+
+    @include jr-icon(before, none, $master: true) {
+      right:-9px;
+      top: 4rem;
+    }
+    @include jr-icon(after, none, $master: true) {
+      bottom: 0.1rem;
+      right:0.1rem;
+      transform: scale(0.33);
+      transform-origin: bottom right;
+    }
+  }
 }
 
 .article-header {
   margin: 1rem $jr-margin;
-  @include jr-flex(1, 1);
+  @extend %flex-1;
 }
 
 .page-footer {
