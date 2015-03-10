@@ -47,6 +47,9 @@ Standard page layouts. Default style for all pages
 //page core. includes header/footer
 @import "layouts/base-page";
 
+//header+footer
+@import "layouts/head-foot";
+
 //navigation menu(s). shopping cart/wishlist to go here to (eventually)
 @import "layouts/nav";
 

@@ -1,4 +1,4 @@
-/*----Page Core --------------------------------------------------------------*/
+/*--- Page Core Elements -----------------------------------------------------*/
 
 html {
   font-size: 14px;
@@ -17,35 +17,6 @@ body {
   margin:  0 auto;
   position: relative;
   @include jr-size(screen-hd) { max-width:1200px };
-}
-
-.page-header, .page-footer {
-  position: relative;
-  width:100%;
-  background-color:jr-grey(2);
-  border: 0 solid $jr-colour-emphasis;
-  height: 7rem;
-  padding: $jr-margin;
-  box-shadow: 0 2px 4px rgba($jr-colour-shadow,0.5);
-  z-index: 5;
-}
-
-.page-header {
-  border-bottom-width: 5px;
-
-  .container {
-    @extend %flex-parent;
-  }
-
-  img {
-    height: 5rem;
-    position:ab;
-    @extend %flex-6;
-  }
-}
-
-.header-icon, .header-social, .header-menu {
-  @extend %flex-6;
 }
 
 section {
@@ -78,8 +49,4 @@ article {
 .article-header {
   margin: 1rem $jr-margin;
   @extend %flex-1;
-}
-
-.page-footer {
-  border-top-width: 5px;
 }

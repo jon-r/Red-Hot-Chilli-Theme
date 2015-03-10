@@ -1,3 +1,4 @@
+
 //@function jr-blue($n) {
 //  $saturation: 10% * (10 - $n);
 //  $lightness: 10% * $n;
@@ -34,6 +35,20 @@ $NO-USE-example: hsl(215, 50%, 25%);
 
 $jr-margin: 1.5rem;
 $jr-border: 1px solid jr-grey(8);
+
+@mixin full-list {
+  margin: 0 0.5rem;
+  width:calc(100% - 1rem);
+  font-size: 1rem;
+  float:left;
+}
+
+@mixin split-list {
+  margin: 0 0.5rem;
+  width:calc(50% - 1rem);
+  font-size: 0.9rem;
+  float:left;
+}
 
 //media query setup-----------------------------------------------------------*/
 

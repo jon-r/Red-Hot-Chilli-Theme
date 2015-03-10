@@ -3,10 +3,7 @@
 .shop-grid,
 .shop-full {
 
-  img {
-    width: 100%;
-    margin-bottom: 2rem;
-  }
+  padding-bottom: 2rem;
 }
 
 .shop-grid {
@@ -21,6 +18,7 @@
     bottom: 0;
     font-size: 0.8rem;
     background-color: white;
+    border-top: $jr-border;
   }
   a {
     width: 100%;
@@ -40,7 +38,7 @@
 .shop-grid.group {
   li {
     line-height: 1.5;
-    @extend %flex-2-fixed;
+    @include split-list;
     &:hover {
       background-color: $jr-colour-hover;
     }
@@ -68,9 +66,7 @@ article > div {
     right: -9px;
     top: 4rem;
   }
-  @include jr-icon(after,
-  none,
-  $master: true) {
+  @include jr-icon(after, none, $master: true) {
     bottom: 0.1rem;
     right: 0.1rem;
     transform: scale(0.33);

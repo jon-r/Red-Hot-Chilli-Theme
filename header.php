@@ -50,24 +50,38 @@
         <img src="<?php echo imgSrcRoot('rhc','RHC_Logo_transparent','png'); ?>" />
       </a>
 
-      <div class="header-social" >social here</div>
-
-      <menu class="header-menu">
+      <div class="header-search" >
         <form>
           <label for="search">Search</label>
           <input type="hidden" name="page_id" value="<?php echo jr_page('srch') ?>">
           <input type="search" name="search">
           <button type="submit">GO</button>
         </form>
+      </div>
+
+      <nav class="header-nav">
+
+        <ul class="contact" >
+          <li><a class="phone-w" href="tel:<?php echo $rhcTel ?>" ><h3><?php echo $rhcTel ?></h3></a></li>
+          <li><a class="email-w" href="mailto:<?php echo $rhcEmail ?>" ><h3><?php echo $rhcEmail ?></h3></a></li>
+        </ul>
+
+        <ul class="social" >
+          <li><a class="twitter" href="<?php echo $rhcTwitterLink ?>" ></a></li>
+          <li><a class="facebook" href="<?php echo $rhcFacebookLink ?>" ></a></li>
+          <li><a class="linkedin" href="<?php echo $rhcLinkedinLink ?>" ></a></li>
+        </ul>
+
         <?php wp_nav_menu(array(
         'container' => '',                              // remove nav container
         'menu' => __( 'Header Links', 'bonestheme' ),   // nav name
-        'menu_class' => '',                             // adding custom nav class
+        'menu_class' => 'head-menu',                             // adding custom nav class
         'theme_location' => 'header-links',             // where it's located in the theme
         'fallback_cb' => ''                             // fallback function
         )); ?>
 
-      </menu>
+
+      </nav>
 
     </div>
   </header>
