@@ -1,0 +1,98 @@
+/*---header + footer ---------------------------------------------------------*/
+
+.page-header, .page-footer {
+  position: relative;
+  width:100%;
+  background-color:jr-grey(2);
+  border: 0 solid $jr-colour-emphasis;
+  color: jr-grey(9);
+ // height: 7rem;
+  padding: $jr-margin;
+  box-shadow: 0 2px 4px rgba($jr-colour-shadow,0.5);
+  z-index: 5;
+}
+
+.page-header {
+  border-bottom-width: 5px;
+
+  .container {
+    @extend %flex-parent;
+  }
+}
+
+.header-icon, .header-search {
+  @extend %flex-4;
+  //border:solid pink 1px;
+}
+
+$social-icons: (
+  linkedin,
+  twitter,
+  facebook,
+);
+
+$contact-icons: (
+  phone-w,
+  email-w
+);
+
+.header-nav {
+
+  border-left: solid 3px;
+  @extend %flex-2;
+  //border:solid pink 1px;
+  align-self: flex-end;
+
+  li {
+    float:left;
+    margin-left: 0.5rem;
+  }
+
+  a {
+    line-height: 36px;
+    min-width: 36px;
+    vertical-align: top;
+
+    @include jr-icon(before, none, $master: true) {
+      transform-origin: top left;
+    }
+  }
+
+  @each $item-icon in $social-icons {
+    .#{$item-icon} {
+      @include jr-icon(before, $item-icon, $master: false) {
+        transform: scale(0.3);
+      }
+    }
+  }
+  @each $item-icon in $contact-icons {
+    .#{$item-icon} {
+      @include jr-icon(before, $item-icon, $master: false){
+        transform: scale(0.5);
+        left:0;
+      };
+    }
+  }
+
+  .contact {
+    a {
+      padding-left: 36px;
+    }
+    @include full-list;
+
+  }
+
+  .social, .head-menu {
+    @include split-list;
+    @include split-list;
+  }
+}
+
+
+
+
+
+.page-footer {
+  border-top-width: 5px;
+}
+

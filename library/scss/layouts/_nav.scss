@@ -1,25 +1,10 @@
-/*- menu parts -----------------------------------------------------------------------*/
+/*- menu parts ---------------------------------------------------------------*/
 
-nav {
+.top-nav, .items-nav {
   @extend %flex-parent;
-
   cursor: pointer;
   div {
     background-color: white;
-  }
-
-}
-
-div[class^=nav-] {
-  height: 2rem;
-    a {
-    line-height: 2rem;
-    padding: 0 1.5rem;
-    position: relative;
-    display: inline-block;
-    &.active, &:active, &:hover {
-      background-color: $jr-colour-hover;
-    }
   }
 }
 
@@ -34,9 +19,25 @@ div[class^=nav-] {
   }
 }
 
+.nav-main,
+.nav-breadcrumbs,
+.nav-paginate {
+  height: 2rem;
+    a {
+    line-height: 2rem;
+    padding: 0 1.5rem;
+    position: relative;
+    display: inline-block;
+    &.active, &:active, &:hover {
+      background-color: $jr-colour-hover;
+    }
+  }
+}
+
 .nav-main {
   z-index: 6;
   margin-left: -4px;
+  width: 100%;
   @extend %make-it-pop;
   &:not(.home) {
     @include jr-icon(before, arrow, $master: true) {
@@ -48,7 +49,7 @@ div[class^=nav-] {
   }
   &.open {
     height: auto;
-    transition: 300ms ease;
+    //transition: 300ms ease;
     @include jr-icon(before, close) {
       top: 0.1rem;
     }
@@ -87,8 +88,9 @@ div[class^=nav-] {
   }
   @include jr-size(tabletOnly) {
     li {
-      width: 50%;
-      float: left;
+      ul {
+        @include split-list;
+      }
     }
   }
   @include jr-size(screen) {

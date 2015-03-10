@@ -434,6 +434,9 @@ ul {
   list-style: none;
   margin: 0; }
 
+img {
+  width: 100%; }
+
 button, article > div, .nav-main, .items-nav div, .menu-featured li {
   box-shadow: 0 2px 4px rgba(23, 25, 28, 0.5);
   position: relative;
@@ -446,15 +449,19 @@ button, article > div, .nav-main, .items-nav div, .menu-featured li {
   padding: 0.1rem 1rem; }
 
 /*--- grid ----------------------------------------------------------------------------*/
-.page-header .container, article, nav, .menu-featured {
+article, .page-header .container, .top-nav, .items-nav, .menu-featured {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: stretch; }
 
-.shop-grid div, .menu-featured li, .page-header img, .header-icon, .header-social, .header-menu, .article-header {
+.header-nav, .shop-grid div, .header-icon, .header-search, .menu-featured li, .article-header {
   flex: 0 0 calc(100% - 1.5rem); }
 
+@media only screen and (min-width: 1031px) {
+  .header-nav {
+    flex: 0 0 calc(50% - 1.5rem); } }
+
 @media only screen and (min-width: 482px) {
   .shop-grid div {
     flex: 0 0 calc(50% - 1.5rem); } }
@@ -463,23 +470,13 @@ button, article > div, .nav-main, .items-nav div, .menu-featured li {
     flex: 0 0 calc(33.33333% - 1.5rem); } }
 
 @media only screen and (min-width: 482px) {
-  .menu-featured li {
+  .header-icon, .header-search, .menu-featured li {
     flex: 0 0 calc(50% - 1.5rem); } }
 @media only screen and (min-width: 1031px) {
-  .menu-featured li {
+  .header-icon, .header-search, .menu-featured li {
     flex: 0 0 calc(25% - 1.5rem); } }
 
-@media only screen and (min-width: 482px) {
-  .page-header img, .header-icon, .header-social, .header-menu {
-    flex: 0 0 calc(33.33333% - 1.5rem); } }
-@media only screen and (min-width: 1031px) {
-  .page-header img, .header-icon, .header-social, .header-menu {
-    flex: 0 0 calc(16.66667% - 1.5rem); } }
-
-.shop-grid.group li {
-  flex: 0 0 calc(50% - 1.5rem); }
-
-/*----Page Core --------------------------------------------------------------*/
+/*--- Page Core Elements -----------------------------------------------------*/
 html {
   font-size: 14px; }
   @media only screen and (min-width: 1031px) {
@@ -500,22 +497,6 @@ body {
     .container {
       max-width: 1200px; } }
 
-.page-header, .page-footer {
-  position: relative;
-  width: 100%;
-  background-color: #2e3238;
-  border: 0 solid #bf4040;
-  height: 7rem;
-  padding: 1.5rem;
-  box-shadow: 0 2px 4px rgba(23, 25, 28, 0.5);
-  z-index: 5; }
-
-.page-header {
-  border-bottom-width: 5px; }
-  .page-header img {
-    height: 5rem;
-    position: ab; }
-
 section {
   background-color: #f1f2f4;
   position: relative;
@@ -528,14 +509,14 @@ article > div {
   article > div::before {
     content: '';
     position: absolute;
-    background-image: url(/rhc_online/images/icons/RHC-Icons.png);
+    background-image: url(/redhotchilli/images/icons/RHC-Icons.png);
     background-repeat: no-repeat;
     right: -9px;
     top: 4rem; }
   article > div::after {
     content: '';
     position: absolute;
-    background-image: url(/rhc_online/images/icons/RHC-Icons.png);
+    background-image: url(/redhotchilli/images/icons/RHC-Icons.png);
     background-repeat: no-repeat;
     bottom: 0.1rem;
     right: 0.1rem;
@@ -545,31 +526,96 @@ article > div {
 .article-header {
   margin: 1rem 1.5rem; }
 
+/*---header + footer ---------------------------------------------------------*/
+.page-header, .page-footer {
+  position: relative;
+  width: 100%;
+  background-color: #2e3238;
+  border: 0 solid #bf4040;
+  color: #e3e5e8;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(23, 25, 28, 0.5);
+  z-index: 5; }
+
+.page-header {
+  border-bottom-width: 5px; }
+
+.header-nav {
+  border-left: solid 3px;
+  align-self: flex-end; }
+  .header-nav li {
+    float: left;
+    margin-left: 0.5rem; }
+  .header-nav a {
+    line-height: 36px;
+    min-width: 36px;
+    vertical-align: top;
+    position: relative; }
+    .header-nav a::before {
+      content: '';
+      position: absolute;
+      background-image: url(/redhotchilli/images/icons/RHC-Icons.png);
+      background-repeat: no-repeat;
+      transform-origin: top left; }
+  .header-nav .linkedin::before {
+    background-position: -256px -768px;
+    width: 128px;
+    height: 128px;
+    transform: scale(0.3); }
+  .header-nav .twitter::before {
+    background-position: -128px -768px;
+    width: 128px;
+    height: 128px;
+    transform: scale(0.3); }
+  .header-nav .facebook::before {
+    background-position: 0px -768px;
+    width: 128px;
+    height: 128px;
+    transform: scale(0.3); }
+  .header-nav .phone-w::before {
+    background-position: -640px -64px;
+    width: 64px;
+    height: 64px;
+    transform: scale(0.5);
+    left: 0; }
+  .header-nav .email-w::before {
+    background-position: -768px -64px;
+    width: 64px;
+    height: 64px;
+    transform: scale(0.5);
+    left: 0; }
+  .header-nav .contact {
+    margin: 0 0.5rem;
+    width: calc(100% - 1rem);
+    font-size: 1rem;
+    float: left; }
+    .header-nav .contact a {
+      padding-left: 36px; }
+  .header-nav .social, .header-nav .head-menu {
+    margin: 0 0.5rem;
+    width: calc(50% - 1rem);
+    font-size: 0.9rem;
+    float: left;
+    margin: 0 0.5rem;
+    width: calc(50% - 1rem);
+    font-size: 0.9rem;
+    float: left; }
+
 .page-footer {
   border-top-width: 5px; }
 
-/*- menu parts -----------------------------------------------------------------------*/
-nav {
+/*- menu parts ---------------------------------------------------------------*/
+.top-nav, .items-nav {
   cursor: pointer; }
-  nav div {
+  .top-nav div, .items-nav div {
     background-color: white; }
-
-div[class^=nav-] {
-  height: 2rem; }
-  div[class^=nav-] a {
-    line-height: 2rem;
-    padding: 0 1.5rem;
-    position: relative;
-    display: inline-block; }
-    div[class^=nav-] a.active, div[class^=nav-] a:active, div[class^=nav-] a:hover {
-      background-color: #e3e5e8; }
 
 .top-nav a {
   position: relative; }
   .top-nav a::before {
     content: '';
     position: absolute;
-    background-image: url(/rhc_online/images/icons/RHC-Icons.png);
+    background-image: url(/redhotchilli/images/icons/RHC-Icons.png);
     background-repeat: no-repeat;
     background-position: -384px 0px;
     width: 64px;
@@ -579,15 +625,36 @@ div[class^=nav-] {
     transform: scale(0.3);
     transform-origin: top left; }
 
+.nav-main,
+.nav-breadcrumbs,
+.nav-paginate {
+  height: 2rem; }
+  .nav-main a,
+  .nav-breadcrumbs a,
+  .nav-paginate a {
+    line-height: 2rem;
+    padding: 0 1.5rem;
+    position: relative;
+    display: inline-block; }
+    .nav-main a.active, .nav-main a:active, .nav-main a:hover,
+    .nav-breadcrumbs a.active,
+    .nav-breadcrumbs a:active,
+    .nav-breadcrumbs a:hover,
+    .nav-paginate a.active,
+    .nav-paginate a:active,
+    .nav-paginate a:hover {
+      background-color: #e3e5e8; }
+
 .nav-main {
   z-index: 6;
-  margin-left: -4px; }
+  margin-left: -4px;
+  width: 100%; }
   .nav-main:not(.home) {
     position: relative; }
     .nav-main:not(.home)::before {
       content: '';
       position: absolute;
-      background-image: url(/rhc_online/images/icons/RHC-Icons.png);
+      background-image: url(/redhotchilli/images/icons/RHC-Icons.png);
       background-repeat: no-repeat;
       background-position: -256px 0px;
       width: 64px;
@@ -597,8 +664,7 @@ div[class^=nav-] {
       transform: scale(0.5);
       transform-origin: top left; }
   .nav-main.open {
-    height: auto;
-    transition: 300ms ease; }
+    height: auto; }
     .nav-main.open::before {
       background-position: 0px 0px;
       width: 64px;
@@ -628,8 +694,10 @@ div[class^=nav-] {
       text-align: center;
       padding-left: 0; } }
   @media only screen and (min-width: 482px) and (max-width: 1030px) {
-    .nav-main li {
-      width: 50%;
+    .nav-main li ul {
+      margin: 0 0.5rem;
+      width: calc(50% - 1rem);
+      font-size: 0.9rem;
       float: left; } }
   @media only screen and (min-width: 1031px) {
     .nav-main {
@@ -703,10 +771,9 @@ Page specific items.
       margin-top: 0; } }
 
 /*-- default list Layout -----------------------------------------------------------*/
-.shop-grid img,
-.shop-full img {
-  width: 100%;
-  margin-bottom: 2rem; }
+.shop-grid,
+.shop-full {
+  padding-bottom: 2rem; }
 
 .shop-grid h3 {
   border-bottom: 1px solid #c7cbd1; }
@@ -714,7 +781,8 @@ Page specific items.
   position: absolute;
   bottom: 0;
   font-size: 0.8rem;
-  background-color: white; }
+  background-color: white;
+  border-top: 1px solid #c7cbd1; }
 .shop-grid a {
   width: 100%; }
 .shop-grid span {
@@ -724,7 +792,11 @@ Page specific items.
 
 /*-- group list Layout -----------------------------------------------------------*/
 .shop-grid.group li {
-  line-height: 1.5; }
+  line-height: 1.5;
+  margin: 0 0.5rem;
+  width: calc(50% - 1rem);
+  font-size: 0.9rem;
+  float: left; }
   .shop-grid.group li:hover {
     background-color: #e3e5e8; }
 
@@ -744,14 +816,14 @@ article > div {
   article > div::before {
     content: '';
     position: absolute;
-    background-image: url(/rhc_online/images/icons/RHC-Icons.png);
+    background-image: url(/redhotchilli/images/icons/RHC-Icons.png);
     background-repeat: no-repeat;
     right: -9px;
     top: 4rem; }
   article > div::after {
     content: '';
     position: absolute;
-    background-image: url(/rhc_online/images/icons/RHC-Icons.png);
+    background-image: url(/redhotchilli/images/icons/RHC-Icons.png);
     background-repeat: no-repeat;
     bottom: 0.1rem;
     right: 0.1rem;
@@ -817,5 +889,3 @@ article .new::before {
   background-position: -384px -640px;
   width: 128px;
   height: 128px; }
-
-/*# sourceMappingURL=style.css.map */
