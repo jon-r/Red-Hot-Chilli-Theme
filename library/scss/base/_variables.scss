@@ -50,6 +50,13 @@ $jr-border: 1px solid jr-grey(8);
   float:left;
 }
 
+@mixin quart-list($isText) {
+  margin: 0 0.5rem;
+  width:calc(25% - 1rem);
+  font-size: 0.9rem;
+  float:left;
+}
+
 //media query setup-----------------------------------------------------------*/
 
 //base size (min);

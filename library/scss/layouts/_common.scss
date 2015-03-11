@@ -4,24 +4,33 @@
   box-sizing: border-box;
 }
 
-button {
+%big-red-button {
   background-color: $jr-colour-emphasis;
   border: none;
   color: white;
   height:1.5rem;
   width: calc(100% - #{$jr-margin});
-  @extend %make-it-pop;
+}
+
+ul, input  {
+
+  list-style: none;
+  margin:0;
+  border:0;
 }
 
 ul {
   padding:0;
-  list-style: none;
-  margin:0;
+}
+
+input {
+  padding:2px;
 }
 
 img {
   width:100%;
 }
+
 
 %make-it-pop {
   box-shadow: 0 2px 4px rgba($jr-colour-shadow,0.5);

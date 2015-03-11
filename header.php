@@ -44,45 +44,38 @@
 <body <?php body_class(); ?>>
 
   <header class="page-header" role="banner">
+
+    <?php wp_nav_menu(array(
+    'container' => '',                              // remove nav container
+    'menu' => __( 'Header Links', 'bonestheme' ),   // nav name
+    'menu_class' => 'header-menu',                             // adding custom nav class
+    'theme_location' => 'header-links',             // where it's located in the theme
+    'fallback_cb' => ''                             // fallback function
+    )); ?>
+
     <div class="container" >
 
       <a class="header-icon" href="<?php echo home_url(); ?>" rel="nofollow">
         <img src="<?php echo imgSrcRoot('rhc','RHC_Logo_transparent','png'); ?>" />
       </a>
 
-      <div class="header-search" >
-        <form>
-          <label for="search">Search</label>
+      <div class="header-links">
+        <ul class="header-contact" >
+          <li class="phone-w" ><h3><?php echo $rhcTel ?></h3></li>
+          <li class="email-w" ><a href="mailto:<?php echo $rhcEmail ?>" ><h3><?php echo $rhcEmail ?></h3></a></li>
+        </ul>
+        <form class="header-search">
           <input type="hidden" name="page_id" value="<?php echo jr_page('srch') ?>">
           <input type="search" name="search">
-          <button type="submit">GO</button>
+          <label for="search">Search</label>
+<!--          <button type="submit">GO</button>-->
         </form>
+        <ul class="header-social" >
+          <li class="facebook" ><a href="<?php echo $rhcFacebookLink ?>" ></a></li>
+          <li class="linkedin" ><a href="<?php echo $rhcLinkedinLink ?>" ></a></li>
+          <li class="twitter" ><a href="<?php echo $rhcTwitterLink ?>" ></a></li>
+        </ul>
       </div>
-
-      <nav class="header-nav">
-
-        <ul class="contact" >
-          <li><a class="phone-w" href="tel:<?php echo $rhcTel ?>" ><h3><?php echo $rhcTel ?></h3></a></li>
-          <li><a class="email-w" href="mailto:<?php echo $rhcEmail ?>" ><h3><?php echo $rhcEmail ?></h3></a></li>
-        </ul>
-
-        <ul class="social" >
-          <li><a class="twitter" href="<?php echo $rhcTwitterLink ?>" ></a></li>
-          <li><a class="facebook" href="<?php echo $rhcFacebookLink ?>" ></a></li>
-          <li><a class="linkedin" href="<?php echo $rhcLinkedinLink ?>" ></a></li>
-        </ul>
-
-        <?php wp_nav_menu(array(
-        'container' => '',                              // remove nav container
-        'menu' => __( 'Header Links', 'bonestheme' ),   // nav name
-        'menu_class' => 'head-menu',                             // adding custom nav class
-        'theme_location' => 'header-links',             // where it's located in the theme
-        'fallback_cb' => ''                             // fallback function
-        )); ?>
-
-
-      </nav>
-
     </div>
   </header>
 
