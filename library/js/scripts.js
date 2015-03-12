@@ -27,10 +27,8 @@ function scrollScan() {
     250
   );
 }
-
 /*triggers-----------------------------------------------------------------------------*/
 
-//window.onload =
 window.onscroll = scrollScan;
 
 menuMainBtn.onclick = menuToggleOpen;

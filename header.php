@@ -61,7 +61,7 @@
 
       <div class="header-links">
         <ul class="header-contact" >
-          <li class="phone-w" ><h3><?php echo $rhcTel ?></h3></li>
+          <li class="phone-w" ><h2><?php echo $rhcTel ?></h2></li>
           <li class="email-w" ><a href="mailto:<?php echo $rhcEmail ?>" ><h3><?php echo $rhcEmail ?></h3></a></li>
         </ul>
         <form class="header-search">

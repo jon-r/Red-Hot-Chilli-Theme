@@ -1,0 +1,54 @@
+
+form {
+  position: relative;
+  color: jr-grey(1);
+}
+
+input, label {
+
+}
+input {
+  width: calc(100% - 4px);
+  height:34px;
+  background-color: jr-grey(9.5);
+  @include jr-size(phoneOnly) {
+    &:focus + label {
+      display:none;
+    }
+  }
+}
+
+label {
+  @include jr-icon(before, none, $master: true) {
+    transform: scale(0.5);
+    transform-origin: top left;
+    left: -28px;
+    top:4px;
+  }
+
+  pointer-events: none;
+  position:absolute;
+  left:4px;
+  margin-left: 24px;
+  top:0;
+}
+
+input[type="search"] {
+  & + label {
+    @include jr-icon(before, search, $master: false)
+  }
+}
+
+@include jr-size(screen) {
+  input, label {
+    transition: 300ms ease;
+  }
+  input {
+    &:focus + label {
+      transform: translateX(calc(-40px - 100%));
+      color: jr-grey(9);
+      @include jr-icon(before, search-w, $master: false)
+    }
+  }
+
+}

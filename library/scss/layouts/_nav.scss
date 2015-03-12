@@ -1,10 +1,23 @@
 /*- menu parts ---------------------------------------------------------------*/
 
+nav a {
+  &.active, &:active, &:hover {
+    background-color: $jr-colour-hover;
+  }
+}
+
 .top-nav, .items-nav {
+  color: jr-grey(1);
   @extend %flex-parent;
-  cursor: pointer;
+
   div {
     background-color: white;
+  }
+  a {
+    line-height: 2rem;
+    padding: 0 1.5rem;
+    position: relative;
+    display: inline-block;
   }
 }
 
@@ -23,16 +36,8 @@
 .nav-breadcrumbs,
 .nav-paginate {
   height: 2rem;
-    a {
-    line-height: 2rem;
-    padding: 0 1.5rem;
-    position: relative;
-    display: inline-block;
-    &.active, &:active, &:hover {
-      background-color: $jr-colour-hover;
-    }
-  }
 }
+
 
 .nav-main {
   z-index: 6;
@@ -47,6 +52,7 @@
       transform-origin: top left;
     }
   }
+
   &.open {
     height: auto;
     //transition: 300ms ease;
@@ -54,38 +60,46 @@
       top: 0.1rem;
     }
   }
+
   ul {
     overflow: hidden;
     height: calc(100% - 2rem);
     line-height: 2rem;
   }
+
   h4 {
     padding-left: 0.5rem;
   }
+
   h2 {
+    cursor: pointer;
     z-index: 10;
     text-align: center;
     width: 100%;
     background-color: $jr-colour-emphasis;
-    color: jr-rhc-color(1);
     line-height: 2rem;
     padding: 0.25rem 0.5rem 0;
     margin-top: -0.25rem;
   }
+
   li {
+    cursor: pointer;
     &:active, &:hover {
       background-color: $jr-colour-hover;
     }
   }
+
   a {
     width: 100%;
   }
+
   @include jr-size(phoneOnly) {
     h2, li {
       text-align: center;
       padding-left: 0;
     }
   }
+
   @include jr-size(tabletOnly) {
     li {
       ul {
@@ -93,9 +107,11 @@
       }
     }
   }
+
   @include jr-size(screen) {
     width: 250px;
     font-size: 0.8rem;
+
     li {
       ul {
         display: none;
@@ -112,6 +128,7 @@
         z-index: 10;
       }
     }
+
     li:hover {
       ul {
         display: block;

@@ -50,8 +50,11 @@ Standard page layouts. Default style for all pages
 //header+footer
 @import "layouts/head-foot";
 
-//navigation menu(s). shopping cart/wishlist to go here to (eventually)
+//navigation menu(s)
 @import "layouts/nav";
+
+//input forms. shopping cart/wishlist to go here to (eventually)
+@import "layouts/forms";
 
 /*********************
 IMPORTING ELEMENTS

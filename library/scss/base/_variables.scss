@@ -16,7 +16,7 @@ $jr-colour-emphasis: jr-red(5);
 
 @function jr-grey($n) {
   $lightness: 10% * $n;
-  @return hsl(215, 10%, $lightness);
+  @return hsl(255, 10%, $lightness);
 }
 
 $jr-colour-bg: jr-grey(3);
@@ -31,7 +31,7 @@ $jr-colour-hover-text: jr-grey(3);
   @return hsl(0, $saturation, $lightness);
 }
 
-$NO-USE-example: hsl(215, 50%, 25%);
+$NO-USE-example: hsl(255, 10%, 25%);
 
 $jr-margin: 1.5rem;
 $jr-border: 1px solid jr-grey(8);
