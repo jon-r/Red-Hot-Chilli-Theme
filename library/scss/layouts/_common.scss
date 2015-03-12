@@ -47,6 +47,10 @@ img {
 
 /*--- grid ----------------------------------------------------------------------------*/
 
+@mixin jr-flex($rows, $full) {
+  flex: 0 0 calc(#{$rows*100%/$full} - #{$jr-margin});
+}
+
 %flex-parent {
   display:flex;
   flex-wrap: wrap;
@@ -72,6 +76,3 @@ img {
   }
 }
 
-%flex-2-fixed {
-  @include jr-flex(1,2);
-}

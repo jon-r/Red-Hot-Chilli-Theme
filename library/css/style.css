@@ -448,20 +448,24 @@ article > div, .nav-main, .items-nav div, .menu-featured li {
   padding: 0.1rem 1rem; }
 
 /*--- grid ----------------------------------------------------------------------------*/
-article, .top-nav, .items-nav, .menu-featured {
+article, .top-nav, .items-nav, .menu-featured, .shop-full > div {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: stretch; }
 
-.shop-grid div, .menu-featured li, .article-header {
+.item-focus, .shop-grid div, .item-images, .menu-featured li, .item-sidebar, .article-header, .shop-full > div {
   flex: 0 0 calc(100% - 1.5rem); }
 
+@media only screen and (min-width: 1031px) {
+  .item-focus {
+    flex: 0 0 calc(50% - 1.5rem); } }
+
 @media only screen and (min-width: 482px) {
-  .shop-grid div {
+  .shop-grid div, .item-images {
     flex: 0 0 calc(50% - 1.5rem); } }
 @media only screen and (min-width: 1031px) {
-  .shop-grid div {
+  .shop-grid div, .item-images {
     flex: 0 0 calc(33.33333% - 1.5rem); } }
 
 @media only screen and (min-width: 482px) {
@@ -470,6 +474,13 @@ article, .top-nav, .items-nav, .menu-featured {
 @media only screen and (min-width: 1031px) {
   .menu-featured li {
     flex: 0 0 calc(25% - 1.5rem); } }
+
+@media only screen and (min-width: 482px) {
+  .item-sidebar {
+    flex: 0 0 calc(33.33333% - 1.5rem); } }
+@media only screen and (min-width: 1031px) {
+  .item-sidebar {
+    flex: 0 0 calc(16.66667% - 1.5rem); } }
 
 /*--- Page Core Elements -----------------------------------------------------*/
 html {
