@@ -1,0 +1,58 @@
+/*--- grid ----------------------------------------------------------------------------*/
+
+@mixin jr-flex($rows, $full) {
+  flex: 0 0 calc(#{$rows*100%/$full} - #{$jr-margin});
+}
+
+%flex-parent {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content:space-around;
+  align-items:stretch;
+}
+
+%flex-child-base {
+  @include jr-flex(1,1);
+}
+
+@for $i from 1 through 6 {
+  %flex-#{$i} {
+    @extend %flex-child-base;
+  }
+}
+
+@include jr-size(tablet) {
+  %flex-2 {
+    @include jr-flex(1,2);
+  }
+  @for $i from 3 through 6 {
+    %flex-#{$i} {
+      $half-i: ceil($i / 2);
+      @include jr-flex(1,$half-i);
+    }
+  }
+}
+
+@include jr-size(screen) {
+  @for $i from 2 through 6 {
+    %flex-#{$i} {
+      @include jr-flex(1,$i);
+    }
+  }
+};
+
+
+
+//@for $i from 2 through 6 {
+//  %flex-#{$i} {
+//    @extend %flex-1;
+//
+//    @if $i > 2 {
+//      $half-i: ceil($i / 2);
+//      @include jr-size(tablet) { @include jr-flex(1,$half-i) };
+//    }
+//
+//    @include jr-size(screen) { @include jr-flex(1,$i) };
+//
+//  }
+//}

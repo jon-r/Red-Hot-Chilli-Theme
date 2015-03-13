@@ -30,7 +30,7 @@ $pageCount = count($splitList );
       $shop_item = jr_shop_compile($item, 'med');
     }; ?>
 
-  <div class="<?php echo trim($shop_item[info].' '.$shop_item[icon]); ?>" >
+  <div class="image-box <?php echo trim($shop_item[info].' '.$shop_item[icon]); ?>" >
 
     <a href="?<?php echo $shop_item[webLink] ?>">
 

@@ -73,7 +73,7 @@ $iconTypeMap: (
 );
 
 //serparating core pseudo parts to keep dry css
-@mixin jr-icon($pseudo, $icon: none, $master: false) {
+@mixin jr-icon($pseudo, $icon: none, $master: true) {
 
   @if $master == true {
     position: relative;
@@ -119,3 +119,57 @@ $iconTypeMap: (
     height: $sprite-size;
   }
 }
+
+$icon-after:
+  single-phase,
+  three-phase,
+  natural-gas,
+  lpg,
+  dual-fuel,
+  freezer,
+  fridge,
+  fridge-freezer;
+
+@each $item-icon in $icon-after {
+  .#{$item-icon} {
+    @include jr-icon(after, $item-icon, false);
+  }
+}
+
+$icon-before:
+  sale,
+  sold,
+  soon,
+  new,
+  linkedin,
+  twitter,
+  facebook,
+  phone-w,
+  email-w;
+
+@each $item-icon in $icon-before {
+  .#{$item-icon} {
+    @include jr-icon(before, $item-icon, false);
+  }
+}
+
+//
+//@keyframes loader-animate {
+//  0%    {background-position: -896px -768px};
+//  100%  {background-position: -896px -888px};
+//}
+//@-webkit-keyframes loader-animate {
+//  0%    {background-position: -896px -768px};
+//  100%  {background-position: -896px -888px};
+//}
+//
+//
+//.items-loader {
+//  @include jr-flex(1,1);
+//  @include jr-icon(before, loader, $master: true) {
+//    left: calc(50% - 48px - 1rem);
+//    animation: loader-animate 0.4s steps(5) alternate infinite;
+//    -webkit-animation: loader-animate 0.4s steps(5) alternate infinite;
+//  };
+//  height:32px;
+//}

@@ -19,7 +19,7 @@ input {
 }
 
 label {
-  @include jr-icon(before, none, $master: true) {
+  @include jr-icon(before) {
     transform: scale(0.5);
     transform-origin: top left;
     left: -28px;
@@ -35,7 +35,7 @@ label {
 
 input[type="search"] {
   & + label {
-    @include jr-icon(before, search, $master: false)
+    @include jr-icon(before, search, false)
   }
 }
 
@@ -47,7 +47,7 @@ input[type="search"] {
     &:focus + label {
       transform: translateX(calc(-40px - 100%));
       color: jr-grey(9);
-      @include jr-icon(before, search-w, $master: false)
+      @include jr-icon(before, search-w, false)
     }
   }
 

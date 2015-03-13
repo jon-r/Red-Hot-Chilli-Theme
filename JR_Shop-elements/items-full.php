@@ -16,19 +16,19 @@ if ($safeArr[ss]) {
 <article class="shop-full" >
   <div>
 
-
-    <div class="item-images<?php echo trim($shop_item[info].' '.$shop_item[icon]); ?>">
-
-      <img src="<?php echo img_resize($shop_item[imgFirst], 'tile') ?>">
+    <div class="item-images">
+      <div class="item-first <?php echo $shop_item[icon]; ?>" >
+        <img src="<?php echo img_resize($shop_item[imgFirst], 'tile') ?>">
+      </div>
 
       <?php if (!$safeArr[ss]) : ?>
+
       <ul class="item-gallery">
         <?php foreach ($shop_item[imgAll] as $galleryImg) : ?>
-
-        <li><img src="<?php echo img_resize($galleryImg, 'thumb') ?>">
-        </li>
+        <li><img src="<?php echo img_resize($galleryImg, 'thumb') ?>"></li>
         <?php endforeach ?>
       </ul>
+
       <?php endif ?>
 
     </div>

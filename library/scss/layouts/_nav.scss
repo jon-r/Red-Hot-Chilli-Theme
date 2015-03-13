@@ -23,7 +23,7 @@ nav a {
 
 .top-nav {
   a {
-    @include jr-icon(before, arrow-r, $master: true) {
+    @include jr-icon(before, arrow-r) {
       top: 0.5rem;
       left: 0.2rem;
       transform: scale(0.3);
@@ -45,7 +45,7 @@ nav a {
   width: 100%;
   @extend %make-it-pop;
   &:not(.home) {
-    @include jr-icon(before, arrow, $master: true) {
+    @include jr-icon(before, arrow) {
       top: 0.2rem;
       left: 0.5rem;
       transform: scale(0.5);
@@ -56,7 +56,7 @@ nav a {
   &.open {
     height: auto;
     //transition: 300ms ease;
-    @include jr-icon(before, close) {
+    @include jr-icon(before, close, false) {
       top: 0.1rem;
     }
   }
@@ -104,6 +104,7 @@ nav a {
     li {
       ul {
         @include split-list;
+        font-size: 0.9rem;
       }
     }
   }

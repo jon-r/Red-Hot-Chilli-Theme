@@ -1,0 +1,38 @@
+/*-- single item Layout ------------------------------------------------------*/
+
+.item-header {
+  @extend %header-block;
+
+  border-bottom: $jr-border;
+}
+
+.shop-full {
+  & > div {
+    @extend %flex-1;
+    @extend %flex-parent;
+  }
+}
+
+
+.item-images {
+  @extend %flex-3;
+}
+
+.item-focus {
+  @extend %flex-2;
+}
+
+.item-sidebar {
+  @extend %flex-6;
+}
+
+.item-gallery {
+  li {
+    @include quart-list;
+  }
+}
+
+
+
+
+// @extend %big-red-button
