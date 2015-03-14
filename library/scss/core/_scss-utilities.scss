@@ -31,13 +31,13 @@ $jr-margin: 1.5rem;
 $jr-border: 1px solid jr-grey(8);
 $jr-shadow: 0 2px 4px rgba(jr-grey(1),0.5);
 
-@mixin split-list($n, $master: false) {
-  width:calc(#{100% / $n} - 0.5rem);
-  @if $master == true {
-    float:left;
-    margin: 0 0.25rem;
-  }
-}
+//@mixin split-list($n, $master: false) {
+//  width:calc(#{100% / $n} - 0.5rem);
+//  @if $master == true {
+//    float:left;
+//    margin: 0 0.25rem;
+//  }
+//}
 
 //*media query setup-------------------------------------------------------------------*/
 

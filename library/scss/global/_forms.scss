@@ -1,4 +1,6 @@
 
+/* --- contact form default -----------------------------------------------------------*/
+
 form {
   position: relative;
   color: $jr-text-dark;
@@ -11,6 +13,8 @@ input {
   width: calc(100% - 4px);
   height:34px;
   background-color: $jr-bg-light;
+  padding: 2px;
+  border: none;
   @include jr-size(phoneOnly) {
     &:focus + label {
       display:none;
@@ -30,7 +34,7 @@ label {
   position:absolute;
   left:4px;
   margin-left: 24px;
-  top:0;
+  top:4px;
 }
 
 input[type="search"] {

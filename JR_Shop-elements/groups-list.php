@@ -13,7 +13,7 @@
       $groupHeaderImg = imgSrcRoot('icons','header-'.strtok($group, ' '),'png');
   ?>
 
-  <div class="shop-tile">
+  <div class="shop-tile group">
 
     <a href="?<?php echo $link ?>" >
       <img src="<?php echo $groupHeaderImg ?>" alt="<?php echo $group ?>"/>

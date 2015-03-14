@@ -61,13 +61,10 @@ nav a {
   }
 
   ul {
+    @extend %flex-parent-edgeless;
     overflow: hidden;
     height: calc(100% - 2rem);
     line-height: 2rem;
-  }
-
-  h4 {
-    padding-left: 0.5rem;
   }
 
   h2 {
@@ -83,6 +80,7 @@ nav a {
 
   li {
     cursor: pointer;
+    padding-left: 0.5rem;
     &:active, &:hover {
       background-color: $jr-bg-hover;
     }
@@ -101,10 +99,8 @@ nav a {
 
   @include jr-size(tabletOnly) {
     li {
-      ul {
-        @include split-list(2);
-        font-size: 0.9rem;
-      }
+      @include jr-flex(1,2);
+      font-size: 0.9rem;
     }
   }
 

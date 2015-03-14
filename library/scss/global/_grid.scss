@@ -1,7 +1,8 @@
 /*--- grid ----------------------------------------------------------------------------*/
 
 @mixin jr-flex($rows, $full) {
-  flex: 0 0 calc(#{$rows*100%/$full} - #{$jr-margin});
+  width: calc(#{$rows*100%/$full } - #{$jr-margin});
+
 }
 
 %flex-parent {
@@ -29,19 +30,16 @@
 }
 
 @include jr-size(tablet) {
-  %flex-2 {
+  %flex-2,%flex-3,%flex-4 {
     @include jr-flex(1,2);
   }
-  @for $i from 3 through 6 {
-    %flex-#{$i} {
-      $half-i: ceil($i / 2);
-      @include jr-flex(1,$half-i);
-    }
+  %flex-5,%flex-6 {
+    @include jr-flex(1,3);
   }
 }
 
 @include jr-size(screen) {
-  @for $i from 2 through 6 {
+  @for $i from 3 through 6 {
     %flex-#{$i} {
       @include jr-flex(1,$i);
     }

@@ -2,18 +2,21 @@
 
 .item-header {
   @extend %header-block;
-
   border-bottom: $jr-border;
 }
 
 
-.shop-full {
-  & > div {
-    @extend %flex-1;
-    @extend %flex-parent;
-  }
-}
 
+.item-container {
+  @extend %flex-1;
+  @extend %flex-parent;
+  @extend %make-it-pop;
+  @include jr-size(screen) {
+    flex-direction: row-reverse;
+  }
+  background-color: white;
+
+}
 
 .item-gallery {
   @extend %flex-3;
@@ -26,32 +29,20 @@
 }
 
 .item-sidebar {
-  @extend %flex-6;
+  @include jr-flex(1,1);
+
+  @include jr-size(screen) {
+    @include jr-flex(1,6);
+  }
 }
 
 .item-thumbs {
+  @extend %flex-parent-edgeless;
   li {
-    @include split-list(2, true);
-    position: relative;
-
-    @include jr-size(screen) {
-      @include split-list(4);
-    }
-
-    &::before {
-      content: "";
-      display: block;
-      padding-top: 100%;
-    }
+    @extend %flex-4;
   }
 
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-  }
+
 }
 
 .item-power {

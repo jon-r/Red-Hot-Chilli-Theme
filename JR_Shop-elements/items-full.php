@@ -14,24 +14,21 @@ if ($safeArr[ss]) {
 ?>
 
 <article class="shop-full" >
-  <div>
+  <div class="item-container">
 
-    <div class="item-gallery">
-      <div class="item-main <?php echo $shop_item[icon]; ?>" >
-        <img src="<?php echo img_resize($shop_item[imgFirst], 'tile') ?>">
-      </div>
+    <div class="item-sidebar">
 
-      <?php if (!$safeArr[ss]) : ?>
+      <button>Ask us</button>
+      <button>Shopping List (nyi)</button>
+      <button>Buy Now (nyi)</button>
 
-      <ul class="item-thumbs">
-        <?php foreach ($shop_item[imgAll] as $galleryImg) : ?>
-        <li><img src="<?php echo img_resize($galleryImg, 'thumb') ?>"></li>
-        <?php endforeach ?>
+      <ul class="item-features">
+        <li>One Feature</li>
+        <li>Two Feature</li>
+        <li>Three Feature</li>
+        <li>Four Feature</li>
       </ul>
-
-      <?php endif ?>
     </div>
-
 
     <div class="item-info" >
       <header class="item-header">
@@ -39,15 +36,7 @@ if ($safeArr[ss]) {
         <h2><?php echo $shop_item[price] ?></h2>
       </header>
 
-      <div class="item-description" >
-        <?php echo $shop_item[desc] ?>
-        <?php echo $shop_item[condition] ?>
-
-        <?php echo $shop_item[brand] ?>
-        <?php echo $shop_item[model] ?>
-      </div>
-
-      <div class="item-specs" >
+        <div class="item-specs" >
 
         <ul class="item-dimensions">
           <li><?php echo $shop_item[hFull] ?></li>
@@ -61,24 +50,38 @@ if ($safeArr[ss]) {
           <?php echo $shop_item[watt] ?>
         </div>
 
+        <div class="item-description" >
+          <?php echo $shop_item[desc] ?>
+          <?php echo $shop_item[condition] ?>
+
+          <?php echo $shop_item[brand] ?>
+          <?php echo $shop_item[model] ?>
+        </div>
+
       <?php endif ?>
-      </div>
+
     </div>
 
 
-    <div class="item-sidebar">
+  </div>
 
-      <button>Ask us</button>
-      <button>Shopping List (nyi)</button>
-      <button>Buy Now (nyi)</button>
-
-      <ul class="item-features" >
-        <li>One Feature</li>
-        <li>Two Feature</li>
-        <li>Three Feature</li>
-        <li>Four Feature</li>
-      </ul>
+  <div class="item-gallery">
+    <div class="item-main <?php echo $shop_item[icon]; ?>" >
+      <img src="<?php echo img_resize($shop_item[imgFirst], 'tile') ?>">
     </div>
+
+    <?php if (!$safeArr[ss]) : ?>
+
+    <ul class="item-thumbs">
+      <?php foreach ($shop_item[imgAll] as $galleryImg) : ?>
+      <li><img src="<?php echo img_resize($galleryImg, 'thumb') ?>"></li>
+      <?php endforeach ?>
+    </ul>
+
+    <?php endif ?>
+  </div>
+
+
 
   </div>
   <?php var_dump($shop_item) ?>

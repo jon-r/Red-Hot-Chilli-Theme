@@ -17,7 +17,7 @@
 
     <div class="shop-tile">
       <a href="?<?php echo $link ?>" >
-        <h3><?php echo $category[Name] ?></h3>
+        <div><h3><?php echo $category[Name] ?></h3></div>
         <img src="<?php echo $imgUrl ?>" >
       </a>
     </div>

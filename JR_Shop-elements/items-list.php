@@ -34,21 +34,25 @@ $pageCount = count($splitList );
 
     <a href="?<?php echo $shop_item[webLink] ?>">
 
-      <h3><?php echo $shop_item[name] ?></h3>
+      <div>
+        <h3><?php echo $shop_item[name] ?></h3>
+      </div>
 
       <img src="<?php echo img_resize($shop_item[imgFirst], 'tile'); ?>" alt="<?php echo $shop_item[name] ?>" >
 
-      <aside>
-        <span><?php echo $shop_item[rhc] ?></span>
-        <span><?php echo $shop_item[quantity] ?: null ?></span>
-        <span><?php echo $shop_item[price] ?></span>
-      </aside>
+      <div>
+        <em><?php echo $shop_item[price] ?></em><br>
+        <?php echo $shop_item[rhc] ?> <br>
+        <?php echo $shop_item[quantity] ?: null ?>
+      </div>
 
     </a>
 
   </div>
 
   <?php endforeach ?>
+
+</article>
 
   <footer class="page-footer">
     <?php if ($itemCountCheckMin) : ?>
@@ -81,10 +85,6 @@ $pageCount = count($splitList );
 
 
   </footer>
-
-</article>
-
-
 
 
 <!--  $fSoon =        $safeArr['soon'];

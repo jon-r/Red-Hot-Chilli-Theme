@@ -78,6 +78,7 @@ $iconTypeMap: (
   @if $master == true {
     position: relative;
     &::#{$pseudo} {
+      pointer-events: none;
       content: '';
       position: absolute;
       background-image: url(#{$siteLink + '/images/icons/RHC-Icons.png'});

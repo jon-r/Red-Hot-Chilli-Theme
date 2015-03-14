@@ -16,16 +16,14 @@ section {
 }
 
 article {
-
   @extend %flex-parent;
-
-  & > div {
-    background-color: white;
-    @extend %make-it-pop;
-  }
 }
 
 .page-header {
   margin: 1rem $jr-margin;
   @extend %flex-1;
+}
+
+.page-footer {
+  flex: 1;
 }

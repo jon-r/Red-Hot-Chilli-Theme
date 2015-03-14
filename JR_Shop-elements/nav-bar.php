@@ -9,20 +9,20 @@ _________________________________________________________
 <nav class="primary-nav">
 
   <div id="js-menuMain" class="nav-main<?php echo is_front_page() ? ' home' : null ?>" >
-    <h2 class="nav-main-header" id="js-menuMainBtn">Browse</h2>
-    <ul class="nav-list">
+    <h2 id="js-menuMainBtn">Browse</h2>
+    <ul>
     <?php foreach($groupsList as $group) :
         $link = http_build_query(['g' => $group, 'page_id' => jr_page('grp')]);
         $categoriesListFiltered = array_filter ($categoriesList, isGroup($group));
       ?>
 
       <li><h4><?php echo $group ?></h4>
-        <ul class="nav-list sublist">
+        <ul>
 
           <?php foreach ($categoriesListFiltered as $category) :
               $link = http_build_query(['cat' => $category[Name], 'page_id' => jr_page('cat')]);
           ?>
-          <li  class="box-link"><a href="?<?php echo $link ?>" ><?php echo $category[Name] ?></a></li>
+          <li ><a href="?<?php echo $link ?>" ><?php echo $category[Name] ?></a></li>
           <?php endforeach ?>
         </ul>
       </li>
@@ -33,7 +33,7 @@ _________________________________________________________
         <?php wp_nav_menu(array(
           'container' => '',                           // remove nav container
           'menu' => __( 'Featured Menu Links', 'bonestheme' ),  // nav name
-          'menu_class' => 'nav-list sublist',                          // adding custom nav class
+          'menu_class' => '',                          // adding custom nav class
           'theme_location' => 'featured-menu',         // where it's located in the theme
           'fallback_cb' => ''                          // fallback function (if there is one)
         )); ?>
@@ -42,7 +42,7 @@ _________________________________________________________
         <?php wp_nav_menu(array(
           'container' => '',                           // remove nav container
           'menu' => __( 'Services Menu links', 'bonestheme' ),  // nav name
-          'menu_class' => 'nav-list sublist',                          // adding custom nav class
+          'menu_class' => '',                          // adding custom nav class
           'theme_location' => 'services-menu',         // where it's located in the theme
           'fallback_cb' => ''                          // fallback function (if there is one)
         )); ?>

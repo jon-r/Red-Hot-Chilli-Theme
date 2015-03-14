@@ -1,57 +1,32 @@
 /*-- default list Layout -----------------------------------------------------------*/
 
-.shop-grid {
-  h3, aside {
-    @extend %header-block;
-  }
-  h3 {
-    border-bottom: $jr-border;
-  }
-  aside {
-    position: absolute;
-    bottom: 0;
-    font-size: 0.8rem;
-    background-color: white;
-    border-top: $jr-border;
-  }
-  a {
-    width: 100%;
-  }
-  span {
-    display: block;
-    &:last-child {
-      color: $jr-emphasis;
-    }
-  }
-
-}
 /*-- group list Layout -----------------------------------------------------------*/
 
-.shop-grid.group {
+.shop-tile.group {
+  @extend %flex-3;
+  @extend %flex-parent;
   li {
     line-height: 1.5;
-    @include split-list(2, true);
+    @include jr-flex(1,2);
     &:hover {
       background-color: $jr-bg-hover;
     }
-  }
-  div {
-    @extend %flex-3;
   }
 }
 /*-- category list Layout -----------------------------------------------------------*/
 
 .shop-grid.category,
 .shop-grid.items {
-  a {
-    height: 100%;
-  }
-  div {
-    @extend %flex-4;
-  }
+
 }
 
 .shop-tile {
+  background-color: white;
+  @extend %make-it-pop;
+  @extend %flex-4;
+  a {
+    width: 100%;
+  }
   @include jr-icon(before) {
     right:-9px;
     top: 3.5rem;
@@ -61,6 +36,27 @@
     right:0.1rem;
     transform: scale(0.33);
     transform-origin: bottom right;
+  }
+
+  padding-bottom: 2rem;
+
+  em {
+    color:$jr-emphasis;
+    text-decoration: underline;
+  }
+  div {
+    @extend %header-block;
+
+    &:first-child {
+      border-bottom: $jr-border;
+    }
+    &:last-child {
+      font-size: 0.9rem;
+      position: absolute;
+      bottom: 0;
+      border-top: $jr-border;
+      background-color: white;
+    }
   }
 }
 
