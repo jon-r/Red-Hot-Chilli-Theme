@@ -2,12 +2,11 @@
 
 nav a {
   &.active, &:active, &:hover {
-    background-color: $jr-colour-hover;
+    background-color: $jr-bg-hover;
   }
 }
 
 .primary-nav, .items-nav {
-  color: jr-grey(1);
   @extend %flex-parent;
 
   div {
@@ -76,7 +75,7 @@ nav a {
     z-index: 10;
     text-align: center;
     width: 100%;
-    background-color: $jr-colour-emphasis;
+    background-color: $jr-emphasis;
     line-height: 2rem;
     padding: 0.25rem 0.5rem 0;
     margin-top: -0.25rem;
@@ -85,7 +84,7 @@ nav a {
   li {
     cursor: pointer;
     &:active, &:hover {
-      background-color: $jr-colour-hover;
+      background-color: $jr-bg-hover;
     }
   }
 
@@ -119,7 +118,7 @@ nav a {
         position: absolute;
         left: 0;
         background-color: white;
-        box-shadow: 0 0 4px rgba(#222, 0.6);
+        box-shadow: $jr-shadow;
         min-height: calc(100% + 15px);
         height: auto;
         top: -10px;

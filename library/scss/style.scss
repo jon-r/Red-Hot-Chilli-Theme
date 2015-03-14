@@ -17,64 +17,72 @@ http://thesassway.com/advanced/modular-css-naming-conventions
 ******************************************************************/
 
 /*********************
-IMPORTING BASE FILES
 start style on a blank slate.
+*********************/
+
+// Sassy stuffs.
+@import "core/scss-utilities";
+
+
+// normalize: git.io/normalize
+// plan to cut out unused when done
+@import "core/reset-normalize";
+
+// my own resets.
+@import "core/reset-custom";
+
+
+
+/*********************
+Add some global styling.
 *********************/
 
 //GoogleFonts
 @import url(http://fonts.googleapis.com/css?family=PT+Sans|Kreon:700);
 
-// normalize: git.io/normalize
-@import "base/normalize";
-
-// Sassy variables
-@import "base/variables";
-
 // typography
-@import "base/type";
+@import "global/type";
 
 // icons
-@import "base/sprites";
+@import "global/sprites";
 
 // grid
-@import "base/grid";
-
-/*********************
-IMPORTING LAYOUTS
-Standard page layouts. Default style for all pages
-*********************/
-
-//common styles.
-@import "layout-defaults/common";
-
-//page core. includes header/footer
-@import "layout-defaults/base-page";
-
-//header+footer
-@import "layout-defaults/head-foot";
-
-//navigation menu(s)
-@import "layout-defaults/nav";
+@import "global/grid";
 
 //input forms. shopping cart/wishlist to go here to (eventually)
-@import "layout-defaults/forms";
+@import "global/forms";
 
-//menus created by wp template, for user customisation
-@import "layout-defaults/wordpress-menus";
+//common elements (to maybe remove/minimise)
+@import "global/common-elements";
 
 /*********************
-IMPORTING ELEMENTS
+Default style for all pages
+*********************/
+
+//header+footer of whole page
+@import "defaults/primary-head-foot";
+
+//page core. section > *
+@import "defaults/page-body";
+
+//primary navigation menu
+@import "defaults/primary-nav";
+
+
+//menus created by wp template, for user customisation
+@import "defaults/wordpress-menus";
+
+/*********************
 Page specific items.
 *********************/
 
 //front page, including carousel banner
-@import "pages/index";
+@import "templates/index";
 
 //shop list, groups, categories
-@import "pages/shop-lists";
+@import "templates/shop-lists";
 
 //shop full (single item)
-@import "pages/shop-full";
+@import "templates/shop-single";
 
-//contact form(s)
-@import "pages/contact";
+

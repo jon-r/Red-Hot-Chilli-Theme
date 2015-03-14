@@ -20,7 +20,7 @@
   span {
     display: block;
     &:last-child {
-      color: $jr-colour-emphasis;
+      color: $jr-emphasis;
     }
   }
 
@@ -32,7 +32,7 @@
     line-height: 1.5;
     @include split-list(2, true);
     &:hover {
-      background-color: $jr-colour-hover;
+      background-color: $jr-bg-hover;
     }
   }
   div {
@@ -51,12 +51,12 @@
   }
 }
 
-.image-box {
-  @include jr-icon(before, none, $master: true) {
+.shop-tile {
+  @include jr-icon(before) {
     right:-9px;
     top: 3.5rem;
   }
-  @include jr-icon(after, none, $master: true) {
+  @include jr-icon(after) {
     bottom: 0.1rem;
     right:0.1rem;
     transform: scale(0.33);

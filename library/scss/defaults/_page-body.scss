@@ -1,16 +1,4 @@
-/*--- Page Core Elements -----------------------------------------------------*/
-
-html {
-  font-size: 14px;
-  @include jr-size(screen) { font-size: 18px; };
-}
-
-body {
-  padding: 0;
-  line-height: 1.2rem;
-  background-color: $jr-colour-bg;
-  min-width: 320px;
-}
+/*--- Page Body Elements -----------------------------------------------------*/
 
 .container {
   max-width: 1000px;
@@ -21,9 +9,10 @@ body {
 }
 
 section {
-  background-color: $jr-colour-bg-text;
+  background-color: $jr-bg-light;
+  color: $jr-text-dark;
   position: relative;
-  box-shadow: 0 5px 10px $jr-colour-shadow;
+  box-shadow: 0 5px 10px jr-grey(1);
 }
 
 article {

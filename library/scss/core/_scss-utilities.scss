@@ -1,29 +1,23 @@
-
-//@function jr-blue($n) {
-//  $saturation: 10% * (10 - $n);
-//  $lightness: 10% * $n;
-//  @return hsl(215, $saturation, $lightness);
-//}
-
-
 @function jr-red($n) {
   $saturation: 10% * (10 - $n);
   $lightness: 10% * $n;
   @return hsl(0, $saturation, $lightness);
 }
 
-$jr-colour-emphasis: jr-red(5);
-
 @function jr-grey($n) {
   $lightness: 10% * $n;
-  @return hsl(255, 10%, $lightness);
+  @return hsl(240, 5%, $lightness);
 }
 
-$jr-colour-bg: jr-grey(3);
-$jr-colour-bg-text: jr-grey(9.5);
-$jr-colour-shadow: jr-grey(1);
-$jr-colour-hover: jr-grey(9);
-$jr-colour-hover-text: jr-grey(3);
+$jr-emphasis: jr-red(4);
+
+$jr-bg-dark: jr-grey(3);
+$jr-bg-light: jr-grey(9.5);
+$jr-bg-hover: jr-grey(9);
+
+$jr-text-dark: jr-grey(1);
+$jr-text-light: jr-grey(9);
+$jr-text-hover: jr-grey(4.5);
 
 @function jr-rhc-color($n) {
   $saturation: 10% * (10 - $n);
@@ -31,23 +25,11 @@ $jr-colour-hover-text: jr-grey(3);
   @return hsl(0, $saturation, $lightness);
 }
 
-$NO-USE-example: hsl(255, 10%, 25%);
+$xNO-USE-example: hsl(240, 5%, 25%);
 
 $jr-margin: 1.5rem;
 $jr-border: 1px solid jr-grey(8);
-
-//@mixin full-list {
-//  margin: 0 0.5rem;
-//  width:calc(100% - 1rem);
-//  font-size: 1rem;
-//  float:left;
-//}
-//
-//@mixin split-list {
-//  margin: 0 0.5rem;
-//  width:calc(50% - 1rem);
-//  float:left;
-//}
+$jr-shadow: 0 2px 4px rgba(jr-grey(1),0.5);
 
 @mixin split-list($n, $master: false) {
   width:calc(#{100% / $n} - 0.5rem);
@@ -57,14 +39,7 @@ $jr-border: 1px solid jr-grey(8);
   }
 }
 
-
-//@mixin quart-list {
-//  margin: 0 0.5rem;
-//  width:calc(25% - 1rem);
-//  float:left;
-//}
-
-//media query setup-----------------------------------------------------------*/
+//*media query setup-------------------------------------------------------------------*/
 
 //base size (min);
 $break-xs: 320px;

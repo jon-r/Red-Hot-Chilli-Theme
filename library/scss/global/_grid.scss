@@ -11,6 +11,13 @@
   align-items:stretch;
 }
 
+%flex-parent-edgeless {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content:space-between;
+  align-items:stretch;
+}
+
 %flex-child-base {
   @include jr-flex(1,1);
 }
@@ -39,20 +46,4 @@
       @include jr-flex(1,$i);
     }
   }
-};
-
-
-
-//@for $i from 2 through 6 {
-//  %flex-#{$i} {
-//    @extend %flex-1;
-//
-//    @if $i > 2 {
-//      $half-i: ceil($i / 2);
-//      @include jr-size(tablet) { @include jr-flex(1,$half-i) };
-//    }
-//
-//    @include jr-size(screen) { @include jr-flex(1,$i) };
-//
-//  }
-//}
+}

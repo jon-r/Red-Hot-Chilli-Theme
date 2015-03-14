@@ -4,11 +4,11 @@
   position: relative;
   width: 100%;
   background-color: jr-grey(2);
-  border: 0 solid $jr-colour-emphasis;
-  color: jr-grey(9);
+  border: 0 solid $jr-emphasis;
+  color: $jr-text-light;
   padding: 5px 0 ;
   height: 11rem;
-  box-shadow: 0 2px 4px rgba($jr-colour-shadow, 0.5);
+  box-shadow: $jr-shadow;
   z-index: 5;
   @include jr-size(screen) {
     height: 9rem;

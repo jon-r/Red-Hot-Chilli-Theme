@@ -45,15 +45,6 @@ h4 {
   text-align: center;
   }
 
-a {
-  font-family: inherit;
-  text-decoration: none;
-  color: inherit;
-  display: inline-block;
-  &:hover {
-    color: $jr-colour-hover-text;
-  }
-}
 
 p {
   @extend %text-reset;

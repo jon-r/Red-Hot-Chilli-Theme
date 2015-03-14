@@ -1,7 +1,7 @@
 
 form {
   position: relative;
-  color: jr-grey(1);
+  color: $jr-text-dark;
 }
 
 input, label {
@@ -10,7 +10,7 @@ input, label {
 input {
   width: calc(100% - 4px);
   height:34px;
-  background-color: jr-grey(9.5);
+  background-color: $jr-bg-light;
   @include jr-size(phoneOnly) {
     &:focus + label {
       display:none;
@@ -46,7 +46,7 @@ input[type="search"] {
   input {
     &:focus + label {
       transform: translateX(calc(-40px - 100%));
-      color: jr-grey(9);
+      color: $jr-text-light;
       @include jr-icon(before, search-w, false)
     }
   }

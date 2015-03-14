@@ -5,7 +5,7 @@
     @extend %flex-4;
     height: 120px;
     overflow: hidden;
-    background-color: $jr-colour-bg;
+    background-color: $jr-bg-dark;
     @include jr-size(screen) {
       height: auto;
     }
