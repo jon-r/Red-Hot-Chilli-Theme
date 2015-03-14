@@ -2,7 +2,7 @@
 
 <article class="shop-grid group">
 
-  <header class="article-header" >
+  <header class="page-header" >
     <h1>Catering Equipment For Sale</h1>
     <a href="?all=1&page_id=16">Click here to View All</a>
   </header>
@@ -13,7 +13,7 @@
       $groupHeaderImg = imgSrcRoot('icons','header-'.strtok($group, ' '),'png');
   ?>
 
-  <div>
+  <div class="shop-tile">
 
     <a href="?<?php echo $link ?>" >
       <img src="<?php echo $groupHeaderImg ?>" alt="<?php echo $group ?>"/>

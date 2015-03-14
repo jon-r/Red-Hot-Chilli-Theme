@@ -36,25 +36,31 @@ start style on a blank slate.
 // icons
 @import "base/sprites";
 
+// grid
+@import "base/grid";
+
 /*********************
 IMPORTING LAYOUTS
 Standard page layouts. Default style for all pages
 *********************/
 
 //common styles.
-@import "layouts/common";
+@import "layout-defaults/common";
 
 //page core. includes header/footer
-@import "layouts/base-page";
+@import "layout-defaults/base-page";
 
 //header+footer
-@import "layouts/head-foot";
+@import "layout-defaults/head-foot";
 
 //navigation menu(s)
-@import "layouts/nav";
+@import "layout-defaults/nav";
 
 //input forms. shopping cart/wishlist to go here to (eventually)
-@import "layouts/forms";
+@import "layout-defaults/forms";
+
+//menus created by wp template, for user customisation
+@import "layout-defaults/wordpress-menus";
 
 /*********************
 IMPORTING ELEMENTS
@@ -64,9 +70,11 @@ Page specific items.
 //front page, including carousel banner
 @import "pages/index";
 
-//shop list defaults
+//shop list, groups, categories
 @import "pages/shop-lists";
 
+//shop full (single item)
+@import "pages/shop-full";
 
 //contact form(s)
 @import "pages/contact";

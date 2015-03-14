@@ -6,7 +6,7 @@ nav a {
   }
 }
 
-.top-nav, .items-nav {
+.primary-nav, .items-nav {
   color: jr-grey(1);
   @extend %flex-parent;
 
@@ -21,7 +21,7 @@ nav a {
   }
 }
 
-.top-nav {
+.primary-nav {
   a {
     @include jr-icon(before, arrow-r) {
       top: 0.5rem;
@@ -103,7 +103,7 @@ nav a {
   @include jr-size(tabletOnly) {
     li {
       ul {
-        @include split-list;
+        @include split-list(2);
         font-size: 0.9rem;
       }
     }

@@ -43,19 +43,19 @@
 
 <body <?php body_class(); ?>>
 
-  <header class="page-header" role="banner">
+  <header class="primary-header" role="banner">
 
     <?php wp_nav_menu(array(
     'container' => '',                              // remove nav container
     'menu' => __( 'Header Links', 'bonestheme' ),   // nav name
-    'menu_class' => 'header-menu',                             // adding custom nav class
+    'menu_class' => 'menu-header',                             // adding custom nav class
     'theme_location' => 'header-links',             // where it's located in the theme
     'fallback_cb' => ''                             // fallback function
     )); ?>
 
     <div class="container" >
 
-      <a class="header-icon" href="<?php echo home_url(); ?>" rel="nofollow">
+      <a class="header-logo" href="<?php echo home_url(); ?>" rel="nofollow">
         <img src="<?php echo imgSrcRoot('rhc','RHC_Logo_transparent','png'); ?>" />
       </a>
 

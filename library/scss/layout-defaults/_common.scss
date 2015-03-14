@@ -31,7 +31,6 @@ img {
   width:100%;
 }
 
-
 %make-it-pop {
   box-shadow: 0 2px 4px rgba($jr-colour-shadow,0.5);
   position: relative;
@@ -43,36 +42,5 @@ img {
   background-color: $jr-colour-hover;
   min-height: 3rem;
   padding: 0.1rem 1rem;
-}
-
-/*--- grid ----------------------------------------------------------------------------*/
-
-@mixin jr-flex($rows, $full) {
-  flex: 0 0 calc(#{$rows*100%/$full} - #{$jr-margin});
-}
-
-%flex-parent {
-  display:flex;
-  flex-wrap: wrap;
-  justify-content:space-around;
-  align-items:stretch;
-}
-
-%flex-1 {
-  @include jr-flex(1,1);
-}
-
-@for $i from 2 through 6 {
-  %flex-#{$i} {
-    @extend %flex-1;
-
-    @if $i > 2 {
-      $half-i: ceil($i / 2);
-      @include jr-size(tablet) { @include jr-flex(1,$half-i) };
-    }
-
-    @include jr-size(screen) { @include jr-flex(1,$i) };
-
-  }
 }
 

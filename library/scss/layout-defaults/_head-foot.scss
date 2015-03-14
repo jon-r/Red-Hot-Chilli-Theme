@@ -1,6 +1,6 @@
 /*---header + footer ---------------------------------------------------------*/
 
-.page-header, .page-footer {
+.primary-header, .primary-footer {
   position: relative;
   width: 100%;
   background-color: jr-grey(2);
@@ -15,24 +15,11 @@
   }
 }
 
-.page-header {
+.primary-header {
   border-bottom-width: 5px;
 }
 
-.header-menu {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: jr-grey(1);
-  height: 1.5rem;
-  li {
-    float: right;
-    margin: 0.25rem;
-  }
-}
-
-.header-icon, .header-links {
+.header-logo, .header-links {
   position: absolute;
   bottom:0;
 }
@@ -58,7 +45,7 @@
 }
 
 
-.header-icon {
+.header-logo {
   width: calc(40% - 1rem);
   max-width: 250px;
 }
@@ -106,7 +93,7 @@
   }
 }
 
-.page-footer {
+.primary-footer {
   border-top-width: 5px;
 }
 

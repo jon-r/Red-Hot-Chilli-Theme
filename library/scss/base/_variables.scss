@@ -36,24 +36,33 @@ $NO-USE-example: hsl(255, 10%, 25%);
 $jr-margin: 1.5rem;
 $jr-border: 1px solid jr-grey(8);
 
-@mixin full-list {
-  margin: 0 0.5rem;
-  width:calc(100% - 1rem);
-  font-size: 1rem;
-  float:left;
+//@mixin full-list {
+//  margin: 0 0.5rem;
+//  width:calc(100% - 1rem);
+//  font-size: 1rem;
+//  float:left;
+//}
+//
+//@mixin split-list {
+//  margin: 0 0.5rem;
+//  width:calc(50% - 1rem);
+//  float:left;
+//}
+
+@mixin split-list($n, $master: false) {
+  width:calc(#{100% / $n} - 0.5rem);
+  @if $master == true {
+    float:left;
+    margin: 0 0.25rem;
+  }
 }
 
-@mixin split-list {
-  margin: 0 0.5rem;
-  width:calc(50% - 1rem);
-  float:left;
-}
 
-@mixin quart-list {
-  margin: 0 0.5rem;
-  width:calc(25% - 1rem);
-  float:left;
-}
+//@mixin quart-list {
+//  margin: 0 0.5rem;
+//  width:calc(25% - 1rem);
+//  float:left;
+//}
 
 //media query setup-----------------------------------------------------------*/
 

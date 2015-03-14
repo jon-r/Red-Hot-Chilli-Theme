@@ -6,6 +6,7 @@
   border-bottom: $jr-border;
 }
 
+
 .shop-full {
   & > div {
     @extend %flex-1;
@@ -14,25 +15,50 @@
 }
 
 
-.item-images {
+.item-gallery {
   @extend %flex-3;
 }
 
-.item-focus {
+.item-info {
   @extend %flex-2;
+  border: solid jr-grey(8);
+  border-width: 0 1px;
 }
 
 .item-sidebar {
   @extend %flex-6;
 }
 
-.item-gallery {
+.item-thumbs {
   li {
-    @include quart-list;
+    @include split-list(2, true);
+    position: relative;
+
+    @include jr-size(screen) {
+      @include split-list(4);
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      padding-top: 100%;
+    }
+  }
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
   }
 }
 
-
-
-
+.item-power {
+  @include jr-icon(after) {
+    transform: scale(0.33);
+    transform-origin: top left;
+  };
+  border: soldi 2px red;
+}
 // @extend %big-red-button

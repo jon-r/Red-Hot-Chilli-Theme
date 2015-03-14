@@ -33,21 +33,10 @@ article {
   & > div {
     background-color: white;
     @extend %make-it-pop;
-
-    @include jr-icon(before, none, $master: true) {
-      right:-9px;
-      top: 4rem;
-    }
-    @include jr-icon(after, none, $master: true) {
-      bottom: 0.1rem;
-      right:0.1rem;
-      transform: scale(0.33);
-      transform-origin: bottom right;
-    }
   }
 }
 
-.article-header {
+.page-header {
   margin: 1rem $jr-margin;
   @extend %flex-1;
 }

@@ -6,7 +6,7 @@
 
 <article class="shop-grid category">
 
-  <header class="article-header" >
+  <header class="page-header" >
     <h1><?php echo $safeArr[group] ?></h1>
   </header>
 
@@ -15,7 +15,7 @@
     $imgUrl = imgSrcRoot('thumbnails',$category[RefName],'jpg');
   ?>
 
-    <div>
+    <div class="shop-tile">
       <a href="?<?php echo $link ?>" >
         <h3><?php echo $category[Name] ?></h3>
         <img src="<?php echo $imgUrl ?>" >
