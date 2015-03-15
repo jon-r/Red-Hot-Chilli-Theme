@@ -5,12 +5,16 @@
 ?>
 
 <?php
-$categoryList = jr_category_filter($safeArr);
+
 $pageNumber = $_GET['pg'] ?: 1;
-$itemCountCheckMax = count($categoryList) > $itemCountMax;
+$categoryList = jr_category_filter($safeArr, $pageNumber);
+
+$itemCountAll = jr_cat_count($safeArr);
+
+$itemCountCheckMax = $itemCountAll > $itemCountMax;
 $itemCountCheckMin = count($categoryList) <= $itemCountMin;
-$splitList = $itemCountCheckMax ? array_chunk($categoryList, $itemCountMax) : array($categoryList);
-$pageCount = count($splitList );
+//$splitList = $itemCountCheckMax ? array_chunk($categoryList, $itemCountMax) : array($categoryList);
+$pageCount = ceil($itemCountAll / $itemCountMax);
 
 
 ?>
@@ -23,7 +27,7 @@ $pageCount = count($splitList );
     <?php echo $safeArr[imgURL] ?>
   </header>
 
-  <?php foreach ($splitList[$pageNumber  - 1] as $item) :
+  <?php foreach ($categoryList as $item) :
     if ($safeArr[pgType] == 'CategorySS' ) {
       $shop_item = jr_shop_compile($item, 'stainless');
     } else {

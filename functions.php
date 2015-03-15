@@ -182,7 +182,7 @@ function bones_register_sidebars() {
 /************* COMMENT LAYOUT *********************/
 
 // Comment Layout
-function bones_comments( $comment, $args, $depth ) {
+/*function bones_comments( $comment, $args, $depth ) {
    $GLOBALS['comment'] = $comment; ?>
   <div id="comment-<?php comment_ID(); ?>" <?php comment_class('cf'); ?>>
     <article  class="cf">
@@ -192,7 +192,7 @@ function bones_comments( $comment, $args, $depth ) {
           this is the new responsive optimized comment image. It used the new HTML5 data-attribute to display comment gravatars on larger screens only. What this means is that on larger posts, mobile sites don't have a ton of requests for comment images. This makes load time incredibly fast! If you'd like to change it back, just replace it with the regular wordpress gravatar call:
           echo get_avatar($comment,$size='32',$default='<path_to_url>' );
         */
-        ?>
+/*        ?>
         <?php // custom gravatar call ?>
         <?php
           // create variable
@@ -226,12 +226,12 @@ external fonts. If you're using Google Fonts, you
 can replace these fonts, change it in your scss files
 and be up and running in seconds.
 */
-function bones_fonts() {
-  wp_register_style('googleFonts', 'http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic');
-  wp_enqueue_style( 'googleFonts');
-}
+//function bones_fonts() {
+//  wp_register_style('googleFonts', 'http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic');
+//  wp_enqueue_style( 'googleFonts');
+//}
 
-add_action('wp_print_styles', 'bones_fonts');
+//add_action('wp_print_styles', 'bones_fonts');
 
 
 

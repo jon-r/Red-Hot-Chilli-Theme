@@ -5,10 +5,7 @@ var itemNumber = 24;
 var menuMainBtn  = document.getElementById('js-menuMainBtn');
 var menuMain  = document.getElementById('js-menuMain');
 
-var lazyImages = document.querySelectorAll('.items div');
-var loadMarker = document.getElementsByClassName('load-marker');
 
-var isScrolling = 0;
 
 /*functions----------------------------------------------------------------------------*/
 
@@ -16,20 +13,9 @@ function menuToggleOpen() {
   menuMain.classList.toggle('open');
 }
 
-function scrollScan() {
-  if ( undefined === throttle_id ) {
-    return;
-  }
-  throttle_id = window.setTimeout(
-    function() {
 
-    },
-    250
-  );
-}
 /*triggers-----------------------------------------------------------------------------*/
 
-window.onscroll = scrollScan;
 
 menuMainBtn.onclick = menuToggleOpen;
 

@@ -41,9 +41,41 @@ function jr_category_row( $safeCategory ) {
   return $wpdb->get_row("SELECT * FROM `rhc_categories` WHERE `Name` LIKE '$safeCategory'", ARRAY_A);
 }
 
-function jr_category_filter( $safeArr ) {
-
+//limited by $itemCountMax
+function jr_category_filter( $safeArr, $pageNumber) {
   global $wpdb, $itemCountMax;
+
+  $queryOffset = ($pageNumber - 1) * $itemCountMax;
+
+  $queryLimiter = " LIMIT $queryOffset,$itemCountMax";
+
+
+  $queryAll = jr_string_build($safeArr);
+
+  $queryFull = $queryAll.$queryLimiter;
+
+  return $wpdb->get_results($queryFull, ARRAY_A);
+  /*debug return*/
+  //return $queryFull;
+
+}
+//count all items from query, for pagination
+function jr_cat_count($safeArr) {
+  global $wpdb, $itemCountMax;
+
+  if ($safeArr['pgType'] == 'New' || $safeArr['pgType'] == 'Sold') {
+    $out = $itemCountMax;
+  } else {
+    $queryAll = jr_string_build($safeArr);
+    $out = count($wpdb->get_col($queryAll));
+  }
+
+  return $out;
+}
+
+//builts the query strings for above two functions
+function jr_string_build($safeArr, $isCounter = false) {
+
   $fType = $safeArr['pgType'];
 
   $fSearch =      $safeArr['search'];
@@ -62,8 +94,10 @@ function jr_category_filter( $safeArr ) {
     "`Brand` LIKE '$fBrand' " : null;
 
   //the query "start". what data are we getting?
-  if ($fType == 'Soon' || $fType == 'Sold') {
-    $queryStart = "SELECT `RHC`, `ProductName`, `Price`, `Image`, `IsSoon`, `Sold`, `Power` FROM `networked db` ";
+  if ($isCounter && $fType == 'CategorySS') {
+    $queryStart = "SELECT `RHCs` FROM `benchessinksdb` ";
+  } elseif ($isCounter) {
+    $queryStart = "SELECT `RHC` FROM `networked db` ";
   } elseif ($fType == 'CategorySS') {
     $queryStart = "SELECT `RHCs`, `ProductName`, `Price`, `Image`, `Category`, `TableinFeet` FROM `benchessinksdb` ";
   } else {
@@ -85,23 +119,15 @@ function jr_category_filter( $safeArr ) {
   } elseif ($fType == 'Sale' ) {
     $queryEnd = "(`LiveonRHC` = 1 AND `SalePrice` > 0 AND `Sold` = 0) ORDER BY `RHC` DESC";
   } elseif ($fType == 'Sold' ) {
-    $queryEnd = "`Sold` = 1 ORDER BY `DateSold` DESC LIMIT $itemCountMax";
+    $queryEnd = "`Sold` = 1 ORDER BY `DateSold` DESC";
   } elseif ($fType == 'CategorySS') {
     $queryEnd = "`Sold` = 0 ORDER BY `RHCs` DESC";
-  } elseif ($fType == 'New') {
-    $queryEnd = "(`LiveonRHC` = 1 AND `Sold` = 0) ORDER BY `RHC` DESC LIMIT $itemCountMax";
   } else {
     $queryEnd =   "(`LiveonRHC` = 1 AND `Sold` = 0) ORDER BY `RHC` DESC";
   };
 
-
   //combine all
-  $queryFull = $queryStart.$queryMid.$queryEnd;
-
-  return $wpdb->get_results($queryFull, ARRAY_A);
-  /*debug return*/
-  //return $queryFull;
-
+  return $queryStart.$queryMid.$queryEnd;
 }
 
 ?>
