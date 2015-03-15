@@ -524,13 +524,13 @@ h4 {
   height: 64px; }
 
 /*--- grid ----------------------------------------------------------------------------*/
-article, .primary-nav, .items-nav, .menu-featured, .shop-tile.group, .item-container {
+article, .primary-nav, .items-nav, .menu-featured, .item-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: stretch; }
 
-.nav-main ul, .item-thumbs {
+.nav-main ul, .shop-tile.group ul, .item-thumbs {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -799,7 +799,8 @@ nav a.active, nav a:active, nav a:hover {
     margin-top: -0.25rem; }
   .nav-main li {
     cursor: pointer;
-    padding-left: 0.5rem; }
+    padding-left: 0.5rem;
+    width: 100%; }
     .nav-main li:active, .nav-main li:hover {
       background-color: #e4e4e7; }
   .nav-main a {
@@ -895,6 +896,8 @@ Page specific items.
 
 /*-- default list Layout -----------------------------------------------------------*/
 /*-- group list Layout -----------------------------------------------------------*/
+.shop-tile.group ul {
+  width: 100%; }
 .shop-tile.group li {
   line-height: 1.5;
   width: calc(50% - 1.5rem); }
@@ -970,5 +973,51 @@ Page specific items.
     background-repeat: no-repeat;
     transform: scale(0.33);
     transform-origin: top left; }
+
+/*-- 3d box settings -----------------------------------------------------------------*/
+.item-3d {
+  width: 200px;
+  height: 200px;
+  border: solid 1px blue;
+  background-color: beige;
+  position: relative; }
+  @media only screen and (min-width: 1031px) {
+    .item-3d {
+      width: 450px;
+      height: 450px; } }
+
+.box-floor div, .box-floor::before {
+  position: absolute;
+  transform-origin: bottom right;
+  height: 50%; }
+
+.box-floor {
+  transform: translate3d(10%, 25%, 0) rotateX(70deg) rotateZ(20deg);
+  height: 120%;
+  width: 120%;
+  position: absolute;
+  transform-style: preserve-3d; }
+  .box-floor div {
+    width: 50%;
+    margin: -1px; }
+  .box-floor::before {
+    content: '';
+    background: url("/rhc_online/images/icons/silhouette.svg") bottom/contain no-repeat;
+    width: 16.66%;
+    transform: rotateX(-90deg) rotateZ(0deg) rotateY(0deg); }
+
+.box-y {
+  top: -50%;
+  left: -50%;
+  transform: rotateX(-90deg) rotateZ(0deg) rotateY(90deg);
+  background: linear-gradient(315deg, #206077, #78abbc); }
+
+.box-x {
+  top: -50%;
+  background: linear-gradient(45deg, #206077, #78abbc);
+  transform: rotateX(-90deg); }
+
+.box-z {
+  background: linear-gradient(135deg, #206077, #78abbc); }
 
 /*# sourceMappingURL=style.css.map */

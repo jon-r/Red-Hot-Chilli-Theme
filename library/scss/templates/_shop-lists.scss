@@ -4,7 +4,10 @@
 
 .shop-tile.group {
   @extend %flex-3;
-  @extend %flex-parent;
+  ul {
+    width:100%;
+    @extend %flex-parent-edgeless;
+  }
   li {
     line-height: 1.5;
     @include jr-flex(1,2);

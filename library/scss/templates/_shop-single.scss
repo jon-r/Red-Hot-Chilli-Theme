@@ -42,7 +42,6 @@
     @extend %flex-4;
   }
 
-
 }
 
 .item-power {
@@ -53,3 +52,68 @@
   border: solid 2px red;
 }
 // @extend %big-red-button
+
+/*-- 3d box settings -----------------------------------------------------------------*/
+
+.item-3d {
+  width:200px;
+  height: 200px;
+  border:solid 1px blue;
+  background-color:beige;
+  position: relative;
+  @include jr-size(screen) {
+    width:450px;
+    height: 450px;
+  }
+}
+
+%box-root {
+  position: absolute;
+  transform-origin: bottom right;
+//  border:2px solid red;
+  height: 50%;
+
+}
+
+.box-floor {
+  transform: translate3d(10%, 25%, 0) rotateX(70deg) rotateZ(20deg );
+//  background:pink;
+  height:120%;
+  width:120%;
+  position:absolute;
+  transform-style: preserve-3d;
+
+  div {
+    @extend %box-root;
+    width: 50%;
+    margin:-1px;
+  }
+
+  &::before {
+    content: '';
+    @extend %box-root;
+    background: url('#{$siteLink + '/images/icons/silhouette.svg'}') bottom/contain no-repeat;
+    width: 16.66%;
+    transform: rotateX(-90deg) rotateZ(0deg)  rotateY(0deg) ;
+  }
+}
+
+.box-y {
+top:-50%;
+  left:-50%;
+  transform: rotateX(-90deg) rotateZ(0deg)  rotateY(90deg) ;
+  background:linear-gradient(315deg, #206077, #78abbc);
+}
+
+.box-x {
+  top:-50%;
+  background:linear-gradient(45deg, #206077, #78abbc);
+  transform: rotateX(-90deg) ;
+}
+
+.box-z {
+  background:linear-gradient(135deg, #206077, #78abbc);
+}
+
+
+

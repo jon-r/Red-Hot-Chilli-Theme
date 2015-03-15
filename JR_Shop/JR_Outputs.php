@@ -10,9 +10,9 @@ function jr_shop_compile($ref,$detail) {
   switch ($detail) {
     case 'ssFull' :
       $out1 = [
-  //      height      => $ref[Height] ?: null,
-  //      width       => $ref[Width] ?: null,
-  //      depth       => $ref[Height] ?: null,
+        height      => $ref[Height] ?: null,
+        width       => $ref[Width] ?: null,
+        depth       => $ref[Depth] ?: null,
         hFull       => $ref[Height] ? "Height: ".$ref[Height]."mm / ".ceil($ref[Height] / 25.4)." inches" : null,
         wFull       => $ref[Width] ? "Width: ".$ref[Width]."mm / ".ceil($ref[Width] / 25.4)." inches" : null,
         dFull       => $ref[Depth] ? "Depth: ".$ref[Depth]."mm / ".ceil($ref[Depth] / 25.4)." inches" : null,
@@ -48,9 +48,9 @@ function jr_shop_compile($ref,$detail) {
       }
 
       $out1 = [
- //       height      => $ref[Height] ?: null,
- //       width       => $ref[Width] ?: null,
-  //      depth       => $ref[Height] ?: null,
+        height      => $ref[Height] ?: null,
+        width       => $ref[Width] ?: null,
+        depth       => $ref[Depth] ?: null,
         hFull       => $ref[Height] ? "Height: ".$ref[Height]."mm / ".ceil($ref[Height] / 25.4)." inches" : null,
         wFull       => $ref[Width] ? "Width: ".$ref[Width]."mm / ".ceil($ref[Width] / 25.4)." inches" : null,
         dFull       => $ref[Depth] ? "Depth: ".$ref[Depth]."mm / ".ceil($ref[Depth] / 25.4)." inches" : null,
@@ -102,6 +102,24 @@ function jr_shop_compile($ref,$detail) {
 
   return $out;
 };
+// ----------------------3d scaler ------------------------------------------------------
+// gives relative sizes of HxWxD for items page. also "average man" to scale
+
+function jr_box_3d($h, $w, $d) {
+  $manHeight = 1750;
+  $findMax = max($h, $w, $d,$manHeight);
+
+  $out = [
+    height  => ceil($h / $findMax * 100),
+    width   => ceil($w / $findMax * 100),
+    depth   => ceil($d / $findMax * 100),
+    man     => ceil($manHeight / $findMax * 100)
+  ];
+
+  return $out;
+}
+
+
 
 // ----------------------breadcrumb builder----------------------------------------------
 // Makes the breadcrumbs

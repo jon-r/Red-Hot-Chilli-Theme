@@ -81,6 +81,7 @@ nav a {
   li {
     cursor: pointer;
     padding-left: 0.5rem;
+    width:100%;
     &:active, &:hover {
       background-color: $jr-bg-hover;
     }

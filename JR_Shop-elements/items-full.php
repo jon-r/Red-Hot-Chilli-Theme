@@ -29,34 +29,43 @@ if ($safeArr[ss]) {
         <li>Four Feature</li>
       </ul>
     </div>
+  <div class="item-info">
+    <header class="item-header">
+      <h1><?php echo $shop_item[name]; ?></h1>
+      <br>
+      <h2><?php echo $shop_item[price] ?></h2>
+    </header>
 
-    <div class="item-info" >
-      <header class="item-header">
-        <h1><?php echo $shop_item[name]; ?></h1><br>
-        <h2><?php echo $shop_item[price] ?></h2>
-      </header>
+    <div class="item-description">
+      <?php echo $shop_item[desc] ?>
+      <?php echo $shop_item[condition] ?>
 
-        <div class="item-specs" >
+      <?php echo $shop_item[brand] ?>
+      <?php echo $shop_item[model] ?>
+    </div>
 
-        <ul class="item-dimensions">
-          <li><?php echo $shop_item[hFull] ?></li>
-          <li><?php echo $shop_item[wFull] ?></li>
-          <li><?php echo $shop_item[dFull] ?></li>
-          <li><?php echo $shop_item[extra] ?></li>
-        </ul>
+    <div class="item-specs">
 
-        <?php if ($shop_item[icon]) : ?>
-        <div class="item-power <?php echo $shop_item[icon] ?>">
-          <?php echo $shop_item[watt] ?>
+      <ul class="item-dimensions">
+        <li><?php echo $shop_item[hFull] ?></li>
+        <li><?php echo $shop_item[wFull] ?></li>
+        <li><?php echo $shop_item[dFull] ?></li>
+        <li><?php echo $shop_item[extra] ?></li>
+      </ul>
+
+      <aside class="item-3d">
+        <?php $box_xyz = jr_box_3d($shop_item[height], $shop_item[width], $shop_item[depth]) ?>
+        <div data-value="<?php echo $box_xyz[man] ?>" class="box-floor">
+          <div class="box-x" data-value="<?php echo $box_xyz[width] ?>">x width: <?php echo $shop_item[width] ?></div>
+          <div class="box-y" data-value="<?php echo $box_xyz[depth] ?>">y depth: <?php echo $shop_item[depth] ?></div>
+          <div class="box-z" data-value="<?php echo $box_xyz[height] ?>">z height: <?php echo $shop_item[height] ?></div>
         </div>
+      </aside>
 
-        <div class="item-description" >
-          <?php echo $shop_item[desc] ?>
-          <?php echo $shop_item[condition] ?>
-
-          <?php echo $shop_item[brand] ?>
-          <?php echo $shop_item[model] ?>
-        </div>
+      <?php if ($shop_item[icon]) : ?>
+      <div class="item-power <?php echo $shop_item[icon] ?>">
+        <?php echo $shop_item[watt] ?>
+      </div>
 
       <?php endif ?>
 
