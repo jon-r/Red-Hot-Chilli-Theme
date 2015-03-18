@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=PT+Sans|Kreon:700);
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700|Kreon:700);
 
 $sans-serif: "PT+Sans", Helvetica, Arial, sans-serif;
 $serif: "Kreon", Cambria, Times New Roman, Times, serif;
@@ -26,13 +26,13 @@ h1 {
   padding-bottom: 0.25em;
 }
 
-h2 {
+h2  {
   @extend %text-reset;
   @extend %h-font;
   font-size: 1.75em;
 }
 
-h3 {
+h3, button {
   @extend %text-reset;
   @extend %h-font;
   font-size: 1.25em;
@@ -50,3 +50,14 @@ p {
   @extend %text-reset;
   @extend %p-font;
 }
+
+em {
+  color:$jr-emphasis;
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+
+
+

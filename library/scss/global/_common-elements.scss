@@ -1,13 +1,5 @@
 /*--- common page elements + defaults -------------------------------------------------*/
 
-%big-red-button {
-  background-color: $jr-emphasis;
-  border: none;
-  color: white;
-  height:1.5rem;
-  width: calc(100% - #{$jr-margin});
-}
-
 %make-it-pop {
   box-shadow: $jr-shadow;
   position: relative;

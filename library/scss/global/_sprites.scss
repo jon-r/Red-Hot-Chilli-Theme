@@ -1,7 +1,7 @@
 /*-------------------------sprite layouts + settings ----------------------------------*/
 
 //temp link for image-relativity;
-$siteLink: /rhc_online;
+$siteLink: /redhotchilli;
 
 //icon coords
 
@@ -22,6 +22,7 @@ $iconMap: (
   email: 1 4 1,
   expand: 1 5 1,
   arrow-r: 1 6 0,
+  //tODO List
 
   //white
   close-w: 1 8 0,
@@ -37,6 +38,7 @@ $iconMap: (
   email-w: 1 12 1,
   expand-w: 1 13 1,
   arrow-r-w: 1 14 0,
+  //TODO List-w
 
   //power
   single-phase: 4 0 2,
@@ -146,6 +148,9 @@ $icon-before:
   twitter,
   facebook,
   phone-w,
+  question,
+  //list,
+  basket-w,
   email-w;
 
 @each $item-icon in $icon-before {

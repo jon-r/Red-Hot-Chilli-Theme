@@ -46,8 +46,7 @@ $pageCount = ceil($itemCountAll / $itemCountMax);
 
       <div>
         <em><?php echo $shop_item[price] ?></em><br>
-        <?php echo $shop_item[rhc] ?> <br>
-        <?php echo $shop_item[quantity] ?: null ?>
+        <?php echo $shop_item[rhc] ?>
       </div>
 
     </a>

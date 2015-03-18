@@ -43,10 +43,6 @@
 
   padding-bottom: 2rem;
 
-  em {
-    color:$jr-emphasis;
-    text-decoration: underline;
-  }
   div {
     @extend %header-block;
 
