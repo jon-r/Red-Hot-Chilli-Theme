@@ -29,6 +29,17 @@ nav a {
       transform-origin: top left;
     }
   }
+  //only child as simple loader. the <nav> will be the only child of the <section> until the php <article> has loaded.
+ &:only-child {
+    @include jr-icon(before, loader) {
+      left: calc(50% - 48px - 1rem);
+      top: 3rem;
+      top: 25vh;
+      animation: loader-animate 0.4s steps(5) alternate infinite;
+      -webkit-animation: loader-animate 0.4s steps(5) alternate infinite;
+    };
+    height:100vh;
+ }
 }
 
 .nav-main,

@@ -2,7 +2,8 @@
 
 .item-header {
   @extend %header-block;
-  border-bottom: $jr-border;
+  border: $jr-border;
+  border-top-width: 0 1px 1px 1px;
 }
 
 
@@ -54,9 +55,9 @@
 
     @include jr-icon(before, none) {
       transform: scale(0.4);
-      bottom: 5px;
+      top:calc(50% - 0.75rem);
       right: 5px;
-      transform-origin:bottom right;
+      transform-origin:top right;
     }
 
     @include jr-size(screen) {

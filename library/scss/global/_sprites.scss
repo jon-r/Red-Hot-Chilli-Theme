@@ -160,14 +160,14 @@ $icon-before:
 }
 
 //
-//@keyframes loader-animate {
-//  0%    {background-position: -896px -768px};
-//  100%  {background-position: -896px -888px};
-//}
-//@-webkit-keyframes loader-animate {
-//  0%    {background-position: -896px -768px};
-//  100%  {background-position: -896px -888px};
-//}
+@keyframes loader-animate {
+  0%    {background-position: -896px -768px};
+  100%  {background-position: -896px -888px};
+}
+@-webkit-keyframes loader-animate {
+  0%    {background-position: -896px -768px};
+  100%  {background-position: -896px -888px};
+}
 //
 //
 //.items-loader {
