@@ -51,13 +51,10 @@ _________________________________________________________
 
   </div>
 
-  <?php if ( is_front_page() ): ?>
+  <?php if ( is_front_page() ) :
+    include( "index-carousel.php");
 
-  <div class="carousel">
-      banner here
-  </div>
-
-  <?php else: ?>
+  else: ?>
 
   <div class="nav-breadcrumbs">
     <?php

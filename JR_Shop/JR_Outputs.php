@@ -106,8 +106,9 @@ function jr_shop_compile($ref,$detail) {
 // gives relative sizes of HxWxD for items page. also "average man" to scale
 
 function jr_box_3d($h, $w, $d) {
-  $manHeight = 1750;
-  $findMax = max($h, $w, $d,$manHeight);
+
+  $manHeight = 1750; //average male height in mm
+  $findMax = max($h, $w, $d, $manHeight);
 
   $out = [
     height  => ceil($h / $findMax * 100),
@@ -118,8 +119,6 @@ function jr_box_3d($h, $w, $d) {
 
   return $out;
 }
-
-
 
 // ----------------------breadcrumb builder----------------------------------------------
 // Makes the breadcrumbs
@@ -142,7 +141,7 @@ function jr_page_crumbles ($safeArr) {
 
 // ----------------------pg-clips--------------------------------------------------------
 // tweaks the 'pg' number from page urls. specifically for category page navigation
-// can produce numbers outside range. paginate links should be hidden if at max/min
+// can produce numbers outside range (eg page 0) paginate links should be hidden on front end if at max/min
 
 function jr_pg_set ($pgSet = null, $pgCap = 1) {
   $url = strtok(getUrl(), '?');
@@ -196,7 +195,15 @@ function img_resize ($src, $size) {
   return $out;
 }
 
+// ---------------------- carousel compiler --------------------------------------
+// takes the carousel "link" and converts it to a sale if it is just a number. else treats it like a link
 
+//because descriptive function names are too mainstream
+function magic_roundabout ($linkIn) {
+  $linkCheck = is_numeric($linkIn) ? "?page_id=16&pg=1&sale=$linkIn" : $linkIn;
+
+  return $linkCheck;
+}
 
 ?>
 
