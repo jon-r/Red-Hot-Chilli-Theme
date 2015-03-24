@@ -22,7 +22,9 @@ $iconMap: (
   email: 1 4 1,
   expand: 1 5 1,
   arrow-r: 1 6 0,
+  arrow-l: 1 5 1,
   //tODO List
+  //arrow-l-w
 
   //white
   close-w: 1 8 0,
@@ -38,7 +40,9 @@ $iconMap: (
   email-w: 1 12 1,
   expand-w: 1 13 1,
   arrow-r-w: 1 14 0,
+  arrow-l-w: 1 5 1,
   //TODO List-w
+  //arrow-l-w
 
   //power
   single-phase: 4 0 2,
@@ -123,6 +127,8 @@ $iconTypeMap: (
   }
 }
 
+//these are the shortlist from above, that are actually used.
+//potentially trim spritesheet, though its pretty small to begin with
 $icon-after:
   single-phase,
   three-phase,
@@ -151,7 +157,9 @@ $icon-before:
   question,
   //list,
   basket-w,
-  email-w;
+  email-w,
+  arrow-r,
+  arrow-l;
 
 @each $item-icon in $icon-before {
   .#{$item-icon} {

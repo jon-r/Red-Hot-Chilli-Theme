@@ -25,6 +25,14 @@ $jr-text-hover: jr-grey(4.5);
   @return hsl(0, $saturation, $lightness);
 }
 
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
 $xNO-USE-example: hsl(240, 5%, 25%);
 
 $jr-margin: 1.5rem;

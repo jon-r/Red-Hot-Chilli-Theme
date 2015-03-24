@@ -22,7 +22,7 @@ _________________________________________________________
           <?php foreach ($categoriesListFiltered as $category) :
               $link = http_build_query(['cat' => $category[Name], 'page_id' => jr_page('cat')]);
           ?>
-          <li ><a href="?<?php echo $link ?>" ><?php echo $category[Name] ?></a></li>
+          <li ><a class="arrow-r" href="?<?php echo $link ?>" ><?php echo $category[Name] ?></a></li>
           <?php endforeach ?>
         </ul>
       </li>
@@ -34,6 +34,8 @@ _________________________________________________________
           'container' => '',                           // remove nav container
           'menu' => __( 'Featured Menu Links', 'bonestheme' ),  // nav name
           'menu_class' => '',                          // adding custom nav class
+          'link_before' => '<a class="arrow-r">',
+          'link_after' => '</a>',
           'theme_location' => 'featured-menu',         // where it's located in the theme
           'fallback_cb' => ''                          // fallback function (if there is one)
         )); ?>
@@ -43,6 +45,8 @@ _________________________________________________________
           'container' => '',                           // remove nav container
           'menu' => __( 'Services Menu links', 'bonestheme' ),  // nav name
           'menu_class' => '',                          // adding custom nav class
+          'link_before' => '<a class="arrow-r">',
+          'link_after' => '</a>',
           'theme_location' => 'services-menu',         // where it's located in the theme
           'fallback_cb' => ''                          // fallback function (if there is one)
         )); ?>
@@ -61,7 +65,7 @@ _________________________________________________________
       $breadLinks = jr_page_crumbles ($safeArr);
       foreach ($breadLinks as $breadSlices) {
         foreach ($breadSlices as $name => $link) {
-          echo $link ? '<a href="'.$link.'" ><h4>'.$name."</h4></a>" : null;
+          echo $link ? '<a class="arrow-r" href="'.$link.'" ><h4>'.$name."</h4></a>" : null;
         }
       }
     ?>

@@ -58,4 +58,6 @@
     }
   }
 }
-
+.items-nav {
+  @extend %flex-parent;
+}

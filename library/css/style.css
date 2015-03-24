@@ -538,6 +538,16 @@ em {
   width: 64px;
   height: 64px; }
 
+.arrow-r::before {
+  background-position: -384px 0px;
+  width: 64px;
+  height: 64px; }
+
+.arrow-l::before {
+  background-position: -320px -64px;
+  width: 64px;
+  height: 64px; }
+
 @keyframes loader-animate {
   0% {
     background-position: -896px -768px; }
@@ -757,12 +767,8 @@ nav a.active, nav a:active, nav a:hover {
   background-color: #e4e4e7; }
 
 .primary-nav div, .items-nav div {
-  background-color: white; }
-.primary-nav a, .items-nav a {
-  line-height: 2rem;
-  padding: 0 1.5rem;
-  position: relative;
-  display: inline-block; }
+  background-color: white;
+  float: left; }
 
 .primary-nav a {
   position: relative; }
@@ -772,9 +778,6 @@ nav a.active, nav a:active, nav a:hover {
     position: absolute;
     background-image: url(/redhotchilli/images/icons/RHC-Icons.png);
     background-repeat: no-repeat;
-    background-position: -384px 0px;
-    width: 64px;
-    height: 64px;
     top: 0.5rem;
     left: 0.2rem;
     transform: scale(0.3);
@@ -797,10 +800,19 @@ nav a.active, nav a:active, nav a:hover {
     animation: loader-animate 0.4s steps(5) alternate infinite;
     -webkit-animation: loader-animate 0.4s steps(5) alternate infinite; }
 
+.carousel-buttons,
 .nav-main,
 .nav-breadcrumbs,
 .nav-paginate {
   height: 2rem; }
+  .carousel-buttons a,
+  .nav-main a,
+  .nav-breadcrumbs a,
+  .nav-paginate a {
+    line-height: 2rem;
+    padding: 0 1.5rem;
+    position: relative;
+    display: inline-block; }
 
 .nav-main {
   z-index: 6;
@@ -889,9 +901,13 @@ nav a.active, nav a:active, nav a:hover {
     .carousel,
     .nav-breadcrumbs {
       flex: 1 1 auto; } }
+  .carousel:after,
+  .nav-breadcrumbs:after {
+    content: "";
+    display: table;
+    clear: both; }
 
 .carousel {
-  height: 18em;
   margin-bottom: 1.5rem; }
 
 .nav-breadcrumbs a,
@@ -915,6 +931,7 @@ nav a.active, nav a:active, nav a:hover {
 /*********************
 Page specific items.
 *********************/
+/*-- index page elements -----------------------------------------------------*/
 .menu-featured li {
   height: 120px;
   overflow: hidden;
@@ -937,6 +954,25 @@ Page specific items.
   @media only screen and (min-width: 1031px) {
     .menu-featured img {
       margin-top: 0; } }
+
+.carousel-container {
+  width: 100%;
+  max-width: 750px;
+  overflow: hidden; }
+
+.carousel-float {
+  width: 300%; }
+  .carousel-float li {
+    width: 33.33333%;
+    float: left; }
+
+.carousel-buttons {
+  position: absolute;
+  right: 0;
+  width: 200px; }
+  .carousel-buttons a {
+    width: 100%;
+    border-bottom: 1px solid #c9c9cf; }
 
 /*-- default list Layout -----------------------------------------------------------*/
 /*-- group list Layout -----------------------------------------------------------*/
@@ -986,7 +1022,7 @@ Page specific items.
 /*-- single item Layout ------------------------------------------------------*/
 .item-header {
   border: 1px solid #c9c9cf;
-  border-width: 0 1px 1px 1px; }
+  border-top-width: 0 1px 1px 1px; }
 
 .item-container {
   background-color: white; }
