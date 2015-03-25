@@ -1,10 +1,17 @@
 /*vars---------------------------------------------------------------------------------*/
-var itemNumber = 24;
-//as in the php ($itemNumber)
 
-var menuMainBtn  = document.getElementById('js-menuMainBtn');
-var menuMain  = document.getElementById('js-menuMain');
 
+var menuMainBtn  = document.getElementById('js-menuMainBtn'),
+    menuMain  = document.getElementById('js-menuMain');
+
+//change to query selectors
+var carMain = document.getElementById('js-carouselMain')
+    //carSlides = carMain.children,
+    carBlip = document.getElementById('js-carouselBlip'),
+    carBlips = carBlipParent.children,
+    carTimer = 5000,
+    carDuration = 600, //to match scroll timer
+    carLock = false;
 
 
 /*functions----------------------------------------------------------------------------*/
@@ -13,17 +20,74 @@ function menuToggleOpen() {
   menuMain.classList.toggle('open');
 }
 
+/*
+
+"shuffle"
+add "active" to next item and relative blip.
+
+
+
+*/
+
+
+function jr_shuffle(target) {
+  slide1 = target.firstElementChild;
+
+  slideCopy = slide1.cloneNode(true);
+  target.appendChild(slideCopy);
+
+  setTimeout(function () {
+    slide1.classList.add('inactive');
+  }, carDuration);
+
+  setTimeout(function () {
+    slide1.remove();
+  }, carDuration * 2);
+}
+
+function jr_setActiveBlip(target,focus) {
+
+}
 
 /*triggers-----------------------------------------------------------------------------*/
-
 
 menuMainBtn.onclick = menuToggleOpen;
 
 
+window.setInterval(function() {
 
+    jr_shuffle(carMain);
+    jr_setActiveBlip(carBlips,carMain)
+
+}, carTimer);
+
+
+
+
+
+//lock prevents clicking links too fast
+/*
+for (x in galleryThumbs) {
+  galleryThumbs[x].onclick = function () {
+    if (!swapLock) {
+      swapLock = true;
+      oldImg = galleryMain.firstElementChild;
+      newImg = document.createElement("img");
+      newImg.src = this.src.replace('Thumb', 'Main');
+      newImg.alt = this.alt;
+      galleryMain.appendChild(newImg);
+      oldImg.classList.add('old-Img');
+      setTimeout(function () {
+        oldImg.remove();
+        swapLock = false;
+      }, 1000);
+    }
+  }
+};
+*/
 /*------------------------------------------------------------------------------------*/
 
-/*-----maybe delete below------------------------------------------------------------*/
+/*-----probably delete below------------------------------------------------------------*/
 /*
  * Bones Scripts File
  * Author: Eddie Machado

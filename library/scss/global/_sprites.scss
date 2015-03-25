@@ -22,9 +22,7 @@ $iconMap: (
   email: 1 4 1,
   expand: 1 5 1,
   arrow-r: 1 6 0,
-  arrow-l: 1 5 1,
   //tODO List
-  //arrow-l-w
 
   //white
   close-w: 1 8 0,
@@ -40,9 +38,7 @@ $iconMap: (
   email-w: 1 12 1,
   expand-w: 1 13 1,
   arrow-r-w: 1 14 0,
-  arrow-l-w: 1 5 1,
   //TODO List-w
-  //arrow-l-w
 
   //power
   single-phase: 4 0 2,
@@ -158,8 +154,7 @@ $icon-before:
   //list,
   basket-w,
   email-w,
-  arrow-r,
-  arrow-l;
+  arrow-r;
 
 @each $item-icon in $icon-before {
   .#{$item-icon} {

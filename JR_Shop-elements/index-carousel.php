@@ -7,31 +7,26 @@ $advertList = [
   ['Sold','banner test2','?sold=1&page_id=16','banner2', 2],
 ];
 
+$carouselCount = $blipCount = 0;
 ?>
 
-<div class="carousel">
-  <div class="carousel-container">
-    <ul class="carousel-float">
 
-      <?php foreach ($advertList as $advert) : ?>
+<ul id="js-carouselMain" class="carousel-container">
 
-      <li id="<?php echo $advert[1]; ?>">
-        <a class="no-icon" href="<?php echo magic_roundabout ($advert[2]); ?>">
-          <img src="<?php echo imgSrcRoot(carousel,$advert[3],jpg); ?>" alt="<?php echo $advert[1]; ?>" >
-        </a>
-      </li>
+  <?php foreach ($advertList as $advert) : $carouselCount++; //dodgy <li> bits to fix spaces ?>
 
-      <?php endforeach ?>
+  </li><li data-slide="<?php echo $carouselCount ?>">
+    <a href="<?php echo magic_roundabout ($advert[2]); ?>">
+      <img src="<?php echo imgSrcRoot(carousel,$advert[3],jpg); ?>" alt="<?php echo $advert[1]; ?>" >
+    </a>
 
-    </ul>
-  </div>
 
-  <aside class="carousel-buttons" >
-      <?php foreach ($advertList as $advert) :
-        if ($ctr>=5) break; else $ctr++;
-      ?>
-        <a class="arrow-l" href="#<?php echo $advert[1]; ?>"><?php echo $advert[1]; ?></a>
-      <?php endforeach ?>
-  </aside>
+  <?php endforeach ?>
+  </li>
+</ul>
 
-</div>
+<ul id="js-carouselBlips" class="carousel-blip">
+  <?php foreach ($advertList as $advert) : $blipCount++; ?>
+  <li data-blip="<?php echo $blipCount ?>" ></li>
+  <?php endforeach ?>
+</ul>

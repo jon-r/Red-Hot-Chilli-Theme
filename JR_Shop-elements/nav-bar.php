@@ -55,12 +55,15 @@ _________________________________________________________
 
   </div>
 
-  <?php if ( is_front_page() ) :
-    include( "index-carousel.php");
+  <?php if ( is_front_page() ) : ?>
 
-  else: ?>
+  <div class="carousel nav-right">
+    <?php include( "index-carousel.php"); ?>
+  </div>
 
-  <div class="nav-breadcrumbs">
+  <?php else: ?>
+
+  <div class="nav-breadcrumbs nav-right">
     <?php
       $breadLinks = jr_page_crumbles ($safeArr);
       foreach ($breadLinks as $breadSlices) {

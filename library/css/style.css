@@ -543,11 +543,6 @@ em {
   width: 64px;
   height: 64px; }
 
-.arrow-l::before {
-  background-position: -320px -64px;
-  width: 64px;
-  height: 64px; }
-
 @keyframes loader-animate {
   0% {
     background-position: -896px -768px; }
@@ -766,22 +761,15 @@ section {
 nav a.active, nav a:active, nav a:hover {
   background-color: #e4e4e7; }
 
+.primary-nav a, .items-nav a {
+  line-height: 2rem;
+  padding: 0 1.5rem;
+  position: relative;
+  display: inline-block; }
 .primary-nav div, .items-nav div {
   background-color: white;
   float: left; }
 
-.primary-nav a {
-  position: relative; }
-  .primary-nav a::before {
-    pointer-events: none;
-    content: '';
-    position: absolute;
-    background-image: url(/redhotchilli/images/icons/RHC-Icons.png);
-    background-repeat: no-repeat;
-    top: 0.5rem;
-    left: 0.2rem;
-    transform: scale(0.3);
-    transform-origin: top left; }
 .primary-nav:only-child {
   position: relative;
   height: 100vh; }
@@ -800,23 +788,26 @@ nav a.active, nav a:active, nav a:hover {
     animation: loader-animate 0.4s steps(5) alternate infinite;
     -webkit-animation: loader-animate 0.4s steps(5) alternate infinite; }
 
-.carousel-buttons,
 .nav-main,
 .nav-breadcrumbs,
 .nav-paginate {
   height: 2rem; }
-  .carousel-buttons a,
-  .nav-main a,
-  .nav-breadcrumbs a,
-  .nav-paginate a {
-    line-height: 2rem;
-    padding: 0 1.5rem;
-    position: relative;
-    display: inline-block; }
+
+a.arrow-r {
+  position: relative; }
+  a.arrow-r::before {
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    background-image: url(/redhotchilli/images/icons/RHC-Icons.png);
+    background-repeat: no-repeat;
+    top: 0.5rem;
+    left: 0.2rem;
+    transform: scale(0.3);
+    transform-origin: top left; }
 
 .nav-main {
   z-index: 6;
-  margin-left: -4px;
   width: 100%; }
   .nav-main:not(.home) {
     position: relative; }
@@ -872,6 +863,7 @@ nav a.active, nav a:active, nav a:hover {
   @media only screen and (min-width: 1031px) {
     .nav-main {
       width: 250px;
+      margin-left: -4px;
       font-size: 0.8rem; }
       .nav-main li ul {
         display: none;
@@ -892,23 +884,17 @@ nav a.active, nav a:active, nav a:hover {
         height: 18rem;
         margin-bottom: -14.5rem; } }
 
-.carousel,
-.nav-breadcrumbs {
+.nav-right {
   border-bottom: 1px solid #c9c9cf;
   overflow: hidden;
-  flex: 1 1 100%; }
+  width: 100%; }
   @media only screen and (min-width: 1031px) {
-    .carousel,
-    .nav-breadcrumbs {
-      flex: 1 1 auto; } }
-  .carousel:after,
-  .nav-breadcrumbs:after {
+    .nav-right {
+      width: calc(100% - 250px); } }
+  .nav-right:after {
     content: "";
     display: table;
     clear: both; }
-
-.carousel {
-  margin-bottom: 1.5rem; }
 
 .nav-breadcrumbs a,
 .nav-paginate a {
@@ -955,24 +941,40 @@ Page specific items.
     .menu-featured img {
       margin-top: 0; } }
 
+.carousel {
+  margin-bottom: 1.5rem;
+  position: relative; }
+  @media only screen and (min-width: 1031px) {
+    .carousel {
+      height: 17em; } }
+
 .carousel-container {
   width: 100%;
-  max-width: 750px;
-  overflow: hidden; }
-
-.carousel-float {
-  width: 300%; }
-  .carousel-float li {
-    width: 33.33333%;
-    float: left; }
-
-.carousel-buttons {
-  position: absolute;
-  right: 0;
-  width: 200px; }
-  .carousel-buttons a {
+  white-space: nowrap; }
+  .carousel-container li {
+    display: inline-block;
+    border: solid red 1px;
     width: 100%;
-    border-bottom: 1px solid #c9c9cf; }
+    opacity: 1;
+    transition: 600ms ease; }
+  .carousel-container li.inactive {
+    margin-left: -100%; }
+  .carousel-container a {
+    padding: 0; }
+
+.carousel-blips {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem; }
+  .carousel-blips li {
+    border-radius: 50%;
+    border: 1px solid #c9c9cf;
+    height: 20px;
+    width: 20px;
+    margin-bottom: 5px;
+    cursor: pointer; }
+    .carousel-blips li.active, .carousel-blips li:hover {
+      background-color: #e4e4e7; }
 
 /*-- default list Layout -----------------------------------------------------------*/
 /*-- group list Layout -----------------------------------------------------------*/

@@ -8,7 +8,12 @@ nav a {
 
 .primary-nav, .items-nav {
   @extend %flex-parent;
-
+  a {
+    line-height: 2rem;
+    padding: 0 1.5rem;
+    position: relative;
+    display: inline-block;
+  }
   div {
     background-color: white;
     float:left;
@@ -16,14 +21,6 @@ nav a {
 }
 
 .primary-nav {
-  a {
-    @include jr-icon(before) {
-      top: 0.5rem;
-      left: 0.2rem;
-      transform: scale(0.3);
-      transform-origin: top left;
-    }
-  }
   //simple loader. the <nav> will be the only child of the <section> until the php <article> has loaded.
  &:only-child {
     @include jr-icon(before, loader) {
@@ -37,23 +34,23 @@ nav a {
  }
 }
 
-.carousel-buttons,
 .nav-main,
 .nav-breadcrumbs,
 .nav-paginate {
   height: 2rem;
-  a {
-    line-height: 2rem;
-    padding: 0 1.5rem;
-    position: relative;
-    display: inline-block;
+}
+
+a.arrow-r {
+  @include jr-icon(before) {
+    top: 0.5rem;
+    left: 0.2rem;
+    transform: scale(0.3);
+    transform-origin: top left;
   }
 }
 
-
 .nav-main {
   z-index: 6;
-  margin-left: -4px;
   width: 100%;
   @extend %make-it-pop;
   &:not(.home) {
@@ -121,6 +118,7 @@ nav a {
 
   @include jr-size(screen) {
     width: 250px;
+    margin-left: -4px;
     font-size: 0.8rem;
 
     li {
@@ -153,20 +151,16 @@ nav a {
   }
 }
 
-.carousel,
-.nav-breadcrumbs {
+.nav-right {
   border-bottom: $jr-border;
   overflow: hidden;
-  flex: 1 1 100%;
+  width: 100%;
+ // flex: 1 1 100%;
   @include jr-size(screen) {
-    flex: 1 1 auto;
+    width: calc(100% - 250px);
+  //  flex: 1 1 auto;
   }
   @include clearfix;
-}
-
-.carousel {
- // height: 18em;
-  margin-bottom: $jr-margin;
 }
 
 
