@@ -25,7 +25,7 @@ $carouselCount = $blipCount = 0;
   </li>
 </ul>
 
-<ul id="js-carouselBlips" class="carousel-blip">
+<ul id="js-blipParent" class="carousel-blip">
   <?php foreach ($advertList as $advert) : $blipCount++; ?>
   <li data-blip="<?php echo $blipCount ?>" ></li>
   <?php endforeach ?>

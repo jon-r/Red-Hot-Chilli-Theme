@@ -7,7 +7,7 @@ var menuMainBtn  = document.getElementById('js-menuMainBtn'),
 //change to query selectors
 var carMain = document.getElementById('js-carouselMain')
     //carSlides = carMain.children,
-    carBlip = document.getElementById('js-carouselBlip'),
+    carBlipParent = document.getElementById('js-blipParent'),
     carBlips = carBlipParent.children,
     carTimer = 5000,
     carDuration = 600, //to match scroll timer
