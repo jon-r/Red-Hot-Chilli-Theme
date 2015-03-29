@@ -528,6 +528,11 @@ em {
   width: 64px;
   height: 64px; }
 
+.list::before {
+  background-position: -448px -64px;
+  width: 64px;
+  height: 64px; }
+
 .basket-w::before {
   background-position: -576px -64px;
   width: 64px;
@@ -567,16 +572,28 @@ article, .primary-nav, .menu-featured, .items-nav, .item-container, .item-sideba
   align-items: stretch; }
 
 .page-header, .item-container, .item-info, .shop-tile.group, .item-gallery, .menu-featured li, .shop-tile, .item-thumbs li {
+  /*non flex usable */
+  width: 100%;
+  display: inline-block;
   width: calc(100% - 1.5rem); }
 
 @media only screen and (min-width: 482px) {
   .item-info, .shop-tile.group, .item-gallery, .menu-featured li, .shop-tile, .item-thumbs li {
+    /*non flex usable */
+    width: 50%;
+    display: inline-block;
     width: calc(50% - 1.5rem); } }
 @media only screen and (min-width: 1031px) {
   .shop-tile.group, .item-gallery {
+    /*non flex usable */
+    width: 33.33333%;
+    display: inline-block;
     width: calc(33.33333% - 1.5rem); }
 
   .menu-featured li, .shop-tile, .item-thumbs li {
+    /*non flex usable */
+    width: 25%;
+    display: inline-block;
     width: calc(25% - 1.5rem); } }
 /* --- contact form default -----------------------------------------------------------*/
 form {
@@ -855,6 +872,9 @@ a.arrow-r {
       padding-left: 0; } }
   @media only screen and (min-width: 482px) and (max-width: 1030px) {
     .nav-main li {
+      /*non flex usable */
+      width: 50%;
+      display: inline-block;
       width: calc(50% - 1.5rem);
       font-size: 0.9rem; } }
   @media only screen and (min-width: 1031px) {
@@ -886,7 +906,7 @@ a.arrow-r {
   flex: 1 1 100%; }
   @media only screen and (min-width: 1031px) {
     .nav-right {
-      flex: 1 1 calc(100% - 250px); } }
+      flex: 1 1 75%; } }
   .nav-right:after {
     content: "";
     display: table;
@@ -1048,6 +1068,9 @@ Page specific items.
   width: 100%; }
 .shop-tile.group li {
   line-height: 1.5;
+  /*non flex usable */
+  width: 50%;
+  display: inline-block;
   width: calc(50% - 1.5rem); }
   .shop-tile.group li:hover {
     background-color: #e4e4e7; }
@@ -1108,11 +1131,20 @@ Page specific items.
 .item-sidebar {
   line-height: 1.5rem;
   align-content: flex-start;
+  /*non flex usable */
+  width: 100%;
+  display: inline-block;
   width: calc(100% - 1.5rem); }
   @media only screen and (min-width: 1031px) {
     .item-sidebar {
+      /*non flex usable */
+      width: 16.66667%;
+      display: inline-block;
       width: calc(16.66667% - 1.5rem); } }
   .item-sidebar button {
+    /*non flex usable */
+    width: 33.33333%;
+    display: inline-block;
     width: calc(33.33333% - 1.5rem);
     background-color: #e4e4e7;
     text-align: left;
@@ -1134,6 +1166,9 @@ Page specific items.
       transform-origin: top right; }
     @media only screen and (min-width: 1031px) {
       .item-sidebar button {
+        /*non flex usable */
+        width: 100%;
+        display: inline-block;
         width: calc(100% - 1.5rem);
         margin-left: -0.75rem;
         width: calc(100% + 0.75rem); } }

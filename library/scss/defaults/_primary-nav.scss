@@ -151,7 +151,7 @@ a.arrow-r {
  // overflow: hidden;
   flex: 1 1 100%;
   @include jr-size(screen) {
-    flex: 1 1 calc(100% - 250px);
+    flex: 1 1 75%;
   }
   @include clearfix;
 }

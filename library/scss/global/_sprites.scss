@@ -22,7 +22,9 @@ $iconMap: (
   email: 1 4 1,
   expand: 1 5 1,
   arrow-r: 1 6 0,
-  //tODO List
+  arrow-l: 1 7 0,
+  cube: 1 6 1,
+  list: 1 7 1,
 
   //white
   close-w: 1 8 0,
@@ -38,7 +40,9 @@ $iconMap: (
   email-w: 1 12 1,
   expand-w: 1 13 1,
   arrow-r-w: 1 14 0,
-  //TODO List-w
+  arrow-l-w: 1 15 0,
+  cube-w: 1 14 1,
+  list-w: 1 15 1,
 
   //power
   single-phase: 4 0 2,
@@ -151,7 +155,7 @@ $icon-before:
   facebook,
   phone-w,
   question,
-  //list,
+  list,
   basket-w,
   email-w,
   arrow-r;

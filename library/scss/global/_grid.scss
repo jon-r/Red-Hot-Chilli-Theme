@@ -1,8 +1,10 @@
 /*--- grid ----------------------------------------------------------------------------*/
 
 @mixin jr-flex($rows, $full) {
+  /*non flex usable */
+  width: #{$rows*100%/$full };
+  display: inline-block;
   width: calc(#{$rows*100%/$full } - #{$jr-margin});
-
 }
 
 %flex-parent {

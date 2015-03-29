@@ -8,19 +8,9 @@ menuMainBtn.onclick = function() {
 }
 
 
-/*-- home page check ------------------------------------------------------------------*/
-//just for carousel atm
-
-function isHomePage() {
-  var index = 'http://localhost/rhc_online/'
-//another place thatll need changing :(
-
-  return (document.URL == index) ? true : false;
-}
-
 /*-- carousel scroller ----------------------------------------------------------------*/
 
-var carousel = document.getElementById('js-carouselMain'),
+var carousel = document.getElementById('js-carouselMain') || null,
     slides = document.getElementsByClassName('slide'),
     blips = document.getElementsByClassName('blipper'),
     slideCount = slides.length,
@@ -31,14 +21,16 @@ var carousel = document.getElementById('js-carouselMain'),
 var tickerValue = 1,
     tickerLock = false;
 
-window.setInterval(ticker, slideTime);
+if (carousel) {
+  window.setInterval(ticker, slideTime);
 
-carousel.onmouseover = function() {
-  hoverLock = true;
-}
+  carousel.onmouseover = function() {
+    hoverLock = true;
+  }
 
-carousel.onmouseout = function() {
-  hoverLock = false;
+  carousel.onmouseout = function() {
+    hoverLock = false;
+  }
 }
 
 
@@ -64,8 +56,8 @@ function goSlide(x) {
 
   for (i = 0; i < slideCount; i++) {
     if (slides[i].classList.contains('go-away')) {
-      slides[i].classList.remove('is-active', 'go-away');
-
+      slides[i].classList.remove('is-active');
+      slides[i].classList.remove('go-away');
     } else if (slides[i].classList.contains('is-active')) {
       slides[i].classList.add('go-away');
       blips[i].classList.remove('active');
@@ -77,86 +69,6 @@ function goSlide(x) {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*functions----------------------------------------------------------------------------*/
-
-
-
-
-
-/*
-
-"shuffle"
-add "active" to next item and relative blip.
-
-
-
-*/
-
-
-function jr_shuffle(target) {
-  slide1 = target.firstElementChild;
-
-  slideCopy = slide1.cloneNode(true);
-  target.appendChild(slideCopy);
-
-  setTimeout(function () {
-    slide1.classList.add('inactive');
-  }, carDuration);
-
-  setTimeout(function () {
-    slide1.remove();
-  }, carDuration * 2);
-}
-
-function jr_setActiveBlip(target,focus) {
-
-}
-
-/*triggers-----------------------------------------------------------------------------*/
-
-
-
-/*
-
-
-
-
-
-
-//lock prevents clicking links too fast
-/*
-for (x in galleryThumbs) {
-  galleryThumbs[x].onclick = function () {
-    if (!swapLock) {
-      swapLock = true;
-      oldImg = galleryMain.firstElementChild;
-      newImg = document.createElement("img");
-      newImg.src = this.src.replace('Thumb', 'Main');
-      newImg.alt = this.alt;
-      galleryMain.appendChild(newImg);
-      oldImg.classList.add('old-Img');
-      setTimeout(function () {
-        oldImg.remove();
-        swapLock = false;
-      }, 1000);
-    }
-  }
-};
-*/
-/*------------------------------------------------------------------------------------*/
 
 /*-----probably delete below------------------------------------------------------------*/
 /*
