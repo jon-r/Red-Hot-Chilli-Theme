@@ -13,16 +13,27 @@ $carouselCount = $blipCount = 0;
 
 <ul id="js-carouselMain" class="carousel-container">
 
-  <?php foreach ($advertList as $advert) : $carouselCount++; //dodgy <li> bits to fix spaces ?>
+  <?php foreach ($advertList as $advert) : $carouselCount++;  ?>
 
-  </li><li data-slide="<?php echo $carouselCount ?>">
+  <li class="slide" data-slide=<?php echo $carouselCount ?>>
     <a href="<?php echo magic_roundabout ($advert[2]); ?>">
-      <img src="<?php echo imgSrcRoot(carousel,$advert[3],jpg); ?>" alt="<?php echo $advert[1]; ?>" >
-    </a>
 
+      <img class="slide-image" src="<?php echo imgSrcRoot(carousel,$advert[3],jpg); ?>" alt="<?php echo $advert[1]; ?>" >
+
+      <h2 class="slide-title go-left"><?php echo $advert[0]; ?></h2>
+
+      <div class="slide-text go-mid">
+        <span class="go-red"><?php echo $advert[1]; ?></span>
+        <span class="go-bold"><?php echo $advert[1]; ?></span>
+        <span class="go-red go-bold"><?php echo $advert[1]; ?></span>
+      </div>
+
+      <h3 class="slide-link go-right">Click Here</h3>
+    </a>
+  </li>
 
   <?php endforeach ?>
-  </li>
+
 </ul>
 
 <ul id="js-blipParent" class="carousel-blip">

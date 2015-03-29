@@ -36,31 +36,37 @@
 .carousel {
   margin-bottom: $jr-margin;
   position: relative;
-  @include jr-size(screen) {
-    height: 17em;
-  }
+}
+
+.carousel:before{
+  content: "";
+  display: block;
+  padding-top: 33%;
 }
 
 .carousel-container {
+  position: absolute;
+  top:0;
+  bottom:0;
   width:100%;
-  white-space: nowrap;
-  li {
-
-    display: inline-block;
-    border: solid red 1px;
-    width:100%;
-    opacity: 1;
-    transition: 600ms ease;
-  }
-  li.active {
-
-  }
-  li.inactive {
-    margin-left: -100%;
-  }
   a {
-    padding: 0;
+    padding:0;
   }
+}
+
+.slide {
+  position: absolute;
+  top:0;
+  display: inline-block;
+  border: solid red 1px;
+  left: 50%;
+  width:50%;
+  opacity: 1;
+  text-align: center;
+  @include jr-size(tablet) {
+    font-size: 1.4rem;
+  }
+
 }
 
 .carousel-blips {
@@ -68,8 +74,7 @@
   bottom:1rem;
   right:1rem;
   li {
-    //float: left;
-    border-radius: 50%;
+    border-radius:50%;
     border: $jr-border;
     height: 20px;
     width: 20px;
@@ -80,3 +85,60 @@
     }
   }
 }
+
+/*-- customisable carousel parts -----------------------------------------------------*/
+
+.slide [class^='slide-'] {
+  position: absolute;
+  transition: transform 600ms ease;
+}
+
+.slide-active [class^='slide-'] {
+  transform: translateX(-100%);
+
+}
+
+%slide-all {
+  width:50%;
+}
+
+.slide-title {
+  @extend %slide-all;
+  top: 5%;
+}
+
+.slide-text {
+  @extend %slide-all;
+  top: 25%;
+  span {
+    display: block;
+  }
+}
+
+.slide-link {
+  @extend %slide-all;
+  bottom: 5%;
+  text-decoration: underline;
+}
+
+.go-left {
+  left:0;
+}
+
+.go-mid {
+  left: 25%;
+}
+
+.go-right {
+  left: 50%;
+}
+
+.go-red {
+  color: $jr-emphasis;
+}
+
+.go-bold {
+  font-weight: bold;
+}
+
+

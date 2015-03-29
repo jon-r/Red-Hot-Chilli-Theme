@@ -45,7 +45,7 @@ input[type="search"] {
 
 @include jr-size(screen) {
   input, label {
-    transition: 300ms ease;
+    transition: transform 300ms ease, width 300ms ease;
   }
   input {
     &:focus + label {

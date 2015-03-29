@@ -55,26 +55,12 @@ _________________________________________________________
 
   </div>
 
-  <?php if ( is_front_page() ) : ?>
+  <div class="nav-right <?php echo is_front_page() ? 'carousel' : 'nav-breadcrumbs' ?>" >
 
-  <div class="carousel nav-right">
-    <?php include( "index-carousel.php"); ?>
+  <?php is_front_page() ? include( "index-carousel.php") : include("nav-breadcrumbs.php") ?>
+
   </div>
 
-  <?php else: ?>
-
-  <div class="nav-breadcrumbs nav-right">
-    <?php
-      $breadLinks = jr_page_crumbles ($safeArr);
-      foreach ($breadLinks as $breadSlices) {
-        foreach ($breadSlices as $name => $link) {
-          echo $link ? '<a class="arrow-r" href="'.$link.'" ><h4>'.$name."</h4></a>" : null;
-        }
-      }
-    ?>
-  </div>
-
-  <?php endif; ?>
 
 </nav>
 

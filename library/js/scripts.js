@@ -1,24 +1,95 @@
-/*vars---------------------------------------------------------------------------------*/
-
+/*-- main menu toggle -----------------------------------------------------------------*/
 
 var menuMainBtn  = document.getElementById('js-menuMainBtn'),
     menuMain  = document.getElementById('js-menuMain');
 
-//change to query selectors
-var carMain = document.getElementById('js-carouselMain')
-    //carSlides = carMain.children,
-    carBlipParent = document.getElementById('js-blipParent'),
+menuMainBtn.onclick = function() {
+  menuMain.classList.toggle('open');
+}
+
+
+/*-- home page check ------------------------------------------------------------------*/
+//just for carousel atm
+
+function isHomePage() {
+  var index = 'http://localhost/rhc_online/'
+//another place thatll need changing :(
+
+  return (document.URL == index) ? true : false;
+}
+
+/*-- carousel scroller ----------------------------------------------------------------*/
+
+if (isHomePage) {
+  var carMain = document.getElementById('js-carouselMain'),
+    carSlides = document.querySelectorAll('.slide');
+  carBlipParent = document.getElementById('js-blipParent'),
     carBlips = carBlipParent.children,
     carTimer = 5000,
     carDuration = 600, //to match scroll timer
-    carLock = false;
+    carLock = false,
+    slideCount = 0;
+
+  window.setInterval(function () {
+    slideCount++;
+    slider = carSlides[slideCount];
+
+    if (slideCount < carSlides.length) {
+      slider.classList.add('slide-active');
+    } else {
+      slideCount = 0;
+    }
+
+
+
+
+//    for (var i = 0; i <= carSlides.length; ++i) {
+//      slider = carSlides[i]
+//      if (slider.dataset.slide == slideCount) {
+//        slider.classList.add('slide-active');
+//      } else {
+//        slider.classList.remove('slide-active');
+//      }
+//    }
+//
+//
+//
+//
+//
+//    slideCount++
+//
+//    if (slideCount <= carSlides.length) {
+//
+//
+//    } else {
+//      slideCount = 1;
+//    }
+  }, carTimer);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if (isHomePage) {
+
+}
 
 
 /*functions----------------------------------------------------------------------------*/
 
-function menuToggleOpen() {
-  menuMain.classList.toggle('open');
-}
+
+
+
 
 /*
 
@@ -51,15 +122,10 @@ function jr_setActiveBlip(target,focus) {
 
 /*triggers-----------------------------------------------------------------------------*/
 
-menuMainBtn.onclick = menuToggleOpen;
 
 
-window.setInterval(function() {
+/*
 
-    jr_shuffle(carMain);
-    jr_setActiveBlip(carBlips,carMain)
-
-}, carTimer);
 
 
 

@@ -6,21 +6,9 @@ nav a {
   }
 }
 
-.primary-nav, .items-nav {
-  @extend %flex-parent;
-  a {
-    line-height: 2rem;
-    padding: 0 1.5rem;
-    position: relative;
-    display: inline-block;
-  }
-  div {
-    background-color: white;
-    float:left;
-  }
-}
 
 .primary-nav {
+  @extend %flex-parent;
   //simple loader. the <nav> will be the only child of the <section> until the php <article> has loaded.
  &:only-child {
     @include jr-icon(before, loader) {
@@ -38,6 +26,12 @@ nav a {
 .nav-breadcrumbs,
 .nav-paginate {
   height: 2rem;
+  a {
+    line-height: 2rem;
+    padding: 0 1.5rem;
+    position: relative;
+    display: inline-block;
+  }
 }
 
 a.arrow-r {
@@ -52,6 +46,7 @@ a.arrow-r {
 .nav-main {
   z-index: 6;
   width: 100%;
+  background-color: white;
   @extend %make-it-pop;
   &:not(.home) {
     @include jr-icon(before, arrow) {
@@ -154,11 +149,11 @@ a.arrow-r {
 .nav-right {
   border-bottom: $jr-border;
   overflow: hidden;
-  width: 100%;
- // flex: 1 1 100%;
+//  width: 100%;
+  flex: 1 1 100%;
   @include jr-size(screen) {
-    width: calc(100% - 250px);
-  //  flex: 1 1 auto;
+ //   width:
+    flex: 1 1 calc(100% - 250px);
   }
   @include clearfix;
 }
