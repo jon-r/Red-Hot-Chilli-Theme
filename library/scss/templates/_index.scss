@@ -34,6 +34,7 @@
 }
 
 .carousel {
+  overflow: hidden;
   margin-bottom: $jr-margin;
   position: relative;
 }
@@ -48,6 +49,7 @@
   position: absolute;
   top:0;
   bottom:0;
+  left: 100%;
   width:100%;
   a {
     padding:0;
@@ -56,59 +58,84 @@
 
 .slide {
   position: absolute;
-  top:0;
+  top: 0;
+  bottom: 0;
   display: inline-block;
-  border: solid red 1px;
-  left: 50%;
-  width:50%;
+  width: 100%;
+  left: 0;
   opacity: 1;
   text-align: center;
+  [class^='slide-'] {
+    position: absolute;
+    opacity: 0;
+  }
+  a {
+    height: 100%;
+  }
   @include jr-size(tablet) {
     font-size: 1.4rem;
   }
-
 }
 
 .carousel-blips {
-  position: absolute;
-  bottom:1rem;
+  top:1rem;
   right:1rem;
-  li {
-    border-radius:50%;
-    border: $jr-border;
-    height: 20px;
-    width: 20px;
-    margin-bottom: 5px;
-    cursor: pointer;
-    &.active, &:hover {
-      background-color: $jr-bg-hover;
-    }
+  z-index: 10;
+  position: absolute;
+}
+
+.blipper {
+  border-radius:50%;
+  border: $jr-border;
+  height: 10px;
+  width: 10px;
+  margin-bottom: 5px;
+  &.active {
+    background-color: $jr-emphasis;
   }
 }
 
 /*-- customisable carousel parts -----------------------------------------------------*/
 
-.slide [class^='slide-'] {
-  position: absolute;
-  transition: transform 600ms ease;
+.is-active {
+  z-index: 5;
+
+  [class^='slide-'] {
+    opacity: 1;
+    transform: translateX(-200%);
+    transition-property: transform;
+    transition-duration: 600ms;
+    transition-timing-function: cubic-bezier(0, .50, .50, 1);
+  }
+  .slide-image {
+   transform: translateX(-100%);
+  }
 }
 
-.slide-active [class^='slide-'] {
-  transform: translateX(-100%);
-
+.go-away {
+  left:-100%;
+  transition: left 600ms cubic-bezier(0, .50, .50, 1);
 }
+
 
 %slide-all {
   width:50%;
 }
 
+.slide-image {
+  top:0;
+  left:0;
+}
+
 .slide-title {
   @extend %slide-all;
+  transition-delay: 300ms ;
   top: 5%;
 }
 
 .slide-text {
   @extend %slide-all;
+  transition-delay: 400ms ;
   top: 25%;
   span {
     display: block;
@@ -119,6 +146,7 @@
   @extend %slide-all;
   bottom: 5%;
   text-decoration: underline;
+  transition-delay: 500ms ;
 }
 
 .go-left {
@@ -140,5 +168,4 @@
 .go-bold {
   font-weight: bold;
 }
-
 

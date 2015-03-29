@@ -20,51 +20,61 @@ function isHomePage() {
 
 /*-- carousel scroller ----------------------------------------------------------------*/
 
-if (isHomePage) {
-  var carMain = document.getElementById('js-carouselMain'),
-    carSlides = document.querySelectorAll('.slide');
-  carBlipParent = document.getElementById('js-blipParent'),
-    carBlips = carBlipParent.children,
-    carTimer = 5000,
-    carDuration = 600, //to match scroll timer
-    carLock = false,
-    slideCount = 0;
+var carousel = document.getElementById('js-carouselMain'),
+    slides = document.getElementsByClassName('slide'),
+    blips = document.getElementsByClassName('blipper'),
+    slideCount = slides.length,
+    slideTime = 5000,
+    slideDelay = 600, //to match scroll timer
+    hoverLock = false;
 
-  window.setInterval(function () {
-    slideCount++;
-    slider = carSlides[slideCount];
+var tickerValue = 1,
+    tickerLock = false;
 
-    if (slideCount < carSlides.length) {
-      slider.classList.add('slide-active');
+window.setInterval(ticker, slideTime);
+
+carousel.onmouseover = function() {
+  hoverLock = true;
+}
+
+carousel.onmouseout = function() {
+  hoverLock = false;
+}
+
+
+function ticker() {
+  if (!tickerLock && !hoverLock) {
+    tickerLock = true;
+
+    if (tickerValue < slideCount) {
+      tickerValue++;
     } else {
-      slideCount = 0;
+      tickerValue = 1;
     }
 
+    goSlide(tickerValue);
 
+    setTimeout(function () {
+      tickerLock = false;
+    }, 1000);
+  }
+};
 
+function goSlide(x) {
 
-//    for (var i = 0; i <= carSlides.length; ++i) {
-//      slider = carSlides[i]
-//      if (slider.dataset.slide == slideCount) {
-//        slider.classList.add('slide-active');
-//      } else {
-//        slider.classList.remove('slide-active');
-//      }
-//    }
-//
-//
-//
-//
-//
-//    slideCount++
-//
-//    if (slideCount <= carSlides.length) {
-//
-//
-//    } else {
-//      slideCount = 1;
-//    }
-  }, carTimer);
+  for (i = 0; i < slideCount; i++) {
+    if (slides[i].classList.contains('go-away')) {
+      slides[i].classList.remove('is-active', 'go-away');
+
+    } else if (slides[i].classList.contains('is-active')) {
+      slides[i].classList.add('go-away');
+      blips[i].classList.remove('active');
+    }
+    if (slides[i].dataset.slidenum == x) {
+      slides[i].classList.add('is-active');
+      blips[i].classList.add('active');
+    }
+  }
 }
 
 
@@ -78,11 +88,6 @@ if (isHomePage) {
 
 
 
-
-
-if (isHomePage) {
-
-}
 
 
 /*functions----------------------------------------------------------------------------*/

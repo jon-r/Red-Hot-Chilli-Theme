@@ -2,8 +2,8 @@
 
 //indev variables. list will be taken (with key names) from the carousel table.
 $advertList = [
-  ['Butchers','Meat Processing Equipment','2','butcher',0],
   ['Fryers','banner test1','?cat=Fryers&page_id=16','banner', 1],
+  ['Butchers','Meat Processing Equipment','2','butcher',0],
   ['Sold','banner test2','?sold=1&page_id=16','banner2', 2],
 ];
 
@@ -15,7 +15,7 @@ $carouselCount = $blipCount = 0;
 
   <?php foreach ($advertList as $advert) : $carouselCount++;  ?>
 
-  <li class="slide" data-slide=<?php echo $carouselCount ?>>
+  <li class="slide<?php echo $carouselCount == 1 ? ' is-active' : null ?>" data-slideNum="<?php echo $carouselCount ?>" >
     <a href="<?php echo magic_roundabout ($advert[2]); ?>">
 
       <img class="slide-image" src="<?php echo imgSrcRoot(carousel,$advert[3],jpg); ?>" alt="<?php echo $advert[1]; ?>" >
@@ -36,8 +36,8 @@ $carouselCount = $blipCount = 0;
 
 </ul>
 
-<ul id="js-blipParent" class="carousel-blip">
+<ul id="js-blipParent" class="carousel-blips">
   <?php foreach ($advertList as $advert) : $blipCount++; ?>
-  <li data-blip="<?php echo $blipCount ?>" ></li>
+  <li class="blipper<?php echo $blipCount++ == 1 ? ' active' : null ?>" data-blipNum="<?php echo $blipCount ?>" ></li>
   <?php endforeach ?>
 </ul>

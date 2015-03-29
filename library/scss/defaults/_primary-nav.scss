@@ -148,11 +148,9 @@ a.arrow-r {
 
 .nav-right {
   border-bottom: $jr-border;
-  overflow: hidden;
-//  width: 100%;
+ // overflow: hidden;
   flex: 1 1 100%;
   @include jr-size(screen) {
- //   width:
     flex: 1 1 calc(100% - 250px);
   }
   @include clearfix;

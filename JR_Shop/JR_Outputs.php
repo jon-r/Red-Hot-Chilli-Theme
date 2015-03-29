@@ -200,9 +200,9 @@ function img_resize ($src, $size) {
 
 //because descriptive function names are too mainstream
 function magic_roundabout ($linkIn) {
-  $linkCheck = is_numeric($linkIn) ? "?page_id=16&pg=1&sale=$linkIn" : $linkIn;
+  $linkOut = is_numeric($linkIn) ? "?page_id=16&sale=$linkIn" : $linkIn;
 
-  return $linkCheck;
+  return $linkOut;
 }
 
 ?>
