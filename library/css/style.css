@@ -543,7 +543,7 @@ em {
   width: 64px;
   height: 64px; }
 
-.arrow-r::before {
+.arrow-r::before, .menu-arrow-r a::before {
   background-position: -384px 0px;
   width: 64px;
   height: 64px; }
@@ -551,13 +551,11 @@ em {
 @keyframes loader-animate {
   0% {
     background-position: -896px -768px; }
-
   100% {
     background-position: -896px -888px; } }
 @-webkit-keyframes loader-animate {
   0% {
     background-position: -896px -768px; }
-
   100% {
     background-position: -896px -888px; } }
 /*--- grid ----------------------------------------------------------------------------*/
@@ -711,7 +709,6 @@ Default style for all pages
   float: left;
   width: 26px; }
   .header-social li::before {
-    transform-origin: top left;
     transform: scale(0.2); }
   @media only screen and (min-width: 1031px) {
     .header-social li {
@@ -720,14 +717,8 @@ Default style for all pages
         transform: scale(0.3); } }
 
 .header-contact li {
-  padding-left: 32px;
-  position: relative; }
+  padding-left: 32px; }
   .header-contact li::before {
-    pointer-events: none;
-    content: '';
-    position: absolute;
-    background-image: url(/redhotchilli/images/icons/RHC-Icons.png);
-    background-repeat: no-repeat;
     transform: scale(0.5);
     left: 0;
     top: 3px; }
@@ -808,9 +799,9 @@ nav a.active, nav a:active, nav a:hover {
     position: relative;
     display: inline-block; }
 
-a.arrow-r {
+a.arrow-r, .menu-arrow-r a, .menu-arrow-r a {
   position: relative; }
-  a.arrow-r::before {
+  a.arrow-r::before, .menu-arrow-r a::before, .menu-arrow-r a::before {
     pointer-events: none;
     content: '';
     position: absolute;
@@ -1261,3 +1252,5 @@ Page specific items.
 
 .box-z {
   background: linear-gradient(135deg, #206077, #78abbc); }
+
+/*# sourceMappingURL=style.css.map */

@@ -33,9 +33,7 @@ _________________________________________________________
         <?php wp_nav_menu(array(
           'container' => '',                           // remove nav container
           'menu' => __( 'Featured Menu Links', 'bonestheme' ),  // nav name
-          'menu_class' => '',                          // adding custom nav class
-          'link_before' => '<a class="arrow-r">',
-          'link_after' => '</a>',
+          'menu_class' => 'menu-arrow-r',                          // adding custom nav class
           'theme_location' => 'featured-menu',         // where it's located in the theme
           'fallback_cb' => ''                          // fallback function (if there is one)
         )); ?>
@@ -44,9 +42,7 @@ _________________________________________________________
         <?php wp_nav_menu(array(
           'container' => '',                           // remove nav container
           'menu' => __( 'Services Menu links', 'bonestheme' ),  // nav name
-          'menu_class' => '',                          // adding custom nav class
-          'link_before' => '<a class="arrow-r">',
-          'link_after' => '</a>',
+          'menu_class' => 'menu-arrow-r',                          // adding custom nav class
           'theme_location' => 'services-menu',         // where it's located in the theme
           'fallback_cb' => ''                          // fallback function (if there is one)
         )); ?>
