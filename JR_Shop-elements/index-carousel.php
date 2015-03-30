@@ -13,22 +13,25 @@ $carouselCount = $blipCount = 0;
 
 <ul id="js-carouselMain" class="carousel-container">
 
-  <?php foreach ($advertList as $advert) : $carouselCount++;  ?>
+  <?php foreach ($carouselList as $slideRaw) :
+    $carouselCount++;
+    $slide = magic_roundabout($slideRaw);
+  ?>
 
   <li class="slide<?php echo $carouselCount == 1 ? ' is-active' : null ?>" data-slideNum="<?php echo $carouselCount ?>" >
-    <a href="<?php echo magic_roundabout ($advert[2]); ?>">
+    <a href="<?php echo $slide[link]; ?>">
 
-      <img class="slide-image" src="<?php echo imgSrcRoot(carousel,$advert[3],jpg); ?>" alt="<?php echo $advert[1]; ?>" >
+      <img class="slide-image" src="<?php echo $slide[image]; ?>" alt="<?php echo $slide[title]; ?>" >
 
-      <h2 class="slide-title go-left"><?php echo $advert[0]; ?></h2>
+      <h2 class="slide-title <?php echo $slide[titlePos]; ?>"><?php echo $slide[title]; ?></h2>
 
-      <div class="slide-text go-mid">
-        <span class="go-red"><?php echo $advert[1]; ?></span>
-        <span class="go-bold"><?php echo $advert[1]; ?></span>
-        <span class="go-red go-bold"><?php echo $advert[1]; ?></span>
+      <div class="slide-text <?php echo $slide[textPos]; ?>">
+        <span class="<?php echo $slide[style1]; ?>"><?php echo $slide[text1]; ?></span>
+        <span class="<?php echo $slide[style2]; ?>"><?php echo $slide[text2]; ?></span>
+        <span class="<?php echo $slide[style3]; ?>"><?php echo $slide[text3]; ?></span>
       </div>
 
-      <h3 class="slide-link go-right">Click Here</h3>
+      <h3 class="slide-link <?php echo $slide[linkPos]; ?>">Click Here</h3>
     </a>
   </li>
 
@@ -37,7 +40,7 @@ $carouselCount = $blipCount = 0;
 </ul>
 
 <ul id="js-blipParent" class="carousel-blips">
-  <?php foreach ($advertList as $advert) : $blipCount++; ?>
+  <?php foreach ($carouselList as $slide) : $blipCount++; ?>
   <li class="blipper<?php echo $blipCount++ == 1 ? ' active' : null ?>" data-blipNum="<?php echo $blipCount ?>" ></li>
   <?php endforeach ?>
 </ul>

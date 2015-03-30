@@ -196,13 +196,55 @@ function img_resize ($src, $size) {
 }
 
 // ---------------------- carousel compiler --------------------------------------
+// converts the database carousel to a web one
 // takes the carousel "link" and converts it to a sale if it is just a number. else treats it like a link
 
-//because descriptive function names are too mainstream
-function magic_roundabout ($linkIn) {
-  $linkOut = is_numeric($linkIn) ? "?page_id=16&sale=$linkIn" : $linkIn;
 
-  return $linkOut;
+
+function jr_position($in) {
+  if ($in == "Middle") {
+    $out = "go-mid";
+  } elseif ($in == "Left") {
+    $out = "go-left";
+  } elseif ($in == "Right") {
+    $out = "go-right";
+  }
+
+  return $out;
+}
+
+function jr_style($in) {
+  if ($in == "Bold") {
+    $out = "go-bold";
+  } elseif ($in == "Red") {
+    $out = "go-red";
+  } elseif ($in == "Bold_Red") {
+    $out = "go-bold go-red";
+  } else {
+    $out = null;
+  }
+
+  return $out;
+}
+
+//because descriptive function names are too mainstream
+function magic_roundabout($slideIn) {
+  $out = [
+    title     => $slideIn[Title],
+    titlePos  => jr_position($slideIn[TitlePos]),
+    text1     => $slideIn[Description] != "0" ? $slideIn[Description] : null,
+    text2     => $slideIn[Desc2] != "0" ? $slideIn[Desc2] : null,
+    text3     => $slideIn[Desc3] != "0" ? $slideIn[Desc3] : null,
+    textPos   => jr_position($slideIn[TextPos]),
+    style1    => jr_style($slideIn[Desc1Emphasis]),
+    style2    => jr_style($slideIn[Desc2Emphasis]),
+    style3    => jr_style($slideIn[Desc3Emphasis]),
+    image     => imgSrcRoot(carousel,$slideIn[ImageRef],jpg),
+    link      => is_numeric($slideIn[WebLink]) ? "?page_id=16&sale=$slideIn[WebLink]" : $slideIn[WebLink],
+    linkPos   => jr_position($slideIn[ClickHerePos])
+  ];
+
+  return $out;
 }
 
 ?>

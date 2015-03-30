@@ -1,5 +1,6 @@
 <?php
   // featured items on front page
+var_dump($carouselList);
 ?>
 
 

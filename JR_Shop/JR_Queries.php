@@ -1,9 +1,12 @@
 <?php
 
-global $wpdb, $categoriesList, $groupsList, $stainlessList, $brandsListMajor, $keywords,
+global $wpdb, $categoriesList, $carouselList, $groupsList, $stainlessList, $brandsListMajor, $keywords,
       $categoriesListColumn, $brandsListFull, $rhcColumn, $rhcsColumn, $rhcListNew;
 //get category array
 $categoriesList = $wpdb->get_results("SELECT * FROM rhc_categories;", ARRAY_A);
+
+//get carousel
+$carouselList = $wpdb->get_results("SELECT * FROM `carousel` WHERE `IsLive` = 1 ORDER BY `OrderNo` DESC;", ARRAY_A);
 
 //get keyword columns. For Smart Search
 $groupsList = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` = 'group'");
@@ -22,6 +25,7 @@ $categoriesListColumn = $wpdb->get_col("SELECT `name` FROM `rhc_categories`");
 $rhcColumn = $wpdb->get_col("SELECT `rhc` FROM `networked db`");
 $rhcsColumn = $wpdb->get_col("SELECT `rhcs` FROM `benchessinksdb`");
 $keywords = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` LIKE '$keywordGroup'");
+
 
 
 //----------------wpdb query generator---------------------------------------------------
