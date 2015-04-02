@@ -6,20 +6,21 @@ nav a {
   }
 }
 
-
 .primary-nav {
   @extend %flex-parent;
+  justify-content: flex-start;
   //simple loader. the <nav> will be the only child of the <section> until the php <article> has loaded.
- &:only-child {
+  &:only-child {
     @include jr-icon(before, loader) {
       left: calc(50% - 48px - 1rem);
       top: 3rem;
-      top: 25vh;
+  //    top: 25vh;
       animation: loader-animate 0.4s steps(5) alternate infinite;
       -webkit-animation: loader-animate 0.4s steps(5) alternate infinite;
-    };
-    height:100vh;
- }
+    }
+
+    height: 100vh;
+  }
 }
 
 .nav-main,
@@ -61,7 +62,6 @@ a.arrow-r, .menu-arrow-r a {
       transform-origin: top left;
     }
   }
-
   &.open {
     height: auto;
     //transition: 300ms ease;
@@ -69,15 +69,12 @@ a.arrow-r, .menu-arrow-r a {
       top: 0.1rem;
     }
   }
-
   ul {
     @extend %flex-parent-edgeless;
     overflow: hidden;
     height: calc(100% - 2rem);
     line-height: 2rem;
-
   }
-
   h2 {
     cursor: pointer;
     z-index: 10;
@@ -88,20 +85,17 @@ a.arrow-r, .menu-arrow-r a {
     padding: 0.25rem 0.5rem 0;
     margin-top: -0.25rem;
   }
-
   li {
     cursor: pointer;
     padding-left: 0.5rem;
-    width:100%;
+    width: 100%;
     &:active, &:hover {
       background-color: $jr-bg-hover;
     }
   }
-
   a {
     width: 100%;
   }
-
   @include jr-size(phoneOnly) {
     h2, li {
       text-align: center;
@@ -111,7 +105,7 @@ a.arrow-r, .menu-arrow-r a {
 
   @include jr-size(tabletOnly) {
     li {
-      @include jr-flex(1,2);
+      @include jr-flex(1, 2);
       font-size: 0.9rem;
     }
   }
@@ -120,7 +114,6 @@ a.arrow-r, .menu-arrow-r a {
     width: 250px;
     margin-left: -4px;
     font-size: 0.8rem;
-
     li {
       ul {
         display: none;
@@ -137,7 +130,6 @@ a.arrow-r, .menu-arrow-r a {
         z-index: 10;
       }
     }
-
     li:hover {
       ul {
         display: block;
@@ -153,15 +145,14 @@ a.arrow-r, .menu-arrow-r a {
 
 .nav-right {
   border-bottom: $jr-border;
- // overflow: hidden;
+  background-color: white;
   flex: 1 1 100%;
   @include jr-size(screen) {
     flex: 1 1 75%;
   }
+
   @include clearfix;
 }
-
-
 
 .nav-breadcrumbs,
 .nav-paginate {

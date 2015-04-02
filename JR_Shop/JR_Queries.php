@@ -61,7 +61,6 @@ function jr_category_filter( $safeArr, $pageNumber) {
   return $wpdb->get_results($queryFull, ARRAY_A);
   /*debug return*/
   //return $queryFull;
-
 }
 //count all items from query, for pagination
 function jr_cat_count($safeArr) {
@@ -77,7 +76,27 @@ function jr_cat_count($safeArr) {
   return $out;
 }
 
-//builts the query strings for above two functions
+//fills page with sold items. Mix of filler for design balance and show past sales.
+//includes last pages.
+function jr_cat_sold($safeArr, $itemsOnPage) {
+  global $wpdb;
+
+  if ($safeArr['pgType'] == 'New' || $safeArr['pgType'] == 'Sold') {
+    $out = null;
+  } else {
+    $soldCount = ($itemsOnPage % 8);
+    $queryAll = jr_string_build($safeArr);
+
+    $querySoldOn = str_replace(['`Sold` = 0','ORDER BY `RHC`'],
+                               ['`Sold` = 1','ORDER BY `DateSold`'], $queryAll);
+    $queryLimiter = " LIMIT $soldCount";
+    $queryFull = $querySoldOn.$queryLimiter;
+  }
+
+  return $wpdb->get_results($queryFull, ARRAY_A);
+}
+
+//builts the query strings for above functions functions
 function jr_string_build($safeArr, $isCounter = false) {
 
   $fType = $safeArr['pgType'];

@@ -2,6 +2,8 @@
 /* Template Name: Search Pseudo-Page
 *
 * Just A Blank page to call the search function without any html
+*
+* no end user should see this page
 */
 
   include( "JR_Shop/JR_Shop_Core.php");

@@ -12,6 +12,10 @@ html {
 body {
   background-color: $jr-bg-dark;
   min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  min-height: 100vh;
 }
 
 ul  {

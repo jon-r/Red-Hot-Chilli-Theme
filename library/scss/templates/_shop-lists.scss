@@ -58,7 +58,13 @@
     }
   }
 }
-.items-nav {
-  background-color: white;
+
+.shop-items-nav {
+  @extend %make-it-pop;
   @extend %flex-parent;
+  background-color: white;
+}
+.shop-items-contact {
+  @extend %flex-1;
+  padding: $jr-margin;
 }

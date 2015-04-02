@@ -14,9 +14,14 @@ $itemCountAll = jr_cat_count($safeArr);
 $itemCountCheckMax = $itemCountAll > $itemCountMax;
 $itemCountCheckMin = count($categoryList) <= $itemCountMin;
 //$splitList = $itemCountCheckMax ? array_chunk($categoryList, $itemCountMax) : array($categoryList);
-$pageCount = ceil($itemCountAll / $itemCountMax);
-
-
+$pageCount = intval(ceil($itemCountAll / $itemCountMax));
+if (!$itemCountCheckMax) {
+    $itemsOnPage = $itemCountAll % $itemCountMax;
+    $categorySold = jr_cat_sold($safeArr, $itemsOnPage);
+} else {
+  $categorySold = [];
+}
+$categoryListExtended = array_Merge($categoryList, $categorySold);
 ?>
 
 <article class="shop-grid items">
@@ -27,7 +32,7 @@ $pageCount = ceil($itemCountAll / $itemCountMax);
     <?php echo $safeArr[imgURL] ?>
   </header>
 
-  <?php foreach ($categoryList as $item) :
+  <?php foreach ($categoryListExtended as $item) :
     if ($safeArr[pgType] == 'CategorySS' ) {
       $shop_item = jr_shop_compile($item, 'stainless');
     } else {
@@ -53,20 +58,31 @@ $pageCount = ceil($itemCountAll / $itemCountMax);
 
   </div>
 
-  <?php endforeach ?>
+  <?php endforeach;?>
 
 </article>
 
   <footer class="page-footer">
     <?php if ($itemCountCheckMin) : ?>
-    <div class="sh">
-      <p>No enough form</p>
+    <div class="shop-items-contact">
+      <h2>Still not found what you are looking for?</h2>
+      <p>Contact us today</p>
+      <form class="shop-items-form">
+        <input type="text" name="name" >
+        <label for="Name" >Name</label>
+        <input type="email" name="email" >
+        <label for="email" >Email Address</label>
+        <input type="number" name="phone" >
+        <label for="phone" >Phone Number</label>
+        <input type="text" name="subject" >
+        <label for="subject" >Subject</label>
+      </form>
     </div>
 
     <?php endif ?>
     <?php if ($itemCountCheckMax) : ?>
 
-    <nav class="items-nav">
+    <nav class="shop-items-nav">
       <div class="nav-paginate">
         <?php if ($pageNumber > 1) : ?>
         <a href="<?php  echo jr_pg_set(1) ?>"><h4>&laquo;</h4></a>
@@ -88,6 +104,7 @@ $pageCount = ceil($itemCountAll / $itemCountMax);
 
 
   </footer>
+
 
 
 <!--  $fSoon =        $safeArr['soon'];

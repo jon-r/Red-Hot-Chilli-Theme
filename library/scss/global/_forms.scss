@@ -34,13 +34,7 @@ label {
   position:absolute;
   left:4px;
   margin-left: 24px;
-  top:4px;
-}
-
-input[type="search"] {
-  & + label {
-    @include jr-icon(before, search, false)
-  }
+//  top:4px;
 }
 
 @include jr-size(screen) {
@@ -51,8 +45,51 @@ input[type="search"] {
     &:focus + label {
       transform: translateX(calc(-40px - 100%));
       color: $jr-text-light;
-      @include jr-icon(before, search-w, false)
+      @include jr-icon(before, none, false)
     }
   }
-
 }
+
+$form-icons: (
+  search,
+  phone,
+  email
+);
+
+@each $icon in $form-icons {
+  input[name=#{$icon}] {
+    & + label {
+      @include jr-icon(before, #{$icon}, false)
+    }
+    &:focus + label {
+      @include jr-icon(before, #{$icon + "-w"}, false)
+    }
+  }
+}
+
+//input[name="search"] {
+//  & + label {
+//    @include jr-icon(before, search, false)
+//  }
+//  &:focus + label {
+//    @include jr-icon(before, search-w, false)
+//  }
+//}
+//
+//input[name="phone"] {
+//  & + label {
+//    @include jr-icon(before, phone, false)
+//  }
+//  &:focus + label {
+//    @include jr-icon(before, phone-w, false)
+//  }
+//}
+//
+//input[name="email"] {
+//  & + label {
+//    @include jr-icon(before, email, false)
+//  }
+//  &:focus + label {
+//    @include jr-icon(before, phone-w, false)
+//  }
+//}

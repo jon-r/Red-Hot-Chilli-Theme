@@ -149,7 +149,7 @@ function jr_pg_set ($pgSet = null, $pgCap = 1) {
   if (is_int($pgSet)) {
     $arrParams['pg'] = $pgSet;
   } elseif ($pgSet == 'plus') {
-    $arrParams['pg'] <= $pgCap ? $arrParams['pg']++ : $arrParams['pg'];
+    $arrParams['pg'] ? $arrParams['pg']++ : $arrParams['pg'] = 2;
   } elseif ($pgSet == 'minus') {
     $arrParams['pg'] > 1 ? $arrParams['pg']-- : $arrParams['pg'];
   } else {
