@@ -3,7 +3,7 @@
 
   <article class="default-page">
 
-    <header class="page-header">
+    <header class="article-header">
       <h1><?php echo $safeArr[pgName]; ?></h1>
 <!--      <h2><?php the_title(); ?></h2>-->
       <?php echo $safeArr[imgURL] ?>

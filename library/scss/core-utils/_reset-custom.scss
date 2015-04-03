@@ -4,19 +4,6 @@
   box-sizing: border-box;
 }
 
-html {
-  font-size: 14px;
-  @include jr-size(screen) { font-size: 18px; };
-}
-
-body {
-  background-color: $jr-bg-dark;
-  min-width: 320px;
-  display: flex;
-  flex-direction: column;
-  align-content: stretch;
-  min-height: 100vh;
-}
 
 ul  {
   list-style: none;

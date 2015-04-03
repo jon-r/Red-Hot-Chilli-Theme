@@ -21,15 +21,15 @@ start style on a blank slate.
 *********************/
 
 // Sassy stuffs.
-@import "core/scss-utilities";
+@import "core-utils/scss-utilities";
 
 
 // normalize: git.io/normalize
 // plan to cut out unused when done
-@import "core/reset-normalize";
+@import "core-utils/reset-normalize";
 
 // my own resets.
-@import "core/reset-custom";
+@import "core-utils/reset-custom";
 
 
 
@@ -37,52 +37,49 @@ start style on a blank slate.
 Add some global styling.
 *********************/
 
-//GoogleFonts
-@import url(http://fonts.googleapis.com/css?family=PT+Sans|Kreon:700);
-
 // typography
-@import "global/type";
+@import "global-elements/type";
 
 // icons
-@import "global/sprites";
+@import "global-elements/sprites";
 
 // grid
-@import "global/grid";
+@import "global-elements/grid";
 
 //input forms. shopping cart/wishlist to go here to (eventually)
-@import "global/forms";
+@import "global-elements/forms";
 
 //common elements (to maybe remove/minimise)
-@import "global/common-elements";
+@import "global-elements/common-elements";
 
 /*********************
 Default style for all pages
 *********************/
 
 //header+footer of whole page
-@import "defaults/primary-head-foot";
+@import "default-templates/primary-head-foot";
 
 //page core. section > *
-@import "defaults/page-body";
+@import "default-templates/page-body";
 
 //primary navigation menu
-@import "defaults/primary-nav";
+@import "default-templates/primary-nav";
 
 
 //menus created by wp template, for user customisation
-@import "defaults/wordpress-menus";
+@import "default-templates/wordpress-menus";
 
 /*********************
 Page specific items.
 *********************/
 
 //front page, including carousel banner
-@import "templates/index";
+@import "page-templates/index";
 
 //shop list, groups, categories
-@import "templates/shop-lists";
+@import "page-templates/shop-lists";
 
 //shop full (single item)
-@import "templates/shop-single";
+@import "page-templates/shop-single";
 
 

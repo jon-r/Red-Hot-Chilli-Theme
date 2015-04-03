@@ -6,7 +6,7 @@
 
 <article class="shop-grid category">
 
-  <header class="page-header" >
+  <header class="article-header" >
     <h1><?php echo $safeArr[group] ?></h1>
   </header>
 

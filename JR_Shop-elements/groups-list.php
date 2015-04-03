@@ -2,7 +2,7 @@
 
 <article class="shop-grid group">
 
-  <header class="page-header" >
+  <header class="article-header" >
     <h1>Catering Equipment For Sale</h1>
     <a href="?all=1&page_id=16">Click here to View All</a>
   </header>

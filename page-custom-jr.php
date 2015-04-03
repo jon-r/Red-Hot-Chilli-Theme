@@ -9,11 +9,11 @@
 
 
 
-<section class="container">
+<main class="container">
 
   <?php include( "JR_Shop-elements/nav-bar.php"); ?>
 
 
-</section>
+</main>
 
 <?php get_footer(); ?>

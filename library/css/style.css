@@ -23,7 +23,6 @@ start style on a blank slate.
 * 2. Prevent iOS text size adjust after orientation change, without disabling
 * user zoom.
 */
-@import url(http://fonts.googleapis.com/css?family=PT+Sans|Kreon:700);
 @import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700|Kreon:700);
 html {
   font-family: sans-serif;
@@ -381,20 +380,6 @@ th {
 *, *::before, *::after {
   box-sizing: border-box; }
 
-html {
-  font-size: 14px; }
-  @media only screen and (min-width: 1031px) {
-    html {
-      font-size: 18px; } }
-
-body {
-  background-color: #494950;
-  min-width: 320px;
-  display: flex;
-  flex-direction: column;
-  align-content: stretch;
-  min-height: 100vh; }
-
 ul {
   list-style: none;
   margin: 0;
@@ -414,13 +399,14 @@ a {
 /*********************
 Add some global styling.
 *********************/
-h1, h2, h3, button, h4, p {
+/*-- typegraphy ----------------------------------------------------------------------*/
+h1, h2, h3, h4, p {
   line-height: 1.2;
   margin: 0;
   padding: 0;
   color: inherit; }
 
-h1, h2, h3, button, h4 {
+h1, h2, h3, h4 {
   font-family: "Kreon", Cambria, Times New Roman, Times, serif;
   display: inline-block; }
 
@@ -434,7 +420,7 @@ h1 {
 h2 {
   font-size: 1.75em; }
 
-h3, button {
+h3 {
   font-size: 1.25em; }
 
 h4 {
@@ -555,17 +541,15 @@ em {
 @keyframes loader-animate {
   0% {
     background-position: -896px -768px; }
-
   100% {
     background-position: -896px -888px; } }
 @-webkit-keyframes loader-animate {
   0% {
     background-position: -896px -768px; }
-
   100% {
     background-position: -896px -888px; } }
 /*--- grid ----------------------------------------------------------------------------*/
-article, .page-footer, .primary-nav, .menu-featured, .shop-items-nav, .item-container, .item-sidebar {
+article, .article-footer, .primary-nav, .menu-featured, .shop-items-nav, .item-container, .item-sidebar {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -577,7 +561,7 @@ article, .page-footer, .primary-nav, .menu-featured, .shop-items-nav, .item-cont
   justify-content: flex-start;
   align-items: stretch; }
 
-.page-header, .shop-items-contact, .item-container, .item-info, .shop-tile.group, .item-gallery, .menu-featured li, .shop-tile, .item-thumbs li {
+.article-header, .shop-items-contact, .item-container, .item-info, .shop-tile.group, .item-gallery, .menu-featured li, .shop-tile, .item-thumbs li {
   /*non flex usable */
   width: 100%;
   display: inline-block;
@@ -626,7 +610,7 @@ label {
     pointer-events: none;
     content: '';
     position: absolute;
-    background-image: url(/redhotchilli/images/icons/RHC-Icons.png);
+    background-image: url(/rhc_online/images/icons/RHC-Icons.png);
     background-repeat: no-repeat;
     transform: scale(0.5);
     transform-origin: top left;
@@ -720,7 +704,7 @@ Default style for all pages
       pointer-events: none;
       content: '';
       position: absolute;
-      background-image: url(/redhotchilli/images/icons/RHC-Icons.png);
+      background-image: url(/rhc_online/images/icons/RHC-Icons.png);
       background-repeat: no-repeat;
       transform-origin: top left; }
 
@@ -767,10 +751,31 @@ Default style for all pages
   padding: 0.25rem; }
 
 /*--- Page Body Elements -----------------------------------------------------*/
+html {
+  font-size: 14px; }
+  @media only screen and (min-width: 1031px) {
+    html {
+      font-size: 18px; } }
+
+body {
+  background-color: #494950;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  min-height: 100vh; }
+
+main {
+  background-color: #f2f2f3;
+  color: #18181b;
+  box-shadow: 0 5px 10px #18181b;
+  flex: 1 1 auto; }
+
 .container {
   height: 100%;
   margin: 0 auto;
-  position: relative; }
+  position: relative;
+  width: 100%; }
   @media only screen and (min-width: 1031px) {
     .container {
       width: 1000px; } }
@@ -778,16 +783,10 @@ Default style for all pages
     .container {
       width: 1200px; } }
 
-section {
-  background-color: #f2f2f3;
-  color: #18181b;
-  box-shadow: 0 5px 10px #18181b;
-  flex: 1 1 auto; }
-
-.page-header {
+.article-header {
   margin: 1rem 1.5rem; }
 
-.page-footer {
+.article-footer {
   background-color: #f2f2f3; }
 
 /*- menu parts ---------------------------------------------------------------*/
@@ -803,7 +802,7 @@ nav a.active, nav a:active, nav a:hover {
       pointer-events: none;
       content: '';
       position: absolute;
-      background-image: url(/redhotchilli/images/icons/RHC-Icons.png);
+      background-image: url(/rhc_online/images/icons/RHC-Icons.png);
       background-repeat: no-repeat;
       background-position: -896px -768px;
       width: 128px;
@@ -831,7 +830,7 @@ a.arrow-r, .menu-arrow-r a, .menu-arrow-r a {
     pointer-events: none;
     content: '';
     position: absolute;
-    background-image: url(/redhotchilli/images/icons/RHC-Icons.png);
+    background-image: url(/rhc_online/images/icons/RHC-Icons.png);
     background-repeat: no-repeat;
     top: 0.5rem;
     left: 0.2rem;
@@ -848,7 +847,7 @@ a.arrow-r, .menu-arrow-r a, .menu-arrow-r a {
       pointer-events: none;
       content: '';
       position: absolute;
-      background-image: url(/redhotchilli/images/icons/RHC-Icons.png);
+      background-image: url(/rhc_online/images/icons/RHC-Icons.png);
       background-repeat: no-repeat;
       background-position: -256px 0px;
       width: 64px;
@@ -1108,7 +1107,7 @@ Page specific items.
     pointer-events: none;
     content: '';
     position: absolute;
-    background-image: url(/redhotchilli/images/icons/RHC-Icons.png);
+    background-image: url(/rhc_online/images/icons/RHC-Icons.png);
     background-repeat: no-repeat;
     right: -9px;
     top: 3.5rem; }
@@ -1116,7 +1115,7 @@ Page specific items.
     pointer-events: none;
     content: '';
     position: absolute;
-    background-image: url(/redhotchilli/images/icons/RHC-Icons.png);
+    background-image: url(/rhc_online/images/icons/RHC-Icons.png);
     background-repeat: no-repeat;
     bottom: 0.1rem;
     right: 0.1rem;
@@ -1182,7 +1181,7 @@ Page specific items.
       pointer-events: none;
       content: '';
       position: absolute;
-      background-image: url(/redhotchilli/images/icons/RHC-Icons.png);
+      background-image: url(/rhc_online/images/icons/RHC-Icons.png);
       background-repeat: no-repeat;
       transform: scale(0.4);
       top: calc(50% - 0.75rem);
@@ -1210,7 +1209,7 @@ Page specific items.
       pointer-events: none;
       content: '';
       position: absolute;
-      background-image: url(/redhotchilli/images/icons/RHC-Icons.png);
+      background-image: url(/rhc_online/images/icons/RHC-Icons.png);
       background-repeat: no-repeat;
       background-position: -64px 0px;
       width: 64px;
@@ -1232,7 +1231,7 @@ Page specific items.
     pointer-events: none;
     content: '';
     position: absolute;
-    background-image: url(/redhotchilli/images/icons/RHC-Icons.png);
+    background-image: url(/rhc_online/images/icons/RHC-Icons.png);
     background-repeat: no-repeat;
     transform: scale(0.33);
     transform-origin: top left; }
@@ -1265,7 +1264,7 @@ Page specific items.
     margin: -1px; }
   .box-floor::before {
     content: '';
-    background: url("/redhotchilli/images/icons/silhouette.svg") bottom/contain no-repeat;
+    background: url("/rhc_online/images/icons/silhouette.svg") bottom/contain no-repeat;
     width: 16.66%;
     transform: rotateX(-90deg) rotateZ(0deg) rotateY(0deg); }
 
@@ -1282,3 +1281,5 @@ Page specific items.
 
 .box-z {
   background: linear-gradient(135deg, #206077, #78abbc); }
+
+/*# sourceMappingURL=style.css.map */

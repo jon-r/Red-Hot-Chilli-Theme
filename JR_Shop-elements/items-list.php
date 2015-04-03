@@ -13,20 +13,21 @@ $itemCountAll = jr_cat_count($safeArr);
 
 $itemCountCheckMax = $itemCountAll > $itemCountMax;
 $itemCountCheckMin = count($categoryList) <= $itemCountMin;
-//$splitList = $itemCountCheckMax ? array_chunk($categoryList, $itemCountMax) : array($categoryList);
 $pageCount = intval(ceil($itemCountAll / $itemCountMax));
+
 if (!$itemCountCheckMax) {
-    $itemsOnPage = $itemCountAll % $itemCountMax;
-    $categorySold = jr_cat_sold($safeArr, $itemsOnPage);
+  $itemsOnPage = $itemCountAll % $itemCountMax;
+  $categoryListSold = jr_cat_sold($safeArr, $itemsOnPage);
 } else {
-  $categorySold = [];
+  $categoryListSold = false;
 }
-$categoryListExtended = array_Merge($categoryList, $categorySold);
+
+$categoryListExtended = $categoryListSold ? array_Merge($categoryList, $categoryListSold) : $categoryList;
 ?>
 
 <article class="shop-grid items">
 
-  <header class="page-header">
+  <header class="article-header">
     <h1><?php echo $safeArr[pgName]; ?></h1>
     <p><?php echo $safeArr[description] ?></p>
     <?php echo $safeArr[imgURL] ?>
@@ -62,7 +63,7 @@ $categoryListExtended = array_Merge($categoryList, $categorySold);
 
 </article>
 
-  <footer class="page-footer">
+  <footer class="article-footer">
     <?php if ($itemCountCheckMin) : ?>
     <div class="shop-items-contact">
       <h2>Still not found what you are looking for?</h2>

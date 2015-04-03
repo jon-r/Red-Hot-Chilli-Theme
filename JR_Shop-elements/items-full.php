@@ -17,9 +17,9 @@ if ($safeArr[ss]) {
   <div class="item-container">
 
     <div class="item-sidebar">
-      <button class="basket-w">Buy Today</button>
-      <button class="question">Need More Information</button>
-      <button class="list">Add To Shopping List</button>
+      <button class="basket-w"><h3>Buy Today</h3></button>
+      <button class="question"><h3>Need More Information</h3></button>
+      <button class="list"><h3>Add To Shopping List</h3></button>
     </div>
 
     <div class="item-gallery">
