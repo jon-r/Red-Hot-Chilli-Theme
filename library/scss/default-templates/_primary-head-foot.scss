@@ -37,9 +37,10 @@
   }
   li {
     margin-right: 8px;
+    @extend %has-icon-before;
     @include jr-icon(before) {
       transform-origin: top left;
-    }
+    };
   }
  // height: 7rem;
 }
@@ -70,7 +71,7 @@
   li {
     padding-left: 32px;
     &::before {
-      transform: scale(0.5);
+      transform: scale(0.25);
       left: 0;
       top: 3px;
     }

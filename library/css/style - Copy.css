@@ -433,99 +433,121 @@ em {
   font-style: normal; }
 
 /*-------------------------sprite layouts + settings ----------------------------------*/
-label, .header-links li, .primary-nav:only-child, a.arrow-r, .menu-arrow-r a, .nav-main:not(.home), .shop-tile, .item-sidebar button, .item-features li {
-  position: relative; }
-  label::before, .header-links li::before, .primary-nav:only-child::before, a.arrow-r::before, .menu-arrow-r a::before, .nav-main:not(.home)::before, .shop-tile::before, .item-sidebar button::before, .item-features li::before {
-    pointer-events: none;
-    content: '';
-    position: absolute;
-    background-image: url(/rhc_online/images/icons/RHC-Icons-Normalised.svg);
-    height: 128px;
-    width: 128px; }
-
-.shop-tile, .item-power {
-  position: relative; }
-  .shop-tile::after, .item-power::after {
-    pointer-events: none;
-    content: '';
-    position: absolute;
-    background-image: url(/rhc_online/images/icons/RHC-Icons-Normalised.svg);
-    height: 128px;
-    width: 128px; }
-
 .single-phase::after {
-  background-position: 0px -512px; }
+  background-position: 0px -128px;
+  width: 256px;
+  height: 256px; }
 
 .three-phase::after {
-  background-position: -128px -512px; }
+  background-position: -256px -128px;
+  width: 256px;
+  height: 256px; }
 
 .natural-gas::after {
-  background-position: -256px -512px; }
+  background-position: -512px -128px;
+  width: 256px;
+  height: 256px; }
 
 .lpg::after {
-  background-position: -384px -512px; }
+  background-position: -768px -128px;
+  width: 256px;
+  height: 256px; }
 
 .dual-fuel::after {
-  background-position: -512px -512px; }
+  background-position: 0px -384px;
+  width: 256px;
+  height: 256px; }
 
 .freezer::after {
-  background-position: -640px -512px; }
+  background-position: -256px -384px;
+  width: 256px;
+  height: 256px; }
 
 .fridge::after {
-  background-position: -768px -512px; }
+  background-position: -512px -384px;
+  width: 256px;
+  height: 256px; }
 
 .fridge-freezer::after {
-  background-position: -896px -512px; }
+  background-position: -768px -384px;
+  width: 256px;
+  height: 256px; }
 
 .sale::before {
-  background-position: 0px -640px; }
+  background-position: 0px -640px;
+  width: 128px;
+  height: 128px; }
 
 .sold::before {
-  background-position: -128px -640px; }
+  background-position: -128px -640px;
+  width: 128px;
+  height: 128px; }
 
 .soon::before {
-  background-position: -256px -640px; }
+  background-position: -256px -640px;
+  width: 128px;
+  height: 128px; }
 
 .new::before {
-  background-position: -384px -640px; }
+  background-position: -384px -640px;
+  width: 128px;
+  height: 128px; }
 
 .linkedin::before {
-  background-position: -256px -768px; }
+  background-position: -256px -768px;
+  width: 128px;
+  height: 128px; }
 
 .twitter::before {
-  background-position: -128px -768px; }
+  background-position: -128px -768px;
+  width: 128px;
+  height: 128px; }
 
 .facebook::before {
-  background-position: 0px -768px; }
+  background-position: 0px -768px;
+  width: 128px;
+  height: 128px; }
 
 .phone-w::before {
-  background-position: -256px -384px; }
+  background-position: -640px -64px;
+  width: 64px;
+  height: 64px; }
 
 .question::before {
-  background-position: 0px -128px; }
+  background-position: 0px -64px;
+  width: 64px;
+  height: 64px; }
 
 .list::before {
-  background-position: -896px -128px; }
+  background-position: -448px -64px;
+  width: 64px;
+  height: 64px; }
 
 .basket-w::before {
-  background-position: -128px -384px; }
+  background-position: -576px -64px;
+  width: 64px;
+  height: 64px; }
 
 .email-w::before {
-  background-position: -512px -384px; }
+  background-position: -768px -64px;
+  width: 64px;
+  height: 64px; }
 
 .arrow-r::before, .menu-arrow-r a::before {
-  background-position: -768px 0px; }
+  background-position: -384px 0px;
+  width: 64px;
+  height: 64px; }
 
 @keyframes loader-animate {
   0% {
-    background-position: -384px -768px; }
+    background-position: -896px -768px; }
   100% {
-    background-position: -384px -888.32px; } }
+    background-position: -896px -888px; } }
 @-webkit-keyframes loader-animate {
   0% {
-    background-position: -384px -768px; }
+    background-position: -896px -768px; }
   100% {
-    background-position: -384px -888.32px; } }
+    background-position: -896px -888px; } }
 /*--- grid ----------------------------------------------------------------------------*/
 article, .article-footer, .primary-nav, .menu-featured, .shop-items-nav, .item-container, .item-sidebar {
   display: flex;
@@ -579,15 +601,21 @@ input {
       display: none; } }
 
 label {
+  position: relative;
   pointer-events: none;
   position: absolute;
   left: 4px;
   margin-left: 24px; }
   label::before {
-    transform: scale(0.2);
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    background-image: url(/rhc_online/images/icons/RHC-Icons.png);
+    background-repeat: no-repeat;
+    transform: scale(0.5);
     transform-origin: top left;
     left: -28px;
-    top: 0; }
+    top: 4px; }
 
 @media only screen and (min-width: 1031px) {
   input, label {
@@ -597,19 +625,31 @@ label {
     transform: translateX(calc(-40px - 100%));
     color: #e4e4e7; } }
 input[name=search] + label::before {
-  background-position: -640px 0px; }
+  background-position: -320px 0px;
+  width: 64px;
+  height: 64px; }
 input[name=search]:focus + label::before {
-  background-position: -640px -256px; }
+  background-position: -832px 0px;
+  width: 64px;
+  height: 64px; }
 
 input[name=phone] + label::before {
-  background-position: -256px -128px; }
+  background-position: -128px -64px;
+  width: 64px;
+  height: 64px; }
 input[name=phone]:focus + label::before {
-  background-position: -256px -384px; }
+  background-position: -640px -64px;
+  width: 64px;
+  height: 64px; }
 
 input[name=email] + label::before {
-  background-position: -512px -128px; }
+  background-position: -256px -64px;
+  width: 64px;
+  height: 64px; }
 input[name=email]:focus + label::before {
-  background-position: -512px -384px; }
+  background-position: -768px -64px;
+  width: 64px;
+  height: 64px; }
 
 /*--- common page elements + defaults -------------------------------------------------*/
 .nav-main, .items-nav div, .menu-featured li, .shop-tile, .shop-items-nav, .item-container {
@@ -658,8 +698,14 @@ Default style for all pages
   .header-links ul, .header-links form {
     float: left; }
   .header-links li {
-    margin-right: 8px; }
+    margin-right: 8px;
+    position: relative; }
     .header-links li::before {
+      pointer-events: none;
+      content: '';
+      position: absolute;
+      background-image: url(/rhc_online/images/icons/RHC-Icons.png);
+      background-repeat: no-repeat;
       transform-origin: top left; }
 
 .header-logo {
@@ -680,7 +726,7 @@ Default style for all pages
 .header-contact li {
   padding-left: 32px; }
   .header-contact li::before {
-    transform: scale(0.25);
+    transform: scale(0.5);
     left: 0;
     top: 3px; }
 
@@ -749,12 +795,22 @@ nav a.active, nav a:active, nav a:hover {
 
 .primary-nav {
   justify-content: flex-start; }
-  .primary-nav:only-child::before {
-    height: 25.6px;
-    left: calc(50% - 48px - 1rem);
-    top: 3rem;
-    animation: loader-animate 0.4s steps(5) alternate infinite;
-    -webkit-animation: loader-animate 0.4s steps(5) alternate infinite; }
+  .primary-nav:only-child {
+    position: relative;
+    height: 100vh; }
+    .primary-nav:only-child::before {
+      pointer-events: none;
+      content: '';
+      position: absolute;
+      background-image: url(/rhc_online/images/icons/RHC-Icons.png);
+      background-repeat: no-repeat;
+      background-position: -896px -768px;
+      width: 128px;
+      height: 25.6px;
+      left: calc(50% - 48px - 1rem);
+      top: 3rem;
+      animation: loader-animate 0.4s steps(5) alternate infinite;
+      -webkit-animation: loader-animate 0.4s steps(5) alternate infinite; }
 
 .nav-main,
 .nav-breadcrumbs,
@@ -768,26 +824,45 @@ nav a.active, nav a:active, nav a:hover {
     position: relative;
     display: inline-block; }
 
-a.arrow-r::before, .menu-arrow-r a::before, .menu-arrow-r a::before {
-  top: 2px;
-  left: -4px;
-  transform: scale(0.25);
-  transform-origin: top left; }
+a.arrow-r, .menu-arrow-r a, .menu-arrow-r a {
+  position: relative; }
+  a.arrow-r::before, .menu-arrow-r a::before, .menu-arrow-r a::before {
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    background-image: url(/rhc_online/images/icons/RHC-Icons.png);
+    background-repeat: no-repeat;
+    top: 0.5rem;
+    left: 0.2rem;
+    transform: scale(0.3);
+    transform-origin: top left; }
 
 .nav-main {
   z-index: 6;
   width: 100%;
   background-color: white; }
-  .nav-main:not(.home)::before {
-    background-position: -512px 0px;
-    top: 0;
-    left: 0.5rem;
-    transform: scale(0.3);
-    transform-origin: top left; }
+  .nav-main:not(.home) {
+    position: relative; }
+    .nav-main:not(.home)::before {
+      pointer-events: none;
+      content: '';
+      position: absolute;
+      background-image: url(/rhc_online/images/icons/RHC-Icons.png);
+      background-repeat: no-repeat;
+      background-position: -256px 0px;
+      width: 64px;
+      height: 64px;
+      top: 0.2rem;
+      left: 0.5rem;
+      transform: scale(0.5);
+      transform-origin: top left; }
   .nav-main.open {
     height: auto; }
     .nav-main.open::before {
-      background-position: -768px -896px; }
+      background-position: 0px 0px;
+      width: 64px;
+      height: 64px;
+      top: 0.1rem; }
   .nav-main ul {
     overflow: hidden;
     height: calc(100% - 2rem);
@@ -1023,16 +1098,28 @@ Page specific items.
 /*-- category list Layout -----------------------------------------------------------*/
 .shop-tile {
   background-color: white;
+  position: relative;
+  position: relative;
   padding-bottom: 2rem; }
   .shop-tile a {
     width: 100%; }
   .shop-tile::before {
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    background-image: url(/rhc_online/images/icons/RHC-Icons.png);
+    background-repeat: no-repeat;
     right: -9px;
     top: 3.5rem; }
   .shop-tile::after {
-    bottom: 0.5rem;
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    background-image: url(/rhc_online/images/icons/RHC-Icons.png);
+    background-repeat: no-repeat;
+    bottom: 0.1rem;
     right: 0.1rem;
-    transform: scale(0.75);
+    transform: scale(0.33);
     transform-origin: bottom right; }
   .shop-tile div:first-child {
     border-bottom: 1px solid #c9c9cf; }
@@ -1088,9 +1175,15 @@ Page specific items.
     padding: 5px 20px 5px 5px;
     width: calc(100%/3 - 1.5rem);
     margin: 0.5rem 0;
-    min-width: 130px; }
+    min-width: 130px;
+    position: relative; }
     .item-sidebar button::before {
-      transform: scale(0.25);
+      pointer-events: none;
+      content: '';
+      position: absolute;
+      background-image: url(/rhc_online/images/icons/RHC-Icons.png);
+      background-repeat: no-repeat;
+      transform: scale(0.4);
       top: calc(50% - 0.75rem);
       right: 5px;
       transform-origin: top right; }
@@ -1110,10 +1203,18 @@ Page specific items.
   padding-left: 1.5rem; }
   .item-features li {
     width: calc(100%/2 - 1rem);
-    float: left; }
+    float: left;
+    position: relative; }
     .item-features li::before {
-      background-position: -128px 0px;
-      transform: scale(0.2);
+      pointer-events: none;
+      content: '';
+      position: absolute;
+      background-image: url(/rhc_online/images/icons/RHC-Icons.png);
+      background-repeat: no-repeat;
+      background-position: -64px 0px;
+      width: 64px;
+      height: 64px;
+      transform: scale(0.3);
       top: 0;
       left: -1.5rem;
       transform-origin: top left; }
@@ -1121,10 +1222,19 @@ Page specific items.
       .item-features li {
         width: calc(100% - 1rem); }
         .item-features li::before {
-          transform: scale(0.25); } }
+          transform: scale(0.4); } }
 
 .item-power {
+  position: relative;
   border: solid 2px red; }
+  .item-power::after {
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    background-image: url(/rhc_online/images/icons/RHC-Icons.png);
+    background-repeat: no-repeat;
+    transform: scale(0.33);
+    transform-origin: top left; }
 
 /*-- 3d box settings -----------------------------------------------------------------*/
 .item-3d {

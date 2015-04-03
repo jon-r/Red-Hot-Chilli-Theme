@@ -23,11 +23,12 @@ input {
 }
 
 label {
+  @extend %has-icon-before;
   @include jr-icon(before) {
-    transform: scale(0.5);
+    transform: scale(0.20);
     transform-origin: top left;
     left: -28px;
-    top:4px;
+    top:0;
   }
 
   pointer-events: none;
@@ -45,7 +46,7 @@ label {
     &:focus + label {
       transform: translateX(calc(-40px - 100%));
       color: $jr-text-light;
-      @include jr-icon(before, none, false)
+      @include jr-icon(before)
     }
   }
 }
@@ -59,10 +60,10 @@ $form-icons: (
 @each $icon in $form-icons {
   input[name=#{$icon}] {
     & + label {
-      @include jr-icon(before, #{$icon}, false)
+      @include jr-icon(before, #{$icon})
     }
     &:focus + label {
-      @include jr-icon(before, #{$icon + "-w"}, false)
+      @include jr-icon(before, #{$icon + "-w"})
     }
   }
 }

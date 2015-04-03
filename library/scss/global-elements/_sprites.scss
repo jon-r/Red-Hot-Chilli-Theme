@@ -3,133 +3,154 @@
 //temp link for image-relativity;
 $siteLink: /rhc_online;
 
+//size of sprite grid
+$sprite-grid-size: 128px;
+
+//%sprite-base-before {
+//  position: relative;
+//  &::before {
+//    pointer-events: none;
+//    content: '';
+//    position: absolute;
+//    background-image: url(#{$siteLink + '/images/icons/RHC-Icons-Normalised.svg'});
+//    background-repeat: no-repeat;
+//  }
+//}
+
+//@mixin jr-icon-size($position = 'top left', $scale = 0.5) {
+//
+//}
+
+
+//@mixin jr-icon-coords($iconRef) {
+//  $sprite-scale: 64px;
+//  $sprite-ref: map-get($iconMap, $iconRef);
+//  $sprite-size: nth($sprite-ref, 1) * $sprite-scale;
+//  $sprite-coord-x: -(nth($sprite-ref, 2) * $sprite-scale);
+//  $sprite-coord-y: -(nth($sprite-ref, 3) * $sprite-scale);
+//
+//  background-position: $sprite-coord-x $sprite-coord-y;
+//  width: $sprite-size;
+//
+//  @if $iconRef == "loader" {
+//    height: #{ $sprite-size / 5 };
+//
+//  }
+//  @else {
+//    height: $sprite-size;
+//  }
+//}
+
 //icon coords
 
-// name: size x y,
+
+// name: x y,
 
 $iconMap: (
-  //black
-  close: 1 0 0,
-  tick: 1 1 0,
-  plus: 1 2 0,
-  menu: 1 3 0,
-  arrow: 1 4 0,
-  search: 1 5 0,
-  question: 1 0 1,
-  basket: 1 1 1,
-  phone: 1 2 1,
-  message: 1 3 1,
-  email: 1 4 1,
-  expand: 1 5 1,
-  arrow-r: 1 6 0,
-  arrow-l: 1 7 0,
-  cube: 1 6 1,
-  list: 1 7 1,
+  //black icons
+  close: 6 7,
+  tick: 1 0,
+  plus: 2 0,
+  menu: 3 0,
+  arrow: 4 0,
+  search: 5 0,
+  arrow-r: 6 0,
+  arrow-l: 7 0,
+  question: 0 1,
+  basket: 1 1,
+  phone: 2 1,
+  message: 3 1,
+  email: 4 1,
+  expand: 5 1,
+  cube: 6 1,
+  list: 7 1,
 
-  //white
-  close-w: 1 8 0,
-  tick-w: 1 9 0,
-  plus-w: 1 10 0,
-  menu-w: 1 11 0,
-  arrow-w: 1 12 0,
-  search-w: 1 13 0,
-  question-w: 1 8 1,
-  basket-w: 1 9 1,
-  phone-w: 1 10 1,
-  message-w: 1 11 1,
-  email-w: 1 12 1,
-  expand-w: 1 13 1,
-  arrow-r-w: 1 14 0,
-  arrow-l-w: 1 15 0,
-  cube-w: 1 14 1,
-  list-w: 1 15 1,
+  //white icons
+  close-w: 7 7,
+  tick-w: 1 2,
+  plus-w: 2 2,
+  menu-w: 3 2,
+  arrow-w: 4 2,
+  search-w: 5 2,
+  cube-w: 6 2,
+  list-w: 7 2,
+  question-w: 0 3,
+  basket-w: 1 3,
+  phone-w: 2 3,
+  message-w: 3 3,
+  email-w: 4 3,
+  expand-w: 5 3,
+  arrow-r-w: 6 3,
+  arrow-l-w: 7 3,
 
   //power
-  single-phase: 4 0 2,
-  three-phase: 4 4 2,
-  natural-gas: 4 8 2,
-  lpg: 4 12 2,
-  dual-fuel: 4 0 6,
+  single-phase: 0 4,
+  three-phase: 1 4,
+  natural-gas: 2 4,
+  lpg: 3 4,
+  dual-fuel: 4 4,
 
   //chilled
-  freezer: 4 4 6,
-  fridge: 4 8 6,
-  fridge-freezer: 4 12 6,
+  freezer: 5 4,
+  fridge: 6 4,
+  fridge-freezer: 7 4,
 
-  //banner flags. note to offset by x+8 y+8
-  sale: 2 0 10,
-  sold: 2 2 10,
-  soon: 2 4 10,
-  new: 2 6 10,
+  //banner flags
+  sale: 0 5,
+  sold: 1 5,
+  soon: 2 5,
+  new: 3 5,
+  sale2: 4 5,
+  sold2: 5 5,
+  soon2: 6 5,
+  new2: 7 5,
 
   //social
-  facebook: 2 0 12,
-  twitter: 2 2 12,
-  linkedin: 2 4 12,
+  facebook: 0 6,
+  twitter: 1 6,
+  linkedin: 2 6,
 
-  //loader. special case since animated
-  loader: 2 14 12
+  //loader, start and end of animation
+  loader-1: 3 6,
+  loader-2: 3 6.8
 );
 
-$iconTypeMap: (
-  nav-icon: top 0 right 0,
-  banner: top -8px right -8px,
-  power-icon: bottom 0 right 0,
-  loader: top 0 left 0,
-);
-
-//serparating core pseudo parts to keep dry css
-@mixin jr-icon($pseudo, $icon: none, $master: true) {
-
-  @if $master == true {
+@each $pseudo in (before, after) {
+  %has-icon-#{$pseudo} {
     position: relative;
+
     &::#{$pseudo} {
       pointer-events: none;
       content: '';
       position: absolute;
-      background-image: url(#{$siteLink + '/images/icons/RHC-Icons.png'});
-      background-repeat: no-repeat;
+      background-image: url(#{$siteLink + '/images/icons/RHC-Icons-Normalised.svg'});
+      height: $sprite-grid-size;
+      width: $sprite-grid-size;
+ //     background-repeat: no-repeat;
+    }
+  }
+}
 
-      @if $icon != "none" {
-        @include jr-icon-coords($icon);
-      }
-
+@mixin jr-icon($pseudo,$name: parent) {
+  @if $name == parent {
+    &::#{$pseudo} {
       @content;
     }
   }
+
   @else {
     &::#{$pseudo} {
-      @if $icon != "none" {
-        @include jr-icon-coords($icon);
-      }
+      $sprite-ref: map-get($iconMap, $name);
+      $sprite-coord-x: -(nth($sprite-ref, 1) * $sprite-grid-size);
+      $sprite-coord-y: -(nth($sprite-ref, 2) * $sprite-grid-size);
+      background-position: $sprite-coord-x $sprite-coord-y;
 
       @content;
     }
   }
 }
 
-@mixin jr-icon-coords($iconRef) {
-  $sprite-scale: 64px;
-  $sprite-ref: map-get($iconMap, $iconRef);
-  $sprite-size: nth($sprite-ref, 1) * $sprite-scale;
-  $sprite-coord-x: -(nth($sprite-ref, 2) * $sprite-scale);
-  $sprite-coord-y: -(nth($sprite-ref, 3) * $sprite-scale);
-
-  background-position: $sprite-coord-x $sprite-coord-y;
-  width: $sprite-size;
-
-  @if $iconRef == "loader" {
-    height: #{ $sprite-size / 5 };
-
-  }
-  @else {
-    height: $sprite-size;
-  }
-}
-
-//these are the shortlist from above, that are actually used.
-//potentially trim spritesheet, though its pretty small to begin with
-$icon-after:
+$icons-after: (
   single-phase,
   three-phase,
   natural-gas,
@@ -137,15 +158,16 @@ $icon-after:
   dual-fuel,
   freezer,
   fridge,
-  fridge-freezer;
+  fridge-freezer
+);
 
-@each $item-icon in $icon-after {
-  .#{$item-icon} {
-    @include jr-icon(after, $item-icon, false);
+@each $item-name in $icons-after {
+  .#{$item-name} {
+    @include jr-icon(after, $item-name);
   }
 }
 
-$icon-before:
+$icons-before: (
   sale,
   sold,
   soon,
@@ -158,23 +180,145 @@ $icon-before:
   list,
   basket-w,
   email-w,
-  arrow-r;
+  arrow-r
+);
 
-@each $item-icon in $icon-before {
-  .#{$item-icon} {
-    @include jr-icon(before, $item-icon, false);
+@each $item-name in $icons-before {
+  .#{$item-name} {
+    @include jr-icon(before, $item-name);
   }
 }
 
-//
+
 @keyframes loader-animate {
-  0%    {background-position: -896px -768px};
-  100%  {background-position: -896px -888px};
+  0%    {background-position: #{-3 * $sprite-grid-size  -6 * $sprite-grid-size}};
+  100%  {background-position: #{-3 * $sprite-grid-size  -6.94 * $sprite-grid-size}};
 }
 @-webkit-keyframes loader-animate {
-  0%    {background-position: -896px -768px};
-  100%  {background-position: -896px -888px};
+  0%    {background-position: #{-3 * $sprite-grid-size -6 * $sprite-grid-size}};
+  100%  {background-position: #{-3 * $sprite-grid-size -6.94 * $sprite-grid-size}};
 }
+
+//serparating core pseudo parts to keep dry css
+//@mixin jr-icon($pseudo, $icon: none, $master: true) {
+//
+//  @if $master == true {
+//    position: relative;
+//    &::#{$pseudo} {
+//      pointer-events: none;
+//      content: '';
+//      position: absolute;
+//      background-image: url(#{$siteLink + '/images/icons/RHC-Icons.png'});
+//      background-repeat: no-repeat;
+//
+//      @if $icon != "none" {
+//        @include jr-icon-coords($icon);
+//      }
+//
+//      @content;
+//    }
+//  }
+//  @else {
+//    &::#{$pseudo} {
+//      @if $icon != "none" {
+//        @include jr-icon-coords($icon);
+//      }
+//
+//      @content;
+//    }
+//  }
+//}
+
+
+
+
+//$iconMap: (
+//  //black
+//  close: 1 0 0,
+//  tick: 1 1 0,
+//  plus: 1 2 0,
+//  menu: 1 3 0,
+//  arrow: 1 4 0,
+//  search: 1 5 0,
+//  question: 1 0 1,
+//  basket: 1 1 1,
+//  phone: 1 2 1,
+//  message: 1 3 1,
+//  email: 1 4 1,
+//  expand: 1 5 1,
+//  arrow-r: 1 6 0,
+//  arrow-l: 1 7 0,
+//  cube: 1 6 1,
+//  list: 1 7 1,
+//
+//  //white
+//  close-w: 1 8 0,
+//  tick-w: 1 9 0,
+//  plus-w: 1 10 0,
+//  menu-w: 1 11 0,
+//  arrow-w: 1 12 0,
+//  search-w: 1 13 0,
+//  question-w: 1 8 1,
+//  basket-w: 1 9 1,
+//  phone-w: 1 10 1,
+//  message-w: 1 11 1,
+//  email-w: 1 12 1,
+//  expand-w: 1 13 1,
+//  arrow-r-w: 1 14 0,
+//  arrow-l-w: 1 15 0,
+//  cube-w: 1 14 1,
+//  list-w: 1 15 1,
+//
+//  //power
+//  single-phase: 4 0 2,
+//  three-phase: 4 4 2,
+//  natural-gas: 4 8 2,
+//  lpg: 4 12 2,
+//  dual-fuel: 4 0 6,
+//
+//  //chilled
+//  freezer: 4 4 6,
+//  fridge: 4 8 6,
+//  fridge-freezer: 4 12 6,
+//
+//  //banner flags. note to offset by x+8 y+8
+//  sale: 2 0 10,
+//  sold: 2 2 10,
+//  soon: 2 4 10,
+//  new: 2 6 10,
+//
+//  //social
+//  facebook: 2 0 12,
+//  twitter: 2 2 12,
+//  linkedin: 2 4 12,
+//
+//  //loader. special case since animated
+//  loader: 2 14 12
+//);
+
+
+//@mixin jr-icon-coords($iconRef) {
+//  $sprite-scale: 64px;
+//  $sprite-ref: map-get($iconMap, $iconRef);
+//  $sprite-size: nth($sprite-ref, 1) * $sprite-scale;
+//  $sprite-coord-x: -(nth($sprite-ref, 2) * $sprite-scale);
+//  $sprite-coord-y: -(nth($sprite-ref, 3) * $sprite-scale);
+//
+//  background-position: $sprite-coord-x $sprite-coord-y;
+//  width: $sprite-size;
+//
+//  @if $iconRef == "loader" {
+//    height: #{ $sprite-size / 5 };
+//
+//  }
+//  @else {
+//    height: $sprite-size;
+//  }
+//}
+
+//these are the shortlist from above, that are actually used.
+//potentially trim spritesheet, though its pretty small to begin with
+
 
 //
 //
