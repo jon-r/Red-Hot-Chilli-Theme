@@ -11,14 +11,7 @@ nav a {
   justify-content: flex-start;
   //simple loader. the <nav> will be the only child of the <section> until the php <article> has loaded.
   &:only-child {
-    @extend %has-icon-before;
-    @include jr-icon(before) {
-      height: $sprite-grid-size / 5;
-      left: calc(50% - 48px - 1rem);
-      top: 3rem;
-      animation: loader-animate 0.4s steps(5) alternate infinite;
-      -webkit-animation: loader-animate 0.4s steps(5) alternate infinite;
-    }
+    @extend %loader-icon;
   }
 }
 
