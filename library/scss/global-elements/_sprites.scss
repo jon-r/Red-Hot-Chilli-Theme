@@ -6,44 +6,6 @@ $siteLink: /rhc_online;
 //size of sprite grid
 $sprite-grid-size: 128px;
 
-//%sprite-base-before {
-//  position: relative;
-//  &::before {
-//    pointer-events: none;
-//    content: '';
-//    position: absolute;
-//    background-image: url(#{$siteLink + '/images/icons/RHC-Icons-Normalised.svg'});
-//    background-repeat: no-repeat;
-//  }
-//}
-
-//@mixin jr-icon-size($position = 'top left', $scale = 0.5) {
-//
-//}
-
-
-//@mixin jr-icon-coords($iconRef) {
-//  $sprite-scale: 64px;
-//  $sprite-ref: map-get($iconMap, $iconRef);
-//  $sprite-size: nth($sprite-ref, 1) * $sprite-scale;
-//  $sprite-coord-x: -(nth($sprite-ref, 2) * $sprite-scale);
-//  $sprite-coord-y: -(nth($sprite-ref, 3) * $sprite-scale);
-//
-//  background-position: $sprite-coord-x $sprite-coord-y;
-//  width: $sprite-size;
-//
-//  @if $iconRef == "loader" {
-//    height: #{ $sprite-size / 5 };
-//
-//  }
-//  @else {
-//    height: $sprite-size;
-//  }
-//}
-
-//icon coords
-
-
 // name: x y,
 
 $iconMap: (
@@ -68,7 +30,7 @@ $iconMap: (
 
   //white icons
   face-w:     4 0,
-  close-w:    7 3,
+  close-w:    0 3,
   tick-w:     1 3,
   plus-w:     2 3,
   menu-w:     3 3,
@@ -154,6 +116,44 @@ $iconMap: (
   }
 }
 
+%text-icon {
+  @extend %has-icon-before;
+  padding-left: 2rem;
+  @include jr-icon(before) {
+    transform: scale(0.2);
+    transform-origin: top left;
+    left: 0;
+    top: 3px;
+  }
+
+  @include jr-size(screen) {
+    &:before {
+      transform: scale(0.25);
+    }
+  }
+}
+
+%loader-icon {
+  @extend %has-icon-before;
+  &::before {
+    height: $sprite-grid-size;// / 4;
+    width: $sprite-grid-size * 1.125;// * 2;
+    left: calc(50% - 48px - 1rem);
+    top: 3rem;
+            animation: loader-animate 0.4s steps(4) alternate infinite;
+    -webkit-animation: loader-animate 0.4s steps(4) alternate infinite;
+  }
+}
+
+@keyframes loader-animate {
+  0%    {background-position: #{-3.125 * $sprite-grid-size  -7 * $sprite-grid-size}};
+  100%  {background-position: #{-3.875 * $sprite-grid-size  -7 * $sprite-grid-size}};
+}
+@-webkit-keyframes loader-animate {
+  0%    {background-position: #{-3.125 * $sprite-grid-size  -7 * $sprite-grid-size}};
+  100%  {background-position: #{-3.875 * $sprite-grid-size  -7 * $sprite-grid-size}};
+}
+
 $icons-after: (
   single-phase,
   three-phase,
@@ -193,156 +193,20 @@ $icons-before: (
   }
 }
 
-%loader-icon {
-  @extend %has-icon-before;
-  &::before {
-    height: $sprite-grid-size;// / 4;
-    width: $sprite-grid-size * 1.125;// * 2;
-    left: calc(50% - 48px - 1rem);
-    top: 3rem;
-   animation: loader-animate 0.4s steps(4) alternate infinite;
-    -webkit-animation: loader-animate 0.4s steps(5) alternate infinite;
+$form-icons: (
+  search,
+  phone,
+  email
+);
+
+@each $icon in $form-icons {
+  input[name=#{$icon}] {
+    & + label {
+      @include jr-icon(before, $icon)
+    }
+    &:focus + label {
+      @include jr-icon(before, #{$icon + "-w"})
+    }
   }
 }
 
-@keyframes loader-animate {
-  0%    {background-position: #{-3.125 * $sprite-grid-size  -7 * $sprite-grid-size}};
-  100%  {background-position: #{-3.875 * $sprite-grid-size  -7 * $sprite-grid-size}};
-}
-@-webkit-keyframes loader-animate {
-  0%    {background-position: #{-3 * $sprite-grid-size -7 * $sprite-grid-size}};
-  100%  {background-position: #{-3.9375 * $sprite-grid-size -7 * $sprite-grid-size}};
-}
-
-//serparating core pseudo parts to keep dry css
-//@mixin jr-icon($pseudo, $icon: none, $master: true) {
-//
-//  @if $master == true {
-//    position: relative;
-//    &::#{$pseudo} {
-//      pointer-events: none;
-//      content: '';
-//      position: absolute;
-//      background-image: url(#{$siteLink + '/images/icons/RHC-Icons.png'});
-//      background-repeat: no-repeat;
-//
-//      @if $icon != "none" {
-//        @include jr-icon-coords($icon);
-//      }
-//
-//      @content;
-//    }
-//  }
-//  @else {
-//    &::#{$pseudo} {
-//      @if $icon != "none" {
-//        @include jr-icon-coords($icon);
-//      }
-//
-//      @content;
-//    }
-//  }
-//}
-
-
-
-
-//$iconMap: (
-//  //black
-//  close: 1 0 0,
-//  tick: 1 1 0,
-//  plus: 1 2 0,
-//  menu: 1 3 0,
-//  arrow: 1 4 0,
-//  search: 1 5 0,
-//  question: 1 0 1,
-//  basket: 1 1 1,
-//  phone: 1 2 1,
-//  message: 1 3 1,
-//  email: 1 4 1,
-//  expand: 1 5 1,
-//  arrow-r: 1 6 0,
-//  arrow-l: 1 7 0,
-//  cube: 1 6 1,
-//  list: 1 7 1,
-//
-//  //white
-//  close-w: 1 8 0,
-//  tick-w: 1 9 0,
-//  plus-w: 1 10 0,
-//  menu-w: 1 11 0,
-//  arrow-w: 1 12 0,
-//  search-w: 1 13 0,
-//  question-w: 1 8 1,
-//  basket-w: 1 9 1,
-//  phone-w: 1 10 1,
-//  message-w: 1 11 1,
-//  email-w: 1 12 1,
-//  expand-w: 1 13 1,
-//  arrow-r-w: 1 14 0,
-//  arrow-l-w: 1 15 0,
-//  cube-w: 1 14 1,
-//  list-w: 1 15 1,
-//
-//  //power
-//  single-phase: 4 0 2,
-//  three-phase: 4 4 2,
-//  natural-gas: 4 8 2,
-//  lpg: 4 12 2,
-//  dual-fuel: 4 0 6,
-//
-//  //chilled
-//  freezer: 4 4 6,
-//  fridge: 4 8 6,
-//  fridge-freezer: 4 12 6,
-//
-//  //banner flags. note to offset by x+8 y+8
-//  sale: 2 0 10,
-//  sold: 2 2 10,
-//  soon: 2 4 10,
-//  new: 2 6 10,
-//
-//  //social
-//  facebook: 2 0 12,
-//  twitter: 2 2 12,
-//  linkedin: 2 4 12,
-//
-//  //loader. special case since animated
-//  loader: 2 14 12
-//);
-
-
-//@mixin jr-icon-coords($iconRef) {
-//  $sprite-scale: 64px;
-//  $sprite-ref: map-get($iconMap, $iconRef);
-//  $sprite-size: nth($sprite-ref, 1) * $sprite-scale;
-//  $sprite-coord-x: -(nth($sprite-ref, 2) * $sprite-scale);
-//  $sprite-coord-y: -(nth($sprite-ref, 3) * $sprite-scale);
-//
-//  background-position: $sprite-coord-x $sprite-coord-y;
-//  width: $sprite-size;
-//
-//  @if $iconRef == "loader" {
-//    height: #{ $sprite-size / 5 };
-//
-//  }
-//  @else {
-//    height: $sprite-size;
-//  }
-//}
-
-//these are the shortlist from above, that are actually used.
-//potentially trim spritesheet, though its pretty small to begin with
-
-
-//
-//
-//.items-loader {
-//  @include jr-flex(1,1);
-//  @include jr-icon(before, loader, $master: true) {
-//    left: calc(50% - 48px - 1rem);
-//    animation: loader-animate 0.4s steps(5) alternate infinite;
-//    -webkit-animation: loader-animate 0.4s steps(5) alternate infinite;
-//  };
-//  height:32px;
-//}

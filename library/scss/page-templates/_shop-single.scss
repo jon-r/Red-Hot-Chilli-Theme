@@ -43,34 +43,20 @@
   }
 
   button {
+    @extend %btn-grey;
     @include jr-flex(1,3);
-    background-color: $jr-bg-hover;
-    text-align: left;
-    border: none;
-    padding: 5px 20px 5px 5px;
     width: calc(100%/3 - #{$jr-margin});
     //margin-right: 1rem;
-    margin: 0.5rem 0;
+    margin: 0.5rem;
     min-width: 130px;
-    @extend %has-icon-before;
-    @include jr-icon(before) {
-      transform: scale(0.25);
-      top:calc(50% - 0.75rem);
-      right: 5px;
-      transform-origin:top right;
-    }
 
     @include jr-size(screen) {
       @include jr-flex(1,1);
-      margin-left: #{$jr-margin / -2};
-      width: calc(100% + #{$jr-margin / 2});
     }
   }
 
   .basket-w {
-    background-color: $jr-emphasis;
-    color: white;
-  //  font-size: 2rem;
+    @extend %btn-red;
   }
 
 }

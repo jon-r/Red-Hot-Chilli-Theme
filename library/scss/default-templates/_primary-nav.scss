@@ -28,53 +28,65 @@ nav a {
 }
 
 a.arrow-r, .menu-arrow-r a {
-  @extend %has-icon-before;
-  @include jr-icon(before) {
-    top: 2px;
-    left: -4px;
-    transform: scale(0.25);
-    transform-origin: top left;
-  }
+  @extend %text-icon;
 }
 
 //lazy workaround because pain to add wp_nav_menu anchor classes
 .menu-arrow-r a {
-  @extend .arrow-r;
+  @include jr-icon(arrow-r);
+}
+
+#menu-toggle {
+  display: none;
+}
+
+
+.menu-btn {
+  @extend %btn-red;
+  width:100%;
+  display: inline-block;
+  margin-top: -2px;
+
+}
+.not-home {
+  .menu-btn {
+      cursor: pointer;
+    @include jr-icon(before, arrow-w) {
+      top: 0;
+    };
+  }
+}
+
+.home, #menu-toggle:checked + .not-home {
+  height: auto;
+  @include jr-size (screen) {
+      height: 18rem;
+      margin-bottom: -14.5rem;
+  }
+}
+
+#menu-toggle:checked {
+  & + .not-home {
+    .menu-btn {
+      @include jr-icon(before, close-w);
+    }
+  }
 }
 
 .nav-main {
   z-index: 6;
   width: 100%;
-  background-color: white;
   @extend %make-it-pop;
-  &:not(.home) {
-    @extend %has-icon-before;
-    @include jr-icon(before, arrow) {
-      top: 0;
-      left: 0.5rem;
-      transform: scale(0.3);
-      transform-origin: top left;
-    }
-  }
-  &.open {
-    height: auto;
-    @include jr-icon(before, close)
-  }
+
+  background-color: white;
+
+
   ul {
     @extend %flex-parent-edgeless;
     overflow: hidden;
+  //  margin-top: 2rem;
     height: calc(100% - 2rem);
     line-height: 2rem;
-  }
-  h2 {
-    cursor: pointer;
-    z-index: 10;
-    text-align: center;
-    width: 100%;
-    background-color: $jr-emphasis;
-    line-height: 2rem;
-    padding: 0.25rem 0.5rem 0;
-    margin-top: -0.25rem;
   }
   li {
     cursor: pointer;
@@ -88,7 +100,7 @@ a.arrow-r, .menu-arrow-r a {
     width: 100%;
   }
   @include jr-size(phoneOnly) {
-    h2, li {
+    li {
       text-align: center;
       padding-left: 0;
     }
@@ -102,8 +114,6 @@ a.arrow-r, .menu-arrow-r a {
   }
 
   @include jr-size(screen) {
-    width: 250px;
-    margin-left: -4px;
     font-size: 0.8rem;
     li {
       ul {
@@ -118,7 +128,7 @@ a.arrow-r, .menu-arrow-r a {
         width: 200%;
         left: 98%;
         font-size: 1.1rem;
-        z-index: 10;
+        z-index: 20;
       }
     }
     li:hover {
@@ -126,11 +136,11 @@ a.arrow-r, .menu-arrow-r a {
         display: block;
       }
     }
-    &.home,
-    &.open {
-      height: 18rem;
-      margin-bottom: -14.5rem;
-    }
+
+  }
+  @include jr-size(screen) {
+    width: 250px;
+    margin-left: -4px;
   }
 }
 

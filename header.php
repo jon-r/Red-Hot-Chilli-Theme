@@ -70,11 +70,11 @@
           <label for="search">Search</label>
 <!--          <button type="submit">GO</button>-->
         </form>
-        <ul class="header-social" >
-          <li class="facebook" ><a href="<?php echo $rhcFacebookLink ?>" ></a></li>
-          <li class="linkedin" ><a href="<?php echo $rhcLinkedinLink ?>" ></a></li>
-          <li class="twitter" ><a href="<?php echo $rhcTwitterLink ?>" ></a></li>
-        </ul>
+        <div class="header-social" >
+          <a  class="facebook" href="<?php echo $rhcFacebookLink ?>" >Facebook</a>
+          <a class="linkedin" href="<?php echo $rhcLinkedinLink ?>" >LinkedIn</a>
+          <a class="twitter" href="<?php echo $rhcTwitterLink ?>" >Twitter</a>
+        </div>
       </div>
     </div>
   </header>

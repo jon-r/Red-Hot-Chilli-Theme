@@ -6,9 +6,6 @@ form {
   color: $jr-text-dark;
 }
 
-input, label {
-
-}
 input {
   width: calc(100% - 4px);
   height:34px;
@@ -22,51 +19,28 @@ input {
   }
 }
 
-label {
-  @extend %has-icon-before;
-  @include jr-icon(before) {
-    transform: scale(0.20);
-    transform-origin: top left;
-    left: -28px;
-    top:0;
-  }
+form label {
+  @extend %text-icon;
 
   pointer-events: none;
   position:absolute;
   left:4px;
-  margin-left: 24px;
-//  top:4px;
+  top:0;
 }
 
 @include jr-size(screen) {
-  input, label {
+  input, form label {
     transition: transform 300ms ease, width 300ms ease;
   }
   input {
     &:focus + label {
-      transform: translateX(calc(-40px - 100%));
+      transform: translateX(calc(-20px - 100%));
       color: $jr-text-light;
-      @include jr-icon(before)
     }
   }
 }
 
-$form-icons: (
-  search,
-  phone,
-  email
-);
 
-@each $icon in $form-icons {
-  input[name=#{$icon}] {
-    & + label {
-      @include jr-icon(before, #{$icon})
-    }
-    &:focus + label {
-      @include jr-icon(before, #{$icon + "-w"})
-    }
-  }
-}
 
 //input[name="search"] {
 //  & + label {

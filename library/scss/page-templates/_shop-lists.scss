@@ -31,12 +31,12 @@
     width: 100%;
   }
   @extend %has-icon-before;
-  @include jr-icon(before) {
+  &::before {
     right:-9px;
     top: 3.5rem;
   }
   @extend %has-icon-after;
-  @include jr-icon(after) {
+  &::after {
     bottom: 0.5rem;
     right:0.1rem;
     transform: scale(0.75);

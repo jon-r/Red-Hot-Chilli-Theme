@@ -433,10 +433,10 @@ em {
   font-style: normal; }
 
 /*-------------------------sprite layouts + settings ----------------------------------*/
-.primary-nav:only-child, label, .header-links li, a.arrow-r, .menu-arrow-r a, .nav-main:not(.home), .shop-tile, .item-sidebar button, .item-features li, .shop-tile, .item-power {
+form label, .menu-btn, .item-sidebar .basket-w, .item-sidebar button, .header-links li, a.arrow-r, .menu-arrow-r a, .primary-nav:only-child, .header-social a, .shop-tile, .item-features li, .shop-tile, .item-power {
   position: relative; }
 
-.primary-nav:only-child::before, label::before, .header-links li::before, a.arrow-r::before, .menu-arrow-r a::before, .nav-main:not(.home)::before, .shop-tile::before, .item-sidebar button::before, .item-features li::before {
+form label::before, .menu-btn::before, .item-sidebar .basket-w::before, .item-sidebar button::before, .header-links li::before, a.arrow-r::before, .menu-arrow-r a::before, .primary-nav:only-child::before, .header-social a::before, .shop-tile::before, .item-features li::before {
   pointer-events: none;
   content: '';
   position: absolute;
@@ -452,6 +452,35 @@ em {
   height: 128px;
   width: 128px; }
 
+form label, .menu-btn, .item-sidebar .basket-w, .item-sidebar button, .header-links li, a.arrow-r, .menu-arrow-r a {
+  padding-left: 2rem; }
+  form label::before, .menu-btn::before, .item-sidebar .basket-w::before, .item-sidebar button::before, .header-links li::before, a.arrow-r::before, .menu-arrow-r a::before {
+    transform: scale(0.2);
+    transform-origin: top left;
+    left: 0;
+    top: 3px; }
+  @media only screen and (min-width: 1031px) {
+    form label:before, .menu-btn:before, .item-sidebar .basket-w:before, .item-sidebar button:before, .header-links li:before, a.arrow-r:before, .menu-arrow-r a:before {
+      transform: scale(0.25); } }
+
+.primary-nav:only-child::before {
+  height: 128px;
+  width: 144px;
+  left: calc(50% - 48px - 1rem);
+  top: 3rem;
+  animation: loader-animate 0.4s steps(4) alternate infinite;
+  -webkit-animation: loader-animate 0.4s steps(4) alternate infinite; }
+
+@keyframes loader-animate {
+  0% {
+    background-position: -400px -896px; }
+  100% {
+    background-position: -496px -896px; } }
+@-webkit-keyframes loader-animate {
+  0% {
+    background-position: -400px -896px; }
+  100% {
+    background-position: -496px -896px; } }
 .single-phase::after {
   background-position: 0px -640px; }
 
@@ -512,27 +541,24 @@ em {
 .email-w::before {
   background-position: -512px -512px; }
 
-.arrow-r::before, .menu-arrow-r a::before {
+.arrow-r::before {
   background-position: -768px -128px; }
 
-.primary-nav:only-child::before {
-  height: 128px;
-  width: 144px;
-  left: calc(50% - 48px - 1rem);
-  top: 3rem;
-  animation: loader-animate 0.4s steps(4) alternate infinite;
-  -webkit-animation: loader-animate 0.4s steps(5) alternate infinite; }
+input[name=search] + label::before {
+  background-position: -640px -128px; }
+input[name=search]:focus + label::before {
+  background-position: -640px -384px; }
 
-@keyframes loader-animate {
-  0% {
-    background-position: -400px -896px; }
-  100% {
-    background-position: -496px -896px; } }
-@-webkit-keyframes loader-animate {
-  0% {
-    background-position: -384px -896px; }
-  100% {
-    background-position: -504px -896px; } }
+input[name=phone] + label::before {
+  background-position: -256px -256px; }
+input[name=phone]:focus + label::before {
+  background-position: -256px -512px; }
+
+input[name=email] + label::before {
+  background-position: -512px -256px; }
+input[name=email]:focus + label::before {
+  background-position: -512px -512px; }
+
 /*--- grid ----------------------------------------------------------------------------*/
 article, .article-footer, .primary-nav, .menu-featured, .shop-items-nav, .item-container, .item-sidebar {
   display: flex;
@@ -585,39 +611,19 @@ input {
     input:focus + label {
       display: none; } }
 
-label {
+form label {
   pointer-events: none;
   position: absolute;
   left: 4px;
-  margin-left: 24px; }
-  label::before {
-    transform: scale(0.2);
-    transform-origin: top left;
-    left: -28px;
-    top: 0; }
+  top: 0; }
 
 @media only screen and (min-width: 1031px) {
-  input, label {
+  input, form label {
     transition: transform 300ms ease, width 300ms ease; }
 
   input:focus + label {
-    transform: translateX(calc(-40px - 100%));
+    transform: translateX(calc(-20px - 100%));
     color: #e4e4e7; } }
-input[name=search] + label::before {
-  background-position: -640px -128px; }
-input[name=search]:focus + label::before {
-  background-position: -640px -384px; }
-
-input[name=phone] + label::before {
-  background-position: -256px -256px; }
-input[name=phone]:focus + label::before {
-  background-position: -256px -512px; }
-
-input[name=email] + label::before {
-  background-position: -512px -256px; }
-input[name=email]:focus + label::before {
-  background-position: -512px -512px; }
-
 /*--- common page elements + defaults -------------------------------------------------*/
 .nav-main, .items-nav div, .menu-featured li, .shop-tile, .shop-items-nav, .item-container {
   box-shadow: 0 2px 4px rgba(24, 24, 27, 0.5);
@@ -629,6 +635,18 @@ input[name=email]:focus + label::before {
   background-color: #e4e4e7;
   min-height: 3rem;
   padding: 0.1rem 1rem; }
+
+.menu-btn, .item-sidebar .basket-w, .item-sidebar button {
+  text-align: left;
+  border: none;
+  line-height: 2.25rem; }
+
+.menu-btn, .item-sidebar .basket-w {
+  background-color: #a32929;
+  color: white; }
+
+.item-sidebar button {
+  background-color: #e4e4e7; }
 
 /*********************
 Default style for all pages
@@ -664,32 +682,24 @@ Default style for all pages
   line-height: 38px; }
   .header-links ul, .header-links form {
     float: left; }
-  .header-links li {
-    margin-right: 8px; }
-    .header-links li::before {
-      transform-origin: top left; }
 
 .header-logo {
   width: calc(40% - 1rem);
   max-width: 250px; }
 
-.header-social li {
+.header-social a {
   float: left;
-  width: 26px; }
-  .header-social li::before {
-    transform: scale(0.2); }
+  width: 26px;
+  overflow: hidden;
+  margin-right: 0.4rem; }
+  .header-social a::before {
+    transform: scale(0.2);
+    transform-origin: top left; }
   @media only screen and (min-width: 1031px) {
-    .header-social li {
+    .header-social a {
       width: 38px; }
-      .header-social li::before {
+      .header-social a::before {
         transform: scale(0.3); } }
-
-.header-contact li {
-  padding-left: 32px; }
-  .header-contact li::before {
-    transform: scale(0.25);
-    left: 0;
-    top: 3px; }
 
 .header-search {
   z-index: 5;
@@ -721,7 +731,6 @@ html {
 body {
   background-color: #494950;
   min-width: 320px;
-  display: flex;
   flex-direction: column;
   align-content: stretch;
   min-height: 100vh; }
@@ -769,39 +778,38 @@ nav a.active, nav a:active, nav a:hover {
     position: relative;
     display: inline-block; }
 
-a.arrow-r::before, .menu-arrow-r a::before, .menu-arrow-r a::before {
-  top: 2px;
-  left: -4px;
-  transform: scale(0.25);
-  transform-origin: top left; }
+#menu-toggle {
+  display: none; }
+
+.menu-btn {
+  width: 100%;
+  display: inline-block;
+  margin-top: -2px; }
+
+.not-home .menu-btn {
+  cursor: pointer; }
+  .not-home .menu-btn::before {
+    background-position: -512px -384px;
+    top: 0; }
+
+.home, #menu-toggle:checked + .not-home {
+  height: auto; }
+  @media only screen and (min-width: 1031px) {
+    .home, #menu-toggle:checked + .not-home {
+      height: 18rem;
+      margin-bottom: -14.5rem; } }
+
+#menu-toggle:checked + .not-home .menu-btn::before {
+  background-position: 0px -384px; }
 
 .nav-main {
   z-index: 6;
   width: 100%;
   background-color: white; }
-  .nav-main:not(.home)::before {
-    background-position: -512px -128px;
-    top: 0;
-    left: 0.5rem;
-    transform: scale(0.3);
-    transform-origin: top left; }
-  .nav-main.open {
-    height: auto; }
-    .nav-main.open::before {
-      background-position: 0px -128px; }
   .nav-main ul {
     overflow: hidden;
     height: calc(100% - 2rem);
     line-height: 2rem; }
-  .nav-main h2 {
-    cursor: pointer;
-    z-index: 10;
-    text-align: center;
-    width: 100%;
-    background-color: #a32929;
-    line-height: 2rem;
-    padding: 0.25rem 0.5rem 0;
-    margin-top: -0.25rem; }
   .nav-main li {
     cursor: pointer;
     padding-left: 0.5rem;
@@ -811,7 +819,7 @@ a.arrow-r::before, .menu-arrow-r a::before, .menu-arrow-r a::before {
   .nav-main a {
     width: 100%; }
   @media only screen and (max-width: 481px) {
-    .nav-main h2, .nav-main li {
+    .nav-main li {
       text-align: center;
       padding-left: 0; } }
   @media only screen and (min-width: 482px) and (max-width: 1030px) {
@@ -823,8 +831,6 @@ a.arrow-r::before, .menu-arrow-r a::before, .menu-arrow-r a::before {
       font-size: 0.9rem; } }
   @media only screen and (min-width: 1031px) {
     .nav-main {
-      width: 250px;
-      margin-left: -4px;
       font-size: 0.8rem; }
       .nav-main li ul {
         display: none;
@@ -838,12 +844,13 @@ a.arrow-r::before, .menu-arrow-r a::before, .menu-arrow-r a::before {
         width: 200%;
         left: 98%;
         font-size: 1.1rem;
-        z-index: 10; }
+        z-index: 20; }
       .nav-main li:hover ul {
-        display: block; }
-      .nav-main.home, .nav-main.open {
-        height: 18rem;
-        margin-bottom: -14.5rem; } }
+        display: block; } }
+  @media only screen and (min-width: 1031px) {
+    .nav-main {
+      width: 250px;
+      margin-left: -4px; } }
 
 .nav-right {
   border-bottom: 1px solid #c9c9cf;
@@ -1083,29 +1090,15 @@ Page specific items.
     width: 33.33333%;
     display: inline-block;
     width: calc(33.33333% - 1.5rem);
-    background-color: #e4e4e7;
-    text-align: left;
-    border: none;
-    padding: 5px 20px 5px 5px;
     width: calc(100%/3 - 1.5rem);
-    margin: 0.5rem 0;
+    margin: 0.5rem;
     min-width: 130px; }
-    .item-sidebar button::before {
-      transform: scale(0.25);
-      top: calc(50% - 0.75rem);
-      right: 5px;
-      transform-origin: top right; }
     @media only screen and (min-width: 1031px) {
       .item-sidebar button {
         /*non flex usable */
         width: 100%;
         display: inline-block;
-        width: calc(100% - 1.5rem);
-        margin-left: -0.75rem;
-        width: calc(100% + 0.75rem); } }
-  .item-sidebar .basket-w {
-    background-color: #a32929;
-    color: white; }
+        width: calc(100% - 1.5rem); } }
 
 .item-features {
   padding-left: 1.5rem; }

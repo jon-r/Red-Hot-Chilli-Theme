@@ -12,3 +12,19 @@
   min-height: 3rem;
   padding: 0.1rem 1rem;
 }
+
+%btn-red,%btn-grey  {
+  @extend %text-icon;
+  text-align: left;
+  border: none;
+  line-height: 2.25rem;
+}
+
+%btn-red {
+  background-color: $jr-emphasis;
+  color: white;
+}
+
+%btn-grey {
+   background-color: $jr-bg-hover;
+}

@@ -1,10 +1,10 @@
-/*-- main menu toggle -----------------------------------------------------------------*/
+/*-- main menu toggle -----------------------------------------------------------------
 
 var menuMainBtn  = document.getElementById('js-menuMainBtn'),
     menuMain  = document.getElementById('js-menuMain');
 
 menuMainBtn.onclick = function() {
-  menuMain.classList.toggle('open');
+//  menuMain.classList.toggle('open');
 }
 
 

@@ -7,9 +7,9 @@ _________________________________________________________
 */
 ?>
 <nav class="primary-nav">
-
-  <div id="js-menuMain" class="nav-main<?php echo is_front_page() ? ' home' : null ?>" >
-    <h2 id="js-menuMainBtn">Browse</h2>
+  <input type="checkbox"  id="menu-toggle">
+  <div class="nav-main<?php echo is_front_page() ? ' home' : ' not-home' ?>" >
+    <label class="menu-btn" for="menu-toggle"><h2>Browse</h2></label>
     <ul>
     <?php foreach($groupsList as $group) :
         $link = http_build_query(['g' => $group, 'page_id' => jr_page('grp')]);

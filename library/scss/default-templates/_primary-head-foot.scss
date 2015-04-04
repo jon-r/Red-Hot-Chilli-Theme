@@ -36,11 +36,7 @@
     float:left;
   }
   li {
-    margin-right: 8px;
-    @extend %has-icon-before;
-    @include jr-icon(before) {
-      transform-origin: top left;
-    };
+    @extend %text-icon;
   }
  // height: 7rem;
 }
@@ -52,11 +48,16 @@
 }
 
 .header-social {
-  li {
+  a {
+    @extend %has-icon-before;
     float: left;
     width: 26px;
+    overflow: hidden;
+    margin-right: 0.4rem;
+
     &::before {
       transform: scale(0.2);
+      transform-origin: top left;
     }
     @include jr-size(screen) {
       width: 38px;
@@ -64,20 +65,11 @@
         transform: scale(0.3);
       }
     }
-  }
-}
 
-.header-contact {
-  li {
-    padding-left: 32px;
-    &::before {
-      transform: scale(0.25);
-      left: 0;
-      top: 3px;
-    }
+ //   display: block;
   }
-}
 
+}
 
 
 .header-search {
