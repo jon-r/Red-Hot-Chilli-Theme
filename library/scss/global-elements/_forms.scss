@@ -3,42 +3,82 @@
 
 form {
   position: relative;
-  color: $jr-text-dark;
 }
 
 input {
-  width: calc(100% - 4px);
-  height:34px;
-  background-color: $jr-bg-light;
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+input, button {
+  font-size: 1.2rem;
+}
+
+input {
+  background-color: white;
+  color: $jr-text-dark;
+  line-height: 2rem;
+  width: calc(100% - 38px);
   padding: 2px;
+  padding-left: 36px;
   border: none;
-  @include jr-size(phoneOnly) {
-    &:focus + label {
-      display:none;
-    }
-  }
 }
 
-form label {
-  @extend %text-icon;
-
-  pointer-events: none;
-  position:absolute;
-  left:4px;
-  top:0;
+form button {
+  display:none;
+  @extend %btn-red;
+  position: absolute;
+  right:0;
+  bottom:4px;
+  padding: 2px $jr-margin;
 }
 
-@include jr-size(screen) {
-  input, form label {
-    transition: transform 300ms ease, width 300ms ease;
-  }
-  input {
-    &:focus + label {
-      transform: translateX(calc(-20px - 100%));
-      color: $jr-text-light;
-    }
-  }
+input:focus + button {
+  display:block;
 }
+
+label {
+  float: left;
+}
+
+//form {
+//  position: relative;
+//  color: $jr-text-dark;
+//}
+//
+//input {
+//  width: calc(100% - 4px);
+//  height:34px;
+//  background-color: $jr-bg-light;
+//  padding: 2px;
+//  border: none;
+//  @include jr-size(phoneOnly) {
+//    &:focus + label {
+//      display:none;
+//    }
+//  }
+//}
+//
+//label {
+//  @extend %text-icon;
+//
+//  pointer-events: none;
+//  position:absolute;
+//  left:4px;
+//  top:0;
+//}
+//
+//@include jr-size(screen) {
+//  input, form label {
+//    transition: transform 300ms ease, width 300ms ease;
+//  }
+//  input {
+//    &:focus + label {
+//      transform: translateX(calc(-20px - 100%));
+//      color: $jr-text-light;
+//    }
+//  }
+//}
 
 
 

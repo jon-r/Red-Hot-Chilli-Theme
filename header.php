@@ -45,35 +45,24 @@
 
   <header class="primary-header" role="banner">
 
-    <?php wp_nav_menu(array(
-    'container' => '',                              // remove nav container
-    'menu' => __( 'Header Links', 'bonestheme' ),   // nav name
-    'menu_class' => 'menu-header',                             // adding custom nav class
-    'theme_location' => 'header-links',             // where it's located in the theme
-    'fallback_cb' => ''                             // fallback function
-    )); ?>
-
-    <div class="container" >
+    <div class="container<?php echo is_front_page() ? ' home' : ' not-home' ?>" >
 
       <a class="header-logo" href="<?php echo home_url(); ?>" rel="nofollow">
-        <img src="<?php echo imgSrcRoot('rhc','RHC_Logo_transparent','png'); ?>" />
+        <img src="<?php echo imgSrcRoot('rhc','RHC_Logo_2','png'); ?>" alt="Red Hot Chilli - Used Catering Equipment"/>
       </a>
 
       <div class="header-links">
-        <ul class="header-contact" >
-          <li class="phone-w" ><h2><?php echo $rhcTel ?></h2></li>
-          <li class="email-w" ><a href="mailto:<?php echo $rhcEmail ?>" ><h3><?php echo $rhcEmail ?></h3></a></li>
-        </ul>
         <form class="header-search">
+          <h2 class="head-title">Search Catering Equipment</h2>
+          <label class="text-icon search"></label>
           <input type="hidden" name="page_id" value="<?php echo jr_page('srch') ?>">
-          <input type="search" name="search">
-          <label for="search">Search</label>
-<!--          <button type="submit">GO</button>-->
+          <input type="search" name="search" placeholder="Enter Keyword, or RHC Number">
+          <button type="submit"><h3>Go</h3></button>
         </form>
-        <div class="header-social" >
-          <a  class="facebook" href="<?php echo $rhcFacebookLink ?>" >Facebook</a>
-          <a class="linkedin" href="<?php echo $rhcLinkedinLink ?>" >LinkedIn</a>
-          <a class="twitter" href="<?php echo $rhcTwitterLink ?>" >Twitter</a>
+        <div class="header-contact" >
+          <h2 class="head-title">Talk to us Direct</h2>
+          <h3 class="text-icon phone-w" ><?php echo $rhcTel ?></h3>
+          <a href="mailto:<?php echo $rhcEmail ?>" ><h3 class="text-icon email-w"><?php echo $rhcEmail ?></h3></a>
         </div>
       </div>
     </div>

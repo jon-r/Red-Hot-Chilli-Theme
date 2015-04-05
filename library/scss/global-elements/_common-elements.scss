@@ -14,15 +14,15 @@
 }
 
 %btn-red,%btn-grey  {
-  @extend %text-icon;
+ // @extend %text-icon;
   text-align: left;
   border: none;
-  line-height: 2.25rem;
+  line-height: 2rem;
 }
 
 %btn-red {
   background-color: $jr-emphasis;
-  color: white;
+  color: $jr-text-light;
 }
 
 %btn-grey {

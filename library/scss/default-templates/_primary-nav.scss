@@ -57,7 +57,7 @@ a.arrow-r, .menu-arrow-r a {
   }
 }
 
-.home, #menu-toggle:checked + .not-home {
+.nav-main.home, #menu-toggle:checked + .not-home {
   height: auto;
   @include jr-size (screen) {
       height: 18rem;
