@@ -21,20 +21,10 @@ nav a {
   height: 2rem;
   a {
     line-height: 2rem;
-    padding: 0 1.5rem;
-    position: relative;
     display: inline-block;
   }
 }
 
-a.arrow-r, .menu-arrow-r a {
-  @extend %text-icon;
-}
-
-//lazy workaround because pain to add wp_nav_menu anchor classes
-.menu-arrow-r a {
-  @include jr-icon(arrow-r);
-}
 
 #menu-toggle {
   display: none;
@@ -46,7 +36,6 @@ a.arrow-r, .menu-arrow-r a {
   width:100%;
   display: inline-block;
   margin-top: -2px;
-
 }
 .not-home {
   .menu-btn {
@@ -57,20 +46,16 @@ a.arrow-r, .menu-arrow-r a {
   }
 }
 
-.nav-main.home, #menu-toggle:checked + .not-home {
-  height: auto;
-  @include jr-size (screen) {
+#menu-toggle:checked + .nav-main.not-home, .nav-main.home {
+    height: auto;
+    @include jr-size (screen) {
       height: 18rem;
-      margin-bottom: -14.5rem;
-  }
-}
-
-#menu-toggle:checked {
-  & + .not-home {
-    .menu-btn {
-      @include jr-icon(before, close-w);
+      margin-bottom: -15rem;
     }
   }
+
+#menu-toggle:checked {
+
 }
 
 .nav-main {
@@ -80,18 +65,27 @@ a.arrow-r, .menu-arrow-r a {
 
   background-color: white;
 
-
+  span {
+    display: inline-block;
+  }
   ul {
-    @extend %flex-parent-edgeless;
+  //  @extend %flex-parent-edgeless;
+    widtH:100%;
     overflow: hidden;
-  //  margin-top: 2rem;
     height: calc(100% - 2rem);
     line-height: 2rem;
   }
   li {
     cursor: pointer;
     padding-left: 0.5rem;
-    width: 100%;
+    ul {
+      position: absolute;
+      min-height: calc(100% + 15px);
+      height: auto;
+      background-color: white;
+      top: 0;
+      transition: left 400ms;
+    }
     &:active, &:hover {
       background-color: $jr-bg-hover;
     }
@@ -103,32 +97,41 @@ a.arrow-r, .menu-arrow-r a {
     li {
       text-align: center;
       padding-left: 0;
+      ul {
+        left:100%;
+      }
+    }
+    .active-li {
+      ul {
+        left:0;
+      }
     }
   }
 
   @include jr-size(tabletOnly) {
     li {
       @include jr-flex(1, 2);
-      font-size: 0.9rem;
+      font-size: 1.25rem;
+      ul {
+        left: 100%;
+      }
+    }
+    .active-li {
+      ul {
+        left:0;
+      }
     }
   }
 
   @include jr-size(screen) {
-    font-size: 0.8rem;
     li {
       ul {
         display: none;
-        position: absolute;
-        left: 0;
-        background-color: white;
         box-shadow: $jr-shadow;
-        min-height: calc(100% + 15px);
-        height: auto;
-        top: -10px;
         width: 200%;
-        left: 98%;
-        font-size: 1.1rem;
         z-index: 20;
+        left: 98%;
+        top: -10px;
       }
     }
     li:hover {
@@ -136,11 +139,18 @@ a.arrow-r, .menu-arrow-r a {
         display: block;
       }
     }
-
   }
   @include jr-size(screen) {
     width: 250px;
     margin-left: -4px;
+  }
+}
+
+.touch-toggle {
+  @extend %btn-red;
+  width:100%;
+  @include jr-size(screen) {
+    display: none;
   }
 }
 

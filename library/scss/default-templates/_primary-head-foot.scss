@@ -30,8 +30,13 @@
 .home {
   .header-logo {
  //   top: $jr-margin;
-    width:50%;
-    max-width: 300px;
+      width:40%;
+    max-width: 200px;
+    top: 0.5rem;
+    @include jr-size(screen-hd) {
+
+      max-width: 300px;
+    }
   }
   .header-links {
     width: 100%;

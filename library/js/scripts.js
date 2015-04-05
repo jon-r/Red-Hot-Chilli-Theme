@@ -1,38 +1,26 @@
-/*-- main menu toggle -----------------------------------------------------------------
+/*-- main menu toggle -----------------------------------------------------------------*/
 
-var menuMainBtn  = document.getElementById('js-menuMainBtn'),
-    menuMain  = document.getElementById('js-menuMain');
+var navMain_ul  = document.getElementById('js-main-list'),
+  navMain_li  = navMain_ul.children;
 
-menuMainBtn.onclick = function() {
-//  menuMain.classList.toggle('open');
+for (i = 0; i < navMain_li.length; i++) {
+  navMain_li[i].onclick = function () {
+    this.classList.toggle('active-li');
+  };
 }
-
 
 /*-- carousel scroller ----------------------------------------------------------------*/
 
 var carousel = document.getElementById('js-carouselMain') || null,
-    slides = document.getElementsByClassName('slide'),
-    blips = document.getElementsByClassName('blipper'),
-    slideCount = slides.length,
-    slideTime = 5000,
-    slideDelay = 600, //to match scroll timer
-    hoverLock = false;
+  slides = document.getElementsByClassName('slide'),
+  blips = document.getElementsByClassName('blipper'),
+  slideCount = slides.length,
+  slideTime = 5000,
+  slideDelay = 600, //to match scroll timer
+  hoverLock = false;
 
 var tickerValue = 1,
-    tickerLock = false;
-
-if (carousel) {
-  window.setInterval(ticker, slideTime);
-
-  carousel.onmouseover = function() {
-    hoverLock = true;
-  }
-
-  carousel.onmouseout = function() {
-    hoverLock = false;
-  }
-}
-
+  tickerLock = false;
 
 function ticker() {
   if (!tickerLock && !hoverLock) {
@@ -68,6 +56,19 @@ function goSlide(x) {
     }
   }
 }
+
+if (carousel) {
+  window.setInterval(ticker, slideTime);
+
+  carousel.onmouseover = function () {
+    hoverLock = true;
+  }
+
+  carousel.onmouseout = function() {
+    hoverLock = false;
+  }
+}
+
 
 
 /*-----probably delete below------------------------------------------------------------*/
