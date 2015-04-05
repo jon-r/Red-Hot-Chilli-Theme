@@ -1,10 +1,5 @@
 /*--- common page elements + defaults -------------------------------------------------*/
 
-%make-it-pop {
-  box-shadow: $jr-shadow;
-  position: relative;
-  margin-bottom: $jr-margin;
-}
 
 %header-block {
   width: 100%;
@@ -17,7 +12,7 @@
  // @extend %text-icon;
   text-align: left;
   border: none;
-  line-height: 2rem;
+  line-height: 2.25rem;
 }
 
 %btn-red {

@@ -433,10 +433,10 @@ em {
   font-style: normal; }
 
 /*-------------------------sprite layouts + settings ----------------------------------*/
-.text-icon, .primary-nav:only-child, .shop-tile, .item-features li, .shop-tile, .item-power {
+.text-icon, .primary-nav:only-child, .shop-tile, .shop-tile, .item-power {
   position: relative; }
 
-.text-icon::before, .primary-nav:only-child::before, .shop-tile::before, .item-features li::before {
+.text-icon::before, .primary-nav:only-child::before, .shop-tile::before {
   pointer-events: none;
   content: '';
   position: absolute;
@@ -558,6 +558,9 @@ em {
 .close-w::before {
   background-position: 0px -384px; }
 
+.tick::before {
+  background-position: -128px -128px; }
+
 /*--- grid ----------------------------------------------------------------------------*/
 .header-links, article, .article-footer, .primary-nav, .menu-featured, .shop-items-nav, .item-container, .item-sidebar {
   display: flex;
@@ -629,11 +632,6 @@ label {
   float: left; }
 
 /*--- common page elements + defaults -------------------------------------------------*/
-.nav-main, .items-nav div, .menu-featured li, .shop-tile, .shop-items-nav, .item-container {
-  box-shadow: 0 2px 4px rgba(24, 24, 27, 0.5);
-  position: relative;
-  margin-bottom: 1rem; }
-
 .menu-featured h3, .shop-tile div, .item-header {
   width: 100%;
   background-color: #e4e4e7;
@@ -643,7 +641,7 @@ label {
 form button, .menu-btn, .touch-toggle, .item-sidebar .basket-w, .item-sidebar button {
   text-align: left;
   border: none;
-  line-height: 2rem; }
+  line-height: 2.25rem; }
 
 form button, .menu-btn, .touch-toggle, .item-sidebar .basket-w {
   background-color: #931f1f;
@@ -760,15 +758,11 @@ nav a.active, nav a:active, nav a:hover {
 .primary-nav {
   justify-content: flex-start; }
 
-.nav-main,
-.nav-breadcrumbs,
-.nav-paginate {
-  height: 2rem; }
-  .nav-main a,
-  .nav-breadcrumbs a,
-  .nav-paginate a {
-    line-height: 2rem;
-    display: inline-block; }
+.nav-main a,
+.nav-breadcrumbs a,
+.nav-paginate a {
+  line-height: 2rem;
+  display: inline-block; }
 
 #menu-toggle {
   display: none; }
@@ -794,6 +788,9 @@ nav a.active, nav a:active, nav a:hover {
 .nav-main {
   z-index: 6;
   width: 100%;
+  height: 2.1rem;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(24, 24, 27, 0.5);
   background-color: white; }
   .nav-main span {
     display: inline-block; }
@@ -859,7 +856,8 @@ nav a.active, nav a:active, nav a:hover {
 .nav-right {
   border-bottom: 1px solid #c9c9cf;
   background-color: white;
-  flex: 1 1 100%; }
+  flex: 1 1 100%;
+  margin-bottom: 1rem; }
   @media only screen and (min-width: 1031px) {
     .nav-right {
       flex: 1 1 75%; } }
@@ -870,10 +868,14 @@ nav a.active, nav a:active, nav a:hover {
 
 .nav-breadcrumbs a,
 .nav-paginate a {
-  border-left: 1px solid #c9c9cf; }
+  border-left: 1px solid #c9c9cf;
+  padding-right: 1rem; }
 
-.items-nav a {
-  float: left; }
+.nav-breadcrumbs {
+  height: auto; }
+
+.nav-paginate a {
+  padding-left: 1rem; }
 
 .menu-header {
   position: absolute;
@@ -891,6 +893,9 @@ Page specific items.
 *********************/
 /*-- index page elements -----------------------------------------------------*/
 .menu-featured li {
+  box-shadow: 0 2px 4px rgba(24, 24, 27, 0.5);
+  margin-bottom: 1rem;
+  position: relative;
   height: 120px;
   overflow: hidden;
   background-color: #494950; }
@@ -971,19 +976,17 @@ Page specific items.
   z-index: 5; }
   .is-active [class^='slide-'] {
     opacity: 1;
-    transform: translateX(-200%);
+    transform: translateX(-100%);
     transition-property: transform;
     transition-duration: 600ms;
     transition-timing-function: cubic-bezier(0, 0.5, 0.5, 1); }
-  .is-active .slide-image {
-    transform: translateX(-100%); }
 
 .go-away {
   left: -100%;
   transition: left 600ms ease; }
 
 .slide-title, .slide-text, .slide-link {
-  width: 50%; }
+  width: 100%; }
 
 .slide-image {
   top: 0;
@@ -1005,13 +1008,13 @@ Page specific items.
   transition-delay: 500ms; }
 
 .go-left {
-  left: 0; }
+  left: -25%; }
 
 .go-mid {
-  left: 25%; }
+  left: 0%; }
 
 .go-right {
-  left: 50%; }
+  left: 25%; }
 
 .go-red {
   color: #931f1f; }
@@ -1035,6 +1038,8 @@ Page specific items.
 /*-- category list Layout -----------------------------------------------------------*/
 .shop-tile {
   background-color: white;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(24, 24, 27, 0.5);
   padding-bottom: 2rem; }
   .shop-tile a {
     width: 100%; }
@@ -1056,6 +1061,8 @@ Page specific items.
     background-color: white; }
 
 .shop-items-nav {
+  box-shadow: 0 2px 4px rgba(24, 24, 27, 0.5);
+  margin-bottom: 1rem;
   background-color: white; }
 
 .shop-items-contact {
@@ -1067,6 +1074,8 @@ Page specific items.
   border-top-width: 0 1px 1px 1px; }
 
 .item-container {
+  box-shadow: 0 2px 4px rgba(24, 24, 27, 0.5);
+  margin-bottom: 1rem;
   background-color: white; }
   @media only screen and (min-width: 1031px) {
     .item-container {
@@ -1103,23 +1112,6 @@ Page specific items.
         width: 100%;
         display: inline-block;
         width: calc(100% - 1rem); } }
-
-.item-features {
-  padding-left: 1rem; }
-  .item-features li {
-    width: calc(100%/2 - 1rem);
-    float: left; }
-    .item-features li::before {
-      background-position: -128px -128px;
-      transform: scale(0.2);
-      top: 0;
-      left: -1rem;
-      transform-origin: top left; }
-    @media only screen and (min-width: 1031px) {
-      .item-features li {
-        width: calc(100% - 1rem); }
-        .item-features li::before {
-          transform: scale(0.25); } }
 
 .item-power {
   border: solid 2px red; }

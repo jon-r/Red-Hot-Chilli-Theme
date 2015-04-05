@@ -25,7 +25,8 @@
 
 .shop-tile {
   background-color: white;
-  @extend %make-it-pop;
+  margin-bottom: $jr-margin;
+  box-shadow: $jr-shadow;
   @extend %flex-4;
   a {
     width: 100%;
@@ -62,7 +63,8 @@
 }
 
 .shop-items-nav {
-  @extend %make-it-pop;
+  box-shadow: $jr-shadow;
+  margin-bottom: $jr-margin;
   @extend %flex-parent;
   background-color: white;
 }

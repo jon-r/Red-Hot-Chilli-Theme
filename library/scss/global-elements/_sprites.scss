@@ -206,7 +206,8 @@ $icons-before: (
   arrow-r,
   arrow-l,
   menu-w,
-  close-w
+  close-w,
+  tick
 );
 
 @each $item-name in $icons-before {

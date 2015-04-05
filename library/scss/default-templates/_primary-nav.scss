@@ -9,7 +9,7 @@ nav a {
 .primary-nav {
   @extend %flex-parent;
   justify-content: flex-start;
-  //simple loader. the <nav> will be the only child of the <section> until the php <article> has loaded.
+  //simple 'loading' simulator - the <nav> will be the only child of the <section> until the php <article> has loaded.
   &:only-child {
     @extend %loader-icon;
   }
@@ -18,7 +18,6 @@ nav a {
 .nav-main,
 .nav-breadcrumbs,
 .nav-paginate {
-  height: 2rem;
   a {
     line-height: 2rem;
     display: inline-block;
@@ -61,8 +60,9 @@ nav a {
 .nav-main {
   z-index: 6;
   width: 100%;
-  @extend %make-it-pop;
-
+  height: 2.1rem;
+  position: relative;
+  box-shadow: $jr-shadow;
   background-color: white;
 
   span {
@@ -158,6 +158,7 @@ nav a {
   border-bottom: $jr-border;
   background-color: white;
   flex: 1 1 100%;
+  margin-bottom: $jr-margin;
   @include jr-size(screen) {
     flex: 1 1 75%;
   }
@@ -165,18 +166,21 @@ nav a {
   @include clearfix;
 }
 
+
+
 .nav-breadcrumbs,
 .nav-paginate {
   a {
     border-left: $jr-border;
+    padding-right: 1rem;
   }
 }
+.nav-breadcrumbs {
+  height: auto;
+}
 
-.items-nav {
+.nav-paginate {
   a {
-    float: left;
-  }
-  div {
-    @extend %make-it-pop;
+    padding-left: 1rem;
   }
 }

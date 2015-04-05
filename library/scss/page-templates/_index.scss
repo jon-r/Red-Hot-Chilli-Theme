@@ -3,7 +3,9 @@
 .menu-featured {
   @extend %flex-parent;
   li {
-    @extend %make-it-pop;
+    box-shadow: $jr-shadow;
+    margin-bottom: $jr-margin;
+    position: relative;
     @extend %flex-4;
     height: 120px;
     overflow: hidden;
@@ -103,13 +105,10 @@
 
   [class^='slide-'] {
     opacity: 1;
-    transform: translateX(-200%);
+    transform: translateX(-100%);
     transition-property: transform;
     transition-duration: 600ms;
     transition-timing-function: cubic-bezier(0, .50, .50, 1);
-  }
-  .slide-image {
-   transform: translateX(-100%);
   }
 }
 
@@ -120,7 +119,7 @@
 
 
 %slide-all {
-  width:50%;
+  width:100%;
 }
 
 .slide-image {
@@ -151,15 +150,15 @@
 }
 
 .go-left {
-  left:0;
+  left:-25%;
 }
 
 .go-mid {
-  left: 25%;
+  left: 0%;
 }
 
 .go-right {
-  left: 50%;
+  left: 25%;
 }
 
 .go-red {

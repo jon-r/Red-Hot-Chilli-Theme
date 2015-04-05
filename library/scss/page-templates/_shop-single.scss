@@ -11,7 +11,8 @@
 .item-container {
   @extend %flex-1;
   @extend %flex-parent;
-  @extend %make-it-pop;
+  box-shadow: $jr-shadow;
+  margin-bottom: $jr-margin;
   @include jr-size(screen) {
     flex-direction: row-reverse;
   }
@@ -62,27 +63,7 @@
 }
 
 .item-features {
-  padding-left: $jr-margin;
-  li {
-    width: calc(100%/2 - 1rem);
-    //margin-right: $jr-margin;
-    //padding-left: 10px;
-    float:left;
-    @extend %has-icon-before;
-    @include jr-icon(before, tick) {
-      transform: scale(0.2);
-      top: 0;
-      left: -$jr-margin;
-      transform-origin:top left;
-    }
-    @include jr-size(screen) {
-      width: calc(100% - 1rem);
-      &::before {
-        transform: scale(0.25);
 
-      }
-    }
-  }
 }
 
 .item-thumbs {
@@ -97,7 +78,6 @@
   @include jr-icon(after);
   border: solid 2px red;
 }
-// @extend %big-red-button
 
 /*-- 3d box settings -----------------------------------------------------------------*/
 

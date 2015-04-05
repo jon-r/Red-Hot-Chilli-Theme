@@ -17,9 +17,9 @@ if ($safeArr[ss]) {
   <div class="item-container">
 
     <div class="item-sidebar">
-      <button class="basket-w"><h3>Buy Today</h3></button>
-      <button class="question"><h3>Need More Information</h3></button>
-      <button class="list"><h3>Add To Shopping List</h3></button>
+      <button class="text-icon basket-w"><h3>Buy Today</h3></button>
+      <button class="text-icon question"><h3>Need More Information</h3></button>
+      <button class="text-icon list"><h3>Add To Shopping List</h3></button>
     </div>
 
     <div class="item-gallery">
@@ -54,13 +54,13 @@ if ($safeArr[ss]) {
       </div>
 
       <ul class="item-features">
-        <li>Fully Tested &amp; Cleaned</li>
-        <li>Competitive UK &amp; EU Delivery Quotes</li>
-        <li>Finance Options On Request</li>
-        <li>Viewing available at our showroom in Warrington, Cheshire</li>
-        <li>Aftercare &amp; Warrantees</li>
+        <li class="text-icon tick">Fully Tested &amp; Cleaned</li>
+        <li class="text-icon tick">Competitive UK &amp; EU Delivery Quotes</li>
+        <li class="text-icon tick">Finance Options On Request</li>
+        <li class="text-icon tick">Viewing available at our showroom in Warrington, Cheshire</li>
+        <li class="text-icon tick">Aftercare &amp; Warrantees</li>
         <?php if ($shop_item[icon] == "natural-gas") : ?>
-        <li><em>Ask today about conversions to LPG</em></li>
+        <li class="text-icon tick"><em>Ask today about conversions to LPG</em></li>
         <?php endif ?>
       </ul>
 
