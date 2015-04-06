@@ -71,4 +71,14 @@
   bottom: 0;
 }
 
-
+.header-search{
+  input {
+    line-height: 2rem;
+    width: calc(100% - 38px);
+    padding: 2px;
+    padding-left: 36px;
+  }
+  input, button {
+    font-size: 1.2rem;
+  }
+}

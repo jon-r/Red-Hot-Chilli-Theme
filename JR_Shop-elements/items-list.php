@@ -61,11 +61,7 @@ $categoryListExtended = $categoryListSold ? array_Merge($categoryList, $category
 
   <?php endforeach;?>
 
-</article>
-
-  <footer class="article-footer flex-container">
-
-    <?php if ($itemCountCheckMax) : ?>
+      <?php if ($itemCountCheckMax) : ?>
 
     <nav class="flex-container shop-items-nav">
       <div class="nav-paginate">
@@ -87,21 +83,11 @@ $categoryListExtended = $categoryListSold ? array_Merge($categoryList, $category
 
     <?php endif ?>
 
+</article>
 
-    <div class="shop-items-contact flex-1">
-      <h2>Still not found what you are looking for?</h2>
-      <p>Contact us today</p>
-      <form class="shop-items-form">
-        <input type="text" name="name" >
-        <label for="Name" >Name</label>
-        <input type="email" name="email" >
-        <label for="email" >Email Address</label>
-        <input type="number" name="phone" >
-        <label for="phone" >Phone Number</label>
-        <input type="text" name="subject" >
-        <label for="subject" >Subject</label>
-      </form>
-    </div>
+  <footer class="article-footer flex-container">
+
+
 
   </footer>
 

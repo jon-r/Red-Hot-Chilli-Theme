@@ -15,6 +15,7 @@
 
   <?php include( "JR_Shop-elements/items-list.php"); ?>
 
+  <?php include( "JR_Shop-elements/contact-bar.php"); ?>
 </main>
 
 <?php get_footer(); ?>

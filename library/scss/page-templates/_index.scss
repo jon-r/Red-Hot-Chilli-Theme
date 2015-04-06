@@ -38,6 +38,10 @@
   overflow: hidden;
   position: relative;
   white-space: nowrap;
+  margin-bottom: 5rem;
+  @include jr-size(screen-hd) {
+    margin-bottom: $jr-margin;
+  }
 }
 
 .carousel:before{

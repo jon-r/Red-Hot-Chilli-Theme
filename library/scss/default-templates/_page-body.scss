@@ -31,9 +31,11 @@ main {
 }
 
 .article-header {
-//  margin: $jr-margin;
+ border-bottom: $jr-border;
+  padding-bottom: $jr-margin;
 }
 
-.article-footer {
-  background-color: $jr-bg-light;
+.contact-bar {
+  background-color: $jr-bg-dark;
+  color: $jr-text-light;
 }

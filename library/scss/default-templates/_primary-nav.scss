@@ -43,10 +43,11 @@ nav a {
   .menu-btn {
       cursor: pointer;
     @include jr-icon(before, arrow-w) {
-      top: 0;
+      margin-bottom: $jr-margin;
     };
   }
 }
+
 
 .touch-toggle {
   @include jr-size(screen) {
@@ -62,6 +63,7 @@ nav a {
     }
   }
 
+
 #menu-toggle:checked {
 
 }
@@ -76,6 +78,7 @@ nav a {
 
   span {
     display: inline-block;
+    width:100%;
   }
   ul {
     widtH:100%;
@@ -88,7 +91,7 @@ nav a {
     padding-left: 0.5rem;
     ul {
       position: absolute;
-      min-height: calc(100% + 15px);
+      min-height: 100%;
       height: auto;
       background-color: white;
       top: 0;
@@ -104,6 +107,7 @@ nav a {
   @include jr-size(phoneOnly) {
     li {
       text-align: center;
+
       padding-left: 0;
       ul {
         left:100%;
@@ -114,12 +118,17 @@ nav a {
         left:0;
       }
     }
+    a {
+      max-width: 250px;
+    }
   }
 
   @include jr-size(tabletOnly) {
     li {
       @include jr-flex(1, 2);
+      display: inline-block;
       font-size: 1.25rem;
+      padding: 0.5rem 0.5rem;
       ul {
         left: 100%;
       }
@@ -140,6 +149,7 @@ nav a {
         z-index: 20;
         left: 98%;
         top: -10px;
+        min-height: calc(100% + 15px);
       }
     }
     li:hover {

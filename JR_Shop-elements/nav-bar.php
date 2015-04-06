@@ -22,7 +22,7 @@ _________________________________________________________
 
       <li><?php echo $group ?>
         <ul>
-          <h3 class="touch-toggle text-icon close-w">Back</h3>
+          <h3 class="touch-toggle btn-red text-icon close-w">Back</h3>
           <?php foreach ($categoriesListFiltered as $category) :
               $link = http_build_query(['cat' => $category[Name], 'page_id' => jr_page('cat')]);
           ?>

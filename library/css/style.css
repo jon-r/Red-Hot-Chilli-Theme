@@ -603,19 +603,11 @@ form {
   position: relative; }
 
 input {
-  display: inline-block;
   margin-bottom: 4px; }
-
-input, button {
-  font-size: 1.2rem; }
 
 input {
   background-color: white;
   color: #18181b;
-  line-height: 2rem;
-  width: calc(100% - 38px);
-  padding: 2px;
-  padding-left: 36px;
   border: none; }
 
 form button {
@@ -707,6 +699,14 @@ Default style for all pages
 .header-links {
   bottom: 0; }
 
+.header-search input {
+  line-height: 2rem;
+  width: calc(100% - 38px);
+  padding: 2px;
+  padding-left: 36px; }
+.header-search input, .header-search button {
+  font-size: 1.2rem; }
+
 /*--- Page Body Elements -----------------------------------------------------*/
 html {
   font-size: 14px; }
@@ -739,8 +739,13 @@ main {
     .container {
       width: 1200px; } }
 
-.article-footer {
-  background-color: #f2f2f3; }
+.article-header {
+  border-bottom: 1px solid #c9c9cf;
+  padding-bottom: 1rem; }
+
+.contact-bar {
+  background-color: #494950;
+  color: #e4e4e7; }
 
 /*- menu parts ---------------------------------------------------------------*/
 nav a.active, nav a:active, nav a:hover {
@@ -771,7 +776,7 @@ nav a.active, nav a:active, nav a:hover {
   cursor: pointer; }
   .not-home .menu-btn::before {
     background-position: -512px -384px;
-    top: 0; }
+    margin-bottom: 1rem; }
 
 @media only screen and (min-width: 1031px) {
   .touch-toggle {
@@ -792,7 +797,8 @@ nav a.active, nav a:active, nav a:hover {
   box-shadow: 0 2px 4px rgba(24, 24, 27, 0.5);
   background-color: white; }
   .nav-menu span {
-    display: inline-block; }
+    display: inline-block;
+    width: 100%; }
   .nav-menu ul {
     widtH: 100%;
     overflow: hidden;
@@ -803,7 +809,7 @@ nav a.active, nav a:active, nav a:hover {
     padding-left: 0.5rem; }
     .nav-menu li ul {
       position: absolute;
-      min-height: calc(100% + 15px);
+      min-height: 100%;
       height: auto;
       background-color: white;
       top: 0;
@@ -819,12 +825,16 @@ nav a.active, nav a:active, nav a:hover {
       .nav-menu li ul {
         left: 100%; }
     .nav-menu .active-li ul {
-      left: 0; } }
+      left: 0; }
+    .nav-menu a {
+      max-width: 250px; } }
   @media only screen and (min-width: 482px) and (max-width: 1030px) {
     .nav-menu li {
       width: 50%;
       width: calc(50% - 1rem);
-      font-size: 1.25rem; }
+      display: inline-block;
+      font-size: 1.25rem;
+      padding: 0.5rem 0.5rem; }
       .nav-menu li ul {
         left: 100%; }
     .nav-menu .active-li ul {
@@ -836,7 +846,8 @@ nav a.active, nav a:active, nav a:hover {
       width: 200%;
       z-index: 20;
       left: 98%;
-      top: -10px; }
+      top: -10px;
+      min-height: calc(100% + 15px); }
     .nav-menu li:hover ul {
       display: block; } }
   @media only screen and (min-width: 1031px) {
@@ -912,7 +923,11 @@ Page specific items.
 .carousel {
   overflow: hidden;
   position: relative;
-  white-space: nowrap; }
+  white-space: nowrap;
+  margin-bottom: 5rem; }
+  @media only screen and (min-width: 1240px) {
+    .carousel {
+      margin-bottom: 1rem; } }
 
 .carousel:before {
   content: "";

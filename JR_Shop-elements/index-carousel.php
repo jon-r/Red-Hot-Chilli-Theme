@@ -1,12 +1,5 @@
 <?php
-
-//indev variables. list will be taken (with key names) from the carousel table.
-$advertList = [
-  ['Fryers','banner test1','?cat=Fryers&page_id=16','banner', 1],
-  ['Butchers','Meat Processing Equipment','2','butcher',0],
-  ['Sold','banner test2','?sold=1&page_id=16','banner2', 2],
-];
-
+/* carousel on the front page */
 $carouselCount = $blipCount = 0;
 ?>
 
