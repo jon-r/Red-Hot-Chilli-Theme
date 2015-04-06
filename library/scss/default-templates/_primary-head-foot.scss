@@ -29,14 +29,7 @@
 
 .home {
   .header-logo {
- //   top: $jr-margin;
-      width:40%;
-    max-width: 200px;
     top: 0.5rem;
-    @include jr-size(screen-hd) {
-
-      max-width: 300px;
-    }
   }
   .header-links {
     width: 100%;
@@ -45,15 +38,16 @@
     display: block;
     width:100%;
     border-bottom: $jr-border;
-    padding-bottom: 4px;
+    background-color: jr-grey(1.5);
+    padding: 4px;
     margin-bottom: 4px;
-  }
-  .header-search, .header-contact {
-    @extend %flex-2;
   }
 }
 
 .not-home {
+  .header-logo {
+    bottom:0;
+  }
   .header-links {
     max-width: 400px;
     width: calc(60% - #{$jr-margin});
@@ -62,14 +56,11 @@
   .head-title {
     display: none;
   }
-  .header-search, .header-contact {
-    @extend %flex-1;
-  }
-  .header-logo {
-    width:40%;
-    max-width: 250px;
-    bottom:0;
-  }
+}
+
+.header-logo {
+  width:40%;
+  max-width: 250px;
 }
 
 .header-logo, .header-links {
@@ -77,71 +68,7 @@
 }
 
 .header-links {
-  @extend %flex-parent;
   bottom: 0;
 }
 
-//  max-width: 400px;
-//  width: calc(60% - 1rem);
-//  border-left: solid 3px;
-//  padding-left: 5px;
-// // bordeR:solid 1px pink;
-//  line-height: 38px;
-//  ul, form {
-//    float:left;
-//  }
-//  li {
-//    @extend %text-icon;
-//  }
-// // height: 7rem;
-//}
 
-
-.header-logo {
-  width: calc(40% - 1rem);
-  max-width: 300px;
-}
-
-
-//.header-social {
-//  a {
-//    @extend %has-icon-before;
-//    float: left;
-//    width: 26px;
-//    overflow: hidden;
-//    margin-right: 0.4rem;
-//
-//    &::before {
-//      transform: scale(0.2);
-//      transform-origin: top left;
-//    }
-//    @include jr-size(screen) {
-//      width: 38px;
-//      &::before {
-//        transform: scale(0.3);
-//      }
-//    }
-//
-// //   display: block;
-//  }
-//
-//}
-//
-//
-//
-//
-//.primary-footer {
-//  border-top-width: 5px;
-//}
-//
-//.footer-menu {
-//  li {
-//    float:left;
-//    padding: 0.25rem;
-//    border-right: 3px solid;
-//  }
-//}
-//
-//.copyright {
-//  padding: 0.25rem;
-//}

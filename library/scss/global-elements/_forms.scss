@@ -26,7 +26,6 @@ input {
 
 form button {
   display:none;
-  @extend %btn-red;
   position: absolute;
   right:0;
   bottom:4px;

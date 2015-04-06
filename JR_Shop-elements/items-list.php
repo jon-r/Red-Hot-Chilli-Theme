@@ -25,9 +25,9 @@ if (!$itemCountCheckMax) {
 $categoryListExtended = $categoryListSold ? array_Merge($categoryList, $categoryListSold) : $categoryList;
 ?>
 
-<article class="shop-grid items">
+<article class="flex-container">
 
-  <header class="article-header">
+  <header class="article-header flex-1">
     <h1><?php echo $safeArr[pgName]; ?></h1>
     <p><?php echo $safeArr[description] ?></p>
     <?php echo $safeArr[imgURL] ?>
@@ -40,7 +40,7 @@ $categoryListExtended = $categoryListSold ? array_Merge($categoryList, $category
       $shop_item = jr_shop_compile($item, 'med');
     }; ?>
 
-  <div class="shop-tile <?php echo trim($shop_item[info].' '.$shop_item[icon]); ?>" >
+  <div class="shop-tile flex-4 <?php echo trim($shop_item[info].' '.$shop_item[icon]); ?>" >
 
     <a href="?<?php echo $shop_item[webLink] ?>">
 
@@ -63,27 +63,11 @@ $categoryListExtended = $categoryListSold ? array_Merge($categoryList, $category
 
 </article>
 
-  <footer class="article-footer">
-    <?php if ($itemCountCheckMin) : ?>
-    <div class="shop-items-contact">
-      <h2>Still not found what you are looking for?</h2>
-      <p>Contact us today</p>
-      <form class="shop-items-form">
-        <input type="text" name="name" >
-        <label for="Name" >Name</label>
-        <input type="email" name="email" >
-        <label for="email" >Email Address</label>
-        <input type="number" name="phone" >
-        <label for="phone" >Phone Number</label>
-        <input type="text" name="subject" >
-        <label for="subject" >Subject</label>
-      </form>
-    </div>
+  <footer class="article-footer flex-container">
 
-    <?php endif ?>
     <?php if ($itemCountCheckMax) : ?>
 
-    <nav class="shop-items-nav">
+    <nav class="flex-container shop-items-nav">
       <div class="nav-paginate">
         <?php if ($pageNumber > 1) : ?>
         <a href="<?php  echo jr_pg_set(1) ?>"><h4>&laquo;</h4></a>
@@ -103,6 +87,21 @@ $categoryListExtended = $categoryListSold ? array_Merge($categoryList, $category
 
     <?php endif ?>
 
+
+    <div class="shop-items-contact flex-1">
+      <h2>Still not found what you are looking for?</h2>
+      <p>Contact us today</p>
+      <form class="shop-items-form">
+        <input type="text" name="name" >
+        <label for="Name" >Name</label>
+        <input type="email" name="email" >
+        <label for="email" >Email Address</label>
+        <input type="number" name="phone" >
+        <label for="phone" >Phone Number</label>
+        <input type="text" name="subject" >
+        <label for="subject" >Subject</label>
+      </form>
+    </div>
 
   </footer>
 

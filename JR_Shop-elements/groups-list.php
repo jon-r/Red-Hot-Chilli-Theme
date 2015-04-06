@@ -1,8 +1,8 @@
 <?php /* list of groups on front page */ ?>
 
-<article class="shop-grid group">
+<article class="flex-container">
 
-  <header class="article-header" >
+  <header class="article-header flex-1" >
     <h1>Catering Equipment For Sale</h1>
     <a href="?all=1&page_id=16">Click here to View All</a>
   </header>
@@ -13,13 +13,13 @@
       $groupHeaderImg = imgSrcRoot('icons','header-'.strtok($group, ' '),'png');
   ?>
 
-  <div class="shop-tile group">
+  <div class="shop-tile group flex-3">
 
     <a href="?<?php echo $link ?>" >
       <img src="<?php echo $groupHeaderImg ?>" alt="<?php echo $group ?>"/>
     </a>
 
-    <ul class="flex-parent">
+    <ul class="flex-container">
       <?php foreach ($categoriesListFiltered as $category) :
           $link = http_build_query(['cat' => $category[Name], 'page_id' => jr_page('cat')]);
       ?>

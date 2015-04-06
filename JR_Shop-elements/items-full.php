@@ -13,33 +13,33 @@ if ($safeArr[ss]) {
   }
 ?>
 
-<article class="shop-full" >
-  <div class="item-container">
+<article>
+  <div class="item-container flex-container">
 
-    <div class="item-sidebar">
-      <button class="text-icon basket-w"><h3>Buy Today</h3></button>
+    <div class="item-sidebar flex-container">
+      <button class="btn-red text-icon basket-w"><h3>Buy Today</h3></button>
       <button class="text-icon question"><h3>Need More Information</h3></button>
       <button class="text-icon list"><h3>Add To Shopping List</h3></button>
     </div>
 
-    <div class="item-gallery">
+    <div class="item-gallery flex-3">
       <div class="item-main <?php echo $shop_item[icon]; ?>" >
         <img src="<?php echo img_resize($shop_item[imgFirst], 'tile') ?>">
       </div>
 
       <?php if (!$safeArr[ss]) : ?>
 
-      <ul class="item-thumbs">
+      <ul class="item-thumbs flex-container">
         <?php foreach ($shop_item[imgAll] as $galleryImg) : ?>
-        <li><img src="<?php echo img_resize($galleryImg, 'thumb') ?>"></li>
+        <li class="flex-4"><img src="<?php echo img_resize($galleryImg, 'thumb') ?>"></li>
         <?php endforeach ?>
       </ul>
 
       <?php endif ?>
     </div>
 
-    <div class="item-info">
-      <header class="item-header">
+    <div class="item-info flex-2">
+      <header class="article-header">
         <h1><?php echo $shop_item[name]; ?></h1>
         <br>
         <h2><?php echo $shop_item[price] ?></h2>

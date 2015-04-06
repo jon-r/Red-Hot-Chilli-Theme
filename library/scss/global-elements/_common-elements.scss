@@ -1,6 +1,6 @@
 /*--- common page elements + defaults -------------------------------------------------*/
 
-
+/*title block*/
 %header-block {
   width: 100%;
   background-color: $jr-bg-hover;
@@ -8,18 +8,16 @@
   padding: 0.1rem 1rem;
 }
 
-%btn-red,%btn-grey  {
+/*button style*/
+button, .btn-red {
  // @extend %text-icon;
   text-align: left;
   border: none;
   line-height: 2.25rem;
+  background-color: $jr-bg-hover;
 }
 
-%btn-red {
+.btn-red {
   background-color: $jr-emphasis;
   color: $jr-text-light;
-}
-
-%btn-grey {
-   background-color: $jr-bg-hover;
 }

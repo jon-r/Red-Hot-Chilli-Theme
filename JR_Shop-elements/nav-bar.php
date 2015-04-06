@@ -6,11 +6,11 @@ _________________________________________________________
                       > SPECIAL PAGE(S)
 */
 ?>
-<nav class="primary-nav">
+<nav class="flex-container primary-nav">
   <input type="checkbox"  id="menu-toggle">
-  <div class="nav-main<?php echo is_front_page() ? ' home' : ' not-home' ?>" >
+  <menu class="nav-menu<?php echo is_front_page() ? ' home' : ' not-home' ?>" >
 
-    <label class="menu-btn" for="menu-toggle">
+    <label class="menu-btn btn-red" for="menu-toggle">
       <h3 class="text-icon menu-w">Shop</h3>
     </label>
 
@@ -41,7 +41,7 @@ _________________________________________________________
             'menu_class' => '',                          // adding custom nav class
             'before' => '<span class="text-icon arrow-r">',
             'after' => '</span>',
-            'items_wrap'      => '<ul><h3 class="touch-toggle text-icon close-w">Back</h3>%3$s</ul>',
+            'items_wrap'      => '<ul><h3 class="touch-toggle btn-red text-icon close-w">Back</h3>%3$s</ul>',
             'theme_location' => 'featured-menu',         // where it's located in the theme
             'fallback_cb' => ''                          // fallback function (if there is one)
         )); ?>
@@ -53,14 +53,14 @@ _________________________________________________________
             'menu_class' => '',                         // adding custom nav class
             'before' => '<span class="text-icon arrow-r">',
             'after' => '</span>',
-            'items_wrap'      => '<ul><h3 class="touch-toggle text-icon close-w">Back</h3>%3$s</ul>',
+            'items_wrap'      => '<ul><h3 class="touch-toggle btn-red text-icon close-w">Back</h3>%3$s</ul>',
             'theme_location' => 'services-menu',         // where it's located in the theme
             'fallback_cb' => ''                          // fallback function (if there is one)
         )); ?>
       </li>
     </ul>
 
-  </div>
+  </menu>
 
   <div class="nav-right <?php echo is_front_page() ? 'carousel' : 'nav-breadcrumbs' ?>" >
 

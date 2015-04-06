@@ -1,33 +1,8 @@
 /*-- default list Layout -----------------------------------------------------------*/
 
-/*-- group list Layout -----------------------------------------------------------*/
-
-.shop-tile.group {
-  @extend %flex-3;
-  ul {
-    width:100%;
-    @extend %flex-parent-edgeless;
-  }
-  li {
-    line-height: 1.5;
-    @include jr-flex(1,2);
-    &:hover {
-      background-color: $jr-bg-hover;
-    }
-  }
-}
-/*-- category list Layout -----------------------------------------------------------*/
-
-.shop-grid.category,
-.shop-grid.items {
-
-}
-
 .shop-tile {
   background-color: white;
-  margin-bottom: $jr-margin;
   box-shadow: $jr-shadow;
-  @extend %flex-4;
   a {
     width: 100%;
   }
@@ -45,7 +20,16 @@
   }
 
   padding-bottom: 2rem;
-
+  ul {
+    width:100%;
+  }
+  li {
+    line-height: 1.5;
+    @include jr-flex(1,2);
+    &:hover {
+      background-color: $jr-bg-hover;
+    }
+  }
   div {
     @extend %header-block;
 
@@ -65,10 +49,5 @@
 .shop-items-nav {
   box-shadow: $jr-shadow;
   margin-bottom: $jr-margin;
-  @extend %flex-parent;
   background-color: white;
-}
-.shop-items-contact {
-  @extend %flex-1;
-  padding: $jr-margin;
 }

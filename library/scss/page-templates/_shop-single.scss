@@ -1,18 +1,9 @@
 /*-- single item Layout ------------------------------------------------------*/
 
-.item-header {
-  @extend %header-block;
-  border: $jr-border;
-  border-top-width: 0 1px 1px 1px;
-}
-
-
 
 .item-container {
-  @extend %flex-1;
-  @extend %flex-parent;
+  margin: 0 $jr-margin;
   box-shadow: $jr-shadow;
-  margin-bottom: $jr-margin;
   @include jr-size(screen) {
     flex-direction: row-reverse;
   }
@@ -21,19 +12,16 @@
 }
 
 .item-gallery {
-  @extend %flex-3;
-    border: $jr-border;
+  border: $jr-border;
   border-width: 0 1px;
 }
 
 .item-info {
-  @extend %flex-2;
+
 }
 
 .item-sidebar {
   line-height:1.5rem;
-
-  @extend %flex-parent;
   align-content: flex-start;
   //justify-content: flex-start;
 
@@ -44,9 +32,7 @@
   }
 
   button {
-    @extend %btn-grey;
     @include jr-flex(1,3);
-    width: calc(100%/3 - #{$jr-margin});
     //margin-right: 1rem;
     margin: 0.5rem;
     min-width: 130px;
@@ -55,11 +41,6 @@
       @include jr-flex(1,1);
     }
   }
-
-  .basket-w {
-    @extend %btn-red;
-  }
-
 }
 
 .item-features {
@@ -67,10 +48,7 @@
 }
 
 .item-thumbs {
-  @extend %flex-parent-edgeless;
-  li {
-    @extend %flex-4;
-  }
+
 }
 
 .item-power {

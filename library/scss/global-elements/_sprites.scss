@@ -133,31 +133,15 @@ $iconMap: (
     }
   }
 }
-/*old*/
-%text-icon {
-  @extend %has-icon-before;
-  padding-left: 2rem;
-  @include jr-icon(before) {
-    transform: scale(0.2);
-    transform-origin: top left;
-    left: 0;
-    top: 3px;
-  }
 
-  @include jr-size(screen) {
-    &:before {
-      transform: scale(0.25);
-    }
-  }
-}
 
 %loader-icon {
   @extend %has-icon-before;
   &::before {
     height: $sprite-grid-size;// / 4;
     width: $sprite-grid-size * 1.125;// * 2;
-    left: calc(50% - 48px - 1rem);
-    top: 3rem;
+    left: calc(50% - 72px);
+    top: 5rem;
             animation: loader-animate 0.4s steps(4) alternate infinite;
     -webkit-animation: loader-animate 0.4s steps(4) alternate infinite;
   }

@@ -30,15 +30,10 @@ main {
   @include jr-size(screen-hd) { width:1200px };
 }
 
-article {
-  @extend %flex-parent;
-}
 .article-header {
-  margin: 1rem $jr-margin;
-  @extend %flex-1;
+//  margin: $jr-margin;
 }
 
 .article-footer {
-  @extend %flex-parent;
   background-color: $jr-bg-light;
 }

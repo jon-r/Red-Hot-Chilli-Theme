@@ -4,9 +4,9 @@
   $filteredCategories = groupFilter($safeArr[group]);
 ?>
 
-<article class="shop-grid category">
+<article class="flex-container">
 
-  <header class="article-header" >
+  <header class="article-header flex-1" >
     <h1><?php echo $safeArr[group] ?></h1>
   </header>
 
@@ -15,7 +15,7 @@
     $imgUrl = imgSrcRoot('thumbnails',$category[RefName],'jpg');
   ?>
 
-    <div class="shop-tile">
+    <div class="shop-tile flex-4">
       <a href="?<?php echo $link ?>" >
         <div><h3><?php echo $category[Name] ?></h3></div>
         <img src="<?php echo $imgUrl ?>" >

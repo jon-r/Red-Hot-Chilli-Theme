@@ -1,6 +1,6 @@
     <footer class="primary-footer" role="contentinfo">
 
-      <div class="container">
+      <nav class=" container">
 
           <?php wp_nav_menu(array(
             'container' => '',                              // remove nav container
@@ -22,7 +22,7 @@
           <?php echo date( 'Y'); ?>
           <?php bloginfo( 'name' ); ?>
         </p>
-      </div>
+      </nav>
       <div class="header-social">
         <a class="facebook" href="<?php echo $rhcFacebookLink ?>">Facebook</a>
         <a class="linkedin" href="<?php echo $rhcLinkedinLink ?>">LinkedIn</a>

@@ -1,18 +1,17 @@
 /*-- index page elements -----------------------------------------------------*/
 
 .menu-featured {
-  @extend %flex-parent;
   li {
     box-shadow: $jr-shadow;
-    margin-bottom: $jr-margin;
     position: relative;
-    @extend %flex-4;
+    @extend .flex-4;
     height: 120px;
+    display: block;
+      @include jr-size(screen) {
+        height: auto;
+    }
     overflow: hidden;
     background-color: $jr-bg-dark;
-    @include jr-size(screen) {
-      height: auto;
-    }
   }
   h3 {
     @extend %header-block;
@@ -37,7 +36,6 @@
 
 .carousel {
   overflow: hidden;
-  margin-bottom: $jr-margin;
   position: relative;
   white-space: nowrap;
 }
