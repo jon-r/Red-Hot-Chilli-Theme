@@ -5,7 +5,7 @@ global $itemCountMax, $itemCountMin, $filterDescription, $categoryFilterArr, $tw
 $rhcFacebookLink = 'https://www.facebook.com/pages/Red-Hot-Chilli-Catering/147845465419524';
 $rhcTwitterLink = 'https://twitter.com/RHC_Catering';
 $rhcLinkedinLink = 'https://uk.linkedin.com/pub/simon-greenwood/69/b05/689';
-$rhcEmail = 'info@redhotchilli-northwest.co.uk';
+$rhcEmail = 'info@redhotchilli.catering';
 $rhcTel = '01925 242623';
 
 //how many items before pagination. Also limits some pages.

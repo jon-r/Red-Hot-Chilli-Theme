@@ -5,32 +5,50 @@ form {
   position: relative;
 }
 
-input {
+input, textarea {
   //display: inline-block;
   margin-bottom: 4px;
-}
-
-
-input {
+  padding:0;
   background-color: white;
   color: $jr-text-dark;
   border: none;
 }
 
-form button {
-  display:none;
-  position: absolute;
-  right:0;
-  bottom:4px;
-  padding: 2px $jr-margin;
-}
-
-input:focus + button {
-  display:block;
-}
-
-label {
+label, input, button {
   float: left;
+}
+
+input, button {
+  font-size: 1.2rem;
+  height:2rem;
+}
+
+.form-head-search {
+  input {
+    line-height: 2rem;
+    width: calc(100% - 5rem);
+    padding-left: 2rem;
+    box-shadow: inset $jr-shadow;
+    border-bottom-left-radius: 4px;
+  }
+
+  button {
+    width: 3rem;
+    border-bottom-right-radius: 4px;
+    background-image: linear-gradient(to bottom, jr-red(4), jr-red(2))
+  }
+}
+
+.form-contact {
+  input {
+    @include jr-flex(1,2);
+  }
+  textarea {
+        @include jr-flex(1,1);
+  }
+  input,textarea {
+    margin-left: 4px;
+  }
 }
 
 //form {

@@ -1,7 +1,7 @@
 /*-------------------------sprite layouts + settings ----------------------------------*/
 
 //temp link for image-relativity;
-$siteLink: /rhc_online;
+$siteLink: /redhotchilli;
 
 //size of sprite grid
 $sprite-grid-size: 128px;
@@ -124,7 +124,7 @@ $iconMap: (
     transform: scale(0.2);
     transform-origin: top left;
     left: 0;
-    top: 3px;
+    top: 1px;
   }
 
   @include jr-size(screen) {

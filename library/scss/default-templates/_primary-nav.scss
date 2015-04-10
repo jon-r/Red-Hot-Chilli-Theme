@@ -58,8 +58,8 @@ nav a {
 #menu-toggle:checked + .nav-menu.not-home, .nav-menu.home {
     height: auto;
     @include jr-size (screen) {
-      height: 18rem;
-      margin-bottom: -15rem;
+      height: 19rem;
+      margin-bottom: -16rem;
     }
   }
 
@@ -75,7 +75,8 @@ nav a {
   position: relative;
   box-shadow: $jr-shadow;
   background-color: white;
-
+  text-align: center;
+  overflow: hidden;
   span {
     display: inline-block;
     width:100%;
@@ -89,12 +90,14 @@ nav a {
   li {
     cursor: pointer;
     padding-left: 0.5rem;
+    border-bottom: $jr-border;
     ul {
       position: absolute;
       min-height: 100%;
       height: auto;
       background-color: white;
       top: 0;
+      left: 100%;
       transition: left 400ms;
     }
     &:active, &:hover {
@@ -104,19 +107,20 @@ nav a {
   a {
     width: 100%;
   }
-  @include jr-size(phoneOnly) {
-    li {
-      text-align: center;
-
-      padding-left: 0;
-      ul {
-        left:100%;
+  .active-li {
+    ul {
+      left:0;
+      @include jr-size(screen) {
+        left:98%;
       }
     }
-    .active-li {
-      ul {
-        left:0;
-      }
+  }
+  @include jr-size(phoneOnly) {
+    li {
+      padding-left: 0;
+//      ul {
+//        left:100%;
+//      }
     }
     a {
       max-width: 250px;
@@ -129,18 +133,19 @@ nav a {
       display: inline-block;
       font-size: 1.25rem;
       padding: 0.5rem 0.5rem;
-      ul {
-        left: 100%;
-      }
     }
-    .active-li {
-      ul {
-        left:0;
-      }
-    }
+//    .active-li {
+//      ul {
+//        left:0;
+//      }
+//    }
   }
 
   @include jr-size(screen) {
+    overflow:visible;
+    width: 250px;
+    margin-left: -4px;
+    text-align: left;
     li {
       ul {
         display: none;
@@ -158,11 +163,9 @@ nav a {
       }
     }
   }
-  @include jr-size(screen) {
-    width: 250px;
-    margin-left: -4px;
-  }
 }
+
+
 
 
 

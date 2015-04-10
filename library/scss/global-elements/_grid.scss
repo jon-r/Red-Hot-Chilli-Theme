@@ -31,7 +31,6 @@
 /*old*/
 %flex-child-base {
   @include jr-flex(1,1);
-  display: inline-block;
   margin-bottom: $jr-margin;
 }
 

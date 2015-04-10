@@ -45,14 +45,14 @@
 
   <header class="primary-header" role="banner">
 
-    <div class="container<?php echo is_front_page() ? ' home' : ' not-home' ?>" >
+    <div class="container flex-container<?php echo is_front_page() ? ' home' : ' not-home' ?>" >
 
-      <a class="header-logo" href="<?php echo home_url(); ?>" rel="nofollow">
-        <img src="<?php echo imgSrcRoot('rhc','RHC_Logo_2','png'); ?>" alt="Red Hot Chilli - Used Catering Equipment"/>
+      <a class="header-logo flex-<?php echo is_front_page() ? '1' : '2' ?>" href="<?php echo home_url(); ?>" rel="nofollow">
+        <img src="<?php echo imgSrcRoot('rhc','RHC-Web','png'); ?>" alt="Red Hot Chilli - Used Catering Equipment"/>
       </a>
 
-      <menu class="header-links flex-container">
-        <form class="header-search flex-<?php echo is_front_page() ? '2' : '1' ?>" >
+      <menu class="header-links flex-<?php echo is_front_page() ? '1' : '2' ?> flex-container">
+        <form class="form-head-search flex-<?php echo is_front_page() ? '2' : '1' ?>" >
           <h3 class="head-title">Search Catering Equipment</h3>
           <label class="text-icon search"></label>
           <input type="hidden" name="page_id" value="<?php echo jr_page('srch') ?>">
@@ -61,10 +61,11 @@
         </form>
         <div class="header-contact flex-<?php echo is_front_page() ? '2' : '1' ?>" >
           <h3 class="head-title">Talk to us Direct</h3>
-          <h4 class="text-icon phone-w" ><?php echo $rhcTel ?></h4>
-          <a href="mailto:<?php echo $rhcEmail ?>" ><h4 class="text-icon email-w"><?php echo $rhcEmail ?></h4></a>
+          <h3 class="text-icon phone-w" ><?php echo $rhcTel ?></h3>
+          <a href="mailto:<?php echo $rhcEmail ?>" ><h3 class="text-icon email-w"><?php echo $rhcEmail ?></h3></a>
         </div>
       </menu>
+
     </div>
   </header>
 

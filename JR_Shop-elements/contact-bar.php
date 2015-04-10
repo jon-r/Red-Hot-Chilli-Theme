@@ -4,17 +4,18 @@
 
 <article class="contact-bar flex-container">
 
-  <form class="flex-2">
+  <form class="form-contact flex-2">
     <h2>Contact us about <?php echo $safeArr[pgName]; ?></h2>
     <p>Contact us today</p>
-    <input type="text" name="name">
-    <label for="Name">Name</label>
-    <input type="email" name="email">
-    <label for="email">Email Address</label>
-    <input type="number" name="phone">
-    <label for="phone">Phone Number</label>
-    <input type="text" name="subject">
-    <label for="subject">Subject</label>
+<!--    <label for="Name">Name</label>-->
+    <input type="text" name="name" placeholder="Name">
+<!--    <label for="email">Email Address</label>-->
+    <input type="email" name="email" placeholder="Email Address">
+<!--    <label for="phone">Phone Number</label>-->
+    <input type="number" name="phone" placeholder="Phone Number">
+<!--    <label for="subject">Subject</label>-->
+    <input type="text" name="subject" placeholder="Message Subject">
+    <textarea placeholder="message">blah</textarea>
   </form>
 
   <div class="testimonial-slides flex-2">
