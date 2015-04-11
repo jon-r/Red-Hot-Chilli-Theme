@@ -594,7 +594,6 @@ form {
   position: relative; }
 
 input, textarea {
-  margin-bottom: 4px;
   padding: 0;
   background-color: white;
   color: #18181b;
@@ -608,6 +607,7 @@ input, button {
   height: 2rem; }
 
 .form-head-search input {
+  margin-bottom: 4px;
   line-height: 2rem;
   width: calc(100% - 5rem);
   padding-left: 2rem;
@@ -618,12 +618,33 @@ input, button {
   border-bottom-right-radius: 4px;
   background-image: linear-gradient(to bottom, #a32929, #5c0a0a); }
 
-.form-contact input {
-  width: calc(50% - 20px); }
-.form-contact textarea {
-  width: calc(100% - 20px); }
-.form-contact input, .form-contact textarea {
-  margin-left: 4px; }
+.form-contact {
+  margin: 20px;
+  border-right: 1px solid #e4e4e7; }
+  .form-contact input, .form-contact textarea {
+    margin-bottom: 20px;
+    padding-left: 4px; }
+  .form-contact textarea {
+    height: 10rem;
+    resize: vertical;
+    width: calc(100% - 20px); }
+    @media only screen and (min-width: 1031px) {
+      .form-contact textarea {
+        width: calc(83.33333% - 20px); } }
+  .form-contact input {
+    width: calc(66.66667% - 20px);
+    margin-right: 16.66667%; }
+  .form-contact label {
+    font-size: 0.75rem;
+    padding-right: 4px;
+    width: calc(100% - 20px); }
+    @media only screen and (min-width: 1031px) {
+      .form-contact label {
+        text-align: right;
+        width: calc(16.66667% - 20px); } }
+  .form-contact button {
+    width: calc(33.33333% - 20px);
+    margin-left: 66.66667%; }
 
 /*--- common page elements + defaults -------------------------------------------------*/
 /*title block*/
@@ -635,7 +656,6 @@ input, button {
 
 /*button style*/
 button, .btn-red {
-  text-align: left;
   border: none;
   line-height: 2.25rem;
   background-color: #e4e4e7; }
@@ -726,7 +746,7 @@ main {
   padding-bottom: 20px; }
 
 .contact-bar {
-  background-color: #494950;
+  background-color: #303036;
   color: #e4e4e7; }
 
 /*- menu parts ---------------------------------------------------------------*/
