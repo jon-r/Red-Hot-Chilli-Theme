@@ -3,9 +3,6 @@
 .primary-header, .primary-footer {
   position: relative;
   width: 100%;
-  background:
-    url(#{$siteLink + '/images/rhc/Head-Banner.jpg'}) center no-repeat,
-    linear-gradient(to right, jr-grey(1.5) 5%, jr-grey(4) 95%);
   border: 0 solid $jr-emphasis;
   color: $jr-text-light;
   box-shadow: $jr-shadow;
@@ -14,7 +11,16 @@
 
 .primary-header {
   border-bottom-width: 6px;
-//  max-height: 250px;
+  background: url(#{$siteLink + '/images/rhc/Head-Banner.jpg'}) top/cover;
+  @include jr-size(screen-hd) {
+    background:
+      url(#{$siteLink + '/images/rhc/Head-Banner.jpg'}) center no-repeat,
+      linear-gradient(to right, jr-grey(1.5) 25%, jr-grey(4) 75%);
+ //   height: 250px;
+    .home {
+      height: 250px;
+    }
+  }
 }
 
 .head-title {
@@ -38,7 +44,9 @@
 }
 
 .header-logo {
+  align-self: flex-start;
   max-width: 450px;
+  margin: jr-spacer(0.5);
 }
 
 .header-links {

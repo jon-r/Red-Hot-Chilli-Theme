@@ -41,10 +41,10 @@ input, button {
 
 .form-contact {
   input {
-    @include jr-flex(1,2);
+    @include jr-width(1,2);
   }
   textarea {
-        @include jr-flex(1,1);
+        @include jr-width(1,1);
   }
   input,textarea {
     margin-left: 4px;

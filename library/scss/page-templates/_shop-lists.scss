@@ -19,13 +19,13 @@
     transform-origin: bottom right;
   }
 
-  padding-bottom: 2rem;
+  padding-bottom: jr-spacer(2);
   ul {
     width:100%;
   }
   li {
     line-height: 1.5;
-    @include jr-flex(1,2);
+    @include jr-width(1,2);
     &:hover {
       background-color: $jr-bg-hover;
     }
@@ -48,6 +48,6 @@
 
 .shop-items-nav {
   box-shadow: $jr-shadow;
-  margin-bottom: $jr-margin;
+  margin-bottom: jr-spacer();
   background-color: white;
 }

@@ -26,13 +26,17 @@ main {
   margin:  0 auto;
   position: relative;
   width:100%;
-  @include jr-size(screen) { width: 1000px };
+  overflow: hidden;
+  @include jr-size(screen) {
+    width: 1000px ;
+      overflow: visible;
+  };
   @include jr-size(screen-hd) { width:1200px };
 }
 
 .article-header {
  border-bottom: $jr-border;
-  padding-bottom: $jr-margin;
+  padding-bottom: jr-spacer();
 }
 
 .contact-bar {

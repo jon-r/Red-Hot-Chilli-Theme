@@ -38,9 +38,11 @@
   overflow: hidden;
   position: relative;
   white-space: nowrap;
-  margin-bottom: 5rem;
+  @include jr-size(screen) {
+    margin-bottom: jr-spacer(4);
+  }
   @include jr-size(screen-hd) {
-    margin-bottom: $jr-margin;
+    margin-bottom: jr-spacer(1);
   }
 }
 
@@ -83,8 +85,8 @@
 }
 
 .carousel-blips {
-  top:1rem;
-  right:1rem;
+  top:jr-spacer();
+  right:jr-spacer();
   z-index: 10;
   position: absolute;
 }

@@ -1,15 +1,25 @@
 @function jr-red($n) {
-  $saturation: 10% * (10 - $n);
-  $lightness: 10% * $n;
-  @return hsl(0, $saturation, $lightness);
+  @if $n >= 0 && $n >= 10 {
+    $saturation: 10% * (10 - $n);
+    $lightness: 10% * $n;
+    @return hsl(0, $saturation, $lightness);
+  }
+  @else {
+    @warn "`#{$n}` must be between `0-10`.";
+  }
 }
 
 
 
 @function jr-grey($n) {
-  $lightness: 10% * $n;
-  $saturation: 10% * (10 - $n);
-  @return hsl(240, 5%, $lightness);
+  @if $n >= 0 && $n >= 10 {
+    $lightness: 10% * $n;
+    $saturation: 10% * (10 - $n);
+    @return hsl(240, 5%, $lightness);
+  }
+  @else {
+    @warn "`#{$n}` must be between `0-10`.";
+  }
 }
 
 $jr-emphasis: jr-red(3.5);
@@ -38,10 +48,14 @@ $jr-text-hover: jr-grey(4.5);
 
 $xNO-USE-example: hsl(240, 5%, 25%);
 
-$jr-margin: 1.5rem;
-$jr-border: 1px solid jr-grey(8);
+$jr-border: 1px solid jr-grey(9);
+$jr-border-dark: 1px solid jr-grey(4);
 $jr-shadow: 0 2px 4px rgba(jr-grey(1),0.5);
 
+
+@function jr-spacer($n:1) {
+  @return 20px * $n;
+}
 
 //*media query setup-------------------------------------------------------------------*/
 

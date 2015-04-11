@@ -41,10 +41,7 @@ nav a {
 
 .not-home {
   .menu-btn {
-      cursor: pointer;
-    @include jr-icon(before, arrow-w) {
-      margin-bottom: $jr-margin;
-    };
+    cursor: pointer;
   }
 }
 
@@ -55,18 +52,6 @@ nav a {
   }
 }
 
-#menu-toggle:checked + .nav-menu.not-home, .nav-menu.home {
-    height: auto;
-    @include jr-size (screen) {
-      height: 19rem;
-      margin-bottom: -16rem;
-    }
-  }
-
-
-#menu-toggle:checked {
-
-}
 
 .nav-menu {
   z-index: 6;
@@ -77,19 +62,19 @@ nav a {
   background-color: white;
   text-align: center;
   overflow: hidden;
-  span {
+  span, a {
     display: inline-block;
     width:100%;
   }
   ul {
-    widtH:100%;
+    width:100%;
     overflow: hidden;
-    height: calc(100% - 2rem);
-    line-height: 2rem;
+  //  height: calc(100% - 2rem);
+    line-height: 2.5rem;
   }
   li {
     cursor: pointer;
-    padding-left: 0.5rem;
+    padding-left: jr-spacer(0.5);
     border-bottom: $jr-border;
     ul {
       position: absolute;
@@ -104,9 +89,6 @@ nav a {
       background-color: $jr-bg-hover;
     }
   }
-  a {
-    width: 100%;
-  }
   .active-li {
     ul {
       left:0;
@@ -118,9 +100,6 @@ nav a {
   @include jr-size(phoneOnly) {
     li {
       padding-left: 0;
-//      ul {
-//        left:100%;
-//      }
     }
     a {
       max-width: 250px;
@@ -129,24 +108,22 @@ nav a {
 
   @include jr-size(tabletOnly) {
     li {
-      @include jr-flex(1, 2);
+      @include jr-width(1, 2);
       display: inline-block;
-      font-size: 1.25rem;
-      padding: 0.5rem 0.5rem;
+      padding: jr-spacer(0.5);
+      &:nth-of-type(even){
+        border-left: $jr-border;
+      }
+
     }
-//    .active-li {
-//      ul {
-//        left:0;
-//      }
-//    }
   }
 
   @include jr-size(screen) {
-    overflow:visible;
     width: 250px;
     margin-left: -4px;
     text-align: left;
     li {
+      line-height: 2rem;
       ul {
         display: none;
         box-shadow: $jr-shadow;
@@ -166,19 +143,32 @@ nav a {
 }
 
 
+#menu-toggle:checked + .not-home, .nav-menu.home {
+  height: auto;
+  overflow: visible;
+}
 
+#menu-toggle:checked + .not-home {
+  @include jr-size (screen) {
+    margin-bottom: -16rem;
+  }
+}
+
+.nav-menu.home {
+  margin-bottom: jr-spacer();
+}
 
 
 .nav-right {
   border-bottom: $jr-border;
   background-color: white;
   flex: 1 1 100%;
-  margin-bottom: $jr-margin;
+  margin-bottom: jr-spacer(2);
   @include jr-size(screen) {
     flex: 1 1 75%;
   }
 
-  @include clearfix;
+//  @include clearfix;
 }
 
 
@@ -187,7 +177,7 @@ nav a {
 .nav-paginate {
   a {
     border-left: $jr-border;
-    padding-right: 1rem;
+    padding-right: jr-spacer();
   }
 }
 .nav-breadcrumbs {
@@ -196,6 +186,6 @@ nav a {
 
 .nav-paginate {
   a {
-    padding-left: 1rem;
+    padding-left: jr-spacer();
   }
 }

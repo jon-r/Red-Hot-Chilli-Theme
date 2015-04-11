@@ -179,7 +179,7 @@ $icon-before:
 //
 //
 //.items-loader {
-//  @include jr-flex(1,1);
+//  @include jr-width(1,1);
 //  @include jr-icon(before, loader, $master: true) {
 //    left: calc(50% - 48px - 1rem);
 //    animation: loader-animate 0.4s steps(5) alternate infinite;
