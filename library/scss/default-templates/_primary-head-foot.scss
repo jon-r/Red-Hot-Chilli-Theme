@@ -51,6 +51,30 @@
 
 .header-links {
   margin-bottom: 0;
+    font-size: 1.25rem;
+  @include jr-size(screen) {
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+  }
 }
 
+.form-head-search {
+  input {
+      margin-bottom: 4px;
+    line-height: 2rem;
+    width: calc(100% - 5rem);
+    padding-left: 2rem;
+    border-bottom-left-radius: 4px;
+  }
 
+  button {
+    width: 3rem;
+    border-bottom-right-radius: 4px;
+    background-image: linear-gradient(to bottom, jr-red(4), jr-red(2))
+  }
+}
+
+.primary-footer {
+  border-top-width: 6px;
+  background-color: jr-grey(2);
+}

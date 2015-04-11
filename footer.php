@@ -23,11 +23,6 @@
           <?php bloginfo( 'name' ); ?>
         </p>
       </nav>
-      <div class="header-social">
-        <a class="facebook" href="<?php echo $rhcFacebookLink ?>">Facebook</a>
-        <a class="linkedin" href="<?php echo $rhcLinkedinLink ?>">LinkedIn</a>
-        <a class="twitter" href="<?php echo $rhcTwitterLink ?>">Twitter</a>
-      </div>
 
     </footer>
 

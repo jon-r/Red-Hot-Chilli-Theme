@@ -1,4 +1,4 @@
-/*- menu parts ---------------------------------------------------------------*/
+/*- top menu parts ---------------------------------------------------------------*/
 
 nav a {
   &.active, &:active, &:hover {
@@ -171,8 +171,6 @@ nav a {
 //  @include clearfix;
 }
 
-
-
 .nav-breadcrumbs,
 .nav-paginate {
   a {
@@ -184,8 +182,82 @@ nav a {
   height: auto;
 }
 
+
+/* --- bottom menu parts --------------------------------------------------------------*/
+
 .nav-paginate {
   a {
     padding-left: jr-spacer();
+  }
+}
+
+.contact-bar {
+  background-color: jr-grey(2);
+  color: $jr-text-light;
+}
+
+.social-links {
+  text-align: center;
+  font-size: 0.5rem;
+  color: $jr-text-dark;
+  a {
+    width: 64px;
+    display: inline-block;
+    margin-right: jr-spacer(0.5);
+  }
+}
+
+.testimonials {
+  border-bottom: $jr-border-dark;
+  p, h4 {
+    width: 100%;
+    margin-bottom: jr-spacer();
+  }
+  p {
+    text-align: center;
+    font-size: 1.25rem;
+  }
+  h4 {
+    text-align: right;
+  }
+}
+
+.form-contact, .social {
+  margin: jr-spacer() 0;
+  h2 {
+    margin-bottom:jr-spacer();
+  }
+}
+
+.form-contact {
+  border-right: $jr-border-dark;
+  input, textarea {
+    margin-bottom: jr-spacer();
+    padding-left: 4px;
+  }
+  textarea {
+    height: 10rem;
+    resize: vertical;
+    @include jr-width(1, 1);
+    @include jr-size(screen) {
+      @include jr-width(5, 6);
+    }
+  }
+  input {
+    @include jr-width(4, 6);
+    margin-right: percentage(1/6);
+  }
+  label {
+    font-size: 0.75rem;
+    padding-right: 4px;
+    @include jr-width(1, 1);
+    @include jr-size(screen) {
+      text-align: right;
+      @include jr-width(1, 6);
+    }
+  }
+  button {
+    @include jr-width(2, 6);
+    margin-left: percentage(4/6);
   }
 }

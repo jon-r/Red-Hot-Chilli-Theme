@@ -35,11 +35,7 @@ main {
 }
 
 .article-header {
- border-bottom: $jr-border;
+ border-bottom: $jr-border-dark;
   padding-bottom: jr-spacer();
 }
 
-.contact-bar {
-  background-color: jr-grey(2);
-  color: $jr-text-light;
-}

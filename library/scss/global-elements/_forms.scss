@@ -7,6 +7,7 @@ form {
 
 input, textarea {
   //display: inline-block;
+  box-shadow: inset $jr-shadow;
   padding:0;
   background-color: white;
   color: $jr-text-dark;
@@ -22,56 +23,7 @@ input, button {
   height:2rem;
 }
 
-.form-head-search {
-  input {
-      margin-bottom: 4px;
-    line-height: 2rem;
-    width: calc(100% - 5rem);
-    padding-left: 2rem;
-    box-shadow: inset $jr-shadow;
-    border-bottom-left-radius: 4px;
-  }
 
-  button {
-    width: 3rem;
-    border-bottom-right-radius: 4px;
-    background-image: linear-gradient(to bottom, jr-red(4), jr-red(2))
-  }
-}
-
-.form-contact {
-  margin: jr-spacer();
-  border-right: $jr-border;
-  input, textarea {
-    margin-bottom: jr-spacer();
-    padding-left: 4px;
-  }
-  textarea {
-    height: 10rem;
-    resize: vertical;
-    @include jr-width(1, 1);
-    @include jr-size(screen) {
-      @include jr-width(5, 6);
-    }
-  }
-  input {
-    @include jr-width(4, 6);
-    margin-right: percentage(1/6);
-  }
-  label {
-    font-size: 0.75rem;
-    padding-right: 4px;
-    @include jr-width(1, 1);
-    @include jr-size(screen) {
-      text-align: right;
-      @include jr-width(1, 6);
-    }
-  }
-  button {
-    @include jr-width(2, 6);
-    margin-left: percentage(4/6);
-  }
-}
 
 //form {
 //  position: relative;

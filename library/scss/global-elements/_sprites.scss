@@ -128,8 +128,23 @@ $iconMap: (
   }
 
   @include jr-size(screen) {
-    &:before {
+    @include jr-icon(before) {
       transform: scale(0.25);
+    }
+  }
+}
+
+.btn-icon {
+  @extend %has-icon-before;
+  @include jr-icon(before) {
+    transform: scale(0.375);
+    transform-origin: top left;
+    left: 0;
+    top: 0;
+  }
+  @include jr-size(screen) {
+    @include jr-icon(before) {
+      transform: scale(0.5);
     }
   }
 }
@@ -195,6 +210,18 @@ $icons-before: (
 );
 
 @each $item-name in $icons-before {
+  .#{$item-name} {
+    @include jr-icon(before, $item-name);
+  }
+}
+
+$icons-social: (
+  facebook,
+  twitter,
+  linkedin
+);
+
+@each $item-name in $icons-social {
   .#{$item-name} {
     @include jr-icon(before, $item-name);
   }

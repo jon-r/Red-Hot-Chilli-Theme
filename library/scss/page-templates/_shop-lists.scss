@@ -34,13 +34,13 @@
     @extend %header-block;
 
     &:first-child {
-      border-bottom: $jr-border;
+      border-bottom: $jr-border-dark;
     }
     &:last-child {
       font-size: 0.9rem;
       position: absolute;
       bottom: 0;
-      border-top: $jr-border;
+      border-top: $jr-border-dark;
       background-color: white;
     }
   }

@@ -1,5 +1,6 @@
 <?php
-global $itemCountMax, $itemCountMin, $filterDescription, $categoryFilterArr, $twitterLink, $facebookLink, $linkedinLink;
+global $itemCountMax, $itemCountMin, $filterDescription, $categoryFilterArr,
+  $rhcTwitterLink, $rhcFacebookLink, $rhcLinkedinLink;
 
 //social media links.
 $rhcFacebookLink = 'https://www.facebook.com/pages/Red-Hot-Chilli-Catering/147845465419524';
