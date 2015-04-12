@@ -7,7 +7,7 @@
     <a href="?all=1&page_id=16">Click here to View All</a>
   </header>
 
-  <?php foreach($groupsList as $group) :
+  <?php foreach($getGroup as $group) :
       $link = http_build_query(['g' => $group, 'page_id' => jr_page('grp')]);
       $categoriesListFiltered = array_filter ($categoriesList, isGroup($group));
       $groupHeaderImg = imgSrcRoot('icons','header-'.strtok($group, ' '),'png');

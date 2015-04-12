@@ -5,10 +5,10 @@
 <?php
 
 if ($safeArr[ss]) {
-    $item = jr_item_query($safeArr[rhc], 1);
+    $item = jr_query_items($safeArr[rhc], 1);
     $shop_item = jr_shop_compile($item,'ssFull');
   } else {
-    $item = jr_item_query($safeArr[rhc]);
+    $item = jr_query_items($safeArr[rhc]);
     $shop_item = jr_shop_compile($item,'full');
   }
 ?>

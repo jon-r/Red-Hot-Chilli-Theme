@@ -15,7 +15,7 @@ _________________________________________________________
     </label>
 
     <ul id="js-main-list" >
-    <?php foreach($groupsList as $group) :
+    <?php foreach($getGroup as $group) :
         $link = http_build_query(['g' => $group, 'page_id' => jr_page('grp')]);
         $categoriesListFiltered = array_filter ($categoriesList, isGroup($group));
       ?>

@@ -1,17 +1,19 @@
 <?php
 /* carousel on the front page */
-$carouselCount = $blipCount = 0;
+//$carouselCount = $blipCount = 0;
+$carouselList = jr_query_carousel();
 ?>
 
 
 <ul id="js-carouselMain" class="carousel-container">
 
-  <?php foreach ($carouselList as $slideRaw) :
-    $carouselCount++;
-    $slide = magic_roundabout($slideRaw);
+  <?php //foreach ($carouselList as $slideRaw) :
+    for ($i = 0; $i < count($carouselList); $i++) :
+   // $carouselCount++;
+    $slide = magic_roundabout($carouselList[$i]);
   ?>
 
-  <li class="slide<?php echo $carouselCount == 1 ? ' is-active' : null ?>" data-slideNum="<?php echo $carouselCount ?>" >
+  <li class="slide<?php echo $i == 0 ? ' is-active' : null ?>" data-slideNum="<?php echo $i ?>" >
     <a href="<?php echo $slide[link]; ?>">
 
       <img class="slide-image" src="<?php echo $slide[image]; ?>" alt="<?php echo $slide[title]; ?>" >
@@ -28,12 +30,12 @@ $carouselCount = $blipCount = 0;
     </a>
   </li>
 
-  <?php endforeach ?>
+  <?php endfor ?>
 
 </ul>
 
 <ul id="js-blipParent" class="carousel-blips">
-  <?php foreach ($carouselList as $slide) : $blipCount++; ?>
-  <li class="blipper<?php echo $blipCount++ == 1 ? ' active' : null ?>" data-blipNum="<?php echo $blipCount ?>" ></li>
-  <?php endforeach ?>
+  <?php for ($i = 0; $i < count($carouselList); $i++) : ?>
+  <li class="blipper<?php echo $i == 0 ? ' active' : null ?>" data-blipNum="<?php echo $i ?>" ></li>
+  <?php endfor ?>
 </ul>

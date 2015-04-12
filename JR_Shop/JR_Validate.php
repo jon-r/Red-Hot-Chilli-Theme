@@ -5,6 +5,9 @@
   > no personal details are to be keeped on internet databases
   > Light security whitlelist sanitises the input to prevent injection just in case.
 */
+
+//idea of this function is to act as a wall between input and output.
+//the user can input whatever he wants, but only strings on this page are used
 function jr_validate_params($get) {
   $out = null;
 
@@ -83,48 +86,42 @@ function jr_validate_params($get) {
 
 //-------------------------------
 
-//validates keywords
-function jr_validate_keywords($rawIn) {
-  global $keywords;
-  return in_array($rawIn, $keywords) ?: $rawIn;
-}
-
 //validates group
 function jr_validate_group($rawGroup) {
-  global $groupsList;
-  return in_array($rawGroup, $groupsList) ? $rawGroup : null;
+  global $getGroup;
+  return in_array($rawGroup, $getGroup) ? $rawGroup : null;
 }
 
 //validates categories, makes sure exists
 function jr_validate_category($rawCategory) {
-  global $categoriesListColumn;
+  $categoriesListColumn = jr_query_col_unique('name', 'rhc_categories');
   return in_array($rawCategory, $categoriesListColumn) ? $rawCategory : null ;
 };
 
 //validates stainless pages,
 //returns TRUE/FALSE (this is only being used as a switch between stainless and standard product tables)
-//TODO, check for RHCs
 function jr_validate_stainless($rawStainless) {
-  global $stainlessList;
+  $stainlessList = jr_query_keywords('stainless');
   return in_array($rawStainless, $stainlessList);
 };
 
 //validates brands.
 //note this is vs ALL brands in the db, not just the 'major' brand keywords
 function jr_validate_brand($rawBrand) {
-  global $brandsListFull;
+ // global $brandsListFull;
+  $brandsListFull = jr_query_col_unique('Brand', 'networked db');
   return in_array(ucwords($rawBrand), $brandsListFull) ? ucwords($rawBrand) : null;
 };
 
 //validatesRHC
 function jr_validate_rhc($rawRHC) {
-  global $rhcColumn;
+  $rhcColumn = jr_query_col_unique('rhc', 'networked db');
   return in_array($rawRHC, $rhcColumn) ? $rawRHC : null;
 };
 
 //validatesRHCs
 function jr_validate_rhcs($rawRHC) {
-  global $rhcsColumn;
+  $rhcsColumn = jr_query_col_unique('rhcs', 'benchessinksdb');
   return in_array($rawRHC, $rhcsColumn) ? $rawRHC : null;
 };
 

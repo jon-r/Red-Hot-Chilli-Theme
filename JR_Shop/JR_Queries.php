@@ -6,31 +6,63 @@ global $wpdb, $categoriesList, $carouselList, $groupsList, $stainlessList, $bran
 $categoriesList = $wpdb->get_results("SELECT * FROM rhc_categories;", ARRAY_A);
 
 //get carousel
-$carouselList = $wpdb->get_results("SELECT * FROM `carousel` WHERE `IsLive` = 1 ORDER BY `OrderNo` DESC;", ARRAY_A);
+//$carouselList = $wpdb->get_results("SELECT * FROM `carousel` WHERE `IsLive` = 1 ORDER BY `OrderNo` DESC;", ARRAY_A);
 
 //get keyword columns. For Smart Search
-$groupsList = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` = 'group'");
+//$groupsList = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` = 'group'");
 
-$stainlessList = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` = 'stainless'");
+//$stainlessList = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` = 'stainless'");
 
-$brandsListMajor = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` = 'brand'");
+//$brandsListMajor = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` = 'brand'");
 
 //get new items
-$rhcListNew = $wpdb->get_col("SELECT `rhc` FROM `networked db` WHERE (`LiveonRHC` = 1 AND `Sold` = 0) ORDER BY `rhc` DESC LIMIT $itemCountMax") ;
+//$rhcListNew = $wpdb->get_col("SELECT `rhc` FROM `networked db` WHERE (`LiveonRHC` = 1 AND `Sold` = 0) ORDER BY `rhc` DESC LIMIT $itemCountMax") ;
 
 /*Validation Querys \
 \ for validation only. */
-$brandsListFull = array_unique($wpdb->get_col("SELECT `Brand` FROM `networked db` WHERE `Brand` != '0' AND SOLD = 0"));
-$categoriesListColumn = $wpdb->get_col("SELECT `name` FROM `rhc_categories`");
-$rhcColumn = $wpdb->get_col("SELECT `rhc` FROM `networked db`");
-$rhcsColumn = $wpdb->get_col("SELECT `rhcs` FROM `benchessinksdb`");
-$keywords = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` LIKE '$keywordGroup'");
+//$brandsListFull = array_unique($wpdb->get_col("SELECT `Brand` FROM `networked db` WHERE `Brand` != '0' AND SOLD = 0"));
+//$categoriesListColumn = $wpdb->get_col("SELECT `name` FROM `rhc_categories`");
+//$rhcColumn = $wpdb->get_col("SELECT `rhc` FROM `networked db`");
+//$rhcsColumn = $wpdb->get_col("SELECT `rhcs` FROM `benchessinksdb`");
 
 
+//these are pretty much a lightweight cover over the wpdb class
+function jr_query_col_unique($column, $table) {
+  global $wpdb;
+
+  $queryStr = "SELECT `$column` FROM `$table`";
+  return array_unique($wpdb->get_col($queryStr));
+}
+
+function jr_query_keywords($keyword) {
+  global $wpdb;
+
+  $queryStr = "SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` = '$keyword'";
+  return array_unique($wpdb->get_col($queryStr));
+  //return $queryStr;
+}
+
+function jr_query_categories() {
+  global $wpdb;
+
+  return $wpdb->get_results("SELECT * FROM rhc_categories;", ARRAY_A);
+}
+
+function jr_query_carousel() {
+  global $wpdb;
+
+  return $wpdb->get_results("SELECT * FROM `carousel` WHERE `IsLive` = 1 ORDER BY `OrderNo` DESC;", ARRAY_A);
+}
+
+function jr_query_new() {
+  global $itemCountMax, $wpdb;
+
+  return $wpdb->get_col("SELECT `rhc` FROM `networked db` WHERE (`LiveonRHC` = 1 AND `Sold` = 0) ORDER BY `rhc` DESC LIMIT $itemCountMax") ;
+}
 
 //----------------wpdb query generator---------------------------------------------------
 //query for 'items full'
-function jr_item_query($safeRHC, $SS = null) {
+function jr_query_items($safeRHC, $SS = null) {
   global $wpdb;
   if ($SS) {
     $queryFull = $wpdb->get_row("SELECT `RHCs`, `Image`, `ProductName`, `Category`, `Height`, `Width`, `Depth`, `Price`, `Quantity`, `TableinFeet`, `Line1` FROM `benchessinksdb` WHERE RHCs = $safeRHC", ARRAY_A);
@@ -63,7 +95,7 @@ function jr_category_filter( $safeArr, $pageNumber) {
   //return $queryFull;
 }
 //count all items from query, for pagination
-function ájr_cat_count($safeArr) {
+function jr_cat_count($safeArr) {
   global $wpdb;
 
 //  if ($safeArr['pgType'] == 'New' || $safeArr['pgType'] == 'Sold') {
@@ -77,7 +109,6 @@ function ájr_cat_count($safeArr) {
 }
 
 //fills page with sold items. Mix of filler for design balance and show past sales.
-//includes last pages.
 function jr_cat_sold($safeArr, $itemsOnPage) {
   global $wpdb;
 

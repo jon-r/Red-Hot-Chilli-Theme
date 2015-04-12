@@ -17,32 +17,33 @@ Priority:
 
 
 function jr_smart_search($searchTerm) {
-	global $brandsListMajor;
+
+  $brandsListMajor = jr_query_keywords('brand');
 //need to set this as variable since bouncing to and from pcs/servers
-	$urlStart = home_url().'/?';
-	$urlEnd = null;
+  $urlStart = home_url().'/?';
+  $urlEnd = null;
 
 //RHCs first
-	if (stripos($searchTerm, "rhc") === 0) {
-		$urlEnd = http_build_query([
-			'r' => str_replace('rhc', '', $searchTerm),
-			'page_id' => jr_page('item')
-		]);
-	} elseif (in_array(ucwords($searchTerm) , $brandsListMajor)) {
-		$urlEnd = http_build_query([
-			'brand' => $searchTerm,
-			'page_id' => jr_page('cat')
-		]);
+  if (stripos($searchTerm, "rhc") === 0) {
+    $urlEnd = http_build_query([
+      'r' => str_replace('rhc', '', $searchTerm),
+      'page_id' => jr_page('item')
+    ]);
+  } elseif (in_array(ucwords($searchTerm) , $brandsListMajor)) {
+    $urlEnd = http_build_query([
+      'brand' => $searchTerm,
+      'page_id' => jr_page('cat')
+    ]);
 //} elseif (stainless steel) {
-	} else {
-		$urlEnd = http_build_query([
-			'search' => $searchTerm,
-			'page_id' => jr_page('cat')
-		]);
+  } else {
+    $urlEnd = http_build_query([
+      'search' => $searchTerm,
+      'page_id' => jr_page('cat')
+    ]);
 //if blank?
-	}
-	//$searchSTR
-	return wp_redirect( $urlStart.$urlEnd  , 301 );
+  }
+  //$searchSTR
+  return wp_redirect( $urlStart.$urlEnd  , 301 );
 }
 
 ?>

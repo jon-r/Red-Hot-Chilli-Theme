@@ -50,8 +50,12 @@ include('JR_Queries.php');
 
 include('JR_Outputs.php');
 
-// initial page in the header
-global $safeArr;
+// initial page setup in the header. this is the stuff on everypage, so can be called straight away
+global $safeArr,$getGroup;
+
+$getGroup = jr_query_keywords('group');
+
+//now to clean the parameter input
 $safeArr = jr_validate_params($_GET);
 
 

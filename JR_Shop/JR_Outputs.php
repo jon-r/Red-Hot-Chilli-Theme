@@ -81,7 +81,7 @@ function jr_shop_compile($ref,$detail) {
         $infoCheck = "sale";
       } elseif ($ref[Sold]) {
         $infoCheck = "sold";
-      } elseif (in_array($ref[RHC], $rhcListNew)) {
+      } elseif (in_array($ref[RHC], jr_query_new())) {
         $infoCheck = "new";
       }
       $out2 = [

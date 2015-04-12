@@ -19,29 +19,28 @@ var carousel = document.getElementById('js-carouselMain') || null,
   slideDelay = 600, //to match scroll timer
   hoverLock = false;
 
-var tickerValue = 1,
-  tickerLock = false;
+var tickerValue = 1;
 
 function ticker() {
-  if (!tickerLock && !hoverLock) {
-    tickerLock = true;
+  if (!hoverLock) {
 
     if (tickerValue < slideCount) {
-      tickerValue++;
-    } else {
-      tickerValue = 1;
-    }
 
+      tickerValue++;
+
+    } else {
+
+      tickerValue = 1;
+
+    }
+console.log("tick " + tickerValue);
     goSlide(tickerValue);
 
-    setTimeout(function () {
-      tickerLock = false;
-    }, 1000);
   }
 };
 
 function goSlide(x) {
-
+  x--;
   for (i = 0; i < slideCount; i++) {
     if (slides[i].classList.contains('go-away')) {
       slides[i].classList.remove('is-active');
