@@ -63,15 +63,15 @@ function jr_category_filter( $safeArr, $pageNumber) {
   //return $queryFull;
 }
 //count all items from query, for pagination
-function jr_cat_count($safeArr) {
-  global $wpdb, $itemCountMax;
+function ájr_cat_count($safeArr) {
+  global $wpdb;
 
-  if ($safeArr['pgType'] == 'New' || $safeArr['pgType'] == 'Sold') {
-    $out = $itemCountMax;
-  } else {
+//  if ($safeArr['pgType'] == 'New' || $safeArr['pgType'] == 'Sold') {
+//    $out = $itemCountMax;
+//  } else {
     $queryAll = jr_string_build($safeArr);
     $out = count($wpdb->get_col($queryAll));
-  }
+//  }
 
   return $out;
 }

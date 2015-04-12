@@ -41,21 +41,23 @@
   button {
     border-top-right-radius: 4px;
   }
+  .header-links {
+    font-size: 1.25rem;
+    @include jr-size(screen) {
+      font-size: 1.5rem;
+      line-height: 2.5rem;
+    }
+  }
 }
 
 .header-logo {
-  align-self: flex-start;
   max-width: 450px;
   margin: jr-spacer(0.5);
 }
 
 .header-links {
   margin-bottom: 0;
-    font-size: 1.25rem;
-  @include jr-size(screen) {
-    font-size: 1.5rem;
-    line-height: 2.5rem;
-  }
+
 }
 
 .form-head-search {

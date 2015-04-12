@@ -2,30 +2,14 @@
 *
 *
 */
-?>
-
-<?php
 
 $pageNumber = $_GET['pg'] ?: 1;
-$categoryList = jr_category_filter($safeArr, $pageNumber);
-
-$itemCountAll = jr_cat_count($safeArr);
-
-$itemCountCheckMax = $itemCountAll > $itemCountMax;
-$itemCountCheckMin = count($categoryList) <= $itemCountMin;
-$pageCount = intval(ceil($itemCountAll / $itemCountMax));
-
-if (!$itemCountCheckMax) {
-  $itemsOnPage = $itemCountAll % $itemCountMax;
-  $categoryListSold = jr_cat_sold($safeArr, $itemsOnPage);
-} else {
-  $categoryListSold = false;
-}
-
-$categoryListExtended = $categoryListSold ? array_Merge($categoryList, $categoryListSold) : $categoryList;
+$items = jr_items_list_check($safeArr, $pageNumber);
 ?>
 
 <article class="flex-container">
+
+  <?php var_dump($items[debug]) ?>
 
   <header class="article-header flex-1">
     <h1><?php echo $safeArr[pgName]; ?></h1>
@@ -33,7 +17,7 @@ $categoryListExtended = $categoryListSold ? array_Merge($categoryList, $category
     <?php echo $safeArr[imgURL] ?>
   </header>
 
-  <?php foreach ($categoryListExtended as $item) :
+  <?php foreach ($items['list'] as $item) :
     if ($safeArr[pgType] == 'CategorySS' ) {
       $shop_item = jr_shop_compile($item, 'stainless');
     } else {
@@ -59,9 +43,9 @@ $categoryListExtended = $categoryListSold ? array_Merge($categoryList, $category
 
   </div>
 
-  <?php endforeach;?>
+  <?php endforeach; ?>
 
-      <?php if ($itemCountCheckMax) : ?>
+      <?php if ($items['paginate']) : ?>
 
     <nav class="flex-container shop-items-nav">
       <div class="nav-paginate">
@@ -70,13 +54,13 @@ $categoryListExtended = $categoryListSold ? array_Merge($categoryList, $category
         <a href="<?php  echo jr_pg_set(minus) ?>"><h4>&lsaquo;</h4></a>
         <?php endif ?>
 
-        <?php for ($i=1 ; $i <= $pageCount; $i++) : ?>
+        <?php for ($i=1 ; $i <= $items['paginate']; $i++) : ?>
         <a <?php echo jr_is_pg($i) ? 'class="active"' : null ?> href="<?php  echo jr_pg_set($i) ?>" ><h4><?php  echo $i ?></h4></a>
         <?php endfor ?>
 
-        <?php if ($pageNumber < $pageCount) : ?>
+        <?php if ($pageNumber < $items['paginate']) : ?>
         <a href="<?php  echo jr_pg_set(plus) ?>"><h4>&rsaquo;</h4></a>
-        <a href="<?php  echo jr_pg_set($pageCount) ?>"><h4>&raquo;</h4></a>
+        <a href="<?php  echo jr_pg_set($items['paginate']) ?>"><h4>&raquo;</h4></a>
         <?php endif ?>
       </div>
     </nav>
@@ -84,12 +68,6 @@ $categoryListExtended = $categoryListSold ? array_Merge($categoryList, $category
     <?php endif ?>
 
 </article>
-
-  <footer class="article-footer flex-container">
-
-
-
-  </footer>
 
 
 

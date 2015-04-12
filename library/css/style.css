@@ -677,19 +677,19 @@ Default style for all pages
   border-top-left-radius: 4px; }
 .not-home button {
   border-top-right-radius: 4px; }
+.not-home .header-links {
+  font-size: 1.25rem; }
+  @media only screen and (min-width: 1031px) {
+    .not-home .header-links {
+      font-size: 1.5rem;
+      line-height: 2.5rem; } }
 
 .header-logo {
-  align-self: flex-start;
   max-width: 450px;
   margin: 10px; }
 
 .header-links {
-  margin-bottom: 0;
-  font-size: 1.25rem; }
-  @media only screen and (min-width: 1031px) {
-    .header-links {
-      font-size: 1.5rem;
-      line-height: 2.5rem; } }
+  margin-bottom: 0; }
 
 .form-head-search input {
   margin-bottom: 4px;

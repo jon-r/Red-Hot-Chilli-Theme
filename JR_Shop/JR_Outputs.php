@@ -102,6 +102,64 @@ function jr_shop_compile($ref,$detail) {
 
   return $out;
 };
+
+// ---------------------- items list setup ----------------------------------------------
+// figures out what to show on output page, based on safeArr and the page number
+
+function jr_items_list_check($safeArr,$pageNumber) {
+  global $itemCountMax;
+
+  //the full list query will always be the same, since this function is preset to cap at one page
+  $listUnsold = jr_category_filter($safeArr, $pageNumber);
+  $out['paginate'] = false;
+  $lastPage = 1;
+
+  if ($safeArr['pgType'] != 'New' || $safeArr['pgType'] != 'Sold') {
+    //the "sold" and "new" already capped at a single page, no need to count
+
+    $fullItemCount = jr_cat_count($safeArr);
+
+    //breaks down into pages
+    if ($fullItemCount > $itemCountMax) {
+      $out['paginate'] = $lastPage = intval(ceil($fullItemCount / $itemCountMax));
+    }
+
+    //fills up the last page with sold items
+    if ($pageNumber == $lastPage) {
+      $itemsOnLastPage = $fullItemCount % $itemCountMax;
+      $listSold = jr_cat_sold($safeArr, $itemsOnLastPage);
+
+    }
+  }
+
+  $out['list'] = $listSold ? array_merge($listUnsold, $listSold) : $listUnsold;
+
+ // $out['debug'] = $fullItemCount;
+
+  return $out;
+
+}
+
+/*
+$pageNumber = $_GET['pg'] ?: 1;
+$categoryList =
+
+
+
+$itemCountCheckMax = $itemCountAll > $itemCountMax;
+
+$itemCountCheckMin = count($categoryList) <= $itemCountMin;
+
+
+if (!$itemCountCheckMax) {
+
+  $categoryListSold = jr_cat_sold($safeArr, $itemsOnPage);
+} else {
+  $categoryListSold = false;
+}
+
+$categoryListExtended = $categoryListSold ? array_Merge($categoryList, $categoryListSold) : $categoryList;
+*/
 // ----------------------3d scaler ------------------------------------------------------
 // gives relative sizes of HxWxD for items page. also "average man" to scale
 
