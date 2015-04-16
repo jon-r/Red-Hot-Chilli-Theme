@@ -1,25 +1,13 @@
 @function jr-red($n) {
-  @if $n >= 0 && $n >= 10 {
-    $saturation: 10% * (10 - $n);
-    $lightness: 10% * $n;
-    @return hsl(0, $saturation, $lightness);
-  }
-  @else {
-    @warn "`#{$n}` must be between `0-10`.";
-  }
+  $saturation: 10% * (10 - $n);
+  $lightness: 10% * $n;
+  @return hsl(0, $saturation, $lightness);
 }
 
-
-
 @function jr-grey($n) {
-  @if $n >= 0 && $n >= 10 {
-    $lightness: 10% * $n;
-    $saturation: 10% * (10 - $n);
-    @return hsl(240, 5%, $lightness);
-  }
-  @else {
-    @warn "`#{$n}` must be between `0-10`.";
-  }
+  $lightness: 10% * $n;
+  $saturation: 10% * (10 - $n);
+  @return hsl(240, 5%, $lightness);
 }
 
 $jr-emphasis: jr-red(3.5);

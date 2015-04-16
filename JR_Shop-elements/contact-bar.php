@@ -1,5 +1,6 @@
 <?php
   // contact form at the bottom of most pages.
+  $singleFeedback = jr_random_feedback();
 ?>
 
 <article class="contact-bar flex-container">
@@ -14,7 +15,7 @@
     <label for="phone">Phone Number</label>
     <input type="number" id="phone">
     <label for="message">Message</label>
-    <textarea id="message">Item:
+    <textarea id="message">THIS DOES NOTHING YET
       <?php echo $safeArr[pgName]; ?>
     </textarea>
     <button class="btn-red">
@@ -25,9 +26,8 @@
   <div class="social flex-2">
     <h2>What our customers say</h2>
     <blockquote class="testimonials">
-
-      <p>"will do something fancy with testimonials here"</p>
-      <h4>Jon Richards - Red Hot Chilli</h4>
+      <p>"<?php echo addslashes ($singleFeedback['Testimonial_Short']);?>"</p>
+      <h4><?php echo addslashes ($singleFeedback['Name']); ?></h4>
     </blockquote>
 
 

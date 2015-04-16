@@ -201,9 +201,14 @@ nav a {
   font-size: 0.5rem;
   color: $jr-text-dark;
   a {
-    width: 64px;
+    width: 48px;
+    height: 48px;
     display: inline-block;
     margin-right: jr-spacer(0.5);
+    @include jr-size(screen) {
+      width: 64px;
+      height: 64px;
+    }
   }
 }
 

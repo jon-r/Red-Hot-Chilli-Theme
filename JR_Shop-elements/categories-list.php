@@ -1,7 +1,10 @@
 
 <?php
- // $safeGroup = jr_validate_group($_GET[g]);
-  $filteredCategories = groupFilter($safeArr[group]);
+  if ($safeArr[group] == 'all') {
+    $filteredCategories = $categoriesList;
+  } else {
+    $filteredCategories = groupFilter($safeArr[group]);
+  }
 ?>
 
 <article class="flex-container">

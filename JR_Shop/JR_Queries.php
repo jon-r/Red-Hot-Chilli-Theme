@@ -60,6 +60,14 @@ function jr_query_new() {
   return $wpdb->get_col("SELECT `rhc` FROM `networked db` WHERE (`LiveonRHC` = 1 AND `Sold` = 0) ORDER BY `rhc` DESC LIMIT $itemCountMax") ;
 }
 
+function jr_query_tesimonial($detail = null) {
+  global $wpdb;
+
+  $query = ($detail) ? 'Testimonial_Full' : 'Testimonial_Short';
+
+  return $wpdb->get_results("SELECT `$query`, `Name` FROM `rhc_testimonial`;", ARRAY_A);
+}
+
 //----------------wpdb query generator---------------------------------------------------
 //query for 'items full'
 function jr_query_items($safeRHC, $SS = null) {

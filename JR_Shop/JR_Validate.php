@@ -16,8 +16,14 @@ function jr_validate_params($get) {
 
   } elseif ($get[page_id] == jr_page('grp')) {
     $out[pgType] = 'Group';
-    $out[pgName] = $out[group] = jr_validate_group($get[g]);
-    $out[imgUrl] = imgSrcRoot('icons',urlencode($out[pgName]),'jpg');
+    if ($get[g] == 'all') {
+      $out[pgName] = 'All Categories';
+      $out[group] = 'all';
+    } else {
+      $out[pgName] = $out[group] = jr_validate_group($get[g]);
+      $out[imgUrl] = imgSrcRoot('icons',urlencode($out[pgName]),'jpg');
+    }
+
 
   } elseif ($get[page_id] == jr_page('cat')) {
     if ($get['new']) {
