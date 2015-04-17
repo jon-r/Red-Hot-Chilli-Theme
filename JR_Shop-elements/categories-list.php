@@ -10,7 +10,7 @@
 <article class="flex-container">
 
   <header class="article-header flex-1" >
-    <h1><?php echo $safeArr[group] ?></h1>
+    <h1><?php echo $safeArr[pgName] ?></h1>
   </header>
 
   <?php foreach ($filteredCategories as $category) :

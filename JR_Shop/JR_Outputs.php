@@ -20,13 +20,21 @@ function jr_shop_compile($ref,$detail) {
         quantity    => $ref[Quantity] > 1 ? $ref[Quantity]." in Stock" : null
       ];
     case 'stainless':
+      if ($ref[Quantity] == 0) {
+        $priceCheck = 'Sold';
+      } elseif ($ref[Price]) {
+        $priceCheck = "£".$ref[Price]." + VAT";
+      } else {
+        $priceCheck = "Price Coming Soon";
+      }
+
       $out2 = [
         webLink     => http_build_query(
           ['page_id' => jr_page('item'), 'cat' => $ref[Category], 'r' => $ref[RHCs], 'n' => $ref[ProductName], 'x' => 1]),
         rhc         => "Ref: RHCs".$ref[RHCs],
         name        => $ref[ProductName],
         imgFirst    => imgSrcRoot('gallery',$ref[Image],'jpg'),
-        price       => $ref[Price] ? "£".$ref[Price]." + VAT" : "Price Coming Soon" ,
+        price       => $priceCheck ,
         icon       => $ref[TableinFeet].'ft'
       ];
     break;
@@ -46,7 +54,6 @@ function jr_shop_compile($ref,$detail) {
       } else {
         $wattCheck = null;
       }
-
       $out1 = [
         height      => $ref[Height] ?: null,
         width       => $ref[Width] ?: null,
@@ -65,6 +72,13 @@ function jr_shop_compile($ref,$detail) {
         imgAll      => glob('images/gallery/'.$ref[Image].'*')
       ];
     case 'med':
+      if ($ref[Quantity] == 0) {
+        $priceCheck = '- Sold -';
+      } elseif ($ref[Price]) {
+        $priceCheck = "£".$ref[Price]." + VAT";
+      } else {
+        $priceCheck = "Price Coming Soon";
+      }
       $catArray = [ $ref[Category], $ref[cat1], $ref[cat2], $ref[cat3] ];
       if (in_array('Fridges', $catArray) && in_array('Freezers', $catArray)) {
         $iconCheck = 'fridge-freezer';
@@ -79,14 +93,14 @@ function jr_shop_compile($ref,$detail) {
         $infoCheck = "soon";
       } elseif ($ref[isSale]) {
         $infoCheck = "sale";
-      } elseif ($ref[Sold]) {
+      } elseif ($ref[Quantity] == 0) {
         $infoCheck = "sold";
       } elseif (in_array($ref[RHC], jr_query_new())) {
         $infoCheck = "new";
       }
       $out2 = [
         icon        => $iconCheck,
-        price       => $ref[Price] ? "£".$ref[Price]." + VAT" : "Price Coming Soon" ,
+        price       => $priceCheck ,
         webLink     => http_build_query(
           ['page_id' => jr_page('item'), 'cat' => $ref[Category], 'r' => $ref[RHC], 'n' => $ref[ProductName]]),
         rhc         => "ref: RHC".$ref[RHC],
@@ -140,26 +154,6 @@ function jr_items_list_check($safeArr,$pageNumber) {
 
 }
 
-/*
-$pageNumber = $_GET['pg'] ?: 1;
-$categoryList =
-
-
-
-$itemCountCheckMax = $itemCountAll > $itemCountMax;
-
-$itemCountCheckMin = count($categoryList) <= $itemCountMin;
-
-
-if (!$itemCountCheckMax) {
-
-  $categoryListSold = jr_cat_sold($safeArr, $itemsOnPage);
-} else {
-  $categoryListSold = false;
-}
-
-$categoryListExtended = $categoryListSold ? array_Merge($categoryList, $categoryListSold) : $categoryList;
-*/
 // ----------------------3d scaler ------------------------------------------------------
 // gives relative sizes of HxWxD for items page. also "average man" to scale
 
@@ -186,8 +180,8 @@ function jr_page_crumbles ($safeArr) {
   $crumbs[0] = ['Home' => home_url()];
 
   if ($safeArr[pgType] == 'Item') {
-    $link = http_build_query(['cat' => $safeArr[cat], 'page_id' => jr_page('cat')]);
-    $crumbs[1] = [$safeArr[cat] => site_url()."/?".$link];
+    $link = http_build_query(['cat' => $_GET[cat], 'page_id' => jr_page('cat')]);
+    $crumbs[1] = [$_GET[cat] => site_url()."/?".$link];
     $crumbs[2] = [$safeArr[pgName] => getUrl()];
   } else {
     $crumbs[1] = [$safeArr[pgName] => jr_pg_set()];

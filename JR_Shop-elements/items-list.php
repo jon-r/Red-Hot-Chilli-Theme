@@ -9,8 +9,6 @@ $items = jr_items_list_check($safeArr, $pageNumber);
 
 <article class="flex-container">
 
-  <?php var_dump($items[debug]) ?>
-
   <header class="article-header flex-1">
     <h1><?php echo $safeArr[pgName]; ?></h1>
     <p><?php echo $safeArr[description] ?></p>
@@ -24,7 +22,7 @@ $items = jr_items_list_check($safeArr, $pageNumber);
       $shop_item = jr_shop_compile($item, 'med');
     }; ?>
 
-  <div class="shop-tile flex-4 <?php echo trim($shop_item[info].' '.$shop_item[icon]); ?>" >
+  <div class="shop-tile btn-icon flex-4 <?php echo trim($shop_item[info].' '.$shop_item[icon]); ?>" >
 
     <a href="?<?php echo $shop_item[webLink] ?>">
 
@@ -68,9 +66,3 @@ $items = jr_items_list_check($safeArr, $pageNumber);
     <?php endif ?>
 
 </article>
-
-
-
-<!--  $fSoon =        $safeArr['soon'];
-  $fRecentSold =  $safeArr['sold'];
-  $fStainless =   $safeArr['stainless'];-->

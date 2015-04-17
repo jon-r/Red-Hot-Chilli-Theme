@@ -15,10 +15,14 @@ _________________________________________________________
     </label>
 
     <ul id="js-main-list" >
+      <li>
+        <a class="text-icon arrow-r" href="<?php echo $link_allCategories; ?>">View Categories</a>
+      </li>
     <?php foreach($getGroup as $group) :
         $link = http_build_query(['g' => $group, 'page_id' => jr_page('grp')]);
         $categoriesListFiltered = array_filter ($categoriesList, isGroup($group));
       ?>
+
 
       <li><?php echo $group ?>
         <ul>
@@ -64,7 +68,17 @@ _________________________________________________________
 
   <div class="nav-right <?php echo is_front_page() ? 'carousel' : 'nav-breadcrumbs' ?>" >
 
-  <?php is_front_page() ? include( "index-carousel.php") : include("nav-breadcrumbs.php") ?>
+  <?php if (is_front_page()) {
+          include( "index-carousel.php");
+        } else {
+          $breadLinks = jr_page_crumbles ($safeArr);
+          foreach ($breadLinks as $breadSlices) {
+            foreach ($breadSlices as $name => $link) {
+              echo $link ? '<a class="text-icon arrow-r" href="'.$link.'" ><h3>'.$name."</h3></a>" : null;
+            }
+          }
+        }
+    ?>
 
   </div>
 

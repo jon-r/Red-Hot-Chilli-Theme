@@ -1,5 +1,6 @@
 /*-- default list Layout -----------------------------------------------------------*/
 
+
 .shop-tile {
   background-color: white;
   box-shadow: $jr-shadow;
@@ -11,13 +12,13 @@
     right:-9px;
     top: 3.5rem;
   }
-  @extend %has-icon-after;
-  &::after {
-    bottom: 0.5rem;
-    right:0.1rem;
-    transform: scale(0.75);
-    transform-origin: bottom right;
-  }
+//  @extend %has-icon-after;
+//  &::after {
+//    bottom: 0.5rem;
+//    right:0.1rem;
+//    transform: scale(0.75);
+//    transform-origin: bottom right;
+//  }
 
   padding-bottom: jr-spacer(2);
   ul {

@@ -8,7 +8,8 @@ nav a {
 
 .primary-nav {
   justify-content: flex-start;
-  //simple 'loading' simulator - the <nav> will be the only child of the <section> until the php <article> has loaded.
+
+//simple 'loading' simulator - the <nav> will be the only child of the <section> until the php <article> has loaded.
   &:only-child {
     @extend %loader-icon;
     padding-bottom: 100vh;
@@ -62,6 +63,8 @@ nav a {
   background-color: white;
   text-align: center;
   overflow: hidden;
+  font-size: 1.2rem;
+
   span, a {
     display: inline-block;
     width:100%;
@@ -123,6 +126,7 @@ nav a {
     margin-left: -4px;
     text-align: left;
     li {
+      font-size: 1rem;
       line-height: 2rem;
       ul {
         display: none;
@@ -201,13 +205,13 @@ nav a {
   font-size: 0.5rem;
   color: $jr-text-dark;
   a {
-    width: 48px;
-    height: 48px;
+    width: 64px;
+    height: 64px;
     display: inline-block;
     margin-right: jr-spacer(0.5);
     @include jr-size(screen) {
-      width: 64px;
-      height: 64px;
+      width: 96px;
+      height: 96px;
     }
   }
 }

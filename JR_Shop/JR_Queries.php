@@ -57,7 +57,7 @@ function jr_query_carousel() {
 function jr_query_new() {
   global $itemCountMax, $wpdb;
 
-  return $wpdb->get_col("SELECT `rhc` FROM `networked db` WHERE (`LiveonRHC` = 1 AND `Sold` = 0) ORDER BY `rhc` DESC LIMIT $itemCountMax") ;
+  return $wpdb->get_col("SELECT `rhc` FROM `networked db` WHERE (`LiveonRHC` = 1 AND `Quantity` > 0) ORDER BY `rhc` DESC LIMIT $itemCountMax") ;
 }
 
 function jr_query_tesimonial($detail = null) {
@@ -126,8 +126,8 @@ function jr_cat_sold($safeArr, $itemsOnPage) {
     $soldCount = ($itemsOnPage % 8);
     $queryAll = jr_string_build($safeArr);
 
-    $querySoldOn = str_replace(['`Sold` = 0','ORDER BY `RHC`'],
-                               ['`Sold` = 1','ORDER BY `DateSold`'], $queryAll);
+    $querySoldOn = str_replace(['`Quantity` > 0','ORDER BY `RHC`'],
+                               ['`Quantity` = 0','ORDER BY `DateSold`'], $queryAll);
     $queryLimiter = " LIMIT $soldCount";
     $queryFull = $querySoldOn.$queryLimiter;
   }
@@ -179,13 +179,13 @@ function jr_string_build($safeArr, $isCounter = false) {
   if ($fType == 'Soon' ) {
     $queryEnd = "(`LiveonRHC` = 0 AND `IsSoon` = 1) ORDER BY `RHC` DESC";
   } elseif ($fType == 'Sale' ) {
-    $queryEnd = "(`LiveonRHC` = 1 AND `SalePrice` > 0 AND `Sold` = 0) ORDER BY `RHC` DESC";
+    $queryEnd = "(`LiveonRHC` = 1 AND `SalePrice` > 0 AND `Quantity` > 0) ORDER BY `RHC` DESC";
   } elseif ($fType == 'Sold' ) {
     $queryEnd = "`Sold` = 1 ORDER BY `DateSold` DESC";
   } elseif ($fType == 'CategorySS') {
-    $queryEnd = "`Sold` = 0 ORDER BY `RHCs` DESC";
+    $queryEnd = "`Quantity` > 0 ORDER BY `RHCs` DESC";
   } else {
-    $queryEnd =   "(`LiveonRHC` = 1 AND `Sold` = 0) ORDER BY `RHC` DESC";
+    $queryEnd =   "(`LiveonRHC` = 1 AND `Quantity` > 0) ORDER BY `RHC` DESC";
   };
 
   //combine all

@@ -54,11 +54,14 @@ if ($safeArr[ss]) {
       </div>
 
       <ul class="item-features">
+        <?php if (!$safeArr[ss]) : ?>
+        <li class="text-icon tick">Photo of actual product</li>
+        <?php endif ?>
         <li class="text-icon tick">Fully Tested &amp; Cleaned</li>
         <li class="text-icon tick">Competitive UK &amp; EU Delivery Quotes</li>
         <li class="text-icon tick">Finance Options On Request</li>
         <li class="text-icon tick">Viewing available at our showroom in Warrington, Cheshire</li>
-        <li class="text-icon tick">Aftercare &amp; Warrantees</li>
+        <li class="text-icon tick">Aftercare &amp; Warranty</li>
         <?php if ($shop_item[icon] == "natural-gas") : ?>
         <li class="text-icon tick"><em>Ask today about conversions to LPG</em></li>
         <?php endif ?>
@@ -83,7 +86,7 @@ if ($safeArr[ss]) {
         </aside> -->
 
         <?php if ($shop_item[icon]) : ?>
-        <div class="item-power <?php echo $shop_item[icon] ?>">
+        <div class="btn-icon <?php echo $shop_item[icon] ?>">
           <?php echo $shop_item[watt] ?>
         </div>
 
@@ -97,5 +100,4 @@ if ($safeArr[ss]) {
 
 
   </div>
-  <?php var_dump($shop_item) ?>
 </article>

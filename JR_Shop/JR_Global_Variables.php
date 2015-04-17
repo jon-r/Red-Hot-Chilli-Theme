@@ -1,6 +1,7 @@
 <?php
 global $itemCountMax, $itemCountMin, $filterDescription, $categoryFilterArr,
-  $rhcTwitterLink, $rhcFacebookLink, $rhcLinkedinLink;
+  $rhcTwitterLink, $rhcFacebookLink, $rhcLinkedinLink, $link_allCategories,
+  $link_allItems, $link_soldItems, $link_newItems, $link_soonItems, $link_soonItems;
 
 //social media links.
 $rhcFacebookLink = 'https://www.facebook.com/pages/Red-Hot-Chilli-Catering/147845465419524';
@@ -15,6 +16,14 @@ $itemCountMax = 24;
 //How many items before the "try elsewhere" kicks in. NYI
 $itemCountMin = 4;
 
+//link to "special" pages - those not from database
+$link_allCategories = '?'.http_build_query(['g' => 'all', 'page_id' => jr_page('grp')]);
+$link_allItems = '?'.http_build_query(['all' => '1', 'page_id' => jr_page('cat')]);
+$link_soldItems = '?'.http_build_query(['sold' => '1', 'page_id' => jr_page('cat')]);
+$link_newItems = '?'.http_build_query(['new' => '1', 'page_id' => jr_page('cat')]);
+$link_soonItems = '?'.http_build_query(['soon' => '1', 'page_id' => jr_page('cat')]);
+$link_soonItems = '?'.http_build_query(['sale' => '1', 'page_id' => jr_page('cat')]);
+
 /*Category Text \
 \ phrases for the category page */
 
@@ -23,14 +32,14 @@ function jr_category_info($catType) {
     'New'   => 'Fresh off the workshop floor, this equipment is cleaned and ready to go.<br>
                 Enquire quickly, stock can go as soon as it comes in!',
     'Soon'  => 'Stock that has just entered our workshops.<br>
-                If interested, *link*call*link* us today and grab a bargain as soon as its ready.',
+                If interested, call '.$rhcTel.' today and grab a bargain as soon as its ready.',
     'Sold'  => 'Don\'t worry if you were to late to get the item you wanted, there may be another soming soon <br>
-                *link*call*link* us today and reserve what you need before it goes again!',
+                call '.$rhcTel.' today and reserve what you need before it goes again!',
     'Sale'  =>  'Surplus stock, or equipment with a few extra dents.<br>
                  We make sure everything works fully before going online, so get it cheap today!',
-    'Search' => 'Still can\'t find what you were looking for? *link*call*link* our team today and see if we can help',
+    'Search' => 'Still can\'t find what you were looking for? call '.$rhcTel.' today and see if we can help',
     'All'   =>  'We buy and sell new items each week, and can\'t always keep the new site up to date.<br>
-                 If there is anything in particular you are looking for, feel free to *link*call*link* us and we\'ll see what we can find.'
+                 If there is anything in particular you are looking for, feel free to call '.$rhcTel.' and we\'ll see what we can find.'
   ];
   return $categoryFilterArr[$catType];
 }

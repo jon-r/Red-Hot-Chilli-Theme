@@ -118,33 +118,35 @@ $iconMap: (
 
 .text-icon {
   @extend %has-icon-before;
-  padding-left: 2rem;
-  line-height: 2rem;
+  padding-left: 24px;
+  line-height: 24px;
   @include jr-icon(before) {
-    transform: scale(0.2);
+    transform: scale(0.1875); //24px
     transform-origin: top left;
     left: 0;
-    top: 1px;
+    top: 0;
   }
 
   @include jr-size(screen) {
+      padding-left: 32px;
+      line-height: 32px;
     @include jr-icon(before) {
-      transform: scale(0.25);
+      transform: scale(0.25); //32px
     }
   }
 }
 
 .btn-icon {
-  @extend %has-icon-before;
-  @include jr-icon(before) {
-    transform: scale(0.375);
-    transform-origin: top left;
-    left: 0;
-    top: 0;
+  @extend %has-icon-after;
+  @include jr-icon(after) {
+    transform: scale(0.5);
+    transform-origin: bottom right;
+    bottom: 0;
+    right: 0;
   }
   @include jr-size(screen) {
-    @include jr-icon(before) {
-      transform: scale(0.5);
+    @include jr-icon(after) {
+      transform: scale(0.75);
     }
   }
 }
@@ -179,7 +181,10 @@ $icons-after: (
   dual-fuel,
   freezer,
   fridge,
-  fridge-freezer
+  fridge-freezer,
+  linkedin,
+  twitter,
+  facebook,
 );
 
 @each $item-name in $icons-after {
@@ -193,9 +198,6 @@ $icons-before: (
   sold,
   soon,
   new,
-  linkedin,
-  twitter,
-  facebook,
   phone-w,
   question,
   list,

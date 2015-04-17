@@ -4,7 +4,7 @@
 
   <header class="article-header flex-1" >
     <h1>Catering Equipment For Sale</h1>
-    <a href="?all=1&page_id=16">Click here to View All</a>
+    <a href="<?php echo $link_allItems; ?>">Click here to View All</a>
   </header>
 
   <?php foreach($getGroup as $group) :
