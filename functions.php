@@ -114,43 +114,7 @@ new image size.
 
 // Sidebars & Widgetizes Areas
 function bones_register_sidebars() {
-/*  register_sidebar(array(
-    'id' => 'sidebar1',
-    'name' => __( 'Sidebar 1', 'bonestheme' ),
-    'description' => __( 'The first (primary) sidebar.', 'bonestheme' ),
-    'before_widget' => '',
-    'after_widget' => '',
-    'before_title' => '<a><h3>',
-    'after_title' => '</a></h3>',
-  ));
-  register_sidebar(array(
-    'id' => 'sidebar-contact',
-    'name' => __( 'Contact Page Sidebar', 'bonestheme' ),
-    'description' => __( 'sidebar on the contact page.', 'bonestheme' ),
-    'before_widget' => '<div id="%1$s" class="widget %2$s">',
-    'after_widget' => '</div>',
-    'before_title' => '<h4 class="widgettitle">',
-    'after_title' => '</h4>',
-  ));
-  register_sidebar(array(
-    'id' => 'menu-featured',
-    'name' => __( 'Featured items - FOUR max', 'bonestheme' ),
-    'description' => __( 'The list of featured things. This is on front page and "featured" menu', 'bonestheme' ),
-    'before_widget' => '',
-    'after_widget' => '',
-    'before_title' => '<a><h3>',
-    'after_title' => '</a></h3>',
-  ));
-  register_sidebar(array(
-    'id' => 'menu-services',
-    'name' => __( 'Other Services', 'bonestheme' ),
-    'description' => __( 'The list of services things. This is on "other services" menu', 'bonestheme' ),
-    'before_widget' => '',
-    'after_widget' => '',
-    'before_title' => '<a><h3>',
-    'after_title' => '</a></h3>',
-  ));
-*/
+
 
 	/*
 	to add more sidebars or widgetized areas, just copy
@@ -231,8 +195,8 @@ and be up and running in seconds.
 //  wp_enqueue_style( 'googleFonts');
 //}
 
-//add_action('wp_print_styles', 'bones_fonts');
-
+//custom permalinks.
+include( "JR_Shop/JR_Permalinks.php");
 
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>

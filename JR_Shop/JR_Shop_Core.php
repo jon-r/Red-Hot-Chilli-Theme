@@ -38,7 +38,6 @@ SECURITY:
 
 /* GETS \
 \ Links to the function pages and arrays.*/
-include('JR_Development_Variables.php');
 
 include('JR_Global_Variables.php');
 

@@ -2,6 +2,14 @@ plan for the website.
 
 -- site map -----------------------------------------------------------------------------|
 
+/                         (index.php)
+/Departments  g="all" (full department list)
+
+
+
+
+
+
 (((Page Name [template-name] (features/parameters))))
 
 --index--------------------------

@@ -1,7 +1,7 @@
 <?php
-/* Template Name: Front Page
+/* Template Name: Front Page OBSOLETE
 *
-* */
+*
 ?>
 
 
@@ -20,4 +20,4 @@
 
 </main>
 
-<?php get_footer(); ?>
+<?php get_footer(); */ ?>

@@ -1,0 +1,13 @@
+        Queries KiB
+
+home =            68      94.7in 7.8out
+p1=               60      84.7in 7.3out
+
+all =             60	  99.0in 6.7out
+p1	              76	  94.3in 8.7out
+
+about/empty = 	  58	  82.2in 6.3out
+p1	              49	  70.7in 5.8out
+
+
+
