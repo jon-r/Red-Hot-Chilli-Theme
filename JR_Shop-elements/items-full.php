@@ -24,14 +24,14 @@ if ($safeArr[ss]) {
 
     <div class="item-gallery flex-3">
       <div class="item-main <?php echo $shop_item[icon]; ?>" >
-        <img src="<?php echo img_resize($shop_item[imgFirst], 'tile') ?>">
+        <img src="../<?php echo img_resize($shop_item[imgFirst], 'tile') ?>">
       </div>
 
       <?php if (!$safeArr[ss]) : ?>
 
       <ul class="item-thumbs flex-container">
         <?php foreach ($shop_item[imgAll] as $galleryImg) : ?>
-        <li class="flex-4"><img src="<?php echo img_resize($galleryImg, 'thumb') ?>"></li>
+        <li class="flex-4"><img src="../<?php echo img_resize($galleryImg, 'thumb') ?>"></li>
         <?php endforeach ?>
       </ul>
 

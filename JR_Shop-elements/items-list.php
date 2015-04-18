@@ -30,7 +30,7 @@ $items = jr_items_list_check($safeArr, $pageNumber);
         <h3><?php echo $shop_item[name] ?></h3>
       </div>
 
-      <img src="<?php echo img_resize($shop_item[imgFirst], 'tile'); ?>" alt="<?php echo $shop_item[name] ?>" >
+      <img src="../<?php echo img_resize($shop_item[imgFirst], 'tile'); ?>" alt="<?php echo $shop_item[name] ?>" >
 
       <div>
         <em><?php echo $shop_item[price] ?></em><br>
