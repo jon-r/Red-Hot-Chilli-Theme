@@ -29,8 +29,8 @@ function jr_shop_compile($ref,$detail) {
       }
 
       $out2 = [
-        webLink     => http_build_query(
-          ['page_id' => jr_page('item'), 'cat' => $ref[Category], 'r' => $ref[RHCs], 'n' => $ref[ProductName], 'x' => 1]),
+        webLink     => "rhcs/$ref[RHC]/$ref[ProductName]",
+        //http_build_query(['page_id' => jr_page('item'), 'cat' => $ref[Category], 'r' => $ref[RHCs], 'n' => $ref[ProductName], 'x' => 1]),
         rhc         => "Ref: RHCs".$ref[RHCs],
         name        => $ref[ProductName],
         imgFirst    => imgSrcRoot('gallery',$ref[Image],'jpg'),
@@ -101,9 +101,9 @@ function jr_shop_compile($ref,$detail) {
       $out2 = [
         icon        => $iconCheck,
         price       => $priceCheck ,
-        webLink     => http_build_query(
-          ['page_id' => jr_page('item'), 'cat' => $ref[Category], 'r' => $ref[RHC], 'n' => $ref[ProductName]]),
-        rhc         => "ref: RHC".$ref[RHC],
+        webLink     => "rhc/$ref[RHC]/$ref[ProductName]",
+        //http_build_query(['page_id' => jr_page('item'), 'cat' => $ref[Category], 'r' => $ref[RHC], 'n' => $ref[ProductName]]),
+        rhc         => "ref: RHC$ref[RHC]",
         name        => $ref[ProductName],
         imgFirst    => imgSrcRoot('gallery',$ref[Image],'jpg'),
         info        => $infoCheck,

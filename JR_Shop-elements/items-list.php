@@ -24,13 +24,13 @@ $items = jr_items_list_check($safeArr, $pageNumber);
 
   <div class="shop-tile btn-icon flex-4 <?php echo trim($shop_item[info].' '.$shop_item[icon]); ?>" >
 
-    <a href="?<?php echo $shop_item[webLink] ?>">
+    <a href="<?php echo site_url($shop_item[webLink]) ?>">
 
       <div>
         <h3><?php echo $shop_item[name] ?></h3>
       </div>
 
-      <img src="../<?php echo img_resize($shop_item[imgFirst], 'tile'); ?>" alt="<?php echo $shop_item[name] ?>" >
+      <img src="<?php echo site_url(img_resize($shop_item[imgFirst], 'tile')); ?>" alt="<?php echo $shop_item[name] ?>" >
 
       <div>
         <em><?php echo $shop_item[price] ?></em><br>

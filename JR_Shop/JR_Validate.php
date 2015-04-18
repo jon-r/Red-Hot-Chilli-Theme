@@ -90,6 +90,110 @@ function jr_validate_params($get) {
   return $out;
 }
 
+/*--------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+//new version works on permalinks...
+function jr_validate_urls($url) {
+  $slashedParams = str_replace(site_url(), '', $url);
+  $params = explode('/',$slashedParams);
+  $out = null;
+
+  if ($params[1] == '') {
+    $out[pgName] = $out[pgType] = 'Home';
+
+  } elseif ($params[1]  == 'departments') {
+    $out[pgType] = 'Group';
+    if ($params[2] == 'all') {
+      $out[pgName] = 'All Categories';
+      $out[group] = 'all';
+    } else {
+      $out[pgName] = $out[group] = jr_validate_group($params[2]);
+      $out[imgUrl] = imgSrcRoot('icons',urlencode($out[pgName]),'jpg');
+    }
+
+
+  } elseif ($params[1] == 'products') {
+    if ($params[2] == 'all') {
+      $out[pgType] = 'All';
+      $out[pgName] = 'All Products';
+    } elseif (jr_validate_stainless($params[2])) {
+      $out[pgType] = 'CategorySS';
+      $out[pgName] = $out[cat] = jr_validate_category($params[2]);
+    } else {
+      $out[pgType] = 'Category';
+      $out[pgName] = $out[cat] = jr_validate_category($params[2]);
+    }
+
+  } elseif ($params[1] == 'new-items') {
+    $out[pgType] = 'New';
+    $out[pgName] = 'Just In';
+
+  } elseif ($params[1] == 'coming-soon') {
+    $out[pgType] = 'Soon';
+    $out[pgName] = 'Coming Soon';
+
+  } elseif ($params[1] == 'sold') {
+    $out[pgName] = $out[pgType] = 'Sold';
+
+  } elseif ($params[1] == 'sale') {
+    $out[pgType] = 'Sale';
+    $out[pgName] = 'Special Offers';
+    $out[saleNum] = $params[2];
+
+  } elseif ($params[1] == 'search') {
+    $out[pgType] = 'Search';
+    $out[search] = jr_validate_search($params[2]);
+    $readableSearch = preg_replace("/[^[:alnum:][:space:]]/ui", ' ', $params[2]);
+    $out[pgName] = 'Search Results for \''.$readableSearch.'\'';
+
+  } elseif ($params[1] == 'brand') {
+    $out[pgType] = 'Brand';
+    $out[brand] =  jr_validate_brand($params[2]);
+    $out[pgName] = 'Products from '.$out[brand];
+    $brandIconLocation = imgSrcRoot('icons',$out[brand],'jpg');
+    if (file_exists ($brandIconLocation)) {
+      $out[imgUrl] = $brandIconLocation;
+    };
+
+
+//    if ($out[pgType] == 'Category' || $out[pgType] == 'CategorySS') {
+//      $out[imgUrl] = imgSrcRoot('thumbnails',$fCategory,'jpg');
+//      $categoryDetails = jr_category_row( $fCategory );
+//      $out[description] = $categoryDetails[CategoryDescription] ?: null;
+//    } else {
+//      $out[description] = jr_category_info($out[pgType]);
+//    }
+
+  } elseif ($params[1] == 'rhc') { //product
+    $out[pgType] = 'Item';
+    $out[rhc] = jr_validate_rhc($params[2]);
+    $out[ss] = $get['x'] ? true : false;
+    $out[pgName] = $params[3];
+
+  } elseif ($params[1] == 'rhcs') { //product-ss
+    $out[pgType] = 'Item';
+    $out[rhc] = jr_validate_rhcs($params[2]);
+    $out[ss] = true;
+    $out[pgName] = $params[3];
+  } else {
+    $out[pgType] = $out[pgName] = 'Page Name'; //get the page title
+  };
+
+  return $out;
+};
+
 //-------------------------------
 
 //validates group
@@ -141,5 +245,6 @@ function jr_validate_rhcs($rawRHC) {
 function jr_validate_search($rawSearch) {
   return preg_replace("/[^[:alnum:][:space:]]/ui", '.?', $rawSearch);
 };
+
 
 ?>

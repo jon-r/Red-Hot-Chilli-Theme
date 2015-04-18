@@ -55,6 +55,6 @@ global $safeArr,$getGroup;
 $getGroup = jr_query_keywords('group');
 
 //now to clean the parameter input
-$safeArr = jr_validate_params($_GET);
+$safeArr = jr_validate_urls(getUrl());
 
 

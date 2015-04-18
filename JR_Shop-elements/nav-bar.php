@@ -19,7 +19,6 @@ _________________________________________________________
         <a class="text-icon arrow-r" href="<?php echo $link_allCategories; ?>">View Categories</a>
       </li>
     <?php foreach($getGroup as $group) :
-        $link = http_build_query(['g' => $group, 'page_id' => jr_page('grp')]);
         $categoriesListFiltered = array_filter ($categoriesList, isGroup($group));
       ?>
 
@@ -28,9 +27,10 @@ _________________________________________________________
         <ul>
           <h3 class="touch-toggle btn-red text-icon close-w">Back</h3>
           <?php foreach ($categoriesListFiltered as $category) :
-              $link = http_build_query(['cat' => $category[Name], 'page_id' => jr_page('cat')]);
+              $link = site_url('/products/'.$category[Name]);
+        //http_build_query(['cat' => $category[Name], 'page_id' => jr_page('cat')]);
           ?>
-          <li ><a class="text-icon arrow-r" href="?<?php echo $link ?>" ><?php echo $category[Name] ?></a></li>
+          <li ><a class="text-icon arrow-r" href="<?php echo $link ?>" ><?php echo $category[Name] ?></a></li>
           <?php endforeach ?>
         </ul>
 
@@ -81,5 +81,7 @@ _________________________________________________________
     ?>
 
   </div>
+
+  <?php var_dump(jr_validate_urls(getUrl())); ?>
 </nav>
 

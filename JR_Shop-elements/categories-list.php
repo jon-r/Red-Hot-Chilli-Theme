@@ -14,14 +14,15 @@
   </header>
 
   <?php foreach ($filteredCategories as $category) :
-    $link = http_build_query(['cat' => $category[Name], 'page_id' => jr_page('cat')]);
+    $link = site_url('/products/'.$category[Name]);
+    //http_build_query(['cat' => $category[Name], 'page_id' => jr_page('cat')]);
     $imgUrl = imgSrcRoot('thumbnails',$category[RefName],'jpg');
   ?>
 
     <div class="shop-tile flex-4">
-      <a href="?<?php echo $link ?>" >
+      <a href="<?php echo $link ?>" >
         <div><h3><?php echo $category[Name] ?></h3></div>
-        <img src="../<?php echo $imgUrl ?>" >
+        <img src="<?php site_url($imgUrl) ?>" >
       </a>
     </div>
 

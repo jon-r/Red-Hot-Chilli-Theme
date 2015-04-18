@@ -17,12 +17,16 @@ $itemCountMax = 24;
 $itemCountMin = 4;
 
 //link to "special" pages - those not from database
-$link_allCategories = '?'.http_build_query(['g' => 'all', 'page_id' => jr_page('grp')]);
-$link_allItems = '?'.http_build_query(['all' => '1', 'page_id' => jr_page('cat')]);
-$link_soldItems = '?'.http_build_query(['sold' => '1', 'page_id' => jr_page('cat')]);
-$link_newItems = '?'.http_build_query(['new' => '1', 'page_id' => jr_page('cat')]);
-$link_soonItems = '?'.http_build_query(['soon' => '1', 'page_id' => jr_page('cat')]);
-$link_soonItems = '?'.http_build_query(['sale' => '1', 'page_id' => jr_page('cat')]);
+$link_allCategories = site_url('departments/all/');
+  //'?'.http_build_query(['g' => 'all', 'page_id' => jr_page('grp')]);
+$link_allItems = site_url('products/all/');
+  //'?'.http_build_query(['all' => '1', 'page_id' => jr_page('cat')]);
+$link_soldItems = site_url('/sold/');
+  //'?'.http_build_query(['sold' => '1', 'page_id' => jr_page('cat')]);
+$link_newItems = site_url('/new-items/');
+  //'?'.http_build_query(['new' => '1', 'page_id' => jr_page('cat')]);
+$link_soonItems = site_url('/coming-soon/');
+  //'?'.http_build_query(['soon' => '1', 'page_id' => jr_page('cat')]);
 
 /*Category Text \
 \ phrases for the category page */

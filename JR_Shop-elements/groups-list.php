@@ -8,22 +8,24 @@
   </header>
 
   <?php foreach($getGroup as $group) :
-      $link = http_build_query(['g' => $group, 'page_id' => jr_page('grp')]);
+      $link = site_url('/departments/'.$group);
+        //http_build_query(['g' => $group, 'page_id' => jr_page('grp')]);
       $categoriesListFiltered = array_filter ($categoriesList, isGroup($group));
       $groupHeaderImg = imgSrcRoot('icons','header-'.strtok($group, ' '),'png');
   ?>
 
   <div class="shop-tile group flex-3">
 
-    <a href="?<?php echo $link ?>" >
+    <a href="<?php echo $link ?>" >
       <img src="<?php echo $groupHeaderImg ?>" alt="<?php echo $group ?>"/>
     </a>
 
     <ul class="flex-container">
       <?php foreach ($categoriesListFiltered as $category) :
-          $link = http_build_query(['cat' => $category[Name], 'page_id' => jr_page('cat')]);
+          $link = $link = site_url('/products/'.$category[Name]);
+    //http_build_query(['cat' => $category[Name], 'page_id' => jr_page('cat')]);
       ?>
-      <li><a href="?<?php echo $link ?>" ><?php echo $category[Name] ?></a></li>
+      <li><a href="<?php echo $link ?>" ><?php echo $category[Name] ?></a></li>
       <?php endforeach ?>
     </ul>
 
