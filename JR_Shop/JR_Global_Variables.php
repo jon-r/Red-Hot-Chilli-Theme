@@ -1,7 +1,6 @@
 <?php
-global $itemCountMax, $itemCountMin, $filterDescription, $categoryFilterArr,
-  $rhcTwitterLink, $rhcFacebookLink, $rhcLinkedinLink, $link_allCategories,
-  $link_allItems, $link_soldItems, $link_newItems, $link_soonItems, $link_soonItems;
+global $itemCountMax, $itemCountMin, $rhcTwitterLink, $rhcFacebookLink, $rhcLinkedinLink,
+  $link_allCategories, $link_allItems, $link_soldItems, $link_newItems, $link_soonItems;
 
 //social media links.
 $rhcFacebookLink = 'https://www.facebook.com/pages/Red-Hot-Chilli-Catering/147845465419524';
@@ -18,15 +17,11 @@ $itemCountMin = 4;
 
 //link to "special" pages - those not from database
 $link_allCategories = site_url('departments/all/');
-  //'?'.http_build_query(['g' => 'all', 'page_id' => jr_page('grp')]);
 $link_allItems = site_url('products/all/');
-  //'?'.http_build_query(['all' => '1', 'page_id' => jr_page('cat')]);
 $link_soldItems = site_url('/sold/');
-  //'?'.http_build_query(['sold' => '1', 'page_id' => jr_page('cat')]);
 $link_newItems = site_url('/new-items/');
-  //'?'.http_build_query(['new' => '1', 'page_id' => jr_page('cat')]);
 $link_soonItems = site_url('/coming-soon/');
-  //'?'.http_build_query(['soon' => '1', 'page_id' => jr_page('cat')]);
+
 
 /*Category Text \
 \ phrases for the category page */
@@ -48,15 +43,11 @@ function jr_category_info($catType) {
   return $categoryFilterArr[$catType];
 }
 
-/*img location \
-\ potentially changed when proper urls are named */
+// img location
 function imgSrcRoot($itemType,$itemName,$filetype) {
   return 'images/'.$itemType.'/'.$itemName.'.'.$filetype;
 }
 
-//function imgSrcURL($itemType,$itemName) {
-//  return 'images/'.$itemType.'/'.$itemName;
-//}
 
 //Image sizes for generated. would need to wipe gallery-thumb/gallery-tile folders if these are changed
 function imgSize($size) {
@@ -67,27 +58,6 @@ function imgSize($size) {
   return $sizeArr[$size];
 }
 
-//returns if item in group. one level deeper than the normal IN_ARRAY
-function isGroup($group) {
-  return function ($category) use ($group) {
-    return ($category[CategoryGroup] == $group);
-  };
-}
 
-function groupFilter($group) {
-  global $categoriesList;
-  return array_filter ($categoriesList, isGroup($group));
-}
-
-function urlSplit() {
-  $out = $_SERVER["REQUEST_URI"];
-  return $out;
-}
-
-function getUrl() {
-  $url  = @( $_SERVER["HTTPS"] != 'on' ) ? 'http://'.$_SERVER["SERVER_NAME"] :  'https://'.$_SERVER["SERVER_NAME"];
-  $url .= $_SERVER["REQUEST_URI"];
-  return $url;
-}
 
 ?>

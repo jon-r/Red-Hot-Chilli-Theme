@@ -9,7 +9,7 @@
 				echo '</a>';
 				echo '<ul>';
 
-				$categoriesListFiltered = array_filter ($categoriesList, isGroup($group));
+				$categoriesListFiltered = array_filter ($getCategory, isGroup($group));
 
 				foreach ($categoriesListFiltered as $category) {
 					$link = http_build_query(['cat' => $category[Name]]);

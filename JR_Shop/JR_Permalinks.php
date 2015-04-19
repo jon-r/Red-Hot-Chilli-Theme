@@ -14,26 +14,25 @@ function jr_page($pgtype) {
 	return $pageNum[$pgtype];
 }
 
+function set_permalinks() {
 
-
-function custom_rewrite_basic() {
   $permalinks = [
     //depts
 
-    '^brands/?'             => jr_page(grp).'g=_brand',
+    '^brands/?'             => jr_page(grp).'&g=_brand',
    /* -------------------------------------------------------------  GO AWAI '^all/?'                => jr_page(grp).'g=_all', */
-    '^departments/([^/]*)/?' => jr_page(grp).'g=$matches[1]',
+    '^departments/([^/]*)/?' => jr_page(grp).'&g=$matches[1]',
     //cats
-    '^special-offers/?'     => jr_page(cat).'c=sale',
-    '^sold/?'               => jr_page(cat).'c=sold',
-    '^coming-Soon/?'        => jr_page(cat).'c=soon',
-    '^new-Items/?'          => jr_page(cat).'c=new',
-    '^products/([^/]*)/?'   => jr_page(cat).'c=$matches[1]',
-    '^brand/([^/]*)/?'      => jr_page(cat).'c=brand&b=$matches[1]',
-    '^search/([^/]*)/?'     => jr_page(cat).'c=search&s=$matches[1]',
+    '^special-offers/?'     => jr_page(cat).'&c=sale',
+    '^sold/?'               => jr_page(cat).'&c=sold',
+    '^coming-Soon/?'        => jr_page(cat).'&c=soon',
+    '^new-Items/?'          => jr_page(cat).'&c=new',
+    '^products/([^/]*)/?'   => jr_page(cat).'&c=$matches[1]',
+    '^brand/([^/]*)/?'      => jr_page(cat).'&c=brand&b=$matches[1]',
+    '^search/([^/]*)/?'     => jr_page(cat).'&c=search&s=$matches[1]',
     //items
-    '^rhc/([^/]*)/([^/]*)/?'  => jr_page(item).'r=$matches[1]&n=$matches[2]',
-    '^rhcs/([^/]*)/([^/]*)/?' => jr_page(item).'r=$matches[1]&n=$matches[2]&s=1'
+    '^rhc/([^/]*)/([^/]*)/?'  => jr_page(item).'&r=$matches[1]&n=$matches[2]',
+    '^rhcs/([^/]*)/([^/]*)/?' => jr_page(item).'&r=$matches[1]&n=$matches[2]&s=1'
   ];
 
   foreach ($permalinks as $find => $replace) {
@@ -41,6 +40,5 @@ function custom_rewrite_basic() {
   }
 
 }
-add_action('init', 'custom_rewrite_basic');
-
+add_action('init', 'set_permalinks');
 ?>

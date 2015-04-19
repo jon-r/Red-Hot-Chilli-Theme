@@ -1,31 +1,5 @@
 <?php
 
-global $wpdb, $categoriesList, $carouselList, $groupsList, $stainlessList, $brandsListMajor, $keywords,
-      $categoriesListColumn, $brandsListFull, $rhcColumn, $rhcsColumn, $rhcListNew;
-//get category array
-$categoriesList = $wpdb->get_results("SELECT * FROM rhc_categories;", ARRAY_A);
-
-//get carousel
-//$carouselList = $wpdb->get_results("SELECT * FROM `carousel` WHERE `IsLive` = 1 ORDER BY `OrderNo` DESC;", ARRAY_A);
-
-//get keyword columns. For Smart Search
-//$groupsList = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` = 'group'");
-
-//$stainlessList = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` = 'stainless'");
-
-//$brandsListMajor = $wpdb->get_col("SELECT `keyword` FROM `keywords_db` WHERE `keywordGroup` = 'brand'");
-
-//get new items
-//$rhcListNew = $wpdb->get_col("SELECT `rhc` FROM `networked db` WHERE (`LiveonRHC` = 1 AND `Sold` = 0) ORDER BY `rhc` DESC LIMIT $itemCountMax") ;
-
-/*Validation Querys \
-\ for validation only. */
-//$brandsListFull = array_unique($wpdb->get_col("SELECT `Brand` FROM `networked db` WHERE `Brand` != '0' AND SOLD = 0"));
-//$categoriesListColumn = $wpdb->get_col("SELECT `name` FROM `rhc_categories`");
-//$rhcColumn = $wpdb->get_col("SELECT `rhc` FROM `networked db`");
-//$rhcsColumn = $wpdb->get_col("SELECT `rhcs` FROM `benchessinksdb`");
-
-
 //these are pretty much a lightweight cover over the wpdb class
 function jr_query_col_unique($column, $table) {
   global $wpdb;

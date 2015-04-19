@@ -1,6 +1,9 @@
 <?php
 
 
+
+
+
 // ----------------------array compiler--------------------------------------------------
 // Converts raw databases (associative) into useful blocks of text
 
@@ -29,7 +32,7 @@ function jr_shop_compile($ref,$detail) {
       }
 
       $out2 = [
-        webLink     => "rhcs/$ref[RHC]/$ref[ProductName]",
+        webLink     => "rhcs/$ref[RHC]/".to_slug($ref[ProductName]),
         //http_build_query(['page_id' => jr_page('item'), 'cat' => $ref[Category], 'r' => $ref[RHCs], 'n' => $ref[ProductName], 'x' => 1]),
         rhc         => "Ref: RHCs".$ref[RHCs],
         name        => $ref[ProductName],
@@ -62,14 +65,15 @@ function jr_shop_compile($ref,$detail) {
         wFull       => $ref[Width] ? "Width: ".$ref[Width]."mm / ".ceil($ref[Width] / 25.4)." inches" : null,
         dFull       => $ref[Depth] ? "Depth: ".$ref[Depth]."mm / ".ceil($ref[Depth] / 25.4)." inches" : null,
         desc        => ($ref['Line 1'] != " " ? $ref['Line 1']."<br>" : null).
-                      ($ref['Line 2'] != " " ? $ref['Line 2']."<br>" : null).
-                      ($ref['Line 3'] != " " ? $ref['Line 3'] : null),
+                          ($ref['Line 2'] != " " ? $ref['Line 2']."<br>" : null).
+                          ($ref['Line 3'] != " " ? $ref['Line 3'] : null),
         model       => $ref[Model] ? "Model: ".$ref[Model] : null,
         extra       => $ref[ExtraMeasurements],
         condition   => $ref[Condition] != " " ? $ref[Condition] : null,
         brand       => $brandCheck,
         watt        => $wattCheck,
-        imgAll      => glob('images/gallery/'.$ref[Image].'*')
+        imgAll      => glob('images/gallery/'.$ref[Image].'*'),
+        category    => $ref[Category]
       ];
     case 'med':
       if ($ref[Quantity] == 0) {
@@ -101,13 +105,14 @@ function jr_shop_compile($ref,$detail) {
       $out2 = [
         icon        => $iconCheck,
         price       => $priceCheck ,
-        webLink     => "rhc/$ref[RHC]/$ref[ProductName]",
+        webLink     => "rhc/$ref[RHC]/".to_slug($ref[ProductName]),
         //http_build_query(['page_id' => jr_page('item'), 'cat' => $ref[Category], 'r' => $ref[RHC], 'n' => $ref[ProductName]]),
         rhc         => "ref: RHC$ref[RHC]",
         name        => $ref[ProductName],
         imgFirst    => imgSrcRoot('gallery',$ref[Image],'jpg'),
         info        => $infoCheck,
-        quantity    => $ref[Quantity] > 1 ? $ref[Quantity]." in Stock" : null
+        quantity    => $ref[Quantity] > 1 ? $ref[Quantity]." in Stock" : null,
+        category    => $ref[Category]
       ];
     break;
   };
@@ -308,6 +313,40 @@ function jr_random_feedback() {
   $random = rand(0,$countIn);
 
   return $in[$random];
+}
+
+//--- misc functions --------------------------------------------------------------------
+
+//returns if item in group. one level deeper than the normal IN_ARRAY
+function isGroup($group) {
+  return function ($category) use ($group) {
+    return ($category[CategoryGroup] == $group);
+  };
+}
+
+function groupFilter($group) {
+  global $getCategory;
+  return array_filter ($getCategory, isGroup($group));
+}
+
+function getUrl() {
+  $url  = @( $_SERVER["HTTPS"] != 'on' ) ? 'http://'.$_SERVER["SERVER_NAME"] : 'https://'.$_SERVER["SERVER_NAME"];
+  $url .= $_SERVER["REQUEST_URI"];
+  return $url;
+}
+
+
+
+//http://code.seebz.net/p/to-permalink/
+function to_slug($str) {
+  if($str !== mb_convert_encoding( mb_convert_encoding($str, 'UTF-32', 'UTF-8'), 'UTF-8', 'UTF-32') )
+    $str = mb_convert_encoding($str, 'UTF-8', mb_detect_encoding($str));
+  $str = htmlentities($str, ENT_NOQUOTES, 'UTF-8');
+  $str = preg_replace('`&([a-z]{1,2})(acute|uml|circ|grave|ring|cedil|slash|tilde|caron|lig);`i', '\\1', $str);
+  $str = html_entity_decode($str, ENT_NOQUOTES, 'UTF-8');
+  $str = preg_replace(array('`[^a-z0-9]`i','`[-]+`'), '-', $str);
+  $str = strtolower( trim($str, '-') );
+  return $str;
 }
 
 

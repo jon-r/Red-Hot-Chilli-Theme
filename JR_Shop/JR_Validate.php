@@ -8,99 +8,123 @@
 
 //idea of this function is to act as a wall between input and output.
 //the user can input whatever he wants, but only strings on this page are used
-function jr_validate_params($get) {
-  $out = null;
-
-  if ($get[page_id] == null) {//home page
-    $out[pgName] = $out[pgType] = 'Home';
-
-  } elseif ($get[page_id] == jr_page('grp')) {
-    $out[pgType] = 'Group';
-    if ($get[g] == 'all') {
-      $out[pgName] = 'All Categories';
-      $out[group] = 'all';
-    } else {
-      $out[pgName] = $out[group] = jr_validate_group($get[g]);
-      $out[imgUrl] = imgSrcRoot('icons',urlencode($out[pgName]),'jpg');
-    }
-
-
-  } elseif ($get[page_id] == jr_page('cat')) {
-    if ($get['new']) {
-      $out[pgType] = 'New';
-      $out[pgName] = 'Just In';
-
-    } elseif ($get['soon']) {
-      $out[pgType] = 'Soon';
-      $out[pgName] = 'Coming Soon';
-
-    } elseif ($get['sold']) {
-      $out[pgName] = $out[pgType] = 'Sold';
-
-    } elseif ($get['sale']) {
-      $out[pgType] = 'Sale';
-      $out[pgName] = 'Special Offers';
-
-    } elseif ($get['search']) {
-      $out[pgType] = 'Search';
-      $out[search] = jr_validate_search($get['search']);
-      $readableSearch = preg_replace("/[^[:alnum:][:space:]]/ui", ' ', $get['search']);
-      $out[pgName] = 'Search Results for \''.$readableSearch.'\'';
-
-    } elseif ($get['brand']) {
-      $out[pgType] = 'Brand';
-      $out[brand] =  jr_validate_brand($get['brand']);
-      $out[pgName] = 'Products from '.$out[brand];
-      $brandIconLocation = imgSrcRoot('icons',$out[brand],'jpg');
-      if (file_exists ($brandIconLocation)) {
-        $out[imgUrl] = $brandIconLocation;
-      };
-
-    } elseif ($get['cat'] && !jr_validate_stainless($get['cat'])) {
-      $out[pgType] = 'Category';
-      $out[pgName] = $out[cat] = jr_validate_category($get['cat']);
-
-    } elseif (jr_validate_stainless($get['cat'])) {
-      $out[pgType] = 'CategorySS';
-      $out[pgName] = $out[cat] = jr_validate_category($get['cat']);
-
-    } else {
-      $out[pgType] = 'All';
-      $out[pgName] = 'All Products';
-    };
-    if ($out[pgType] == 'Category' || $out[pgType] == 'CategorySS') {
-      $out[imgUrl] = imgSrcRoot('thumbnails',$fCategory,'jpg');
-      $categoryDetails = jr_category_row( $fCategory );
-      $out[description] = $categoryDetails[CategoryDescription] ?: null;
-    } else {
-      $out[description] = jr_category_info($out[pgType]);
-
-    }
-  } elseif ($get[page_id] == jr_page('item')) {
-    $out[pgType] = 'Item';
-    $out[rhc] = $get['x'] ? jr_validate_rhcs($get['r']) : jr_validate_rhc($get['r']);
-    $out[cat] = jr_validate_category($get['cat']);
-    $out[ss] = $get['x'] ? true : false;
-    $out[pgName] = $get['n'];
-
-  } else {
-    $out[pgType] = $out[pgName] = 'Page Name'; //get the page title
-  };
-
-  return $out;
-}
+//function jr_validate_params($get) {
+//  $out = null;
+//
+//  if ($get[page_id] == null) {//home page
+//    $out[pgName] = $out[pgType] = 'Home';
+//
+//  } elseif ($get[page_id] == jr_page('grp')) {
+//    $out[pgType] = 'Group';
+//    if ($get[g] == 'all') {
+//      $out[pgName] = 'All Categories';
+//      $out[group] = 'all';
+//    } else {
+//      $out[pgName] = $out[group] = jr_validate_group($get[g]);
+//      $out[imgUrl] = imgSrcRoot('icons',urlencode($out[pgName]),'jpg');
+//    }
+//
+//
+//  } elseif ($get[page_id] == jr_page('cat')) {
+//    if ($get['new']) {
+//      $out[pgType] = 'New';
+//      $out[pgName] = 'Just In';
+//
+//    } elseif ($get['soon']) {
+//      $out[pgType] = 'Soon';
+//      $out[pgName] = 'Coming Soon';
+//
+//    } elseif ($get['sold']) {
+//      $out[pgName] = $out[pgType] = 'Sold';
+//
+//    } elseif ($get['sale']) {
+//      $out[pgType] = 'Sale';
+//      $out[pgName] = 'Special Offers';
+//
+//    } elseif ($get['search']) {
+//      $out[pgType] = 'Search';
+//      $out[search] = jr_validate_search($get['search']);
+//      $readableSearch = preg_replace("/[^[:alnum:][:space:]]/ui", ' ', $get['search']);
+//      $out[pgName] = 'Search Results for \''.$readableSearch.'\'';
+//
+//    } elseif ($get['brand']) {
+//      $out[pgType] = 'Brand';
+//      $out[brand] =  jr_validate_brand($get['brand']);
+//      $out[pgName] = 'Products from '.$out[brand];
+//      $brandIconLocation = imgSrcRoot('icons',$out[brand],'jpg');
+//      if (file_exists ($brandIconLocation)) {
+//        $out[imgUrl] = $brandIconLocation;
+//      };
+//
+//    } elseif ($get['cat'] && !jr_validate_stainless($get['cat'])) {
+//      $out[pgType] = 'Category';
+//      $out[pgName] = $out[cat] = jr_validate_category($get['cat']);
+//
+//    } elseif (jr_validate_stainless($get['cat'])) {
+//      $out[pgType] = 'CategorySS';
+//      $out[pgName] = $out[cat] = jr_validate_category($get['cat']);
+//
+//    } else {
+//      $out[pgType] = 'All';
+//      $out[pgName] = 'All Products';
+//    };
+//    if ($out[pgType] == 'Category' || $out[pgType] == 'CategorySS') {
+//      $out[imgUrl] = imgSrcRoot('thumbnails',$fCategory,'jpg');
+//      $categoryDetails = jr_category_row( $fCategory );
+//      $out[description] = $categoryDetails[CategoryDescription] ?: null;
+//    } else {
+//      $out[description] = jr_category_info($out[pgType]);
+//
+//    }
+//  } elseif ($get[page_id] == jr_page('item')) {
+//    $out[pgType] = 'Item';
+//    $out[rhc] = $get['x'] ? jr_validate_rhcs($get['r']) : jr_validate_rhc($get['r']);
+//    $out[cat] = jr_validate_category($get['cat']);
+//    $out[ss] = $get['x'] ? true : false;
+//    $out[pgName] = $get['n'];
+//
+//  } else {
+//    $out[pgType] = $out[pgName] = 'Page Name'; //get the page title
+//  };
+//
+//  return $out;
+//}
 
 /*--------------------------------------------------------------------------------------*/
 
 
+function url_to_title($url,$type) {
+  global $getGroup;
 
+  $getCategory = jr_query_col_unique('name', 'rhc_categories');
 
+  $out = "bad url - >$url<";
 
+  if ($type == 'cat') {
+    $catUrls = array_map('to_slug', $getCategory);
+    if (in_array($url,$catUrls)) {
+      $cats = array_combine($getCategory, $catUrls);
+      $out = array_search($url, $cats);
+    }
+  } elseif ($type == 'grp') {
+    $grpUrls = array_map('to_slug', $getGroup);
+    if (in_array($url,$grpUrls)) {
+      $grps = array_combine($getGroup, $grpUrls);
+      $out = array_search($url, $grps);
 
+//      $out = str_replace($grpUrls, $getGroup, $url);
+    }
+  }
+  return $out;
+}
 
+function test() {
+  global $getGroup, $getCategory;
 
+  $out = $getGroup;
 
-
+  return $out;
+}
 
 
 
@@ -119,22 +143,27 @@ function jr_validate_urls($url) {
       $out[pgName] = 'All Categories';
       $out[group] = 'all';
     } else {
-      $out[pgName] = $out[group] = jr_validate_group($params[2]);
+      $out[pgName] = $out[group] = url_to_title($params[2],'grp');
       $out[imgUrl] = imgSrcRoot('icons',urlencode($out[pgName]),'jpg');
     }
 
 
   } elseif ($params[1] == 'products') {
+
     if ($params[2] == 'all') {
       $out[pgType] = 'All';
       $out[pgName] = 'All Products';
     } elseif (jr_validate_stainless($params[2])) {
       $out[pgType] = 'CategorySS';
-      $out[pgName] = $out[cat] = jr_validate_category($params[2]);
+      $out[pgName] = $out[cat] = url_to_title($params[2],'cat');
     } else {
       $out[pgType] = 'Category';
-      $out[pgName] = $out[cat] = jr_validate_category($params[2]);
+      $out[pgName] = $out[cat] = url_to_title($params[2],'cat');
     }
+
+    $out[imgUrl] = imgSrcRoot('thumbnails',$out[pgName],'jpg');
+    $categoryDetails = jr_category_row( $out[pgName] );
+    $out[description] = $categoryDetails[CategoryDescription] ?: null;
 
   } elseif ($params[1] == 'new-items') {
     $out[pgType] = 'New';
@@ -191,16 +220,27 @@ function jr_validate_urls($url) {
     $out[pgType] = $out[pgName] = 'Page Name'; //get the page title
   };
 
+  if ($out[pgType] == 'Category' || $out[pgType] == 'CategorySS') {
+
+  } else {
+    $out[description] = jr_category_info($out[pgType]);
+
+  }
+
   return $out;
 };
 
 //-------------------------------
 
 //validates group
-function jr_validate_group($rawGroup) {
-  global $getGroup;
-  return in_array($rawGroup, $getGroup) ? $rawGroup : null;
-}
+//function jr_validate_group($rawGroup) {
+//  global $getGroup;
+////  return in_array(urldecode($rawGroup), $getGroup) ? $rawGroup : null;
+//
+//  $groupUrl = array_map("urlencode", $getGroup);
+//
+//  return in_array($rawGroup, $groupUrl) ? urldecode($rawGroup) : null;
+//}
 
 //validates categories, makes sure exists
 function jr_validate_category($rawCategory) {
