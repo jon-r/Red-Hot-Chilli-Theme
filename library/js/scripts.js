@@ -1,9 +1,27 @@
+/*----- jquery menu aim ---------------------------------------------------------------
+https://github.com/kamens/jQuery-menu-aim.git
+(minified)
+*/
+
+!function(e){function t(t){var n=e(this),i=null,o=[],u=null,r=null,c=e.extend({rowSelector:"> li",submenuSelector:"*",submenuDirection:"right",tolerance:75,enter:e.noop,exit:e.noop,activate:e.noop,deactivate:e.noop,exitMenu:e.noop},t),l=3,f=300,a=function(e){o.push({x:e.pageX,y:e.pageY}),o.length>l&&o.shift()},s=function(){r&&clearTimeout(r),c.exitMenu(this)&&(i&&c.deactivate(i),i=null)},h=function(){r&&clearTimeout(r),c.enter(this),v(this)},m=function(){c.exit(this)},x=function(){y(this)},y=function(e){e!=i&&(i&&c.deactivate(i),c.activate(e),i=e)},v=function(e){var t=p();t?r=setTimeout(function(){v(e)},t):y(e)},p=function(){function t(e,t){return(t.y-e.y)/(t.x-e.x)}if(!i||!e(i).is(c.submenuSelector))return 0;var r=n.offset(),l={x:r.left,y:r.top-c.tolerance},a={x:r.left+n.outerWidth(),y:l.y},s={x:r.left,y:r.top+n.outerHeight()+c.tolerance},h={x:r.left+n.outerWidth(),y:s.y},m=o[o.length-1],x=o[0];if(!m)return 0;if(x||(x=m),x.x<r.left||x.x>h.x||x.y<r.top||x.y>h.y)return 0;if(u&&m.x==u.x&&m.y==u.y)return 0;var y=a,v=h;"left"==c.submenuDirection?(y=s,v=l):"below"==c.submenuDirection?(y=h,v=s):"above"==c.submenuDirection&&(y=l,v=a);var p=t(m,y),b=t(m,v),d=t(x,y),g=t(x,v);return d>p&&b>g?(u=m,f):(u=null,0)};n.mouseleave(s).find(c.rowSelector).mouseenter(h).mouseleave(m).click(x),e(document).mousemove(a)}e.fn.menuAim=function(e){return this.each(function(){t.call(this,e)}),this}}(jQuery);
+
+/*
+ * Get Viewport Dimensions
+ * returns object with viewport dimensions to match css in width and height properties
+ * ( source: http://andylangton.co.uk/blog/development/get-viewport-size-width-and-height-javascript )
+*/
+
+function updateViewportDimensions() {
+	var w=window,d=document,e=d.documentElement,g=d.getElementsByTagName('body')[0],x=w.innerWidth||e.clientWidth||g.clientWidth,y=w.innerHeight||e.clientHeight||g.clientHeight;
+	return { width:x,height:y }
+}
+// setting the viewport width
+var viewport = updateViewportDimensions();
 
 
 /*-- main menu toggle -----------------------------------------------------------------
 
 THIS WILL BE CONVERTED TO JQUERY. BECAUSE IT IS PROBABLY BETTER EVEN IF A TINY BIT SLOWER.
-
 (this site will be small enough. Ill )
 
 */
@@ -11,11 +29,53 @@ THIS WILL BE CONVERTED TO JQUERY. BECAUSE IT IS PROBABLY BETTER EVEN IF A TINY B
 var navMain_ul  = document.getElementById('js-main-list'),
   navMain_li  = navMain_ul.children;
 
-for (i = 0; i < navMain_li.length; i++) {
-  navMain_li[i].onclick = function () {
-    this.classList.toggle('active-li');
-  };
+//for (i = 0; i < navMain_li.length; i++) {
+//  navMain_li[i].onclick = function () {
+//    this.classList.toggle('active-li');
+//  };
+//}
+
+var $navMain_ul = $('#js-main-list'),
+    $navMain_li = $navMain_ul.find('li'),
+    bigScreen = false;
+//menu aim for large screen
+$navMain_ul.mouseenter( function() {
+  vp = updateViewportDimensions();
+  if ( vp.width >= 1030 ) {
+    bigScreen = true;
+    $navMain_ul.menuAim({
+      activate: showSubMenu,
+      deactivate: hideSubMenu,
+      exitMenu: hideAllMenus
+    })
+  } else {
+    bigScreen = false;
+  }
+});
+
+function showSubMenu(row) {
+  if (bigScreen) {
+    $row = $(row);
+    $row.addClass('active-li');
+  }
 }
+
+function hideSubMenu(row) {
+  $row = $(row);
+  $row.removeClass('active-li');
+}
+
+function hideAllMenus() {
+  bigScreen = false;
+  $navMain_li = $navMain_ul.find('li').removeClass('active-li');
+}
+
+//much simpler touch toggle for small screens
+$navMain_li.click( function() {
+  $(this).toggleClass('active-li')
+});
+
+
 
 /*-- carousel scroller ----------------------------------------------------------------*/
 
@@ -77,27 +137,9 @@ if (carousel) {
 }
 
 
-/*----- jquery menu aim ---------------------------------------------------------------
-https://github.com/kamens/jQuery-menu-aim.git
-(minified)
 
-https://rawgit.com/kamens/jQuery-menu-aim/master/example/example.html#
-(demo, temp link)
-*/
 
-!function(e){function t(t){var n=e(this),i=null,o=[],u=null,r=null,c=e.extend({rowSelector:"> li",submenuSelector:"*",submenuDirection:"right",tolerance:75,enter:e.noop,exit:e.noop,activate:e.noop,deactivate:e.noop,exitMenu:e.noop},t),l=3,f=300,a=function(e){o.push({x:e.pageX,y:e.pageY}),o.length>l&&o.shift()},s=function(){r&&clearTimeout(r),c.exitMenu(this)&&(i&&c.deactivate(i),i=null)},h=function(){r&&clearTimeout(r),c.enter(this),v(this)},m=function(){c.exit(this)},x=function(){y(this)},y=function(e){e!=i&&(i&&c.deactivate(i),c.activate(e),i=e)},v=function(e){var t=p();t?r=setTimeout(function(){v(e)},t):y(e)},p=function(){function t(e,t){return(t.y-e.y)/(t.x-e.x)}if(!i||!e(i).is(c.submenuSelector))return 0;var r=n.offset(),l={x:r.left,y:r.top-c.tolerance},a={x:r.left+n.outerWidth(),y:l.y},s={x:r.left,y:r.top+n.outerHeight()+c.tolerance},h={x:r.left+n.outerWidth(),y:s.y},m=o[o.length-1],x=o[0];if(!m)return 0;if(x||(x=m),x.x<r.left||x.x>h.x||x.y<r.top||x.y>h.y)return 0;if(u&&m.x==u.x&&m.y==u.y)return 0;var y=a,v=h;"left"==c.submenuDirection?(y=s,v=l):"below"==c.submenuDirection?(y=h,v=s):"above"==c.submenuDirection&&(y=l,v=a);var p=t(m,y),b=t(m,v),d=t(x,y),g=t(x,v);return d>p&&b>g?(u=m,f):(u=null,0)};n.mouseleave(s).find(c.rowSelector).mouseenter(h).mouseleave(m).click(x),e(document).mousemove(a)}e.fn.menuAim=function(e){return this.each(function(){t.call(this,e)}),this}}(jQuery);
 
-var $menuMain = $()
-
-$(navMain_ul).menuAim({
-
-  activate:
-
-})
-
-function showSubmenu(row) {
-  var $row
-}
 
 /*-----probably delete below------------------------------------------------------------*/
 /*
@@ -115,17 +157,7 @@ function showSubmenu(row) {
 */
 
 
-/*
- * Get Viewport Dimensions
- * returns object with viewport dimensions to match css in width and height properties
- * ( source: http://andylangton.co.uk/blog/development/get-viewport-size-width-and-height-javascript )
-*/
-function updateViewportDimensions() {
-	var w=window,d=document,e=d.documentElement,g=d.getElementsByTagName('body')[0],x=w.innerWidth||e.clientWidth||g.clientWidth,y=w.innerHeight||e.clientHeight||g.clientHeight;
-	return { width:x,height:y }
-}
-// setting the viewport width
-var viewport = updateViewportDimensions();
+
 
 
 /*

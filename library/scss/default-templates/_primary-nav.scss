@@ -64,7 +64,15 @@ nav a {
   text-align: center;
   overflow: hidden;
   font-size: 1.2rem;
-
+  .active-li {
+    ul {
+      left:0;
+      @include jr-size(screen) {
+        display: block;
+        left:98%;
+      }
+    }
+  }
   span, a {
     display: inline-block;
     width:100%;
@@ -90,14 +98,6 @@ nav a {
     }
     &:active, &:hover {
       background-color: $jr-bg-hover;
-    }
-  }
-  .active-li {
-    ul {
-      left:0;
-      @include jr-size(screen) {
-        left:98%;
-      }
     }
   }
   @include jr-size(phoneOnly) {
@@ -138,13 +138,9 @@ nav a {
         min-height: calc(100% + 15px);
       }
     }
-    li:hover {
-      ul {
-        display: block;
-      }
-    }
   }
 }
+
 
 
 #menu-toggle:checked + .not-home, .nav-menu.home {
