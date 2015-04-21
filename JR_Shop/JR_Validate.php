@@ -140,22 +140,24 @@ function jr_validate_urls($url) {
 
   } elseif ($params[1] == 'products') {
 
+    $out[pgName] = $out[cat] = url_to_title($params[2],'cat');
+    $out[imgUrl] = imgSrcRoot('thumbnails',$out[pgName],'jpg');
+    $categoryDetails = jr_category_row( $out[pgName] );
+    $out[description] = $categoryDetails[CategoryDescription] ?: null;
+
     if ($params[2] == 'all') {
       $out[pgType] = 'All';
       $out[pgName] = 'All Products'; //everything
 
-    } elseif (jr_validate_stainless($params[2])) {
+    } elseif (jr_validate_stainless($out[pgName])) {
       $out[pgType] = 'CategorySS'; //category stainless
-      $out[pgName] = $out[cat] = url_to_title($params[2],'cat');
+
 
     } else {
       $out[pgType] = 'Category'; //category
-      $out[pgName] = $out[cat] = url_to_title($params[2],'cat');
     }
 
-    $out[imgUrl] = imgSrcRoot('thumbnails',$out[pgName],'jpg');
-    $categoryDetails = jr_category_row( $out[pgName] );
-    $out[description] = $categoryDetails[CategoryDescription] ?: null;
+
 
   } elseif ($params[1] == 'new-items') { //new in
     $out[pgType] = 'New';
@@ -200,15 +202,15 @@ function jr_validate_urls($url) {
     $out[ss] = true;
     $out[pgName] = $params[3];
   } else {
-    $out[pgType] = $out[pgName] = 'Page Name'; //get the page title
+    $out[pgType] = $out[pgName] = get_the_title();//get the page title
   };
 
-  if ($out[pgType] == 'Category' || $out[pgType] == 'CategorySS') {
-
-  } else {
-    $out[description] = jr_category_info($out[pgType]);
-
-  }
+//  if ($out[pgType] == 'Category' || $out[pgType] == 'CategorySS') {
+//
+//  } else {
+//    $out[description] = jr_category_info($out[pgType]);
+//
+//  }
 
   return $out;
 };

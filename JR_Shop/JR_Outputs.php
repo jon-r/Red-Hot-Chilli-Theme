@@ -19,8 +19,7 @@ function jr_shop_compile($ref,$detail) {
         hFull       => $ref[Height] ? "Height: ".$ref[Height]."mm / ".ceil($ref[Height] / 25.4)." inches" : null,
         wFull       => $ref[Width] ? "Width: ".$ref[Width]."mm / ".ceil($ref[Width] / 25.4)." inches" : null,
         dFull       => $ref[Depth] ? "Depth: ".$ref[Depth]."mm / ".ceil($ref[Depth] / 25.4)." inches" : null,
-        desc        => ($ref['Line1'] != " " ? $ref['Line 1']."<br>" : null),
-        quantity    => $ref[Quantity] > 1 ? $ref[Quantity]." in Stock" : null
+        desc        => ($ref['Line1'] != " " ? $ref['Line 1']."<br>" : null)
       ];
     case 'stainless':
       if ($ref[Quantity] == 0) {
@@ -38,7 +37,9 @@ function jr_shop_compile($ref,$detail) {
         name        => $ref[ProductName],
         imgFirst    => imgSrcRoot('gallery',$ref[Image],'jpg'),
         price       => $priceCheck ,
-        icon       => $ref[TableinFeet].'ft'
+        width       => "$ref[TableinFeet]ft",
+        quantity    => $ref[Quantity] > 1 ? $ref[Quantity]." in Stock" : null,
+        info        => $ref[Quantity] == 0 ? sold : null
       ];
     break;
     case 'full':
@@ -133,7 +134,7 @@ function jr_items_list_check($safeArr,$pageNumber) {
   $out['paginate'] = false;
   $lastPage = 1;
 
-  if ($safeArr['pgType'] != 'New' || $safeArr['pgType'] != 'Sold') {
+  if ($safeArr['pgType'] != 'New' && $safeArr['pgType'] != 'Sold') {
     //the "sold" and "new" already capped at a single page, no need to count
 
     $fullItemCount = jr_cat_count($safeArr);
@@ -185,11 +186,12 @@ function jr_page_crumbles ($safeArr) {
   $crumbs[0] = ['Home' => home_url()];
 
   if ($safeArr[pgType] == 'Item') {
-  //  $link = http_build_query(['cat' => $_GET[cat], 'page_id' => jr_page('cat')]);
-    $crumbs[1] = ['need to get' => site_url('/products/'.to_slug($shop_item[category]))];
-    $crumbs[2] = ['this working on items' => getUrl()];
+    $links = jr_query_crumbs($safeArr[rhc],$safeArr[ss]);
+    $crumbs[1] = [$links['Category'] => site_url('/products/'.to_slug($links['Category']))];
+    $crumbs[2] = [$links['ProductName'] => getUrl()];
   } else {
     $crumbs[1] = [$safeArr[pgName] => jr_pg_set()];
+    //page set instead of getURL to reset to page1 on paginated output
   };
 
 //  $crumbs['new'] = $_GET[$page_id];

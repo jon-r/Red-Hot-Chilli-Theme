@@ -30,7 +30,7 @@
       <h4><?php echo addslashes ($singleFeedback['Name']); ?></h4>
     </blockquote>
 
-
+    <h2>Find us online</h2>
     <div class="social-links">
       <a class="btn-icon facebook" href="<?php echo $rhcFacebookLink ?>">facebook</a>
       <a class="btn-icon linkedin" href="<?php echo $rhcLinkedinLink ?>">linkedIn</a>

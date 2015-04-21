@@ -26,7 +26,7 @@ function set_permalinks() {
     '^special-offers/?'     => jr_page(cat).'&c=sale',
     '^sold/?'               => jr_page(cat).'&c=sold',
     '^coming-Soon/?'        => jr_page(cat).'&c=soon',
-    '^new-Items/?'          => jr_page(cat).'&c=new',
+    '^new-items/?'          => jr_page(cat).'&c=new',
     '^products/([^/]*)/?'   => jr_page(cat).'&c=$matches[1]',
     '^brand/([^/]*)/?'      => jr_page(cat).'&c=brand&b=$matches[1]',
     '^search/([^/]*)/?'     => jr_page(cat).'&c=search&s=$matches[1]',

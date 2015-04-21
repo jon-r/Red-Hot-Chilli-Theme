@@ -16,6 +16,20 @@ function jr_query_keywords($keyword) {
   //return $queryStr;
 }
 
+//query for the breadcrumbs, since the nav bar comes before the "main" query/compile
+function jr_query_crumbs($safeRHC, $SS = null) {
+  global $wpdb;
+  if ($SS) {
+    $ref = "RHCs";
+    $tbl = "benchessinksdb";
+  } else {
+    $ref = "RHC";
+    $db = "networked db";
+  }
+
+  return $wpdb->get_row("SELECT `ProductName`,`Category` FROM `$db` WHERE `$ref` LIKE '$safeRHC'", ARRAY_A);
+}
+
 function jr_query_categories() {
   global $wpdb;
 
@@ -43,6 +57,7 @@ function jr_query_tesimonial($detail = null) {
 }
 
 //----------------wpdb query generator---------------------------------------------------
+
 //query for 'items full'
 function jr_query_items($safeRHC, $SS = null) {
   global $wpdb;
@@ -66,7 +81,6 @@ function jr_category_filter( $safeArr, $pageNumber) {
   $queryOffset = ($pageNumber - 1) * $itemCountMax;
 
   $queryLimiter = " LIMIT $queryOffset,$itemCountMax";
-
 
   $queryAll = jr_string_build($safeArr);
 
@@ -135,7 +149,7 @@ function jr_string_build($safeArr, $isCounter = false) {
   } elseif ($isCounter) {
     $queryStart = "SELECT `RHC` FROM `networked db` ";
   } elseif ($fType == 'CategorySS') {
-    $queryStart = "SELECT `RHCs`, `ProductName`, `Price`, `Image`, `Category`, `TableinFeet` FROM `benchessinksdb` ";
+    $queryStart = "SELECT `RHCs`, `ProductName`, `Price`, `Image`, `Category`, `TableinFeet`, `Quantity` FROM `benchessinksdb` ";
   } else {
     $queryStart = "SELECT `RHC`, `ProductName`, `Image`, `IsSoon`, `Sold`, `Category`, `Power`, `Price`, `SalePrice`, `Quantity` FROM `networked db` ";
   };

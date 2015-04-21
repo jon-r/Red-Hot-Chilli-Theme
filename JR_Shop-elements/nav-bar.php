@@ -79,7 +79,7 @@ _________________________________________________________
   </div>
 
   <?php //var_dump(jr_validate_urls(getUrl())); ?><br>
-  <?php // var_dump($arr_grp); ?>
+  <?php  var_dump($safeArr); ?>
 
 </nav>
 

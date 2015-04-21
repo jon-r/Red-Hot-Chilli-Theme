@@ -1,7 +1,7 @@
 /*-------------------------sprite layouts + settings ----------------------------------*/
 
 //temp link for image-relativity;
-$siteLink: /rhc_online;
+$siteLink: /redhotchilli;
 
 //size of sprite grid
 $sprite-grid-size: 128px;
@@ -118,22 +118,22 @@ $iconMap: (
 
 .text-icon {
   @extend %has-icon-before;
-  padding-left: 24px;
+  padding-left: 32px;
   line-height: 24px;
   @include jr-icon(before) {
-    transform: scale(0.1875); //24px
+    transform: scale(0.1875); //16px
     transform-origin: top left;
     left: 0;
-    top: 0;
+    top:0;
   }
 
-  @include jr-size(screen) {
-      padding-left: 32px;
-      line-height: 32px;
-    @include jr-icon(before) {
-      transform: scale(0.25); //32px
-    }
-  }
+//  @include jr-size(screen) {
+//      padding-left: 32px;
+//      line-height: 24px;
+//    @include jr-icon(before) {
+//      transform: scale(0.1875); //24px
+//    }
+//  }
 }
 
 .btn-icon {

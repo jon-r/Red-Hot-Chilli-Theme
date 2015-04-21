@@ -12,21 +12,20 @@
     right:-9px;
     top: 3.5rem;
   }
-//  @extend %has-icon-after;
-//  &::after {
-//    bottom: 0.5rem;
-//    right:0.1rem;
-//    transform: scale(0.75);
-//    transform-origin: bottom right;
-//  }
 
   padding-bottom: jr-spacer(2);
   ul {
     width:100%;
+    justify-content: space-between;
   }
   li {
     line-height: 1.5;
-    @include jr-width(1,2);
+    border-bottom: $jr-border;
+    &:nth-of-type(odd){
+      border-right: $jr-border;
+    }
+    width:50%;
+    padding: 0 jr-spacer(0.5) ;
     &:hover {
       background-color: $jr-bg-hover;
     }
@@ -51,4 +50,14 @@
   box-shadow: $jr-shadow;
   margin-bottom: jr-spacer();
   background-color: white;
+  //@include jr-width(1,2);
+}
+
+.ssLength {
+  position: absolute;
+  padding: 0 5px;
+  bottom: jr-spacer(2.5);
+  right: jr-spacer(-0.25);
+  border-radius: 2px;
+  line-height: 1.2;
 }

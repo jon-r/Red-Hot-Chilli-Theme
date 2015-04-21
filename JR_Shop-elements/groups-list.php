@@ -9,7 +9,7 @@
 
   <?php foreach($groupArray as $grpName => $groupList) :
       $link = site_url('/departments/'.to_slug($grpName));
-      $groupHeaderImg = site_url(imgSrcRoot('icons','header-'.strtok($grpName, ' '),'png'));
+      $groupHeaderImg = site_url(imgSrcRoot('icons','header-'.strtok($grpName, ' '),'jpg'));
   ?>
 
   <div class="shop-tile group flex-3">
@@ -21,7 +21,6 @@
     <ul class="flex-container">
       <?php foreach ($groupList as $category) :
           $link = site_url('/products/'.to_slug($category[Name]));
-    //http_build_query(['cat' => $category[Name], 'page_id' => jr_page('cat')]);
       ?>
       <li><a href="<?php echo $link ?>" ><?php echo $category[Name] ?></a></li>
       <?php endforeach ?>
