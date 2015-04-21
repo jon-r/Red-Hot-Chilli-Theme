@@ -665,7 +665,8 @@ Default style for all pages
     .primary-header {
       background: url(/rhc_online/images/rhc/Head-Banner.jpg) center no-repeat, linear-gradient(to right, #242428 25%, #61616b 75%); }
       .primary-header .home {
-        height: 250px; } }
+        height: 250px;
+        justify-content: space-between; } }
 
 .head-title {
   width: 100%;

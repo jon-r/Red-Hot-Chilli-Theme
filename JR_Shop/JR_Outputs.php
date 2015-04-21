@@ -185,9 +185,9 @@ function jr_page_crumbles ($safeArr) {
   $crumbs[0] = ['Home' => home_url()];
 
   if ($safeArr[pgType] == 'Item') {
-    $link = http_build_query(['cat' => $_GET[cat], 'page_id' => jr_page('cat')]);
-    $crumbs[1] = [$_GET[cat] => site_url()."/?".$link];
-    $crumbs[2] = [$safeArr[pgName] => getUrl()];
+  //  $link = http_build_query(['cat' => $_GET[cat], 'page_id' => jr_page('cat')]);
+    $crumbs[1] = ['need to get' => site_url('/products/'.to_slug($shop_item[category]))];
+    $crumbs[2] = ['this working on items' => getUrl()];
   } else {
     $crumbs[1] = [$safeArr[pgName] => jr_pg_set()];
   };
@@ -334,8 +334,6 @@ function getUrl() {
   $url .= $_SERVER["REQUEST_URI"];
   return $url;
 }
-
-
 
 //http://code.seebz.net/p/to-permalink/
 function to_slug($str) {

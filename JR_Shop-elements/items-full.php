@@ -1,8 +1,7 @@
 
 
-<?php /* style for the individual items page */ ?>
+<?php /* style for the individual items page */
 
-<?php
 
 if ($safeArr[ss]) {
     $item = jr_query_items($safeArr[rhc], 1);
@@ -11,7 +10,11 @@ if ($safeArr[ss]) {
     $item = jr_query_items($safeArr[rhc]);
     $shop_item = jr_shop_compile($item,'full');
   }
+
+
 ?>
+
+
 
 <article>
   <div class="item-container flex-container">

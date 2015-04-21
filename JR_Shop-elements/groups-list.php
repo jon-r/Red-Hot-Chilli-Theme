@@ -7,21 +7,19 @@
     <a href="<?php echo $link_allItems; ?>">Click here to View All</a>
   </header>
 
-  <?php foreach($getGroup as $group) :
-      $link = site_url('/departments/'.to_slug($group));
-        //http_build_query(['g' => $group, 'page_id' => jr_page('grp')]);
-      $categoriesListFiltered = array_filter ($getCategory, isGroup($group));
-      $groupHeaderImg = imgSrcRoot('icons','header-'.strtok($group, ' '),'png');
+  <?php foreach($groupArray as $grpName => $groupList) :
+      $link = site_url('/departments/'.to_slug($grpName));
+      $groupHeaderImg = site_url(imgSrcRoot('icons','header-'.strtok($grpName, ' '),'png'));
   ?>
 
   <div class="shop-tile group flex-3">
 
     <a href="<?php echo $link ?>" >
-      <img src="<?php echo $groupHeaderImg ?>" alt="<?php echo $group ?>"/>
+      <img src="<?php echo $groupHeaderImg ?>" alt="<?php echo $grpName ?>"/>
     </a>
 
     <ul class="flex-container">
-      <?php foreach ($categoriesListFiltered as $category) :
+      <?php foreach ($groupList as $category) :
           $link = site_url('/products/'.to_slug($category[Name]));
     //http_build_query(['cat' => $category[Name], 'page_id' => jr_page('cat')]);
       ?>

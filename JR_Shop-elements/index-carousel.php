@@ -1,15 +1,11 @@
 <?php
-/* carousel on the front page */
-//$carouselCount = $blipCount = 0;
 $carouselList = jr_query_carousel();
 ?>
 
 
 <ul id="js-carouselMain" class="carousel-container">
 
-  <?php //foreach ($carouselList as $slideRaw) :
-    for ($i = 0; $i < count($carouselList); $i++) :
-   // $carouselCount++;
+  <?php for ($i = 0; $i < count($carouselList); $i++) :
     $slide = magic_roundabout($carouselList[$i]);
   ?>
 

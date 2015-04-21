@@ -18,15 +18,12 @@ _________________________________________________________
       <li>
         <a class="text-icon arrow-r" href="<?php echo $link_allCategories; ?>">View Categories</a>
       </li>
-    <?php foreach($getGroup as $group) :
-        $categoriesListFiltered = array_filter ($getCategory, isGroup($group));
-      ?>
+    <?php foreach($groupArray as $grpName => $groupList) : ?>
 
-
-      <li><?php echo $group ?>
+      <li><?php echo $grpName ?>
         <ul>
           <h3 class="touch-toggle btn-red text-icon close-w">Back</h3>
-          <?php foreach ($categoriesListFiltered as $category) :
+          <?php foreach ($groupList as $category) :
               $link = site_url('/products/'.to_slug($category[Name]));
           ?>
           <li ><a class="text-icon arrow-r" href="<?php echo $link ?>" ><?php echo $category[Name] ?></a></li>
@@ -81,7 +78,8 @@ _________________________________________________________
 
   </div>
 
-  <?php var_dump(jr_validate_urls(getUrl())); ?>
+  <?php //var_dump(jr_validate_urls(getUrl())); ?><br>
+  <?php // var_dump($arr_grp); ?>
 
 </nav>
 

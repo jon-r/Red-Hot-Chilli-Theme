@@ -7,8 +7,8 @@ nav a {
 }
 
 .primary-nav {
-  justify-content: flex-start;
 
+ justify-content: flex-start;
 //simple 'loading' simulator - the <nav> will be the only child of the <section> until the php <article> has loaded.
   &:only-child {
     @extend %loader-icon;

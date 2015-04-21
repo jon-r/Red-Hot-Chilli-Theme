@@ -3,7 +3,7 @@
   if ($safeArr[group] == 'all') {
     $filteredCategories = $getCategory;
   } else {
-    $filteredCategories = groupFilter($safeArr[group]);
+    $filteredCategories = $groupArray[$safeArr[group]];
   }
 ?>
 

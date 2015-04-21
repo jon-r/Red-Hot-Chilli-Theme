@@ -118,16 +118,6 @@ function url_to_title($url,$type) {
   return $out;
 }
 
-function test() {
-  global $getGroup, $getCategory;
-
-  $out = $getGroup;
-
-  return $out;
-}
-
-
-
 //new version works on permalinks...
 function jr_validate_urls($url) {
   $slashedParams = str_replace(site_url(), '', $url);
@@ -152,12 +142,14 @@ function jr_validate_urls($url) {
 
     if ($params[2] == 'all') {
       $out[pgType] = 'All';
-      $out[pgName] = 'All Products';
+      $out[pgName] = 'All Products'; //everything
+
     } elseif (jr_validate_stainless($params[2])) {
-      $out[pgType] = 'CategorySS';
+      $out[pgType] = 'CategorySS'; //category stainless
       $out[pgName] = $out[cat] = url_to_title($params[2],'cat');
+
     } else {
-      $out[pgType] = 'Category';
+      $out[pgType] = 'Category'; //category
       $out[pgName] = $out[cat] = url_to_title($params[2],'cat');
     }
 
@@ -165,29 +157,29 @@ function jr_validate_urls($url) {
     $categoryDetails = jr_category_row( $out[pgName] );
     $out[description] = $categoryDetails[CategoryDescription] ?: null;
 
-  } elseif ($params[1] == 'new-items') {
+  } elseif ($params[1] == 'new-items') { //new in
     $out[pgType] = 'New';
     $out[pgName] = 'Just In';
 
-  } elseif ($params[1] == 'coming-soon') {
+  } elseif ($params[1] == 'coming-soon') { //soon
     $out[pgType] = 'Soon';
     $out[pgName] = 'Coming Soon';
 
-  } elseif ($params[1] == 'sold') {
+  } elseif ($params[1] == 'sold') { //sold
     $out[pgName] = $out[pgType] = 'Sold';
 
-  } elseif ($params[1] == 'sale') {
+  } elseif ($params[1] == 'sale') { //sale
     $out[pgType] = 'Sale';
     $out[pgName] = 'Special Offers';
     $out[saleNum] = $params[2];
 
-  } elseif ($params[1] == 'search') {
+  } elseif ($params[1] == 'search') { //search
     $out[pgType] = 'Search';
     $out[search] = jr_validate_search($params[2]);
     $readableSearch = preg_replace("/[^[:alnum:][:space:]]/ui", ' ', $params[2]);
     $out[pgName] = 'Search Results for \''.$readableSearch.'\'';
 
-  } elseif ($params[1] == 'brand') {
+  } elseif ($params[1] == 'brand') { //brand
     $out[pgType] = 'Brand';
     $out[brand] =  jr_validate_brand($params[2]);
     $out[pgName] = 'Products from '.$out[brand];
@@ -195,15 +187,6 @@ function jr_validate_urls($url) {
     if (file_exists ($brandIconLocation)) {
       $out[imgUrl] = $brandIconLocation;
     };
-
-
-//    if ($out[pgType] == 'Category' || $out[pgType] == 'CategorySS') {
-//      $out[imgUrl] = imgSrcRoot('thumbnails',$fCategory,'jpg');
-//      $categoryDetails = jr_category_row( $fCategory );
-//      $out[description] = $categoryDetails[CategoryDescription] ?: null;
-//    } else {
-//      $out[description] = jr_category_info($out[pgType]);
-//    }
 
   } elseif ($params[1] == 'rhc') { //product
     $out[pgType] = 'Item';
@@ -232,21 +215,12 @@ function jr_validate_urls($url) {
 
 //-------------------------------
 
-//validates group
-//function jr_validate_group($rawGroup) {
-//  global $getGroup;
-////  return in_array(urldecode($rawGroup), $getGroup) ? $rawGroup : null;
-//
-//  $groupUrl = array_map("urlencode", $getGroup);
-//
-//  return in_array($rawGroup, $groupUrl) ? urldecode($rawGroup) : null;
-//}
 
 //validates categories, makes sure exists
-function jr_validate_category($rawCategory) {
-  $categoriesListColumn = jr_query_col_unique('name', 'rhc_categories');
-  return in_array($rawCategory, $categoriesListColumn) ? $rawCategory : null ;
-};
+//function jr_validate_category($rawCategory) {
+//  $categoriesListColumn = jr_query_col_unique('name', 'rhc_categories');
+//  return in_array($rawCategory, $categoriesListColumn) ? $rawCategory : null ;
+//};
 
 //validates stainless pages,
 //returns TRUE/FALSE (this is only being used as a switch between stainless and standard product tables)
