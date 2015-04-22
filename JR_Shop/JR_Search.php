@@ -19,31 +19,42 @@ Priority:
 function jr_smart_search($searchTerm) {
 
   $brandsListMajor = jr_query_keywords('brand');
-//need to set this as variable since bouncing to and from pcs/servers
-  $urlStart = home_url().'/?';
-  $urlEnd = null;
 
-//RHCs first
-  if (stripos($searchTerm, "rhc") === 0) {
-    $urlEnd = http_build_query([
-      'r' => str_replace('rhc', '', $searchTerm),
-      'page_id' => jr_page('item')
-    ]);
+//  $urlStart
+//need to set this as variable since bouncing to and from pcs/servers
+//  $urlStart = home_url().'/?';
+//  $urlEnd = null;
+
+//RHCs must be first
+  if (stripos($searchTerm, "rhcs") === 0)  {
+    $ref = str_replace('rhcs','',$searchTerm);
+    $url = site_url("rhcs/$ref/".to_slug($ref[ProductName])),
+  } elseif (stripos($searchTerm, "rhc") === 0) {
+    $ref = str_replace('rhc','',$searchTerm);
+    $url = site_url("rhc/$ref/".to_slug($ref[ProductName])),
+//    $urlEnd = jr_query_titles($safeArr[rhc],$safeArr[ss]);
+//    $urlEnd =
+//      http_build_query([
+//      'r' => str_replace('rhc', '', $searchTerm),
+//      'page_id' => jr_page('item')
+//    ]);
   } elseif (in_array(ucwords($searchTerm) , $brandsListMajor)) {
-    $urlEnd = http_build_query([
-      'brand' => $searchTerm,
-      'page_id' => jr_page('cat')
-    ]);
+      $url = site_url("brand/".to_slug($searchTerm));
+//    $urlEnd = http_build_query([
+//      'brand' => $searchTerm,
+//      'page_id' => jr_page('cat')
+//    ]);
 //} elseif (stainless steel) {
   } else {
-    $urlEnd = http_build_query([
-      'search' => $searchTerm,
-      'page_id' => jr_page('cat')
-    ]);
+    $url = site_url('/products/'.to_slug($category[Name]));
+//    $urlEnd = http_build_query([
+//      'search' => $searchTerm,
+//      'page_id' => jr_page('cat')
+//    ]);
 //if blank?
   }
   //$searchSTR
-  return wp_redirect( $urlStart.$urlEnd  , 301 );
+  return wp_redirect( $url , 301 );
 }
 
 ?>

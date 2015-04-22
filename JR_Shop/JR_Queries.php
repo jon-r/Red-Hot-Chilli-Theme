@@ -16,8 +16,8 @@ function jr_query_keywords($keyword) {
   //return $queryStr;
 }
 
-//query for the breadcrumbs, since the nav bar comes before the "main" query/compile
-function jr_query_crumbs($safeRHC, $SS = null) {
+//query for the breadcrumbs/search, since the nav bar comes before the "main" query/compile
+function jr_query_titles($safeRHC, $SS = null) {
   global $wpdb;
   if ($SS) {
     $ref = "RHCs";

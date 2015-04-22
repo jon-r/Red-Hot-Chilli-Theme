@@ -186,7 +186,7 @@ function jr_page_crumbles ($safeArr) {
   $crumbs[0] = ['Home' => home_url()];
 
   if ($safeArr[pgType] == 'Item') {
-    $links = jr_query_crumbs($safeArr[rhc],$safeArr[ss]);
+    $links = jr_query_titles($safeArr[rhc],$safeArr[ss]);
     $crumbs[1] = [$links['Category'] => site_url('/products/'.to_slug($links['Category']))];
     $crumbs[2] = [$links['ProductName'] => getUrl()];
   } else {
