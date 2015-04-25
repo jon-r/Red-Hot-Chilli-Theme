@@ -18,19 +18,19 @@ function set_permalinks() {
 
   $permalinks = [
     //depts
-    '^brands/?'             => jr_page(grp).'&g=_brand',
-    '^departments/([^/]*)/?' => jr_page(grp).'&g=$matches[1]',
+    '^brands/?'             => jr_page(grp),
+    '^departments/([^/]*)/?' => jr_page(grp),
     //cats
-    '^special-offers/?'     => jr_page(cat).'&c=sale',
-    '^sold/?'               => jr_page(cat).'&c=sold',
-    '^coming-Soon/?'        => jr_page(cat).'&c=soon',
-    '^new-items/?'          => jr_page(cat).'&c=new',
-    '^products/([^/]*)/?'   => jr_page(cat).'&c=$matches[1]',
-    '^brand/([^/]*)/?'      => jr_page(cat).'&c=brand&b=$matches[1]',
-    '^search-results/([^/]*)/?'     => jr_page(cat).'&c=search&s=$matches[1]',
+    '^special-offers/?'         => jr_page(cat),
+    '^sold/?'                   => jr_page(cat),
+    '^coming-Soon/?'            => jr_page(cat),
+    '^new-items/?'              => jr_page(cat),
+    '^products/([^/]*)/?'       => jr_page(cat),
+    '^brand/([^/]*)/?'          => jr_page(cat),
+    '^search-results/([^/]*)/?' => jr_page(cat),
     //items
-    '^rhc/([^/]*)/?'  => jr_page(item).'&r=$matches[1]&n=$matches[2]',
-    '^rhcs/([^/]*)/?' => jr_page(item).'&r=$matches[1]&n=$matches[2]&steel=1'
+    '^rhc/([^/]*)/?'  => jr_page(item),
+    '^rhcs/([^/]*)/?' => jr_page(item)
   ];
 
   foreach ($permalinks as $find => $replace) {

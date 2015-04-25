@@ -158,7 +158,6 @@ function jr_validate_urls($url) {
     } elseif (jr_validate_stainless($out[pgName])) {
       $out[pgType] = 'CategorySS'; //category stainless
 
-
     } else {
       $out[pgType] = 'Category'; //category
     }
