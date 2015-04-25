@@ -9,7 +9,7 @@ function jr_page($pgtype) {
 		'grp' =>	'24',
 		'cat' =>	'16',
 		'item' =>	'21',
-		'srch' =>	'29'
+		'srch' =>	'30'
 	];
 	return $pageNum[$pgtype];
 }
@@ -18,9 +18,7 @@ function set_permalinks() {
 
   $permalinks = [
     //depts
-
     '^brands/?'             => jr_page(grp).'&g=_brand',
-   /* -------------------------------------------------------------  GO AWAI '^all/?'                => jr_page(grp).'g=_all', */
     '^departments/([^/]*)/?' => jr_page(grp).'&g=$matches[1]',
     //cats
     '^special-offers/?'     => jr_page(cat).'&c=sale',
@@ -29,10 +27,10 @@ function set_permalinks() {
     '^new-items/?'          => jr_page(cat).'&c=new',
     '^products/([^/]*)/?'   => jr_page(cat).'&c=$matches[1]',
     '^brand/([^/]*)/?'      => jr_page(cat).'&c=brand&b=$matches[1]',
-    '^search/([^/]*)/?'     => jr_page(cat).'&c=search&s=$matches[1]',
+    '^search-results/([^/]*)/?'     => jr_page(cat).'&c=search&s=$matches[1]',
     //items
-    '^rhc/([^/]*)/([^/]*)/?'  => jr_page(item).'&r=$matches[1]&n=$matches[2]',
-    '^rhcs/([^/]*)/([^/]*)/?' => jr_page(item).'&r=$matches[1]&n=$matches[2]&s=1'
+    '^rhc/([^/]*)/?'  => jr_page(item).'&r=$matches[1]&n=$matches[2]',
+    '^rhcs/([^/]*)/?' => jr_page(item).'&r=$matches[1]&n=$matches[2]&steel=1'
   ];
 
   foreach ($permalinks as $find => $replace) {

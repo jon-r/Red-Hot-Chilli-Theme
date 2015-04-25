@@ -8,7 +8,7 @@
   </header>
 
   <?php foreach($groupArray as $grpName => $groupList) :
-      $link = site_url('/departments/'.to_slug($grpName));
+      $link = site_url('/departments/'.sanitize_title($grpName));
       $groupHeaderImg = site_url(imgSrcRoot('icons','header-'.strtok($grpName, ' '),'jpg'));
   ?>
 
@@ -20,7 +20,7 @@
 
     <ul class="flex-container">
       <?php foreach ($groupList as $category) :
-          $link = site_url('/products/'.to_slug($category[Name]));
+          $link = site_url('/products/'.sanitize_title($category[Name]));
       ?>
       <li><a href="<?php echo $link ?>" ><?php echo $category[Name] ?></a></li>
       <?php endforeach ?>

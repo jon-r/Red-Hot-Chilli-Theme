@@ -14,7 +14,7 @@
   </header>
 
   <?php foreach ($filteredCategories as $category) :
-    $link = site_url('/products/'.to_slug($category[Name]));
+    $link = site_url('/products/'.sanitize_title($category[Name]));
     //http_build_query(['cat' => $category[Name], 'page_id' => jr_page('cat')]);
     $imgUrl = imgSrcRoot('thumbnails',$category[RefName],'jpg');
   ?>

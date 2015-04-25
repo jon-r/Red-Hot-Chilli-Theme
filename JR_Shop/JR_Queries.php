@@ -149,7 +149,7 @@ function jr_string_build($safeArr, $isCounter = false) {
   } elseif ($isCounter) {
     $queryStart = "SELECT `RHC` FROM `networked db` ";
   } elseif ($fType == 'CategorySS') {
-    $queryStart = "SELECT `RHCs`, `ProductName`, `Price`, `Image`, `Category`, `TableinFeet`, `Quantity` FROM `benchessinksdb` ";
+    $queryStart = "SELECT `RHCs`, `ProductName`, `Price`, `Category`, `TableinFeet`, `Quantity` FROM `benchessinksdb` ";
   } else {
     $queryStart = "SELECT `RHC`, `ProductName`, `Image`, `IsSoon`, `Sold`, `Category`, `Power`, `Price`, `SalePrice`, `Quantity` FROM `networked db` ";
   };

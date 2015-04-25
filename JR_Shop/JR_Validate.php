@@ -101,13 +101,13 @@ function url_to_title($url,$type) {
   $out = "bad url - >$url<";
 
   if ($type == 'cat') {
-    $catUrls = array_map('to_slug', $getCategory);
+    $catUrls = array_map('sanitize_title', $getCategory);
     if (in_array($url,$catUrls)) {
       $cats = array_combine($getCategory, $catUrls);
       $out = array_search($url, $cats);
     }
   } elseif ($type == 'grp') {
-    $grpUrls = array_map('to_slug', $getGroup);
+    $grpUrls = array_map('sanitize_title', $getGroup);
     if (in_array($url,$grpUrls)) {
       $grps = array_combine($getGroup, $grpUrls);
       $out = array_search($url, $grps);
@@ -148,6 +148,12 @@ function jr_validate_urls($url) {
     if ($params[2] == 'all') {
       $out[pgType] = 'All';
       $out[pgName] = 'All Products'; //everything
+
+    } elseif ($params[2] == 'search') {
+      $out[pgType] = 'Search';
+      $out[search] = sanitize_title($params[3]);
+    //  $readableSearch = esc_url($params[3]);
+      $out[pgName] = 'Search Results for \''.$params[3].'\'';
 
     } elseif (jr_validate_stainless($out[pgName])) {
       $out[pgType] = 'CategorySS'; //category stainless
@@ -191,16 +197,20 @@ function jr_validate_urls($url) {
     };
 
   } elseif ($params[1] == 'rhc') { //product
+    $getItem = jr_query_titles($params[2]);
     $out[pgType] = 'Item';
     $out[rhc] = jr_validate_rhc($params[2]);
     $out[ss] = $get['x'] ? true : false;
-    $out[pgName] = $params[3];
+    $out[pgName] = $getItem[ProductName];
+    $out[category] = $getItem[Category];
 
   } elseif ($params[1] == 'rhcs') { //product-ss
+    $getItem = jr_query_titles($params[2], $SS = true);
     $out[pgType] = 'Item';
     $out[rhc] = jr_validate_rhcs($params[2]);
     $out[ss] = true;
-    $out[pgName] = $params[3];
+    $out[pgName] = $getItem[ProductName];
+    $out[category] = $getItem[Category];
   } else {
     $out[pgType] = $out[pgName] = get_the_title();//get the page title
   };
@@ -259,7 +269,8 @@ function jr_validate_rhcs($rawRHC) {
 */
 
 function jr_validate_search($rawSearch) {
-  return preg_replace("/[^[:alnum:][:space:]]/ui", '.?', $rawSearch);
+ // return preg_replace("/[^[:alnum:][:space:]]/ui", '.?', $rawSearch);
+  return sanitize_text_field($rawSearch);
 };
 
 

@@ -52,12 +52,12 @@
       </a>
 
       <menu class="header-links flex-<?php echo is_front_page() ? '1' : '2' ?> flex-container">
-        <form class="form-head-search flex-<?php echo is_front_page() ? '2' : '1' ?>" >
+        <form class="form-head-search flex-<?php echo is_front_page() ? '2' : '1' ?>" method="post" action="<?php echo site_url('search'); ?>" >
           <h3 class="head-title">Search Catering Equipment</h3>
           <label class="text-icon search"></label>
-          <input type="hidden" name="page_id" value="<?php echo jr_page('srch') ?>">
-          <input type="search" name="search" placeholder="Enter Keyword, or RHC Number">
-          <button class="btn-red" type="submit"><h3>Go</h3></button>
+<!--      <input type="hidden" name="page_id" value="<?php echo jr_page('srch') ?>">-->
+          <input type="search" name="search" placeholder="Enter Keyword or Reference">
+          <button class="btn-red" type="submit" ><h3>Go</h3></button>
         </form>
         <div class="header-contact flex-<?php echo is_front_page() ? '2' : '1' ?>" >
           <h3 class="head-title">Talk to us Direct</h3>

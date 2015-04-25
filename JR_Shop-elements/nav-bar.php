@@ -24,7 +24,7 @@ _________________________________________________________
         <ul>
           <h3 class="touch-toggle btn-red text-icon close-w">Back</h3>
           <?php foreach ($groupList as $category) :
-              $link = site_url('/products/'.to_slug($category[Name]));
+              $link = site_url('/products/'.sanitize_title($category[Name]));
           ?>
           <li ><a class="text-icon arrow-r" href="<?php echo $link ?>" ><?php echo $category[Name] ?></a></li>
           <?php endforeach ?>

@@ -31,7 +31,7 @@ function jr_shop_compile($ref,$detail) {
       }
 
       $out2 = [
-        webLink     => "rhcs/$ref[RHC]/".to_slug($ref[ProductName]),
+        webLink     => "rhcs/$ref[RHCs]/".sanitize_title($ref[ProductName]),
         //http_build_query(['page_id' => jr_page('item'), 'cat' => $ref[Category], 'r' => $ref[RHCs], 'n' => $ref[ProductName], 'x' => 1]),
         rhc         => "Ref: RHCs".$ref[RHCs],
         name        => $ref[ProductName],
@@ -106,7 +106,7 @@ function jr_shop_compile($ref,$detail) {
       $out2 = [
         icon        => $iconCheck,
         price       => $priceCheck ,
-        webLink     => "rhc/$ref[RHC]/".to_slug($ref[ProductName]),
+        webLink     => "rhc/$ref[RHC]/".sanitize_title($ref[ProductName]),
         //http_build_query(['page_id' => jr_page('item'), 'cat' => $ref[Category], 'r' => $ref[RHC], 'n' => $ref[ProductName]]),
         rhc         => "ref: RHC$ref[RHC]",
         name        => $ref[ProductName],
@@ -186,9 +186,9 @@ function jr_page_crumbles ($safeArr) {
   $crumbs[0] = ['Home' => home_url()];
 
   if ($safeArr[pgType] == 'Item') {
-    $links = jr_query_titles($safeArr[rhc],$safeArr[ss]);
-    $crumbs[1] = [$links['Category'] => site_url('/products/'.to_slug($links['Category']))];
-    $crumbs[2] = [$links['ProductName'] => getUrl()];
+ //   $links = jr_query_titles($safeArr[rhc],$safeArr[ss]);
+    $crumbs[1] = [$safeArr[category] => site_url('/products/'.sanitize_title($safeArr[category]))];
+    $crumbs[2] = [$safeArr[pgName] => getUrl()];
   } else {
     $crumbs[1] = [$safeArr[pgName] => jr_pg_set()];
     //page set instead of getURL to reset to page1 on paginated output
@@ -338,16 +338,16 @@ function getUrl() {
 }
 
 //http://code.seebz.net/p/to-permalink/
-function to_slug($str) {
-  if($str !== mb_convert_encoding( mb_convert_encoding($str, 'UTF-32', 'UTF-8'), 'UTF-8', 'UTF-32') )
-    $str = mb_convert_encoding($str, 'UTF-8', mb_detect_encoding($str));
-  $str = htmlentities($str, ENT_NOQUOTES, 'UTF-8');
-  $str = preg_replace('`&([a-z]{1,2})(acute|uml|circ|grave|ring|cedil|slash|tilde|caron|lig);`i', '\\1', $str);
-  $str = html_entity_decode($str, ENT_NOQUOTES, 'UTF-8');
-  $str = preg_replace(array('`[^a-z0-9]`i','`[-]+`'), '-', $str);
-  $str = strtolower( trim($str, '-') );
-  return $str;
-}
+//function sanitize_title($str) {
+//  if($str !== mb_convert_encoding( mb_convert_encoding($str, 'UTF-32', 'UTF-8'), 'UTF-8', 'UTF-32') )
+//    $str = mb_convert_encoding($str, 'UTF-8', mb_detect_encoding($str));
+//  $str = htmlentities($str, ENT_NOQUOTES, 'UTF-8');
+//  $str = preg_replace('`&([a-z]{1,2})(acute|uml|circ|grave|ring|cedil|slash|tilde|caron|lig);`i', '\\1', $str);
+//  $str = html_entity_decode($str, ENT_NOQUOTES, 'UTF-8');
+//  $str = preg_replace(array('`[^a-z0-9]`i','`[-]+`'), '-', $str);
+//  $str = strtolower( trim($str, '-') );
+//  return $str;
+//}
 
 
 ?>
