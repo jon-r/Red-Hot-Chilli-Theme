@@ -52,7 +52,7 @@
       </a>
 
       <menu class="header-links flex-<?php echo is_front_page() ? '1' : '2' ?> flex-container">
-        <form class="form-head-search flex-<?php echo is_front_page() ? '2' : '1' ?>" method="post" action="<?php echo site_url('search'); ?>" >
+        <form class="form-head-search flex-<?php echo is_front_page() ? '2' : '1' ?>" method="get" action="<?php echo site_url('search'); ?>" >
           <h3 class="head-title">Search Catering Equipment</h3>
           <label class="text-icon search"></label>
 <!--      <input type="hidden" name="page_id" value="<?php echo jr_page('srch') ?>">-->

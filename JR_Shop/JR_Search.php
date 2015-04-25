@@ -18,20 +18,15 @@ Priority:
 
 function jr_smart_search($searchTerm) {
 
-  $brandsListMajor = jr_query_keywords('brand');
 
-//  $urlStart
-//need to set this as variable since bouncing to and from pcs/servers
-//  $urlStart = home_url().'/?';
-//  $urlEnd = null;
-  $safeSearch = sanitize_text_field($searchTerm);
+  $safeSearch = preg_replace('/[^A-Za-z0-9 +-]/','', $searchTerm);
 //RHCs must be first
   if (stripos($searchTerm, "rhcs") === 0)  {
     $ref = str_replace('rhcs','',$searchTerm);
     $itemSS = jr_query_titles($ref, $SS = true);
     $name = sanitize_title($itemSS[ProductName]);
-
     $url = site_url("rhcs/$ref/$name");
+
   } elseif (stripos($searchTerm, "rhc") === 0) {
     $ref = str_replace('rhc','',$searchTerm);
     $item = jr_query_titles($ref);
@@ -39,14 +34,14 @@ function jr_smart_search($searchTerm) {
     $url = site_url("rhc/$ref/$name");
 
   } else {
-    $ref = urlencode($searchTerm);
-    $url = site_url("products/search/$ref");
+  //  $q = $searchTerm;
+    $ref = http_build_query([q => $safeSearch]);
+    $url = site_url("products/search/?$ref");
 
   }
 
-  return $url;
- //return wp_redirect( $url , 301 );
- //á return $url;
+ //return $url;
+return wp_redirect( $url , 301 );
 }
 
 ?>

@@ -151,9 +151,9 @@ function jr_validate_urls($url) {
 
     } elseif ($params[2] == 'search') {
       $out[pgType] = 'Search';
-      $out[search] = sanitize_title($params[3]);
+      $out[search] = str_replace(' ', '|', $_GET[q]);
     //  $readableSearch = esc_url($params[3]);
-      $out[pgName] = 'Search Results for \''.$params[3].'\'';
+      $out[pgName] = 'Search Results for \''.$_GET[q].'\'';
 
     } elseif (jr_validate_stainless($out[pgName])) {
       $out[pgType] = 'CategorySS'; //category stainless
@@ -180,11 +180,11 @@ function jr_validate_urls($url) {
     $out[pgName] = 'Special Offers';
     $out[saleNum] = $params[2];
 
-  } elseif ($params[1] == 'search') { //search
-    $out[pgType] = 'Search';
-    $out[search] = jr_validate_search($params[2]);
-    $readableSearch = preg_replace("/[^[:alnum:][:space:]]/ui", ' ', $params[2]);
-    $out[pgName] = 'Search Results for \''.$readableSearch.'\'';
+//  } elseif ($params[1] == 'search') { //search
+//    $out[pgType] = 'Search';
+//    $out[search] = jr_validate_search($params[2]);
+//    $readableSearch = preg_replace("/[^[:alnum:][:space:]]/ui", ' ', $params[2]);
+//    $out[pgName] = 'Search Results for \''.$readableSearch.'\'';
 
   } elseif ($params[1] == 'brand') { //brand
     $out[pgType] = 'Brand';
@@ -267,10 +267,10 @@ function jr_validate_rhcs($rawRHC) {
 *  This happens after the "smart auto complete" since they all vailidate against actual data
 */
 
-function jr_validate_search($rawSearch) {
- // return preg_replace("/[^[:alnum:][:space:]]/ui", '.?', $rawSearch);
-  return sanitize_text_field($rawSearch);
-};
+//function jr_validate_search($rawSearch) {
+// // return preg_replace("/[^[:alnum:][:space:]]/ui", '.?', $rawSearch);
+//  return sanitize_text_field($rawSearch);
+//};
 
 
 ?>

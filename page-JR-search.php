@@ -8,12 +8,11 @@
 
   include( "JR_Shop/JR_Shop_Core.php");
 
-  $searchTerm = $_POST["search"];
+ // $searchTerm = $_GET["search"];
 
 
- var_dump (jr_smart_search($searchTerm));
+ var_dump (jr_smart_search($_GET[search]));
 
-var_dump (jr_validate_search(jr_smart_search($searchTerm)));
-
+echo $_GET[search];
 //todo -> 404 if somehow accessed without legit search
 ?>
