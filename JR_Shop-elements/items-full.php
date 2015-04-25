@@ -4,10 +4,10 @@
 
 
 if ($safeArr[ss]) {
-    $item = jr_query_items($safeArr[rhc], 1);
+    $item = jr_query_item($safeArr[rhc], 1);
     $shop_item = jr_shop_compile($item,'ssFull');
   } else {
-    $item = jr_query_items($safeArr[rhc]);
+    $item = jr_query_item($safeArr[rhc]);
     $shop_item = jr_shop_compile($item,'full');
   }
 

@@ -130,14 +130,14 @@ function jr_items_list_check($safeArr,$pageNumber) {
   global $itemCountMax;
 
   //the full list query will always be the same, since this function is preset to cap at one page
-  $listUnsold = jr_category_filter($safeArr, $pageNumber);
+  $listUnsold = jr_query_items($safeArr, $pageNumber);
   $out['paginate'] = false;
   $lastPage = 1;
 
   if ($safeArr['pgType'] != 'New' && $safeArr['pgType'] != 'Sold') {
     //the "sold" and "new" already capped at a single page, no need to count
 
-    $fullItemCount = jr_cat_count($safeArr);
+    $fullItemCount = jr_query_item_count($safeArr);
 
     //breaks down into pages
     if ($fullItemCount > $itemCountMax) {
@@ -147,7 +147,7 @@ function jr_items_list_check($safeArr,$pageNumber) {
     //fills up the last page with sold items
     if ($pageNumber == $lastPage) {
       $itemsOnLastPage = $fullItemCount % $itemCountMax;
-      $listSold = jr_cat_sold($safeArr, $itemsOnLastPage);
+      $listSold = jr_query_sold($safeArr, $itemsOnLastPage);
 
     }
   }

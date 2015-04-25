@@ -6,7 +6,7 @@
 $pageNumber = $_GET['pg'] ?: 1;
 $items = jr_items_list_check($safeArr, $pageNumber);
 
-var_dump(jr_string_build($safeArr));
+var_dump(jr_query_debug($safeArr) );
 ?>
 
 <article class="flex-container">
