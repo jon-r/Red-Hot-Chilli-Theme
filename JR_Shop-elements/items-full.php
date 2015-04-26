@@ -51,8 +51,10 @@ var_dump(jr_query_rhc($safeArr[rhc] , 1));
       <div class="item-description">
         <?php echo $shop_item[desc] ?>
         <?php echo $shop_item[condition] ?>
-
-        <?php echo $shop_item[brand] ?>
+        <?php if ($shop_item[brand]) : ?>
+          <?php echo $shop_item[brandImg] ?: "Brand $shop_item[brand]" ?>
+          <a href="<?php echo site_url($shop_item[brandLink]) ?>"><em>More from <?php echo $shop_item[brand] ?></em></a>
+        <?php endif ?>
         <?php echo $shop_item[model] ?>
       </div>
 

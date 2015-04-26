@@ -2,6 +2,8 @@
 <?php
   if ($safeArr[group] == 'all') {
     $filteredCategories = $getCategory;
+  } elseif ($safeArr[group] == 'brand') {
+    $filteredCategories = brandsList();
   } else {
     $filteredCategories = $groupArray[$safeArr[group]];
   }
@@ -14,9 +16,13 @@
   </header>
 
   <?php foreach ($filteredCategories as $category) :
-    $link = site_url('/products/'.sanitize_title($category[Name]));
-    //http_build_query(['cat' => $category[Name], 'page_id' => jr_page('cat')]);
-    $imgUrl = imgSrcRoot('thumbnails',$category[RefName],'jpg');
+    if ($safeArr[group] == 'brand') {
+      $link = site_url('/brand/'.sanitize_title($category[Name]));
+      $imgUrl = imgSrcRoot('brand-squares',$category[RefName],'jpg');
+    } else {
+      $link = site_url('/products/'.sanitize_title($category[Name]));
+      $imgUrl = imgSrcRoot('thumbnails',$category[RefName],'jpg');
+    }
   ?>
 
     <div class="shop-tile flex-4">

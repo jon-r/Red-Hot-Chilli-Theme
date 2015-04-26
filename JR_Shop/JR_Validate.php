@@ -26,10 +26,12 @@ function jr_validate_urls($url) {
       $out[group] = 'all';
     } else {
       $out[pgName] = $out[group] = url_to_title($params[2],'grp');
-      $out[imgUrl] = imgSrcRoot('icons',urlencode($out[pgName]),'jpg');
+      $out[imgUrl] = imgSrcRoot('icons',$params[2],'jpg');
     }
-
-
+  } elseif ($params[1] == 'brands') {
+    $out[pgType] = 'Group';
+    $out[pgName] = 'Search Brands';
+    $out[group] = 'brand';
   } elseif ($params[1] == 'products') {
 
     $out[pgName] = $out[cat] = url_to_title($params[2],'cat');
@@ -72,7 +74,7 @@ function jr_validate_urls($url) {
 
   } elseif ($params[1] == 'brand') { //brand
     $out[pgType] = 'Brand';
-    $out[brand] =  jr_validate_brand($params[2]);
+    $out[brand] =  url_to_title($params[2],'brand');
     $out[pgName] = 'Products from '.$out[brand];
     $brandIconLocation = imgSrcRoot('icons',$out[brand],'jpg');
     if (file_exists ($brandIconLocation)) {
@@ -125,6 +127,9 @@ function jr_validate_stainless($rawStainless) {
 //note this is vs ALL brands in the db, not just the 'major' brand keywords
 function jr_validate_brand($rawBrand) {
   $brandsListFull = jr_query_col_unique('Brand', 'networked db');
+
+
+
   return in_array(ucwords($rawBrand), $brandsListFull) ? ucwords($rawBrand) : null;
 };
 

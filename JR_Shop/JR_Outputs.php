@@ -38,13 +38,10 @@ function jr_shop_compile($ref,$detail) {
       ];
     break;
     case 'full':
-      $brandIconLocation = imgSrcRoot('icons',$ref[Brand],'jpg');
-      if (file_exists ($brandIconLocation)) {
-        $brandCheck = $brandIconLocation;
-      } elseif ($ref[Brand]) {
-        $brandCheck = "Brand: ".$ref[Brand];
-      } else {
-        $brandCheck = null;
+      if ($ref[Brand]) {
+        $brandUrl = sanitize_title($ref[Brand]);
+        $brandIconLocation = imgSrcRoot('brands',$brandUrl,'jpg');
+        $brand = $ref[Brand];
       };
       if ($ref[Wattage] >= 1500) {
         $wattCheck = ($ref[Wattage] / 1000)."kw";
@@ -66,7 +63,9 @@ function jr_shop_compile($ref,$detail) {
         model       => $ref[Model] ? "Model: ".$ref[Model] : null,
         extra       => $ref[ExtraMeasurements],
         condition   => $ref[Condition] != " " ? $ref[Condition] : null,
-        brand       => $brandCheck,
+        brand       => $brand ?: null,
+        brandImg    => file_exists ($brandIconLocation) ? '<img src="'.$brandIconLocation.'" alt="'.$brand.'" >' : null,
+        brandLink   => "brand/$brandUrl",
         watt        => $wattCheck,
         imgAll      => glob('images/gallery/'.$ref[Image].'*'),
         category    => $ref[Category]
@@ -334,14 +333,31 @@ function getUrl() {
   return $url;
 }
 
+
+
+//creates a category page of "major" brands, taken from the keywords_db
+function brandsList() {
+  $getKeyBrands = jr_query_keywords('brand');
+
+  $out = array_map('brandArrayGen', $getKeyBrands);
+
+  return $out;
+}
+
+function brandArrayGen($brand) {
+  $out[Name] = $brand;
+  $out[RefName] = sanitize_title($brand);
+  return $out;
+}
 //-- readable titles --------------------------------------------------------------------
 function url_to_title($url,$type) {
   global $getGroup;
-  $getCategory = jr_query_col_unique('name', 'rhc_categories');
+
 
   $out = "check url - >$url<";
 
   if ($type == 'cat') {
+    $getCategory = jr_query_col_unique('name', 'rhc_categories');
     $catUrls = array_map('sanitize_title', $getCategory);
     if (in_array($url,$catUrls)) {
       $cats = array_combine($getCategory, $catUrls);
@@ -352,6 +368,14 @@ function url_to_title($url,$type) {
     if (in_array($url,$grpUrls)) {
       $grps = array_combine($getGroup, $grpUrls);
       $out = array_search($url, $grps);
+    }
+  } elseif ($type == 'brand') {
+    $getBrands = jr_query_col_unique('Brand', 'networked db');
+    $brandUrls = array_map('sanitize_title', $getBrands);
+
+    if (in_array($url,$brandUrls)) {
+      $brands = array_combine($getBrands, $brandUrls);
+      $out = array_search($url, $brands);
     }
   }
   return $out;
