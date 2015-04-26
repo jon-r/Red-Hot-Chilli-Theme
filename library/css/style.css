@@ -433,14 +433,14 @@ em {
   font-style: normal; }
 
 /*-------------------------sprite layouts + settings ----------------------------------*/
-.text-icon, .primary-nav:only-child, .shop-tile, .btn-icon, .item-power {
+.text-icon, .text-icon-right, .primary-nav:only-child, .shop-tile, .btn-icon, .item-power {
   position: relative; }
 
-.text-icon::before, .primary-nav:only-child::before, .shop-tile::before {
+.text-icon::before, .text-icon-right::before, .primary-nav:only-child::before, .shop-tile::before {
   pointer-events: none;
   content: '';
   position: absolute;
-  background-image: url(/redhotchilli/images/icons/RHC-Icons.min.svg);
+  background-image: url(/rhc_online/images/icons/RHC-Icons.min.svg);
   height: 128px;
   width: 128px; }
 
@@ -448,18 +448,30 @@ em {
   pointer-events: none;
   content: '';
   position: absolute;
-  background-image: url(/redhotchilli/images/icons/RHC-Icons.min.svg);
+  background-image: url(/rhc_online/images/icons/RHC-Icons.min.svg);
   height: 128px;
   width: 128px; }
 
 .text-icon {
-  padding-left: 32px;
-  line-height: 24px; }
+  padding-right: 32px; }
   .text-icon::before {
-    transform: scale(0.1875);
-    transform-origin: top left;
+    right: 0;
+    transform-origin: top right; }
+
+.text-icon-right {
+  padding-left: 32px; }
+  .text-icon-right::before {
     left: 0;
-    top: 0; }
+    transform-origin: top left; }
+
+.text-icon, .text-icon-right {
+  line-height: 1.2; }
+  .text-icon::before, .text-icon-right::before {
+    top: 0;
+    transform: scale(0.1875); }
+    @media only screen and (min-width: 1031px) {
+      .text-icon::before, .text-icon-right::before {
+        top: 2px; } }
 
 .btn-icon::after {
   transform: scale(0.5);
@@ -481,13 +493,11 @@ em {
 @keyframes loader-animate {
   0% {
     background-position: -400px -896px; }
-
   100% {
     background-position: -496px -896px; } }
 @-webkit-keyframes loader-animate {
   0% {
     background-position: -400px -896px; }
-
   100% {
     background-position: -496px -896px; } }
 .single-phase::after {
@@ -656,10 +666,10 @@ Default style for all pages
 
 .primary-header {
   border-bottom-width: 6px;
-  background: url(/redhotchilli/images/rhc/Head-Banner.jpg) top/cover; }
+  background: url(/rhc_online/images/rhc/Head-Banner.jpg) top/cover; }
   @media only screen and (min-width: 1240px) {
     .primary-header {
-      background: url(/redhotchilli/images/rhc/Head-Banner.jpg) center no-repeat, linear-gradient(to right, #242428 25%, #61616b 75%); }
+      background: url(/rhc_online/images/rhc/Head-Banner.jpg) center no-repeat, linear-gradient(to right, #242428 25%, #61616b 75%); }
       .primary-header .home {
         height: 250px;
         justify-content: space-between; } }
@@ -863,7 +873,7 @@ nav a.active, nav a:active, nav a:hover {
 .nav-breadcrumbs a,
 .nav-paginate a {
   border-left: 1px solid #e4e4e7;
-  padding-right: 20px; }
+  padding-left: 20px; }
 
 .nav-breadcrumbs {
   height: auto; }
@@ -1175,7 +1185,7 @@ Page specific items.
     margin: -1px; }
   .box-floor::before {
     content: '';
-    background: url("/redhotchilli/images/icons/silhouette.svg") bottom/contain no-repeat;
+    background: url("/rhc_online/images/icons/silhouette.svg") bottom/contain no-repeat;
     width: 16.66%;
     transform: rotateX(-90deg) rotateZ(0deg) rotateY(0deg); }
 
@@ -1192,3 +1202,5 @@ Page specific items.
 
 .box-z {
   background: linear-gradient(135deg, #206077, #78abbc); }
+
+/*# sourceMappingURL=style.css.map */

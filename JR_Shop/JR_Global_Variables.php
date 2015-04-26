@@ -1,6 +1,6 @@
 <?php
 global $itemCountMax, $itemCountMin, $rhcTwitterLink, $rhcFacebookLink, $rhcLinkedinLink,
-  $link_allCategories, $link_allItems, $link_soldItems, $link_newItems, $link_soonItems;
+  $link_allCategories, $link_allItems, $link_soldItems, $link_newItems, $link_soonItems, $itemSoldDuration;
 
 //social media links.
 $rhcFacebookLink = 'https://www.facebook.com/pages/Red-Hot-Chilli-Catering/147845465419524';
@@ -14,6 +14,9 @@ $itemCountMax = 24;
 
 //How many items before the "try elsewhere" kicks in. NYI
 $itemCountMin = 4;
+
+//how long to leave sold items searchable (days)
+$itemSoldDuration = 500;
 
 //link to "special" pages - those not from database
 $link_allCategories = site_url('departments/all/');

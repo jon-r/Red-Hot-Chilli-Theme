@@ -11,7 +11,7 @@ if ($safeArr[ss]) {
     $shop_item = jr_shop_compile($item,'full');
   }
 
-
+var_dump(jr_query_rhc($safeArr[rhc]));
 ?>
 
 

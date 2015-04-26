@@ -1,15 +1,11 @@
 <?php
 
-
-
-
-
 // ----------------------array compiler--------------------------------------------------
-// Converts raw databases (associative) into useful blocks of text
+// Converts the raw querys into useful blocks of text
 
 function jr_shop_compile($ref,$detail) {
   global $rhcListNew;
-  $out1 = $out2 = []; //need to declare empty arrays
+  $out1 = $out2 = [];
   switch ($detail) {
     case 'ssFull' :
       $out1 = [
@@ -32,7 +28,6 @@ function jr_shop_compile($ref,$detail) {
 
       $out2 = [
         webLink     => "rhcs/$ref[RHCs]/".sanitize_title($ref[ProductName]),
-        //http_build_query(['page_id' => jr_page('item'), 'cat' => $ref[Category], 'r' => $ref[RHCs], 'n' => $ref[ProductName], 'x' => 1]),
         rhc         => "Ref: RHCs".$ref[RHCs],
         name        => $ref[ProductName],
         imgFirst    => imgSrcRoot('gallery',$ref[Image],'jpg'),
@@ -180,14 +175,11 @@ function jr_box_3d($h, $w, $d) {
 
 // ----------------------breadcrumb builder----------------------------------------------
 // Makes the breadcrumbs
-
-//maybe use simlar for the page titles? Or better yet, this could make the titles and then the bread gets the title
 function jr_page_crumbles ($safeArr) {
   $crumbs[0] = ['Home' => home_url()];
 
   if ($safeArr[pgType] == 'Item') {
- //   $links = jr_query_titles($safeArr[rhc],$safeArr[ss]);
-    $crumbs[1] = [$safeArr[category] => site_url('/products/'.sanitize_title($safeArr[category]))];
+    $crumbs[1] = [$safeArr[cat] => site_url('/products/'.sanitize_title($safeArr[cat]))];
     $crumbs[2] = [$safeArr[pgName] => getUrl()];
   } else {
     $crumbs[1] = [$safeArr[pgName] => jr_pg_set()];
@@ -256,9 +248,8 @@ function img_resize ($src, $size) {
 
 // ---------------------- carousel compiler --------------------------------------
 // converts the database carousel to a web one
-// takes the carousel "link" and converts it to a sale if it is just a number. else treats it like a link
-
-
+// also takes the carousel "link" and converts it to a sale if it is just a number.
+// else treats it like a link
 
 function jr_position($in) {
   if ($in == "Middle") {
@@ -268,7 +259,6 @@ function jr_position($in) {
   } elseif ($in == "Right") {
     $out = "go-right";
   }
-
   return $out;
 }
 
@@ -308,7 +298,6 @@ function magic_roundabout($slideIn) {
 
 //-------------- pick testimonial -----------------------------------------------
 // grabs a single testimonial at random
-
 function jr_random_feedback() {
   $in = jr_query_tesimonial();
   $countIn = count($in) - 1;
@@ -337,17 +326,28 @@ function getUrl() {
   return $url;
 }
 
-//http://code.seebz.net/p/to-permalink/
-//function sanitize_title($str) {
-//  if($str !== mb_convert_encoding( mb_convert_encoding($str, 'UTF-32', 'UTF-8'), 'UTF-8', 'UTF-32') )
-//    $str = mb_convert_encoding($str, 'UTF-8', mb_detect_encoding($str));
-//  $str = htmlentities($str, ENT_NOQUOTES, 'UTF-8');
-//  $str = preg_replace('`&([a-z]{1,2})(acute|uml|circ|grave|ring|cedil|slash|tilde|caron|lig);`i', '\\1', $str);
-//  $str = html_entity_decode($str, ENT_NOQUOTES, 'UTF-8');
-//  $str = preg_replace(array('`[^a-z0-9]`i','`[-]+`'), '-', $str);
-//  $str = strtolower( trim($str, '-') );
-//  return $str;
-//}
+//-- readable titles --------------------------------------------------------------------
+function url_to_title($url,$type) {
+  global $getGroup;
+  $getCategory = jr_query_col_unique('name', 'rhc_categories');
+
+  $out = "check url - >$url<";
+
+  if ($type == 'cat') {
+    $catUrls = array_map('sanitize_title', $getCategory);
+    if (in_array($url,$catUrls)) {
+      $cats = array_combine($getCategory, $catUrls);
+      $out = array_search($url, $cats);
+    }
+  } elseif ($type == 'grp') {
+    $grpUrls = array_map('sanitize_title', $getGroup);
+    if (in_array($url,$grpUrls)) {
+      $grps = array_combine($getGroup, $grpUrls);
+      $out = array_search($url, $grps);
+    }
+  }
+  return $out;
+}
 
 
 ?>

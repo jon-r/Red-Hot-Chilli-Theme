@@ -1,11 +1,36 @@
 <?php
+//query functions
+//these are pretty much purpose built covers over the wpdb class
 
-//these are pretty much a lightweight cover over the wpdb class
+
+/*Validate querys ---------------------------------------------------------------------*/
 function jr_query_col_unique($column, $table) {
   global $wpdb;
 
   $queryStr = "SELECT `$column` FROM `$table`";
   return array_unique($wpdb->get_col($queryStr));
+}
+
+function jr_query_rhcs($rhcs) {
+  global $wpdb, $itemSoldDuration;
+
+  $queryStr = "SELECT `RHCs` FROM `benchessinksdb` WHERE `Quantity` > 0 AND `RHCs` = %s";
+  $out = $wpdb->get_var(
+    $wpdb->prepare($queryStr, $rhcs)
+  );
+
+  return($out);
+}
+
+function jr_query_rhc($rhc) {
+  global $wpdb, $itemSoldDuration;
+
+  $queryStr = "SELECT `RHC` FROM `networked db` WHERE `RHC` = %s AND `LiveonRHC` = 1 AND ((`Quantity` > 0) OR ( `Quantity` = 0 AND `DateSold` BETWEEN CURDATE() - INTERVAL $itemSoldDuration DAY AND CURDATE()))";
+  $out = $wpdb->get_var(
+    $wpdb->prepare($queryStr, $rhc)
+  );
+
+  return($out);
 }
 
 function jr_query_keywords($keyword) {
@@ -16,12 +41,13 @@ function jr_query_keywords($keyword) {
   //return $queryStr;
 }
 
-//query for the breadcrumbs/search, since the nav bar comes before the "main" query/compile
+
+/*get titles for the breadcrumbs/search----------------------------------------------- */
 function jr_query_titles($safeRHC, $SS = null) {
   global $wpdb;
   if ($SS) {
     $ref = "RHCs";
-    $tbl = "benchessinksdb";
+    $db = "benchessinksdb";
   } else {
     $ref = "RHC";
     $db = "networked db";
@@ -30,35 +56,8 @@ function jr_query_titles($safeRHC, $SS = null) {
   return $wpdb->get_row("SELECT `ProductName`,`Category` FROM `$db` WHERE `$ref` LIKE '$safeRHC'", ARRAY_A);
 }
 
-function jr_query_categories() {
-  global $wpdb;
 
-  return $wpdb->get_results("SELECT * FROM rhc_categories;", ARRAY_A);
-}
-
-function jr_query_carousel() {
-  global $wpdb;
-
-  return $wpdb->get_results("SELECT * FROM `carousel` WHERE `IsLive` = 1 ORDER BY `OrderNo` DESC;", ARRAY_A);
-}
-
-function jr_query_new() {
-  global $itemCountMax, $wpdb;
-
-  return $wpdb->get_col("SELECT `rhc` FROM `networked db` WHERE (`LiveonRHC` = 1 AND `Quantity` > 0) ORDER BY `rhc` DESC LIMIT $itemCountMax") ;
-}
-
-function jr_query_tesimonial($detail = null) {
-  global $wpdb;
-
-  $query = ($detail) ? 'Testimonial_Full' : 'Testimonial_Short';
-
-  return $wpdb->get_results("SELECT `$query`, `Name` FROM `rhc_testimonial`;", ARRAY_A);
-}
-
-
-
-//query for 'items full'
+/* query for 'items full' -------------------------------------------------------------*/
 function jr_query_item($safeRHC, $SS = null) {
   global $wpdb;
   if ($SS) {
@@ -74,15 +73,15 @@ function jr_category_row( $safeCategory ) {
   return $wpdb->get_row("SELECT * FROM `rhc_categories` WHERE `Name` LIKE '$safeCategory'", ARRAY_A);
 }
 
-//----------------wpdb query generator---------------------------------------------------
-//core catergory function
+/*--querys for items list -------------------------------------------------------------*/
+//firstly lists the items on sale.
 function jr_query_items( $safeArr, $pageNumber) {
   global $wpdb, $itemCountMax;
 
   $queryOffset = ($pageNumber - 1) * $itemCountMax;
   $queryLimiter = " LIMIT $queryOffset,$itemCountMax";
   $queryAll = jr_query_item_string($safeArr);
-  $queryFull = $queryAll[query].$queryLimiter;
+  $queryFull = $queryAll[str].$queryLimiter;
 
   if ($queryAll[placeholders]) {
     $out = $wpdb->get_results(
@@ -96,28 +95,30 @@ function jr_query_items( $safeArr, $pageNumber) {
 }
 
 //fills page with sold items. Mix of filler for design balance and show past sales.
-function jr_query_sold($safeArr) {
+function jr_query_sold($safeArr, $itemsOnPage) {
   global $wpdb;
 
   if ($safeArr['pgType'] == 'New' || $safeArr['pgType'] == 'Sold') {
     $out = null;
   } else {
     $soldCount = ($itemsOnPage % 8);
-    $queryAll = jr_query_item_string($safeArr);
+    $query = jr_query_item_string($safeArr);
 
     $querySoldOn = str_replace(['`Quantity` > 0','ORDER BY `RHC`'],
-                               ['`Quantity` = 0','ORDER BY `DateSold`'], $queryAll[query]);
+                               ['`Quantity` = 0','ORDER BY `DateSold`'], $query[str]);
     $queryLimiter = " LIMIT $soldCount";
     $queryFull = $querySoldOn.$queryLimiter;
 
-    if ($queryAll[placeholders]) {
+    if ($query[placeholders]) {
       $out = $wpdb->get_results(
-        $wpdb->prepare($queryFull, $queryAll[placeholders])
+        $wpdb->prepare($queryFull, $query[placeholders])
       , ARRAY_A);
     } else {
       $out = $wpdb->get_results($queryFull, ARRAY_A);
     }
   }
+
+  //$out = $queryFull;
 
   return $out;
 }
@@ -125,14 +126,14 @@ function jr_query_sold($safeArr) {
 function jr_query_item_count($safeArr) {
     global $wpdb;
 
-    $queryFull = jr_query_item_string($safeArr, $isCounter = true);
+    $query = jr_query_item_string($safeArr, $isCounter = true);
 
-    if ($queryAll[placeholders]) {
+    if ($query[placeholders]) {
       $column = $wpdb->get_col(
-        $wpdb->prepare($queryFull, $queryAll[placeholders])
+        $wpdb->prepare($query[str], $query[placeholders])
       );
     } else {
-      $column = $wpdb->get_col($queryAll);
+      $column = $wpdb->get_col($query[str]);
     }
 
     $out = count($column);
@@ -140,17 +141,24 @@ function jr_query_item_count($safeArr) {
   return $out;
 }
 
+//tags items as new
+function jr_query_new() {
+  global $itemCountMax, $wpdb;
+  return $wpdb->get_col("SELECT `rhc` FROM `networked db` WHERE (`LiveonRHC` = 1 AND `Quantity` > 0) ORDER BY `rhc` DESC LIMIT $itemCountMax") ;
+}
+
+//returns the mysql query. for debug purposes
 function jr_query_debug($safeArr) {
   global $wpdb;
   $query = jr_query_item_string($safeArr, $isCounter = true);
 
-  $out[noPrep] = $query[query];
-  $out[prep] = $query[placeholders] ? $wpdb->prepare($query[query], $query[placeholders]) : null;
-  //$out[placeholder] = $queryAll[placeholders];
+  $out[noPrep] = $query[str];
+  $out[prep] = $query[placeholders] ? $wpdb->prepare($query[str], $query[placeholders]) : null;
 
   return $out;
 }
 
+//core query category function
 function jr_query_item_string($safeArr, $isCounter = false) {
 
   $qType = $safeArr[pgType];
@@ -202,10 +210,30 @@ function jr_query_item_string($safeArr, $isCounter = false) {
     $qArray = [ $qValue ];
   }
 
-  $out[query] = $queryStart.$queryMid.$queryEnd;
+  $out[str] = $queryStart.$queryMid.$queryEnd;
   $out[placeholders] = $qArray;
 
   return $out;
+}
+
+/* -- get general content -------------------------------------------------------------*/
+
+function jr_query_categories() {
+  global $wpdb;
+  return $wpdb->get_results("SELECT * FROM rhc_categories;", ARRAY_A);
+}
+
+function jr_query_carousel() {
+  global $wpdb;
+  return $wpdb->get_results("SELECT * FROM `carousel` WHERE `IsLive` = 1 ORDER BY `OrderNo` DESC;", ARRAY_A);
+}
+
+
+function jr_query_tesimonial($detail = null) {
+  global $wpdb;
+
+  $query = ($detail) ? 'Testimonial_Full' : 'Testimonial_Short';
+  return $wpdb->get_results("SELECT `$query`, `Name` FROM `rhc_testimonial`;", ARRAY_A);
 }
 
 ?>
