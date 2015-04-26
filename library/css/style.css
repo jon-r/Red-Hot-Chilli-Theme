@@ -533,6 +533,9 @@ em {
 .facebook::after {
   background-position: 0px -896px; }
 
+.quote-l::after {
+  background-position: -256px 0px; }
+
 .sale::before {
   background-position: 0px -768px; }
 
