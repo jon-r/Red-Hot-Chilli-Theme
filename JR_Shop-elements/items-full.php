@@ -11,7 +11,7 @@ if ($safeArr[ss]) {
     $shop_item = jr_shop_compile($item,'full');
   }
 
-var_dump(jr_query_rhc($safeArr[rhc]));
+var_dump(jr_query_rhc($safeArr[rhc] , 1));
 ?>
 
 
@@ -59,8 +59,8 @@ var_dump(jr_query_rhc($safeArr[rhc]));
       <ul class="item-features">
         <?php if (!$safeArr[ss]) : ?>
         <li class="text-icon tick">Photo of actual product</li>
-        <?php endif ?>
         <li class="text-icon tick">Fully Tested &amp; Cleaned</li>
+        <?php endif ?>
         <li class="text-icon tick">Competitive UK &amp; EU Delivery Quotes</li>
         <li class="text-icon tick">Finance Options On Request</li>
         <li class="text-icon tick">Viewing available at our showroom in Warrington, Cheshire</li>

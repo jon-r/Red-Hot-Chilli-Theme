@@ -4,7 +4,7 @@
 */
 
 $pageNumber = $_GET['pg'] ?: 1;
-$items = jr_items_list_check($safeArr, $pageNumber);
+$items = jr_items_list($safeArr, $pageNumber);
 
 var_dump(jr_query_debug($safeArr) );
 ?>

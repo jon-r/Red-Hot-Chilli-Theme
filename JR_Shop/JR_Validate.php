@@ -102,8 +102,8 @@ function jr_validate_urls($url) {
     } else {
       $out[noitem] = true;
     }
-
     $out[pgType] = 'Item';
+    $out[note] = 'GET IMAGES BACK IN';
 
   } else {
     $out[pgType] = $out[pgName] = get_the_title();//get the page title

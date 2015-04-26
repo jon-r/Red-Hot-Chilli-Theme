@@ -61,7 +61,7 @@ function jr_query_titles($safeRHC, $SS = null) {
 function jr_query_item($safeRHC, $SS = null) {
   global $wpdb;
   if ($SS) {
-    $queryFull = $wpdb->get_row("SELECT `RHCs`, `Image`, `ProductName`, `Category`, `Height`, `Width`, `Depth`, `Price`, `Quantity`, `TableinFeet`, `Line1` FROM `benchessinksdb` WHERE RHCs = $safeRHC", ARRAY_A);
+    $queryFull = $wpdb->get_row("SELECT `RHCs`, `ProductName`, `Category`, `Height`, `Width`, `Depth`, `Price`, `Quantity`, `TableinFeet`, `Line1` FROM `benchessinksdb` WHERE RHCs = $safeRHC", ARRAY_A);
   } else {
     $queryFull = $wpdb->get_row("SELECT `RHC`, `Image`, `ProductName`, `Price`, `Height`, `Width`, `Depth`, `Model`, `Brand`, `Wattage`, `Power`, `ExtraMeasurements`, `Line 1`, `Line 2`, `Line 3`, `Condition/Damages`, `Sold`, `Quantity`, `Category`, `Cat1`, `Cat2`, `Cat3`, `SalePrice`, `IsSoon` FROM `networked db` WHERE RHC = $safeRHC", ARRAY_A);
   }
@@ -122,6 +122,31 @@ function jr_query_sold($safeArr, $itemsOnPage) {
 
   return $out;
 }
+
+// get random four items in the category - currently just for 'item full' page
+function jr_query_related($safeArr) {
+  global $wpdb;
+
+
+  $arr[cat] = $safeArr[cat];
+  if ($safeArr[ss]) {
+    $arr[pgType] = 'CategorySS';
+    $query = jr_query_item_string($arr);
+    $queryRand = str_replace('ORDER BY `RHCs` DESC', 'ORDER BY RAND() LIMIT 4', $query);
+  } else {
+    $arr[pgType] = 'Category';
+    $query = jr_query_item_string($arr);
+    $queryRand = str_replace('ORDER BY `RHC` DESC', 'ORDER BY RAND() LIMIT 4', $query);
+  }
+
+
+  $out = $wpdb->get_results(
+    $wpdb->prepare($queryRand[str], $queryRand[placeholders]),
+    ARRAY_A);
+
+  return $out;
+}
+
 //count all items from query, for pagination
 function jr_query_item_count($safeArr) {
     global $wpdb;

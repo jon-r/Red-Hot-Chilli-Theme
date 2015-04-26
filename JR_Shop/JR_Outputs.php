@@ -121,7 +121,7 @@ function jr_shop_compile($ref,$detail) {
 // ---------------------- items list setup ----------------------------------------------
 // figures out what to show on output page, based on safeArr and the page number
 
-function jr_items_list_check($safeArr,$pageNumber) {
+function jr_items_list($safeArr,$pageNumber) {
   global $itemCountMax;
 
   //the full list query will always be the same, since this function is preset to cap at one page
@@ -152,6 +152,14 @@ function jr_items_list_check($safeArr,$pageNumber) {
  // $out['debug'] = $fullItemCount;
 
   return $out;
+
+}
+
+//related items, on the single item page
+function jr_items_related($category) {
+  //sets the "safeArr" to be a category page, rather than item page.
+  $listUnsold = jr_query_related($category);
+
 
 }
 

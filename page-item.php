@@ -15,6 +15,8 @@
 
   <?php include( "JR_Shop-elements/items-full.php"); ?>
 
+  <?php include( "JR_Shop-elements/items-related.php"); ?>
+
   <?php include( "JR_Shop-elements/contact-bar.php"); ?>
 
 </main>
