@@ -1,7 +1,12 @@
 /*-------------------------sprite layouts + settings ----------------------------------*/
 
 //temp link for image-relativity;
-$siteLink: /rhc_online;
+
+//home
+//$siteLink: /rhc_online;
+
+//work
+$siteLink: /redhotchilli;
 
 //size of sprite grid
 $sprite-grid-size: 128px;
@@ -226,6 +231,7 @@ $icons-before: (
   question,
   list,
   search,
+  search-w,
   basket-w,
   email-w,
   arrow-r,

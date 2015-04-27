@@ -61,7 +61,7 @@ function jr_query_titles($safeRHC, $SS = null) {
 function jr_query_item($safeRHC, $SS = null) {
   global $wpdb;
   if ($SS) {
-    $queryFull = $wpdb->get_row("SELECT `RHCs`, `ProductName`, `Category`, `Height`, `Width`, `Depth`, `Price`, `Quantity`, `TableinFeet`, `Line1` FROM `benchessinksdb` WHERE RHCs = $safeRHC", ARRAY_A);
+    $queryFull = $wpdb->get_row("SELECT `RHCs`, `Image`, `ProductName`, `Category`, `Height`, `Width`, `Depth`, `Price`, `Quantity`, `TableinFeet`, `Line1` FROM `benchessinksdb` WHERE RHCs = $safeRHC", ARRAY_A);
   } else {
     $queryFull = $wpdb->get_row("SELECT `RHC`, `Image`, `ProductName`, `Price`, `Height`, `Width`, `Depth`, `Model`, `Brand`, `Wattage`, `Power`, `ExtraMeasurements`, `Line 1`, `Line 2`, `Line 3`, `Condition/Damages`, `Sold`, `Quantity`, `Category`, `Cat1`, `Cat2`, `Cat3`, `SalePrice`, `IsSoon` FROM `networked db` WHERE RHC = $safeRHC", ARRAY_A);
   }
@@ -194,7 +194,7 @@ function jr_query_item_string($safeArr, $isCounter = false) {
   } elseif ($isCounter) {
     $queryStart = "SELECT `RHC` FROM `networked db` ";
   } elseif ($qType == 'CategorySS') {
-    $queryStart = "SELECT `RHCs`, `ProductName`, `Price`, `Category`, `TableinFeet`, `Quantity` FROM `benchessinksdb` ";
+    $queryStart = "SELECT `RHCs`, `ProductName`,`Image`, `Price`, `Category`, `TableinFeet`, `Quantity` FROM `benchessinksdb` ";
   } else {
     $queryStart = "SELECT `RHC`, `ProductName`, `Image`, `IsSoon`, `Sold`, `Category`, `Power`, `Price`, `SalePrice`, `Quantity` FROM `networked db` ";
   };

@@ -440,7 +440,7 @@ em {
   pointer-events: none;
   content: '';
   position: absolute;
-  background-image: url(/rhc_online/images/icons/RHC-Icons.min.svg);
+  background-image: url(/redhotchilli/images/icons/RHC-Icons.min.svg);
   height: 128px;
   width: 128px; }
 
@@ -448,7 +448,7 @@ em {
   pointer-events: none;
   content: '';
   position: absolute;
-  background-image: url(/rhc_online/images/icons/RHC-Icons.min.svg);
+  background-image: url(/redhotchilli/images/icons/RHC-Icons.min.svg);
   height: 128px;
   width: 128px; }
 
@@ -493,11 +493,13 @@ em {
 @keyframes loader-animate {
   0% {
     background-position: -400px -896px; }
+
   100% {
     background-position: -496px -896px; } }
 @-webkit-keyframes loader-animate {
   0% {
     background-position: -400px -896px; }
+
   100% {
     background-position: -496px -896px; } }
 .single-phase::after {
@@ -559,6 +561,9 @@ em {
 
 .search::before {
   background-position: -640px -128px; }
+
+.search-w::before {
+  background-position: -640px -384px; }
 
 .basket-w::before {
   background-position: -128px -512px; }
@@ -669,10 +674,10 @@ Default style for all pages
 
 .primary-header {
   border-bottom-width: 6px;
-  background: url(/rhc_online/images/rhc/Head-Banner.jpg) top/cover; }
+  background: url(/redhotchilli/images/rhc/Head-Banner.jpg) top/cover; }
   @media only screen and (min-width: 1240px) {
     .primary-header {
-      background: url(/rhc_online/images/rhc/Head-Banner.jpg) center no-repeat, linear-gradient(to right, #242428 25%, #61616b 75%); }
+      background: url(/redhotchilli/images/rhc/Head-Banner.jpg) center no-repeat, linear-gradient(to right, #242428 25%, #61616b 75%); }
       .primary-header .home {
         height: 250px;
         justify-content: space-between; } }
@@ -883,68 +888,7 @@ nav a.active, nav a:active, nav a:hover {
 
 /* --- bottom menu parts --------------------------------------------------------------*/
 .nav-paginate a {
-  padding-left: 20px; }
-
-.contact-bar {
-  background-color: #303036;
-  color: #e4e4e7; }
-
-.social-links {
-  text-align: center;
-  font-size: 0.5rem;
-  color: #18181b; }
-  .social-links a {
-    width: 64px;
-    height: 64px;
-    display: inline-block;
-    margin-right: 10px; }
-    @media only screen and (min-width: 1031px) {
-      .social-links a {
-        width: 96px;
-        height: 96px; } }
-
-.testimonials {
-  border-bottom: 1px solid #494950; }
-  .testimonials p, .testimonials h4 {
-    width: 100%;
-    margin-bottom: 20px; }
-  .testimonials p {
-    text-align: center;
-    font-size: 1.25rem; }
-  .testimonials h4 {
-    text-align: right; }
-
-.form-contact, .social {
-  margin: 20px 0; }
-  .form-contact h2, .social h2 {
-    margin-bottom: 20px; }
-
-.form-contact {
-  border-right: 1px solid #494950; }
-  .form-contact input, .form-contact textarea {
-    margin-bottom: 20px;
-    padding-left: 4px; }
-  .form-contact textarea {
-    height: 10rem;
-    resize: vertical;
-    width: calc(100% - 20px); }
-    @media only screen and (min-width: 1031px) {
-      .form-contact textarea {
-        width: calc(83.33333% - 20px); } }
-  .form-contact input {
-    width: calc(66.66667% - 20px);
-    margin-right: 16.66667%; }
-  .form-contact label {
-    font-size: 0.75rem;
-    padding-right: 4px;
-    width: calc(100% - 20px); }
-    @media only screen and (min-width: 1031px) {
-      .form-contact label {
-        text-align: right;
-        width: calc(16.66667% - 20px); } }
-  .form-contact button {
-    width: calc(33.33333% - 20px);
-    margin-left: 66.66667%; }
+  padding-right: 20px; }
 
 /*********************
 Page specific items.
@@ -1188,7 +1132,7 @@ Page specific items.
     margin: -1px; }
   .box-floor::before {
     content: '';
-    background: url("/rhc_online/images/icons/silhouette.svg") bottom/contain no-repeat;
+    background: url("/redhotchilli/images/icons/silhouette.svg") bottom/contain no-repeat;
     width: 16.66%;
     transform: rotateX(-90deg) rotateZ(0deg) rotateY(0deg); }
 
@@ -1206,4 +1150,82 @@ Page specific items.
 .box-z {
   background: linear-gradient(135deg, #206077, #78abbc); }
 
-/*# sourceMappingURL=style.css.map */
+.four-oh-four div {
+  max-width: 750px; }
+
+.form-central {
+  padding: 20px;
+  background-color: #303036;
+  color: #e4e4e7;
+  box-shadow: 0 2px 4px rgba(24, 24, 27, 0.5);
+  border-radius: 4px;
+  border-right: 1px solid #494950; }
+  .form-central h2, .form-central input {
+    margin-bottom: 20px;
+    width: calc(100% - 20px); }
+  .form-central input {
+    padding: 5px 0; }
+  .form-central button {
+    width: calc(33.33333% - 20px);
+    margin-left: 66.66667%; }
+
+.contact-bar {
+  background-color: #303036;
+  color: #e4e4e7; }
+
+.social-links {
+  text-align: center;
+  font-size: 0.5rem;
+  color: #18181b; }
+  .social-links a {
+    width: 64px;
+    height: 64px;
+    display: inline-block;
+    margin-right: 10px; }
+    @media only screen and (min-width: 1031px) {
+      .social-links a {
+        width: 96px;
+        height: 96px; } }
+
+.testimonials {
+  border-bottom: 1px solid #494950; }
+  .testimonials p, .testimonials h4 {
+    width: 100%;
+    margin-bottom: 20px; }
+  .testimonials p {
+    text-align: center;
+    font-size: 1.25rem; }
+  .testimonials h4 {
+    text-align: right; }
+
+.form-contact, .social {
+  margin: 20px 0; }
+  .form-contact h2, .social h2 {
+    margin-bottom: 20px; }
+
+.form-contact {
+  border-right: 1px solid #494950; }
+  .form-contact input, .form-contact textarea {
+    margin-bottom: 20px;
+    padding-left: 4px; }
+  .form-contact textarea {
+    height: 10rem;
+    resize: vertical;
+    width: calc(100% - 20px); }
+    @media only screen and (min-width: 1031px) {
+      .form-contact textarea {
+        width: calc(83.33333% - 20px); } }
+  .form-contact input {
+    width: calc(66.66667% - 20px);
+    margin-right: 16.66667%; }
+  .form-contact label {
+    font-size: 0.75rem;
+    padding-right: 4px;
+    width: calc(100% - 20px); }
+    @media only screen and (min-width: 1031px) {
+      .form-contact label {
+        text-align: right;
+        width: calc(16.66667% - 20px); } }
+  .form-contact button {
+    width: calc(33.33333% - 20px);
+    margin-left: 66.66667%; }

@@ -1,1 +1,25 @@
-//not sure if needed
+.four-oh-four {
+  div {
+    max-width: 750px;
+  }
+}
+
+.form-central {
+  padding: jr-spacer();
+  background-color: jr-grey(2);
+  color: $jr-text-light;
+  box-shadow: $jr-shadow;
+  border-radius: 4px;
+  border-right: $jr-border-dark;
+  h2, input {
+    margin-bottom:jr-spacer();
+    @include jr-width(1, 1);
+  }
+  input {
+    padding: 5px 0;
+  }
+  button {
+    @include jr-width(2, 6);
+    margin-left: percentage(4/6);
+  }
+}

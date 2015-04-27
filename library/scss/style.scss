@@ -65,7 +65,6 @@ Default style for all pages
 //primary navigation menu
 @import "default-templates/primary-nav";
 
-
 /*********************
 Page specific items.
 *********************/
@@ -78,5 +77,11 @@ Page specific items.
 
 //shop full (single item)
 @import "page-templates/shop-single";
+
+//error page
+@import "page-templates/_four-oh-four";
+
+//contact bar
+@import "page-templates/_contact";
 
 
