@@ -1,4 +1,3 @@
-
 <?php
   if ($safeArr[group] == 'all') {
     $filteredCategories = $getCategory;
@@ -35,3 +34,4 @@
   <?php endforeach ?>
 
 </article>
+

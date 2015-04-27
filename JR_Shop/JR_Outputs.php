@@ -1,9 +1,7 @@
 <?php
-
 // ----------------------array compiler--------------------------------------------------
 // Converts the raw querys into useful blocks of text
-
-function jr_shop_compile($ref,$detail) {
+function jr_item_parse($ref,$detail) {
   global $rhcListNew;
   $out1 = $out2 = [];
   switch ($detail) {
@@ -117,9 +115,23 @@ function jr_shop_compile($ref,$detail) {
   return $out;
 };
 
+//compile choice
+function jr_shop_compile($item, $pgType) {
+
+    if ($pgType == 'CategorySS' ) {
+      $out = jr_item_parse($item, 'stainless');
+    } elseif ($pgType == 'Category' ) {
+      $out = jr_item_parse($item, 'med');
+    } elseif ($pgType == 'ItemSS' ) {
+      $out = jr_item_parse($item,'ssFull');
+    } elseif ($pgType == 'Item' ) {
+      $out = jr_item_parse($item,'full');
+    }
+  return $out;
+}
+
 // ---------------------- items list setup ----------------------------------------------
 // figures out what to show on output page, based on safeArr and the page number
-
 function jr_items_list($safeArr,$pageNumber) {
   global $itemCountMax;
 
@@ -185,13 +197,23 @@ function jr_box_3d($h, $w, $d) {
 function jr_page_crumbles ($safeArr) {
   $crumbs[0] = ['Home' => home_url()];
 
-  if ($safeArr[pgType] == 'Item') {
-    $crumbs[1] = [$safeArr[cat] => site_url('/products/'.sanitize_title($safeArr[cat]))];
-    $crumbs[2] = [$safeArr[pgName] => getUrl()];
+  if ($safeArr[rhc] == 'Not Found' || $safeArr[cat] == 'Not Found' || $safeArr[group] == 'Not Found' || is_404()) {
+
+    $crumbs[1] = ['Page Not Found' => home_url()];
+
   } else {
-    $crumbs[1] = [$safeArr[pgName] => jr_pg_set()];
-    //page set instead of getURL to reset to page1 on paginated output
-  };
+
+    if ($safeArr[pgType] == 'Item') {
+      $crumbs[1] = [$safeArr[cat] => site_url('/products/'.sanitize_title($safeArr[cat]))];
+      $crumbs[2] = [$safeArr[pgName] => getUrl()];
+    } else {
+      $crumbs[1] = [$safeArr[pgName] => jr_pg_set()];
+      //page set instead of getURL to reset to page1 on paginated output
+    };
+
+  }
+
+
 
 //  $crumbs['new'] = $_GET[$page_id];
   return $crumbs;
@@ -200,7 +222,6 @@ function jr_page_crumbles ($safeArr) {
 // ----------------------pg-clips--------------------------------------------------------
 // tweaks the 'pg' number from page urls. specifically for category page navigation
 // can produce numbers outside range (eg page 0) paginate links should be hidden on front end if at max/min
-
 function jr_pg_set ($pgSet = null, $pgCap = 1) {
   $url = strtok(getUrl(), '?');
   $arrParams = $_GET;
@@ -226,8 +247,6 @@ function jr_is_pg($pgNum) {
 
 // ----------------------image-manipulation----------------------------------------------
 // generates resized images. Maybe put the "image remove" here too?
-
-
 // to be load on first requirement, does nothing once the file has been made.
 //this also (conveniently) used to dump the "coming soon"
 function img_resize ($src, $size) {
@@ -333,8 +352,6 @@ function getUrl() {
   return $url;
 }
 
-
-
 //creates a category page of "major" brands, taken from the keywords_db
 function brandsList() {
   $getKeyBrands = jr_query_keywords('brand');
@@ -354,7 +371,7 @@ function url_to_title($url,$type) {
   global $getGroup;
 
 
-  $out = "check url - >$url<";
+  $out = "Not Found";
 
   if ($type == 'cat') {
     $getCategory = jr_query_col_unique('name', 'rhc_categories');

@@ -13,11 +13,21 @@
 
   <?php include( "JR_Shop-elements/nav-bar.php"); ?>
 
-  <?php include( "JR_Shop-elements/items-full.php"); ?>
+  <?php
+    if ($safeArr[rhc] == 'Not Found') {
 
-  <?php include( "JR_Shop-elements/items-related.php"); ?>
+      include( "JR_Shop-elements/404-filler.php");
 
-  <?php include( "JR_Shop-elements/contact-bar.php"); ?>
+    } else {
+
+      include( "JR_Shop-elements/items-full.php");
+
+      include( "JR_Shop-elements/items-related.php");
+
+      include( "JR_Shop-elements/contact-bar.php");
+
+    }
+  ?>
 
 </main>
 

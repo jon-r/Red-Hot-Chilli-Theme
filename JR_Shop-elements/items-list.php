@@ -18,11 +18,7 @@ var_dump(jr_query_debug($safeArr) );
   </header>
 
   <?php foreach ($items['list'] as $item) :
-    if ($safeArr[pgType] == 'CategorySS' ) {
-      $shop_item = jr_shop_compile($item, 'stainless');
-    } else {
-      $shop_item = jr_shop_compile($item, 'med');
-    };
+    $shop_item = jr_shop_compile($item, $safeArr[pgType]);
   ?>
 
   <div class="shop-tile btn-icon flex-4 <?php echo trim($shop_item[info].' '.$shop_item[icon]); ?>" >
@@ -43,8 +39,6 @@ var_dump(jr_query_debug($safeArr) );
         <em><?php echo $shop_item[price] ?></em><br>
         <?php echo $shop_item[rhc] ?>
       </div>
-
-
 
     </a>
 
@@ -75,3 +69,4 @@ var_dump(jr_query_debug($safeArr) );
   <?php endif ?>
 
 </article>
+

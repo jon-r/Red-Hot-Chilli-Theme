@@ -13,9 +13,19 @@
 
   <?php include( "JR_Shop-elements/nav-bar.php"); ?>
 
-  <?php include( "JR_Shop-elements/items-list.php"); ?>
+  <?php
+    if ($safeArr[cat] == 'Not Found') {
 
-  <?php include( "JR_Shop-elements/contact-bar.php"); ?>
+      include( "JR_Shop-elements/404-filler.php");
+
+    } else {
+
+      include( "JR_Shop-elements/items-list.php");
+
+      include( "JR_Shop-elements/contact-bar.php");
+    }
+   ?>
+
 </main>
 
 <?php get_footer(); ?>

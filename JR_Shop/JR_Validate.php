@@ -30,7 +30,7 @@ function jr_validate_urls($url) {
     }
   } elseif ($params[1] == 'brands') {
     $out[pgType] = 'Group';
-    $out[pgName] = 'Search Brands';
+    $out[pgName] = 'Browse Brands';
     $out[group] = 'brand';
   } elseif ($params[1] == 'products') {
 
@@ -41,13 +41,13 @@ function jr_validate_urls($url) {
 
     if ($params[2] == 'all') {
       $out[pgType] = 'All';
-      $out[pgName] = 'All Products'; //everything
+      $out[pgName] = $out[cat] = 'All Products'; //everything
 
     } elseif ($params[2] == 'search') {
       $out[pgType] = 'Search';
       $out[search] = str_replace(' ', '|', $_GET[q]);
     //  $readableSearch = esc_url($params[3]);
-      $out[pgName] = 'Search Results for \''.$_GET[q].'\'';
+      $out[pgName] = $out[cat] = 'Search Results for \''.$_GET[q].'\'';
 
     } elseif (jr_validate_stainless($out[pgName])) {
       $out[pgType] = 'CategorySS'; //category stainless
@@ -89,7 +89,7 @@ function jr_validate_urls($url) {
       $out[cat] = $getItem[Category];
       $out[ss] = false;
     } else {
-      $out[noitem] = true;
+      $out[rhc] = 'Not Found';
     }
 
     $out[pgType] = 'Item';
@@ -102,7 +102,7 @@ function jr_validate_urls($url) {
       $out[pgName] = $getItem[ProductName];
       $out[cat] = $getItem[Category];
     } else {
-      $out[noitem] = true;
+      $out[rhc] = 'Not Found';
     }
     $out[pgType] = 'Item';
     $out[note] = 'GET IMAGES BACK IN';

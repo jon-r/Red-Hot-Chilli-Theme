@@ -12,7 +12,17 @@
 
   <?php include( "JR_Shop-elements/nav-bar.php"); ?>
 
-  <?php include( "JR_Shop-elements/categories-list.php"); ?>
+  <?php
+    if ($safeArr[group] == 'Not Found') {
+
+      include( "JR_Shop-elements/404-filler.php");
+
+    } else {
+
+      include( "JR_Shop-elements/categories-list.php");
+
+    }
+    ?>
 
 </main>
 

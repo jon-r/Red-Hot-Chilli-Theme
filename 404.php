@@ -6,6 +6,8 @@
 
   <?php include( "JR_Shop-elements/404-filler.php") ?>
 
+  <?php include( "JR_Shop-elements/groups-list.php"); ?>
+
 </main>
 
 <?php get_footer(); ?>

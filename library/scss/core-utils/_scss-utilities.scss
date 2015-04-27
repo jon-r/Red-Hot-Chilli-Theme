@@ -38,7 +38,7 @@ $xNO-USE-example: hsl(240, 5%, 25%);
 
 $jr-border: 1px solid jr-grey(9);
 $jr-border-dark: 1px solid jr-grey(3);
-$jr-shadow: 0 2px 4px rgba(jr-grey(1),0.5);
+$jr-shadow: 0 4px 4px rgba(jr-grey(1),0.5);
 
 
 @function jr-spacer($n:1) {
