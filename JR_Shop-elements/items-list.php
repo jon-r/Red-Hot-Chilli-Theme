@@ -7,6 +7,7 @@ $pageNumber = $_GET['pg'] ?: 1;
 $items = jr_items_list($safeArr, $pageNumber);
 
 var_dump(jr_query_debug($safeArr) );
+
 ?>
 
 <article class="flex-container">
@@ -18,7 +19,11 @@ var_dump(jr_query_debug($safeArr) );
   </header>
 
   <?php foreach ($items['list'] as $item) :
-    $shop_item = jr_shop_compile($item, $safeArr[pgType]);
+      if ($safeArr[pgType] == 'CategorySS' ) {
+          $shop_item = jr_shop_compile($item, 'stainless');
+        } else {
+          $shop_item = jr_shop_compile($item, 'med');
+      }
   ?>
 
   <div class="shop-tile btn-icon flex-4 <?php echo trim($shop_item[info].' '.$shop_item[icon]); ?>" >

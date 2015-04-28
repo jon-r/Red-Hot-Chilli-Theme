@@ -15,6 +15,11 @@ $related = jr_query_related($safeArr);
 
   <?php foreach ($related as $item) :
     $shop_item = jr_shop_compile($item, $safeArr[pgType]);
+      if ($safeArr[ss]  ) {
+          $shop_item = jr_shop_compile($item, 'stainless');
+        } else {
+          $shop_item = jr_shop_compile($item, 'med');
+      }
   ?>
 
   <div class="shop-tile btn-icon flex-4 <?php echo trim($shop_item[info].' '.$shop_item[icon]); ?>" >

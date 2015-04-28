@@ -1,7 +1,7 @@
 <?php
 // ----------------------array compiler--------------------------------------------------
 // Converts the raw querys into useful blocks of text
-function jr_item_parse($ref,$detail) {
+function jr_shop_compile($ref,$detail) {
   global $rhcListNew;
   $out1 = $out2 = [];
   switch ($detail) {
@@ -115,20 +115,6 @@ function jr_item_parse($ref,$detail) {
   return $out;
 };
 
-//compile choice
-function jr_shop_compile($item, $pgType) {
-
-    if ($pgType == 'CategorySS' ) {
-      $out = jr_item_parse($item, 'stainless');
-    } elseif ($pgType == 'Category' ) {
-      $out = jr_item_parse($item, 'med');
-    } elseif ($pgType == 'ItemSS' ) {
-      $out = jr_item_parse($item,'ssFull');
-    } elseif ($pgType == 'Item' ) {
-      $out = jr_item_parse($item,'full');
-    }
-  return $out;
-}
 
 // ---------------------- items list setup ----------------------------------------------
 // figures out what to show on output page, based on safeArr and the page number

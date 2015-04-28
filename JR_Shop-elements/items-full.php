@@ -5,13 +5,14 @@
 
 if ($safeArr[ss]) {
     $item = jr_query_item($safeArr[rhc], 1);
-    $shop_item = jr_shop_compile($item,'ItemSS');
+    $shop_item = jr_shop_compile($item,'ssFull');
   } else {
     $item = jr_query_item($safeArr[rhc]);
-    $shop_item = jr_shop_compile($item,'Item');
+    $shop_item = jr_shop_compile($item,'full');
   }
 
 var_dump(jr_query_rhc($safeArr[rhc] , 1));
+
 ?>
 
 

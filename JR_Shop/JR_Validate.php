@@ -34,7 +34,7 @@ function jr_validate_urls($url) {
     $out[group] = 'brand';
   } elseif ($params[1] == 'products') {
 
-    $out[pgName] = $out[cat] = url_to_title($params[2],'cat');
+        $out[pgName] = $out[cat] = url_to_title($params[2],'cat');
     $out[imgUrl] = imgSrcRoot('thumbnails',$out[pgName],'jpg');
     $categoryDetails = jr_category_row( $out[pgName] );
     $out[description] = $categoryDetails[CategoryDescription] ?: null;
@@ -53,7 +53,8 @@ function jr_validate_urls($url) {
       $out[pgType] = 'CategorySS'; //category stainless
 
     } else {
-      $out[pgType] = 'Category'; //category
+       //category
+      $out[pgType] = 'Category';
     }
 
   } elseif ($params[1] == 'new-items') { //new in
@@ -105,8 +106,6 @@ function jr_validate_urls($url) {
       $out[rhc] = 'Not Found';
     }
     $out[pgType] = 'Item';
-    $out[note] = 'GET IMAGES BACK IN';
-
   } else {
     $out[pgType] = $out[pgName] = get_the_title();//get the page title
   };
