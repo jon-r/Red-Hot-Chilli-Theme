@@ -12,7 +12,7 @@
       $groupHeaderImg = site_url(imgSrcRoot('icons','header-'.strtok($grpName, ' '),'jpg'));
   ?>
 
-  <div class="shop-tile group flex-3">
+  <section class="shop-tile group flex-3">
 
     <a href="<?php echo $link ?>" >
       <img src="<?php echo $groupHeaderImg ?>" alt="<?php echo $grpName ?>"/>
@@ -26,7 +26,7 @@
       <?php endforeach ?>
     </ul>
 
-  </div>
+  </section>
 
   <?php endforeach ?>
 

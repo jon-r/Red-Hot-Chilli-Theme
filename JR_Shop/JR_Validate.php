@@ -32,9 +32,10 @@ function jr_validate_urls($url) {
     $out[pgType] = 'Group';
     $out[pgName] = 'Browse Brands';
     $out[group] = 'brand';
+
   } elseif ($params[1] == 'products') {
 
-        $out[pgName] = $out[cat] = url_to_title($params[2],'cat');
+    $out[pgName] = $out[cat] = url_to_title($params[2],'cat');
     $out[imgUrl] = imgSrcRoot('thumbnails',$out[pgName],'jpg');
     $categoryDetails = jr_category_row( $out[pgName] );
     $out[description] = $categoryDetails[CategoryDescription] ?: null;

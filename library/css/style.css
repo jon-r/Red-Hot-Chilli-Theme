@@ -394,7 +394,7 @@ a {
   color: inherit;
   display: inline-block; }
   a:hover {
-    color: #6d6d78; }
+    color: #66707f; }
 
 /*********************
 Add some global styling.
@@ -433,22 +433,22 @@ em {
   font-style: normal; }
 
 /*-------------------------sprite layouts + settings ----------------------------------*/
-.text-icon, .text-icon-right, .primary-nav:only-child, .shop-tile, .btn-icon, .item-power {
+.text-icon, .text-icon-right, .primary-nav:only-child, .shop-tile, .btn-icon {
   position: relative; }
 
 .text-icon::before, .text-icon-right::before, .primary-nav:only-child::before, .shop-tile::before {
   pointer-events: none;
   content: '';
   position: absolute;
-  background-image: url(/redhotchilli/images/icons/RHC-Icons.min.svg);
+  background-image: url(/rhc_online/images/icons/RHC-Icons.min.svg);
   height: 128px;
   width: 128px; }
 
-.btn-icon::after, .item-power::after {
+.btn-icon::after {
   pointer-events: none;
   content: '';
   position: absolute;
-  background-image: url(/redhotchilli/images/icons/RHC-Icons.min.svg);
+  background-image: url(/rhc_online/images/icons/RHC-Icons.min.svg);
   height: 128px;
   width: 128px; }
 
@@ -627,10 +627,10 @@ form {
   position: relative; }
 
 input, textarea {
-  box-shadow: inset 0 4px 4px rgba(24, 24, 27, 0.5);
+  box-shadow: inset 0 4px 4px rgba(21, 24, 30, 0.5);
   padding: 0;
   background-color: white;
-  color: #18181b;
+  color: #15181e;
   border: none; }
 
 label, input, button {
@@ -644,7 +644,7 @@ input, button {
 /*title block*/
 .menu-featured h3, .shop-tile div {
   width: 100%;
-  background-color: #e4e4e7;
+  background-color: #e5e5e6;
   min-height: 3rem;
   padding: 0.1rem 20px; }
 
@@ -652,11 +652,11 @@ input, button {
 button, .btn-red {
   border: none;
   line-height: 2.25rem;
-  background-color: #e4e4e7; }
+  background-color: #e5e5e6; }
 
 .btn-red {
   background-color: #931f1f;
-  color: #e4e4e7; }
+  color: #e5e5e6; }
 
 /*********************
 Default style for all pages
@@ -666,23 +666,23 @@ Default style for all pages
   position: relative;
   width: 100%;
   border: 0 solid #931f1f;
-  color: #e4e4e7;
-  box-shadow: 0 4px 4px rgba(24, 24, 27, 0.5);
+  color: #e5e5e6;
+  box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
   z-index: 5; }
 
 .primary-header {
   border-bottom-width: 6px;
-  background: url(/redhotchilli/images/rhc/Head-Banner.jpg) top/cover; }
+  background: url(/rhc_online/images/rhc/Head-Banner.jpg) top/cover; }
   @media only screen and (min-width: 1240px) {
     .primary-header {
-      background: url(/redhotchilli/images/rhc/Head-Banner.jpg) center no-repeat, linear-gradient(to right, #242428 25%, #61616b 75%); }
+      background: url(/rhc_online/images/rhc/Head-Banner.jpg) center no-repeat, linear-gradient(to right, #20252d 25%, #5a6372 75%); }
       .primary-header .home {
         height: 250px;
         justify-content: space-between; } }
 
 .head-title {
   width: 100%;
-  background-image: linear-gradient(to bottom, #494950, #242428);
+  background-image: linear-gradient(to bottom, #424a57, #20252d);
   padding: 4px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px; }
@@ -720,7 +720,7 @@ Default style for all pages
 
 .primary-footer {
   border-top-width: 6px;
-  background-color: #303036; }
+  background-color: #2b313b; }
 
 /*--- Page Body Elements -----------------------------------------------------*/
 html {
@@ -730,13 +730,13 @@ html {
       font-size: 14px; } }
 
 body {
-  background-color: #494950;
+  background-color: #424a57;
   min-width: 320px; }
 
 main {
-  background-color: #f2f2f3;
-  color: #18181b;
-  box-shadow: 0 5px 10px #18181b;
+  background-color: #f2f2f2;
+  color: #15181e;
+  box-shadow: 0 5px 10px #15181e;
   flex: 1 1 auto;
   min-height: 100vh; }
 
@@ -755,12 +755,17 @@ main {
       width: 1200px; } }
 
 .article-header {
-  border-bottom: 1px solid #494950;
+  border-bottom: 1px solid #424a57;
   padding-bottom: 20px; }
+
+section {
+  margin: 20px 0;
+  box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
+  background-color: white; }
 
 /*- top menu parts ---------------------------------------------------------------*/
 nav a.active, nav a:active, nav a:hover {
-  background-color: #e4e4e7; }
+  background-color: #e5e5e6; }
 
 .primary-nav {
   justify-content: flex-start; }
@@ -795,7 +800,7 @@ nav a.active, nav a:active, nav a:hover {
   width: 100%;
   height: 2.1rem;
   position: relative;
-  box-shadow: 0 4px 4px rgba(24, 24, 27, 0.5);
+  box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
   background-color: white;
   text-align: center;
   overflow: hidden;
@@ -816,7 +821,7 @@ nav a.active, nav a:active, nav a:hover {
   .nav-menu li {
     cursor: pointer;
     padding-left: 10px;
-    border-bottom: 1px solid #e4e4e7; }
+    border-bottom: 1px solid #e5e5e6; }
     .nav-menu li ul {
       position: absolute;
       min-height: 100%;
@@ -826,7 +831,7 @@ nav a.active, nav a:active, nav a:hover {
       left: 100%;
       transition: left 400ms; }
     .nav-menu li:active, .nav-menu li:hover {
-      background-color: #e4e4e7; }
+      background-color: #e5e5e6; }
   @media only screen and (max-width: 481px) {
     .nav-menu li {
       padding-left: 0; }
@@ -838,7 +843,7 @@ nav a.active, nav a:active, nav a:hover {
       display: inline-block;
       padding: 10px; }
       .nav-menu li:nth-of-type(even) {
-        border-left: 1px solid #e4e4e7; } }
+        border-left: 1px solid #e5e5e6; } }
   @media only screen and (min-width: 1031px) {
     .nav-menu {
       width: 250px;
@@ -847,9 +852,11 @@ nav a.active, nav a:active, nav a:hover {
       .nav-menu li {
         font-size: 1rem;
         line-height: 2rem; }
+        .nav-menu li li {
+          width: 50%; }
         .nav-menu li ul {
           display: none;
-          box-shadow: 0 4px 4px rgba(24, 24, 27, 0.5);
+          box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
           width: 200%;
           z-index: 20;
           left: 98%;
@@ -868,7 +875,7 @@ nav a.active, nav a:active, nav a:hover {
   margin-bottom: 20px; }
 
 .nav-right {
-  border-bottom: 1px solid #e4e4e7;
+  border-bottom: 1px solid #e5e5e6;
   background-color: white;
   flex: 1 1 100%;
   margin-bottom: 40px; }
@@ -878,27 +885,23 @@ nav a.active, nav a:active, nav a:hover {
 
 .nav-breadcrumbs a,
 .nav-paginate a {
-  border-left: 1px solid #e4e4e7;
+  border-left: 1px solid #e5e5e6;
   padding-left: 20px; }
 
 .nav-breadcrumbs {
   height: auto; }
-
-/* --- bottom menu parts --------------------------------------------------------------*/
-.nav-paginate a {
-  padding-right: 20px; }
 
 /*********************
 Page specific items.
 *********************/
 /*-- index page elements -----------------------------------------------------*/
 .menu-featured li {
-  box-shadow: 0 4px 4px rgba(24, 24, 27, 0.5);
+  box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
   position: relative;
   height: 120px;
   display: block;
   overflow: hidden;
-  background-color: #494950; }
+  background-color: #424a57; }
   @media only screen and (min-width: 1031px) {
     .menu-featured li {
       height: auto; } }
@@ -906,7 +909,7 @@ Page specific items.
   position: absolute;
   bottom: 0;
   left: 0;
-  border-top: 1px solid #e4e4e7; }
+  border-top: 1px solid #e5e5e6; }
 .menu-featured img {
   position: relative;
   height: 100%;
@@ -969,7 +972,7 @@ Page specific items.
 
 .blipper {
   border-radius: 50%;
-  border: 1px solid #e4e4e7;
+  border: 1px solid #e5e5e6;
   height: 10px;
   width: 10px;
   margin-bottom: 5px; }
@@ -1029,41 +1032,37 @@ Page specific items.
 
 /*-- default list Layout -----------------------------------------------------------*/
 .shop-tile {
-  background-color: white;
-  box-shadow: 0 4px 4px rgba(24, 24, 27, 0.5);
   padding-bottom: 40px; }
-  .shop-tile a {
-    width: 100%; }
   .shop-tile::before {
     right: -9px;
     top: 3.5rem; }
+  .shop-tile a {
+    width: 100%; }
   .shop-tile ul {
     width: 100%;
     justify-content: space-between; }
   .shop-tile li {
     line-height: 1.5;
-    border-bottom: 1px solid #e4e4e7;
+    border-bottom: 1px solid #e5e5e6;
     width: 50%;
     padding: 0 10px; }
     .shop-tile li:nth-of-type(odd) {
-      border-right: 1px solid #e4e4e7; }
+      border-right: 1px solid #e5e5e6; }
     .shop-tile li:hover {
-      background-color: #e4e4e7; }
+      background-color: #e5e5e6; }
   .shop-tile div:first-child {
-    border-bottom: 1px solid #494950; }
+    border-bottom: 1px solid #424a57; }
   .shop-tile div:last-child {
     font-size: 0.9rem;
     position: absolute;
     bottom: 0;
-    border-top: 1px solid #494950;
+    border-top: 1px solid #424a57;
     background-color: white; }
 
-.shop-items-nav {
-  box-shadow: 0 4px 4px rgba(24, 24, 27, 0.5);
-  margin-bottom: 20px;
-  background-color: white; }
+.nav-paginate a {
+  padding-right: 20px; }
 
-.ssLength {
+.ss-length {
   position: absolute;
   padding: 0 5px;
   bottom: 50px;
@@ -1072,35 +1071,20 @@ Page specific items.
   line-height: 1.2; }
 
 /*-- single item Layout ------------------------------------------------------*/
-.item-container {
-  margin: 0 20px;
-  box-shadow: 0 4px 4px rgba(24, 24, 27, 0.5);
-  background-color: white; }
-  @media only screen and (min-width: 1031px) {
-    .item-container {
-      flex-direction: row-reverse; } }
-
 .item-gallery {
-  border: 1px solid #e4e4e7;
-  border-width: 0 1px; }
+  padding: 20px; }
 
-.item-sidebar {
-  line-height: 1.5rem;
-  align-content: flex-start;
-  width: calc(100% - 20px); }
-  @media only screen and (min-width: 1031px) {
-    .item-sidebar {
-      width: calc(16.66667% - 20px); } }
-  .item-sidebar button {
-    width: calc(33.33333% - 20px);
-    margin: 10px;
-    min-width: 130px; }
-    @media only screen and (min-width: 1031px) {
-      .item-sidebar button {
-        width: calc(100% - 20px); } }
+.item-info {
+  align-content: flex-start; }
 
-.item-power {
-  border: solid 2px red; }
+.item-main, .item-thumbs li {
+  border: 1px solid #e5e5e6;
+  margin-bottom: 20px; }
+
+.item-thumbs {
+  justify-content: space-between; }
+  .item-thumbs li {
+    width: calc(25% - 20px); }
 
 /*-- 3d box settings -----------------------------------------------------------------*/
 .item-3d {
@@ -1130,7 +1114,7 @@ Page specific items.
     margin: -1px; }
   .box-floor::before {
     content: '';
-    background: url("/redhotchilli/images/icons/silhouette.svg") bottom/contain no-repeat;
+    background: url("/rhc_online/images/icons/silhouette.svg") bottom/contain no-repeat;
     width: 16.66%;
     transform: rotateX(-90deg) rotateZ(0deg) rotateY(0deg); }
 
@@ -1150,11 +1134,11 @@ Page specific items.
 
 .form-central {
   padding: 10px 0;
-  background-color: #303036;
-  color: #e4e4e7;
-  box-shadow: 0 4px 4px rgba(24, 24, 27, 0.5);
+  background-color: #2b313b;
+  color: #e5e5e6;
+  box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
   border-radius: 4px;
-  border-right: 1px solid #494950; }
+  border-right: 1px solid #424a57; }
   .form-central h2, .form-central input {
     margin-bottom: 20px;
     width: calc(100% - 20px); }
@@ -1165,13 +1149,13 @@ Page specific items.
     margin-left: calc(66.66667% ); }
 
 .contact-bar {
-  background-color: #303036;
-  color: #e4e4e7; }
+  background-color: #2b313b;
+  color: #e5e5e6; }
 
 .social-links {
   text-align: center;
   font-size: 0.5rem;
-  color: #18181b; }
+  color: #15181e; }
   .social-links a {
     width: 64px;
     height: 64px;
@@ -1183,7 +1167,7 @@ Page specific items.
         height: 96px; } }
 
 .testimonials {
-  border-bottom: 1px solid #494950; }
+  border-bottom: 1px solid #424a57; }
   .testimonials p, .testimonials h4 {
     width: 100%;
     margin-bottom: 20px; }
@@ -1199,7 +1183,7 @@ Page specific items.
     margin-bottom: 20px; }
 
 .form-contact {
-  border-right: 1px solid #494950; }
+  border-right: 1px solid #424a57; }
   .form-contact input, .form-contact textarea {
     margin-bottom: 20px;
     padding-left: 4px; }

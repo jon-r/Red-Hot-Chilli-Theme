@@ -5,9 +5,9 @@
 }
 
 @function jr-grey($n) {
-  $lightness: 10% * $n;
-  $saturation: 10% * (10 - $n);
-  @return hsl(240, 5%, $lightness);
+  $lightness: 10% * ($n);
+  $saturation: 2% * (10 - $n);
+  @return hsl(217, $saturation, $lightness);
 }
 
 $jr-emphasis: jr-red(3.5);
@@ -34,7 +34,7 @@ $jr-text-hover: jr-grey(4.5);
   }
 }
 
-$xNO-USE-example: hsl(240, 5%, 25%);
+$xNO-USE-example: hsl(215, 50%, 40%);
 
 $jr-border: 1px solid jr-grey(9);
 $jr-border-dark: 1px solid jr-grey(3);

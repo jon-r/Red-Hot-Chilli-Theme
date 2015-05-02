@@ -128,6 +128,9 @@ nav a {
     li {
       font-size: 1rem;
       line-height: 2rem;
+      li {
+        width: 50%;
+      }
       ul {
         display: none;
         box-shadow: $jr-shadow;
@@ -180,13 +183,4 @@ nav a {
 }
 .nav-breadcrumbs {
   height: auto;
-}
-
-
-/* --- bottom menu parts --------------------------------------------------------------*/
-
-.nav-paginate {
-  a {
-    padding-right: jr-spacer();
-  }
 }

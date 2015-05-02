@@ -127,8 +127,8 @@ function jr_query_sold($safeArr, $itemsOnPage) {
 function jr_query_related($safeArr) {
   global $wpdb;
 
-
   $arr[cat] = $safeArr[cat];
+
   if ($safeArr[ss]) {
     $arr[pgType] = 'CategorySS';
     $query = jr_query_item_string($arr);

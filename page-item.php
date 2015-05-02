@@ -22,9 +22,9 @@
 
       include( "JR_Shop-elements/items-full.php");
 
-      include( "JR_Shop-elements/items-related.php");
-
       include( "JR_Shop-elements/contact-bar.php");
+
+      include( "JR_Shop-elements/items-related.php");
 
     }
   ?>

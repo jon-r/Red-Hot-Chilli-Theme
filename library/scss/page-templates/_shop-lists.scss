@@ -2,18 +2,17 @@
 
 
 .shop-tile {
-  background-color: white;
-  box-shadow: $jr-shadow;
-  a {
-    width: 100%;
-  }
+  padding-bottom: jr-spacer(2);
   @extend %has-icon-before;
   &::before {
     right:-9px;
     top: 3.5rem;
   }
 
-  padding-bottom: jr-spacer(2);
+  a {
+    width: 100%;
+  }
+
   ul {
     width:100%;
     justify-content: space-between;
@@ -46,14 +45,13 @@
   }
 }
 
-.shop-items-nav {
-  box-shadow: $jr-shadow;
-  margin-bottom: jr-spacer();
-  background-color: white;
-  //@include jr-width(1,2);
+.nav-paginate {
+  a {
+    padding-right: jr-spacer();
+  }
 }
 
-.ssLength {
+.ss-length {
   position: absolute;
   padding: 0 5px;
   bottom: jr-spacer(2.5);

@@ -1,11 +1,12 @@
 <?php
 // ----------------------array compiler--------------------------------------------------
 // Converts the raw querys into useful blocks of text
+
 function jr_shop_compile($ref,$detail) {
   global $rhcListNew;
   $out1 = $out2 = [];
   switch ($detail) {
-    case 'ssFull' :
+    case 'itemSS' :
       $out1 = [
         height      => $ref[Height] ?: null,
         width       => $ref[Width] ?: null,
@@ -13,9 +14,10 @@ function jr_shop_compile($ref,$detail) {
         hFull       => $ref[Height] ? "Height: ".$ref[Height]."mm / ".ceil($ref[Height] / 25.4)." inches" : null,
         wFull       => $ref[Width] ? "Width: ".$ref[Width]."mm / ".ceil($ref[Width] / 25.4)." inches" : null,
         dFull       => $ref[Depth] ? "Depth: ".$ref[Depth]."mm / ".ceil($ref[Depth] / 25.4)." inches" : null,
-        desc        => ($ref['Line1'] != " " ? $ref['Line 1']."<br>" : null)
+        desc        => ($ref['Line1'] != " " ? $ref['Line 1']."<br>" : null),
+        imgAll      => glob('images/gallery/'.$ref[Image].'*')
       ];
-    case 'stainless':
+    case 'listSS':
       if ($ref[Quantity] == 0) {
         $priceCheck = 'Sold';
       } elseif ($ref[Price]) {
@@ -35,7 +37,7 @@ function jr_shop_compile($ref,$detail) {
         info        => $ref[Quantity] == 0 ? sold : null
       ];
     break;
-    case 'full':
+    case 'item':
       if ($ref[Brand]) {
         $brandUrl = sanitize_title($ref[Brand]);
         $brandIconLocation = imgSrcRoot('brands',$brandUrl,'jpg');
@@ -68,7 +70,7 @@ function jr_shop_compile($ref,$detail) {
         imgAll      => glob('images/gallery/'.$ref[Image].'*'),
         category    => $ref[Category]
       ];
-    case 'med':
+    case 'list':
       if ($ref[Quantity] == 0) {
         $priceCheck = '- Sold -';
       } elseif ($ref[Price]) {

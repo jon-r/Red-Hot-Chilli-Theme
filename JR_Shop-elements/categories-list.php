@@ -24,12 +24,12 @@
     }
   ?>
 
-    <div class="shop-tile flex-4">
+    <section class="shop-tile flex-4">
       <a href="<?php echo $link ?>" >
         <div><h3><?php echo $category[Name] ?></h3></div>
         <img src="<?php echo site_url($imgUrl) ?>" />
       </a>
-    </div>
+    </section>
 
   <?php endforeach ?>
 

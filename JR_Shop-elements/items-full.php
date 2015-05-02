@@ -5,53 +5,53 @@
 
 if ($safeArr[ss]) {
     $item = jr_query_item($safeArr[rhc], 1);
-    $shop_item = jr_shop_compile($item,'ssFull');
+    $shop_item = jr_shop_compile($item,'itemSS');
   } else {
     $item = jr_query_item($safeArr[rhc]);
-    $shop_item = jr_shop_compile($item,'full');
+    $shop_item = jr_shop_compile($item,'item');
   }
 
-var_dump(jr_query_rhc($safeArr[rhc] , 1));
 
 ?>
 
 
 
-<article>
-  <div class="item-container flex-container">
+<article class="flex-container">
 
-    <div class="item-sidebar flex-container">
-      <button class="btn-red text-icon basket-w"><h3>Buy Today</h3></button>
-      <button class="text-icon question"><h3>Need More Information</h3></button>
-      <button class="text-icon list"><h3>Add To Shopping List</h3></button>
-    </div>
+<!--  <section class="flex-1 flex-container">-->
 
-    <div class="item-gallery flex-3">
-      <div class="item-main <?php echo $shop_item[icon]; ?>" >
+<!--  ------------------------------------------------------------------------------  -->
+
+    <section class="item-gallery flex-2">
+      <div class="item-main btn-icon <?php echo $shop_item[icon]; ?>" >
         <img src="<?php echo site_url(img_resize($shop_item[imgFirst], 'tile')) ?>">
       </div>
 
-      <?php if (!$safeArr[ss]) : ?>
-
       <ul class="item-thumbs flex-container">
         <?php foreach ($shop_item[imgAll] as $galleryImg) : ?>
-        <li class="flex-4"><img src="<?php echo site_url(img_resize($galleryImg, 'thumb')) ?>"></li>
+        <li class=""><img src="<?php echo site_url(img_resize($galleryImg, 'thumb')) ?>"></li>
         <?php endforeach ?>
       </ul>
 
-      <?php endif ?>
-    </div>
+    </section>
 
-    <div class="item-info flex-2">
-      <header class="article-header">
-        <h1><?php echo $shop_item[name]; ?></h1>
-        <br>
+<!--  ------------------------------------------------------------------------------  -->
+
+    <div class="item-info flex-2 flex-container">
+
+      <header class="article-header flex-1">
+        <h1><?php echo $shop_item[name]; ?></h1><br>
         <h2><?php echo $shop_item[price] ?></h2>
+        <?php echo $shop_item[rhc] ?>
       </header>
 
-      <div class="item-description">
-        <?php echo $shop_item[desc] ?>
-        <?php echo $shop_item[condition] ?>
+
+      <div class="flex-2" >
+
+        <button class="btn-red text-icon basket-w"><h3>Buy Today</h3></button>
+        <button class="text-icon question"><h3>Need More Information</h3></button>
+        <button class="text-icon list"><h3>Add To Shopping List</h3></button>
+
         <?php if ($shop_item[brand]) : ?>
           <?php echo $shop_item[brandImg] ?: "Brand $shop_item[brand]" ?>
           <a href="<?php echo site_url($shop_item[brandLink]) ?>"><em>More from <?php echo $shop_item[brand] ?></em></a>
@@ -59,7 +59,7 @@ var_dump(jr_query_rhc($safeArr[rhc] , 1));
         <?php echo $shop_item[model] ?>
       </div>
 
-      <ul class="item-features">
+      <ul class="item-features flex-2">
         <?php if (!$safeArr[ss]) : ?>
         <li class="text-icon tick">Photo of actual product</li>
         <li class="text-icon tick">Fully Tested &amp; Cleaned</li>
@@ -73,15 +73,31 @@ var_dump(jr_query_rhc($safeArr[rhc] , 1));
         <?php endif ?>
       </ul>
 
-      <div class="item-specs">
+      <div class="item-description flex-1">
+        <?php echo $shop_item[desc] ?>
+        <?php echo $shop_item[condition] ?>
 
-        <ul class="item-dimensions">
-          <li><?php echo $shop_item[hFull] ?></li>
-          <li><?php echo $shop_item[wFull] ?></li>
-          <li><?php echo $shop_item[dFull] ?></li>
-          <li><?php echo $shop_item[extra] ?></li>
-        </ul>
-  <!--
+      </div>
+
+
+
+      <ul class="item-dimensions flex-1">
+        <li><?php echo $shop_item[hFull] ?></li>
+        <li><?php echo $shop_item[wFull] ?></li>
+        <li><?php echo $shop_item[dFull] ?></li>
+        <li><?php echo $shop_item[extra] ?></li>
+      </ul>
+
+
+    </div>
+
+
+<!--  ------------------------------------------------------------------------------  -->
+
+    <div class="">
+
+
+        <!--
         <aside class="item-3d">
           <?php $box_xyz = jr_box_3d($shop_item[height], $shop_item[width], $shop_item[depth]) ?>
           <div data-value="<?php echo $box_xyz[man] ?>" class="box-floor">
@@ -91,19 +107,10 @@ var_dump(jr_query_rhc($safeArr[rhc] , 1));
           </div>
         </aside> -->
 
-        <?php if ($shop_item[icon]) : ?>
-        <div class="btn-icon <?php echo $shop_item[icon] ?>">
-          <?php echo $shop_item[watt] ?>
-        </div>
-
-        <?php endif ?>
-
-      </div>
-
 
     </div>
 
+<!-- -------------------------------------------------------------------------------- -->
 
-
-  </div>
+<!--  </section>-->
 </article>

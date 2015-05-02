@@ -1,58 +1,37 @@
 /*-- single item Layout ------------------------------------------------------*/
 
 
-.item-container {
-  margin: 0 jr-spacer();
-  box-shadow: $jr-shadow;
-  @include jr-size(screen) {
-    flex-direction: row-reverse;
-  }
-  background-color: white;
-
-}
-
 .item-gallery {
-  border: $jr-border;
-  border-width: 0 1px;
+  padding: jr-spacer();
 }
 
 .item-info {
-
+  align-content: flex-start
 }
 
-.item-sidebar {
-  line-height:1.5rem;
-  align-content: flex-start;
+.item-specs {
 
-  @include jr-width(1,1);
-  @include jr-size(screen) {
-    @include jr-width(1,6);
-
-  }
-
-  button {
-    @include jr-width(1,3);
-    margin: jr-spacer(0.5);
-    min-width: 130px;
-
-    @include jr-size(screen) {
-      @include jr-width(1,1);
-    }
-  }
 }
 
 .item-features {
 
 }
 
-.item-thumbs {
+.item-main, .item-thumbs li {
+  border: $jr-border;
+  margin-bottom: jr-spacer();
+}
+
+.item-main {
 
 }
 
-.item-power {
-  @extend %has-icon-after;
-  @include jr-icon(after);
-  border: solid 2px red;
+.item-thumbs {
+  justify-content: space-between;
+  li {
+    @include jr-width(1,4);
+
+  }
 }
 
 /*-- 3d box settings -----------------------------------------------------------------*/
