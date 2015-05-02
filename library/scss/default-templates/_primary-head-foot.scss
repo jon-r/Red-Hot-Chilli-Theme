@@ -7,6 +7,13 @@
   color: $jr-text-light;
   box-shadow: $jr-shadow;
   z-index: 5;
+  a {
+    color: jr-red(7);
+  }
+  a:hover {
+    color: jr-red(4);
+    background: none;
+  }
 }
 
 .primary-header {

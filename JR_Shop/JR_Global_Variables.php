@@ -1,13 +1,24 @@
 <?php
-global $itemCountMax, $itemCountMin, $rhcTwitterLink, $rhcFacebookLink, $rhcLinkedinLink,
+global $itemCountMax, $itemCountMin, $rhcTwitterLink, $rhcFacebookLink, $rhcLinkedinLink, $rhcEmail, $rhcTel,
   $link_allCategories, $link_allItems, $link_soldItems, $link_newItems, $link_soonItems, $itemSoldDuration;
 
 //social media links.
-$rhcFacebookLink = 'https://www.facebook.com/pages/Red-Hot-Chilli-Catering/147845465419524';
-$rhcTwitterLink = 'https://twitter.com/RHC_Catering';
-$rhcLinkedinLink = 'https://uk.linkedin.com/pub/simon-greenwood/69/b05/689';
-$rhcEmail = 'info@redhotchilli.catering';
-$rhcTel = '01925 242623';
+//$rhcFacebookLink = 'https://www.facebook.com/pages/Red-Hot-Chilli-Catering/147845465419524';
+//$rhcTwitterLink = 'https://twitter.com/RHC_Catering';
+//$rhcLinkedinLink = 'https://uk.linkedin.com/pub/simon-greenwood/69/b05/689';
+//$rhcEmail = 'info@redhotchilli.catering';
+//$rhcTel = '01925 242623';
+
+function link_to($target) {
+  $linkArr = [
+    facebook  => 'https://www.facebook.com/pages/Red-Hot-Chilli-Catering/147845465419524',
+    twitter   => 'https://twitter.com/RHC_Catering',
+    linkedin  => 'https://uk.linkedin.com/pub/simon-greenwood/69/b05/689',
+    email     => 'info@redhotchilli.catering',
+    phone     => '01925 242623'
+  ];
+    return $linkArr[$target];
+}
 
 //how many items before pagination. Also limits some pages.
 $itemCountMax = 24;

@@ -669,6 +669,11 @@ Default style for all pages
   color: #e5e5e6;
   box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
   z-index: 5; }
+  .primary-header a, .primary-footer a {
+    color: #c99c9c; }
+  .primary-header a:hover, .primary-footer a:hover {
+    color: #a32929;
+    background: none; }
 
 .primary-header {
   border-bottom-width: 6px;
