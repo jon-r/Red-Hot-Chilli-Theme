@@ -1,4 +1,4 @@
-/*---header + footer ---------------------------------------------------------*/
+/*---header ---------------------------------------------------------------------------*/
 
 .primary-header, .primary-footer {
   position: relative;
@@ -77,7 +77,13 @@
   }
 }
 
+/* -----------  footer  ---------------------------------------------------------------*/
+
 .primary-footer {
   border-top-width: 6px;
   background-color: jr-grey(2);
+}
+
+.legal {
+  text-align: center;
 }

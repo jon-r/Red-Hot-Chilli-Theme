@@ -661,7 +661,7 @@ button, .btn-red {
 /*********************
 Default style for all pages
 *********************/
-/*---header + footer ---------------------------------------------------------*/
+/*---header ---------------------------------------------------------------------------*/
 .primary-header, .primary-footer {
   position: relative;
   width: 100%;
@@ -718,9 +718,13 @@ Default style for all pages
   border-bottom-right-radius: 4px;
   background-image: linear-gradient(to bottom, #a32929, #5c0a0a); }
 
+/* -----------  footer  ---------------------------------------------------------------*/
 .primary-footer {
   border-top-width: 6px;
   background-color: #2b313b; }
+
+.legal {
+  text-align: center; }
 
 /*--- Page Body Elements -----------------------------------------------------*/
 html {
