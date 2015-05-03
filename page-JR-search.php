@@ -11,7 +11,7 @@
  // $searchTerm = $_GET["search"];
 
 
- var_dump (jr_smart_search($_GET[search]));
+ var_dump (jrx_smart_search($_GET[search]));
 
 echo $_GET[search];
 //todo -> 404 if somehow accessed without legit search

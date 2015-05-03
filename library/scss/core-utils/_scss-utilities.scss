@@ -56,7 +56,7 @@ $break-m: 1030px;
 //hd screen
 $break-l: 1240px;
 
-@mixin jr_size($media) {
+@mixin jr-size($media) {
   @if $media == phoneOnly {
     @media only screen and (max-width: $break-s) { @content; }
   }

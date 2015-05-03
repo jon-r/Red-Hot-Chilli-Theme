@@ -15,8 +15,8 @@
 
     <div class="header-contact flex-<?php echo is_front_page() ? '2' : '1' ?>">
       <h3 class="head-title">Talk to us Direct</h3>
-      <h3 class="text-icon-right phone-w"><?php echo $rhcTel ?></h3>
-      <a href="mailto:<?php echo $rhcEmail ?>"><h3 class="text-icon-right email-w"><?php echo $rhcEmail ?></h3></a>
+      <h3 class="text-icon-right phone-w"><?php echo link_to(phone) ?></h3>
+      <a href="mailto:<?php echo link_to(email) ?>"><h3 class="text-icon-right email-w"><?php echo link_to(email) ?></h3></a>
     </div>
 
   </menu>

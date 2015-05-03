@@ -1,4 +1,5 @@
-<?php $shopItem = ( $safeArr[pgType] == 'CategorySS' ) ? jr_shop_compile($item, 'listSS') : jr_shop_compile($item, 'list'); ?>
+<?php
+$shopItem = ( $safeArr[pgType] == 'CategorySS' ) ? jrx_shop_compile($item, 'listSS') : jrx_shop_compile($item, 'list'); ?>
 
 <section class="shop-tile btn-icon flex-4 <?php echo trim($shopItem[info].' '.$shopItem[icon]); ?>">
 

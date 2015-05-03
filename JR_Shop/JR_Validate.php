@@ -11,7 +11,7 @@
 
 //idea of this function is to act as a wall between input and output.
 //the user can input whatever he wants, but only strings on this function are used in sql queries
-function jr_validate_urls($url) {
+function jrx_validate_urls($url) {
   $slashedParams = str_replace(site_url(), '', $url);
   $params = explode('/',$slashedParams);
   $out = null;
@@ -37,7 +37,7 @@ function jr_validate_urls($url) {
 
     $out[pgName] = $out[cat] = url_to_title($params[2],'cat');
     $out[imgUrl] = imgSrcRoot('thumbnails',$out[pgName],'jpg');
-    $categoryDetails = jr_category_row( $out[pgName] );
+    $categoryDetails = jrx_category_row( $out[pgName] );
     $out[description] = $categoryDetails[CategoryDescription] ?: null;
 
     if ($params[2] == 'all') {
@@ -50,7 +50,7 @@ function jr_validate_urls($url) {
     //  $readableSearch = esc_url($params[3]);
       $out[pgName] = $out[cat] = 'Search Results for \''.$_GET[q].'\'';
 
-    } elseif (jr_validate_stainless($out[pgName])) {
+    } elseif (jrx_validate_stainless($out[pgName])) {
       $out[pgType] = 'CategorySS'; //category stainless
 
     } else {
@@ -84,8 +84,8 @@ function jr_validate_urls($url) {
     };
 
   } elseif ($params[1] == 'rhc') { //product
-    if (jr_query_rhc($params[2])) {
-      $getItem = jr_query_titles($params[2]);
+    if (jrx_query_rhc($params[2])) {
+      $getItem = jrx_query_titles($params[2]);
       $out[rhc] = $params[2];
       $out[pgName] = $getItem[ProductName];
       $out[cat] = $getItem[Category];
@@ -97,8 +97,8 @@ function jr_validate_urls($url) {
     $out[pgType] = 'Item';
 
   } elseif ($params[1] == 'rhcs') { //product-ss
-    if (jr_query_rhcs($params[2])) {
-      $getItem = jr_query_titles($params[2], $SS = true);
+    if (jrx_query_rhcs($params[2])) {
+      $getItem = jrx_query_titles($params[2], $SS = true);
       $out[rhc] = $params[2];
       $out[ss] = true;
       $out[pgName] = $getItem[ProductName];
@@ -118,15 +118,15 @@ function jr_validate_urls($url) {
 
 //validates stainless pages,
 //returns TRUE/FALSE (this is only being used as a switch between stainless and standard product tables)
-function jr_validate_stainless($rawStainless) {
-  $stainlessList = jr_query_keywords('stainless');
+function jrx_validate_stainless($rawStainless) {
+  $stainlessList = jrx_query_keywords('stainless');
   return in_array($rawStainless, $stainlessList);
 };
 
 //validates brands.
 //note this is vs ALL brands in the db, not just the 'major' brand keywords
-function jr_validate_brand($rawBrand) {
-  $brandsListFull = jr_query_col_unique('Brand', 'networked db');
+function jrx_validate_brand($rawBrand) {
+  $brandsListFull = jrx_query_col_unique('Brand', 'networked db');
 
 
 

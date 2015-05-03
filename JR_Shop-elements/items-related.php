@@ -3,7 +3,7 @@
 * just 4 randomly selected items, matching the primary category page
 */
 
-$related = jr_query_related($safeArr);
+$related = jrx_query_related($safeArr);
 
 ?>
 

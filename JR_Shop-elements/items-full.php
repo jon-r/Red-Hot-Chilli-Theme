@@ -4,11 +4,11 @@
 
 
 if ($safeArr[ss]) {
-    $item = jr_query_item($safeArr[rhc], 1);
-    $shop_item = jr_shop_compile($item,'itemSS');
+    $item = jrx_query_item($safeArr[rhc], 1);
+    $shop_item = jrx_shop_compile($item,'itemSS');
   } else {
-    $item = jr_query_item($safeArr[rhc]);
-    $shop_item = jr_shop_compile($item,'item');
+    $item = jrx_query_item($safeArr[rhc]);
+    $shop_item = jrx_shop_compile($item,'item');
   }
 
 
@@ -99,7 +99,7 @@ if ($safeArr[ss]) {
 
         <!--
         <aside class="item-3d">
-          <?php $box_xyz = jr_box_3d($shop_item[height], $shop_item[width], $shop_item[depth]) ?>
+          <?php $box_xyz = jrx_box_3d($shop_item[height], $shop_item[width], $shop_item[depth]) ?>
           <div data-value="<?php echo $box_xyz[man] ?>" class="box-floor">
             <div class="box-x" data-value="<?php echo $box_xyz[width] ?>">x width: <?php echo $shop_item[width] ?></div>
             <div class="box-y" data-value="<?php echo $box_xyz[depth] ?>">y depth: <?php echo $shop_item[depth] ?></div>

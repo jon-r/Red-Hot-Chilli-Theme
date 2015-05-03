@@ -1,6 +1,6 @@
 <?php
   // contact form at the bottom of most pages.
-  $singleFeedback = jr_random_feedback();
+  $singleFeedback = jrx_random_feedback();
 ?>
 
 <article class="contact-bar flex-container">
@@ -32,9 +32,9 @@
 
     <h2>Find us online</h2>
     <div class="social-links">
-      <a class="btn-icon facebook" href="<?php echo $rhcFacebookLink ?>">facebook</a>
-      <a class="btn-icon linkedin" href="<?php echo $rhcLinkedinLink ?>">linkedIn</a>
-      <a class="btn-icon twitter" href="<?php echo $rhcTwitterLink ?>">twitter</a>
+      <a class="btn-icon facebook" href="<?php echo link_to(facebook) ?>">facebook</a>
+      <a class="btn-icon linkedin" href="<?php echo link_to(linkedin) ?>">linkedIn</a>
+      <a class="btn-icon twitter" href="<?php echo link_to(twitter) ?>">twitter</a>
     </div>
 
   </div>

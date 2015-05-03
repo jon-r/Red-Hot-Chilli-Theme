@@ -2,7 +2,7 @@
 // ----------------------array compiler--------------------------------------------------
 // Converts the raw querys into useful blocks of text
 
-function jr_shop_compile($ref,$detail) {
+function jrx_shop_compile($ref,$detail) {
   global $rhcListNew;
   $out1 = $out2 = [];
   switch ($detail) {
@@ -94,14 +94,13 @@ function jr_shop_compile($ref,$detail) {
         $infoCheck = "sale";
       } elseif ($ref[Quantity] == 0) {
         $infoCheck = "sold";
-      } elseif (in_array($ref[RHC], jr_query_new())) {
+      } elseif (in_array($ref[RHC], jrx_query_new())) {
         $infoCheck = "new";
       }
       $out2 = [
         icon        => $iconCheck,
         price       => $priceCheck ,
         webLink     => "rhc/$ref[RHC]/".sanitize_title($ref[ProductName]),
-        //http_build_query(['page_id' => jr_page('item'), 'cat' => $ref[Category], 'r' => $ref[RHC], 'n' => $ref[ProductName]]),
         rhc         => "ref: RHC$ref[RHC]",
         name        => $ref[ProductName],
         imgFirst    => imgSrcRoot('gallery',$ref[Image],'jpg'),
@@ -120,18 +119,18 @@ function jr_shop_compile($ref,$detail) {
 
 // ---------------------- items list setup ----------------------------------------------
 // figures out what to show on output page, based on safeArr and the page number
-function jr_items_list($safeArr,$pageNumber) {
+function jrx_items_list($safeArr,$pageNumber) {
   global $itemCountMax;
 
   //the full list query will always be the same, since this function is preset to cap at one page
-  $listUnsold = jr_query_items($safeArr, $pageNumber);
+  $listUnsold = jrx_query_items($safeArr, $pageNumber);
   $out['paginate'] = false;
   $lastPage = 1;
 
   if ($safeArr['pgType'] != 'New' && $safeArr['pgType'] != 'Sold') {
     //the "sold" and "new" already capped at a single page, no need to count
 
-    $fullItemCount = jr_query_item_count($safeArr);
+    $fullItemCount = jrx_query_item_count($safeArr);
 
     //breaks down into pages
     if ($fullItemCount > $itemCountMax) {
@@ -141,7 +140,7 @@ function jr_items_list($safeArr,$pageNumber) {
     //fills up the last page with sold items
     if ($pageNumber == $lastPage) {
       $itemsOnLastPage = $fullItemCount % $itemCountMax;
-      $listSold = jr_query_sold($safeArr, $itemsOnLastPage);
+      $listSold = jrx_query_sold($safeArr, $itemsOnLastPage);
 
     }
   }
@@ -155,9 +154,9 @@ function jr_items_list($safeArr,$pageNumber) {
 }
 
 //related items, on the single item page
-function jr_items_related($category) {
+function jrx_items_related($category) {
   //sets the "safeArr" to be a category page, rather than item page.
-  $listUnsold = jr_query_related($category);
+  $listUnsold = jrx_query_related($category);
 
 
 }
@@ -165,7 +164,7 @@ function jr_items_related($category) {
 // ----------------------3d scaler ------------------------------------------------------
 // gives relative sizes of HxWxD for items page. also "average man" to scale
 
-function jr_box_3d($h, $w, $d) {
+function jrx_box_3d($h, $w, $d) {
 
   $manHeight = 1750; //average male height in mm
   $findMax = max($h, $w, $d, $manHeight);
@@ -182,7 +181,7 @@ function jr_box_3d($h, $w, $d) {
 
 // ----------------------breadcrumb builder----------------------------------------------
 // Makes the breadcrumbs
-function jr_page_crumbles ($safeArr) {
+function jrx_page_crumbles ($safeArr) {
   $crumbs[0] = ['Home' => home_url()];
 
   if ($safeArr[rhc] == 'Not Found' || $safeArr[cat] == 'Not Found' || $safeArr[group] == 'Not Found' || is_404()) {
@@ -195,7 +194,7 @@ function jr_page_crumbles ($safeArr) {
       $crumbs[1] = [$safeArr[cat] => site_url('/products/'.sanitize_title($safeArr[cat]))];
       $crumbs[2] = [$safeArr[pgName] => getUrl()];
     } else {
-      $crumbs[1] = [$safeArr[pgName] => jr_pg_set()];
+      $crumbs[1] = [$safeArr[pgName] => jrx_pg_set()];
       //page set instead of getURL to reset to page1 on paginated output
     };
 
@@ -210,7 +209,7 @@ function jr_page_crumbles ($safeArr) {
 // ----------------------pg-clips--------------------------------------------------------
 // tweaks the 'pg' number from page urls. specifically for category page navigation
 // can produce numbers outside range (eg page 0) paginate links should be hidden on front end if at max/min
-function jr_pg_set ($pgSet = null, $pgCap = 1) {
+function jrx_pg_set ($pgSet = null, $pgCap = 1) {
   $url = strtok(getUrl(), '?');
   $arrParams = $_GET;
   if (is_int($pgSet)) {
@@ -228,7 +227,7 @@ function jr_pg_set ($pgSet = null, $pgCap = 1) {
 }
 
 // gets the current page, taking into account no pg value = 1
-function jr_is_pg($pgNum) {
+function jrx_is_pg($pgNum) {
   $getPg = $_GET['pg'] ? $_GET['pg'] : 1;
   return $getPg == $pgNum ? true : false;
 }
@@ -265,7 +264,7 @@ function img_resize ($src, $size) {
 // also takes the carousel "link" and converts it to a sale if it is just a number.
 // else treats it like a link
 
-function jr_position($in) {
+function jrx_position($in) {
   if ($in == "Middle") {
     $out = "go-mid";
   } elseif ($in == "Left") {
@@ -276,7 +275,7 @@ function jr_position($in) {
   return $out;
 }
 
-function jr_style($in) {
+function jrx_style($in) {
   if ($in == "Bold") {
     $out = "go-bold";
   } elseif ($in == "Red") {
@@ -294,17 +293,17 @@ function jr_style($in) {
 function magic_roundabout($slideIn) {
   $out = [
     title     => $slideIn[Title],
-    titlePos  => jr_position($slideIn[TitlePos]),
+    titlePos  => jrx_position($slideIn[TitlePos]),
     text1     => $slideIn[Description] != "0" ? $slideIn[Description] : null,
     text2     => $slideIn[Desc2] != "0" ? $slideIn[Desc2] : null,
     text3     => $slideIn[Desc3] != "0" ? $slideIn[Desc3] : null,
-    textPos   => jr_position($slideIn[TextPos]),
-    style1    => jr_style($slideIn[Desc1Emphasis]),
-    style2    => jr_style($slideIn[Desc2Emphasis]),
-    style3    => jr_style($slideIn[Desc3Emphasis]),
+    textPos   => jrx_position($slideIn[TextPos]),
+    style1    => jrx_style($slideIn[Desc1Emphasis]),
+    style2    => jrx_style($slideIn[Desc2Emphasis]),
+    style3    => jrx_style($slideIn[Desc3Emphasis]),
     image     => imgSrcRoot(carousel,$slideIn[ImageRef],jpg),
     link      => is_numeric($slideIn[WebLink]) ? "?page_id=16&sale=$slideIn[WebLink]" : $slideIn[WebLink],
-    linkPos   => jr_position($slideIn[ClickHerePos])
+    linkPos   => jrx_position($slideIn[ClickHerePos])
   ];
 
   return $out;
@@ -312,8 +311,8 @@ function magic_roundabout($slideIn) {
 
 //-------------- pick testimonial -----------------------------------------------
 // grabs a single testimonial at random
-function jr_random_feedback() {
-  $in = jr_query_tesimonial();
+function jrx_random_feedback() {
+  $in = jrx_query_tesimonial();
   $countIn = count($in) - 1;
   $random = rand(0,$countIn);
 
@@ -342,7 +341,7 @@ function getUrl() {
 
 //creates a category page of "major" brands, taken from the keywords_db
 function brandsList() {
-  $getKeyBrands = jr_query_keywords('brand');
+  $getKeyBrands = jrx_query_keywords('brand');
 
   $out = array_map('brandArrayGen', $getKeyBrands);
 
@@ -362,7 +361,7 @@ function url_to_title($url,$type) {
   $out = "Not Found";
 
   if ($type == 'cat') {
-    $getCategory = jr_query_col_unique('name', 'rhc_categories');
+    $getCategory = jrx_query_col_unique('name', 'rhc_categories');
     $catUrls = array_map('sanitize_title', $getCategory);
     if (in_array($url,$catUrls)) {
       $cats = array_combine($getCategory, $catUrls);
@@ -375,7 +374,7 @@ function url_to_title($url,$type) {
       $out = array_search($url, $grps);
     }
   } elseif ($type == 'brand') {
-    $getBrands = jr_query_col_unique('Brand', 'networked db');
+    $getBrands = jrx_query_col_unique('Brand', 'networked db');
     $brandUrls = array_map('sanitize_title', $getBrands);
 
     if (in_array($url,$brandUrls)) {

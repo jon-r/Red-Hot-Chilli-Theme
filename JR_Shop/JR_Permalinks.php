@@ -4,7 +4,7 @@
 Setting up url_rewrite names. The ones that arent automagically made by wordpress
 */
 
-function jr_page($pgtype) {
+function jrx_page($pgtype) {
 	$pageNum = [
 		'grp' =>	'24',
 		'cat' =>	'16',
@@ -18,19 +18,19 @@ function set_permalinks() {
 
   $permalinks = [
     //depts
-    '^brands/?'             => jr_page(grp),
-    '^departments/([^/]*)/?' => jr_page(grp),
+    '^brands/?'             => jrx_page(grp),
+    '^departments/([^/]*)/?' => jrx_page(grp),
     //cats
-    '^special-offers/?'         => jr_page(cat),
-    '^sold/?'                   => jr_page(cat),
-    '^coming-Soon/?'            => jr_page(cat),
-    '^new-items/?'              => jr_page(cat),
-    '^products/([^/]*)/?'       => jr_page(cat),
-    '^brand/([^/]*)/?'          => jr_page(cat),
-    '^search-results/([^/]*)/?' => jr_page(cat),
+    '^special-offers/?'         => jrx_page(cat),
+    '^sold/?'                   => jrx_page(cat),
+    '^coming-Soon/?'            => jrx_page(cat),
+    '^new-items/?'              => jrx_page(cat),
+    '^products/([^/]*)/?'       => jrx_page(cat),
+    '^brand/([^/]*)/?'          => jrx_page(cat),
+    '^search-results/([^/]*)/?' => jrx_page(cat),
     //items
-    '^rhc/([^/]*)/?'  => jr_page(item),
-    '^rhcs/([^/]*)/?' => jr_page(item)
+    '^rhc/([^/]*)/?'  => jrx_page(item),
+    '^rhcs/([^/]*)/?' => jrx_page(item)
   ];
 
   foreach ($permalinks as $find => $replace) {

@@ -50,8 +50,8 @@ include('JR_Outputs.php');
 // initial page setup in the header. this is the stuff on everypage, so can be called straight away
 global $safeArr,$getGroup, $getCategory, $groupArray;
 
-$getGroup = jr_query_keywords('group');
-$getCategory = jr_query_categories();
+$getGroup = jrx_query_keywords('group');
+$getCategory = jrx_query_categories();
 
 foreach ($getGroup as $grp) {
   $groupArray[$grp] = groupFilter($grp);
@@ -59,6 +59,6 @@ foreach ($getGroup as $grp) {
 
 
 //now to clean the parameter input
-$safeArr = jr_validate_urls(getUrl());
+$safeArr = jrx_validate_urls(getUrl());
 
 

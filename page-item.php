@@ -11,6 +11,11 @@
 
 <main class="container">
 
+  <?php the_content(); ?>
+
+  <div>EVERYTHING BELOW THIS LINE IS OLD</div>
+  <hr>
+
   <?php include( "JR_Shop-elements/nav-bar.php"); ?>
 
   <?php

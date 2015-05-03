@@ -16,20 +16,20 @@ Priority:
 */
 
 
-function jr_smart_search($searchTerm) {
+function jrx_smart_search($searchTerm) {
 
 
   $safeSearch = preg_replace('/[^A-Za-z0-9 +-]/','', $searchTerm);
 //RHCs must be first
   if (stripos($searchTerm, "rhcs") === 0)  {
     $ref = str_replace('rhcs','',$searchTerm);
-    $itemSS = jr_query_titles($ref, $SS = true);
+    $itemSS = jrx_query_titles($ref, $SS = true);
     $name = sanitize_title($itemSS[ProductName]);
     $url = site_url("rhcs/$ref/$name");
 
   } elseif (stripos($searchTerm, "rhc") === 0) {
     $ref = str_replace('rhc','',$searchTerm);
-    $item = jr_query_titles($ref);
+    $item = jrx_query_titles($ref);
     $name = sanitize_title($item[ProductName]);
     $url = site_url("rhc/$ref/$name");
 

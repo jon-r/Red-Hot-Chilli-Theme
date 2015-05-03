@@ -1,5 +1,5 @@
 <?php
-$carouselList = jr_query_carousel();
+$carouselList = jrx_query_carousel();
 ?>
 
 
