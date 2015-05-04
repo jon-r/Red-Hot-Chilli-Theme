@@ -1,20 +1,36 @@
       <nav class="container flex-container">
 
+        <div class="flex-4">
+          <h3>Shop With Us</h3>
           <?php wp_nav_menu(array(
             'container' => '',                              // remove nav container
-            'menu' => __( 'Header Links', 'bonestheme' ),   // nav name
-            'menu_class' => 'menu-header flex-4',                             // adding custom nav class
-            'theme_location' => 'header-links',             // where it's located in the theme
+            'menu' => __( 'Footer Shop Links', 'bonestheme' ),   // nav name
+            'menu_class' => '',                             // adding custom nav class
+            'theme_location' => 'footer-shop',             // where it's located in the theme
             'fallback_cb' => ''                             // fallback function
           )); ?>
+        </div>
 
+        <div class="flex-4">
+          <h3>About Us</h3>
           <?php wp_nav_menu(array(
             'container' => '',                              // remove nav container
-            'menu' => __( 'Footer Links', 'bonestheme' ),   // nav name
-            'menu_class' => 'menu-footer flex-4',                  // adding custom nav class
-            'theme_location' => 'footer-links',             // where it's located in the theme
+            'menu' => __( 'Footer Other Links', 'bonestheme' ),   // nav name
+            'menu_class' => '',                  // adding custom nav class
+            'theme_location' => 'footer-other',             // where it's located in the theme
             'fallback_cb' => ''                             // fallback function
           )); ?>
+        </div>
+
+        <div class="flex-4">
+          <h3>Visit Us</h3>
+          <br>
+          <?php echo jr_linkTo(address) ?>
+        </div>
+
+        <div class="flex-4">
+          <img src="<?php echo site_url(jr_imgSrc('icons','fsb','png')) ?>" alt="Federation of Small Businesses" >
+        </div>
 
         <p class="legal flex-1">
           &copy; <?php echo date( 'Y'); ?>

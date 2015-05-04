@@ -217,8 +217,8 @@ function bones_theme_support() {
 			'services-menu' => __( 'Services Menu links', 'bonestheme'),
             'featured-menu' => __( 'Featured Menu Links', 'bonestheme' ),
             'front-page-list' => __( 'Front Page Links', 'bonestheme'),
-			'header-links' => __( 'Header Links', 'bonestheme' ),
-			'footer-links' => __( 'Footer Links', 'bonestheme' )
+			'footer-other' => __( 'Footer Other Links', 'bonestheme' ),
+			'footer-shop' => __( 'Footer Shop Links', 'bonestheme' )
 		)
 	);
 } /* end bones theme support */
