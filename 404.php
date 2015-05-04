@@ -2,11 +2,11 @@
 
 <main class="container">
 
-  <?php include( "JR_Shop-elements/nav-bar.php"); ?>
+  <?php echo do_shortcode("[jr-shop id='nav-bar']"); ?>
 
-  <?php include( "JR_Shop-elements/404-filler.php") ?>
+  <?php echo do_shortcode("[jr-shop id='404-filler']"); ?>
 
-  <?php include( "JR_Shop-elements/groups-list.php"); ?>
+  <?php echo do_shortcode("[jr-shop id='groups-list']"); ?>
 
 </main>
 

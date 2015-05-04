@@ -62,7 +62,6 @@ function imgSrcRoot($itemType,$itemName,$filetype) {
   return 'images/'.$itemType.'/'.$itemName.'.'.$filetype;
 }
 
-
 //Image sizes for generated. would need to wipe gallery-thumb/gallery-tile folders if these are changed
 function imgSize($size) {
   $sizeArr = [

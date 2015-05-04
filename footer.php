@@ -1,6 +1,6 @@
     <footer class="primary-footer" role="contentinfo">
 
-    <?php include( "JR_Shop-elements/footer-bar.php"); ?>
+    <?php include('page-blocks/footer-bar.php') ?>
 
     </footer>
 

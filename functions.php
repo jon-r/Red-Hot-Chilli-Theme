@@ -195,8 +195,7 @@ and be up and running in seconds.
 //  wp_enqueue_style( 'googleFonts');
 //}
 
-//custom permalinks.
-include( "JR_Shop/JR_Permalinks.php");
+
 
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>

@@ -36,16 +36,13 @@
   <?php // drop Google Analytics Here ?>
   <?php // end analytics ?>
 
-  <?php //getting Databases, custom functions ?>
-  <?php include( "JR_Shop/JR_Shop_Core.php"); ?>
-
 </head>
 
 <body <?php body_class(); ?>>
 
   <header class="primary-header" role="banner">
 
-    <?php include( "JR_Shop-elements/header-bar.php"); ?>
+    <?php include('page-blocks/header-bar.php') ?>
 
   </header>
 
