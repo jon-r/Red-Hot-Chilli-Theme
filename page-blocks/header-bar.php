@@ -9,7 +9,7 @@
     <form class="form-head-search flex-<?php echo is_front_page() ? '2' : '1' ?>" method="get" action="<?php echo site_url('search') ?>">
       <h3 class="head-title">Search Catering Equipment</h3>
       <label class="text-icon-right search"></label>
-      <input type="search" name="search" placeholder="NEED TO REDIRECT!!!!!!!!!!!! Enter Keyword or Reference. ">
+      <input class="autocomplete" type="search" name="search" placeholder="Enter Keyword or Reference.">
       <button class="btn-red" type="submit"><h3>Go</h3></button>
     </form>
 
