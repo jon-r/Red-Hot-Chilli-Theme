@@ -433,22 +433,22 @@ em {
   font-style: normal; }
 
 /*-------------------------sprite layouts + settings ----------------------------------*/
-.text-icon, .text-icon-right, .primary-nav:only-child, .shop-tile, .btn-icon {
+.text-icon, .text-icon-right, .primary-nav:only-child, .shop-tile, .btn-icon, .btn-icon-lrg {
   position: relative; }
 
 .text-icon::before, .text-icon-right::before, .primary-nav:only-child::before, .shop-tile::before {
   pointer-events: none;
   content: '';
   position: absolute;
-  background-image: url(/rhc_online/images/icons/RHC-Icons.min.svg);
+  background-image: url(/redhotchilli/images/icons/RHC-Icons.min.svg);
   height: 128px;
   width: 128px; }
 
-.btn-icon::after {
+.btn-icon::after, .btn-icon-lrg::after {
   pointer-events: none;
   content: '';
   position: absolute;
-  background-image: url(/rhc_online/images/icons/RHC-Icons.min.svg);
+  background-image: url(/redhotchilli/images/icons/RHC-Icons.min.svg);
   height: 128px;
   width: 128px; }
 
@@ -482,6 +482,15 @@ em {
   .btn-icon::after {
     transform: scale(0.75); } }
 
+.btn-icon-lrg::after {
+  transform: scale(0.75);
+  transform-origin: bottom right;
+  bottom: 0;
+  right: 0; }
+@media only screen and (min-width: 1031px) {
+  .btn-icon-lrg::after {
+    transform: scale(1); } }
+
 .primary-nav:only-child::before {
   height: 128px;
   width: 144px;
@@ -493,11 +502,13 @@ em {
 @keyframes loader-animate {
   0% {
     background-position: -400px -896px; }
+
   100% {
     background-position: -496px -896px; } }
 @-webkit-keyframes loader-animate {
   0% {
     background-position: -400px -896px; }
+
   100% {
     background-position: -496px -896px; } }
 .single-phase::after {
@@ -581,8 +592,8 @@ em {
 .close-w::before {
   background-position: 0px -384px; }
 
-.tick::before {
-  background-position: -128px -128px; }
+.tick-w::before {
+  background-position: -128px -384px; }
 
 .facebook::before {
   background-position: 0px -896px; }
@@ -677,10 +688,10 @@ Default style for all pages
 
 .primary-header {
   border-bottom-width: 6px;
-  background: url(/rhc_online/images/rhc/Head-Banner.jpg) top/cover; }
+  background: url(/redhotchilli/images/rhc/Head-Banner.jpg) top/cover; }
   @media only screen and (min-width: 1240px) {
     .primary-header {
-      background: url(/rhc_online/images/rhc/Head-Banner.jpg) center no-repeat, linear-gradient(to right, #20252d 25%, #5a6372 75%); }
+      background: url(/redhotchilli/images/rhc/Head-Banner.jpg) center no-repeat, linear-gradient(to right, #20252d 25%, #5a6372 75%); }
       .primary-header .home {
         height: 250px;
         justify-content: space-between; } }
@@ -1086,6 +1097,32 @@ Page specific items.
 .item-info {
   align-content: flex-start; }
 
+.item-dimensions {
+  width: 100%; }
+  .item-dimensions li {
+    border: 1px solid #e5e5e6;
+    border-width: 0 1px 1px 1px;
+    padding-left: 20px; }
+    .item-dimensions li:nth-of-type(odd) {
+      background-color: #e5e5e6; }
+
+.item-scale, .item-name, .item-specs {
+  margin-top: 20px;
+  font-size: 1.2rem; }
+
+.item-box {
+  border: 1px solid #e5e5e6;
+  background-color: #f2f2f2;
+  width: 60%; }
+
+.item-features {
+  background-color: #2b313b;
+  color: #e5e5e6;
+  box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 1.2rem; }
+
 .item-main, .item-thumbs li {
   border: 1px solid #e5e5e6;
   margin-bottom: 20px; }
@@ -1094,52 +1131,6 @@ Page specific items.
   justify-content: space-between; }
   .item-thumbs li {
     width: calc(25% - 20px); }
-
-/*-- 3d box settings -----------------------------------------------------------------*/
-.item-3d {
-  width: 200px;
-  height: 200px;
-  border: solid 1px blue;
-  background-color: beige;
-  position: relative; }
-  @media only screen and (min-width: 1031px) {
-    .item-3d {
-      width: 450px;
-      height: 450px; } }
-
-.box-floor div, .box-floor::before {
-  position: absolute;
-  transform-origin: bottom right;
-  height: 50%; }
-
-.box-floor {
-  transform: translate3d(10%, 25%, 0) rotateX(70deg) rotateZ(20deg);
-  height: 120%;
-  width: 120%;
-  position: absolute;
-  transform-style: preserve-3d; }
-  .box-floor div {
-    width: 50%;
-    margin: -1px; }
-  .box-floor::before {
-    content: '';
-    background: url("/rhc_online/images/icons/silhouette.svg") bottom/contain no-repeat;
-    width: 16.66%;
-    transform: rotateX(-90deg) rotateZ(0deg) rotateY(0deg); }
-
-.box-y {
-  top: -50%;
-  left: -50%;
-  transform: rotateX(-90deg) rotateZ(0deg) rotateY(90deg);
-  background: linear-gradient(315deg, #206077, #78abbc); }
-
-.box-x {
-  top: -50%;
-  background: linear-gradient(45deg, #206077, #78abbc);
-  transform: rotateX(-90deg); }
-
-.box-z {
-  background: linear-gradient(135deg, #206077, #78abbc); }
 
 .form-central {
   padding: 10px 0;
@@ -1217,5 +1208,3 @@ Page specific items.
   .form-contact button {
     width: calc(33.33333% - 20px);
     margin-left: 66.66667%; }
-
-/*# sourceMappingURL=style.css.map */
