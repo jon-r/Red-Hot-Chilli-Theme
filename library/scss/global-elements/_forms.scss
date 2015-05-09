@@ -23,7 +23,50 @@ input, button {
   height:2rem;
 }
 
+input[type="search"] {
 
+}
+
+.form-search {
+  input, button {
+     margin: 4px 0 ;
+  }
+
+  input {
+
+    line-height: 2rem;
+    width: calc(100% - 5rem);
+    padding-left: 2rem;
+    border-radius:4px 0 0 4px;
+  }
+
+
+  button {
+    width: 3rem;
+    border-radius:0 4px 4px 0;
+    background-image: linear-gradient(to bottom, jr-red(4), jr-red(2))
+  }
+}
+
+.search-out {
+  &:empty {
+    display: none;
+  }
+
+  li {
+    border-bottom: $jr-border-dark;
+  }
+  li:hover {
+  //  background: jr-grey(3);
+  }
+  a {
+    width:100%;
+  }
+  position: absolute;
+  width:100%;
+  top: 4.5rem;
+  z-index: 10;
+}
 
 //form {
 //  position: relative;

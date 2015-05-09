@@ -4,23 +4,18 @@
     <img src="<?php echo site_url(jr_imgSrc('rhc','RHC-Web','png')); ?>" alt="Red Hot Chilli - Used Catering Equipment"/>
   </a>
 
-  <menu class="header-links flex-<?php echo is_front_page() ? '1' : '2' ?> flex-container">
 
-    <form class="form-head-search flex-<?php echo is_front_page() ? '2' : '1' ?>" method="get" action="<?php echo site_url('search') ?>">
-      <h3 class="head-title">Search Catering Equipment</h3>
-      <label class="text-icon-right search"></label>
-      <input class="autocomplete" type="search" name="search" placeholder="Enter Keyword or Reference.">
-      <button class="btn-red" type="submit"><h3>Go</h3></button>
-    </form>
+  <?php echo do_shortcode("[jr-shop id='search-bar']"); ?>
 
-    <div class="header-contact flex-<?php echo is_front_page() ? '2' : '1' ?>">
-      <h3 class="head-title">Talk to us Direct</h3>
+    <menu class="header-links flex-2 flex-container">
+
       <h3 class="text-icon-right phone-w"><?php echo jr_linkTo(phone) ?></h3>
       <a href="mailto:<?php echo jr_linkTo(email) ?>">
         <h3 class="text-icon-right email-w"><?php echo jr_linkTo(email) ?></h3>
       </a>
-    </div>
 
   </menu>
+
+
 
 </div>

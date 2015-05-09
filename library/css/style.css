@@ -390,7 +390,6 @@ img {
 
 a {
   font-family: inherit;
-  text-decoration: none;
   color: inherit;
   display: inline-block; }
   a:hover {
@@ -433,14 +432,14 @@ em {
   font-style: normal; }
 
 /*-------------------------sprite layouts + settings ----------------------------------*/
-.text-icon, .text-icon-right, .primary-nav:only-child, .shop-tile, .btn-icon, .btn-icon-lrg {
+.text-icon, .text-icon-right, .primary-nav:only-child, .shop-tile.item, .btn-icon, .btn-icon-lrg {
   position: relative; }
 
-.text-icon::before, .text-icon-right::before, .primary-nav:only-child::before, .shop-tile::before {
+.text-icon::before, .text-icon-right::before, .primary-nav:only-child::before, .shop-tile.item::before {
   pointer-events: none;
   content: '';
   position: absolute;
-  background-image: url(/redhotchilli/images/icons/RHC-Icons.min.svg);
+  background-image: url(/rhc_online/images/icons/RHC-Icons.min.svg);
   height: 128px;
   width: 128px; }
 
@@ -448,7 +447,7 @@ em {
   pointer-events: none;
   content: '';
   position: absolute;
-  background-image: url(/redhotchilli/images/icons/RHC-Icons.min.svg);
+  background-image: url(/rhc_online/images/icons/RHC-Icons.min.svg);
   height: 128px;
   width: 128px; }
 
@@ -502,13 +501,11 @@ em {
 @keyframes loader-animate {
   0% {
     background-position: -400px -896px; }
-
   100% {
     background-position: -496px -896px; } }
 @-webkit-keyframes loader-animate {
   0% {
     background-position: -400px -896px; }
-
   100% {
     background-position: -496px -896px; } }
 .single-phase::after {
@@ -651,8 +648,32 @@ input, button {
   font-size: 1.2rem;
   height: 2rem; }
 
+.form-search input, .form-search button {
+  margin: 4px 0; }
+.form-search input {
+  line-height: 2rem;
+  width: calc(100% - 5rem);
+  padding-left: 2rem;
+  border-radius: 4px 0 0 4px; }
+.form-search button {
+  width: 3rem;
+  border-radius: 0 4px 4px 0;
+  background-image: linear-gradient(to bottom, #a32929, #5c0a0a); }
+
+.search-out {
+  position: absolute;
+  width: 100%;
+  top: 4.5rem;
+  z-index: 10; }
+  .search-out:empty {
+    display: none; }
+  .search-out li {
+    border-bottom: 1px solid #424a57; }
+  .search-out a {
+    width: 100%; }
+
 /*--- common page elements + defaults -------------------------------------------------*/
-/*title block*/
+/*title blocks */
 .menu-featured h3, .shop-tile div {
   width: 100%;
   background-color: #e5e5e6;
@@ -669,6 +690,16 @@ button, .btn-red {
   background-color: #931f1f;
   color: #e5e5e6; }
 
+/*dark popout*/
+.dark-block {
+  background-color: #2b313b;
+  padding: 10px;
+  color: #e5e5e6;
+  box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
+  border-radius: 4px; }
+  .dark-block li {
+    line-height: 2; }
+
 /*********************
 Default style for all pages
 *********************/
@@ -680,31 +711,20 @@ Default style for all pages
   color: #e5e5e6;
   box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
   z-index: 5; }
-  .primary-header a, .primary-footer a {
-    color: #c99c9c; }
-  .primary-header a:hover, .primary-footer a:hover {
-    color: #a32929;
-    background: none; }
 
 .primary-header {
   border-bottom-width: 6px;
-  background: url(/redhotchilli/images/rhc/Head-Banner.jpg) top/cover; }
+  background: url(/rhc_online/images/rhc/Head-Banner.jpg) top/cover; }
   @media only screen and (min-width: 1240px) {
     .primary-header {
-      background: url(/redhotchilli/images/rhc/Head-Banner.jpg) center no-repeat, linear-gradient(to right, #20252d 25%, #5a6372 75%); }
+      background: url(/rhc_online/images/rhc/Head-Banner.jpg) center no-repeat, linear-gradient(to right, #20252d 25%, #5a6372 75%); }
       .primary-header .home {
-        height: 250px;
-        justify-content: space-between; } }
+        height: 250px; } }
 
-.head-title {
-  width: 100%;
-  background-image: linear-gradient(to bottom, #424a57, #20252d);
-  padding: 4px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px; }
+.header-logo {
+  max-width: 450px;
+  margin: 10px; }
 
-.not-home .head-title {
-  display: none; }
 .not-home input {
   border-top-left-radius: 4px; }
 .not-home button {
@@ -715,24 +735,17 @@ Default style for all pages
     .not-home .header-links {
       font-size: 1.5rem;
       line-height: 2.5rem; } }
-
-.header-logo {
-  max-width: 450px;
-  margin: 10px; }
+.not-home .header-logo {
+  max-width: 300px; }
 
 .header-links {
   margin-bottom: 0; }
 
-.form-head-search input {
-  margin-bottom: 4px;
-  line-height: 2rem;
-  width: calc(100% - 5rem);
-  padding-left: 2rem;
-  border-bottom-left-radius: 4px; }
-.form-head-search button {
-  width: 3rem;
-  border-bottom-right-radius: 4px;
-  background-image: linear-gradient(to bottom, #a32929, #5c0a0a); }
+.header-contact a {
+  color: #c99c9c; }
+.header-contact a:hover {
+  color: #a32929;
+  background: none; }
 
 /* -----------  footer  ---------------------------------------------------------------*/
 .primary-footer {
@@ -1051,33 +1064,34 @@ Page specific items.
   font-weight: bold; }
 
 /*-- default list Layout -----------------------------------------------------------*/
-.shop-tile {
+.shop-tile a {
+  width: 100%; }
+.shop-tile ul {
+  width: 100%;
+  justify-content: space-between; }
+.shop-tile li {
+  line-height: 1.5;
+  border-bottom: 1px solid #e5e5e6;
+  width: 50%;
+  padding: 0 10px; }
+  .shop-tile li:nth-of-type(odd) {
+    border-right: 1px solid #e5e5e6; }
+  .shop-tile li:hover {
+    background-color: #e5e5e6; }
+.shop-tile div:first-child {
+  border-bottom: 1px solid #424a57; }
+.shop-tile div:last-child {
+  font-size: 0.9rem;
+  position: absolute;
+  bottom: 0;
+  border-top: 1px solid #424a57;
+  background-color: white; }
+
+.shop-tile.item {
   padding-bottom: 40px; }
-  .shop-tile::before {
+  .shop-tile.item::before {
     right: -9px;
     top: 3.5rem; }
-  .shop-tile a {
-    width: 100%; }
-  .shop-tile ul {
-    width: 100%;
-    justify-content: space-between; }
-  .shop-tile li {
-    line-height: 1.5;
-    border-bottom: 1px solid #e5e5e6;
-    width: 50%;
-    padding: 0 10px; }
-    .shop-tile li:nth-of-type(odd) {
-      border-right: 1px solid #e5e5e6; }
-    .shop-tile li:hover {
-      background-color: #e5e5e6; }
-  .shop-tile div:first-child {
-    border-bottom: 1px solid #424a57; }
-  .shop-tile div:last-child {
-    font-size: 0.9rem;
-    position: absolute;
-    bottom: 0;
-    border-top: 1px solid #424a57;
-    background-color: white; }
 
 .nav-paginate a {
   padding-right: 20px; }
@@ -1095,33 +1109,24 @@ Page specific items.
   padding: 20px; }
 
 .item-info {
-  align-content: flex-start; }
+  align-content: flex-start;
+  font-size: 1.2rem; }
 
 .item-dimensions {
   width: 100%; }
   .item-dimensions li {
     border: 1px solid #e5e5e6;
-    border-width: 0 1px 1px 1px;
-    padding-left: 20px; }
-    .item-dimensions li:nth-of-type(odd) {
+    border-width: 1px 1px 1px 1px;
+    padding: 2px 20px; }
+    .item-dimensions li:nth-of-type(even) {
       background-color: #e5e5e6; }
 
-.item-scale, .item-name, .item-specs {
-  margin-top: 20px;
-  font-size: 1.2rem; }
+.item-scale, .item-features, .item-specs {
+  margin-top: 30px; }
 
 .item-box {
   border: 1px solid #e5e5e6;
-  background-color: #f2f2f2;
-  width: 60%; }
-
-.item-features {
-  background-color: #2b313b;
-  color: #e5e5e6;
-  box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
-  border-radius: 4px;
-  padding: 10px;
-  font-size: 1.2rem; }
+  background-color: #f2f2f2; }
 
 .item-main, .item-thumbs li {
   border: 1px solid #e5e5e6;
@@ -1131,22 +1136,6 @@ Page specific items.
   justify-content: space-between; }
   .item-thumbs li {
     width: calc(25% - 20px); }
-
-.form-central {
-  padding: 10px 0;
-  background-color: #2b313b;
-  color: #e5e5e6;
-  box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
-  border-radius: 4px;
-  border-right: 1px solid #424a57; }
-  .form-central h2, .form-central input {
-    margin-bottom: 20px;
-    width: calc(100% - 20px); }
-  .form-central input {
-    padding: 5px 0; }
-  .form-central button {
-    width: calc(33.33333% - 20px);
-    margin-left: calc(66.66667% ); }
 
 .contact-bar {
   background-color: #2b313b;
@@ -1208,3 +1197,5 @@ Page specific items.
   .form-contact button {
     width: calc(33.33333% - 20px);
     margin-left: 66.66667%; }
+
+/*# sourceMappingURL=style.css.map */

@@ -2,12 +2,6 @@
 
 
 .shop-tile {
-  padding-bottom: jr-spacer(2);
-  @extend %has-icon-before;
-  &::before {
-    right:-9px;
-    top: 3.5rem;
-  }
 
   a {
     width: 100%;
@@ -42,6 +36,16 @@
       border-top: $jr-border-dark;
       background-color: white;
     }
+  }
+}
+
+.shop-tile.item {
+  padding-bottom: jr-spacer(2);
+
+  @extend %has-icon-before;
+  &::before {
+    right:-9px;
+    top: 3.5rem;
   }
 }
 

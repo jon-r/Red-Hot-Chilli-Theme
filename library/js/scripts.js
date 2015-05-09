@@ -1,6 +1,3 @@
-//another variable that ill need to change when the time comes...
-$siteUrl = '/rhc_online'
-
 /*----- jquery menu aim ---------------------------------------------------------------
 https://github.com/kamens/jQuery-menu-aim.git
 (minified)
@@ -137,28 +134,74 @@ if (carousel) {
 }
 
 /* js + ajax auto complete ------------------------------------------------------------*/
-// takes categories + key brands. Autocompletion will also help with smarter search
+// takes categories + key brands.
 
 var MIN_LENGTH = 3;
-var $searchInput = $(".autocomplete");
+var $searchIn = $(".search-in"); //$("#js-search-header");
+var $searchOut = $(".search-out"); // $("#js-search-header-results");
 
-$searchInput.keyup(function () {
-  var keyword = $searchInput.val();
+
+$searchIn.keyup(function () {
+  var keyword = $searchIn.val();
+
   if (keyword.length >= MIN_LENGTH) {
-  //  console.log(window.location.hostname + $siteUrl);
-    $.get($siteUrl + "/wp-content/plugins/jr-shop/auto-complete.php", { keyword: keyword })
-      .done(function (data) {
-        console.log(data);
-      });
+
+    $.get(bonesScript.url, {
+      keyword: keyword,
+      action: "jr_autocomplete"
+    }).done(searchToText);
+
+  } else {
+    $searchOut.html('');
   }
 });
 
+function searchToText(data) {
+  // console.log(data);
+  var results = $.parseJSON(data);
+  $searchOut.html('');
+
+  $(results).each(function (i) {
+    if (i < 4) {
+      var link = bonesScript.site + '/' + this.filter + '/' + this.url + '/';
+      var brand = (this.filter == 'brand') ? '<span> - Brand</span>' : '';
+      var output = '<li><a href="' + link + '" >' + this.name + brand + '</a></li>';
+
+      $(".search-out").append(output);
+
+    }
+
+  })
+};
+
+$searchIn.focusout(function () {
+  $searchOut.html('');
+})
+
+//$.ajax({
+//  url: url,
+//  data: data,
+//  success: success,
+//  dataType: dataType
+//});
 
 
 
-
-
-
+//jQuery.ajax({
+//
+//type:"POST",
+//
+//url: bonesScript.url,
+//
+//data: "myDataString",
+//
+//success:function(results){
+//
+//console.log(data);
+//
+//}
+//
+//)};
 
 
 

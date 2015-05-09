@@ -107,17 +107,4 @@ new image size.
 
 
 
-function jr_menus($name, $class) {
-
-};
-
-/*          <?php wp_nav_menu(array(
-            'container' => '',                              // remove nav container
-            'menu' => __( 'Footer Links', 'bonestheme' ),   // nav name
-            'menu_class' => 'menu-footer flex-4',                  // adding custom nav class
-        //    'theme_location' => 'footer-links',             // where it's located in the theme
-            'fallback_cb' => ''                             // fallback function
-          )); ?>
-          */
-
 /* DON'T DELETE THIS CLOSING TAG */ ?>

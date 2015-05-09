@@ -2,7 +2,7 @@
 
 <main class="container">
 
-  <?php echo do_shortcode("[jr-shop id='nav-bar']"); ?>
+  <?php include( 'page-blocks/nav-bar.php') ?>
 
   <?php echo do_shortcode("[jr-shop id='404-filler']"); ?>
 

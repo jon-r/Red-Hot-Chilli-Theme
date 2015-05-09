@@ -1,7 +1,7 @@
 <?php
-/*
+/* Template Name: no white background
  *
- * (Blank Slate Page)
+ * (nothing special, just without the <section>, to get at the flex-container)
  */
 ?>
 
@@ -14,14 +14,13 @@
 
   <article class="default-page flex-container">
 
-    <section class="flex-1">
-    <header class="article-header">
+
+    <header class="article-header flex-1">
       <h1><?php the_title(); ?></h1>
     </header>
 
       <?php the_content(); ?>
 
-    </section>
   </article>
 
   <?php endwhile; else : ?>
@@ -33,6 +32,3 @@
 </main>
 
 <?php get_footer(); ?>
-
-
-

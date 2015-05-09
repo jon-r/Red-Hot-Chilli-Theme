@@ -1,6 +1,6 @@
 /*--- common page elements + defaults -------------------------------------------------*/
 
-/*title block*/
+/*title blocks */
 %header-block {
   width: 100%;
   background-color: $jr-bg-hover;
@@ -20,4 +20,17 @@ button, .btn-red {
 .btn-red {
   background-color: $jr-emphasis;
   color: $jr-text-light;
+}
+
+/*dark popout*/
+.dark-block {
+  background-color: jr-grey(2);
+  padding: jr-spacer(0.5);
+  color: $jr-text-light;
+  box-shadow: $jr-shadow;
+  border-radius: 4px;
+ // font-size:1.2rem;
+  li {
+    line-height: 2;
+  }
 }
