@@ -633,6 +633,10 @@ em {
 /* --- contact form default -----------------------------------------------------------*/
 form {
   position: relative; }
+  form:after {
+    content: "";
+    display: table;
+    clear: both; }
 
 input, textarea {
   box-shadow: inset 0 4px 4px rgba(21, 24, 30, 0.5);
@@ -648,27 +652,37 @@ input, button {
   font-size: 1.2rem;
   height: 2rem; }
 
-.form-search input, .form-search button {
-  margin: 4px 0; }
-.form-search input {
-  line-height: 2rem;
-  width: calc(100% - 5rem);
-  padding-left: 2rem;
-  border-radius: 4px 0 0 4px; }
-.form-search button {
-  width: 3rem;
-  border-radius: 0 4px 4px 0;
-  background-image: linear-gradient(to bottom, #a32929, #5c0a0a); }
+.form-search {
+  margin: 10px auto;
+  display: block; }
+  .form-search input, .form-search button {
+    margin: 4px 0; }
+  .form-search input {
+    line-height: 2rem;
+    width: calc(100% - 5rem);
+    padding-left: 2rem;
+    border-radius: 4px 0 0 4px; }
+  .form-search button {
+    width: 3rem;
+    border-radius: 0 4px 4px 0;
+    background-image: linear-gradient(to bottom, #a32929, #5c0a0a); }
 
 .search-out {
   position: absolute;
   width: 100%;
   top: 4.5rem;
-  z-index: 10; }
+  z-index: 100; }
   .search-out:empty {
     display: none; }
   .search-out li {
-    border-bottom: 1px solid #424a57; }
+    border-bottom: 1px solid #424a57;
+    font-size: 1.5rem;
+    font-weight: bold; }
+  .search-out li:hover, .search-out li:focus {
+    background: #424a57; }
+  .search-out span {
+    font-size: 0.75rem;
+    color: #66707f; }
   .search-out a {
     width: 100%; }
 
@@ -715,37 +729,17 @@ Default style for all pages
 .primary-header {
   border-bottom-width: 6px;
   background: url(/rhc_online/images/rhc/Head-Banner.jpg) top/cover; }
+  .primary-header .container {
+    align-items: center;
+    padding-top: 20px; }
   @media only screen and (min-width: 1240px) {
     .primary-header {
       background: url(/rhc_online/images/rhc/Head-Banner.jpg) center no-repeat, linear-gradient(to right, #20252d 25%, #5a6372 75%); }
       .primary-header .home {
         height: 250px; } }
 
-.header-logo {
-  max-width: 450px;
-  margin: 10px; }
-
-.not-home input {
-  border-top-left-radius: 4px; }
-.not-home button {
-  border-top-right-radius: 4px; }
-.not-home .header-links {
-  font-size: 1.25rem; }
-  @media only screen and (min-width: 1031px) {
-    .not-home .header-links {
-      font-size: 1.5rem;
-      line-height: 2.5rem; } }
 .not-home .header-logo {
-  max-width: 300px; }
-
-.header-links {
-  margin-bottom: 0; }
-
-.header-contact a {
-  color: #c99c9c; }
-.header-contact a:hover {
-  color: #a32929;
-  background: none; }
+  max-width: 350px; }
 
 /* -----------  footer  ---------------------------------------------------------------*/
 .primary-footer {
@@ -957,7 +951,8 @@ Page specific items.
 .carousel {
   overflow: hidden;
   position: relative;
-  white-space: nowrap; }
+  white-space: nowrap;
+  z-index: 0; }
   @media only screen and (min-width: 1031px) {
     .carousel {
       margin-bottom: 80px; } }

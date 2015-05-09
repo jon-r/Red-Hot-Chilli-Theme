@@ -3,6 +3,7 @@
 
 form {
   position: relative;
+  @include clearfix;
 }
 
 input, textarea {
@@ -28,6 +29,9 @@ input[type="search"] {
 }
 
 .form-search {
+  margin: jr-spacer(0.5) auto;
+  display: block;
+
   input, button {
      margin: 4px 0 ;
   }
@@ -55,9 +59,15 @@ input[type="search"] {
 
   li {
     border-bottom: $jr-border-dark;
+    font-size: 1.5rem;
+    font-weight: bold;
   }
-  li:hover {
-  //  background: jr-grey(3);
+  li:hover, li:focus {
+    background: jr-grey(3);
+  }
+  span {
+    font-size: 0.75rem;
+    color:$jr-text-hover;
   }
   a {
     width:100%;
@@ -65,7 +75,7 @@ input[type="search"] {
   position: absolute;
   width:100%;
   top: 4.5rem;
-  z-index: 10;
+  z-index: 100;
 }
 
 //form {

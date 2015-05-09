@@ -137,12 +137,15 @@ if (carousel) {
 // takes categories + key brands.
 
 var MIN_LENGTH = 3;
-var $searchIn = $(".search-in"); //$("#js-search-header");
-var $searchOut = $(".search-out"); // $("#js-search-header-results");
+
+var $searchForm = $("#js-form-complete").children(".form-search");
+var $searchIn = $searchForm.children(".search-in"); //$("#js-search-header");
+var $searchOut = $searchForm.children(".search-out"); // $("#js-search-header-results");
 
 
 $searchIn.keyup(function () {
-  var keyword = $searchIn.val();
+
+  var keyword = $(this).val();
 
   if (keyword.length >= MIN_LENGTH) {
 
@@ -157,26 +160,22 @@ $searchIn.keyup(function () {
 });
 
 function searchToText(data) {
-  // console.log(data);
+
   var results = $.parseJSON(data);
+
   $searchOut.html('');
 
   $(results).each(function (i) {
     if (i < 4) {
       var link = bonesScript.site + '/' + this.filter + '/' + this.url + '/';
       var brand = (this.filter == 'brand') ? '<span> - Brand</span>' : '';
-      var output = '<li><a href="' + link + '" >' + this.name + brand + '</a></li>';
+      var output = '<li><a tabindex="' + i + '" href="' + link + '" >' + this.name + brand + '</a></li>';
 
-      $(".search-out").append(output);
-
+      $searchOut.append(output);
     }
-
   })
 };
 
-$searchIn.focusout(function () {
-  $searchOut.html('');
-})
 
 //$.ajax({
 //  url: url,

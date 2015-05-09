@@ -12,59 +12,27 @@
 .primary-header {
   border-bottom-width: 6px;
   background: url(#{$siteLink + '/images/rhc/Head-Banner.jpg'}) top/cover;
+  .container {
+    align-items: center;
+    padding-top: jr-spacer();
+  }
   @include jr-size(screen-hd) {
-    background:
-      url(#{$siteLink + '/images/rhc/Head-Banner.jpg'}) center no-repeat,
+    background: url(#{$siteLink + '/images/rhc/Head-Banner.jpg'}) center no-repeat,
       linear-gradient(to right, jr-grey(1.5) 25%, jr-grey(4) 75%);
- //   height: 250px;
     .home {
       height: 250px;
- //     justify-content: space-between;
     }
   }
 }
 
-.header-logo {
-  max-width: 450px;
-  margin: jr-spacer(0.5);
-}
+
 
 .not-home {
-  input {
-    border-top-left-radius: 4px;
-  }
-  button {
-    border-top-right-radius: 4px;
-  }
-  .header-links {
-    font-size: 1.25rem;
-    @include jr-size(screen) {
-      font-size: 1.5rem;
-      line-height: 2.5rem;
-    }
-  }
   .header-logo {
-    max-width: 300px;
+    max-width: 350px;
   }
 }
 
-.header-links {
-  margin-bottom: 0;
-}
-
-.header-contact {
-    a {
-    color: jr-red(7);
-  }
-  a:hover {
-    color: jr-red(4);
-    background: none;
-  }
-}
-
-.form-head-search {
-
-}
 
 /* -----------  footer  ---------------------------------------------------------------*/
 

@@ -5,10 +5,8 @@
 *
 * THIS IS NOT A NORMAL TEMPLATE. Use page-search.php
 */
-if ($_GET[search]) {
+
   echo do_shortcode( "[jr-search']");
-} else {
-  echo do_shortcode( "[jr-shop id='404-filler']");
-}
+
 
 ?>
