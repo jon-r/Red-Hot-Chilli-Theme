@@ -11,11 +11,15 @@ body {
 }
 
 main {
-  background-color: $jr-bg-light;
+  //background-color: ;
+  background: url(#{$siteLink + '/images/rhc/body-banner-2.jpg'}) no-repeat 0 2rem/200%, $jr-bg-light;
   color: $jr-text-dark;
   box-shadow: 0 5px 10px jr-grey(1);
   flex: 1 1 auto;
   min-height: 100vh;
+  @include jr-size(screen) {
+    background-size: 100%;
+  }
 }
 
 .container {
@@ -29,11 +33,6 @@ main {
       overflow: visible;
   };
   @include jr-size(screen-hd) { width:1200px };
-}
-
-.article-header {
- border-bottom: $jr-border-dark;
-  padding-bottom: jr-spacer();
 }
 
 section {

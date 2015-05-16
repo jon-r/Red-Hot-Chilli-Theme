@@ -12,12 +12,12 @@
 
   <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-  <article class="default-page flex-container">
-
-    <section class="flex-1">
-    <header class="article-header">
+  <article class="flex-container">
+    <header class="article-header flex-1">
       <h1><?php the_title(); ?></h1>
     </header>
+
+    <section class="flex-1">
 
       <?php the_content(); ?>
 

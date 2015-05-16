@@ -714,6 +714,11 @@ button, .btn-red {
   .dark-block li {
     line-height: 2; }
 
+/* title frames */
+.article-header {
+  padding-bottom: 20px;
+  width: 100%; }
+
 /*********************
 Default style for all pages
 *********************/
@@ -761,11 +766,14 @@ body {
   min-width: 320px; }
 
 main {
-  background-color: #f2f2f2;
+  background: url(/rhc_online/images/rhc/body-banner-2.jpg) no-repeat 0 2rem/200%, #f2f2f2;
   color: #15181e;
   box-shadow: 0 5px 10px #15181e;
   flex: 1 1 auto;
   min-height: 100vh; }
+  @media only screen and (min-width: 1031px) {
+    main {
+      background-size: 100%; } }
 
 .container {
   height: 100%;
@@ -780,10 +788,6 @@ main {
   @media only screen and (min-width: 1240px) {
     .container {
       width: 1200px; } }
-
-.article-header {
-  border-bottom: 1px solid #424a57;
-  padding-bottom: 20px; }
 
 section {
   margin: 20px 0;
@@ -831,32 +835,14 @@ nav a.active, nav a:active, nav a:hover {
   background-color: white;
   text-align: center;
   overflow: hidden;
-  font-size: 1.2rem; }
-  .nav-menu .active-li ul {
-    left: 0; }
-    @media only screen and (min-width: 1031px) {
-      .nav-menu .active-li ul {
-        display: block;
-        left: 98%; } }
+  font-size: 1.3rem; }
   .nav-menu span, .nav-menu a {
     display: inline-block;
     width: 100%; }
-  .nav-menu ul {
-    width: 100%;
-    overflow: hidden;
-    line-height: 2.5rem; }
   .nav-menu li {
     cursor: pointer;
     padding-left: 10px;
     border-bottom: 1px solid #e5e5e6; }
-    .nav-menu li ul {
-      position: absolute;
-      min-height: 100%;
-      height: auto;
-      background-color: white;
-      top: 0;
-      left: 100%;
-      transition: left 400ms; }
     .nav-menu li:active, .nav-menu li:hover {
       background-color: #e5e5e6; }
   @media only screen and (max-width: 481px) {
@@ -878,17 +864,43 @@ nav a.active, nav a:active, nav a:hover {
       text-align: left; }
       .nav-menu li {
         font-size: 1rem;
-        line-height: 2rem; }
-        .nav-menu li li {
-          width: 50%; }
-        .nav-menu li ul {
-          display: none;
-          box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
-          width: 200%;
-          z-index: 20;
-          left: 98%;
-          top: -10px;
-          min-height: calc(100% + 15px); } }
+        line-height: 2rem; } }
+
+.main-menu,
+.sub-menu {
+  overflow: hidden;
+  line-height: 2.5rem;
+  width: 100%; }
+
+.sub-menu {
+  position: absolute;
+  min-height: 100%;
+  height: auto;
+  background-color: white;
+  top: 0;
+  left: 100%;
+  transition: left 400ms;
+  background-size: 500px 375px;
+  background-position: bottom right;
+  background-repeat: no-repeat; }
+  @media only screen and (min-width: 1031px) {
+    .sub-menu {
+      display: none;
+      box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
+      width: 200%;
+      z-index: 20;
+      left: 98%;
+      top: -10px;
+      min-height: calc(100% + 15px); }
+      .sub-menu li {
+        width: 50%; } }
+
+.active-li .sub-menu {
+  left: 0; }
+  @media only screen and (min-width: 1031px) {
+    .active-li .sub-menu {
+      display: block;
+      left: 98%; } }
 
 #menu-toggle:checked + .not-home, .nav-menu.home {
   height: auto;

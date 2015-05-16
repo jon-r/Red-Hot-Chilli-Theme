@@ -10,17 +10,16 @@
       <h3 class="text-icon-right menu-w">Shop</h3>
     </label>
 
-    <ul id="js-main-list" >
+    <ul class="main-menu" id="js-main-list" >
       <?php echo do_shortcode("[jr-shop id='shop-menu']"); ?>
 <?php // wp menus start here. admin for setup --> ?>
       <li>Featured
         <?php wp_nav_menu(array(
             'container' => '',                           // remove nav container
             'menu' => __( 'Featured Menu Links', 'bonestheme' ),  // nav name
-            'menu_class' => '',                          // adding custom nav class
             'before' => '<span class="text-icon arrow-r">',
             'after' => '</span>',
-            'items_wrap'      => '<ul><h3 class="touch-toggle btn-red text-icon close-w">Back</h3>%3$s</ul>',
+            'items_wrap'      => '<ul class="sub-menu" ><h3 class="touch-toggle btn-red text-icon close-w">Back</h3>%3$s</ul>',
             'theme_location' => 'featured-menu',         // where it's located in the theme
             'fallback_cb' => ''                          // fallback function (if there is one)
         )); ?>
@@ -29,10 +28,9 @@
         <?php wp_nav_menu(array(
             'container' => '',
             'menu' => __( 'Services Menu links', 'bonestheme' ),  // nav name
-            'menu_class' => '',                         // adding custom nav class
             'before' => '<span class="text-icon arrow-r">',
             'after' => '</span>',
-            'items_wrap'      => '<ul><h3 class="touch-toggle btn-red text-icon close-w">Back</h3>%3$s</ul>',
+            'items_wrap'      => '<ul class="sub-menu" ><h3 class="touch-toggle btn-red text-icon close-w">Back</h3>%3$s</ul>',
             'theme_location' => 'services-menu',         // where it's located in the theme
             'fallback_cb' => ''                          // fallback function (if there is one)
         )); ?>

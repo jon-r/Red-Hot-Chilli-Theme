@@ -53,7 +53,6 @@ nav a {
   }
 }
 
-
 .nav-menu {
   z-index: 6;
   width: 100%;
@@ -63,39 +62,17 @@ nav a {
   background-color: white;
   text-align: center;
   overflow: hidden;
-  font-size: 1.2rem;
-  .active-li {
-    ul {
-      left:0;
-      @include jr-size(screen) {
-        display: block;
-        left:98%;
-      }
-    }
-  }
+  font-size: 1.3rem;
+
   span, a {
     display: inline-block;
     width:100%;
   }
-  ul {
-    width:100%;
-    overflow: hidden;
-  //  height: calc(100% - 2rem);
-    line-height: 2.5rem;
-  }
+
   li {
     cursor: pointer;
     padding-left: jr-spacer(0.5);
     border-bottom: $jr-border;
-    ul {
-      position: absolute;
-      min-height: 100%;
-      height: auto;
-      background-color: white;
-      top: 0;
-      left: 100%;
-      transition: left 400ms;
-    }
     &:active, &:hover {
       background-color: $jr-bg-hover;
     }
@@ -117,7 +94,6 @@ nav a {
       &:nth-of-type(even){
         border-left: $jr-border;
       }
-
     }
   }
 
@@ -128,23 +104,51 @@ nav a {
     li {
       font-size: 1rem;
       line-height: 2rem;
-      li {
-        width: 50%;
-      }
-      ul {
-        display: none;
-        box-shadow: $jr-shadow;
-        width: 200%;
-        z-index: 20;
-        left: 98%;
-        top: -10px;
-        min-height: calc(100% + 15px);
-      }
     }
   }
 }
 
+.main-menu,
+.sub-menu {
+  overflow: hidden;
+  line-height: 2.5rem;
+  width: 100%;
+}
 
+.sub-menu {
+  position: absolute;
+  min-height: 100%;
+  height: auto;
+  background-color: white;
+  top: 0;
+  left: 100%;
+  transition: left 400ms;
+  background-size: 500px 375px;
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  @include jr-size(screen) {
+    display: none;
+    box-shadow: $jr-shadow;
+    width: 200%;
+    z-index: 20;
+    left: 98%;
+    top: -10px;
+    min-height: calc(100% + 15px);
+    li {
+      width: 50%;
+    }
+  }
+}
+
+.active-li {
+  .sub-menu {
+    left: 0;
+    @include jr-size(screen) {
+      display: block;
+      left: 98%;
+    }
+  }
+}
 
 #menu-toggle:checked + .not-home, .nav-menu.home {
   height: auto;

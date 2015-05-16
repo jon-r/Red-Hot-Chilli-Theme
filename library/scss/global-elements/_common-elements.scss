@@ -34,3 +34,10 @@ button, .btn-red {
     line-height: 2;
   }
 }
+
+/* title frames */
+.article-header {
+  //border-bottom: $jr-border-dark;
+  padding-bottom: jr-spacer();
+  width:100%;
+}
