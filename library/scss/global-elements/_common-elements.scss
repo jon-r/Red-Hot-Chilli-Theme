@@ -37,7 +37,6 @@ button, .btn-red {
 
 /* title frames */
 .article-header {
-  //border-bottom: $jr-border-dark;
   padding-bottom: jr-spacer();
-  width:100%;
+  padding-left: jr-spacer(0.5);
 }

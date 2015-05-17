@@ -717,7 +717,7 @@ button, .btn-red {
 /* title frames */
 .article-header {
   padding-bottom: 20px;
-  width: 100%; }
+  padding-left: 10px; }
 
 /*********************
 Default style for all pages
@@ -766,7 +766,7 @@ body {
   min-width: 320px; }
 
 main {
-  background: url(/rhc_online/images/rhc/body-banner-2.jpg) no-repeat 0 2rem/200%, #f2f2f2;
+  background: url(/rhc_online/images/rhc/body-banner.jpg) no-repeat top/200%, #f2f2f2;
   color: #15181e;
   box-shadow: 0 5px 10px #15181e;
   flex: 1 1 auto;
@@ -877,6 +877,7 @@ nav a.active, nav a:active, nav a:hover {
   min-height: 100%;
   height: auto;
   background-color: white;
+  border: 1px solid #e5e5e6;
   top: 0;
   left: 100%;
   transition: left 400ms;
@@ -1071,28 +1072,34 @@ Page specific items.
   font-weight: bold; }
 
 /*-- default list Layout -----------------------------------------------------------*/
-.shop-tile a {
-  width: 100%; }
-.shop-tile ul {
+.shop-tile {
+  border-bottom: solid 3px #931f1f; }
+  .shop-tile img {
+    display: block; }
+  .shop-tile a {
+    width: 100%;
+    height: inherit; }
+  .shop-tile div:first-child {
+    border-bottom: 1px solid #424a57; }
+  .shop-tile div:last-child {
+    font-size: 0.9rem;
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid #424a57;
+    background-color: white; }
+
+.shop-tile.group ul {
   width: 100%;
   justify-content: space-between; }
-.shop-tile li {
+.shop-tile.group li {
   line-height: 1.5;
   border-bottom: 1px solid #e5e5e6;
   width: 50%;
   padding: 0 10px; }
-  .shop-tile li:nth-of-type(odd) {
+  .shop-tile.group li:nth-of-type(odd) {
     border-right: 1px solid #e5e5e6; }
-  .shop-tile li:hover {
+  .shop-tile.group li:hover {
     background-color: #e5e5e6; }
-.shop-tile div:first-child {
-  border-bottom: 1px solid #424a57; }
-.shop-tile div:last-child {
-  font-size: 0.9rem;
-  position: absolute;
-  bottom: 0;
-  border-top: 1px solid #424a57;
-  background-color: white; }
 
 .shop-tile.item {
   padding-bottom: 40px; }

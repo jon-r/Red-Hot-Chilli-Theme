@@ -177,31 +177,6 @@ function searchToText(data) {
 };
 
 
-//$.ajax({
-//  url: url,
-//  data: data,
-//  success: success,
-//  dataType: dataType
-//});
-
-
-
-//jQuery.ajax({
-//
-//type:"POST",
-//
-//url: bonesScript.url,
-//
-//data: "myDataString",
-//
-//success:function(results){
-//
-//console.log(data);
-//
-//}
-//
-//)};
-
 
 
 
