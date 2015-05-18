@@ -41,15 +41,37 @@
   margin-bottom: jr-spacer();
 }
 
-.item-main {
+.item-main:hover {
+  .item-main-zoom {
+    opacity:1;
+  }
+}
+
+
+.item-main-zoom {
+  position:absolute;
+  bottom:jr-spacer(0.5);
+  left: jr-spacer(0.5);
+  width: calc(100% /3);
+  cursor: pointer;
+  @include jr-size(screen) {
+    opacity: 0;
+    transition: opacity 300ms;
+  }
 
 }
+
+
 
 .item-thumbs {
   justify-content: space-between;
   li {
     @include jr-width(1,4);
+    cursor: zoom-in;
 
+    &:hover, &:active {
+      border: $jr-border-dark;
+    }
   }
 }
 

@@ -40,3 +40,41 @@ button, .btn-red {
   padding-bottom: jr-spacer();
   padding-left: jr-spacer(0.5);
 }
+
+/*modal popouts - enabled through js */
+.modal {
+  position: fixed;
+  opacity: 0;
+  width: 10%;
+  height:10vh;
+  left:45%;
+  top: 45vh;
+  z-index: 100;
+  transition: 300ms ease;
+  transition-delay: height 300ms, width 300ms;
+  img {
+    height: auto;
+    width: auto;
+    max-height: 100%;
+    max-width: 100%;
+  }
+  @extend %has-icon-after;
+  @include jr-icon(after, close-w) {
+    transform: scale(0.5);
+    transform-origin: top right;
+    right: jr-spacer(0.5);
+  };
+}
+
+.modal.is-active {
+  opacity: 1;
+  width: 90%;
+  left: 5%;
+  height: 90vh;
+  top: 5vh;
+}
+
+.modal-inner {
+  max-width: 1000px;
+  background: black;
+}

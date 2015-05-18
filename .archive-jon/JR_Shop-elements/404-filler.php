@@ -13,7 +13,7 @@
 
 
   <form class="flex-2 form-central flex-container" method="get" action="<?php echo site_url('search'); ?>">
-    <h2 class="text-icon-right search-w">Search Catering Equipment</h2>
+    <h2 class="text-icon-left search-w">Search Catering Equipment</h2>
 
     <input type="search" name="search" placeholder="Enter Keyword or Reference">
 

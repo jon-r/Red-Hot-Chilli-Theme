@@ -7,7 +7,7 @@
   <menu class="nav-menu<?php echo is_front_page() ? ' home' : ' not-home' ?>" >
 
     <label class="menu-btn btn-red" for="menu-toggle">
-      <h3 class="text-icon-right menu-w">Shop</h3>
+      <h3 class="text-icon-left menu-w">Shop</h3>
     </label>
 
     <ul class="main-menu" id="js-main-list" >

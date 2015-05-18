@@ -19,6 +19,9 @@ function updateViewportDimensions() {
 var viewport = updateViewportDimensions();
 
 
+
+
+
 /*-- main menu toggle -----------------------------------------------------------------
 
 */
@@ -176,8 +179,22 @@ function searchToText(data) {
   })
 };
 
+/* item gallery actions -------------------------------------------------------------- */
 
+var $imgGalleryMain = $('#js-gallery-primary'),
+    $imgGalleryFull = $('#js-gallery-thumbs'),
+    $imgGalleryModal = $('#js-gallery-modal');
 
+// zoom and enhance
+$imgGalleryMain.children('div').click(function() {
+  $getImgSrc = $imgGalleryMain.children('img').attr('src');
+  $bigImgSrc = $getImgSrc.replace('gallery-tile','gallery');
+  console.log($getImgSrc);
+
+  $bigImg = '<div class="modal-inner" ><img src="' + $bigImgSrc + '" ></div>'
+
+  $imgGalleryModal.addClass('is-active').delay(600).append($bigImg);
+});
 
 
 

@@ -7,9 +7,9 @@
 
   <menu id="js-form-complete" class="header-links flex-2" href="<?php echo home_url(); ?>">
 
-      <h2 class="text-icon-right phone-w"><?php echo jr_linkTo(phone) ?></h2>
+      <h2 class="text-icon-left phone-w"><?php echo jr_linkTo(phone) ?></h2>
       <a href="mailto:<?php echo jr_linkTo(email) ?>">
-        <h2 class="text-icon-right email-w"><?php echo jr_linkTo(email) ?></h2>
+        <h2 class="text-icon-left email-w"><?php echo jr_linkTo(email) ?></h2>
       </a>
 
     <?php echo do_shortcode( "[jr-shop id='search-bar']"); ?>
