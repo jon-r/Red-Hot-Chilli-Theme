@@ -1236,31 +1236,31 @@ Page specific items.
   .form-contact h2, .social h2 {
     margin-bottom: 20px; }
 
-.form-contact {
+.form-contact:nth-last-child(2) {
   border-right: 1px solid #424a57; }
-  .form-contact input, .form-contact textarea {
-    margin-bottom: 20px;
-    padding-left: 4px; }
-  .form-contact textarea {
-    height: 10rem;
-    resize: vertical;
-    width: calc(100% - 20px); }
-    @media only screen and (min-width: 1031px) {
-      .form-contact textarea {
-        width: calc(83.33333% - 20px); } }
-  .form-contact input {
-    width: calc(66.66667% - 20px);
-    margin-right: 16.66667%; }
-  .form-contact label {
-    font-size: 0.75rem;
-    padding-right: 4px;
-    width: calc(100% - 20px); }
-    @media only screen and (min-width: 1031px) {
-      .form-contact label {
-        text-align: right;
-        width: calc(16.66667% - 20px); } }
-  .form-contact button {
-    width: calc(33.33333% - 20px);
-    margin-left: 66.66667%; }
+.form-contact input, .form-contact textarea {
+  margin-bottom: 20px;
+  padding-left: 4px; }
+.form-contact textarea {
+  height: 10rem;
+  resize: vertical;
+  width: calc(100% - 20px); }
+  @media only screen and (min-width: 1031px) {
+    .form-contact textarea {
+      width: calc(83.33333% - 20px); } }
+.form-contact input {
+  width: calc(66.66667% - 20px);
+  margin-right: 16.66667%; }
+.form-contact label {
+  font-size: 0.75rem;
+  padding-right: 4px;
+  width: calc(100% - 20px); }
+  @media only screen and (min-width: 1031px) {
+    .form-contact label {
+      text-align: right;
+      width: calc(16.66667% - 20px); } }
+.form-contact button {
+  width: calc(33.33333% - 20px);
+  margin-left: 66.66667%; }
 
 /*# sourceMappingURL=style.css.map */

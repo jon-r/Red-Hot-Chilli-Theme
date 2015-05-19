@@ -34,6 +34,7 @@
   }
 }
 
+
 .form-contact, .social {
   margin: jr-spacer() 0;
   h2 {
@@ -42,7 +43,9 @@
 }
 
 .form-contact {
-  border-right: $jr-border-dark;
+  &:nth-last-child(2) { //checks if the social bar this there or not
+    border-right: $jr-border-dark;
+  }
   input, textarea {
     margin-bottom: jr-spacer();
     padding-left: 4px;
