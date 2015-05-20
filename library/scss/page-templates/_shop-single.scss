@@ -31,10 +31,12 @@
 .item-box {
   border: $jr-border;
   background-color: $jr-bg-light;
-//  @include jr-width(1,2);
- // height: 100%;
 }
 
+
+.loading {
+  @extend %loader-icon;
+}
 
 .item-main, .item-thumbs li {
   border: $jr-border;

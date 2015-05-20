@@ -12,7 +12,7 @@ nav a {
 //simple 'loading' simulator - the <nav> will be the only child of the <section> until the php <article> has loaded.
   &:only-child {
     @extend %loader-icon;
-    padding-bottom: 500vh;
+    padding-bottom: 50vh;
   }
 }
 

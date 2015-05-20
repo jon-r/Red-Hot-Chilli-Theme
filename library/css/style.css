@@ -431,11 +431,16 @@ em {
   font-weight: 700;
   font-style: normal; }
 
+em.lesser {
+  color: inherit;
+  font-weight: inherit;
+  font-style: italic; }
+
 /*-------------------------sprite layouts + settings ----------------------------------*/
-.text-icon, .text-icon-left, .primary-nav:only-child, .shop-tile.item, .btn-icon, .btn-icon-lrg, .modal {
+.text-icon, .text-icon-left, .primary-nav:only-child, .loading, .shop-tile.item, .btn-icon, .btn-icon-lrg {
   position: relative; }
 
-.text-icon::before, .text-icon-left::before, .primary-nav:only-child::before, .shop-tile.item::before {
+.text-icon::before, .text-icon-left::before, .primary-nav:only-child::before, .loading::before, .shop-tile.item::before {
   pointer-events: none;
   content: '';
   position: absolute;
@@ -443,7 +448,7 @@ em {
   height: 128px;
   width: 128px; }
 
-.btn-icon::after, .btn-icon-lrg::after, .modal::after {
+.btn-icon::after, .btn-icon-lrg::after {
   pointer-events: none;
   content: '';
   position: absolute;
@@ -487,7 +492,7 @@ em {
   .btn-icon-lrg::after {
     transform: scale(1); } }
 
-.primary-nav:only-child::before {
+.primary-nav:only-child::before, .loading::before {
   height: 128px;
   width: 144px;
   left: calc(50% - 72px);
@@ -540,6 +545,9 @@ em {
 
 .quote-l::after {
   background-position: -256px 0px; }
+
+.close-w::after {
+  background-position: 0px -384px; }
 
 .sale::before {
   background-position: 0px -768px; }
@@ -723,34 +731,39 @@ button, .btn-red {
 .modal {
   position: fixed;
   opacity: 0;
-  width: 10%;
-  height: 10vh;
-  left: 45%;
+  width: 5%;
+  height: 5%;
+  left: 5%;
   top: 45vh;
   z-index: 100;
-  transition: 300ms ease;
-  transition-delay: height 300ms, width 300ms; }
+  transition: 300ms ease; }
   .modal img {
-    height: auto;
-    width: auto;
-    max-height: 100%;
-    max-width: 100%; }
-  .modal::after {
-    background-position: 0px -384px;
-    transform: scale(0.5);
-    transform-origin: top right;
-    right: 10px; }
+    height: 100%;
+    width: auto; }
 
+@supports (object-fit: contain) {
+  .modal img {
+    width: 100%;
+    object-fit: contain;
+    object-position: center; } }
 .modal.is-active {
   opacity: 1;
   width: 90%;
   left: 5%;
-  height: 90vh;
-  top: 5vh; }
+  height: 90%;
+  top: 5%; }
 
-.modal-inner {
-  max-width: 1000px;
-  background: black; }
+.modal-close {
+  position: absolute;
+  height: 64px;
+  width: 64px;
+  right: 10px;
+  cursor: pointer;
+  background: rgba(43, 49, 59, 0.5); }
+  @media only screen and (min-width: 1031px) {
+    .modal-close {
+      width: 96px;
+      height: 96px; } }
 
 /*********************
 Default style for all pages
@@ -835,7 +848,7 @@ nav a.active, nav a:active, nav a:hover {
 .primary-nav {
   justify-content: flex-start; }
   .primary-nav:only-child {
-    padding-bottom: 500vh; }
+    padding-bottom: 50vh; }
 
 .nav-menu a,
 .nav-breadcrumbs a,

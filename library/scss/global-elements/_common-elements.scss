@@ -45,36 +45,44 @@ button, .btn-red {
 .modal {
   position: fixed;
   opacity: 0;
-  width: 10%;
-  height:10vh;
-  left:45%;
+  width: 5%;
+  height:5%;
+  left:5%;
   top: 45vh;
   z-index: 100;
   transition: 300ms ease;
-  transition-delay: height 300ms, width 300ms;
+
   img {
-    height: auto;
-    width: auto;
-    max-height: 100%;
-    max-width: 100%;
+    height: 100%;
+    width:auto;
   }
-  @extend %has-icon-after;
-  @include jr-icon(after, close-w) {
-    transform: scale(0.5);
-    transform-origin: top right;
-    right: jr-spacer(0.5);
-  };
+}
+
+@supports (object-fit: contain) {
+  .modal img {
+    width:100%; //overwrting an overwrite, much dislike. need to come up with better :(
+    object-fit: contain;
+    object-position: center;
+  }
 }
 
 .modal.is-active {
   opacity: 1;
   width: 90%;
   left: 5%;
-  height: 90vh;
-  top: 5vh;
+  height: 90%;
+  top: 5%;
 }
 
-.modal-inner {
-  max-width: 1000px;
-  background: black;
+.modal-close {
+  position: absolute;
+  height: 64px;
+  width:64px;
+  right: jr-spacer(0.5);
+  cursor: pointer;
+  background: rgba(jr-grey(2),0.5);
+  @include jr-size(screen) {
+    width: 96px;
+    height:96px;
+  }
 }

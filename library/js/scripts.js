@@ -152,7 +152,7 @@ $searchIn.keyup(function () {
 
   if (keyword.length >= MIN_LENGTH) {
 
-    $.get(bonesScript.url, {
+    $.get(fileSrc.ajaxAdmin, {
       keyword: keyword,
       action: "jr_autocomplete"
     }).done(searchToText);
@@ -170,7 +170,7 @@ function searchToText(data) {
 
   $(results).each(function (i) {
     if (i < 4) {
-      var link = bonesScript.site + '/' + this.filter + '/' + this.url + '/';
+      var link = fileSrc.site + '/' + this.filter + '/' + this.url + '/';
       var brand = (this.filter == 'brand') ? '<span> - Brand</span>' : '';
       var output = '<li><a tabindex="' + i + '" href="' + link + '" >' + this.name + brand + '</a></li>';
 
@@ -183,23 +183,70 @@ function searchToText(data) {
 
 var $imgGalleryMain = $('#js-gallery-primary'),
     $imgGalleryFull = $('#js-gallery-thumbs'),
-    $imgGalleryModal = $('#js-gallery-modal');
+    $imgGalleryThumb = $imgGalleryFull.children('li');
+    $imgGalleryModal = $('#js-gallery-modal'),
+    $imgGalleryOpen = $imgGalleryMain.children('.item-main-zoom'),
+    $imgGalleryClose = $imgGalleryModal.children('.modal-close');
 
 // zoom and enhance
-$imgGalleryMain.children('div').click(function() {
+$imgGalleryOpen.click(function() {
   $getImgSrc = $imgGalleryMain.children('img').attr('src');
   $bigImgSrc = $getImgSrc.replace('gallery-tile','gallery');
-  console.log($getImgSrc);
+  //console.log($getImgSrc);
 
-  $bigImg = '<div class="modal-inner" ><img src="' + $bigImgSrc + '" ></div>'
 
-  $imgGalleryModal.addClass('is-active').delay(600).append($bigImg);
+  if ($imgGalleryModal.children('img').length) {
+
+    $imgGalleryModal.addClass('is-active').children('img').attr('src',$bigImgSrc);
+  } else {
+    $bigImgNew = '<img src="' + $bigImgSrc + '" >';
+    $imgGalleryModal.addClass('is-active').append($bigImgNew);
+  }
+
 });
 
+$imgGalleryClose.click(function() {
+  $imgGalleryModal.removeClass('is-active');
+});
 
+//"carousel switch"
+// since this is likely to open an image that doesnt exist, need to ajax call the php resize function
+$imgGalleryThumb.click(function() {
+  $getThumbSrc = $(this).children('img').attr('src').replace('gallery-thumb','gallery').split('/').slice(-5).join('/');
+  $getThumbSrc = '../'.concat($getThumbSrc);
 
+  $imgGalleryMain.addClass('loading');
 
+  $.get(fileSrc.ajaxAdmin, {
+    src: $getThumbSrc,
+    size: 'tile',
+    action: "jr_resize"
+   }, replaceMainImg)
 
+});
 
+function replaceMainImg(data) {
+  var results = $.parseJSON(data);
 
+  $newSrc = results.replace('../', fileSrc.site +'/');
+  $imgGalleryMain.removeClass('loading').children('img').attr('src',$newSrc);
+}
 
+/*$btnFindDeadImg.click(function() {
+
+  $outputGallery.html('');
+
+  $.get(fileSrc.ajaxAdmin, {
+    keyword: 'gallery',
+    action: "jra_deadimgstats"
+  }, listDeadImg)
+});
+
+function listDeadImg(data) {
+  var results = $.parseJSON(data);
+  var output = '<b>Removable Images: </b>' + results.count +
+    '<br><b>Space To Save: </b>' + results.size +
+    '<p>(To override this, mark items as \'force show\' on the database)</p>';
+  $outputGallery.append(output);
+  $btnDelDeadImg.show();
+}*/
