@@ -39,6 +39,9 @@
 .primary-footer {
   border-top-width: 6px;
   background-color: jr-grey(2);
+  img {
+    max-width: 200px;
+  }
 }
 
 .legal {

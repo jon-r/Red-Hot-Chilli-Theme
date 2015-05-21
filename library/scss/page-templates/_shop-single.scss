@@ -7,8 +7,7 @@
 
 .item-info {
   align-content: flex-start;
-    font-size: 1.2rem;
-
+  font-size: 1.2rem;
 }
 
 .item-dimensions {
@@ -33,11 +32,6 @@
   background-color: $jr-bg-light;
 }
 
-
-.loading {
-  @extend %loader-icon;
-}
-
 .item-main, .item-thumbs li {
   border: $jr-border;
   margin-bottom: jr-spacer();
@@ -49,21 +43,59 @@
   }
 }
 
+.gallery-nav {
+  position:absolute;
+  top: calc(50% - #{jr-spacer()});
+  width: jr-spacer(1);
+  height: jr-spacer(1.5);
+  background-color: rgba($jr-bg-dark, 0.5);
+  border-radius: 4px;
+  cursor:pointer;
+  &:hover, &:active {
+    background-color: $jr-bg-hover;
+  }
+}
+
+.gallery-nav.arrow-l {
+  left:-5px;
+}
+.gallery-nav.arrow-r {
+  right:-5px;
+}
 
 .item-main-zoom {
   position:absolute;
-  bottom:jr-spacer(0.5);
-  left: jr-spacer(0.5);
-  width: calc(100% /3);
   cursor: pointer;
+  bottom: 2px;
+  left:2px;
+  display: block;
+  width: jr-spacer(1.5);
+  height:jr-spacer(1.5);
+  &:before {
+    left:calc(50% - 12px);
+  }
+
+
   @include jr-size(screen) {
     opacity: 0;
     transition: opacity 300ms;
+    width: calc(100% /3);
+    bottom:jr-spacer(0.5);
+    left: jr-spacer(0.5);
+    &:before {
+      left: jr-spacer(0.5);
+    }
+    &:after {
+      content: "Click to Zoom";
+      font-family: $serif;
+      font-size: 1.2rem;
+      position: absolute;
+      right:jr-spacer(0.5);
+      top:calc(50% - 10px);
+    }
   }
 
 }
-
-
 
 .item-thumbs {
   justify-content: space-between;

@@ -437,10 +437,10 @@ em.lesser {
   font-style: italic; }
 
 /*-------------------------sprite layouts + settings ----------------------------------*/
-.text-icon, .text-icon-left, .primary-nav:only-child, .loading, .shop-tile.item, .btn-icon, .btn-icon-lrg {
+.text-icon, .text-icon-left, .loading, .primary-nav:only-child, .shop-tile.item, .btn-icon, .btn-icon-lrg {
   position: relative; }
 
-.text-icon::before, .text-icon-left::before, .primary-nav:only-child::before, .loading::before, .shop-tile.item::before {
+.text-icon::before, .text-icon-left::before, .loading::before, .primary-nav:only-child::before, .shop-tile.item::before {
   pointer-events: none;
   content: '';
   position: absolute;
@@ -492,7 +492,7 @@ em.lesser {
   .btn-icon-lrg::after {
     transform: scale(1); } }
 
-.primary-nav:only-child::before, .loading::before {
+.loading::before, .primary-nav:only-child::before {
   height: 128px;
   width: 144px;
   left: calc(50% - 72px);
@@ -596,6 +596,12 @@ em.lesser {
 
 .tick-w::before {
   background-position: -128px -384px; }
+
+.twitter::before {
+  background-position: -128px -896px; }
+
+.facebook::before {
+  background-position: 0px -896px; }
 
 .expand-w::before {
   background-position: -640px -512px; }
@@ -736,16 +742,15 @@ button, .btn-red {
   left: 5%;
   top: 45vh;
   z-index: 100;
-  transition: 300ms ease; }
+  transition: 300ms ease;
+  overflow-y: auto; }
   .modal img {
-    height: 100%;
-    width: auto; }
+    object-fit: contain;
+    object-position: center; }
 
 @supports (object-fit: contain) {
   .modal img {
-    width: 100%;
-    object-fit: contain;
-    object-position: center; } }
+    height: 100%; } }
 .modal.is-active {
   opacity: 1;
   width: 90%;
@@ -754,16 +759,32 @@ button, .btn-red {
   top: 5%; }
 
 .modal-close {
-  position: absolute;
+  position: fixed;
   height: 64px;
   width: 64px;
-  right: 10px;
+  right: calc(20px + 5%);
   cursor: pointer;
   background: rgba(43, 49, 59, 0.5); }
   @media only screen and (min-width: 1031px) {
     .modal-close {
       width: 96px;
       height: 96px; } }
+
+.social-shares a {
+  font-weight: bold;
+  color: white;
+  background-color: #f2f2f2;
+  line-height: 2rem;
+  padding-right: 10px;
+  box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
+  margin: 10px;
+  border-radius: 4px; }
+.social-shares a:hover, .social-shares a:active {
+  color: #e5e5e6; }
+.social-shares .facebook {
+  background-color: #3D5A98; }
+.social-shares .twitter {
+  background-color: #5FA9DD; }
 
 /*********************
 Default style for all pages
@@ -796,6 +817,8 @@ Default style for all pages
 .primary-footer {
   border-top-width: 6px;
   background-color: #2b313b; }
+  .primary-footer img {
+    max-width: 200px; }
 
 .legal {
   text-align: center; }
@@ -1196,16 +1219,49 @@ Page specific items.
 .item-main:hover .item-main-zoom {
   opacity: 1; }
 
+.gallery-nav {
+  position: absolute;
+  top: calc(50% - 20px);
+  width: 20px;
+  height: 30px;
+  background-color: rgba(66, 74, 87, 0.5);
+  border-radius: 4px;
+  cursor: pointer; }
+  .gallery-nav:hover, .gallery-nav:active {
+    background-color: #e5e5e6; }
+
+.gallery-nav.arrow-l {
+  left: -5px; }
+
+.gallery-nav.arrow-r {
+  right: -5px; }
+
 .item-main-zoom {
   position: absolute;
-  bottom: 10px;
-  left: 10px;
-  width: calc(100% /3);
-  cursor: pointer; }
+  cursor: pointer;
+  bottom: 2px;
+  left: 2px;
+  display: block;
+  width: 30px;
+  height: 30px; }
+  .item-main-zoom:before {
+    left: calc(50% - 12px); }
   @media only screen and (min-width: 1031px) {
     .item-main-zoom {
       opacity: 0;
-      transition: opacity 300ms; } }
+      transition: opacity 300ms;
+      width: calc(100% /3);
+      bottom: 10px;
+      left: 10px; }
+      .item-main-zoom:before {
+        left: 10px; }
+      .item-main-zoom:after {
+        content: "Click to Zoom";
+        font-family: "Kreon", Cambria, Times New Roman, Times, serif;
+        font-size: 1.2rem;
+        position: absolute;
+        right: 10px;
+        top: calc(50% - 10px); } }
 
 .item-thumbs {
   justify-content: space-between; }

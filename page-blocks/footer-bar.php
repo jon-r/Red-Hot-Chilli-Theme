@@ -29,7 +29,7 @@
         </div>
 
         <div class="flex-4">
-          <img src="<?php echo site_url(jr_imgSrc('icons','fsb','png')) ?>" alt="Federation of Small Businesses" >
+          <img src="<?php echo site_url(jr_imgSrc('icons','fsb','jpg')) ?>" alt="Federation of Small Businesses" >
         </div>
 
         <p class="legal flex-1">

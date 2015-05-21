@@ -18,22 +18,10 @@ function updateViewportDimensions() {
 // setting the viewport width
 var viewport = updateViewportDimensions();
 
-
-
-
-
-/*-- main menu toggle -----------------------------------------------------------------
-
-*/
+/*-- main menu toggle -----------------------------------------------------------------*/
 
 var navMain_ul  = document.getElementById('js-main-list'),
   navMain_li  = navMain_ul.children;
-
-//for (i = 0; i < navMain_li.length; i++) {
-//  navMain_li[i].onclick = function () {
-//    this.classList.toggle('active-li');
-//  };
-//}
 
 var $navMain_ul = $('#js-main-list'),
     $navMain_li = $navMain_ul.find('li'),
@@ -179,14 +167,17 @@ function searchToText(data) {
   })
 };
 
-/* item gallery actions -------------------------------------------------------------- */
+/* item gallery buttons -------------------------------------------------------------- */
 
-var $imgGalleryMain = $('#js-gallery-primary'),
-    $imgGalleryFull = $('#js-gallery-thumbs'),
-    $imgGalleryThumb = $imgGalleryFull.children('li');
-    $imgGalleryModal = $('#js-gallery-modal'),
-    $imgGalleryOpen = $imgGalleryMain.children('.item-main-zoom'),
-    $imgGalleryClose = $imgGalleryModal.children('.modal-close');
+var $imgGalleryMain   = $('#js-gallery-primary'),
+    $imgGalleryFull   = $('#js-gallery-thumbs'),
+    $imgGalleryThumb  = $imgGalleryFull.children('li');
+    $imgGalleryModal  = $('#js-gallery-modal'),
+    $imgGalleryOpen   = $imgGalleryMain.children('.item-main-zoom'),
+    $imgGalleryClose  = $imgGalleryModal.children('.modal-close'),
+    $imgGalleryPrev   = $('#js-gallery-prev'),
+    $imgGalleryNext   = $('#js-gallery-next');
+    $imgGalleryNum    = ($imgGalleryThumb.length) - 1;
 
 // zoom and enhance
 $imgGalleryOpen.click(function() {
@@ -209,44 +200,50 @@ $imgGalleryClose.click(function() {
   $imgGalleryModal.removeClass('is-active');
 });
 
-//"carousel switch"
-// since this is likely to open an image that doesnt exist, need to ajax call the php resize function
+//"gallery switch"
+// checks first to see if the tile sized image exists (likely wont), need to ajax call the php resize function
 $imgGalleryThumb.click(function() {
-  $getThumbSrc = $(this).children('img').attr('src').replace('gallery-thumb','gallery').split('/').slice(-5).join('/');
-  $getThumbSrc = '../'.concat($getThumbSrc);
-
-  $imgGalleryMain.addClass('loading');
-
-  $.get(fileSrc.ajaxAdmin, {
-    src: $getThumbSrc,
-    size: 'tile',
-    action: "jr_resize"
-   }, replaceMainImg)
-
+  i = $(this).index();
+  setMainImg(i);
 });
+
+function setMainImg(i) {
+  $thumbImg = $imgGalleryThumb.eq(i).children('img');
+  $getThumbSrc = $thumbImg.attr('src').replace('gallery-thumb', 'gallery').split('/').slice(-5).join('/');
+  $fullThumbSrc = '../' + $getThumbSrc;
+  $imgGalleryMain.addClass('loading');
+  if ($thumbImg.data('tile') == 1) {
+    $imgGalleryMain.removeClass('loading').children('img').attr('src', fileSrc.site + '/' + $getThumbSrc);
+  } else {
+    $.get(fileSrc.ajaxAdmin, {
+      src: $fullThumbSrc,
+      size: 'tile',
+      action: "jr_resize"
+    }, replaceMainImg);
+    $thumbImg.data('tile', 1);
+  }
+}
 
 function replaceMainImg(data) {
   var results = $.parseJSON(data);
-
   $newSrc = results.replace('../', fileSrc.site +'/');
   $imgGalleryMain.removeClass('loading').children('img').attr('src',$newSrc);
 }
 
-/*$btnFindDeadImg.click(function() {
+$imgGalleryPrev.click(function() {
+  if ($imgGalleryNum == 0) {
+    $imgGalleryNum = $imgGalleryThumb.length;
+  }
+  $imgGalleryNum--
+  console.log($imgGalleryNum);
+  setMainImg($imgGalleryNum);
+})
 
-  $outputGallery.html('');
-
-  $.get(fileSrc.ajaxAdmin, {
-    keyword: 'gallery',
-    action: "jra_deadimgstats"
-  }, listDeadImg)
-});
-
-function listDeadImg(data) {
-  var results = $.parseJSON(data);
-  var output = '<b>Removable Images: </b>' + results.count +
-    '<br><b>Space To Save: </b>' + results.size +
-    '<p>(To override this, mark items as \'force show\' on the database)</p>';
-  $outputGallery.append(output);
-  $btnDelDeadImg.show();
-}*/
+$imgGalleryNext.click(function() {
+  if ($imgGalleryNum == ($imgGalleryThumb.length) - 1) {
+    $imgGalleryNum = -1;
+  }
+  $imgGalleryNum++
+  console.log($imgGalleryNum);
+  setMainImg($imgGalleryNum);
+})
