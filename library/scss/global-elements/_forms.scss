@@ -53,6 +53,12 @@ input[type="search"] {
 }
 
 .search-out {
+
+  position: absolute;
+  width:100%;
+  top: 4.5rem;
+  z-index: 100;
+
   &:empty {
     display: none;
   }
@@ -62,20 +68,18 @@ input[type="search"] {
     font-size: 1.5rem;
     font-weight: bold;
   }
-  li:hover, li:focus {
-    background: jr-grey(3);
-  }
   span {
     font-size: 0.75rem;
     color:$jr-text-hover;
   }
   a {
     width:100%;
+    padding-left: jr-spacer(0.5);
   }
-  position: absolute;
-  width:100%;
-  top: 4.5rem;
-  z-index: 100;
+  a:hover, a:focus {
+    background: jr-grey(3);
+    color:white;
+  }
 }
 
 //form {

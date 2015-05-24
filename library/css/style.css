@@ -692,13 +692,15 @@ input, button {
     border-bottom: 1px solid #424a57;
     font-size: 1.5rem;
     font-weight: bold; }
-  .search-out li:hover, .search-out li:focus {
-    background: #424a57; }
   .search-out span {
     font-size: 0.75rem;
     color: #66707f; }
   .search-out a {
-    width: 100%; }
+    width: 100%;
+    padding-left: 10px; }
+  .search-out a:hover, .search-out a:focus {
+    background: #424a57;
+    color: white; }
 
 /*--- common page elements + defaults -------------------------------------------------*/
 /*title blocks */

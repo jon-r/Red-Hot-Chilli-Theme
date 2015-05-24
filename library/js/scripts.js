@@ -79,19 +79,13 @@ var tickerValue = 1;
 
 function ticker() {
   if (!hoverLock) {
-
     if (tickerValue < slideCount) {
-
       tickerValue++;
-
     } else {
-
       tickerValue = 1;
-
     }
-console.log("tick " + tickerValue);
+    //console.log("tick " + tickerValue);
     goSlide(tickerValue);
-
   }
 };
 
@@ -114,11 +108,9 @@ function goSlide(x) {
 
 if (carousel) {
   window.setInterval(ticker, slideTime);
-
   carousel.onmouseover = function () {
     hoverLock = true;
   }
-
   carousel.onmouseout = function() {
     hoverLock = false;
   }
@@ -129,66 +121,106 @@ if (carousel) {
 
 var MIN_LENGTH = 3;
 
-var $searchForm = $("#js-form-complete").children(".form-search");
-var $searchIn = $searchForm.children(".search-in"); //$("#js-search-header");
-var $searchOut = $searchForm.children(".search-out"); // $("#js-search-header-results");
+var $searchForm = $("#js-form-complete").find(".form-search"),
+    $searchIn = $searchForm.find(".search-in"),
+    $searchOut = $searchForm.find(".search-out");
 
 
 $searchIn.keyup(function () {
-
   var keyword = $(this).val();
-
   if (keyword.length >= MIN_LENGTH) {
-
     $.get(fileSrc.ajaxAdmin, {
       keyword: keyword,
       action: "jr_autocomplete"
     }).done(searchToText);
-
   } else {
     $searchOut.html('');
   }
 });
 
 function searchToText(data) {
-
   var results = $.parseJSON(data);
-
   $searchOut.html('');
-
   $(results).each(function (i) {
     if (i < 4) {
       var link = fileSrc.site + '/' + this.filter + '/' + this.url + '/';
-      var brand = (this.filter == 'brand') ? '<span> - Brand</span>' : '';
-      var output = '<li><a tabindex="' + i + '" href="' + link + '" >' + this.name + brand + '</a></li>';
-
+      var extra = (this.filter == 'brand') ? '<span> - Brand</span>' : '<span> - Category</span>';
+      var output = '<li><a href="' + link + '" >' + this.name + extra + '</a></li>';
       $searchOut.append(output);
     }
   })
 };
 
+//adds arrow movment to the options
+$searchIn.keypress(function(e) {
+  $results = $searchOut.find('li > a');
+  if (e.keyCode == '40' && $results.length > 0) {
+    e.preventDefault();
+    searchTraverse('down');
+  }
+});
+
+$searchOut.on('keypress','li > a', function(e) {
+  $focussed = $searchOut.find(':focus');
+  if (e.keyCode == '40' && $focussed.length > 0) {
+    e.preventDefault();
+    $i = $(this).parent('li').index();
+    searchTraverse('down', $i);
+  }
+});
+
+$searchOut.on('keypress','li > a', function(e) {
+  $focussed = $searchOut.find(':focus');
+  if (e.keyCode == '38' && $focussed.length > 0) {
+    e.preventDefault();
+    $i = $(this).parent('li').index();
+    searchTraverse('up', $i);
+  }
+});
+
+function searchTraverse(direction, i = -1) {
+  $results = $searchOut.find('li > a');
+  $resultCount = $results.length;
+  if (direction == 'down' && i < $resultCount) {
+    i++
+    $target = $results.eq(i++);
+    $text = $target.text();
+    $searchIn.val($text);
+  } else if (direction == 'up') {
+    if (i > 0) {
+      i--
+      $target = $results.eq(i);
+      $text = $target.text();
+      $searchIn.val($text);
+    } else {
+      $target = $searchIn;
+    }
+  }
+  $target.focus();
+}
+
 /* item gallery buttons -------------------------------------------------------------- */
 
 var $imgGalleryMain   = $('#js-gallery-primary'),
     $imgGalleryFull   = $('#js-gallery-thumbs'),
-    $imgGalleryThumb  = $imgGalleryFull.children('li');
+    $imgGalleryThumb  = $imgGalleryFull.find('li');
     $imgGalleryModal  = $('#js-gallery-modal'),
-    $imgGalleryOpen   = $imgGalleryMain.children('.item-main-zoom'),
-    $imgGalleryClose  = $imgGalleryModal.children('.modal-close'),
+    $imgGalleryOpen   = $imgGalleryMain.find('.item-main-zoom'),
+    $imgGalleryClose  = $imgGalleryModal.find('.modal-close'),
     $imgGalleryPrev   = $('#js-gallery-prev'),
     $imgGalleryNext   = $('#js-gallery-next');
     $imgGalleryNum    = ($imgGalleryThumb.length) - 1;
 
 // zoom and enhance
 $imgGalleryOpen.click(function() {
-  $getImgSrc = $imgGalleryMain.children('img').attr('src');
+  $getImgSrc = $imgGalleryMain.find('img').attr('src');
   $bigImgSrc = $getImgSrc.replace('gallery-tile','gallery');
   //console.log($getImgSrc);
 
 
-  if ($imgGalleryModal.children('img').length) {
+  if ($imgGalleryModal.find('img').length) {
 
-    $imgGalleryModal.addClass('is-active').children('img').attr('src',$bigImgSrc);
+    $imgGalleryModal.addClass('is-active').find('img').attr('src',$bigImgSrc);
   } else {
     $bigImgNew = '<img src="' + $bigImgSrc + '" >';
     $imgGalleryModal.addClass('is-active').append($bigImgNew);
@@ -208,12 +240,12 @@ $imgGalleryThumb.click(function() {
 });
 
 function setMainImg(i) {
-  $thumbImg = $imgGalleryThumb.eq(i).children('img');
-  $getThumbSrc = $thumbImg.attr('src').replace('gallery-thumb', 'gallery').split('/').slice(-5).join('/');
+  $thumbImg = $imgGalleryThumb.eq(i).find('img');
+  $getThumbSrc = $thumbImg.attr('src').replace('gallery-thumb', 'gallery').split('/').slice(-3).join('/');
   $fullThumbSrc = '../' + $getThumbSrc;
   $imgGalleryMain.addClass('loading');
   if ($thumbImg.data('tile') == 1) {
-    $imgGalleryMain.removeClass('loading').children('img').attr('src', fileSrc.site + '/' + $getThumbSrc);
+    $imgGalleryMain.removeClass('loading').find('img').attr('src', fileSrc.site + '/' + $getThumbSrc);
   } else {
     $.get(fileSrc.ajaxAdmin, {
       src: $fullThumbSrc,
@@ -227,7 +259,7 @@ function setMainImg(i) {
 function replaceMainImg(data) {
   var results = $.parseJSON(data);
   $newSrc = results.replace('../', fileSrc.site +'/');
-  $imgGalleryMain.removeClass('loading').children('img').attr('src',$newSrc);
+  $imgGalleryMain.removeClass('loading').find('img').attr('src',$newSrc);
 }
 
 $imgGalleryPrev.click(function() {
