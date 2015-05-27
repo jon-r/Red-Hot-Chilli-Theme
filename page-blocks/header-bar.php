@@ -13,13 +13,8 @@
       </a>
 
     <?php echo do_shortcode( "[jr-shop id='search-bar']"); ?>
-
-
   </menu>
 
-
 </div>
-
-
 
 
