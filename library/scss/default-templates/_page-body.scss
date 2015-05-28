@@ -34,8 +34,18 @@ main {
   @include jr-size(screen-hd) { width:1200px };
 }
 
+.column {
+  width:100%;
+  margin: 0 jr-spacer();
+  @include clearfix;
+  @include jr-size(screen) {
+    width:50%;
+    float:left;
+  }
+}
+
 section {
-  box-shadow: $jr-shadow;
+  @extend %floating-tile;
   background-color: white;
   position: relative;
 }

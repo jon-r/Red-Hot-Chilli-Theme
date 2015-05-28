@@ -204,36 +204,12 @@ function searchTraverse(direction, i = -1) {
 var $imgGalleryMain   = $('#js-gallery-primary'),
     $imgGalleryFull   = $('#js-gallery-thumbs'),
     $imgGalleryThumb  = $imgGalleryFull.find('li');
-    $imgGalleryModal  = $('#js-gallery-modal'),
-    $imgGalleryOpen   = $imgGalleryMain.find('.item-main-zoom'),
-    $imgGalleryClose  = $imgGalleryModal.find('.modal-close'),
     $imgGalleryPrev   = $('#js-gallery-prev'),
     $imgGalleryNext   = $('#js-gallery-next');
     $imgGalleryNum    = ($imgGalleryThumb.length) - 1;
 
-// zoom and enhance
-$imgGalleryOpen.click(function() {
-  $getImgSrc = $imgGalleryMain.find('img').attr('src');
-  $bigImgSrc = $getImgSrc.replace('gallery-tile','gallery');
-  //console.log($getImgSrc);
-
-
-  if ($imgGalleryModal.find('img').length) {
-
-    $imgGalleryModal.addClass('is-active').find('img').attr('src',$bigImgSrc);
-  } else {
-    $bigImgNew = '<img src="' + $bigImgSrc + '" >';
-    $imgGalleryModal.addClass('is-active').append($bigImgNew);
-  }
-
-});
-
-$imgGalleryClose.click(function() {
-  $imgGalleryModal.removeClass('is-active');
-});
-
 //"gallery switch"
-// checks first to see if the tile sized image exists (likely wont), need to ajax call the php resize function
+// checks first to see if the tile sized image exists (possibly wont), need to ajax call the php resize function
 $imgGalleryThumb.click(function() {
   i = $(this).index();
   setMainImg(i);
@@ -279,3 +255,55 @@ $imgGalleryNext.click(function() {
   console.log($imgGalleryNum);
   setMainImg($imgGalleryNum);
 })
+
+/* modal popups ---------------------------------------------------------------------- */
+// eg zoom and enhance
+var $imgGalleryModal  = $('#js-gallery-modal'),
+    $imgGalleryOpen   = $imgGalleryMain.find('.item-main-zoom'),
+    $imgGalleryClose  = $imgGalleryModal.find('.modal-close');
+/*    $buyModal         = $('#js-buy-modal'),
+    $buyModalOpen     = $('#js-buy-btn'),
+    $buyModalClose    = $buyModal.find('.modal-close'),
+    $queryModal         = $('#js-query-modal'),
+    $queryModalOpen     = $('#js-query-btn'),
+    $queryModalClose    = $queryModal.find('.modal-close');   */
+
+function modalOpen(e) {
+  e.addClass('is-active')
+}
+function modalClose(e) {
+  e.removeClass('is-active');
+}
+
+
+
+$imgGalleryOpen.click(function() {
+  $getImgSrc = $imgGalleryMain.find('img').attr('src');
+  $bigImgSrc = $getImgSrc.replace('gallery-tile','gallery');
+
+  if ($imgGalleryModal.find('img').length) {
+
+    $imgGalleryModal.find('img').attr('src',$bigImgSrc);
+  } else {
+    $bigImgNew = '<img src="' + $bigImgSrc + '" >';
+    $imgGalleryModal.append($bigImgNew);
+  }
+  modalOpen($imgGalleryModal);
+});
+
+$imgGalleryClose.click(function() {
+  modalClose($imgGalleryModal);
+});
+/*
+$buyModalOpen.click(function() {
+  modalOpen($buyModal)
+})
+$queryModalOpen.click(function() {
+  modalOpen($queryModal)
+})
+$buyModalClose.click(function() {
+  modalClose($buyModal);
+});
+$queryModalClose.click(function() {
+  modalClose($queryModal);
+});*/

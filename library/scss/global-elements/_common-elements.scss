@@ -7,6 +7,11 @@
   min-height: 3rem;
   padding: 0.1rem jr-spacer();
 }
+/* floating tile */
+%floating-tile {
+  box-shadow: $jr-shadow;
+  border-radius: 4px;
+}
 
 /*button style*/
 button, .btn-red {
@@ -25,8 +30,7 @@ button, .btn-red {
   background-color: jr-grey(2);
   padding: jr-spacer(0.5);
   color: $jr-text-light;
-  box-shadow: $jr-shadow;
-  border-radius: 4px;
+  @extend %floating-tile;
  // font-size:1.2rem;
   li {
     line-height: 2;
@@ -45,12 +49,15 @@ button, .btn-red {
   opacity: 0;
   width: 5%;
   height:5%;
-  left:5%;
   top: 45vh;
   z-index: 100;
   transition: 300ms ease;
   overflow-y:auto;
 
+
+}
+
+.modal.image {
   img {
     object-fit: contain;
     object-position: center;
@@ -58,15 +65,19 @@ button, .btn-red {
 }
 
 @supports (object-fit: contain) {
-  .modal img {
+  .modal.image img {
     height: 100%;
   }
 }
 
+.modal.right {
+  left:95%;
+}
+
 .modal.is-active {
+  left:5%;
   opacity: 1;
   width: 90%;
-  left: 5%;
   height: 90%;
   top: 5%;
 }
@@ -89,15 +100,17 @@ button, .btn-red {
 }
 
 .social-shares {
+  margin: jr-spacer(0.5) 0;
+  text-align: center;
   a {
+    text-decoration: none;
     font-weight: bold;
     color: white;
     background-color: $jr-bg-light;
-    line-height: 2rem;
     padding-right: 10px;
-    box-shadow: $jr-shadow;
+    @extend %floating-tile;
     margin: jr-spacer(0.5);
-    border-radius: 4px;
+    line-height: 2rem;
   }
   a:hover, a:active {
     color: $jr-bg-hover;

@@ -5,11 +5,25 @@
   width: calc(#{$rows*100%/$full } - #{jr-spacer()});
 }
 
-.flex-container {
+%flex-parent-base {
   display:flex;
   flex-wrap: wrap;
   justify-content:space-around;
   align-items:stretch;
+}
+
+.flex-container {
+  @extend %flex-parent-base;
+  width:100%;
+}
+
+.flex-column {
+  @extend %flex-parent-base;
+  width:100%;
+  float:left;
+  @include jr-size(tablet) {
+    width:50%
+  }
 }
 
 %flex-child-base {
