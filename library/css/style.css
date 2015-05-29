@@ -1116,25 +1116,12 @@ Page specific items.
   padding: 20px; }
 
 .item-info {
-  align-content: flex-start;
   font-size: 1.2rem; }
 
-.item-dimensions {
-  width: 100%; }
-  .item-dimensions li {
-    border: 1px solid #e5e5e6;
-    border-width: 1px 1px 1px 1px;
-    padding: 2px 20px; }
-    .item-dimensions li:nth-of-type(even) {
-      background-color: #e5e5e6; }
-
-.item-box {
-  border: 1px solid #e5e5e6;
-  background-color: #f2f2f2; }
-
-.item-main, .item-thumbs li {
-  border: 1px solid #e5e5e6;
-  margin-bottom: 20px; }
+.item-dimensions li {
+  padding: 2px 20px; }
+  .item-dimensions li:nth-of-type(even) {
+    background-color: #e5e5e6; }
 
 .item-main:hover .item-main-zoom {
   opacity: 1; }
@@ -1184,7 +1171,8 @@ Page specific items.
 
 .item-thumbs li {
   width: calc(50% - 20px);
-  margin: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
   cursor: zoom-in; }
   .item-thumbs li:hover, .item-thumbs li:active {
     border: 1px solid #424a57; }
@@ -1197,6 +1185,20 @@ Page specific items.
   .item-tile header {
     border-bottom: 1px solid #e5e5e6;
     margin-bottom: 20px; }
+
+.item-tile-inner {
+  background-color: #f2f2f2;
+  border: 1px solid #e5e5e6;
+  margin-bottom: 10px;
+  position: relative; }
+  .item-tile-inner img {
+    display: block; }
+  .item-tile-inner em {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(229, 229, 230, 0.75);
+    border-top: 1px solid #e5e5e6; }
 
 .shop-buttons {
   margin: 10px 0;
