@@ -39,12 +39,6 @@
   position: relative;
   white-space: nowrap;
   z-index: 0;
-  @include jr-size(screen) {
-    margin-bottom: jr-spacer(4);
-  }
-  @include jr-size(screen-hd) {
-    margin-bottom: jr-spacer(1);
-  }
 }
 
 .carousel:before{

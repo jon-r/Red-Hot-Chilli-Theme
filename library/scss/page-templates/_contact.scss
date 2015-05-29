@@ -43,13 +43,14 @@
 }
 
 .form-contact {
-  &:nth-last-child(2) { //checks if the social bar this there or not
+  &:nth-last-child(2) { //checks if the social half is there or not
     border-right: $jr-border-dark;
   }
   input, textarea {
     border-top: $jr-border-dark;
     margin-bottom: jr-spacer();
     padding-left: 4px;
+    float: left;
   }
   textarea {
     height: 10rem;
@@ -62,6 +63,8 @@
   input {
     @include jr-width(4, 6);
     margin-right: percentage(1/6);
+
+
   }
   label {
     border-top: $jr-border-dark;

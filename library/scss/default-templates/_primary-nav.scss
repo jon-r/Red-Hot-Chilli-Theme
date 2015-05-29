@@ -7,72 +7,67 @@ nav a {
 }
 
 .primary-nav {
-
- justify-content: flex-start;
+  justify-content: flex-start;
+  align-items:flex-start;
+  padding-bottom: jr-spacer();
 //simple 'loading' simulator - the <nav> will be the only child of the <section> until the php <article> has loaded.
   &:only-child {
     @extend %loader-icon;
     padding-bottom: 50vh;
   }
+  @include jr-size(screen) {
+    padding-bottom: jr-spacer(3);
+  }
+  @include jr-size(screen-hd) {
+    padding-bottom: jr-spacer();
+  }
 }
 
-.nav-menu,
 .nav-breadcrumbs,
 .nav-paginate {
   a {
-    display: inline-block;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
   }
 }
-
 
 #menu-toggle {
   display: none;
 }
 
 
-.menu-btn, .touch-toggle {
-  width:100%;
-}
-
 .menu-btn {
-  margin-top: -2px;
-  padding: 0.5rem;
+  z-index: 5;
+  height: 2.5rem;
+  cursor: pointer;
 }
 
-.not-home {
-  .menu-btn {
-    cursor: pointer;
-  }
-}
+
 
 
 .touch-toggle {
   @include jr-size(screen) {
     display: none;
   }
+  height: 2.5rem;
+  width:100%;
 }
 
 .nav-menu {
   z-index: 5;
-  width: 100%;
-  height: 2.5rem;
-  position: relative;
   box-shadow: $jr-shadow;
   background-color: white;
   text-align: center;
-  overflow: hidden;
   font-size: 1.3rem;
-
-  span, a {
-    display: inline-block;
+  display: none;
+  a {
     width:100%;
   }
 
   li {
     cursor: pointer;
     padding-left: jr-spacer(0.5);
+    line-height: 2.5rem;
     border-bottom: $jr-border;
     &:active, &:hover {
       background-color: $jr-bg-hover;
@@ -91,7 +86,8 @@ nav a {
     li {
       @include jr-width(1, 2);
       display: inline-block;
-      padding: jr-spacer(0.5);
+      padding: 0 jr-spacer(0.5);
+
       &:nth-of-type(even){
         border-left: $jr-border;
       }
@@ -99,8 +95,9 @@ nav a {
   }
 
   @include jr-size(screen) {
-    width: 250px;
-    margin-left: -4px;
+    position: absolute;
+    left:0;
+    top:2.5rem;
     text-align: left;
     li {
       font-size: 1rem;
@@ -109,26 +106,36 @@ nav a {
   }
 }
 
+.nav-menu, .menu-btn {
+  width: 100%;
+  @include jr-size(screen) {
+    width: 250px;
+    margin-left: -4px;
+  }
+}
+
 .main-menu,
 .sub-menu {
-  overflow: hidden;
-  line-height: 2.5rem;
   width: 100%;
+}
+
+.main-menu {
+  position: relative;
 }
 
 .sub-menu {
   position: absolute;
-  min-height: 100%;
   height: auto;
   background-color: white;
-  border: $jr-border;
-  top: 0;
+  min-height: calc(100% + 2.5rem);
+  top: -2.5rem;
   left: 100%;
   transition: left 400ms;
   background-size: 500px 375px;
   background-position: bottom right;
   background-repeat: no-repeat;
   @include jr-size(screen) {
+    border: $jr-border;
     display: none;
     box-shadow: $jr-shadow;
     width: 200%;
@@ -154,7 +161,7 @@ nav a {
 
 #menu-toggle:checked + .not-home, .nav-menu.home {
   height: auto;
-  overflow: visible;
+  display: block;
 }
 
 #menu-toggle:checked + .not-home {
@@ -172,12 +179,9 @@ nav a {
   border-bottom: $jr-border;
   background-color: white;
   flex: 1 1 100%;
-  margin-bottom: jr-spacer(2);
   @include jr-size(screen) {
     flex: 1 1 75%;
   }
-
-//  @include clearfix;
 }
 
 .nav-breadcrumbs,

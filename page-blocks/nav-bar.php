@@ -3,13 +3,11 @@
 ?>
 
 <nav class="flex-container primary-nav">
+  <label class="menu-btn btn-red" for="menu-toggle">
+    <h2 class="text-icon-left menu-w">Shop</h2>
+  </label>
   <input type="checkbox"  id="menu-toggle">
   <menu class="nav-menu<?php echo is_front_page() ? ' home' : ' not-home' ?>" >
-
-    <label class="menu-btn btn-red" for="menu-toggle">
-      <h3 class="text-icon-left menu-w">Shop</h3>
-    </label>
-
     <ul class="main-menu" id="js-main-list" >
       <?php echo do_shortcode("[jr-shop id='shop-menu']"); ?>
 <?php // wp menus start here. admin for setup --> ?>
