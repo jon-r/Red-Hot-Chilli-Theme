@@ -1,20 +1,16 @@
 /*-- default list Layout -----------------------------------------------------------*/
 
-
 .shop-tile {
   border-bottom: solid 3px $jr-emphasis;
   img {
     display: block;
   }
-
   a {
     width: 100%;
     height: inherit;
   }
-
   div {
     @extend %header-block;
-
     &:first-child {
       border-bottom: $jr-border-dark;
     }
@@ -27,7 +23,6 @@
     }
   }
 }
-
 .shop-tile.group {
   ul {
     width:100%;
@@ -47,10 +42,6 @@
   }
 }
 
-//.shop-tile.category {
-//
-//}
-
 .shop-tile.item {
   padding-bottom: jr-spacer(2);
 
@@ -58,6 +49,15 @@
   &::before {
     right:-9px;
     top: 3.5rem;
+  }
+}
+
+.extra-brands {
+  border-top: $jr-border-dark;
+  padding: jr-spacer();
+  a {
+    margin-left: jr-spacer(0.5);
+    line-height: 1.5;
   }
 }
 

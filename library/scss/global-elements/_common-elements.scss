@@ -39,7 +39,6 @@ button, .btn-red {
 
 /* title frames */
 .article-header {
-  padding-bottom: jr-spacer();
   padding-left: jr-spacer(0.5);
 }
 
@@ -53,8 +52,6 @@ button, .btn-red {
   z-index: 100;
   transition: 300ms ease;
   overflow-y:auto;
-
-
 }
 
 .modal.image {

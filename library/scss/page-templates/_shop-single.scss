@@ -19,7 +19,7 @@
 }
 
 
-.item-main:hover {
+.item-tile-inner:hover {
   .item-main-zoom {
     opacity:1;
   }
@@ -39,10 +39,10 @@
 }
 
 .gallery-nav.arrow-l {
-  left:-5px;
+  left:jr-spacer(-1);
 }
 .gallery-nav.arrow-r {
-  right:-5px;
+  right:jr-spacer(-1);
 }
 
 .item-main-zoom {
@@ -76,7 +76,6 @@
       top:calc(50% - 10px);
     }
   }
-
 }
 
 .item-thumbs {
@@ -118,6 +117,9 @@
     width:100%;
     background: rgba($jr-bg-hover, 0.75);
     border-top: $jr-border;
+  }
+  a {
+    width:100%;
   }
 }
 
