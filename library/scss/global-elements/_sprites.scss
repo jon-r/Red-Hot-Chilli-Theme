@@ -272,20 +272,4 @@ $icons-social: (
   }
 }
 
-//$form-icons: (
-//  search,
-//  phone,
-//  email
-//);
-//
-//@each $icon in $form-icons {
-//  input[name=#{$icon}] {
-//    & + label {
-//      @include jr-icon(before, $icon)
-//    }
-//    &:focus + label {
-//      @include jr-icon(before, #{$icon + "-w"})
-//    }
-//  }
-//}
 

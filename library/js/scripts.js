@@ -1,9 +1,12 @@
 /*----- jquery menu aim ---------------------------------------------------------------
+/*region
 https://github.com/kamens/jQuery-menu-aim.git
 (minified)
 */
 
 !function(e){function t(t){var n=e(this),i=null,o=[],u=null,r=null,c=e.extend({rowSelector:"> li",submenuSelector:"*",submenuDirection:"right",tolerance:75,enter:e.noop,exit:e.noop,activate:e.noop,deactivate:e.noop,exitMenu:e.noop},t),l=3,f=300,a=function(e){o.push({x:e.pageX,y:e.pageY}),o.length>l&&o.shift()},s=function(){r&&clearTimeout(r),c.exitMenu(this)&&(i&&c.deactivate(i),i=null)},h=function(){r&&clearTimeout(r),c.enter(this),v(this)},m=function(){c.exit(this)},x=function(){y(this)},y=function(e){e!=i&&(i&&c.deactivate(i),c.activate(e),i=e)},v=function(e){var t=p();t?r=setTimeout(function(){v(e)},t):y(e)},p=function(){function t(e,t){return(t.y-e.y)/(t.x-e.x)}if(!i||!e(i).is(c.submenuSelector))return 0;var r=n.offset(),l={x:r.left,y:r.top-c.tolerance},a={x:r.left+n.outerWidth(),y:l.y},s={x:r.left,y:r.top+n.outerHeight()+c.tolerance},h={x:r.left+n.outerWidth(),y:s.y},m=o[o.length-1],x=o[0];if(!m)return 0;if(x||(x=m),x.x<r.left||x.x>h.x||x.y<r.top||x.y>h.y)return 0;if(u&&m.x==u.x&&m.y==u.y)return 0;var y=a,v=h;"left"==c.submenuDirection?(y=s,v=l):"below"==c.submenuDirection?(y=h,v=s):"above"==c.submenuDirection&&(y=l,v=a);var p=t(m,y),b=t(m,v),d=t(x,y),g=t(x,v);return d>p&&b>g?(u=m,f):(u=null,0)};n.mouseleave(s).find(c.rowSelector).mouseenter(h).mouseleave(m).click(x),e(document).mousemove(a)}e.fn.menuAim=function(e){return this.each(function(){t.call(this,e)}),this}}(jQuery);
+
+/* endregion */
 
 /*
  * Get Viewport Dimensions
@@ -19,7 +22,7 @@ function updateViewportDimensions() {
 var viewport = updateViewportDimensions();
 
 /*-- main menu toggle -----------------------------------------------------------------*/
-
+/*region */
 var navMain_ul  = document.getElementById('js-main-list'),
   navMain_li  = navMain_ul.children;
 
@@ -63,62 +66,81 @@ $navMain_li.click( function() {
   $(this).toggleClass('active-li')
 });
 
-
+/*endregion*/
 
 /*-- carousel scroller ----------------------------------------------------------------*/
 
-var carousel = document.getElementById('js-carouselMain') || null,
-  slides = document.getElementsByClassName('slide'),
-  blips = document.getElementsByClassName('blipper'),
-  slideCount = slides.length,
-  slideTime = 5000,
-  slideDelay = 600, //to match scroll timer
-  hoverLock = false;
+//redone in jquery
+var $carousel = $('#js-carousel-main'),
+    $slide = $carousel.find('.slide'),
+    $tabs = $('#js-carousel-tabs > .tab');
 
-var tickerValue = 1;
+var slideCount = $slide.length - 1,
+    slideTime = 8000,
+    slideDelay = 1000,
+    hoverLock = false,
+    timerLock = false,
+    tickerInt = 0;
+
+if ($carousel.length > 0) {
+  var carouselTimer = window.setInterval(ticker, slideTime);
+  $carousel.mouseover(function() {
+    hoverLock = true;
+  })
+  $carousel.mouseout(function() {
+    hoverLock = false;
+    clearInterval(carouselTimer);
+    carouselTimer = window.setInterval(ticker, slideTime);
+  })
+  $tabs.mouseover(function() {
+    hoverLock = true;
+  })
+  $tabs.mouseout(function() {
+    hoverLock = false;
+    clearInterval(carouselTimer);
+    carouselTimer = window.setInterval(ticker, slideTime);
+  })
+}
 
 function ticker() {
-  if (!hoverLock) {
-    if (tickerValue < slideCount) {
-      tickerValue++;
-    } else {
-      tickerValue = 1;
-    }
-    //console.log("tick " + tickerValue);
-    goSlide(tickerValue);
-  }
-};
+  if (!hoverLock && !timerLock) {
 
-function goSlide(x) {
-  x--;
-  for (i = 0; i < slideCount; i++) {
-    if (slides[i].classList.contains('go-away')) {
-      slides[i].classList.remove('is-active');
-      slides[i].classList.remove('go-away');
-    } else if (slides[i].classList.contains('is-active')) {
-      slides[i].classList.add('go-away');
-      blips[i].classList.remove('active');
+    if (tickerInt == slideCount) {
+      tickerInt = -1;
     }
-    if (slides[i].dataset.slidenum == x) {
-      slides[i].classList.add('is-active');
-      blips[i].classList.add('active');
-    }
+    tickerInt++;
+    timerLock = true;
+    $carousel.toggleClass('bar-left').toggleClass('bar-right');
+
+    slideActivate(tickerInt);
   }
 }
 
-if (carousel) {
-  window.setInterval(ticker, slideTime);
-  carousel.onmouseover = function () {
-    hoverLock = true;
+$tabs.click(function() {
+  if (timerLock == true) {
+    console.log('spam');
   }
-  carousel.onmouseout = function() {
-    hoverLock = false;
+  if (tickerInt != $(this).index() && !timerLock) {
+    timerLock = true;
+    tickerInt = $(this).index();
+    slideActivate(tickerInt);
   }
+});
+
+function slideActivate(i) {
+  $carousel.find('.go-away').removeClass('is-active').removeClass('go-away');
+  $carousel.find('.is-active').addClass('go-away');
+  $slide.eq(i).removeClass('go-away').addClass('is-active');
+  $tabs.removeClass('active').eq(i).addClass('active');
+  setTimeout(function () {
+    timerLock = false;
+  }, 600);
 }
+
 
 /* js + ajax auto complete ------------------------------------------------------------*/
 // takes categories + key brands.
-
+/* region */
 var MIN_LENGTH = 3;
 
 var $searchForm = $("#js-form-complete").find(".form-search"),
@@ -127,14 +149,17 @@ var $searchForm = $("#js-form-complete").find(".form-search"),
 
 
 $searchIn.keyup(function () {
-  var keyword = $(this).val();
-  if (keyword.length >= MIN_LENGTH) {
-    $.get(fileSrc.ajaxAdmin, {
-      keyword: keyword,
-      action: "jr_autocomplete"
-    }).done(searchToText);
-  } else {
-    $searchOut.html('');
+  vp = updateViewportDimensions();
+  if ( vp.width >= 1030 ) {
+    var keyword = $(this).val();
+    if (keyword.length >= MIN_LENGTH) {
+      $.get(fileSrc.ajaxAdmin, {
+        keyword: keyword,
+        action: "jr_autocomplete"
+      }).done(searchToText);
+    } else {
+      $searchOut.html('');
+    }
   }
 });
 
@@ -178,7 +203,7 @@ $searchOut.on('keypress','li > a', function(e) {
   }
 });
 
-function searchTraverse(direction, i = -1) {
+function searchTraverse(direction, i) {
   $results = $searchOut.find('li > a');
   $resultCount = $results.length;
   if (direction == 'down' && i < $resultCount) {
@@ -198,7 +223,7 @@ function searchTraverse(direction, i = -1) {
   }
   $target.focus();
 }
-
+/* endregion */
 /* item gallery buttons -------------------------------------------------------------- */
 
 var $imgGalleryMain   = $('#js-gallery-primary'),

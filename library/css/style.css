@@ -875,6 +875,9 @@ nav a.active, nav a:active, nav a:hover {
 
 .main-menu {
   position: relative; }
+  @media only screen and (min-width: 1240px) {
+    .main-menu {
+      min-height: 275px; } }
 
 .sub-menu {
   position: absolute;
@@ -895,8 +898,8 @@ nav a.active, nav a:active, nav a:hover {
       width: 200%;
       z-index: 20;
       left: 98%;
-      top: -10px;
-      min-height: calc(100% + 15px); }
+      top: -3.2rem;
+      min-height: calc(100% + 3.5rem); }
       .sub-menu li {
         width: 50%; } }
 
@@ -965,90 +968,116 @@ Page specific items.
       margin-top: 0; } }
 
 .carousel {
-  overflow: hidden;
   position: relative;
-  white-space: nowrap;
+  overflow: hidden;
   z-index: 0; }
-
-.carousel:before {
-  content: "";
-  display: block;
-  padding-top: 33%; }
+  .carousel::before {
+    content: "";
+    display: block;
+    padding-top: 25%; }
 
 .carousel-container {
   position: absolute;
   top: 0;
-  bottom: 0;
+  bottom: 5rem;
+  font-size: 1rem;
   left: 100%;
   width: 100%; }
+  @media only screen and (max-width: 481px) {
+    .carousel-container {
+      bottom: 0; } }
+  @media only screen and (min-width: 482px) {
+    .carousel-container {
+      font-size: 1.4rem; } }
   .carousel-container a {
     padding: 0; }
+  .carousel-container::after {
+    content: "";
+    bottom: 0;
+    position: absolute;
+    height: 3px;
+    background-color: #931f1f;
+    transition: 7.8s linear; }
+
+.bar-left::after {
+  left: -100%;
+  width: 0; }
+
+.bar-right::after {
+  right: 100%;
+  width: 100%; }
 
 .slide {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  display: inline-block;
   width: 100%;
+  bottom: 0;
+  top: 0;
   left: 0;
-  opacity: 1;
-  text-align: center; }
-  .slide [class^='slide-'] {
-    position: absolute;
-    opacity: 0; }
+  text-align: center;
+  transition: left 600ms ease; }
   .slide a {
     height: 100%; }
+
+.carousel-tabs {
+  margin-top: 3px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  position: relative;
+  bottom: -100%;
+  z-index: 6;
+  height: 5rem; }
+
+.tab {
+  line-height: 2.5rem;
+  padding: 0 10px;
+  border-right: 1px solid #e5e5e6;
+  border-bottom: 1px solid #e5e5e6;
+  cursor: pointer;
+  transition: 400ms;
+  flex: auto;
+  display: none; }
   @media only screen and (min-width: 482px) {
-    .slide {
-      font-size: 1.4rem; } }
-
-.carousel-blips {
-  top: 20px;
-  right: 20px;
-  z-index: 10;
-  position: absolute; }
-
-.blipper {
-  border-radius: 50%;
-  border: 1px solid #e5e5e6;
-  height: 10px;
-  width: 10px;
-  margin-bottom: 5px; }
-  .blipper.active {
-    background-color: #931f1f; }
+    .tab {
+      display: block; } }
+  .tab:hover {
+    background-color: #e5e5e6; }
+  .tab.active {
+    background-color: #931f1f;
+    color: #e5e5e6; }
 
 /*-- customisable carousel parts -----------------------------------------------------*/
 .is-active {
-  z-index: 5; }
-  .is-active [class^='slide-'] {
-    opacity: 1;
-    transform: translateX(-100%);
-    transition-property: transform;
+  z-index: 5;
+  left: -100%; }
+  .is-active [class^='slider-'] {
+    transform: translateX(0);
     transition-duration: 600ms;
     transition-timing-function: cubic-bezier(0, 0.5, 0.5, 1); }
 
 .go-away {
-  left: -100%;
-  transition: left 600ms ease; }
+  left: -200%; }
 
-.slide-title, .slide-text, .slide-link {
-  width: 100%; }
+.slider-title, .slider-text, .slider-link {
+  width: 100%;
+  position: absolute;
+  transform: translateX(100%); }
 
-.slide-image {
+.slider-image {
   top: 0;
   left: 0; }
 
-.slide-title {
+.slider-title {
   transition-delay: 300ms;
   top: 5%; }
 
-.slide-text {
+.slider-text {
   transition-delay: 400ms;
   top: 25%; }
-  .slide-text span {
+  .slider-text span {
     display: block; }
 
-.slide-link {
+.slider-link {
   bottom: 5%;
   text-decoration: underline;
   transition-delay: 500ms; }

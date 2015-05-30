@@ -1,6 +1,6 @@
       <nav class="container flex-container">
 
-        <div class="flex-4">
+        <div class="flex-5">
           <h3>Shop With Us</h3>
           <?php wp_nav_menu(array(
             'container' => '',                              // remove nav container
@@ -11,7 +11,7 @@
           )); ?>
         </div>
 
-        <div class="flex-4">
+        <div class="flex-5">
           <h3>About Us</h3>
           <?php wp_nav_menu(array(
             'container' => '',                              // remove nav container
@@ -22,13 +22,17 @@
           )); ?>
         </div>
 
-        <div class="flex-4">
+        <div class="flex-5">
           <h3>Visit Us</h3>
           <br>
           <?php echo jr_linkTo(address) ?>
         </div>
 
-        <div class="flex-4">
+        <div class="flex-5">
+          <img src="<?php echo site_url(jr_imgSrc('rhc','RHC-Web-Small','png')) ?>" alt="Red Hot Chilli" >
+        </div>
+
+        <div class="flex-5">
           <img src="<?php echo site_url(jr_imgSrc('icons','fsb','jpg')) ?>" alt="Federation of Small Businesses" >
         </div>
 
