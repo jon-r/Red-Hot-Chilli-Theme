@@ -121,9 +121,6 @@ nav a {
 
 .main-menu {
   position: relative;
-    @include jr-size(screen-hd) {
-    min-height: 275px;
-  }
 }
 
 .sub-menu {

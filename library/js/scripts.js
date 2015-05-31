@@ -110,8 +110,6 @@ function ticker() {
     }
     tickerInt++;
     timerLock = true;
-    $carousel.toggleClass('bar-left').toggleClass('bar-right');
-
     slideActivate(tickerInt);
   }
 }
