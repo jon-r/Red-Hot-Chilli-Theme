@@ -1141,6 +1141,9 @@ Page specific items.
 .item-info {
   font-size: 1.2rem; }
 
+.text-right {
+  float: right; }
+
 .item-dimensions li {
   padding: 2px 20px; }
   .item-dimensions li:nth-of-type(even) {
