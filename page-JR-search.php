@@ -5,8 +5,5 @@
 *
 * THIS IS NOT A NORMAL TEMPLATE. Use page-search.php
 */
-
-  echo do_shortcode( "[jr-search']");
-
-
+echo do_shortcode( "[jr-search']");
 ?>

@@ -884,6 +884,7 @@ nav a.active, nav a:active, nav a:hover {
   top: -2.5rem;
   left: 100%;
   transition: left 400ms;
+  background-image: url(/rhc_online/images/icons/menu-base.jpg);
   background-size: 500px 375px;
   background-position: bottom right;
   background-repeat: no-repeat; }

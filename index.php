@@ -1,5 +1,11 @@
-<?php get_header(); ?>
+<?php /*
+this page is obsolete
 
+
+
+
+
+<?php get_header(); ?>
 
 <main class="container">
 <?php echo do_shortcode("[jr-shop id='nav-bar']"); ?>
@@ -13,21 +19,7 @@
     <?php include( "JR_Shop-elements/404-filler.php"); ?>
 
 <?php endif; ?>
-
-  <div>EVERYTHING BELOW THIS LINE IS OLD</div>
-  <hr>
-
-  <?php //include(  "JR_Shop-elements/nav-bar.php"); ?>
-
-  <?php include( "JR_Shop-elements/index-featured.php"); ?>
-
-  <?php include( "JR_Shop-elements/groups-list.php"); ?>
-
-  <?php include( "JR_Shop-elements/contact-bar.php"); ?>
-
 </main>
-
 <?php get_footer(); ?>
 
-
-
+*/ ?>

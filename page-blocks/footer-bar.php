@@ -29,11 +29,11 @@
         </div>
 
         <div class="flex-5">
-          <img src="<?php echo site_url(jr_imgSrc('rhc','RHC-Web-Small','png')) ?>" alt="Red Hot Chilli" >
+          <img src="<?php echo site_url(jr_siteImg('rhc/RHC-Web-Small.png')) ?>" alt="Red Hot Chilli" >
         </div>
 
         <div class="flex-5">
-          <img src="<?php echo site_url(jr_imgSrc('icons','fsb','jpg')) ?>" alt="Federation of Small Businesses" >
+          <img src="<?php echo site_url(jr_siteImg('icons/fsb.png')) ?>" alt="Federation of Small Businesses" >
         </div>
 
         <p class="legal flex-1">

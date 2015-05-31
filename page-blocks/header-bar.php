@@ -1,7 +1,7 @@
 <div class="container flex-container<?php echo is_front_page() ? ' home' : ' not-home' ?>">
 
   <a class="header-logo flex-2" href="<?php echo home_url(); ?>" rel="nofollow">
-    <img src="<?php echo site_url(jr_imgSrc('rhc','RHC-Web','png')); ?>"
+    <img src="<?php echo site_url(jr_siteImg('rhc/RHC-Web.png')); ?>"
          alt="Red Hot Chilli - Used Catering Equipment"/>
   </a>
 
@@ -14,5 +14,3 @@
   </menu>
 
 </div>
-
-

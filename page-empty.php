@@ -4,7 +4,6 @@
  * (nothing special, just without the <section>, to get at the flex-container)
  */
 ?>
-
 <?php get_header(); ?>
 
 <main class="container">
@@ -26,9 +25,6 @@
   <?php endwhile; else : ?>
   <?php echo do_shortcode( "[jr-shop id='404-filler']"); ?>
   <?php endif; ?>
-
-
-
 </main>
 
 <?php get_footer(); ?>

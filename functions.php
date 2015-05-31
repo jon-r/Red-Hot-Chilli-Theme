@@ -11,8 +11,6 @@ sidebars, comments, ect.
 // LOAD BONES CORE (if you remove this, the theme will break)
 require_once( 'library/bones.php' );
 
-// USE THIS TEMPLATE TO CREATE CUSTOM POST TYPES EASILY
-require_once( 'library/custom-post-type.php' );
 
 // CUSTOMIZE THE WORDPRESS ADMIN (off by default)
 // require_once( 'library/admin.php' );
@@ -65,8 +63,8 @@ if ( ! isset( $content_width ) ) {
 /************* THUMBNAIL SIZE OPTIONS *************/
 
 // Thumbnail sizes
-add_image_size( 'bones-thumb-600', 600, 150, true );
-add_image_size( 'bones-thumb-300', 300, 100, true );
+add_image_size( 'jr_tile', 480, 480, true );
+add_image_size( 'jr_thumb', 150, 150, true );
 
 /*
 to add more sizes, simply copy a line from above
@@ -92,8 +90,8 @@ add_filter( 'image_size_names_choose', 'bones_custom_image_sizes' );
 
 function bones_custom_image_sizes( $sizes ) {
     return array_merge( $sizes, array(
-        'bones-thumb-600' => __('600px by 150px'),
-        'bones-thumb-300' => __('300px by 100px'),
+        'jr_tile' => __('480px by 480px'),
+        'jr_thumb' => __('150px by 150px'),
     ) );
 }
 
@@ -104,7 +102,5 @@ when you add media to your content blocks. If you add more image sizes,
 duplicate one of the lines in the array and name it according to your
 new image size.
 */
-
-
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>
