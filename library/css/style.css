@@ -734,6 +734,8 @@ Default style for all pages
 .primary-footer {
   border-top-width: 6px;
   background-color: #2b313b; }
+  .primary-footer li {
+    margin-top: 0.5rem; }
   .primary-footer img {
     max-width: 200px; }
 
@@ -836,11 +838,12 @@ nav a.active, nav a:active, nav a:hover {
   font-size: 1.3rem;
   display: none; }
   .nav-menu a {
+    display: inline-block;
     width: 100%; }
   .nav-menu li {
     cursor: pointer;
     padding-left: 10px;
-    line-height: 2.5rem;
+    line-height: 2.5;
     border-bottom: 1px solid #e5e5e6; }
     .nav-menu li:active, .nav-menu li:hover {
       background-color: #e5e5e6; }

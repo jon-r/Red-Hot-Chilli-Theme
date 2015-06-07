@@ -179,7 +179,7 @@ $searchIn.keypress(function(e) {
   $results = $searchOut.find('li > a');
   if (e.keyCode == '40' && $results.length > 0) {
     e.preventDefault();
-    searchTraverse('down');
+    searchTraverse('down', -1);
   }
 });
 
@@ -189,14 +189,10 @@ $searchOut.on('keypress','li > a', function(e) {
     e.preventDefault();
     $i = $(this).parent('li').index();
     searchTraverse('down', $i);
-  }
-});
-
-$searchOut.on('keypress','li > a', function(e) {
-  $focussed = $searchOut.find(':focus');
-  if (e.keyCode == '38' && $focussed.length > 0) {
+  } else if (e.keyCode == '38' && $focussed.length > 0) {
     e.preventDefault();
     $i = $(this).parent('li').index();
+
     searchTraverse('up', $i);
   }
 });
@@ -204,9 +200,9 @@ $searchOut.on('keypress','li > a', function(e) {
 function searchTraverse(direction, i) {
   $results = $searchOut.find('li > a');
   $resultCount = $results.length;
-  if (direction == 'down' && i < $resultCount) {
+  if (direction == 'down' && (i + 1) < $resultCount) {
     i++
-    $target = $results.eq(i++);
+    $target = $results.eq(i);
     $text = $target.text();
     $searchIn.val($text);
   } else if (direction == 'up') {
@@ -220,6 +216,7 @@ function searchTraverse(direction, i) {
     }
   }
   $target.focus();
+  console.log(i);
 }
 /* endregion */
 /* item gallery buttons -------------------------------------------------------------- */

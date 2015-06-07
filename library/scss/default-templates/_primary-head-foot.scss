@@ -25,20 +25,20 @@
   }
 }
 
-
-
 .not-home {
   .header-logo {
     max-width: 350px;
   }
 }
 
-
 /* -----------  footer  ---------------------------------------------------------------*/
 
 .primary-footer {
   border-top-width: 6px;
   background-color: jr-grey(2);
+  li {
+    margin-top: 0.5rem;
+  }
   img {
     max-width: 200px;
   }

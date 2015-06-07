@@ -61,13 +61,14 @@ nav a {
   font-size: 1.3rem;
   display: none;
   a {
+    display: inline-block;
     width:100%;
   }
 
   li {
     cursor: pointer;
     padding-left: jr-spacer(0.5);
-    line-height: 2.5rem;
+    line-height: 2.5;
     border-bottom: $jr-border;
     &:active, &:hover {
       background-color: $jr-bg-hover;
