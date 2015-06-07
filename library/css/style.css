@@ -23,7 +23,7 @@ start style on a blank slate.
 * 2. Prevent iOS text size adjust after orientation change, without disabling
 * user zoom.
 */
-@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700|Kreon:700);
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700|Kreon:400,700);
 html {
   font-family: sans-serif;
   /* 1 */
@@ -297,18 +297,22 @@ p {
 
 h1 {
   font-size: 2.5em;
-  padding-bottom: 0.25em; }
+  padding-bottom: 0.25em;
+  font-weight: bold; }
 
 h2 {
   font-size: 1.75em;
-  padding-bottom: 0.1em; }
+  padding-bottom: 0.1em;
+  font-weight: normal; }
 
 h3 {
-  font-size: 1.25em; }
+  font-size: 1.25em;
+  font-weight: normal; }
 
 h4 {
   font-size: 1.1em;
-  text-align: center; }
+  text-align: center;
+  font-weight: normal; }
 
 em {
   color: #931f1f;
