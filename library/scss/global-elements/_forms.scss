@@ -92,3 +92,43 @@ input[type="search"] {
   }
 }
 
+.form-contact {
+  &:nth-last-child(2) { //checks if the social half is there or not
+    border-right: $jr-border-dark;
+  }
+  input, textarea {
+    border-top: $jr-border-dark;
+    margin-bottom: jr-spacer();
+    padding-left: 4px;
+    float: left;
+  }
+  textarea {
+    height: 10rem;
+    resize: vertical;
+    @include jr-width(1, 1);
+    @include jr-size(screen) {
+      @include jr-width(5, 6);
+    }
+  }
+  input {
+    @include jr-width(4, 6);
+    margin-right: percentage(1/6);
+
+
+  }
+  label {
+    border-top: $jr-border-dark;
+    font-size: 1rem;
+    padding-right: 4px;
+    @include jr-width(1, 1);
+    @include jr-size(screen) {
+      text-align: right;
+      @include jr-width(1, 6);
+    }
+  }
+  button {
+    @include jr-width(2, 6);
+    margin-left: percentage(4/6);
+  }
+}
+

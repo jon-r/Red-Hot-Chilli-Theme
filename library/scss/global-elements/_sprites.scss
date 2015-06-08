@@ -139,33 +139,29 @@ $iconMap: (
 .text-icon, .text-icon-left {
   @extend %has-icon-before;
   line-height: 1.2;
-
   &::before {
-    top:calc(50% - 12px);
+    top: calc(50% - 12px);
     transform: scale(0.1875);
     @include jr-size(screen) {
-     // top: 2px;
+      // top: 2px;
     }
+  }
 }
 
-
-
-//  @include jr-size(screen) {
-//      padding-left: 32px;
-//      line-height: 24px;
-//    @include jr-icon(before) {
-//      transform: scale(0.1875); //24px
-//    }
-//  }
+%btn-icon-base {
+  @extend %has-icon-after;
+  &::after {
+     transform-origin: bottom right;
+    bottom: 0;
+    right: 0;
+  }
 }
 
 .btn-icon {
-  @extend %has-icon-after;
+  @extend %btn-icon-base;
   &::after {
     transform: scale(0.5);
-    transform-origin: bottom right;
-    bottom: 0;
-    right: 0;
+
   }
   @include jr-size(screen) {
     &::after {
@@ -175,16 +171,25 @@ $iconMap: (
 }
 
 .btn-icon-lrg {
-  @extend %has-icon-after;
+  @extend %btn-icon-base;
   &::after {
     transform: scale(0.75);
-    transform-origin: bottom right;
-    bottom: 0;
-    right: 0;
   }
   @include jr-size(screen) {
     &::after {
       transform: scale(1);
+    }
+  }
+}
+
+.btn-icon-small {
+  @extend %btn-icon-base;
+  &::after {
+    transform: scale(0.375);
+  }
+  @include jr-size(screen) {
+    &::after {
+      transform: scale(0.5);
     }
   }
 }
@@ -238,12 +243,15 @@ $icons-before: (
   soon,
   new,
   phone-w,
+  phone-w,
+  phone,
   question,
   list,
   search,
   search-w,
   basket-w,
   email-w,
+  email,
   arrow-r,
   arrow-l,
   menu-w,
@@ -260,16 +268,5 @@ $icons-before: (
   }
 }
 
-$icons-social: (
-  facebook,
-  twitter,
-  linkedin
-);
-
-@each $item-name in $icons-social {
-  .#{$item-name} {
-    @include jr-icon(before, $item-name);
-  }
-}
 
 
