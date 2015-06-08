@@ -11,7 +11,7 @@
     <ul class="main-menu" id="js-main-list" >
       <?php echo do_shortcode("[jr-shop id='shop-menu']"); ?>
 <?php // wp menus start here. admin for setup --> ?>
-      <li>Featured
+      <li><h3>Featured</h3>
         <?php wp_nav_menu(array(
             'container' => '',                           // remove nav container
             'menu' => __( 'Featured Menu Links', 'bonestheme' ),  // nav name
@@ -22,7 +22,7 @@
             'fallback_cb' => ''                          // fallback function (if there is one)
         )); ?>
       </li>
-      <li>Other Services
+      <li><h3>Other Services</h3>
         <?php wp_nav_menu(array(
             'container' => '',
             'menu' => __( 'Services Menu links', 'bonestheme' ),  // nav name

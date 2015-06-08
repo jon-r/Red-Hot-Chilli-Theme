@@ -5,7 +5,6 @@ nav a {
     background-color: $jr-bg-hover;
   }
 }
-
 .primary-nav {
   justify-content: flex-start;
   align-items:flex-start;
@@ -22,7 +21,6 @@ nav a {
     padding-bottom: jr-spacer(1);
   }
 }
-
 .nav-breadcrumbs,
 .nav-paginate {
   a {
@@ -35,15 +33,11 @@ nav a {
   display: none;
 }
 
-
 .menu-btn {
   z-index: 5;
   height: 2.5rem;
   cursor: pointer;
 }
-
-
-
 
 .touch-toggle {
   @include jr-size(screen) {
@@ -60,15 +54,14 @@ nav a {
   text-align: center;
   font-size: 1.3rem;
   display: none;
-  a {
+  a, h3 {
     display: inline-block;
     width:100%;
+    padding: 6px;
   }
 
   li {
     cursor: pointer;
-    padding-left: jr-spacer(0.5);
-    line-height: 2.5;
     border-bottom: $jr-border;
     &:active, &:hover {
       background-color: $jr-bg-hover;
@@ -87,8 +80,6 @@ nav a {
     li {
       @include jr-width(1, 2);
       display: inline-block;
-      padding: 0 jr-spacer(0.5);
-
       &:nth-of-type(even){
         border-left: $jr-border;
       }
@@ -102,7 +93,7 @@ nav a {
     text-align: left;
     li {
       font-size: 1rem;
-      line-height: 2rem;
+      line-height: 1rem
     }
   }
 }

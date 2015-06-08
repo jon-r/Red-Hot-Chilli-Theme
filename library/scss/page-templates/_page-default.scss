@@ -1,0 +1,21 @@
+.default-page {
+  padding: jr-spacer();
+  .flex-container {
+    justify-content: space-between;
+    margin-top: jr-spacer();
+  }
+  //to remove the paragraph blocks that WP puts
+  p:empty {
+    display: none;
+  }
+}
+
+.has-frame {
+  border:$jr-border;
+  padding:2px;
+}
+
+.has-frame-dark {
+  border:$jr-border-dark;
+  padding:2px;
+}

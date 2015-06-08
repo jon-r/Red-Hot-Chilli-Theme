@@ -11,8 +11,7 @@
 
   <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-  <article class="default-page flex-container">
-
+  <article class="flex-container">
 
     <header class="article-header flex-1">
       <h1><?php the_title(); ?></h1>

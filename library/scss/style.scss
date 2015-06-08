@@ -39,16 +39,12 @@ Add some global styling.
 
 // typography
 @import "global-elements/type";
-
 // icons
 @import "global-elements/sprites";
-
 // grid
 @import "global-elements/grid";
-
 //input forms. shopping cart/wishlist to go here to (eventually)
 @import "global-elements/forms";
-
 //common elements (to maybe remove/minimise)
 @import "global-elements/common-elements";
 
@@ -58,10 +54,8 @@ Default style for all pages
 
 //header+footer of whole page
 @import "default-templates/primary-head-foot";
-
 //page core. section > *
 @import "default-templates/page-body";
-
 //primary navigation menu
 @import "default-templates/primary-nav";
 
@@ -71,13 +65,12 @@ Page specific items.
 
 //front page, including carousel banner
 @import "page-templates/index";
-
 //shop list, groups, categories
 @import "page-templates/shop-lists";
-
 //shop full (single item)
 @import "page-templates/shop-single";
-
+//default page template
+@import "page-templates/page-default";
 //contact bar
 @import "page-templates/_contact";
 

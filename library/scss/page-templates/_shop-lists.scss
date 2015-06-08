@@ -15,7 +15,7 @@
       border-bottom: $jr-border-dark;
     }
     &:last-child {
-      font-size: 0.9rem;
+      font-size: 1rem;
       position: absolute;
       bottom: 0;
       border-top: $jr-border-dark;
@@ -48,7 +48,7 @@
 
 .shop-tile.item {
   padding-bottom: jr-spacer(2);
-
+  font-size: 1.25rem;
   @extend %has-icon-before;
   &::before {
     right:-9px;

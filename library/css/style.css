@@ -314,15 +314,13 @@ h4 {
   text-align: center;
   font-weight: normal; }
 
-em {
+p + p {
+  margin-top: 20px; }
+
+em.greater {
   color: #931f1f;
   font-weight: 700;
   font-style: normal; }
-
-em.lesser {
-  color: inherit;
-  font-weight: inherit;
-  font-style: italic; }
 
 /*-------------------------sprite layouts + settings ----------------------------------*/
 .text-icon, .text-icon-left, .loading, .primary-nav:only-child, .shop-tile.item, .btn-icon, .btn-icon-lrg {
@@ -837,13 +835,12 @@ nav a.active, nav a:active, nav a:hover {
   text-align: center;
   font-size: 1.3rem;
   display: none; }
-  .nav-menu a {
+  .nav-menu a, .nav-menu h3 {
     display: inline-block;
-    width: 100%; }
+    width: 100%;
+    padding: 6px; }
   .nav-menu li {
     cursor: pointer;
-    padding-left: 10px;
-    line-height: 2.5;
     border-bottom: 1px solid #e5e5e6; }
     .nav-menu li:active, .nav-menu li:hover {
       background-color: #e5e5e6; }
@@ -855,8 +852,7 @@ nav a.active, nav a:active, nav a:hover {
   @media only screen and (min-width: 482px) and (max-width: 1030px) {
     .nav-menu li {
       width: calc(50% - 20px);
-      display: inline-block;
-      padding: 0 10px; }
+      display: inline-block; }
       .nav-menu li:nth-of-type(even) {
         border-left: 1px solid #e5e5e6; } }
   @media only screen and (min-width: 1031px) {
@@ -867,7 +863,7 @@ nav a.active, nav a:active, nav a:hover {
       text-align: left; }
       .nav-menu li {
         font-size: 1rem;
-        line-height: 2rem; } }
+        line-height: 1rem; } }
 
 .nav-menu, .menu-btn {
   width: 100%; }
@@ -1094,7 +1090,7 @@ Page specific items.
   .shop-tile div:first-child {
     border-bottom: 1px solid #424a57; }
   .shop-tile div:last-child {
-    font-size: 0.9rem;
+    font-size: 1rem;
     position: absolute;
     bottom: 0;
     border-top: 1px solid #424a57;
@@ -1118,7 +1114,8 @@ Page specific items.
       background-color: #e5e5e6; }
 
 .shop-tile.item {
-  padding-bottom: 40px; }
+  padding-bottom: 40px;
+  font-size: 1.25rem; }
   .shop-tile.item::before {
     right: -9px;
     top: 3.5rem; }
@@ -1152,7 +1149,7 @@ Page specific items.
   float: right; }
 
 .item-dimensions li {
-  padding: 2px 20px; }
+  padding: 5px 20px; }
   .item-dimensions li:nth-of-type(even) {
     background-color: #e5e5e6; }
 
@@ -1242,6 +1239,22 @@ Page specific items.
   .shop-buttons button {
     margin: 10px;
     line-height: 2rem; }
+
+.default-page {
+  padding: 20px; }
+  .default-page .flex-container {
+    justify-content: space-between;
+    margin-top: 20px; }
+  .default-page p:empty {
+    display: none; }
+
+.has-frame {
+  border: 1px solid #e5e5e6;
+  padding: 2px; }
+
+.has-frame-dark {
+  border: 1px solid #424a57;
+  padding: 2px; }
 
 .contact-bar {
   background-color: #2b313b;

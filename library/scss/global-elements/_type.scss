@@ -60,16 +60,14 @@ p {
   @extend %p-font;
 }
 
-em {
+p + p {
+  margin-top: jr-spacer();
+}
+
+em.greater {
   color:$jr-emphasis;
   font-weight: 700;
   font-style: normal;
-}
-
-em.lesser {
-  color:inherit;
-  font-weight: inherit;
-  font-style: italic;
 }
 
 
