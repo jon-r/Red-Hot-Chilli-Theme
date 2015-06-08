@@ -684,6 +684,7 @@ button, .btn-red {
       height: 96px; } }
 
 .social-shares {
+  border-top: 1px solid #424a57;
   margin: 10px 0;
   text-align: center; }
   .social-shares a {
@@ -792,9 +793,6 @@ section {
   position: relative; }
 
 /*- top menu parts ---------------------------------------------------------------*/
-nav a.active, nav a:active, nav a:hover {
-  background-color: #e5e5e6; }
-
 .primary-nav {
   justify-content: flex-start;
   align-items: flex-start;
@@ -808,25 +806,22 @@ nav a.active, nav a:active, nav a:hover {
     .primary-nav {
       padding-bottom: 20px; } }
 
-.nav-breadcrumbs a,
-.nav-paginate a {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem; }
-
 #menu-toggle {
   display: none; }
+
+.menu-btn,
+.nav-menu {
+  width: 100%; }
+  @media only screen and (min-width: 1031px) {
+    .menu-btn,
+    .nav-menu {
+      width: 250px;
+      margin-left: -4px; } }
 
 .menu-btn {
   z-index: 5;
   height: 2.5rem;
   cursor: pointer; }
-
-.touch-toggle {
-  height: 2.5rem;
-  width: 100%; }
-  @media only screen and (min-width: 1031px) {
-    .touch-toggle {
-      display: none; } }
 
 .nav-menu {
   z-index: 5;
@@ -835,19 +830,9 @@ nav a.active, nav a:active, nav a:hover {
   text-align: center;
   font-size: 1.3rem;
   display: none; }
-  .nav-menu a, .nav-menu h3 {
-    display: inline-block;
-    width: 100%;
-    padding: 6px; }
-  .nav-menu li {
-    cursor: pointer;
-    border-bottom: 1px solid #e5e5e6; }
-    .nav-menu li:active, .nav-menu li:hover {
-      background-color: #e5e5e6; }
   @media only screen and (max-width: 481px) {
     .nav-menu li {
-      padding-left: 0; }
-    .nav-menu a {
+      background-color: rgba(255, 255, 255, 0.5);
       max-width: 250px; } }
   @media only screen and (min-width: 482px) and (max-width: 1030px) {
     .nav-menu li {
@@ -860,17 +845,28 @@ nav a.active, nav a:active, nav a:hover {
       position: absolute;
       left: 0;
       top: 2.5rem;
-      text-align: left; }
-      .nav-menu li {
-        font-size: 1rem;
-        line-height: 1rem; } }
+      text-align: left; } }
 
-.nav-menu, .menu-btn {
-  width: 100%; }
+.nav-btn,
+.touch-toggle {
+  width: 100%;
+  cursor: pointer; }
+
+.nav-btn {
+  display: inline-block;
+  padding: 6px;
+  border-bottom: 1px solid #e5e5e6; }
+  .nav-btn:active, .nav-btn:hover {
+    background-color: #e5e5e6; }
   @media only screen and (min-width: 1031px) {
-    .nav-menu, .menu-btn {
-      width: 250px;
-      margin-left: -4px; } }
+    .nav-btn {
+      font-size: 1.2rem; } }
+
+.touch-toggle {
+  height: 2.5rem; }
+  @media only screen and (min-width: 1031px) {
+    .touch-toggle {
+      display: none; } }
 
 .main-menu,
 .sub-menu {
@@ -911,7 +907,8 @@ nav a.active, nav a:active, nav a:hover {
       display: block;
       left: 98%; } }
 
-#menu-toggle:checked + .not-home, .nav-menu.home {
+#menu-toggle:checked + .not-home,
+.nav-menu.home {
   height: auto;
   display: block; }
 
@@ -933,7 +930,14 @@ nav a.active, nav a:active, nav a:hover {
 .nav-breadcrumbs a,
 .nav-paginate a {
   border-left: 1px solid #e5e5e6;
-  padding-left: 20px; }
+  padding: 0.5rem 20px; }
+  .nav-breadcrumbs a:active, .nav-breadcrumbs a:hover,
+  .nav-paginate a:active,
+  .nav-paginate a:hover {
+    background-color: #e5e5e6; }
+
+.nav-breadcrumbs a {
+  padding-right: 32px; }
 
 .nav-paginate {
   padding-bottom: 20px; }
@@ -1126,9 +1130,6 @@ Page specific items.
   .extra-brands a {
     margin-left: 10px;
     line-height: 1.5; }
-
-.nav-paginate a {
-  padding-right: 20px; }
 
 .ss-length {
   position: absolute;

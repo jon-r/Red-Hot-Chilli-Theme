@@ -1,15 +1,14 @@
 /*- top menu parts ---------------------------------------------------------------*/
 
 nav a {
-  &.active, &:active, &:hover {
-    background-color: $jr-bg-hover;
-  }
+
 }
+
 .primary-nav {
   justify-content: flex-start;
-  align-items:flex-start;
+  align-items: flex-start;
   padding-bottom: jr-spacer();
-//simple 'loading' simulator - the <nav> will be the only child of the <section> until the php <article> has loaded.
+  //simple 'loading' simulator - the <nav> will be the only child of the <section> until the php <article> has loaded.
   &:only-child {
     @extend %loader-icon;
     padding-bottom: 50vh;
@@ -21,30 +20,24 @@ nav a {
     padding-bottom: jr-spacer(1);
   }
 }
-.nav-breadcrumbs,
-.nav-paginate {
-  a {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-  }
-}
 
 #menu-toggle {
   display: none;
+}
+
+.menu-btn,
+.nav-menu {
+  width: 100%;
+  @include jr-size(screen) {
+    width: 250px;
+    margin-left: -4px;
+  }
 }
 
 .menu-btn {
   z-index: 5;
   height: 2.5rem;
   cursor: pointer;
-}
-
-.touch-toggle {
-  @include jr-size(screen) {
-    display: none;
-  }
-  height: 2.5rem;
-  width:100%;
 }
 
 .nav-menu {
@@ -54,56 +47,52 @@ nav a {
   text-align: center;
   font-size: 1.3rem;
   display: none;
-  a, h3 {
-    display: inline-block;
-    width:100%;
-    padding: 6px;
-  }
-
-  li {
-    cursor: pointer;
-    border-bottom: $jr-border;
-    &:active, &:hover {
-      background-color: $jr-bg-hover;
-    }
-  }
   @include jr-size(phoneOnly) {
     li {
-      padding-left: 0;
-    }
-    a {
+      background-color: rgba(white, 0.5);
       max-width: 250px;
     }
   }
-
   @include jr-size(tabletOnly) {
     li {
       @include jr-width(1, 2);
       display: inline-block;
-      &:nth-of-type(even){
+      &:nth-of-type(even) {
         border-left: $jr-border;
       }
     }
   }
-
   @include jr-size(screen) {
     position: absolute;
-    left:0;
-    top:2.5rem;
+    left: 0;
+    top: 2.5rem;
     text-align: left;
-    li {
-      font-size: 1rem;
-      line-height: 1rem
-    }
   }
 }
 
-.nav-menu, .menu-btn {
+.nav-btn,
+.touch-toggle {
   width: 100%;
-  @include jr-size(screen) {
-    width: 250px;
-    margin-left: -4px;
+  cursor: pointer;
+}
+
+.nav-btn {
+  display: inline-block;
+  padding: 6px;
+  border-bottom: $jr-border;
+  &:active, &:hover {
+    background-color: $jr-bg-hover;
   }
+  @include jr-size(screen) {
+    font-size: 1.2rem;
+  }
+}
+
+.touch-toggle {
+  @include jr-size(screen) {
+    display: none;
+  }
+  height: 2.5rem;
 }
 
 .main-menu,
@@ -152,7 +141,8 @@ nav a {
   }
 }
 
-#menu-toggle:checked + .not-home, .nav-menu.home {
+#menu-toggle:checked + .not-home,
+.nav-menu.home {
   height: auto;
   display: block;
 }
@@ -167,7 +157,6 @@ nav a {
   margin-bottom: jr-spacer();
 }
 
-
 .nav-right {
   border-bottom: $jr-border;
   background-color: white;
@@ -181,7 +170,15 @@ nav a {
 .nav-paginate {
   a {
     border-left: $jr-border;
-    padding-left: jr-spacer();
+    padding: 0.5rem jr-spacer();
+    &:active, &:hover {
+      background-color: $jr-bg-hover;
+    }
+  }
+}
+.nav-breadcrumbs {
+  a {
+    padding-right: 32px;
   }
 }
 .nav-paginate {

@@ -11,22 +11,22 @@
     <ul class="main-menu" id="js-main-list" >
       <?php echo do_shortcode("[jr-shop id='shop-menu']"); ?>
 <?php // wp menus start here. admin for setup --> ?>
-      <li><h3>Featured</h3>
+      <li><h3 class="nav-btn">Featured</h3>
         <?php wp_nav_menu(array(
             'container' => '',                           // remove nav container
             'menu' => __( 'Featured Menu Links', 'bonestheme' ),  // nav name
-            'before' => '<span class="text-icon arrow-r">',
+            'before' => '<span class="nav-btn text-icon arrow-r">',
             'after' => '</span>',
             'items_wrap'      => '<ul class="sub-menu" ><h3 class="touch-toggle btn-red text-icon close-w">Back</h3>%3$s</ul>',
             'theme_location' => 'featured-menu',         // where it's located in the theme
             'fallback_cb' => ''                          // fallback function (if there is one)
         )); ?>
       </li>
-      <li><h3>Other Services</h3>
+      <li><h3 class="nav-btn">Other Services</h3>
         <?php wp_nav_menu(array(
             'container' => '',
             'menu' => __( 'Services Menu links', 'bonestheme' ),  // nav name
-            'before' => '<span class="text-icon arrow-r">',
+            'before' => '<span class="nav-btn text-icon arrow-r">',
             'after' => '</span>',
             'items_wrap'      => '<ul class="sub-menu" ><h3 class="touch-toggle btn-red text-icon close-w">Back</h3>%3$s</ul>',
             'theme_location' => 'services-menu',         // where it's located in the theme
