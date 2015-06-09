@@ -14,7 +14,7 @@
   if ( have_posts() ) {
     while ( have_posts() ) {
       the_post();
-      if ($jr_safeArray[rhc] == 'Not Found' || $jr_safeArray[group] == 'Not Found' || $jr_safeArray[cat] == 'Not Found') {
+      if ($jr_safeArray['rhc'] == 'Not Found' || $jr_safeArray['group'] == 'Not Found' || $jr_safeArray['cat'] == 'Not Found') {
         echo do_shortcode("[jr-shop id='404-filler']");
       } else {
         the_content();

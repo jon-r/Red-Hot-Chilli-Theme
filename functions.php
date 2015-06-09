@@ -63,7 +63,7 @@ if ( ! isset( $content_width ) ) {
 /************* THUMBNAIL SIZE OPTIONS *************/
 
 // Thumbnail sizes
-add_image_size( 'jr_tile', 480, 480, true );
+add_image_size( 'jr_tile', 560, 560, true );
 add_image_size( 'jr_thumb', 150, 150, true );
 
 /*
@@ -102,5 +102,8 @@ when you add media to your content blocks. If you add more image sizes,
 duplicate one of the lines in the array and name it according to your
 new image size.
 */
+
+//removes wp <p> formattings
+remove_filter('the_content', 'wpautop');
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>

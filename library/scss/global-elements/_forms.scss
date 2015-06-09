@@ -6,13 +6,17 @@ form {
   @include clearfix;
 }
 
-input, textarea {
-  //display: inline-block;
+.text-input {
   box-shadow: inset $jr-shadow;
   padding:0;
   background-color: white;
   color: $jr-text-dark;
   border: none;
+}
+
+input, textarea {
+  //display: inline-block;
+
 }
 
 label, input, button {
@@ -102,7 +106,7 @@ input[type="search"] {
     padding-left: 4px;
     float: left;
   }
-  textarea {
+  textarea.text-input {
     height: 10rem;
     resize: vertical;
     @include jr-width(1, 1);
@@ -110,11 +114,9 @@ input[type="search"] {
       @include jr-width(5, 6);
     }
   }
-  input {
+  input.text-input {
     @include jr-width(4, 6);
     margin-right: percentage(1/6);
-
-
   }
   label {
     border-top: $jr-border-dark;
@@ -126,9 +128,21 @@ input[type="search"] {
       @include jr-width(1, 6);
     }
   }
-  button {
+  .button {
     @include jr-width(2, 6);
     margin-left: percentage(4/6);
   }
 }
+/* --contact form 7 -------------------------------------------------------------------*/
+//set contact forms to fill their container. easiest workaround
+.wpcf7 {
+  width:100%;
+  em {
+    display: inline-block;
+    width:100%;
+  }
+}
 
+.ajax-loader {
+  display:none;
+}

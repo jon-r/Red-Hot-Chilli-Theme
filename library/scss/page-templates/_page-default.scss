@@ -4,11 +4,17 @@
     justify-content: space-between;
     margin-top: jr-spacer();
   }
-  //to remove the paragraph blocks that WP puts
-  p:empty {
-    display: none;
+  //to remove the paragraph blocks that WP puts - EDIT should no longer be needed
+//  p:empty {
+//    display: none;
+//  }
+  li {
+    list-style:disc inside;
+    padding-bottom: 5px;
   }
 }
+
+
 
 .has-frame {
   border:$jr-border;
