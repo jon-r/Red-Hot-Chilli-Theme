@@ -14,11 +14,6 @@ form {
   border: none;
 }
 
-input, textarea {
-  //display: inline-block;
-
-}
-
 label, input, button {
   float: left;
 }
@@ -26,10 +21,6 @@ label, input, button {
 input, button {
   font-size: 1.2rem;
   height:2rem;
-}
-
-input[type="search"] {
-
 }
 
 ::-webkit-input-placeholder {
@@ -132,17 +123,4 @@ input[type="search"] {
     @include jr-width(2, 6);
     margin-left: percentage(4/6);
   }
-}
-/* --contact form 7 -------------------------------------------------------------------*/
-//set contact forms to fill their container. easiest workaround
-.wpcf7 {
-  width:100%;
-  em {
-    display: inline-block;
-    width:100%;
-  }
-}
-
-.ajax-loader {
-  display:none;
 }

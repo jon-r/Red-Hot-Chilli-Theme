@@ -295,8 +295,6 @@ function modalClose(e) {
   e.removeClass('is-active');
 }
 
-
-
 $imgGalleryOpen.click(function() {
   $getImgSrc = $imgGalleryMain.find('img').attr('src');
   $bigImgSrc = $getImgSrc.replace('gallery-tile','gallery');
