@@ -13,8 +13,6 @@
   float: right;
 }
 
-
-
 .item-dimensions {
   li {
     padding: 5px jr-spacer();
@@ -23,7 +21,6 @@
     }
   }
 }
-
 
 .item-tile-inner:hover {
   .item-main-zoom {
@@ -101,14 +98,6 @@
   }
 }
 
-.item-tile {
-  padding: jr-spacer(0.5);
-  header {
-    border-bottom: $jr-border;
-    margin-bottom: jr-spacer();
-  }
-}
-
 .item-tile-inner {
   background-color: $jr-bg-light;
   border: $jr-border;
@@ -137,5 +126,11 @@
     @extend %floating-tile;
       margin: jr-spacer(0.5);
     line-height: 2rem;
+  }
+}
+
+.item-features {
+  li {
+    line-height: 2;
   }
 }

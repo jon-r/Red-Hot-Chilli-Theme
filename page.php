@@ -16,7 +16,7 @@
       <h1><?php the_title(); ?></h1>
     </header>
 
-    <section class="flex-1 default-page">
+    <section class="flex-1 white-block default-page">
 
       <?php the_content(); ?>
 

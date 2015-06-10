@@ -36,24 +36,22 @@ input, button {
 .form-search {
   margin: jr-spacer(0.5) auto;
   display: block;
-
   input, button {
      margin: 4px 0 ;
   }
-
   input {
-
     line-height: 2rem;
     width: calc(100% - 5rem);
     padding-left: 2rem;
     border-radius:4px 0 0 4px;
   }
-
-
   button {
     width: 3rem;
     border-radius:0 4px 4px 0;
     background-image: linear-gradient(to bottom, jr-red(4), jr-red(2))
+  }
+  @include jr-size(phoneOnly) {
+    margin: 2px;
   }
 }
 
@@ -88,9 +86,6 @@ input, button {
 }
 
 .form-contact {
-  &:nth-last-child(2) { //checks if the social half is there or not
-    border-right: $jr-border-dark;
-  }
   input, textarea {
     border-top: $jr-border-dark;
     margin-bottom: jr-spacer();

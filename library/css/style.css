@@ -525,7 +525,10 @@ em.greater {
 
 .flex-1, .flex-2, .flex-3, .flex-4, .menu-featured li, .flex-5, .flex-6 {
   width: calc(100% - 20px);
-  margin-bottom: 20px; }
+  margin-bottom: 10px; }
+  @media only screen and (min-width: 482px) {
+    .flex-1, .flex-2, .flex-3, .flex-4, .menu-featured li, .flex-5, .flex-6 {
+      margin-bottom: 20px; } }
 
 @media only screen and (min-width: 482px) {
   .flex-2, .flex-3, .flex-4, .menu-featured li {
@@ -591,6 +594,9 @@ input, button {
     width: 3rem;
     border-radius: 0 4px 4px 0;
     background-image: linear-gradient(to bottom, #a32929, #5c0a0a); }
+  @media only screen and (max-width: 481px) {
+    .form-search {
+      margin: 2px; } }
 
 .search-out {
   position: absolute;
@@ -613,8 +619,6 @@ input, button {
     background: #424a57;
     color: white; }
 
-.form-contact:nth-last-child(2) {
-  border-right: 1px solid #424a57; }
 .form-contact input, .form-contact textarea {
   border-top: 1px solid #424a57;
   margin-bottom: 20px;
@@ -717,14 +721,14 @@ div.wpcf7 .placeheld {
 
 /*--- common page elements + defaults -------------------------------------------------*/
 /*title blocks */
-.menu-featured h3, .shop-tile div {
+.shop-tile div {
   width: 100%;
   background-color: #e5e5e6;
   min-height: 3rem;
   padding: 0.1rem 20px; }
 
 /* floating tile */
-.dark-block, section, .gallery-nav, .shop-buttons button, .social-shares a {
+.dark-block, .white-block, .social-shares a, .nav-paginate, .shop-tile, .gallery-nav, .shop-buttons button {
   box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
   border-radius: 4px; }
 
@@ -738,13 +742,23 @@ button, .btn-red {
   background-color: #931f1f;
   color: #e5e5e6; }
 
-/*dark popout*/
+.dark-block, .white-block {
+  padding: 10px; }
+  .dark-block header, .white-block header {
+    border-bottom: 1px solid #e5e5e6;
+    margin-bottom: 20px; }
+  .dark-block * + header, .white-block * + header {
+    margin-top: 20px;
+    border-top: 1px solid #424a57; }
+
+/*dark tile*/
 .dark-block {
   background-color: #2b313b;
-  padding: 10px;
   color: #e5e5e6; }
-  .dark-block li {
-    line-height: 2; }
+
+/*light tile*/
+.white-block {
+  background-color: white; }
 
 /* title frames */
 .article-header {
@@ -790,6 +804,52 @@ button, .btn-red {
       width: 96px;
       height: 96px; } }
 
+/*-- social media ---------------------------------------------------------------------*/
+.social-links,
+.social-links-small {
+  text-align: center;
+  font-size: 0.5rem;
+  color: #15181e; }
+  .social-links a,
+  .social-links-small a {
+    display: inline-block;
+    margin-right: 10px; }
+
+.social-links a {
+  width: 64px;
+  height: 64px; }
+  @media only screen and (min-width: 1031px) {
+    .social-links a {
+      width: 96px;
+      height: 96px; } }
+
+.social-links-small a {
+  width: 48px;
+  height: 48px; }
+  @media only screen and (min-width: 1031px) {
+    .social-links-small a {
+      width: 64px;
+      height: 64px; } }
+
+.social-shares {
+  border-top: 1px solid #424a57;
+  margin: 10px 0;
+  text-align: center; }
+  .social-shares a {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    background-color: #f2f2f2;
+    padding-right: 10px;
+    margin: 10px;
+    line-height: 2rem; }
+  .social-shares a:hover, .social-shares a:active {
+    color: #e5e5e6; }
+  .social-shares .facebook {
+    background-color: #3D5A98; }
+  .social-shares .twitter {
+    background-color: #5FA9DD; }
+
 /*********************
 Default style for all pages
 *********************/
@@ -816,6 +876,9 @@ Default style for all pages
 
 .not-home .header-logo {
   max-width: 350px; }
+@media only screen and (max-width: 481px) {
+  .not-home h2 {
+    display: none; } }
 
 /* -----------  footer  ---------------------------------------------------------------*/
 .primary-footer {
@@ -863,22 +926,6 @@ main {
   @media only screen and (min-width: 1240px) {
     .container {
       width: 1200px; } }
-
-.column {
-  width: 100%;
-  margin: 0 20px; }
-  .column:after {
-    content: "";
-    display: table;
-    clear: both; }
-  @media only screen and (min-width: 1031px) {
-    .column {
-      width: 50%;
-      float: left; } }
-
-section {
-  background-color: white;
-  position: relative; }
 
 /*- top menu parts ---------------------------------------------------------------*/
 .primary-nav {
@@ -1017,18 +1064,24 @@ section {
 
 .nav-breadcrumbs a,
 .nav-paginate a {
-  border-left: 1px solid #e5e5e6;
+  float: left;
   padding: 0.5rem 20px; }
   .nav-breadcrumbs a:active, .nav-breadcrumbs a:hover,
   .nav-paginate a:active,
   .nav-paginate a:hover {
     background-color: #e5e5e6; }
+.nav-breadcrumbs a + a,
+.nav-paginate a + a {
+  border-left: 1px solid #e5e5e6; }
 
 .nav-breadcrumbs a {
   padding-right: 32px; }
 
 .nav-paginate {
-  padding-bottom: 20px; }
+  margin: 20px;
+  background-color: white; }
+  .nav-paginate .active {
+    background-color: #e5e5e6; }
 
 /*********************
 Page specific items.
@@ -1037,28 +1090,35 @@ Page specific items.
 .menu-featured li {
   box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
   position: relative;
-  height: 120px;
+  height: 150px;
   display: block;
   overflow: hidden;
-  background-color: #424a57; }
+  background-color: black; }
   @media only screen and (min-width: 1031px) {
     .menu-featured li {
       height: auto; } }
-.menu-featured h3 {
+.menu-featured h2 {
+  background: #424a57;
+  background: linear-gradient(to bottom, #15181e, #424a57) top/200%;
+  color: #e5e5e6;
+  text-align: center;
   position: absolute;
   bottom: 0;
   left: 0;
+  width: 100%;
+  padding: 0.5rem;
   border-top: 1px solid #e5e5e6; }
 .menu-featured img {
   position: relative;
   height: 100%;
+  width: 100%;
   margin-top: -25%;
-  /*overwriting plugin*/
-  width: 100% !important;
-  padding: 0 !important; }
+  object-fit: cover; }
   @media only screen and (min-width: 1031px) {
     .menu-featured img {
       margin-top: 0; } }
+.menu-featured a:hover h2 {
+  background-position: bottom; }
 
 .carousel {
   background-color: #701010;
@@ -1173,6 +1233,8 @@ Page specific items.
 
 /*-- default list Layout -----------------------------------------------------------*/
 .shop-tile {
+  background-color: white;
+  position: relative;
   border-bottom: solid 3px #931f1f; }
   .shop-tile img {
     display: block; }
@@ -1299,12 +1361,6 @@ Page specific items.
     .item-thumbs li {
       width: calc(25% - 20px); } }
 
-.item-tile {
-  padding: 10px; }
-  .item-tile header {
-    border-bottom: 1px solid #e5e5e6;
-    margin-bottom: 20px; }
-
 .item-tile-inner {
   background-color: #f2f2f2;
   border: 1px solid #e5e5e6;
@@ -1329,14 +1385,14 @@ Page specific items.
     margin: 10px;
     line-height: 2rem; }
 
-.default-page {
-  padding: 20px; }
-  .default-page .flex-container {
-    justify-content: space-between;
-    margin-top: 20px; }
-  .default-page li {
-    list-style: disc inside;
-    padding-bottom: 5px; }
+.item-features li {
+  line-height: 2; }
+
+.default-page .flex-container {
+  margin-top: 20px; }
+.default-page li {
+  list-style: disc inside;
+  padding-bottom: 5px; }
 
 .has-frame {
   border: 1px solid #e5e5e6;
@@ -1346,21 +1402,15 @@ Page specific items.
   border: 1px solid #424a57;
   padding: 2px; }
 
-.contact-bar {
-  background-color: #2b313b;
-  color: #e5e5e6; }
-
 /*-- feedback -------------------------------------------------------------------------*/
-.testimonials {
-  border-bottom: 1px solid #424a57; }
-  .testimonials p, .testimonials h4 {
-    width: 100%;
-    margin-bottom: 20px; }
-  .testimonials p {
-    text-align: center;
-    font-size: 1.25rem; }
-  .testimonials h4 {
-    text-align: right; }
+.testimonials p, .testimonials h4 {
+  width: 100%;
+  margin-bottom: 20px; }
+.testimonials p {
+  text-align: center;
+  font-size: 1.25rem; }
+.testimonials h4 {
+  text-align: right; }
 
 /*-- map ------------------------------------------------------------------------------*/
 .map-container {
@@ -1375,56 +1425,10 @@ Page specific items.
 
 .contact-map {
   width: 100%;
-  height: 400px;
+  height: 300px;
   border: none; }
   @media only screen and (min-width: 1031px) {
     .contact-map {
       height: 500px; } }
-
-/*-- social media ---------------------------------------------------------------------*/
-.social-links,
-.social-links-small {
-  text-align: center;
-  font-size: 0.5rem;
-  color: #15181e; }
-  .social-links a,
-  .social-links-small a {
-    display: inline-block;
-    margin-right: 10px; }
-
-.social-links a {
-  width: 64px;
-  height: 64px; }
-  @media only screen and (min-width: 1031px) {
-    .social-links a {
-      width: 96px;
-      height: 96px; } }
-
-.social-links-small a {
-  width: 48px;
-  height: 48px; }
-  @media only screen and (min-width: 1031px) {
-    .social-links-small a {
-      width: 64px;
-      height: 64px; } }
-
-.social-shares {
-  border-top: 1px solid #424a57;
-  margin: 10px 0;
-  text-align: center; }
-  .social-shares a {
-    text-decoration: none;
-    font-weight: bold;
-    color: white;
-    background-color: #f2f2f2;
-    padding-right: 10px;
-    margin: 10px;
-    line-height: 2rem; }
-  .social-shares a:hover, .social-shares a:active {
-    color: #e5e5e6; }
-  .social-shares .facebook {
-    background-color: #3D5A98; }
-  .social-shares .twitter {
-    background-color: #5FA9DD; }
 
 /*# sourceMappingURL=style.css.map */

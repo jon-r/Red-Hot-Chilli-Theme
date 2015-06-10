@@ -27,16 +27,31 @@ button, .btn-red {
   color: $jr-text-light;
 }
 
-/*dark popout*/
+.dark-block, .white-block {
+  padding: jr-spacer(0.5);
+  @extend %floating-tile;
+  header {
+    border-bottom: $jr-border;
+    margin-bottom: jr-spacer();
+  }
+  * + header {
+    margin-top: jr-spacer();
+    border-top: $jr-border-dark;
+  }
+}
+
+/*dark tile*/
 .dark-block {
   background-color: jr-grey(2);
-  padding: jr-spacer(0.5);
   color: $jr-text-light;
-  @extend %floating-tile;
+
  // font-size:1.2rem;
-  li {
-    line-height: 2;
-  }
+
+}
+
+/*light tile*/
+.white-block {
+  background-color: white;
 }
 
 /* title frames */

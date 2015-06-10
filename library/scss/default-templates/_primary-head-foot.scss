@@ -29,6 +29,14 @@
   .header-logo {
     max-width: 350px;
   }
+  @include jr-size(phoneOnly) {
+    h2 {
+      display:none;
+    }
+    .header-logo, .header-links {
+
+    }
+  }
 }
 
 /* -----------  footer  ---------------------------------------------------------------*/

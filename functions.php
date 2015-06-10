@@ -90,7 +90,7 @@ add_filter( 'image_size_names_choose', 'bones_custom_image_sizes' );
 
 function bones_custom_image_sizes( $sizes ) {
     return array_merge( $sizes, array(
-        'jr_tile' => __('480px by 480px'),
+        'jr_tile' => __('560px by 560px'),
         'jr_thumb' => __('150px by 150px'),
     ) );
 }

@@ -29,23 +29,11 @@ main {
   overflow: hidden;
   @include jr-size(screen) {
     width: 1000px ;
-      overflow: visible;
+    overflow: visible;
   };
   @include jr-size(screen-hd) { width:1200px };
 }
 
-.column {
-  width:100%;
-  margin: 0 jr-spacer();
-  @include clearfix;
-  @include jr-size(screen) {
-    width:50%;
-    float:left;
-  }
-}
-
 section {
-  @extend %floating-tile;
-  background-color: white;
-  position: relative;
+
 }

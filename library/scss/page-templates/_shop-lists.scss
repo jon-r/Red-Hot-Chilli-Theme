@@ -1,6 +1,9 @@
 /*-- default list Layout -----------------------------------------------------------*/
 
 .shop-tile {
+    @extend %floating-tile;
+  background-color: white;
+  position: relative;
   border-bottom: solid 3px $jr-emphasis;
   img {
     display: block;

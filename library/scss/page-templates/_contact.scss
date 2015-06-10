@@ -1,10 +1,5 @@
-.contact-bar {
-  background-color: jr-grey(2);
-  color: $jr-text-light;
-}
 /*-- feedback -------------------------------------------------------------------------*/
 .testimonials {
-  border-bottom: $jr-border-dark;
   p, h4 {
     width: 100%;
     margin-bottom: jr-spacer();
@@ -34,68 +29,10 @@
 
 .contact-map {
   width:100%;
-  height: 400px;
+  height: 300px;
   border:none;
   @include jr-size(screen) {
     height: 500px;
-  }
-}
-/*-- social media ---------------------------------------------------------------------*/
-.social-links,
-.social-links-small {
-  text-align: center;
-  font-size: 0.5rem;
-  color: $jr-text-dark;
-  a {
-    display: inline-block;
-    margin-right: jr-spacer(0.5);
-  }
-}
-
-.social-links {
-  a {
-    width: 64px;
-    height: 64px;
-    @include jr-size(screen) {
-      width: 96px;
-      height: 96px;
-    }
-  }
-}
-
-.social-links-small {
-  a {
-    width: 48px;
-    height: 48px;
-    @include jr-size(screen) {
-      width: 64px;
-      height: 64px;
-    }
-  }
-}
-
-.social-shares {
-  border-top: $jr-border-dark;
-  margin: jr-spacer(0.5) 0;
-  text-align: center;
-  a {
-    text-decoration: none;
-    font-weight: bold;
-    color: white;
-    background-color: $jr-bg-light;
-    padding-right: 10px;
-    @extend %floating-tile;
-    margin: jr-spacer(0.5);
-    line-height: 2rem;
-  }
-  a:hover, a:active {
-    color: $jr-bg-hover;
-  }
-  .facebook {
-    background-color: #3D5A98;
-  }
-  .twitter {
-    background-color:  #5FA9DD;
   }
 }
 
