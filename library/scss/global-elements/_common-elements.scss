@@ -9,11 +9,6 @@
   min-height: 3rem;
   padding: 0.1rem jr-spacer();
 }
-/* floating tile */
-%floating-tile {
-  box-shadow: $jr-shadow;
-  border-radius: 4px;
-}
 
 /*button style*/
 button, .btn-red {
@@ -27,9 +22,17 @@ button, .btn-red {
   color: $jr-text-light;
 }
 
-.dark-block, .white-block {
+/* floating buttons */
+%floating-button {
+  box-shadow: $jr-shadow;
+  border-radius: 4px;
+}
+
+/*tiles*/
+%block-base {
   padding: jr-spacer(0.5);
-  @extend %floating-tile;
+  box-shadow: $jr-shadow;
+  border-radius: 4px;
   header {
     border-bottom: $jr-border;
     margin-bottom: jr-spacer();
@@ -40,17 +43,14 @@ button, .btn-red {
   }
 }
 
-/*dark tile*/
 .dark-block {
+  @extend %block-base;
   background-color: jr-grey(2);
   color: $jr-text-light;
-
- // font-size:1.2rem;
-
 }
 
-/*light tile*/
 .white-block {
+  @extend %block-base;
   background-color: white;
 }
 

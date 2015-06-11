@@ -1,65 +1,97 @@
 
-/* --- contact form default -----------------------------------------------------------*/
+/* --- form defaults ------------------------------------------------------------------*/
 
-form {
-  position: relative;
-  @include clearfix;
+label, input, button, textarea {
+  display: block;
+  float:left;
+  font-size: 1.2rem;
 }
 
 .text-input {
-  box-shadow: inset $jr-shadow;
-  padding:0;
+  //box-shadow: inset $jr-shadow;
+  padding:5px;
   background-color: white;
   color: $jr-text-dark;
-  border: none;
+  margin-bottom: jr-spacer(1);
 }
 
-label, input, button {
-  float: left;
-}
-
-input, button {
-  font-size: 1.2rem;
-  height:2rem;
-}
-
-::-webkit-input-placeholder {
+webkit-input-placeholder {
    color: $jr-text-hover;
 }
-::-moz-placeholder {  /* Firefox 19+ */
+::-moz-placeholder {
    color: $jr-text-hover;
 }
 :-ms-input-placeholder {
    color: $jr-text-hover;
 }
 
-.form-search {
-  margin: jr-spacer(0.5) auto;
-  display: block;
-  input, button {
-     margin: 4px 0 ;
+/* --- contact form -------------------------------------------------------------------*/
+
+.form-contact {
+  p {
+    margin:0;
+    display: inline-block;
+    width:100%;
+    @include jr-size(screen) {
+      padding: 0 jr-spacer(2);
+    }
   }
-  input {
-    line-height: 2rem;
+  .text-input {
+    width:100%;
+    border: $jr-border-dark;
+  }
+  label {
+    width:100%;
+    border-top: $jr-border-dark;
+    text-align: right;
+    padding: 5px;
+  }
+  textarea {
+    height:10rem;
+    resize: vertical;
+  }
+  .button {
+    float:right;
+    width:9rem;
+  }
+  @include jr-size(screen) {
+    .text-input {
+      width:calc(100% - 7rem);
+    }
+    label {
+      width:7rem;
+      font-size: 0.8rem;
+    }
+  }
+}
+
+@include jr-size(tablet) {
+  .form-contact.wider p {
+    float: left;
+    width: 50%;
+    padding: jr-spacer();
+  }
+}
+
+/* --- search form --------------------------------------------------------------------*/
+
+.form-search {
+  position: relative;
+  .text-input {
     width: calc(100% - 5rem);
-    padding-left: 2rem;
-    border-radius:4px 0 0 4px;
+    border:0;
   }
   button {
-    width: 3rem;
-    border-radius:0 4px 4px 0;
-    background-image: linear-gradient(to bottom, jr-red(4), jr-red(2))
-  }
-  @include jr-size(phoneOnly) {
-    margin: 2px;
+    width: 4rem;
+    padding:3px;
   }
 }
 
 .search-out {
-
   position: absolute;
-  width:100%;
+  width:calc(100% + 5px);
   top: 4.5rem;
+  left:-5px;
   z-index: 100;
 
   &:empty {
@@ -85,37 +117,3 @@ input, button {
   }
 }
 
-.form-contact {
-  input, textarea {
-    border-top: $jr-border-dark;
-    margin-bottom: jr-spacer();
-    padding-left: 4px;
-    float: left;
-  }
-  textarea.text-input {
-    height: 10rem;
-    resize: vertical;
-    @include jr-width(1, 1);
-    @include jr-size(screen) {
-      @include jr-width(5, 6);
-    }
-  }
-  input.text-input {
-    @include jr-width(4, 6);
-    margin-right: percentage(1/6);
-  }
-  label {
-    border-top: $jr-border-dark;
-    font-size: 1rem;
-    padding-right: 4px;
-    @include jr-width(1, 1);
-    @include jr-size(screen) {
-      text-align: right;
-      @include jr-width(1, 6);
-    }
-  }
-  .button {
-    @include jr-width(2, 6);
-    margin-left: percentage(4/6);
-  }
-}

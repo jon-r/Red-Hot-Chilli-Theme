@@ -186,8 +186,6 @@ nav a {
 }
 .nav-paginate {
   margin: jr-spacer();
-  background-color: white;
-  @extend %floating-tile;
   .active {
     background-color: $jr-bg-hover;
   }

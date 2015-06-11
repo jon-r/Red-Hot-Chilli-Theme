@@ -548,60 +548,76 @@ em.greater {
 
   .flex-6 {
     width: calc(16.66667% - 20px); } }
-/* --- contact form default -----------------------------------------------------------*/
-form {
-  position: relative; }
-  form:after {
-    content: "";
-    display: table;
-    clear: both; }
+/* --- form defaults ------------------------------------------------------------------*/
+label, input, button, textarea {
+  display: block;
+  float: left;
+  font-size: 1.2rem; }
 
 .text-input {
-  box-shadow: inset 0 4px 4px rgba(21, 24, 30, 0.5);
-  padding: 0;
+  padding: 5px;
   background-color: white;
   color: #15181e;
-  border: none; }
+  margin-bottom: 20px; }
 
-label, input, button {
-  float: left; }
-
-input, button {
-  font-size: 1.2rem;
-  height: 2rem; }
-
-::-webkit-input-placeholder {
+webkit-input-placeholder {
   color: #66707f; }
 
 ::-moz-placeholder {
-  /* Firefox 19+ */
   color: #66707f; }
 
 :-ms-input-placeholder {
   color: #66707f; }
 
+/* --- contact form -------------------------------------------------------------------*/
+.form-contact p {
+  margin: 0;
+  display: inline-block;
+  width: 100%; }
+  @media only screen and (min-width: 1031px) {
+    .form-contact p {
+      padding: 0 40px; } }
+.form-contact .text-input {
+  width: 100%;
+  border: 1px solid #424a57; }
+.form-contact label {
+  width: 100%;
+  border-top: 1px solid #424a57;
+  text-align: right;
+  padding: 5px; }
+.form-contact textarea {
+  height: 10rem;
+  resize: vertical; }
+.form-contact .button {
+  float: right;
+  width: 9rem; }
+@media only screen and (min-width: 1031px) {
+  .form-contact .text-input {
+    width: calc(100% - 7rem); }
+  .form-contact label {
+    width: 7rem;
+    font-size: 0.8rem; } }
+
+@media only screen and (min-width: 482px) {
+  .form-contact.wider p {
+    float: left;
+    width: 50%;
+    padding: 20px; } }
+/* --- search form --------------------------------------------------------------------*/
 .form-search {
-  margin: 10px auto;
-  display: block; }
-  .form-search input, .form-search button {
-    margin: 4px 0; }
-  .form-search input {
-    line-height: 2rem;
+  position: relative; }
+  .form-search .text-input {
     width: calc(100% - 5rem);
-    padding-left: 2rem;
-    border-radius: 4px 0 0 4px; }
+    border: 0; }
   .form-search button {
-    width: 3rem;
-    border-radius: 0 4px 4px 0;
-    background-image: linear-gradient(to bottom, #a32929, #5c0a0a); }
-  @media only screen and (max-width: 481px) {
-    .form-search {
-      margin: 2px; } }
+    width: 4rem;
+    padding: 3px; }
 
 .search-out {
   position: absolute;
-  width: 100%;
+  width: calc(100% + 5px);
   top: 4.5rem;
+  left: -5px;
   z-index: 100; }
   .search-out:empty {
     display: none; }
@@ -619,42 +635,10 @@ input, button {
     background: #424a57;
     color: white; }
 
-.form-contact input, .form-contact textarea {
-  border-top: 1px solid #424a57;
-  margin-bottom: 20px;
-  padding-left: 4px;
-  float: left; }
-.form-contact textarea.text-input {
-  height: 10rem;
-  resize: vertical;
-  width: calc(100% - 20px); }
-  @media only screen and (min-width: 1031px) {
-    .form-contact textarea.text-input {
-      width: calc(83.33333% - 20px); } }
-.form-contact input.text-input {
-  width: calc(66.66667% - 20px);
-  margin-right: 16.66667%; }
-.form-contact label {
-  border-top: 1px solid #424a57;
-  font-size: 1rem;
-  padding-right: 4px;
-  width: calc(100% - 20px); }
-  @media only screen and (min-width: 1031px) {
-    .form-contact label {
-      text-align: right;
-      width: calc(16.66667% - 20px); } }
-.form-contact .button {
-  width: calc(33.33333% - 20px);
-  margin-left: 66.66667%; }
-
 /* --contact form 7 -------------------------------------------------------------------*/
 div.wpcf7 {
   margin: 0;
-  padding: 0;
-  width: 100%; }
-  div.wpcf7 em, div.wpcf7 p {
-    display: inline-block;
-    width: 100%; }
+  padding: 0; }
 
 .ajax-loader {
   display: none; }
@@ -727,11 +711,6 @@ div.wpcf7 .placeheld {
   min-height: 3rem;
   padding: 0.1rem 20px; }
 
-/* floating tile */
-.dark-block, .white-block, .social-shares a, .nav-paginate, .shop-tile, .gallery-nav, .shop-buttons button {
-  box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
-  border-radius: 4px; }
-
 /*button style*/
 button, .btn-red {
   border: none;
@@ -742,8 +721,16 @@ button, .btn-red {
   background-color: #931f1f;
   color: #e5e5e6; }
 
+/* floating buttons */
+.social-shares a, .shop-tile, .gallery-nav, .shop-buttons button {
+  box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
+  border-radius: 4px; }
+
+/*tiles*/
 .dark-block, .white-block {
-  padding: 10px; }
+  padding: 10px;
+  box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
+  border-radius: 4px; }
   .dark-block header, .white-block header {
     border-bottom: 1px solid #e5e5e6;
     margin-bottom: 20px; }
@@ -751,12 +738,10 @@ button, .btn-red {
     margin-top: 20px;
     border-top: 1px solid #424a57; }
 
-/*dark tile*/
 .dark-block {
   background-color: #2b313b;
   color: #e5e5e6; }
 
-/*light tile*/
 .white-block {
   background-color: white; }
 
@@ -1078,8 +1063,7 @@ main {
   padding-right: 32px; }
 
 .nav-paginate {
-  margin: 20px;
-  background-color: white; }
+  margin: 20px; }
   .nav-paginate .active {
     background-color: #e5e5e6; }
 

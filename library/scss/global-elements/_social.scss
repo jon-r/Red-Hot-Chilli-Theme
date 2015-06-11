@@ -42,7 +42,7 @@
     color: white;
     background-color: $jr-bg-light;
     padding-right: 10px;
-    @extend %floating-tile;
+    @extend %floating-button;
     margin: jr-spacer(0.5);
     line-height: 2rem;
   }
