@@ -330,7 +330,7 @@ em.greater {
   pointer-events: none;
   content: '';
   position: absolute;
-  background-image: url(/rhc_online/images/icons/RHC-Icons.min.svg);
+  background-image: url(/rhc/images/icons/RHC-Icons.min.svg);
   height: 128px;
   width: 128px; }
 
@@ -338,7 +338,7 @@ em.greater {
   pointer-events: none;
   content: '';
   position: absolute;
-  background-image: url(/rhc_online/images/icons/RHC-Icons.min.svg);
+  background-image: url(/rhc/images/icons/RHC-Icons.min.svg);
   height: 128px;
   width: 128px; }
 
@@ -849,13 +849,13 @@ Default style for all pages
 
 .primary-header {
   border-bottom-width: 6px;
-  background: url(/rhc_online/images/rhc/Head-Banner.jpg) top/cover; }
+  background: url(/rhc/images/rhc/Head-Banner.jpg) top/cover; }
   .primary-header .container {
     align-items: center;
     padding-top: 20px; }
   @media only screen and (min-width: 1240px) {
     .primary-header {
-      background: url(/rhc_online/images/rhc/Head-Banner.jpg) center no-repeat, linear-gradient(to right, #20252d 25%, #5a6372 75%); }
+      background: url(/rhc/images/rhc/Head-Banner.jpg) center no-repeat, linear-gradient(to right, #20252d 25%, #5a6372 75%); }
       .primary-header .home {
         height: 250px; } }
 
@@ -889,7 +889,7 @@ body {
   min-width: 320px; }
 
 main {
-  background: url(/rhc_online/images/rhc/body-banner.jpg) no-repeat top/200%, #f2f2f2;
+  background: url(/rhc/images/rhc/body-banner.jpg) no-repeat top/200%, #f2f2f2;
   color: #15181e;
   box-shadow: 0 5px 10px #15181e;
   flex: 1 1 auto;
@@ -1003,7 +1003,7 @@ main {
   top: -2.5rem;
   left: 100%;
   transition: left 400ms;
-  background-image: url(/rhc_online/images/icons/menu-base.jpg);
+  background-image: url(/rhc/images/icons/menu-base.jpg);
   background-size: 500px 375px;
   background-position: bottom right;
   background-repeat: no-repeat; }

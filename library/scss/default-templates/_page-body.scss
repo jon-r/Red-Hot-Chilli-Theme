@@ -15,10 +15,14 @@ main {
   color: $jr-text-dark;
   box-shadow: 0 5px 10px jr-grey(1);
   flex: 1 1 auto;
-  min-height: 100vh;
+  min-height: calc(100vh - 300px);
   @include jr-size(screen) {
     background-size: 100%;
   }
+}
+
+article {
+  margin-bottom: jr-spacer();
 }
 
 .container {

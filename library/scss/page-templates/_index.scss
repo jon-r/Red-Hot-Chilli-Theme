@@ -42,7 +42,6 @@
 }
 
 .carousel {
-  background-color: jr-red(2.5);
   position: relative;
   overflow: hidden;
   white-space: nowrap;
@@ -50,7 +49,7 @@
   &::before {
     content: "";
     display: block;
-    padding-top: calc(25% + 1.5rem);
+    padding-top: calc(25%);
   }
 }
 
@@ -60,11 +59,11 @@
   font-size: 1rem;
   left:0;
   width:100%;
-    bottom: 2.5rem;
-    top: 1.5rem;
+  bottom: 4rem;
+  top: 0;
   @include jr-size(tablet) {
     font-size: 1.4rem;
-      box-shadow: $jr-shadow;
+    box-shadow: $jr-shadow;
   }
   a {
     padding:0;
@@ -84,6 +83,7 @@
 
   a {
     height: 100%;
+
   }
 }
 
@@ -105,11 +105,11 @@
 .carousel-tabs {
   background-color: white;
   width: 100%;
-  height: 2.5rem;
+  height: 4rem;
 }
 
 .tab {
-  line-height: 2.5rem;
+  line-height: 4rem;
   font-weight: bold;
   border-right: $jr-border;
   float:left;

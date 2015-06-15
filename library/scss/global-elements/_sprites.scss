@@ -151,7 +151,7 @@ $iconMap: (
 %btn-icon-base {
   @extend %has-icon-after;
   &::after {
-     transform-origin: bottom right;
+    transform-origin: bottom right;
     bottom: 0;
     right: 0;
   }
@@ -161,7 +161,6 @@ $iconMap: (
   @extend %btn-icon-base;
   &::after {
     transform: scale(0.5);
-
   }
   @include jr-size(screen) {
     &::after {

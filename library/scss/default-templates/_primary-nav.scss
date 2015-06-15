@@ -7,7 +7,7 @@ nav a {
 .primary-nav {
   justify-content: flex-start;
   align-items: flex-start;
-  padding-bottom: jr-spacer();
+  margin-bottom: jr-spacer();
   //simple 'loading' simulator - the <nav> will be the only child of the <section> until the php <article> has loaded.
   &:only-child {
     @extend %loader-icon;
@@ -17,7 +17,7 @@ nav a {
     padding-bottom: jr-spacer(3);
   }
   @include jr-size(screen-hd) {
-    padding-bottom: jr-spacer(1);
+    padding-bottom: jr-spacer();
   }
 }
 
@@ -36,7 +36,7 @@ nav a {
 
 .menu-btn {
   z-index: 5;
-  height: 2.5rem;
+  height: 3rem;
   cursor: pointer;
 }
 
@@ -47,25 +47,10 @@ nav a {
   text-align: center;
   font-size: 1.3rem;
   display: none;
-  @include jr-size(phoneOnly) {
-    li {
-      background-color: rgba(white, 0.5);
-      max-width: 250px;
-    }
-  }
-  @include jr-size(tabletOnly) {
-    li {
-      @include jr-width(1, 2);
-      display: inline-block;
-      &:nth-of-type(even) {
-        border-left: $jr-border;
-      }
-    }
-  }
   @include jr-size(screen) {
     position: absolute;
     left: 0;
-    top: 2.5rem;
+    top: 3rem;
     text-align: left;
   }
 }
@@ -78,7 +63,7 @@ nav a {
 
 .nav-btn {
   display: inline-block;
-  padding: 6px;
+  padding: jr-spacer(0.25) jr-spacer(0.5) ;
   border-bottom: $jr-border;
   &:active, &:hover {
     background-color: $jr-bg-hover;
@@ -102,6 +87,22 @@ nav a {
 
 .main-menu {
   position: relative;
+  @include jr-size(phoneOnly) {
+    li {
+      margin:0 auto;
+      background-color: rgba(white, 0.5);
+      max-width: 250px;
+    }
+  }
+  @include jr-size(tabletOnly) {
+    li {
+      @include jr-width(1, 2);
+      display: inline-block;
+      &:nth-of-type(even) {
+        border-left: $jr-border;
+      }
+    }
+  }
 }
 
 .sub-menu {
@@ -170,7 +171,7 @@ nav a {
 .nav-paginate {
   a {
     float:left;
-    padding: 0.5rem jr-spacer();
+    padding: jr-spacer(0.5) jr-spacer();
     &:active, &:hover {
       background-color: $jr-bg-hover;
     }

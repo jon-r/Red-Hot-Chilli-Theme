@@ -44,11 +44,16 @@
 .primary-footer {
   border-top-width: 6px;
   background-color: jr-grey(2);
+  padding-top: jr-spacer();
   li {
     margin-top: 0.5rem;
   }
   img {
     max-width: 200px;
+    display: inline
+  }
+  @include jr-size(phoneOnly) {
+    text-align: center;
   }
 }
 

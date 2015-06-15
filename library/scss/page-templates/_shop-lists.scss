@@ -11,19 +11,7 @@
   a {
     width: 100%;
     height: inherit;
-  }
-  div {
-    @extend %header-block;
-    &:first-child {
-      border-bottom: $jr-border-dark;
-    }
-    &:last-child {
-      font-size: 1rem;
-      position: absolute;
-      bottom: 0;
-      border-top: $jr-border-dark;
-      background-color: white;
-    }
+    text-decoration: none;
   }
 }
 .shop-tile.group {
@@ -55,7 +43,27 @@
   @extend %has-icon-before;
   &::before {
     right:-9px;
-    top: 3.5rem;
+    top: 5rem;
+  }
+}
+
+.shop-tile-header {
+  width: 100%;
+  min-height: 3rem;
+  text-align: center;
+  padding: 5px;
+  &:first-child {
+    border-bottom: $jr-border-dark;
+    background-image: linear-gradient(to bottom, jr-red(2.5), jr-red(4) );
+    background-color: jr-red(2.5);
+    color:$jr-text-light;
+    border-radius: 4px 4px 0 0;
+  }
+  &:last-child {
+    font-size: 1rem;
+    position: absolute;
+    bottom: 0;
+    border-top: $jr-border-dark;
   }
 }
 
