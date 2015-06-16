@@ -211,7 +211,6 @@ function bones_theme_support() {
 		array(
 			'services-menu' => __( 'Services Menu links', 'bonestheme'),
             'featured-menu' => __( 'Featured Menu Links', 'bonestheme' ),
-            'front-page-list' => __( 'Front Page Links', 'bonestheme'),
 			'footer-other' => __( 'Footer Other Links', 'bonestheme' ),
 			'footer-shop' => __( 'Footer Shop Links', 'bonestheme' )
 		)

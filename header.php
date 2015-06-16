@@ -9,13 +9,18 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <title>
-    Fix <?php wp_title(); ?>
+    <?php wp_title(); ?>
   </title>
 
   <?php // mobile meta (hooray!) ?>
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <?php // copyright and page info ?>
+  <meta content="Red Hot Chilli Northwest Ltd (c) <?php echo date('Y') ?>" name="copyright">
+  <meta content="Jonathan Richards - github.com/jon-r (c) <?php echo date('Y') ?>" name="author">
+  <meta content="Buying and selling used commercial items in the northwest. Purchasers and suppliers of second hand catering equipment." name="description">
 
   <?php // many many favicons. courtesy http://realfavicongenerator.net ?>
   <link rel="apple-touch-icon" sizes="57x57" href="<?php echo site_url('images/favicon/apple-touch-icon-57x57.png') ?>" >
