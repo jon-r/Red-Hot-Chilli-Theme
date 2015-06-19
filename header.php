@@ -1,5 +1,7 @@
 <!doctype html>
 
+<?php if (is_front_page()) { include('page-blocks/cache-top.php'); } ?>
+
 <html <?php language_attributes(); ?> >
 
 <head>

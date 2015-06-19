@@ -9,3 +9,5 @@
   </body>
 
 </html>
+
+<?php if (is_front_page()) { include('page-blocks/cache-bottom.php'); } ?>
