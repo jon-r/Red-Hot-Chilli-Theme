@@ -1,4 +1,5 @@
-<div class="container flex-container<?php echo is_front_page() ? ' home' : ' not-home' ?>">
+<?php $headerType = is_front_page() ? 'home' : 'not-home'; ?>
+<div class="container flex-container <?php echo $headerType ?>">
 
   <a class="header-logo flex-2" href="<?php echo home_url(); ?>" rel="nofollow">
     <img src="<?php echo site_url(jr_siteImg('rhc/RHC-Web.png')); ?>"

@@ -1,13 +1,20 @@
 <?php
-/* list of groups on menu + custom links */
-?>
+$headerType = is_front_page() ? 'home' : 'not-home';
 
+$cachefile = 'cached-files/navbar-'.$headerType.'-cached.html';
+$cachetime = 604800;
+
+if (file_exists($cachefile) && time() - $cachetime < filemtime($cachefile)) :
+  readfile($cachefile);
+else :
+  ob_start();
+?>
 <nav class="flex-container primary-nav">
   <label class="menu-btn btn-red" for="menu-toggle">
     <h2 class="text-icon-left menu-w">Shop</h2>
   </label>
   <input type="checkbox"  id="menu-toggle">
-  <menu class="nav-menu<?php echo is_front_page() ? ' home' : ' not-home' ?>" >
+  <menu class="nav-menu <?php echo $headerType ?>" >
     <ul class="main-menu" id="js-main-list" >
       <?php echo do_shortcode("[jr-shop id='shop-menu']"); ?>
 <?php // wp menus start here. admin for setup --> ?>
@@ -45,4 +52,12 @@
     ?>
 
 </nav>
+
+<?php
+  $fp = fopen($cachefile, 'w');
+  fwrite($fp, ob_get_contents());
+  fclose($fp);
+  ob_end_flush();
+  endif;
+?>
 

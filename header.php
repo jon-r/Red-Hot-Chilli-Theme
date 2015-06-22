@@ -1,7 +1,5 @@
 <!doctype html>
 
-<?php if (is_front_page()) { include('page-blocks/cache-top.php'); } ?>
-
 <html <?php language_attributes(); ?> >
 
 <head>
@@ -61,7 +59,7 @@
 
   <header class="primary-header" role="banner">
 
-    <?php include('page-blocks/header-bar.php') ?>
+    <?php include('includes/header-bar.php'); ?>
 
   </header>
 
