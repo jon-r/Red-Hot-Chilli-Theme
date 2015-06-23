@@ -37,11 +37,11 @@
   <link rel="icon" type="image/png" href="<?php echo site_url('images/favicon/favicon-96x96.png" sizes="96x96') ?>" >
   <link rel="icon" type="image/png" href="<?php echo site_url('images/favicon/android-chrome-192x192.png" sizes="192x192') ?>" >
   <link rel="icon" type="image/png" href="<?php echo site_url('images/favicon/favicon-16x16.png" sizes="16x16') ?>" >
-  <link rel="manifest" href="<?php echo site_url('images/favicon/manifest.json') ?>" >
-  <link rel="shortcut icon" href="<?php echo site_url('images/favicon/favicon.ico') ?>" >
+  <link rel="manifest" href="<?php echo site_url('manifest.json') ?>" >
+  <link rel="shortcut icon" href="<?php echo site_url('favicon.ico') ?>" >
   <meta name="msapplication-TileColor" content="#2b5797">
   <meta name="msapplication-TileImage" content="<?php echo site_url('images/favicon/mstile-144x144.png') ?>" >
-  <meta name="msapplication-config" content="<?php echo site_url('images/favicon/browserconfig.xml') ?>" >
+  <meta name="msapplication-config" content="<?php echo site_url('browserconfig.xml') ?>" >
   <meta name="theme-color" content="#931919">
 
   <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">

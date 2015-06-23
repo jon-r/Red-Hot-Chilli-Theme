@@ -21,8 +21,8 @@ main {
   }
 }
 
-article {
-  margin-bottom: jr-spacer();
+article + article {
+  margin-top: jr-spacer();
 }
 
 .container {

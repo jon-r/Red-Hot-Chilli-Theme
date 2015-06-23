@@ -896,8 +896,8 @@ main {
     main {
       background-size: 100%; } }
 
-article {
-  margin-bottom: 24px; }
+article + article {
+  margin-top: 24px; }
 
 .container {
   height: 100%;
@@ -1233,6 +1233,7 @@ Page specific items.
     width: 100%;
     justify-content: space-between; }
   .shop-tile.group li {
+    position: relative;
     line-height: 1;
     border-bottom: 1px solid #e5e5e6;
     width: 50%;
@@ -1241,6 +1242,8 @@ Page specific items.
       border-right: 1px solid #e5e5e6; }
     .shop-tile.group li:hover {
       background-color: #e5e5e6; }
+  .shop-tile.group a {
+    min-height: 1.5rem; }
 
 .shop-tile.item {
   padding-bottom: 48px;

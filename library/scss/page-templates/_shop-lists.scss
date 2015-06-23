@@ -24,16 +24,20 @@
     justify-content: space-between;
   }
   li {
+    position: relative;
     line-height: 1;
     border-bottom: $jr-border;
     &:nth-of-type(odd){
       border-right: $jr-border;
     }
     width:50%;
-    padding: jr-spacer(0.5) ;
+    padding:jr-spacer(0.5);
     &:hover {
       background-color: $jr-bg-hover;
     }
+  }
+  a {
+    min-height:1.5rem;
   }
 }
 
