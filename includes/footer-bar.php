@@ -1,14 +1,3 @@
-<?php
-
-$cachefile = 'cached-files/footer-cached.html';
-$cachetime = 604800;
-
-if (file_exists($cachefile) && time() - $cachetime < filemtime($cachefile)) :
-  readfile($cachefile);
-else :
-  ob_start();
-?>
-
 <nav class="container flex-container">
 
   <div class="flex-5">
@@ -55,11 +44,4 @@ else :
 
   </p>
 </nav>
-<?php
-  $fp = fopen($cachefile, 'w');
-  fwrite($fp, ob_get_contents());
-  fclose($fp);
-  ob_end_flush();
-  endif;
-?>
 
