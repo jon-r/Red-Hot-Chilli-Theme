@@ -9,6 +9,8 @@
 <main class="container">
   <?php include( 'includes/nav-bar.php') ?>
 
+  <?php echo do_shortcode( "[jr-shop id='shop-cart']"); ?>
+
   <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
   <article class="flex-container">
