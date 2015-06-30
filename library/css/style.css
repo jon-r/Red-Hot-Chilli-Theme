@@ -742,6 +742,50 @@ button, .btn-red {
 .article-header {
   padding-left: 12px; }
 
+/*little hover buttons*/
+.tile-hover {
+  position: absolute;
+  cursor: pointer;
+  bottom: 2px;
+  left: 2px;
+  width: 36px;
+  height: 36px;
+  display: none; }
+  .tile-hover:after {
+    font-family: "Kreon", Cambria, Times New Roman, Times, serif;
+    font-size: 1.2rem;
+    position: absolute;
+    right: 12px;
+    top: calc(50% - 10px); }
+  .tile-hover:before {
+    left: calc(50% - 10px); }
+  @media only screen and (min-width: 1031px) {
+    .tile-hover {
+      display: block;
+      opacity: 0;
+      transition: opacity 300ms;
+      bottom: 12px;
+      left: 12px; }
+      .tile-hover:before {
+        left: 12px; } }
+
+.item:hover .tile-hover, .item-tile-inner:hover .tile-hover {
+  opacity: 1; }
+
+.tile-hover.more {
+  bottom: 48px; }
+  @media only screen and (min-width: 1031px) {
+    .tile-hover.more {
+      width: 9rem; }
+      .tile-hover.more:after {
+        content: "More Info"; } }
+
+@media only screen and (min-width: 1031px) {
+  .tile-hover.zoom {
+    width: 13rem; }
+    .tile-hover.zoom:after {
+      content: "Click here to zoom"; } }
+
 /*modal popouts - enabled through js */
 .modal {
   position: fixed;
@@ -883,7 +927,7 @@ html {
       font-size: 14px; } }
 
 body {
-  background-color: #424a57;
+  background-color: #1a1f25;
   min-width: 320px; }
 
 main {
@@ -1228,7 +1272,8 @@ Page specific items.
 .shop-tile.group {
   margin-top: 4rem; }
   .shop-tile.group img {
-    margin-top: -15%; }
+    margin: -15% -2px 0 -2px;
+    width: calc(100% + 4px); }
   .shop-tile.group ul {
     width: 100%;
     justify-content: space-between; }
@@ -1242,6 +1287,9 @@ Page specific items.
       border-right: 1px solid #e5e5e6; }
     .shop-tile.group li:hover {
       background-color: #e5e5e6; }
+    @media only screen and (min-width: 1240px) {
+      .shop-tile.group li {
+        font-size: 1.2rem; } }
   .shop-tile.group a {
     min-height: 1.5rem; }
 
@@ -1255,16 +1303,16 @@ Page specific items.
 .shop-tile-header {
   width: 100%;
   min-height: 3rem;
-  text-align: center;
   padding: 5px; }
   .shop-tile-header:first-child {
     border-bottom: 1px solid #424a57;
     background-image: linear-gradient(to bottom, #701010, #a32929);
     background-color: #701010;
     color: #e5e5e6;
-    border-radius: 4px 4px 0 0; }
+    border-radius: 4px 4px 0 0;
+    text-align: center; }
   .shop-tile-header:last-child {
-    font-size: 1rem;
+    font-size: 1.1rem;
     position: absolute;
     bottom: 0;
     border-top: 1px solid #424a57; }
@@ -1294,14 +1342,6 @@ Page specific items.
 .text-right {
   float: right; }
 
-.item-dimensions li {
-  padding: 5px 24px; }
-  .item-dimensions li:nth-of-type(even) {
-    background-color: #e5e5e6; }
-
-.item-tile-inner:hover .item-main-zoom {
-  opacity: 1; }
-
 .gallery-nav {
   position: absolute;
   top: calc(50% - 24px);
@@ -1318,32 +1358,10 @@ Page specific items.
 .gallery-nav.arrow-r {
   right: -24px; }
 
-.item-main-zoom {
-  position: absolute;
-  cursor: pointer;
-  bottom: 2px;
-  left: 2px;
-  display: block;
-  width: 36px;
-  height: 36px; }
-  .item-main-zoom:before {
-    left: calc(50% - 12px); }
-  @media only screen and (min-width: 1031px) {
-    .item-main-zoom {
-      opacity: 0;
-      transition: opacity 300ms;
-      width: calc(100% /3);
-      bottom: 12px;
-      left: 12px; }
-      .item-main-zoom:before {
-        left: 12px; }
-      .item-main-zoom:after {
-        content: "Click to Zoom";
-        font-family: "Kreon", Cambria, Times New Roman, Times, serif;
-        font-size: 1.2rem;
-        position: absolute;
-        right: 12px;
-        top: calc(50% - 10px); } }
+.item-dimensions li {
+  padding: 5px 24px; }
+  .item-dimensions li:nth-of-type(even) {
+    background-color: #e5e5e6; }
 
 .item-thumbs li {
   width: calc(50% - 24px);

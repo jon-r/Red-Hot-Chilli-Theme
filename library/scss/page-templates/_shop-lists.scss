@@ -17,7 +17,8 @@
 .shop-tile.group {
   margin-top: 4rem;
   img {
-    margin-top: -15%;
+    margin: -15% -2px 0 -2px;
+    width: calc(100% + 4px);
   }
   ul {
     width:100%;
@@ -34,6 +35,9 @@
     padding:jr-spacer(0.5);
     &:hover {
       background-color: $jr-bg-hover;
+    }
+    @include jr-size(screen-hd) {
+      font-size: 1.2rem;
     }
   }
   a {
@@ -54,7 +58,6 @@
 .shop-tile-header {
   width: 100%;
   min-height: 3rem;
-  text-align: center;
   padding: 5px;
   &:first-child {
     border-bottom: $jr-border-dark;
@@ -62,9 +65,10 @@
     background-color: jr-red(2.5);
     color:$jr-text-light;
     border-radius: 4px 4px 0 0;
+    text-align: center;
   }
   &:last-child {
-    font-size: 1rem;
+    font-size: 1.1rem;
     position: absolute;
     bottom: 0;
     border-top: $jr-border-dark;
