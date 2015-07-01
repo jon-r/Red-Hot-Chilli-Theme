@@ -73,7 +73,7 @@ $navMain_li.click( function() {
 //redone in jquery
 var $carousel = $('#js-carousel-main'),
     $slide = $carousel.find('.slide'),
-    $tabs = $('#js-carousel-tabs > .tab');
+    $tabs = $('#js-carousel-blips > .blip');
 
 var slideCount = $slide.length - 1,
     slideTime = 8000,

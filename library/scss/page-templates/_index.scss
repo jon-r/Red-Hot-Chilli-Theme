@@ -37,6 +37,35 @@
   }
 }
 
+.index-nav-tabs {
+  background-color: white;
+  width: 100%;
+  height: 4rem;
+
+  li {
+    line-height: 4rem;
+    font-weight: bold;
+    border-right: $jr-border;
+    float:left;
+    cursor: pointer;
+    text-align:center;
+    transition: 400ms;
+    width: calc(100% /6);
+  //  display: block;
+    background-color: white;
+
+    &:hover {
+      background-color: $jr-emphasis;
+    }
+    &.active {
+      background-color: $jr-emphasis;
+      color:$jr-text-light;
+    }
+  }
+}
+
+/*-- Carousel -------------------------------------------------------------------------*/
+
 .carousel {
   position: relative;
   overflow: hidden;
@@ -59,21 +88,17 @@
   top: 0;
   @include jr-size(tablet) {
     font-size: 1.4rem;
-    box-shadow: $jr-shadow;
   }
   a {
     padding:0;
   }
 }
 
-
-
 .slide {
   position: absolute;
   width: 100%;
-  bottom: 0;
   top:0;
-  text-align: center;
+  bottom: 0;
   left:100%;
   transition: left 600ms ease;
 
@@ -98,36 +123,34 @@
   left:-100%;
 }
 
-.carousel-tabs {
-  background-color: white;
-  width: 100%;
-  height: 4rem;
+.carousel-blips {
+  z-index: 6;
+  position:absolute;
+  top:5px;
+  right:5px;
+  opacity: 0.5;
+  &:hover {
+    opacity: 1;
+  }
 }
 
-.tab {
-  line-height: 4rem;
-  font-weight: bold;
-  border-right: $jr-border;
-  float:left;
+.blip {
+  float: left;
+  height: 6px;
+  width:6px;
+  border-radius: 5px;
+  background: jr-grey(9);
+  margin: 2px;
   cursor: pointer;
-  text-align:center;
-  transition: 400ms;
-  width: calc(100% /6);
-//  display: block;
-  background-color: white;
-
   &:hover {
-    background-color: $jr-bg-hover;
+    background: jr-grey(7);
   }
   &.active {
-    background-color: $jr-emphasis;
-    color:$jr-text-light;
+    background: $jr-emphasis;
   }
 }
 
-
 /*-- customisable carousel parts -----------------------------------------------------*/
-
 
 %slide-all {
   width:100%;
@@ -157,21 +180,24 @@
 
 .slider-link {
   @extend %slide-all;
-  bottom: 5%;
+  bottom: 7%;
   text-decoration: underline;
   transition-delay: 500ms ;
 }
 
 .go-left {
-  left:-25%;
+  left:5%;
+  text-align: left;
 }
 
 .go-mid {
-  left: 0%;
+  left: 0;
+  text-align: center;
 }
 
 .go-right {
-  left: 25%;
+  right: 5%;
+  text-align: right;
 }
 
 .go-red {

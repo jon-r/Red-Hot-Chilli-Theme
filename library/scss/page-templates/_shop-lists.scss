@@ -15,10 +15,11 @@
   }
 }
 .shop-tile.group {
+  background: $jr-emphasis;
   margin-top: 4rem;
   img {
-    margin: -15% -2px 0 -2px;
-    width: calc(100% + 4px);
+    margin-top: -15%;
+    //width: calc(100% + 4px);
   }
   ul {
     width:100%;

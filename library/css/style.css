@@ -986,7 +986,8 @@ article + article {
 .menu-btn {
   z-index: 5;
   height: 3rem;
-  cursor: pointer; }
+  cursor: pointer;
+  box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); }
 
 .nav-menu {
   z-index: 5;
@@ -1147,6 +1148,27 @@ Page specific items.
 .menu-featured a:hover h2 {
   background-position: bottom; }
 
+.index-nav-tabs {
+  background-color: white;
+  width: 100%;
+  height: 4rem; }
+  .index-nav-tabs li {
+    line-height: 4rem;
+    font-weight: bold;
+    border-right: 1px solid #e5e5e6;
+    float: left;
+    cursor: pointer;
+    text-align: center;
+    transition: 400ms;
+    width: calc(100% /6);
+    background-color: white; }
+    .index-nav-tabs li:hover {
+      background-color: #931f1f; }
+    .index-nav-tabs li.active {
+      background-color: #931f1f;
+      color: #e5e5e6; }
+
+/*-- Carousel -------------------------------------------------------------------------*/
 .carousel {
   position: relative;
   overflow: hidden;
@@ -1166,17 +1188,15 @@ Page specific items.
   top: 0; }
   @media only screen and (min-width: 482px) {
     .carousel-container {
-      font-size: 1.4rem;
-      box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); } }
+      font-size: 1.4rem; } }
   .carousel-container a {
     padding: 0; }
 
 .slide {
   position: absolute;
   width: 100%;
-  bottom: 0;
   top: 0;
-  text-align: center;
+  bottom: 0;
   left: 100%;
   transition: left 600ms ease; }
   .slide a {
@@ -1193,26 +1213,27 @@ Page specific items.
 .go-away {
   left: -100%; }
 
-.carousel-tabs {
-  background-color: white;
-  width: 100%;
-  height: 4rem; }
+.carousel-blips {
+  z-index: 6;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  opacity: 0.5; }
+  .carousel-blips:hover {
+    opacity: 1; }
 
-.tab {
-  line-height: 4rem;
-  font-weight: bold;
-  border-right: 1px solid #e5e5e6;
+.blip {
   float: left;
-  cursor: pointer;
-  text-align: center;
-  transition: 400ms;
-  width: calc(100% /6);
-  background-color: white; }
-  .tab:hover {
-    background-color: #e5e5e6; }
-  .tab.active {
-    background-color: #931f1f;
-    color: #e5e5e6; }
+  height: 6px;
+  width: 6px;
+  border-radius: 5px;
+  background: #e5e5e6;
+  margin: 2px;
+  cursor: pointer; }
+  .blip:hover {
+    background: #aeb1b7; }
+  .blip.active {
+    background: #931f1f; }
 
 /*-- customisable carousel parts -----------------------------------------------------*/
 .slider-title, .slider-text, .slider-link {
@@ -1235,18 +1256,21 @@ Page specific items.
     display: block; }
 
 .slider-link {
-  bottom: 5%;
+  bottom: 7%;
   text-decoration: underline;
   transition-delay: 500ms; }
 
 .go-left {
-  left: -25%; }
+  left: 5%;
+  text-align: left; }
 
 .go-mid {
-  left: 0%; }
+  left: 0;
+  text-align: center; }
 
 .go-right {
-  left: 25%; }
+  right: 5%;
+  text-align: right; }
 
 .go-red {
   color: #931f1f; }
@@ -1270,10 +1294,10 @@ Page specific items.
     text-decoration: none; }
 
 .shop-tile.group {
+  background: #931f1f;
   margin-top: 4rem; }
   .shop-tile.group img {
-    margin: -15% -2px 0 -2px;
-    width: calc(100% + 4px); }
+    margin-top: -15%; }
   .shop-tile.group ul {
     width: 100%;
     justify-content: space-between; }
