@@ -1,23 +1,62 @@
 /*- top menu parts ---------------------------------------------------------------*/
 
-nav a {
-
-}
 
 .primary-nav {
-  justify-content: flex-start;
-  align-items: flex-start;
   margin-bottom: jr-spacer();
+
   //simple 'loading' simulator - the <nav> will be the only child of the <section> until the php <article> has loaded.
   &:only-child {
     @extend %loader-icon;
     padding-bottom: 50vh;
   }
+}
+
+.nav-top {
+  justify-content: center;
+  background-color: $jr-emphasis;
+  position: relative;
+  z-index: 5;
+  box-shadow: $jr-shadow;
+
   @include jr-size(screen) {
-    padding-bottom: jr-spacer(3);
+    justify-content: space-between;
+    width:calc(100% + 1rem);
+    margin: -6px -0.5rem 0 -0.5rem;
   }
-  @include jr-size(screen-hd) {
-    padding-bottom: jr-spacer();
+}
+
+
+
+.nav-top-menu {
+  li {
+    float: left;
+    border-left: 2px solid jr-red(3);
+  }
+}
+
+.top-btn {
+  line-height:2;
+  padding: 0.25rem 1rem;
+  color:$jr-bg-light;
+  &:hover {
+    background-color: jr-red(3);
+    color: jr-grey(8);
+  }
+}
+
+.top-btn.main {
+  cursor: pointer;
+  width: 100%;
+  @include jr-size(screen) {
+    width: 250px;
+    border-right: 2px solid jr-red(3);
+  }
+}
+
+.nav-menu {
+  width: 100%;
+  @include jr-size(screen) {
+    width: 250px;
   }
 }
 
@@ -25,21 +64,59 @@ nav a {
   display: none;
 }
 
-.menu-btn,
+
+/*.nav-top {
+  justify-content: space-between;
+  align-items: stretch;
+  position: relative;
+  background-color: $jr-emphasis;
+  color: $jr-text-light;
+  z-index: 5;
+  box-shadow: $jr-shadow;
+  width: 100%;
+  @include jr-size(screen) {
+    width:calc(100% + 1rem);
+    margin: 0 -0.5rem;
+  }
+}
+
+.btn-top {
+  height: 3rem;
+  display: block;
+}
+
+.nav-shop {
+  line-height:3rem;
+  width:100%;
+  @include jr-size(screen) {
+    width: 250px;
+  }
+
+}
+
+.nav-top-menu {
+  height: 2rem;
+  li {
+    float: left;
+    line-height:3rem;
+    padding: 0 jr-spacer();
+    height: 100%;
+  }
+}
+
+
+.nav-main-btn,
 .nav-menu {
   width: 100%;
   @include jr-size(screen) {
     width: 250px;
-    margin-left: -4px;
   }
 }
 
-.menu-btn {
-  z-index: 5;
-  height: 3rem;
+.nav-main-btn {
   cursor: pointer;
-  box-shadow: $jr-shadow;
-}
+  display: block;
+}*/
 
 .nav-menu {
   z-index: 5;
@@ -48,10 +125,12 @@ nav a {
   text-align: center;
   font-size: 1.3rem;
   display: none;
-  @include jr-size(screen) {
-    position: absolute;
-    left: 0;
+  position: absolute;
+      left: 0;
     top: 3rem;
+  @include jr-size(screen) {
+
+
     text-align: left;
   }
 }
@@ -143,36 +222,24 @@ nav a {
   }
 }
 
-#menu-toggle:checked + .not-home,
-.nav-menu.home {
+#menu-toggle:checked + .nav-menu {
   height: auto;
   display: block;
 }
 
-#menu-toggle:checked + .not-home {
-  @include jr-size (screen) {
-    margin-bottom: -16rem;
-  }
-}
-
-.nav-menu.home {
-  margin-bottom: jr-spacer();
-}
-
-.nav-right {
+.nav-bottom {
+  position: relative;
   border-bottom: $jr-border;
   background-color: white;
-  flex: 1 1 100%;
-  @include jr-size(screen) {
-    flex: 1 1 75%;
-  }
+  width:100%;
 }
 
 .nav-breadcrumbs,
 .nav-paginate {
   a {
-    float:left;
-    padding: jr-spacer(0.5) jr-spacer();
+    display: inline-block;
+    line-height: 2.5;
+    padding: 0 jr-spacer();
     &:active, &:hover {
       background-color: $jr-bg-hover;
     }

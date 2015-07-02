@@ -10,39 +10,21 @@
   }
   a {
     width: 100%;
-    height: inherit;
+    height: 100%;
     text-decoration: none;
   }
 }
 .shop-tile.group {
-  background: $jr-emphasis;
   margin-top: 4rem;
+  border-left: solid 3px $jr-emphasis;
+  border-right: solid 3px $jr-emphasis;
   img {
-    margin-top: -15%;
-    //width: calc(100% + 4px);
+    margin: -15% -3px;
+    width: calc(100% + 6px);
   }
   ul {
-    width:100%;
-    justify-content: space-between;
-  }
-  li {
-    position: relative;
-    line-height: 1;
-    border-bottom: $jr-border;
-    &:nth-of-type(odd){
-      border-right: $jr-border;
-    }
-    width:50%;
-    padding:jr-spacer(0.5);
-    &:hover {
-      background-color: $jr-bg-hover;
-    }
-    @include jr-size(screen-hd) {
-      font-size: 1.2rem;
-    }
-  }
-  a {
-    min-height:1.5rem;
+    width: 50%;
+    margin-left: 2%;
   }
 }
 
