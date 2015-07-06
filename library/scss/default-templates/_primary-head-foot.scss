@@ -26,6 +26,10 @@
 }
 
 .not-home {
+  padding-top: jr-spacer(0.5);
+  .header-logo, .header-links {
+    margin-bottom: 0;
+  }
   .header-logo {
     max-width: 350px;
   }
@@ -33,9 +37,7 @@
     h2 {
       display:none;
     }
-    .header-logo, .header-links {
 
-    }
   }
 }
 

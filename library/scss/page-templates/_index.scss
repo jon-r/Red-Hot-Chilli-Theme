@@ -75,7 +75,7 @@
   &::before {
     content: "";
     display: block;
-    padding-top: calc(25%);
+    padding-top: 20%;
   }
 }
 
@@ -85,13 +85,14 @@
   font-size: 1rem;
   left:0;
   width:100%;
-  bottom: 4rem;
+  bottom:0;
   top: 0;
   @include jr-size(tablet) {
     font-size: 1.4rem;
   }
   a {
     padding:0;
+    width:100%;
   }
 }
 
@@ -115,7 +116,7 @@
 
   [class^='slider-'] {
     transform: translateX(0);
-    transition-duration: 600ms;
+    transition-duration: 800ms;
     transition-timing-function: cubic-bezier(0, .50, .50, 1);
   }
 }
@@ -137,8 +138,8 @@
 
 .blip {
   float: left;
-  height: 6px;
-  width:6px;
+  height: 10px;
+  width:10px;
   border-radius: 5px;
   background: jr-grey(9);
   margin: 2px;
@@ -181,13 +182,13 @@
 
 .slider-link {
   @extend %slide-all;
-  bottom: 7%;
+  bottom: 5%;
   text-decoration: underline;
   transition-delay: 500ms ;
 }
 
 .go-left {
-  left:5%;
+  left:1rem;
   text-align: left;
 }
 
@@ -197,7 +198,7 @@
 }
 
 .go-right {
-  right: 5%;
+  right: 1rem;
   text-align: right;
 }
 

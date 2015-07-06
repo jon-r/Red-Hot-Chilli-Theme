@@ -15,16 +15,18 @@
   }
 }
 .shop-tile.group {
+  border-radius: 0;
   margin-top: 4rem;
   border-left: solid 3px $jr-emphasis;
   border-right: solid 3px $jr-emphasis;
   img {
-    margin: -15% -3px;
-    width: calc(100% + 6px);
+    margin: -11% 0;
+    //width: calc(100% + 6px);
   }
   ul {
     width: 50%;
-    margin-left: 2%;
+    margin-left: jr-spacer(0.5);
+    margin-bottom: jr-spacer(0.5);
   }
 }
 

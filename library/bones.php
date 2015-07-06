@@ -210,7 +210,7 @@ function bones_theme_support() {
 	register_nav_menus(
 		array(
 			'services-menu' => __( 'Services Menu links', 'bonestheme'),
-            'featured-menu' => __( 'Featured Menu Links', 'bonestheme' ),
+			'header-bar' => __( 'Header Bar Links', 'bonestheme'),
 			'footer-other' => __( 'Footer Other Links', 'bonestheme' ),
 			'footer-shop' => __( 'Footer Shop Links', 'bonestheme' )
 		)
