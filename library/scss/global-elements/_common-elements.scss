@@ -8,7 +8,7 @@ button, .btn-red {
 }
 
 .btn-red {
-  background-color: $jr-emphasis;
+  @include jr-red-grad;
   color: $jr-text-light;
 }
 

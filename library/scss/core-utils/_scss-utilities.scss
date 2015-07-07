@@ -4,6 +4,11 @@
   @return hsl(0, $saturation, $lightness);
 }
 
+@mixin jr-red-grad {
+  background-image: linear-gradient(jr-red(4),jr-red(3));
+  background-color: $jr-emphasis;
+}
+
 @function jr-grey($n) {
   $lightness: 10% * ($n);
   $saturation: 2% * (10 - $n);

@@ -712,6 +712,7 @@ button, .btn-red {
   background-color: #e5e5e6; }
 
 .btn-red {
+  background-image: linear-gradient(#a32929, #821717);
   background-color: #931f1f;
   color: #e5e5e6; }
 
@@ -880,7 +881,7 @@ Default style for all pages
 .primary-header, .primary-footer {
   position: relative;
   width: 100%;
-  border: 0 solid #931f1f;
+  border: 0 solid #a32929;
   color: #e5e5e6;
   box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
   z-index: 5; }
@@ -945,7 +946,7 @@ main {
     main {
       background-size: 100%; } }
 
-article + article {
+article + article:not(.flex-column) {
   margin-top: 24px; }
 
 .container {
@@ -970,11 +971,11 @@ article + article {
 
 .nav-top {
   justify-content: center;
-  background-image: linear-gradient(#a32929, #821717);
-  background-color: #931f1f;
   position: relative;
   z-index: 5;
-  box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); }
+  box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
+  background-image: linear-gradient(#a32929, #821717);
+  background-color: #931f1f; }
   @media only screen and (min-width: 482px) {
     .nav-top {
       justify-content: space-between; } }
@@ -1227,8 +1228,7 @@ Page specific items.
 .carousel-blips {
   z-index: 6;
   position: absolute;
-  top: 5px;
-  right: 5px;
+  bottom: 0;
   opacity: 0.5; }
   .carousel-blips:hover {
     opacity: 1; }
@@ -1267,7 +1267,7 @@ Page specific items.
     display: block; }
 
 .slider-link {
-  bottom: 5%;
+  bottom: 7%;
   text-decoration: underline;
   transition-delay: 500ms; }
 
@@ -1316,6 +1316,9 @@ Page specific items.
     margin-left: 12px;
     margin-bottom: 12px; }
 
+.shop-tile.category {
+  background-color: #f2f2f2; }
+
 .shop-tile.item {
   padding-bottom: 48px;
   font-size: 1.25rem; }
@@ -1329,8 +1332,8 @@ Page specific items.
   padding: 5px; }
   .shop-tile-header:first-child {
     border-bottom: 1px solid #424a57;
-    background-image: linear-gradient(to bottom, #701010, #a32929);
-    background-color: #701010;
+    background-image: linear-gradient(#a32929, #821717);
+    background-color: #931f1f;
     color: #e5e5e6;
     border-radius: 4px 4px 0 0;
     text-align: center; }

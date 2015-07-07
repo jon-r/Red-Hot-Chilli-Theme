@@ -128,8 +128,7 @@
 .carousel-blips {
   z-index: 6;
   position:absolute;
-  top:5px;
-  right:5px;
+  bottom:0;
   opacity: 0.5;
   &:hover {
     opacity: 1;
@@ -182,7 +181,7 @@
 
 .slider-link {
   @extend %slide-all;
-  bottom: 5%;
+  bottom: 7%;
   text-decoration: underline;
   transition-delay: 500ms ;
 }

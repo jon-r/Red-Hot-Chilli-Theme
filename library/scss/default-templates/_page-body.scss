@@ -21,7 +21,7 @@ main {
   }
 }
 
-article + article {
+article + article:not(.flex-column) {
   margin-top: jr-spacer();
 }
 

@@ -12,11 +12,10 @@
 
 .nav-top {
   justify-content: center;
-  background-image: linear-gradient(jr-red(4),jr-red(3));
-  background-color: $jr-emphasis;
   position: relative;
   z-index: 5;
   box-shadow: $jr-shadow;
+  @include jr-red-grad;
   @include jr-size(tablet) {
     justify-content: space-between;
   }
