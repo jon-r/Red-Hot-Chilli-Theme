@@ -7,6 +7,8 @@
           echo do_shortcode("[jr-shop id='nav-breadcrumbs']");
         }
     ?>
+  <br>
+
 </nav>
 
 

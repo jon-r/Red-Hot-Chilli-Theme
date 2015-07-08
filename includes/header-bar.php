@@ -12,6 +12,7 @@
       <h2 class="text-icon-left email-w"><?php echo jr_linkTo('eLink') ?></h2>
 
     <?php echo do_shortcode( "[jr-shop id='search-bar' cached=true]"); ?>
+
   </menu>
 
 </div>

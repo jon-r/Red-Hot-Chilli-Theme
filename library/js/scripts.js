@@ -166,7 +166,7 @@ function searchToText(data) {
   $searchOut.html('');
   $(results).each(function (i) {
     if (i < 4) {
-      var link = fileSrc.site + '/' + this.filter + '/' + this.url + '/';
+      var link = fileSrc.site + '/products/' + this.filter + '/' + this.url + '/';
       var extra = (this.filter == 'brand') ? '<span> - Brand</span>' : '<span> - Category</span>';
       var output = '<li><a href="' + link + '" >' + this.name + extra + '</a></li>';
       $searchOut.append(output);
@@ -281,12 +281,12 @@ $imgGalleryNext.click(function() {
 var $imgGalleryModal  = $('#js-gallery-modal'),
     $imgGalleryOpen   = $imgGalleryMain.find('.tile-hover.zoom'),
     $imgGalleryClose  = $imgGalleryModal.find('.modal-close');
-/*    $buyModal         = $('#js-buy-modal'),
+    $buyModal         = $('#js-buy-modal'),
     $buyModalOpen     = $('#js-buy-btn'),
     $buyModalClose    = $buyModal.find('.modal-close'),
     $queryModal         = $('#js-query-modal'),
     $queryModalOpen     = $('#js-query-btn'),
-    $queryModalClose    = $queryModal.find('.modal-close');   */
+    $queryModalClose    = $queryModal.find('.modal-close');
 
 function modalOpen(e) {
   e.addClass('is-active')
@@ -312,7 +312,7 @@ $imgGalleryOpen.click(function() {
 $imgGalleryClose.click(function() {
   modalClose($imgGalleryModal);
 });
-/*
+
 $buyModalOpen.click(function() {
   modalOpen($buyModal)
 })
@@ -324,4 +324,4 @@ $buyModalClose.click(function() {
 });
 $queryModalClose.click(function() {
   modalClose($queryModal);
-});*/
+});

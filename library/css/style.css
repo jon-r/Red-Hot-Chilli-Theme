@@ -627,7 +627,8 @@ webkit-input-placeholder {
     color: #66707f; }
   .search-out a {
     width: 100%;
-    padding-left: 12px; }
+    padding-left: 12px;
+    text-decoration: none; }
   .search-out a:hover, .search-out a:focus {
     background: #424a57;
     color: white; }
@@ -865,8 +866,7 @@ Default style for all pages
   width: 100%;
   border: 0 solid #a32929;
   color: #e5e5e6;
-  box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
-  z-index: 5; }
+  box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); }
 
 .primary-header {
   border-bottom-width: 6px;
@@ -954,7 +954,6 @@ article + article:not(.flex-column) {
 .nav-top {
   justify-content: center;
   position: relative;
-  z-index: 5;
   box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
   background-image: linear-gradient(#a32929, #821717);
   background-color: #931f1f; }
@@ -1163,6 +1162,8 @@ Page specific items.
 
 /*-- Carousel -------------------------------------------------------------------------*/
 .carousel {
+  border-top: 1px solid #e5e5e6;
+  margin-top: 24px;
   position: relative;
   overflow: hidden;
   white-space: nowrap;
@@ -1197,7 +1198,7 @@ Page specific items.
     height: 100%; }
 
 .is-active {
-  z-index: 5;
+  z-index: 2;
   left: 0; }
   .is-active [class^='slider-'] {
     transform: translateX(0);
