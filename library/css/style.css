@@ -282,7 +282,6 @@ Add some global styling.
 *********************/
 /*-- typegraphy ----------------------------------------------------------------------*/
 h1, h2, h3, h4, p {
-  line-height: 1.2;
   margin: 0;
   padding: 0;
   color: inherit; }
@@ -455,14 +454,11 @@ em.greater {
 .phone-w::before {
   background-position: -256px -512px; }
 
-.phone-w::before {
-  background-position: -256px -512px; }
-
 .phone::before {
   background-position: -256px -256px; }
 
-.question::before {
-  background-position: 0px -256px; }
+.question-w::before {
+  background-position: 0px -512px; }
 
 .list::before {
   background-position: -896px -256px; }
@@ -717,7 +713,7 @@ button, .btn-red {
   color: #e5e5e6; }
 
 /* floating buttons */
-.social-shares a, .shop-tile, .gallery-nav, .shop-buttons button {
+.shop-tile, .gallery-nav, .shop-buttons button {
   box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
   border-radius: 4px; }
 
@@ -855,24 +851,10 @@ button, .btn-red {
       width: 64px;
       height: 64px; } }
 
-.social-shares {
-  border-top: 1px solid #424a57;
-  margin: 12px 0;
-  text-align: center; }
-  .social-shares a {
-    text-decoration: none;
-    font-weight: bold;
-    color: white;
-    background-color: #f2f2f2;
-    padding-right: 10px;
-    margin: 12px;
-    line-height: 2rem; }
-  .social-shares a:hover, .social-shares a:active {
-    color: #e5e5e6; }
-  .social-shares .facebook {
-    background-color: #3D5A98; }
-  .social-shares .twitter {
-    background-color: #5FA9DD; }
+.social-shares .facebook {
+  background-color: #3D5A98; }
+.social-shares .twitter {
+  background-color: #5FA9DD; }
 
 /*********************
 Default style for all pages
@@ -1417,9 +1399,13 @@ Page specific items.
     width: 100%; }
 
 .shop-buttons {
-  margin: 12px 0;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px;
   widtH: 100%;
-  height: 3rem; }
+  height: 3rem;
+  border-top: 1px solid #e5e5e6; }
   .shop-buttons button {
     margin: 12px;
     line-height: 2rem; }

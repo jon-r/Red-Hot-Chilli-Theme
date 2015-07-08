@@ -33,22 +33,6 @@
 }
 
 .social-shares {
-  border-top: $jr-border-dark;
-  margin: jr-spacer(0.5) 0;
-  text-align: center;
-  a {
-    text-decoration: none;
-    font-weight: bold;
-    color: white;
-    background-color: $jr-bg-light;
-    padding-right: 10px;
-    @extend %floating-button;
-    margin: jr-spacer(0.5);
-    line-height: 2rem;
-  }
-  a:hover, a:active {
-    color: $jr-bg-hover;
-  }
   .facebook {
     background-color: #3D5A98;
   }
