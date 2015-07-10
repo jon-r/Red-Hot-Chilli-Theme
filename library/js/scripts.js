@@ -291,8 +291,12 @@ var $imgGalleryModal  = $('#js-gallery-modal'),
 function modalOpen(e) {
   e.addClass('is-active')
 }
+function modalOpenSmall(e) {
+  e.addClass('is-active-small');
+}
 function modalClose(e) {
   e.removeClass('is-active');
+  e.removeClass('is-active-small');
 }
 
 $imgGalleryOpen.click(function() {
@@ -314,10 +318,10 @@ $imgGalleryClose.click(function() {
 });
 
 $buyModalOpen.click(function() {
-  modalOpen($buyModal)
+  modalOpenSmall($buyModal)
 })
 $queryModalOpen.click(function() {
-  modalOpen($queryModal)
+  modalOpenSmall($queryModal)
 })
 $buyModalClose.click(function() {
   modalClose($buyModal);

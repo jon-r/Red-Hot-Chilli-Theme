@@ -545,16 +545,28 @@ em.greater {
   .flex-6 {
     width: calc(16.66667% - 24px); } }
 /* --- form defaults ------------------------------------------------------------------*/
-input, button, textarea {
+form input, form button, form textarea, form select {
   display: block;
   float: left;
-  font-size: 1.2rem; }
+  font-size: 1.2rem;
+  border: 1px solid #424a57; }
+form label {
+  float: left;
+  text-align: right;
+  border-top: 1px solid #424a57;
+  padding: 5px; }
 
 .text-input {
   padding: 5px;
+  box-shadow: inset 0 4px 4px rgba(21, 24, 30, 0.5);
   background-color: white;
   color: #15181e;
-  margin-bottom: 24px; }
+  margin-bottom: 24px;
+  border: none;
+  width: 100%; }
+  @media only screen and (min-width: 1031px) {
+    .text-input {
+      width: calc(100% - 10rem); } }
 
 webkit-input-placeholder {
   color: #66707f; }
@@ -573,15 +585,8 @@ webkit-input-placeholder {
   @media only screen and (min-width: 1031px) {
     .form-contact p {
       padding: 0 48px; } }
-.form-contact .text-input {
-  width: 100%;
-  border: 1px solid #424a57; }
 .form-contact label {
-  width: 100%;
-  border-top: 1px solid #424a57;
-  float: left;
-  text-align: right;
-  padding: 5px; }
+  width: 100%; }
 .form-contact textarea {
   height: 10rem;
   resize: vertical; }
@@ -589,11 +594,8 @@ webkit-input-placeholder {
   float: right;
   width: 9rem; }
 @media only screen and (min-width: 1031px) {
-  .form-contact .text-input {
-    width: calc(100% - 7rem); }
   .form-contact label {
-    width: 7rem;
-    font-size: 0.8rem; } }
+    width: 10rem; } }
 
 @media only screen and (min-width: 482px) {
   .form-contact.wider p {
@@ -604,11 +606,10 @@ webkit-input-placeholder {
 .form-search {
   position: relative; }
   .form-search .text-input {
-    width: calc(100% - 5rem);
-    border: 0; }
+    width: calc(100% - 6rem);
+    line-height: 2rem; }
   .form-search button {
-    width: 4rem;
-    padding: 3px; }
+    padding: 6px; }
 
 .search-out {
   position: absolute;
@@ -632,6 +633,30 @@ webkit-input-placeholder {
   .search-out a:hover, .search-out a:focus {
     background: #424a57;
     color: white; }
+
+/* modal (pop up) forms ---------------------------------------------------------------*/
+.form-modal {
+  position: relative;
+  height: 100%;
+  width: 100%; }
+  .form-modal .wpcf7 {
+    top: 0;
+    bottom: 0;
+    position: absolute; }
+  .form-modal .wpcf7-form {
+    display: flex;
+    align-items: center;
+    width: 300%;
+    height: 100%;
+    border: solid blue 1px; }
+  .form-modal p {
+    border: solid red 1px;
+    margin: 0 24px;
+    flex: 1;
+    min-height: 15rem;
+    max-height: 100%; }
+    .form-modal p:first-of-type {
+      left: 0; }
 
 /* --contact form 7 -------------------------------------------------------------------*/
 div.wpcf7 {
@@ -784,46 +809,6 @@ button, .btn-red {
     width: 13rem; }
     .tile-hover.zoom:after {
       content: "Click here to zoom"; } }
-
-/*modal popouts - enabled through js */
-.modal {
-  position: fixed;
-  opacity: 0;
-  width: 5%;
-  height: 5%;
-  top: 45vh;
-  z-index: 100;
-  transition: 300ms ease;
-  overflow-y: auto; }
-
-.modal.image img {
-  object-fit: contain;
-  object-position: center; }
-
-@supports (object-fit: contain) {
-  .modal.image img {
-    height: 100%; } }
-.modal.right {
-  left: 95%; }
-
-.modal.is-active {
-  left: 5%;
-  opacity: 1;
-  width: 90%;
-  height: 90%;
-  top: 5%; }
-
-.modal-close {
-  position: fixed;
-  height: 64px;
-  width: 64px;
-  right: calc(24px + 5%);
-  cursor: pointer;
-  background: rgba(43, 49, 59, 0.5); }
-  @media only screen and (min-width: 1031px) {
-    .modal-close {
-      width: 96px;
-      height: 96px; } }
 
 /*-- social media ---------------------------------------------------------------------*/
 .social-links,
@@ -1116,12 +1101,12 @@ Page specific items.
   position: relative;
   height: 150px;
   overflow: hidden;
-  background-color: #424a57; }
+  background-color: #2b313b; }
   @media only screen and (min-width: 1031px) {
     .menu-featured li {
       height: auto; } }
 .menu-featured h2 {
-  background: #424a57;
+  background: #2b313b;
   background: linear-gradient(to bottom, #15181e, #424a57) top/200%;
   color: #e5e5e6;
   text-align: center;
@@ -1400,20 +1385,87 @@ Page specific items.
     width: 100%; }
 
 .shop-buttons {
-  text-decoration: none;
-  font-weight: bold;
-  text-align: center;
   padding: 12px;
   widtH: 100%;
   height: 3rem;
   border-top: 1px solid #e5e5e6; }
   .shop-buttons button {
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
     margin: 12px;
     line-height: 2rem; }
 
 .item-features li {
   line-height: 2; }
 
+/*modal popouts - enabled through js */
+.modal {
+  position: fixed;
+  opacity: 0;
+  width: 5%;
+  height: 5%;
+  top: 45vh;
+  z-index: 100;
+  transition: 300ms ease; }
+
+.modal.image img {
+  object-fit: contain;
+  object-position: center; }
+
+.modal-spec, .modal-thumb {
+  position: relative; }
+
+.modal-spec {
+  border-bottom: 1px solid #e5e5e6;
+  width: calc(100% - 150px); }
+
+.modal-thumb {
+  width: 150px;
+  padding: 12px; }
+
+@supports (object-fit: contain) {
+  .modal.image img {
+    height: 100%; } }
+.modal.right {
+  left: 95%; }
+
+.modal-close {
+  position: fixed;
+  height: 64px;
+  width: 64px;
+  right: calc(24px + 5%);
+  cursor: pointer;
+  background: rgba(43, 49, 59, 0.5); }
+  @media only screen and (min-width: 1031px) {
+    .modal-close {
+      width: 96px;
+      height: 96px; } }
+
+.modal.is-active,
+.modal.is-active-small {
+  left: 5%;
+  opacity: 1;
+  width: 90%;
+  height: 90%;
+  top: 5%; }
+  .modal.is-active::before,
+  .modal.is-active-small::before {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(21, 24, 30, 0.75);
+    z-index: -5; }
+
+@media only screen and (min-width: 1031px) {
+  .modal.is-active-small {
+    left: calc(50% - 350px);
+    width: 700px; }
+    .modal.is-active-small .modal-close {
+      right: calc(50% - 330px); } }
 .default-page .flex-container {
   margin-top: 24px; }
 .default-page li {
