@@ -329,3 +329,25 @@ $buyModalClose.click(function() {
 $queryModalClose.click(function() {
   modalClose($queryModal);
 });
+
+/* faq response -----------------------------------------------------------------------*/
+
+var $queryModalInput = $("#js-question-in"),
+    //$queryOptions = $queryModalInput;
+    $queryModaloutput = $("#js-question-out");
+
+$queryModalInput.change(function () {
+  var question = $(this).find('option:selected').val();
+  console.log(question);
+  $queryModaloutput.addClass('loading');
+  $.get(fileSrc.ajaxAdmin, {
+    keyword: question,
+    action: "jr_getAnswers"
+  }).done(questionToText);
+});
+
+function questionToText(data) {
+  var results = $.parseJSON(data);
+
+  $queryModaloutput.removeClass('loading').html(results.answer).append(results.next);
+};
