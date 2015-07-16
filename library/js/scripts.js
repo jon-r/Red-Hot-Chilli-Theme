@@ -175,7 +175,8 @@ function searchToText(data) {
 };
 
 //adds arrow movment to the options
-$searchIn.keypress(function(e) {
+$searchIn.on('keydown',function(e) {
+
   $results = $searchOut.find('li > a');
   if (e.keyCode == '40' && $results.length > 0) {
     e.preventDefault();
@@ -183,7 +184,8 @@ $searchIn.keypress(function(e) {
   }
 });
 
-$searchOut.on('keypress','li > a', function(e) {
+$searchOut.on('keydown','li > a', function(e) {
+
   $focussed = $searchOut.find(':focus');
   if (e.keyCode == '40' && $focussed.length > 0) {
     e.preventDefault();
