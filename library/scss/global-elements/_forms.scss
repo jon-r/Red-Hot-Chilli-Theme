@@ -1,18 +1,31 @@
 
 /* --- form defaults ------------------------------------------------------------------*/
 form {
-  input, button, textarea, select {
+  input, button, textarea, select, label, span {
     display: block;
     float:left;
+  }
+
+  input, button, textarea, select {
     font-size: 1.2rem;
     border:$jr-border-dark;
   }
   label {
-    float:left;
     text-align: right;
     border-top: $jr-border-dark;
     padding: 5px;
   }
+  .required::before {
+    color: jr-red(5);
+    font-size: 1.1rem;
+    content: "*";
+  }
+
+}
+
+.text-input {
+
+
 }
 
 .text-input {
@@ -20,11 +33,27 @@ form {
   box-shadow: inset $jr-shadow;
   background-color: white;
   color: $jr-text-dark;
-  margin-bottom: jr-spacer();
-  border: none;
+  border: $jr-border-dark;
+  margin-bottom: 2rem;
   width:100%;
+  &.error {
+    background: jr-red(8);
+    border-color: $jr-emphasis;
+  }
   @include jr-size(screen) {
     width: calc(100% - 10rem);
+  }
+}
+
+.form-error-output {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color:jr-red(6);
+  margin-top: -2rem;
+  height:1rem;
+  margin-left: 0.5rem;
+  @include jr-size(screen) {
+    margin-left: 10.5rem;
   }
 }
 
@@ -63,6 +92,7 @@ webkit-input-placeholder {
   @include jr-size(screen) {
     label {
       width:10rem;
+      font-size: 0.9rem;
     }
   }
 }
@@ -74,6 +104,7 @@ webkit-input-placeholder {
     padding: jr-spacer();
   }
 }
+
 
 /* --- search form --------------------------------------------------------------------*/
 

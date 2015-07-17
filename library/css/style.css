@@ -548,28 +548,46 @@ em.greater {
   .flex-6 {
     width: calc(16.66667% - 24px); } }
 /* --- form defaults ------------------------------------------------------------------*/
-form input, form button, form textarea, form select {
+form input, form button, form textarea, form select, form label, form span {
   display: block;
-  float: left;
+  float: left; }
+form input, form button, form textarea, form select {
   font-size: 1.2rem;
   border: 1px solid #424a57; }
 form label {
-  float: left;
   text-align: right;
   border-top: 1px solid #424a57;
   padding: 5px; }
+form .required::before {
+  color: #bf4040;
+  font-size: 1.1rem;
+  content: "*"; }
 
 .text-input {
   padding: 5px;
   box-shadow: inset 0 4px 4px rgba(21, 24, 30, 0.5);
   background-color: white;
   color: #15181e;
-  margin-bottom: 24px;
-  border: none;
+  border: 1px solid #424a57;
+  margin-bottom: 2rem;
   width: 100%; }
+  .text-input.error {
+    background: #d6c2c2;
+    border-color: #931f1f; }
   @media only screen and (min-width: 1031px) {
     .text-input {
       width: calc(100% - 10rem); } }
+
+.form-error-output {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #c27070;
+  margin-top: -2rem;
+  height: 1rem;
+  margin-left: 0.5rem; }
+  @media only screen and (min-width: 1031px) {
+    .form-error-output {
+      margin-left: 10.5rem; } }
 
 webkit-input-placeholder {
   color: #66707f; }
@@ -598,7 +616,8 @@ webkit-input-placeholder {
   width: 9rem; }
 @media only screen and (min-width: 1031px) {
   .form-contact label {
-    width: 10rem; } }
+    width: 10rem;
+    font-size: 0.9rem; } }
 
 @media only screen and (min-width: 482px) {
   .form-contact.wider p {
