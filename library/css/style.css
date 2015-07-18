@@ -548,76 +548,83 @@ em.greater {
   .flex-6 {
     width: calc(16.66667% - 24px); } }
 /* --- form defaults ------------------------------------------------------------------*/
-form input, form button, form textarea, form select, form label, form span {
+form label, .text-input, .form-error-output {
   display: block;
   float: left; }
-form input, form button, form textarea, form select {
-  font-size: 1.2rem;
-  border: 1px solid #424a57; }
+
+.form-btn {
+  display: block;
+  padding: 6px;
+  float: right; }
+
+textarea {
+  resize: vertical; }
+
 form label {
   text-align: right;
-  border-top: 1px solid #424a57;
-  padding: 5px; }
-form .required::before {
+  border-top: solid 2px #424a57;
+  padding: 2px; }
+
+label.required::before {
   color: #bf4040;
   font-size: 1.1rem;
   content: "*"; }
 
 .text-input {
-  padding: 5px;
-  box-shadow: inset 0 4px 4px rgba(21, 24, 30, 0.5);
+  padding: 6px;
+  font-size: 1.2rem;
   background-color: white;
+  background-image: linear-gradient(#caccce, white 3rem);
   color: #15181e;
-  border: 1px solid #424a57;
-  margin-bottom: 2rem;
-  width: 100%; }
+  font-weight: bold;
+  border: solid 2px #424a57;
+  margin-bottom: 1.5rem; }
   .text-input.error {
     background: #d6c2c2;
     border-color: #931f1f; }
-  @media only screen and (min-width: 1031px) {
-    .text-input {
-      width: calc(100% - 10rem); } }
+  .text-input:focus {
+    border-color: #e0a24e; }
 
 .form-error-output {
   font-size: 0.9rem;
   font-weight: bold;
   color: #c27070;
-  margin-top: -2rem;
+  margin-top: -1.5rem;
   height: 1rem;
   margin-left: 0.5rem; }
   @media only screen and (min-width: 1031px) {
     .form-error-output {
-      margin-left: 10.5rem; } }
+      margin-left: 9.5rem; } }
 
 webkit-input-placeholder {
-  color: #66707f; }
+  color: #9197a1; }
 
 ::-moz-placeholder {
-  color: #66707f; }
+  color: #9197a1; }
 
 :-ms-input-placeholder {
-  color: #66707f; }
+  color: #9197a1; }
 
 /* --- contact form -------------------------------------------------------------------*/
 .form-contact p {
   margin: 0;
   display: inline-block;
   width: 100%; }
-  @media only screen and (min-width: 1031px) {
-    .form-contact p {
-      padding: 0 48px; } }
+.form-contact .text-input {
+  width: 100%;
+  border-radius: 6px; }
 .form-contact label {
   width: 100%; }
-.form-contact textarea {
-  height: 10rem;
-  resize: vertical; }
-.form-contact .button {
-  float: right;
-  width: 9rem; }
 @media only screen and (min-width: 1031px) {
+  .form-contact p {
+    padding: 0 36px; }
+  .form-contact .text-input {
+    width: calc(100% - 9rem);
+    border-radius: 0 6px 6px 0; }
   .form-contact label {
-    width: 10rem;
-    font-size: 0.9rem; } }
+    width: 9rem;
+    font-size: 0.9rem;
+    border-top-left-radius: 8px; } }
 
 @media only screen and (min-width: 482px) {
   .form-contact.wider p {
@@ -628,16 +635,16 @@ webkit-input-placeholder {
 .form-search {
   position: relative; }
   .form-search .text-input {
-    width: calc(100% - 6rem);
-    line-height: 2rem; }
-  .form-search button {
-    padding: 6px; }
+    border-radius: 6px;
+    width: calc(100% - 8rem); }
+    @media only screen and (min-width: 1031px) {
+      .form-search .text-input {
+        width: calc(100% - 6rem); } }
 
 .search-out {
   position: absolute;
-  width: calc(100% + 5px);
-  top: 4.5rem;
-  left: -5px;
+  width: calc(100% - 5px);
+  top: 5rem;
   z-index: 100; }
   .search-out:empty {
     display: none; }
@@ -758,13 +765,14 @@ div.wpcf7 .placeheld {
 /*button style*/
 button, .btn-red {
   border: none;
-  line-height: 2.25rem;
-  background-color: #e5e5e6; }
+  line-height: 2.25rem; }
 
 .btn-red {
   background-image: linear-gradient(#a32929, #821717);
   background-color: #931f1f;
-  color: #e5e5e6; }
+  color: #e5e5e6;
+  border-radius: 6px;
+  border: solid 2px #931f1f; }
 
 /* floating buttons */
 .shop-tile, .gallery-nav, .shop-buttons button {

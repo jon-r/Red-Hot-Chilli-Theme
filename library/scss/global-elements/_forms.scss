@@ -1,70 +1,77 @@
 
 /* --- form defaults ------------------------------------------------------------------*/
-form {
-  input, button, textarea, select, label, span {
-    display: block;
-    float:left;
-  }
-
-  input, button, textarea, select {
-    font-size: 1.2rem;
-    border:$jr-border-dark;
-  }
-  label {
-    text-align: right;
-    border-top: $jr-border-dark;
-    padding: 5px;
-  }
-  .required::before {
-    color: jr-red(5);
-    font-size: 1.1rem;
-    content: "*";
-  }
-
+%form-default {
+  display: block;
+  float:left;
 }
 
-.text-input {
-
-
+.form-btn {
+  display:block;
+  padding: 6px;
+  float: right;
 }
 
+textarea {
+  resize: vertical;
+}
+
+form label {
+  @extend %form-default;
+  text-align: right;
+  border-top: solid 2px jr-grey(3);
+  padding: 2px;
+}
+
+label.required::before {
+  color: jr-red(5);
+  font-size: 1.1rem;
+  content: "*";
+}
+
+
 .text-input {
-  padding:5px;
-  box-shadow: inset $jr-shadow;
+  @extend %form-default;
+  padding:6px;
+  font-size: 1.2rem;
   background-color: white;
+  background-image: linear-gradient(jr-grey(8), white 3rem );
   color: $jr-text-dark;
-  border: $jr-border-dark;
-  margin-bottom: 2rem;
-  width:100%;
+  font-weight: bold;
+  border: solid 2px jr-grey(3);
+  margin-bottom: 1.5rem;
   &.error {
     background: jr-red(8);
     border-color: $jr-emphasis;
   }
-  @include jr-size(screen) {
-    width: calc(100% - 10rem);
+    &:focus {
+    border-color: #e0a24e;
   }
+
+
 }
 
 .form-error-output {
+  @extend %form-default;
+
   font-size: 0.9rem;
   font-weight: bold;
   color:jr-red(6);
-  margin-top: -2rem;
+  margin-top: -1.5rem;
   height:1rem;
   margin-left: 0.5rem;
   @include jr-size(screen) {
-    margin-left: 10.5rem;
+    margin-left: 9.5rem;
   }
 }
 
 webkit-input-placeholder {
-   color: $jr-text-hover;
+   color: jr-grey(6);
 }
 ::-moz-placeholder {
-   color: $jr-text-hover;
+   color: jr-grey(6);
 }
 :-ms-input-placeholder {
-   color: $jr-text-hover;
+   color: jr-grey(6);
 }
 
 /* --- contact form -------------------------------------------------------------------*/
@@ -74,25 +81,26 @@ webkit-input-placeholder {
     margin:0;
     display: inline-block;
     width:100%;
-    @include jr-size(screen) {
-      padding: 0 jr-spacer(2);
-    }
+  }
+  .text-input {
+    width:100%;
+    border-radius:6px;
   }
   label {
     width:100%;
   }
-  textarea {
-    height:10rem;
-    resize: vertical;
-  }
-  .button {
-    float:right;
-    width:9rem;
-  }
   @include jr-size(screen) {
+    p {
+      padding: 0 jr-spacer(1.5);
+    }
+    .text-input {
+      width: calc(100% - 9rem);
+      border-radius: 0 6px 6px 0;
+    }
     label {
-      width:10rem;
+      width:9rem;
       font-size: 0.9rem;
+      border-top-left-radius: 8px;
     }
   }
 }
@@ -111,19 +119,19 @@ webkit-input-placeholder {
 .form-search {
   position: relative;
   .text-input {
-    width: calc(100% - 6rem);
-    line-height:2rem;
+    border-radius: 6px;
+    width: calc(100% - 8rem);
+    @include jr-size(screen) {
+      width: calc(100% - 6rem);
+    }
   }
-  button {
-    padding:6px;
-  }
+
 }
 
 .search-out {
   position: absolute;
-  width:calc(100% + 5px);
-  top: 4.5rem;
-  left:-5px;
+  width:calc(100% - 5px);
+  top: 5rem;
   z-index: 100;
 
   &:empty {

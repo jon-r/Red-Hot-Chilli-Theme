@@ -4,12 +4,13 @@
 button, .btn-red {
   border: none;
   line-height: 2.25rem;
-  background-color: $jr-bg-hover;
 }
 
 .btn-red {
   @include jr-red-grad;
   color: $jr-text-light;
+  border-radius:  6px;
+  border: solid 2px $jr-emphasis;
 }
 
 /* floating buttons */
