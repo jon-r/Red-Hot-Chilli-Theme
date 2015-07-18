@@ -664,29 +664,18 @@ webkit-input-placeholder {
     color: white; }
 
 /* modal (pop up) forms ---------------------------------------------------------------*/
-.form-modal {
+.form-modal form {
   position: relative;
-  height: 100%;
   width: 100%; }
-  .form-modal .wpcf7 {
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    position: absolute;
-    overflow: hidden; }
-  .form-modal .wpcf7-form {
-    display: flex;
-    width: 300%;
-    height: 100%; }
-  .form-modal p {
-    width: calc(100% /3);
-    margin: 0 24px;
-    flex: 1;
-    min-height: 15rem;
-    max-height: 100%; }
-    .form-modal p:first-of-type {
-      left: 0; }
+.form-modal p {
+  top: 48px;
+  left: 100%;
+  width: 100%;
+  position: absolute;
+  padding: 24px;
+  max-height: 100%; }
+  .form-modal p:first-of-type {
+    left: 0; }
 
 .text-output {
   float: left;
