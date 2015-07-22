@@ -151,7 +151,7 @@ $searchIn.keyup(function () {
   if ( vp.width >= 1030 ) {
     var keyword = $(this).val();
     if (keyword.length >= MIN_LENGTH) {
-      $.get(fileSrc.ajaxAdmin, {
+      $.get(fileSrc.admin, {
         keyword: keyword,
         action: "jr_autocomplete"
       }).done(searchToText);
@@ -245,7 +245,7 @@ function setMainImg(i) {
   if ($thumbImg.data('tile') == 1) {
     $imgGalleryMain.removeClass('loading').find('img').attr('src', fileSrc.site + '/' + $getThumbSrc);
   } else {
-    $.get(fileSrc.ajaxAdmin, {
+    $.get(fileSrc.admin, {
       src: $fullThumbSrc,
       size: 'tile',
       action: "jr_resize"
@@ -342,7 +342,7 @@ $queryModalInput.change(function () {
   var question = $(this).find('option:selected').val();
   console.log(question);
   $queryModaloutput.addClass('loading');
-  $.get(fileSrc.ajaxAdmin, {
+  $.get(fileSrc.admin, {
     keyword: question,
     action: "jr_getAnswers"
   }).done(questionToText);
@@ -357,19 +357,34 @@ function questionToText(data) {
 /* forms ------------------------------------------------------------------------------*/
 
 var $form = $('.js_contact_form'),
-  $formInputs = $form.find('.req');
+    $formInputs = $form.find('.req'),
+    formErrorList = [];
 
 //turns off validation only if JS is available, since the script is trying to deal with it
 $form.attr('novalidate', 'novalidate');
 
 
 $form.submit(function (e) {
+  formErrorList = [];
+  $thisForm = $(this);
+  $response = $thisForm.find('.response');
+
   e.preventDefault();
-  console.log('submittedAttempt');
-  $form.find($formInputs).each(function () {
+  $response.addClass('loading').removeClass('error').removeClass('success').empty();
+  $thisForm.find($formInputs).each(function () {
     $el = $(this);
     formValidate($el);
   });
+
+  if (formErrorList.length == 0) {
+    $.get(fileSrc.admin, {
+      keyword: $thisForm.serialize(),
+      action: "jr_formsubmit",
+      url: window.location.href
+    }).done(formReply);
+  } else {
+    console.log(formErrorList);
+  }
 })
 
 $formInputs.change(function (e) {
@@ -382,23 +397,31 @@ function formValidate($el) {
     name = $el.attr('name'),
     type = $el.attr('type'),
     validEmail = value.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/);
-  errorString = '';
+  var formError = "",
+      formIndex = $formInputs.index($el);
 
-  $el.removeClass('error').next('span').empty();
+  $el.removeClass('error').removeClass('success').next('span').empty();
 
   if (type == 'email' && !validEmail) {
-    errorString = 'Please enter a valid email address';
+    formError = 'Please enter a valid email address';
     $el.addClass('error')
   }
   if (value.length < 1) {
-    errorString = 'Your ' + name + ' is required';
+    formError = 'Your ' + name + ' is required';
   }
-  if (errorString.length > 0) {
-    $el.addClass('error').next('span').text(errorString);
+  if (formError.length > 0) {
+    $el.addClass('error').next('span').text(formError);
+    formErrorList.push(formError);
+  } else {
+    $el.addClass('success');
   }
 }
 
-
+function formReply(data) {
+  var result = $.parseJSON(data);
+  $resultOutcome = (result == "Form mailed successfully") ? 'success' : 'error';
+  $form.find('.response').removeClass('loading').addClass($resultOutcome).html(result);
+}
 
 
 

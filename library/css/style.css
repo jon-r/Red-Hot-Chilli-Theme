@@ -385,8 +385,8 @@ em.greater {
 .loading::before, .primary-nav:only-child::before {
   height: 128px;
   width: 144px;
+  top: 0;
   left: calc(50% - 72px);
-  top: 5rem;
   animation: loader-animate 0.4s steps(4) alternate infinite;
   -webkit-animation: loader-animate 0.4s steps(4) alternate infinite; }
 
@@ -548,7 +548,7 @@ em.greater {
   .flex-6 {
     width: calc(16.66667% - 24px); } }
 /* --- form defaults ------------------------------------------------------------------*/
-form label, .text-input, .form-error-output {
+form label, .text-input, .form-output {
   display: block;
   float: left; }
 
@@ -578,23 +578,32 @@ label.required::before {
   color: #15181e;
   font-weight: bold;
   border: solid 2px #424a57;
-  margin-bottom: 1.5rem; }
-  .text-input.error {
-    background: #d6c2c2;
-    border-color: #931f1f; }
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
+  transition: border 200ms; }
   .text-input:focus {
     border-color: #e0a24e; }
 
-.form-error-output {
+.error {
+  background: #d6c2c2;
+  color: #c27070; }
+
+.success {
+  background: #c4d6c2;
+  color: #29931f; }
+
+.form-output {
   font-size: 0.9rem;
   font-weight: bold;
-  color: #c27070;
   margin-top: -1.5rem;
   height: 1rem;
-  margin-left: 0.5rem; }
+  margin-left: 0.5rem;
+  background: none; }
   @media only screen and (min-width: 1031px) {
-    .form-error-output {
+    .form-output {
       margin-left: 9.5rem; } }
+  .form-output.response {
+    margin-top: 12px; }
 
 webkit-input-placeholder {
   color: #9197a1; }
@@ -960,6 +969,8 @@ article + article:not(.flex-column) {
   margin-bottom: 24px; }
   .primary-nav:only-child {
     padding-bottom: 50vh; }
+    .primary-nav:only-child::before {
+      top: 5rem; }
 
 .nav-top {
   justify-content: center;

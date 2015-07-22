@@ -7,6 +7,9 @@
   &:only-child {
     @extend %loader-icon;
     padding-bottom: 50vh;
+    &::before {
+      top: 5rem;
+    }
   }
 }
 

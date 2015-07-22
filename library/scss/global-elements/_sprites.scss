@@ -198,8 +198,8 @@ $iconMap: (
   &::before {
     height: $sprite-grid-size;// / 4;
     width: $sprite-grid-size * 1.125;// * 2;
+    top:0;
     left: calc(50% - 72px);
-    top: 5rem;
             animation: loader-animate 0.4s steps(4) alternate infinite;
     -webkit-animation: loader-animate 0.4s steps(4) alternate infinite;
   }

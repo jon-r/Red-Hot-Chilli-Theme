@@ -39,30 +39,41 @@ label.required::before {
   font-weight: bold;
   border: solid 2px jr-grey(3);
   margin-bottom: 1.5rem;
-  &.error {
-    background: jr-red(8);
-    border-color: $jr-emphasis;
-  }
-    &:focus {
+  box-shadow: $jr-shadow;
+  transition: border 200ms;
+  &:focus {
     border-color: #e0a24e;
   }
 
 
 }
 
-.form-error-output {
-  @extend %form-default;
+.error {
+  background: jr-red(8);
+  color:jr-red(6);
+}
+.success {
+  background: #c4d6c2;
+  color: #29931f;
+}
 
+.form-output {
+  @extend %form-default;
   font-size: 0.9rem;
   font-weight: bold;
-  color:jr-red(6);
   margin-top: -1.5rem;
   height:1rem;
   margin-left: 0.5rem;
+  background: none;
   @include jr-size(screen) {
     margin-left: 9.5rem;
   }
+  &.response {
+    margin-top: jr-spacer(0.5);
+  }
 }
+
+
 
 webkit-input-placeholder {
    color: jr-grey(6);
