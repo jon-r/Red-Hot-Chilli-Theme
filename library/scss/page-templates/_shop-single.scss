@@ -119,18 +119,10 @@
   }
 }
 
-.modal-spec, .modal-thumb {
-  position: relative;
-}
-
 .modal-spec {
-  border-bottom: $jr-border;
-  width:calc(100% - 150px);
-}
-
-.modal-thumb {
-  width:150px;
-  padding: jr-spacer(0.5);
+  position: relative;
+  width:calc(100% - 100px);
+  height: 10rem;
 }
 
 @supports (object-fit: contain) {

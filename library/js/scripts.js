@@ -334,13 +334,12 @@ $queryModalClose.click(function() {
 
 /* faq response -----------------------------------------------------------------------*/
 
-var $queryModalInput = $("#js-question-in"),
+var $queryModalInput = $("#js-question-in").find('option'),
     //$queryOptions = $queryModalInput;
     $queryModaloutput = $("#js-question-out");
 
-$queryModalInput.change(function () {
-  var question = $(this).find('option:selected').val();
-  console.log(question);
+$queryModalInput.click(function () {
+  var question = $(this).val();
   $queryModaloutput.addClass('loading');
   $.get(fileSrc.admin, {
     keyword: question,
@@ -351,18 +350,20 @@ $queryModalInput.change(function () {
 function questionToText(data) {
   var results = $.parseJSON(data);
 
-  $queryModaloutput.removeClass('loading').html(results.answer).append(results.next);
+  $queryModaloutput.removeClass('loading').html(results.answer).next('button').html(results.next);
 };
 
 /* forms ------------------------------------------------------------------------------*/
 
 var $form = $('.js_contact_form'),
-    $formInputs = $form.find('.req'),
+    $formInputsReq = $form.find('input.req'),
+    $formInputsOptional = $form.find('input:not(.req)'),
+    $formNextBtn = $form.find('.js_nextBtn'),
+    $formBackBtn = $form.find('.js_backBtn'),
     formErrorList = [];
 
 //turns off validation only if JS is available, since the script is trying to deal with it
-$form.attr('novalidate', 'novalidate');
-
+$form.attr('novalidate', '');
 
 $form.submit(function (e) {
   formErrorList = [];
@@ -370,27 +371,65 @@ $form.submit(function (e) {
   $response = $thisForm.find('.response');
 
   e.preventDefault();
-  $response.addClass('loading').removeClass('error').removeClass('success').empty();
-  $thisForm.find($formInputs).each(function () {
+  $thisForm.find($formInputsReq).each(function () {
     $el = $(this);
     formValidate($el);
   });
 
+  $response.removeClass('success').removeClass('error').empty();
+
   if (formErrorList.length == 0) {
+    $response.addClass('loading');
     $.get(fileSrc.admin, {
       keyword: $thisForm.serialize(),
       action: "jr_formsubmit",
       url: window.location.href
-    }).done(formReply);
+    }).done(formAjaxReply);
   } else {
-    console.log(formErrorList);
+    //console.log(formErrorList);
+    $response.addClass('error').html('Please fill in required items')
   }
 })
 
-$formInputs.change(function (e) {
+$formNextBtn.click(function(e) {
+  $thisSubForm = $(this).parent('p.subform-active');
+  formErrorList = [];
+  $response = $thisSubForm.find('.response');
+
+  $thisSubForm.find($formInputsReq).each(function () {
+    $el = $(this);
+    formValidate($el);
+  });
+
+  $response.removeClass('success').removeClass('error').empty();
+  console.log('click')
+
+  if (formErrorList.length == 0) {
+    $thisSubForm.removeClass('subform-active').next('p').addClass('subform-active');
+  } else {
+    //console.log(formErrorList);
+    $response.addClass('error').html('Please fill in required items')
+  }
+});
+
+$formBackBtn.click(function(e) {
+  $(this).parent('p.subform-active').removeClass('subform-active').prev('p').addClass('subform-active');
+});
+
+$formInputsReq.change(function (e) {
   $el = $(this);
   formValidate($el);
 });
+
+$formInputsOptional.change(function(e) {
+  $el = $(this);
+
+  if ($el.val().length > 0) {
+    $el.addClass('success');
+  } else {
+    $el.removeClass('success');
+  }
+})
 
 function formValidate($el) {
   var value = $el.val(),
@@ -398,7 +437,7 @@ function formValidate($el) {
     type = $el.attr('type'),
     validEmail = value.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/);
   var formError = "",
-      formIndex = $formInputs.index($el);
+      formIndex = $formInputsReq.index($el);
 
   $el.removeClass('error').removeClass('success').next('span').empty();
 
@@ -417,7 +456,7 @@ function formValidate($el) {
   }
 }
 
-function formReply(data) {
+function formAjaxReply(data) {
   var result = $.parseJSON(data);
   $resultOutcome = (result == "Form mailed successfully") ? 'success' : 'error';
   $form.find('.response').removeClass('loading').addClass($resultOutcome).html(result);

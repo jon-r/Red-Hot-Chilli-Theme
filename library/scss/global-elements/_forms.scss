@@ -9,6 +9,10 @@
   display:block;
   padding: 6px;
   float: right;
+  box-shadow: $jr-shadow;
+  &:empty {
+    display: none;
+  }
 }
 
 textarea {
@@ -18,7 +22,7 @@ textarea {
 form label {
   @extend %form-default;
   text-align: right;
-  border-top: solid 2px jr-grey(3);
+  border-top: 2px solid jr-grey(3);
   padding: 2px;
 }
 
@@ -43,17 +47,19 @@ label.required::before {
   transition: border 200ms;
   &:focus {
     border-color: #e0a24e;
+    outline: none;
   }
-
-
 }
 
 .error {
-  background: jr-red(8);
+  background-color: jr-red(8);
+  background-image: linear-gradient(jr-red(8), white 3rem);
   color:jr-red(6);
+  border-color: jr-red(6);
 }
 .success {
-  background: #c4d6c2;
+  background-color: #c4d6c2;
+  background-image: linear-gradient(#c4d6c2, white 3rem);
   color: #29931f;
 }
 
@@ -73,8 +79,6 @@ label.required::before {
   }
 }
 
-
-
 webkit-input-placeholder {
    color: jr-grey(6);
 }
@@ -92,7 +96,14 @@ webkit-input-placeholder {
     margin:0;
     display: inline-block;
     width:100%;
+    @include jr-size(screen) {
+      padding: 0 jr-spacer(1.5);
+    }
   }
+
+}
+
+.form-contact, .form-modal {
   .text-input {
     width:100%;
     border-radius:6px;
@@ -101,9 +112,6 @@ webkit-input-placeholder {
     width:100%;
   }
   @include jr-size(screen) {
-    p {
-      padding: 0 jr-spacer(1.5);
-    }
     .text-input {
       width: calc(100% - 9rem);
       border-radius: 0 6px 6px 0;
@@ -131,9 +139,9 @@ webkit-input-placeholder {
   position: relative;
   .text-input {
     border-radius: 6px;
-    width: calc(100% - 8rem);
+    width: calc(100% - 7rem);
     @include jr-size(screen) {
-      width: calc(100% - 6rem);
+   //   width: calc(100% - 6rem);
     }
   }
 
@@ -172,23 +180,30 @@ webkit-input-placeholder {
 /* modal (pop up) forms ---------------------------------------------------------------*/
 
 .form-modal {
+  margin-top: 6rem;
+  height:calc(100% - 6rem);
   form {
     position: relative;
     width:100%;
-//    overflow: hidden;
+    height:100%;
+    overflow: hidden;
   }
   p {
-    top:jr-spacer(2);
     left:100%;
     width:100%;
+    height:100%;
     position: absolute;
-    padding: jr-spacer();
-    max-height: 100%;
-
-    &:first-of-type {
-      left:0;//temp
+    transition: left 300ms;
+    overflow-y: auto;
+    padding: 2px;
+    @include jr-size(tablet) {
+      padding: jr-spacer();
     }
   }
+}
+
+p.subform-active {
+  left:0;
 }
 
 .text-output {
