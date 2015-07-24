@@ -1,7 +1,7 @@
 /*-------------------------sprite layouts + settings ----------------------------------*/
 
 //temp link for image-relativity;
-$siteLink: /rhc_online;
+$siteLink: /rhc;
 
 //size of sprite grid
 $sprite-grid-size: 128px;
@@ -260,7 +260,8 @@ $icons-before: (
   tick-w,
   twitter,
   facebook,
-  expand-w
+  expand-w,
+  cube
 );
 
 @each $item-name in $icons-before {
