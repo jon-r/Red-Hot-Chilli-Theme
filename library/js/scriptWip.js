@@ -1,14 +1,8 @@
-/*
-function = fA fB etc
-var = v1
-*/
-
 /*----- jquery menu aim ---------------------------------------------------------------*/
 /*region
 https://github.com/kamens/jQuery-menu-aim.git
 (minified)
 */
-
 !function(e){function t(t){var n=e(this),i=null,o=[],u=null,r=null,c=e.extend({rowSelector:"> li",submenuSelector:"*",submenuDirection:"right",tolerance:75,enter:e.noop,exit:e.noop,activate:e.noop,deactivate:e.noop,exitMenu:e.noop},t),l=3,f=300,a=function(e){o.push({x:e.pageX,y:e.pageY}),o.length>l&&o.shift()},s=function(){r&&clearTimeout(r),c.exitMenu(this)&&(i&&c.deactivate(i),i=null)},h=function(){r&&clearTimeout(r),c.enter(this),v(this)},m=function(){c.exit(this)},x=function(){y(this)},y=function(e){e!=i&&(i&&c.deactivate(i),c.activate(e),i=e)},v=function(e){var t=p();t?r=setTimeout(function(){v(e)},t):y(e)},p=function(){function t(e,t){return(t.y-e.y)/(t.x-e.x)}if(!i||!e(i).is(c.submenuSelector))return 0;var r=n.offset(),l={x:r.left,y:r.top-c.tolerance},a={x:r.left+n.outerWidth(),y:l.y},s={x:r.left,y:r.top+n.outerHeight()+c.tolerance},h={x:r.left+n.outerWidth(),y:s.y},m=o[o.length-1],x=o[0];if(!m)return 0;if(x||(x=m),x.x<r.left||x.x>h.x||x.y<r.top||x.y>h.y)return 0;if(u&&m.x==u.x&&m.y==u.y)return 0;var y=a,v=h;"left"==c.submenuDirection?(y=s,v=l):"below"==c.submenuDirection?(y=h,v=s):"above"==c.submenuDirection&&(y=l,v=a);var p=t(m,y),b=t(m,v),d=t(x,y),g=t(x,v);return d>p&&b>g?(u=m,f):(u=null,0)};n.mouseleave(s).find(c.rowSelector).mouseenter(h).mouseleave(m).click(x),e(document).mousemove(a)}e.fn.menuAim=function(e){return this.each(function(){t.call(this,e)}),this}}(jQuery);
 
 /* endregion */
@@ -19,7 +13,7 @@ https://github.com/kamens/jQuery-menu-aim.git
  * ( source: http://andylangton.co.uk/blog/development/get-viewport-size-width-and-height-javascript )
 */
 
-function fA() {
+function f01() {
 	var w=window,d=document,e=d.documentElement,g=d.getElementsByTagName('body')[0],x=w.innerWidth||e.clientWidth||g.clientWidth,y=w.innerHeight||e.clientHeight||g.clientHeight;
 	return { width:x,height:y }
 }
@@ -27,43 +21,42 @@ function fA() {
 
 /*-- main menu toggle -----------------------------------------------------------------*/
 /*region */
-var $v1 = $('#js-main-list'),
-    $v2 = $v1.find('li'),
-    v3 = false;
+var v01 = $('#js-main-list'),
+    v02 = v01.find('li'),
+    v03 = false,
+    v04 = f01();
 //menu aim for large screen
-$v1.mouseenter( function() {
-  vp = fA();
-  if ( vp.width >= 1030 ) {
-    v3 = true;
-    $v1.menuAim({
-      activate: fB,
-      deactivate: fC,
-      exitMenu: fD
+v01.mouseenter( function() {
+  v04 = f01();
+  if ( v04.width >= 1030 ) {
+    v03 = true;
+    v01.menuAim({
+      activate: f02,
+      deactivate: f03,
+      exitMenu: f04
     })
   } else {
-    v3 = false;
+    v03 = false;
   }
 });
 
-function fB(row) {
-  if (v3) {
-    $row = $(row);
-    $row.addClass('active-li');
+function f02(r) {
+  if (v03) {
+    $(r).addClass('active-li');
   }
 }
 
-function fC(row) {
-  $row = $(row);
-  $row.removeClass('active-li');
+function f03(r) {
+  $(r).removeClass('active-li');
 }
 
-function fD() {
-  v3 = false;
-  $v2 = $v1.find('li').removeClass('active-li');
+function f04() {
+  v03 = false;
+  v02.removeClass('active-li');
 }
 
 //much simpler touch toggle for small screens
-$v2.click( function() {
+v02.click( function() {
   $(this).toggleClass('active-li')
 });
 
@@ -72,63 +65,58 @@ $v2.click( function() {
 /*-- carousel scroller ----------------------------------------------------------------*/
 
 //redone in jquery
-var $v4 = $('#js-carousel-main'),
-    $v5 = $v4.find('.slide'),
-    $v6 = $('#js-carousel-blips > .blip');
+var v05 = $('#js-carousel-main'),
+    v06 = v05.find('.slide'),
+    v07 = $('#js-carousel-blips > .blip'),
+    v08 = v06.length - 1,
+    v09 = 8000,
+    v10 = false,
+    v11 = false,
+    v12 = 0;
 
-var $v7 = $v5.length - 1,
-    $v8 = 8000,
-    $v9 = false,
-    $v10 = false,
-    $v11 = 0;
-
-if ($v4.length > 0) {
-  timer = window.setInterval(fE, $v8);
-  $v4.mouseover(function() {
-    $v9 = true;
+if (v05.length > 0) {
+  var v13 = window.setInterval(f05, v09);
+  v05.mouseover(function() {
+    v10 = true;
   })
-  $v4.mouseout(function() {
-    $v9 = false;
-    clearInterval(timer);
-    timer = window.setInterval(fE, $v8);
+  v05.mouseout(function() {
+    v10 = false;
+    clearInterval(v13);
+    v13 = window.setInterval(f05, v09);
   })
-  $v6.mouseover(function() {
-    $v9 = true;
+  v07.mouseover(function() {
+    v10 = true;
   })
-  $v6.mouseout(function() {
-    $v9 = false;
-    clearInterval(timer);
-    timer = window.setInterval(fE, $v8);
+  v07.mouseout(function() {
+    v10 = false;
+    clearInterval(v13);
+    v13 = window.setInterval(f05, v09);
   })
 }
 
-function fE() {
-  if (!$v9 && !$v10) {
-
-    if ($v11 == $v7) {
-      $v11 = -1;
-    }
-    $v11++;
-    $v10 = true;
-    fF($v11);
+function f05() {
+  if (!v10 && !v11) {
+    v12 =  (v12 == v08) ? 0 : v12++;
+    v11 = true;
+    f06(v12);
   }
 }
 
-$v6.click(function() {
-  if ($v11 != $(this).index() && !$v10) {
-    $v10 = true;
-    $v11 = $(this).index();
-    fF($v11);
+v07.click(function() {
+  if (v12 != $(this).index() && !v11) {
+    v11 = true;
+    v12 = $(this).index();
+    f06(v12);
   }
 });
 
-function fF(i) {
-  $v4.find('.go-away').removeClass('is-active').removeClass('go-away');
-  $v4.find('.is-active').addClass('go-away');
-  $v5.eq(i).removeClass('go-away').addClass('is-active');
-  $v6.removeClass('active').eq(i).addClass('active');
+function f06(i) {
+  v05.find('.go-away').removeClass('is-active').removeClass('go-away');
+  v05.find('.is-active').addClass('go-away');
+  v06.eq(i).removeClass('go-away').addClass('is-active');
+  v07.removeClass('active').eq(i).addClass('active');
   setTimeout(function () {
-    $v10 = false;
+    v11 = false;
   }, 600);
 }
 
@@ -136,283 +124,276 @@ function fF(i) {
 /* js + ajax auto complete ------------------------------------------------------------*/
 // takes categories + key brands.
 /* region */
+var v13 = $("#js-form-complete").find(".form-search"),
+    v14 = v13.find(".search-in"),
+    v15 = v13.find(".search-out");
 
-var $v12 = $("#js-form-complete").find(".form-search"),
-    $v13 = $v12.find(".search-in"),
-    $v14 = $v12.find(".search-out");
-
-
-$v13.keyup(function () {
-  vp = fA();
-  if ( vp.width >= 1030 ) {
-    keyword = $(this).val();
-    if (keyword.length >= 3) {
+v14.keyup(function () {
+  v04 = f01();
+  if ( v04.width >= 1030 ) {
+    var v16 = $(this).val();
+    if (v16.length >= 3) {
       $.get(fileSrc.admin, {
-        keyword: keyword,
+        keyword: v16,
         action: "jr_autocomplete"
-      }).done(fG);
+      }).done(f07);
     } else {
-      $v14.html('');
+      v15.html('');
     }
   }
 });
 
-function fG(data) {
-  results = $.parseJSON(data);
-  $v14.html('');
-  $(results).each(function (i) {
+function f07(d) {
+  var r = $.parseJSON(d);
+  v15.html('');
+  $(r).each(function (i) {
     if (i < 4) {
-      link = fileSrc.site + '/products/' + this.filter + '/' + this.url + '/';
-      extra = (this.filter == 'brand') ? '<span> - Brand</span>' : '<span> - Category</span>';
-      output = '<li><a href="' + link + '" >' + this.name + extra + '</a></li>';
-      $v14.append(output);
+      var e = (this.filter == 'brand') ? '<span> - Brand</span>' : '<span> - Category</span>';
+      var o = '<li><a href="' + fileSrc.site + '/products/' + this.filter + '/' + this.url + '/' + '" >' + this.name + e + '</a></li>';
+      v15.append(o);
     }
   })
 };
 
 //adds arrow movment to the options
-$v13.on('keydown',function(e) {
-
-  $results = $v14.find('li > a');
-  if (e.keyCode == '40' && $results.length > 0) {
+v14.on('keydown',function(e) {
+  r = v15.find('li > a');
+  if (e.keyCode == '40' && r.length > 0) {
     e.preventDefault();
-    fH('d', -1);
+    f08('d', -1);
   }
 });
 
-$v14.on('keydown','li > a', function(e) {
+v15.on('keydown','li > a', function(e) {
 
-  $focussed = $v14.find(':focus');
-  if (e.keyCode == '40' && $focussed.length > 0) {
+  f = v15.find(':focus');
+  if (e.keyCode == '40' && f.length > 0) {
     e.preventDefault();
     $i = $(this).parent('li').index();
-    fH('d', $i);
-  } else if (e.keyCode == '38' && $focussed.length > 0) {
+    f08('d', $i);
+  } else if (e.keyCode == '38' && f.length > 0) {
     e.preventDefault();
     $i = $(this).parent('li').index();
 
-    fH('u', $i);
+    f08('u', $i);
   }
 });
 
-function fH(direction, i) {
-  $results = $v14.find('li > a');
-  $resultCount = $results.length;
-  if (direction == 'd' && (i + 1) < $resultCount) {
+function f08(d, i) {
+  r = v15.find('li > a');
+  rC = r.length;
+  if (d == 'd' && (i + 1) < rC) {
     i++
-    $target = $results.eq(i);
-    $text = $target.text();
-    $v13.val($text);
-  } else if (direction == 'u') {
+    t = r.eq(i);
+    tx = t.text();
+    v14.val(tx);
+  } else if (d == 'u') {
     if (i > 0) {
       i--
-      $target = $results.eq(i);
-      $text = $target.text();
-      $v13.val($text);
+      t = r.eq(i);
+      tx = t.text();
+      v14.val(tx);
     } else {
-      $target = $v13;
+      t = v14;
     }
   }
-  $target.focus();
-  console.log(i);
+  t.focus();
 }
 /* endregion */
 /* item gallery buttons -------------------------------------------------------------- */
 
-var $v15   = $('#js-gallery-primary'),
-    $v16  = $('#js-gallery-thumbs').find('li'),
-    $v17   = $('#js-gallery-prev'),
-    $v18   = $('#js-gallery-next'),
-    $v19    = ($v16.length) - 1;
+var v16   = $('#js-gallery-primary'),
+    v17   = $('#js-gallery-thumbs'),
+    v18  = v17.find('li'),
+    v19   = $('#js-gallery-prev'),
+    v20   = $('#js-gallery-next'),
+    v21    = (v18.length) - 1;
 
 //"gallery switch"
 // checks first to see if the tile sized image exists (possibly wont), need to ajax call the php resize function
-$v16.click(function() {
+v18.click(function() {
   i = $(this).index();
-  fI(i);
+  f09(i);
 });
 
-function fI(i) {
-  $thumbImg = $v16.eq(i).find('img');
-  $getThumbSrc = $thumbImg.attr('src').replace('gallery-thumb', 'gallery').split('/').slice(-3).join('/');
-  $fullThumbSrc = '../' + $getThumbSrc;
-  $v15.addClass('loading');
-  if ($thumbImg.data('tile') == 1) {
-    $v15.removeClass('loading').find('img').attr('src', fileSrc.site + '/' + $getThumbSrc);
+function f09(i) {
+  t = v18.eq(i).find('img');
+  s = t.attr('src').replace('gallery-thumb', 'gallery').split('/').slice(-3).join('/');
+  f = '../' + s;
+  v16.addClass('loading');
+  if (t.data('tile') == 1) {
+    v16.removeClass('loading').find('img').attr('src', fileSrc.site + '/' + s);
   } else {
     $.get(fileSrc.admin, {
-      src: $fullThumbSrc,
+      src: f,
       size: 'tile',
       action: "jr_resize"
-    }, fJ);
-    $thumbImg.data('tile', 1);
+    }, f10);
+    t.data('tile', 1);
   }
 }
 
-function fJ(data) {
-  results = $.parseJSON(data);
-  $newSrc = results.replace('../', fileSrc.site +'/');
-  $v15.removeClass('loading').find('img').attr('src',$newSrc);
+function f10(d) {
+  var r = $.parseJSON(d);
+  n = r.replace('../', fileSrc.site +'/');
+  v16.removeClass('loading').find('img').attr('src',n);
 }
 
-$v17.click(function() {
-  if ($v19 == 0) {
-    $v19 = $v16.length;
+v19.click(function() {
+  if (v21 == 0) {
+    v21 = v18.length;
   }
-  $v19--
-  fI($v19);
+  v21--
+  f09(v21);
 })
 
-$v18.click(function() {
-  if ($v19 == ($v16.length) - 1) {
-    $v19 = -1;
+v20.click(function() {
+  if (v21 == (v18.length) - 1) {
+    v21 = -1;
   }
-  $v19++
-  fI($v19);
+  v21++
+  f09(v21);
 })
 
 /* modal popups ---------------------------------------------------------------------- */
 // eg zoom and enhance
-var $v20  = $('#js-gallery-modal'),
-    $v21   = $v15.find('.tile-hover.zoom'),
-    $v22  = $v20.find('.modal-close');
-    $v22         = $('#js-buy-modal'),
-    $v23     = $('#js-buy-btn'),
-    $v24    = $v22.find('.modal-close'),
-    $v25         = $('#js-query-modal'),
-    $v26     = $('#js-query-btn'),
-    $v27    = $v25.find('.modal-close');
+var v22 = $('#js-gallery-modal'),
+    v23 = v16.find('.tile-hover.zoom'),
+    v24 = v22.find('.modal-close');
+    v25 = $('#js-buy-modal'),
+    v26     = $('#js-buy-btn'),
+    v27    = v25.find('.modal-close'),
+    v28         = $('#js-query-modal'),
+    v29     = $('#js-query-btn'),
+    v30    = v28.find('.modal-close');
 
-function fK(e) {
-  e.addClass('is-active')
-}
-function fL(e) {
+
+function f11(e) {
   e.addClass('is-active-small');
 }
-function fM(e) {
-  e.removeClass('is-active').removeClass('is-active-small');
+function f12(e) {
+  e.removeClass('is-active');
+  e.removeClass('is-active-small');
 }
 
-$v21.click(function() {
-  $getImgSrc = $v15.find('img').attr('src');
-  $bigImgSrc = $getImgSrc.replace('gallery-tile','gallery');
+v23.click(function() {
+  i = v16.find('img').attr('src');
+  b = i.replace('gallery-tile','gallery');
 
-  if ($v20.find('img').length) {
+  if (v22.find('img').length) {
 
-    $v20.find('img').attr('src',$bigImgSrc);
+    v22.find('img').attr('src',b);
   } else {
-    $bigImgNew = '<img src="' + $bigImgSrc + '" >';
-    $v20.append($bigImgNew);
+    bN = '<img src="' + b + '" >';
+    v22.append(bN);
   }
-  fK($v20);
+  v22.addClass('is-active');
 });
 
-$v22.click(function() {
-  fM($v20);
+v24.click(function() {
+  f12(v22);
 });
-
-$v23.click(function() {
-  fL($v22)
+v26.click(function() {
+  f11(v25)
 })
-$v26.click(function() {
-  fL($v25)
+v29.click(function() {
+  f11(v28)
 })
-$v24.click(function() {
-  fM($v22);
+v27.click(function() {
+  f12(v25);
 });
-$v27.click(function() {
-  fM($v25);
+v30.click(function() {
+  f12(v28);
 });
 
 /* faq response -----------------------------------------------------------------------*/
 
-var $v28 = $("#js-question-in").find('option'),
-    $v29 = $("#js-question-out");
+var v31 = $("#js-question-in").find('option'),
+    v32 = $("#js-question-out");
 
-$v28.click(function () {
-  question = $(this).val();
-  $v29.addClass('loading');
+v31.click(function () {
+  var q = $(this).val();
+  v32.addClass('loading');
   $.get(fileSrc.admin, {
-    keyword: question,
+    keyword: q,
     action: "jr_getAnswers"
-  }).done(fN);
+  }).done(f13);
 });
 
-function fN(data) {
-  results = $.parseJSON(data);
-
-  $v29.removeClass('loading').html(results.answer).next('button').html(results.next);
+function f13(d) {
+  var r = $.parseJSON(d);
+  v32.removeClass('loading').html(r.answer).next('button').html(r.next);
 };
 
 /* forms ------------------------------------------------------------------------------*/
 
-var $v30 = $('.js_contact_form'),
-    $v31 = $v30.find('input.req'),
-    $v32 = $v30.find('input:not(.req)'),
-    $v33 = $v30.find('.js_nextBtn'),
-    $v34 = $v30.find('.js_backBtn'),
-    v35 = [];
+var v33 = $('.js_contact_form'),
+    v34 = v33.find('input.req'),
+    v35 = v33.find('input:not(.req)'),
+    v36 = v33.find('.js_nextBtn'),
+    v37 = v33.find('.js_backBtn'),
+    v38 = [];
 
 //turns off validation only if JS is available, since the script is trying to deal with it
-$v30.attr('novalidate', '');
+v33.attr('novalidate', '');
 
-$v30.submit(function (e) {
-  v35 = [];
-  $thisForm = $(this);
-  $response = $thisForm.find('.response');
+v33.submit(function (e) {
+  v38 = [];
+  v39 = $(this);
+  v40 = v39.find('.response');
 
   e.preventDefault();
-  $thisForm.find($v31).each(function () {
+  v39.find(v34).each(function () {
     $el = $(this);
-    fO($el);
+    f14($el);
   });
 
-  $response.removeClass('success').removeClass('error').empty();
+  v40.removeClass('success').removeClass('error').empty();
 
-  if (formErrorList.length == 0) {
-    $response.addClass('loading');
+  if (v38.length == 0) {
+    v40.addClass('loading');
     $.get(fileSrc.admin, {
-      keyword: $thisForm.serialize(),
+      keyword: v39.serialize(),
       action: "jr_formsubmit",
       url: window.location.href
-    }).done(fP);
+    }).done(f15);
   } else {
-    //console.log(formErrorList);
-    $response.addClass('error').html('Please fill in required items')
+    //console.log(v38);
+    v40.addClass('error').html('Please fill in required items')
   }
 })
 
-$v33.click(function(e) {
-  $thisSubForm = $(this).parent('p.subform-active');
-  v35= [];
-  $response = $thisSubForm.find('.response');
+v36.click(function(e) {
+  v41 = $(this).parent('p.subform-active');
+  v38 = [];
+  v40 = v41.find('.response');
 
-  $thisSubForm.find($v31).each(function () {
+  v41.find(v34).each(function () {
     $el = $(this);
-    fO($el);
+    f14($el);
   });
 
-  $response.removeClass('success').removeClass('error').empty();
+  v40.removeClass('success').removeClass('error').empty();
   console.log('click')
 
-  if (formErrorList.length == 0) {
-    $thisSubForm.removeClass('subform-active').next('p').addClass('subform-active');
+  if (v38.length == 0) {
+    v41.removeClass('subform-active').next('p').addClass('subform-active');
   } else {
-    //console.log(formErrorList);
-    $response.addClass('error').html('Please fill in required items')
+    //console.log(v38);
+    v40.addClass('error').html('Please fill in required items')
   }
 });
 
-$v34.click(function(e) {
+v37.click(function(e) {
   $(this).parent('p.subform-active').removeClass('subform-active').prev('p').addClass('subform-active');
 });
 
-$v31.change(function (e) {
+v34.change(function (e) {
   $el = $(this);
-  fO($el);
+  f14($el);
 });
 
-$v32.change(function(e) {
+v35.change(function(e) {
   $el = $(this);
 
   if ($el.val().length > 0) {
@@ -422,34 +403,36 @@ $v32.change(function(e) {
   }
 })
 
-function fO($el) {
-  value = $el.val();
-  name = $el.attr('name');
-  type = $el.attr('type');
-  validEmail = value.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/);
-  formError = "";
-  formIndex = $v31.index($el);
+function f14($el) {
+  var v42 = $el.val(),
+      v43 = $el.attr('name'),
+      v44 = $el.attr('type'),
+      v45 = v42.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/),
+      v46 = "";
 
   $el.removeClass('error').removeClass('success').next('span').empty();
 
-  if (type == 'email' && !validEmail) {
-    formError = 'Please enter a valid email address';
+  if (v44 == 'email' && !v45) {
+    v46 = 'Please enter a valid email address';
     $el.addClass('error')
   }
-  if (value.length < 1) {
-    formError = 'Your ' + name + ' is required';
+  if (v42.length < 1) {
+    v46 = 'Your ' + v43 + ' is required';
   }
-  if (formError.length > 0) {
-    $el.addClass('error').next('span').text(formError);
-    formErrorList.push(formError);
+  if (v46.length > 0) {
+    $el.addClass('error').next('span').text(v46);
+    v38.push(v46);
   } else {
     $el.addClass('success');
   }
 }
 
-function fP(data) {
-  result = $.parseJSON(data);
-  $resultOutcome = (result == "Form mailed successfully") ? 'success' : 'error';
-  $v30.find('.response').removeClass('loading').addClass($resultOutcome).html(result);
+function f15(d) {
+  var r = $.parseJSON(d);
+  o = (r == "Form mailed successfully") ? 'success' : 'error';
+  v33.find('.response').removeClass('loading').addClass(o).html(r);
 }
+
+
+
 
