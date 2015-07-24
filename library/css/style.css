@@ -529,6 +529,7 @@ em.greater {
       width: 50%; } }
 
 .flex-1, .flex-2, .flex-3, .flex-4, .menu-featured li, .flex-5, .flex-6 {
+  display: inline-block;
   width: calc(100% - 24px);
   margin-bottom: 12px; }
   @media only screen and (min-width: 482px) {
@@ -537,21 +538,27 @@ em.greater {
 
 @media only screen and (min-width: 482px) {
   .flex-2, .flex-3, .flex-4, .menu-featured li {
+    display: inline-block;
     width: calc(50% - 24px); }
 
   .flex-5, .flex-6 {
+    display: inline-block;
     width: calc(33.33333% - 24px); } }
 @media only screen and (min-width: 1031px) {
   .flex-3 {
+    display: inline-block;
     width: calc(33.33333% - 24px); }
 
   .flex-4, .menu-featured li {
+    display: inline-block;
     width: calc(25% - 24px); }
 
   .flex-5 {
+    display: inline-block;
     width: calc(20% - 24px); }
 
   .flex-6 {
+    display: inline-block;
     width: calc(16.66667% - 24px); } }
 /* --- form defaults ------------------------------------------------------------------*/
 form label, .text-input, .form-output {
@@ -940,10 +947,12 @@ article + article:not(.flex-column) {
       width: calc(100% + 1rem);
       margin: -4px -0.5rem 0 -0.5rem; } }
 
-.nav-right-menu li {
-  float: left; }
-.nav-right-menu li + li {
-  border-left: 2px solid #821717; }
+.nav-right-menu {
+  display: inline-block; }
+  .nav-right-menu li {
+    float: left; }
+  .nav-right-menu li + li {
+    border-left: 2px solid #821717; }
 
 .top-btn {
   line-height: 2;
@@ -954,6 +963,7 @@ article + article:not(.flex-column) {
     color: #caccce; }
 
 .top-btn.left {
+  display: inline-block;
   cursor: pointer;
   width: 100%; }
   @media only screen and (min-width: 482px) {
@@ -1017,6 +1027,7 @@ article + article:not(.flex-column) {
       max-width: 250px; } }
   @media only screen and (min-width: 482px) and (max-width: 1030px) {
     .main-menu li {
+      display: inline-block;
       width: calc(50% - 24px);
       display: inline-block; }
       .main-menu li:nth-of-type(even) {
@@ -1348,6 +1359,7 @@ Page specific items.
     background-color: #e5e5e6; }
 
 .item-thumbs li {
+  display: inline-block;
   width: calc(50% - 24px);
   margin-left: 12px;
   margin-right: 12px;
@@ -1356,6 +1368,7 @@ Page specific items.
     border: 1px solid #424a57; }
   @media only screen and (min-width: 1031px) {
     .item-thumbs li {
+      display: inline-block;
       width: calc(25% - 24px); } }
 
 .item-tile-inner {
@@ -1374,8 +1387,12 @@ Page specific items.
   .item-tile-inner a {
     width: 100%; }
 
+svg.item-tile-inner {
+  display: block;
+  width: 100%; }
+
 .shop-buttons {
-  widtH: 100%;
+  width: 100%;
   border-top: 1px solid #e5e5e6; }
   .shop-buttons button {
     text-decoration: none;
@@ -1475,12 +1492,15 @@ Page specific items.
 /*-- map ------------------------------------------------------------------------------*/
 .map-container {
   margin-bottom: 24px;
+  display: inline-block;
   width: calc(100% - 24px); }
   @media only screen and (min-width: 482px) {
     .map-container {
+      display: inline-block;
       width: calc(50% - 24px); } }
   @media only screen and (min-width: 1031px) {
     .map-container {
+      display: inline-block;
       width: calc(75% - 24px); } }
 
 .contact-map {

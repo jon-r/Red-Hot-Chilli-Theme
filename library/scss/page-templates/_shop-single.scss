@@ -79,9 +79,13 @@
   }
 }
 
+svg.item-tile-inner  {
+  display: block;
+  width:100%;
+}
 
 .shop-buttons {
-  widtH:100%;
+  width:100%;
   border-top: $jr-border;
   button {
     text-decoration: none;

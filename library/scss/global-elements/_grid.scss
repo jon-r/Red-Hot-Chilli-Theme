@@ -1,7 +1,7 @@
 /*--- grid ----------------------------------------------------------------------------*/
 
 @mixin jr-width($rows, $full) {
-//  width: #{$rows*100%/$full }; put this on IE only?
+  display: inline-block; //non-flexbox fix
   width: calc(#{$rows*100%/$full } - #{jr-spacer()});
 }
 
