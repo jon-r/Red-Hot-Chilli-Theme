@@ -329,7 +329,7 @@ em.greater {
   pointer-events: none;
   content: '';
   position: absolute;
-  background-image: url(/rhc/images/icons/RHC-Icons.min.svg);
+  background-image: url(/rhc_online/images/icons/RHC-Icons.min.svg);
   height: 128px;
   width: 128px; }
 
@@ -337,7 +337,7 @@ em.greater {
   pointer-events: none;
   content: '';
   position: absolute;
-  background-image: url(/rhc/images/icons/RHC-Icons.min.svg);
+  background-image: url(/rhc_online/images/icons/RHC-Icons.min.svg);
   height: 128px;
   width: 128px; }
 
@@ -584,6 +584,9 @@ form label {
   border-top: 2px solid #424a57;
   padding: 2px; }
 
+fieldset {
+  border: none; }
+
 label.required::before {
   color: #bf4040;
   font-size: 1.1rem;
@@ -638,30 +641,30 @@ webkit-input-placeholder {
   color: #9197a1; }
 
 /* --- contact form -------------------------------------------------------------------*/
-.form-contact p {
+.form-contact fieldset {
   margin: 0;
   display: inline-block;
   width: 100%; }
   @media only screen and (min-width: 1031px) {
-    .form-contact p {
+    .form-contact fieldset {
       padding: 0 36px; } }
 
-.form-contact .text-input, .form-modal .text-input {
+form .text-input {
   width: 100%;
   border-radius: 6px; }
-.form-contact label, .form-modal label {
+form label {
   width: 100%; }
 @media only screen and (min-width: 1031px) {
-  .form-contact .text-input, .form-modal .text-input {
+  form .text-input {
     width: calc(100% - 9rem);
     border-radius: 0 6px 6px 0; }
-  .form-contact label, .form-modal label {
+  form label {
     width: 9rem;
     font-size: 0.9rem;
     border-top-left-radius: 8px; } }
 
 @media only screen and (min-width: 482px) {
-  .form-contact.wider p {
+  .form-contact.wider fieldset {
     float: left;
     width: 50%;
     padding: 24px; } }
@@ -703,7 +706,7 @@ webkit-input-placeholder {
     width: 100%;
     height: 100%;
     overflow: hidden; }
-  .form-modal p {
+  .form-modal fieldset {
     left: 100%;
     width: 100%;
     height: 100%;
@@ -712,15 +715,28 @@ webkit-input-placeholder {
     overflow-y: auto;
     padding: 2px; }
     @media only screen and (min-width: 482px) {
-      .form-modal p {
+      .form-modal fieldset {
         padding: 24px; } }
 
-p.subform-active {
+fieldset.subform-active {
   left: 0; }
 
-.text-output {
-  float: left;
+.form-question {
   width: 100%;
+  background-color: #2b313b;
+  background-image: linear-gradient(#424a57, #2b313b);
+  border: 1px solid #424a57;
+  border-radius: 4px;
+  padding: 5px;
+  margin-top: 2px; }
+
+.form-answer {
+  display: none; }
+
+input[type=radio] {
+  display: none; }
+
+input[type=radio]:checked + .form-answer {
   display: block; }
 
 /*--- common page elements + defaults -------------------------------------------------*/
@@ -853,13 +869,13 @@ Default style for all pages
 
 .primary-header {
   border-bottom-width: 6px;
-  background: url(/rhc/images/rhc/Head-Banner.jpg) top/cover; }
+  background: url(/rhc_online/images/rhc/Head-Banner.jpg) top/cover; }
   .primary-header .container {
     align-items: center;
     padding-top: 24px; }
   @media only screen and (min-width: 1240px) {
     .primary-header {
-      background: url(/rhc/images/rhc/Head-Banner.jpg) center no-repeat, linear-gradient(to right, #20252d 25%, #5a6372 75%); }
+      background: url(/rhc_online/images/rhc/Head-Banner.jpg) center no-repeat, linear-gradient(to right, #20252d 25%, #5a6372 75%); }
       .primary-header .home {
         height: 250px; } }
 
@@ -902,7 +918,7 @@ body {
   min-width: 320px; }
 
 main {
-  background: url(/rhc/images/rhc/body-banner.jpg) no-repeat top/200%, #f2f2f2;
+  background: url(/rhc_online/images/rhc/body-banner.jpg) no-repeat top/200%, #f2f2f2;
   color: #15181e;
   box-shadow: 0 5px 10px #15181e;
   flex: 1 1 auto;
@@ -966,6 +982,7 @@ article + article:not(.flex-column) {
     color: #caccce; }
 
 .top-btn.left {
+  border-right: 2px solid #821717;
   display: inline-block;
   cursor: pointer;
   width: 100%; }
@@ -1044,7 +1061,7 @@ article + article:not(.flex-column) {
   top: -2.5rem;
   left: 100%;
   transition: left 400ms;
-  background-image: url(/rhc/images/icons/menu-base.jpg);
+  background-image: url(/rhc_online/images/icons/menu-base.jpg);
   background-size: 500px 375px;
   background-position: bottom right;
   background-repeat: no-repeat; }

@@ -26,6 +26,10 @@ form label {
   padding: 2px;
 }
 
+fieldset {
+  border:none;
+}
+
 label.required::before {
   color: jr-red(5);
   font-size: 1.1rem;
@@ -92,7 +96,7 @@ webkit-input-placeholder {
 /* --- contact form -------------------------------------------------------------------*/
 
 .form-contact {
-  p {
+  fieldset {
     margin:0;
     display: inline-block;
     width:100%;
@@ -103,7 +107,7 @@ webkit-input-placeholder {
 
 }
 
-.form-contact, .form-modal {
+form {
   .text-input {
     width:100%;
     border-radius:6px;
@@ -125,7 +129,7 @@ webkit-input-placeholder {
 }
 
 @include jr-size(tablet) {
-  .form-contact.wider p {
+  .form-contact.wider fieldset {
     float: left;
     width: 50%;
     padding: jr-spacer();
@@ -188,7 +192,7 @@ webkit-input-placeholder {
     height:100%;
     overflow: hidden;
   }
-  p {
+  fieldset {
     left:100%;
     width:100%;
     height:100%;
@@ -202,13 +206,27 @@ webkit-input-placeholder {
   }
 }
 
-p.subform-active {
+fieldset.subform-active {
   left:0;
 }
 
-.text-output {
-  float: left;
+.form-question {
   width:100%;
-  display: block;
+  background-color: jr-grey(2);
+  background-image: linear-gradient(jr-grey(3), jr-grey(2));
+  border: 1px solid jr-grey(3);
+  border-radius: 4px;
+  padding: 5px;
+  margin-top: 2px;
 }
 
+.form-answer {
+  display: none;
+}
+
+input[type=radio] {
+  display:none;
+}
+input[type=radio]:checked + .form-answer {
+  display:block;
+}

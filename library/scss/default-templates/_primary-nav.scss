@@ -50,6 +50,7 @@
 }
 
 .top-btn.left {
+  border-right: 2px solid jr-red(3);
   display:inline-block;//non-flexbox fix
   cursor: pointer;
   width: 100%;
