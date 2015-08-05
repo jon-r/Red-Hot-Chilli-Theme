@@ -1,11 +1,9 @@
 /*--- common page elements + defaults -------------------------------------------------*/
 
 /*button style*/
-button, .btn-red {
+button {
   border: none;
-  line-height: 2.25rem;
 }
-
 .btn-red {
   @include jr-red-grad;
   color: $jr-text-light;

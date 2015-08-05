@@ -87,7 +87,7 @@ svg.item-tile-inner  {
 .shop-buttons {
   width:100%;
   border-top: $jr-border;
-  button {
+  & > button {
     text-decoration: none;
     font-weight: bold;
     text-align: center;

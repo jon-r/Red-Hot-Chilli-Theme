@@ -348,6 +348,7 @@ var $form = $('.js_contact_form'),
     $formInputsOptional = $form.find('input:not(.req)'),
     $formNextBtn = $form.find('.js_nextBtn'),
     $formBackBtn = $form.find('.js_backBtn'),
+    $formBlips = $form.next('.form-progress').find('.progress-blip'),
     formErrorList = [];
 
 //turns off validation only if JS is available, since the script is trying to deal with it
@@ -380,7 +381,8 @@ $form.submit(function (e) {
 })
 
 $formNextBtn.click(function(e) {
-  $thisSubForm = $(this).parent('p.subform-active');
+  $thisSubForm = $(this).closest('fieldset.subform-active');
+  $subFormIndex = $thisSubForm.index();
   formErrorList = [];
   $response = $thisSubForm.find('.response');
 
@@ -390,18 +392,20 @@ $formNextBtn.click(function(e) {
   });
 
   $response.removeClass('success').removeClass('error').empty();
-  console.log('click')
 
   if (formErrorList.length == 0) {
-    $thisSubForm.removeClass('subform-active').next('p').addClass('subform-active');
+    $thisSubForm.removeClass('subform-active').next('fieldset').addClass('subform-active');
+    $formBlips.eq($subFormIndex).addClass('active');
   } else {
-    //console.log(formErrorList);
     $response.addClass('error').html('Please fill in required items')
   }
 });
 
 $formBackBtn.click(function(e) {
-  $(this).parent('p.subform-active').removeClass('subform-active').prev('p').addClass('subform-active');
+  $thisSubForm = $(this).closest('fieldset.subform-active');
+  $thisSubForm.removeClass('subform-active').prev('fieldset').addClass('subform-active');
+  $subFormIndex = $thisSubForm.index();
+  $formBlips.eq($subFormIndex - 1).removeClass('active');
 });
 
 $formInputsReq.change(function (e) {

@@ -571,6 +571,7 @@ form label, .text-input, .form-output {
 .form-btn {
   display: block;
   padding: 6px;
+  margin-left: 2px;
   float: right;
   box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); }
   .form-btn:empty {
@@ -602,7 +603,7 @@ label.required::before {
   border: solid 2px #424a57;
   margin-bottom: 1.5rem;
   box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
-  transition: border 200ms; }
+  transition: border 200ms ease; }
   .text-input:focus {
     border-color: #e0a24e;
     outline: none; }
@@ -711,7 +712,7 @@ form label {
     width: 100%;
     height: 100%;
     position: absolute;
-    transition: left 300ms;
+    transition: left 300ms ease;
     overflow-y: auto;
     padding: 2px; }
     @media only screen and (min-width: 482px) {
@@ -721,29 +722,64 @@ form label {
 fieldset.subform-active {
   left: 0; }
 
+.form-question, .progress-blip {
+  border-radius: 4px;
+  background-color: #2b313b;
+  text-align: center;
+  border: 2px solid #424a57;
+  padding: 2px; }
+
 .form-question {
   width: 100%;
-  background-color: #2b313b;
   background-image: linear-gradient(#424a57, #2b313b);
-  border: 1px solid #424a57;
-  border-radius: 4px;
-  padding: 5px;
   margin-top: 2px; }
 
+.form-progress {
+  position: absolute;
+  bottom: 0;
+  width: 300px;
+  left: calc(50% - 150px); }
+
+.progress-blip {
+  float: left;
+  width: 10px;
+  height: 10px;
+  margin: 12px 45px;
+  position: relative; }
+  .progress-blip + .progress-blip:before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    right: 90%;
+    top: 1px;
+    height: 4px;
+    z-index: -1;
+    background: #424a57; }
+
+.progress-blip.active {
+  border-color: #1d8314;
+  background-color: #126c0a; }
+  .progress-blip.active:before {
+    background-color: #1d8314; }
+
 .form-answer {
-  display: none; }
+  height: 0;
+  overflow: hidden;
+  transition: height 300ms ease;
+  padding: 0 12px; }
+  .form-answer button {
+    margin-top: 8px; }
+
+input[type=radio]:checked + .form-answer {
+  height: 10rem; }
 
 input[type=radio] {
   display: none; }
 
-input[type=radio]:checked + .form-answer {
-  display: block; }
-
 /*--- common page elements + defaults -------------------------------------------------*/
 /*button style*/
-button, .btn-red {
-  border: none;
-  line-height: 2.25rem; }
+button {
+  border: none; }
 
 .btn-red {
   background-image: linear-gradient(#a32929, #821717);
@@ -753,7 +789,7 @@ button, .btn-red {
   border: solid 2px #931f1f; }
 
 /* floating buttons */
-.shop-tile, .gallery-nav, .shop-buttons button {
+.shop-tile, .gallery-nav, .shop-buttons > button {
   box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
   border-radius: 4px; }
 
@@ -1060,7 +1096,7 @@ article + article:not(.flex-column) {
   min-height: calc(100% + 2.5rem);
   top: -2.5rem;
   left: 100%;
-  transition: left 400ms;
+  transition: left 400ms ease;
   background-image: url(/rhc_online/images/icons/menu-base.jpg);
   background-size: 500px 375px;
   background-position: bottom right;
@@ -1157,7 +1193,7 @@ Page specific items.
     float: left;
     cursor: pointer;
     text-align: center;
-    transition: 400ms;
+    transition: 400ms ease;
     width: calc(100% /6);
     background-color: white; }
     .index-nav-tabs li:hover {
@@ -1414,7 +1450,7 @@ svg.item-tile-inner {
 .shop-buttons {
   width: 100%;
   border-top: 1px solid #e5e5e6; }
-  .shop-buttons button {
+  .shop-buttons > button {
     text-decoration: none;
     font-weight: bold;
     text-align: center;
