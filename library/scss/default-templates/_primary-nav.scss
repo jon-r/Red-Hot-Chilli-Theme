@@ -40,9 +40,14 @@
 }
 
 .top-btn {
-  line-height:2;
+
+  display: inline-block;
   padding: 0.25rem 1rem;
   color:$jr-bg-light;
+  & > a {
+    line-height:2;
+    display: block;
+  }
   &:hover {
     background-color: jr-red(3);
     color: jr-grey(8);

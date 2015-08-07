@@ -272,9 +272,7 @@ img {
 
 a {
   font-family: inherit;
-  color: inherit;
-  display: inline-block;
-  height: 100%; }
+  color: inherit; }
   a:hover {
     color: #66707f; }
 
@@ -861,6 +859,11 @@ button {
     .tile-hover.zoom:after {
       content: "Click here to zoom"; } }
 
+/*anchor style */
+a.block {
+  display: block;
+  height: 100%; }
+
 /*-- social media ---------------------------------------------------------------------*/
 .social-links,
 .social-links-small {
@@ -889,6 +892,7 @@ button {
       height: 64px; } }
 
 .social-shares a {
+  display: inline-block;
   line-height: 2;
   padding-right: 6px;
   margin-right: 24px;
@@ -1017,9 +1021,12 @@ article + article:not(.flex-column) {
     border-left: 2px solid #821717; }
 
 .top-btn {
-  line-height: 2;
+  display: inline-block;
   padding: 0.25rem 1rem;
   color: #f2f2f2; }
+  .top-btn > a {
+    line-height: 2;
+    display: block; }
   .top-btn:hover {
     background-color: #821717;
     color: #caccce; }
