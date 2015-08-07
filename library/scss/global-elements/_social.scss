@@ -33,6 +33,13 @@
 }
 
 .social-shares {
+  a {
+    line-height: 2;
+    padding-right: 6px;
+    margin-right:jr-spacer();
+    font-weight: bold;
+    border-radius: 4px;
+  }
   .facebook {
     background-color: #3D5A98;
   }

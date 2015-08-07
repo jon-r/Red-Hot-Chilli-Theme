@@ -16,9 +16,9 @@ img {
 
 a {
   font-family: inherit;
-//  text-decoration: none;
   color: inherit;
   display: inline-block;
+  height:100%;
   &:hover {
     color: $jr-text-hover;
   }

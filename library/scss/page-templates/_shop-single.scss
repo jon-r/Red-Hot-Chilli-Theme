@@ -60,23 +60,29 @@
 }
 
 .item-tile-inner {
-  background-color: $jr-bg-light;
-  border: $jr-border;
   margin-bottom: jr-spacer(0.5);
   position: relative;
   img {
     display: block;
   }
   em {
-    position: absolute;
-    bottom:0;
-    width:100%;
-    background: rgba($jr-bg-hover, 0.75);
+    background: $jr-bg-hover;
     border-top: $jr-border;
+    width:100%;
+    display: block;
   }
   a {
     width:100%;
   }
+}
+
+.white-block .item-tile-inner {
+  border: $jr-border;
+  background-color: $jr-bg-light;
+}
+
+.dark-block .item-tile-inner {
+  //background-color: $jr-bg-dark;
 }
 
 svg.item-tile-inner  {
@@ -84,17 +90,9 @@ svg.item-tile-inner  {
   width:100%;
 }
 
-.shop-buttons {
-  width:100%;
-  border-top: $jr-border;
-  & > button {
-    text-decoration: none;
-    font-weight: bold;
-    text-align: center;
-    @extend %floating-button;
-    margin: jr-spacer(0.5);
-    line-height: 2.5rem;
-  }
+.shop-buttons > button {
+  @extend %floating-button;
+  margin: jr-spacer(0.5) jr-spacer(0.5) 0 0;
 }
 
 .item-features {

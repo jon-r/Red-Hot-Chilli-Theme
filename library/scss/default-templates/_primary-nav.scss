@@ -105,10 +105,13 @@
 }
 
 .touch-toggle {
+  line-height: 2;
+  background-color: $jr-emphasis;
+  color: $jr-text-light;
+
   @include jr-size(screen) {
     display: none;
   }
-  height: 2.5rem;
 }
 
 .main-menu,
@@ -140,8 +143,8 @@
   position: absolute;
   height: auto;
   background-color: white;
-  min-height: calc(100% + 2.5rem);
-  top: -2.5rem;
+  min-height: calc(100% + 3.5rem);
+  top: -3.2rem;
   left: 100%;
   transition: left 400ms ease;
   background-image: url(#{$siteLink + '/images/icons/menu-base.jpg'});
@@ -155,8 +158,6 @@
     width: 200%;
     z-index: 20;
     left: 98%;
-    top: -3.2rem;
-    min-height: calc(100% + 3.5rem);
     li {
       width: 50%;
     }

@@ -273,7 +273,8 @@ img {
 a {
   font-family: inherit;
   color: inherit;
-  display: inline-block; }
+  display: inline-block;
+  height: 100%; }
   a:hover {
     color: #66707f; }
 
@@ -570,7 +571,6 @@ form label, .text-input, .form-output {
 
 .form-btn {
   display: block;
-  padding: 6px;
   margin-left: 2px;
   float: right;
   box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); }
@@ -785,8 +785,9 @@ button {
   background-image: linear-gradient(#a32929, #821717);
   background-color: #931f1f;
   color: #e5e5e6;
-  border-radius: 6px;
-  border: solid 2px #931f1f; }
+  border-radius: 5px;
+  border: solid 2px #931f1f;
+  padding: 6px; }
 
 /* floating buttons */
 .shop-tile, .gallery-nav, .shop-buttons > button {
@@ -887,6 +888,12 @@ button {
       width: 64px;
       height: 64px; } }
 
+.social-shares a {
+  line-height: 2;
+  padding-right: 6px;
+  margin-right: 24px;
+  font-weight: bold;
+  border-radius: 4px; }
 .social-shares .facebook {
   background-color: #3D5A98; }
 .social-shares .twitter {
@@ -1065,7 +1072,9 @@ article + article:not(.flex-column) {
       font-size: 1.2rem; } }
 
 .touch-toggle {
-  height: 2.5rem; }
+  line-height: 2;
+  background-color: #931f1f;
+  color: #e5e5e6; }
   @media only screen and (min-width: 1031px) {
     .touch-toggle {
       display: none; } }
@@ -1093,8 +1102,8 @@ article + article:not(.flex-column) {
   position: absolute;
   height: auto;
   background-color: white;
-  min-height: calc(100% + 2.5rem);
-  top: -2.5rem;
+  min-height: calc(100% + 3.5rem);
+  top: -3.2rem;
   left: 100%;
   transition: left 400ms ease;
   background-image: url(/rhc_online/images/icons/menu-base.jpg);
@@ -1108,9 +1117,7 @@ article + article:not(.flex-column) {
       box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
       width: 200%;
       z-index: 20;
-      left: 98%;
-      top: -3.2rem;
-      min-height: calc(100% + 3.5rem); }
+      left: 98%; }
       .sub-menu li {
         width: 50%; } }
 
@@ -1337,9 +1344,10 @@ Page specific items.
   .shop-tile.group img {
     margin: -11% 0; }
   .shop-tile.group ul {
-    width: 50%;
-    margin-left: 12px;
-    margin-bottom: 12px; }
+    width: calc(100% - 1rem);
+    max-width: 225px;
+    margin-left: 0.5rem;
+    margin-bottom: 0.5rem; }
 
 .shop-tile.category {
   background-color: #f2f2f2; }
@@ -1428,34 +1436,28 @@ Page specific items.
       width: calc(25% - 24px); } }
 
 .item-tile-inner {
-  background-color: #f2f2f2;
-  border: 1px solid #e5e5e6;
   margin-bottom: 12px;
   position: relative; }
   .item-tile-inner img {
     display: block; }
   .item-tile-inner em {
-    position: absolute;
-    bottom: 0;
+    background: #e5e5e6;
+    border-top: 1px solid #e5e5e6;
     width: 100%;
-    background: rgba(229, 229, 230, 0.75);
-    border-top: 1px solid #e5e5e6; }
+    display: block; }
   .item-tile-inner a {
     width: 100%; }
+
+.white-block .item-tile-inner {
+  border: 1px solid #e5e5e6;
+  background-color: #f2f2f2; }
 
 svg.item-tile-inner {
   display: block;
   width: 100%; }
 
-.shop-buttons {
-  width: 100%;
-  border-top: 1px solid #e5e5e6; }
-  .shop-buttons > button {
-    text-decoration: none;
-    font-weight: bold;
-    text-align: center;
-    margin: 12px;
-    line-height: 2.5rem; }
+.shop-buttons > button {
+  margin: 12px 12px 0 0; }
 
 .item-features li {
   line-height: 2; }
