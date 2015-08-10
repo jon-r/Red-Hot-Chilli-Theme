@@ -69,7 +69,7 @@ var $carousel = $('#js-carousel-main'),
     $tabs = $('#js-carousel-blips > .blip');
 
 var slideCount = $slide.length - 1,
-    slideTime = 8000,
+    slideTime = 8000, // miliseconds
     hoverLock = false,
     timerLock = false,
     tickerInt = 0;
@@ -95,8 +95,9 @@ if ($carousel.length > 0) {
 }
 
 function ticker() {
+  console.log('tick');
   if (!hoverLock && !timerLock) {
-    tickerInt = (tickerInt == slideCount) ? 0 : tickerInt++;
+    tickerInt = (tickerInt == slideCount) ? 0 : tickerInt + 1;
     timerLock = true;
     slideActivate(tickerInt);
   }
@@ -190,7 +191,7 @@ $searchOut.on('keydown','li > a', function(e) {
 function searchTraverse(direction, i) {
   $results = $searchOut.find('li > a');
   $resultCount = $results.length;
-  if (direction == 'down' && (i + 1) < $resultCount) {
+  if (direction == 'down' && i < $resultCount - 1) {
     i++
     $target = $results.eq(i);
     $text = $target.text();

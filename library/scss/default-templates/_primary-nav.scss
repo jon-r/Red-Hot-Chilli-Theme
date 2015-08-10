@@ -35,12 +35,11 @@
     float: left;
   }
   li + li {
-    border-left: 2px solid jr-red(3);
+    border-left: $jr-border-red;
   }
 }
 
 .top-btn {
-
   display: inline-block;
   padding: 0.25rem 1rem;
   color:$jr-bg-light;
@@ -50,12 +49,11 @@
   }
   &:hover {
     background-color: jr-red(3);
-    color: jr-grey(8);
   }
 }
 
 .top-btn.left {
-  border-right: 2px solid jr-red(3);
+  border-right: $jr-border-red;
   display:inline-block;//non-flexbox fix
   cursor: pointer;
   width: 100%;

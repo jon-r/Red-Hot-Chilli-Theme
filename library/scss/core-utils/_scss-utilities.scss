@@ -1,11 +1,11 @@
 @function jr-red($n) {
-  $saturation: 10% * (10 - $n);
+  $saturation: 12% * (10 - $n);
   $lightness: 10% * $n;
   @return hsl(0, $saturation, $lightness);
 }
 
 @mixin jr-red-grad {
-  background-image: linear-gradient(jr-red(4),jr-red(3));
+  background-image: linear-gradient(jr-red(4),jr-red(2));
   background-color: $jr-emphasis;
 }
 
@@ -43,6 +43,7 @@ $xNO-USE-example: hsl(215, 50%, 40%);
 
 $jr-border: 1px solid jr-grey(9);
 $jr-border-dark: 1px solid jr-grey(3);
+$jr-border-red: 2px solid $jr-emphasis;
 $jr-shadow: 0 4px 4px rgba(jr-grey(1),0.5);
 
 

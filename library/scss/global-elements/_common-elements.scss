@@ -8,7 +8,7 @@ button {
   @include jr-red-grad;
   color: $jr-text-light;
   border-radius: 5px;
-  border: solid 2px $jr-emphasis;
+  border: $jr-border-red;
   padding:6px;
 }
 
@@ -47,6 +47,13 @@ button {
 /* title frames */
 .article-header {
   padding-left: jr-spacer(0.5);
+}
+
+.sub-header {
+  position: relative;
+  border-bottom: 2px solid jr-grey(4.5);
+  padding:  2px jr-spacer(0.5);
+  color: $jr-text-hover;
 }
 
 /*little hover buttons*/
@@ -108,11 +115,4 @@ button {
 
 .loading {
   @extend %loader-icon;
-}
-
-
-/*anchor style */
-a.block {
-  display: block;
-  height:100%;
 }
