@@ -37,6 +37,10 @@
   li + li {
     border-left: $jr-border-red;
   }
+  @include jr-size(phoneOnly) {
+    width:100%;
+    border-top: $jr-border-red;
+  }
 }
 
 .top-btn {

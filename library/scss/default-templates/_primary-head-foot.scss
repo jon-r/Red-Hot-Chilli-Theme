@@ -3,7 +3,7 @@
 .primary-header, .primary-footer {
   position: relative;
   width: 100%;
-  border: 0 solid jr-red(4);
+  border: 0 solid $jr-emphasis;
   color: $jr-text-light;
   box-shadow: $jr-shadow;
 }

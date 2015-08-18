@@ -21,3 +21,8 @@ a {
     color: $jr-text-hover;
   }
 }
+
+//fixing wordpress empty paragraphs everywhere
+p:empty {
+  display:none;
+}

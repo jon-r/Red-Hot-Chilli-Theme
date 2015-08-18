@@ -284,7 +284,7 @@ v23.click(function() {
 
     v22.find('img').attr('src',b);
   } else {
-    bN = '<img src="' + b + '" >';
+    bN = '<img class="framed" src="' + b + '" >';
     v22.append(bN);
   }
   v22.addClass('is-active');

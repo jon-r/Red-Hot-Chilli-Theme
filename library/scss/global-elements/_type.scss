@@ -59,10 +59,6 @@ p {
   @extend %p-font;
 }
 
-p + p {
-  margin-top: jr-spacer();
-}
-
 em.greater {
   color:$jr-emphasis;
   font-weight: 700;

@@ -3,7 +3,7 @@
 
   <a class="header-logo flex-2" href="<?php echo home_url(); ?>" rel="nofollow">
     <img src="<?php echo site_url(jr_siteImg('rhc/RHC-Web.png')); ?>"
-         alt="Red Hot Chilli - Used Catering Equipment"/>
+         class="framed" alt="Red Hot Chilli - Used Catering Equipment"/>
   </a>
 
   <menu id="js-form-complete" class="header-links flex-2" href="<?php echo home_url(); ?>">

@@ -276,6 +276,9 @@ a {
   a:hover {
     color: #66707f; }
 
+p:empty {
+  display: none; }
+
 /*********************
 Add some global styling.
 *********************/
@@ -311,9 +314,6 @@ h4 {
   font-size: 1.1em;
   text-align: center;
   font-weight: normal; }
-
-p + p {
-  margin-top: 24px; }
 
 em.greater {
   color: #9f1414;
@@ -784,7 +784,7 @@ button {
   background-color: #9f1414;
   color: #e5e5e6;
   border-radius: 5px;
-  border: 2px solid #9f1414;
+  border: 2px solid #790606;
   padding: 6px; }
 
 /* floating buttons */
@@ -911,7 +911,7 @@ Default style for all pages
 .primary-header, .primary-footer {
   position: relative;
   width: 100%;
-  border: 0 solid #af1d1d;
+  border: 0 solid #9f1414;
   color: #e5e5e6;
   box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); }
 
@@ -1019,7 +1019,11 @@ article + article:not(.flex-column) {
   .nav-right-menu li {
     float: left; }
   .nav-right-menu li + li {
-    border-left: 2px solid #9f1414; }
+    border-left: 2px solid #790606; }
+  @media only screen and (max-width: 481px) {
+    .nav-right-menu {
+      width: 100%;
+      border-top: 2px solid #790606; } }
 
 .top-btn {
   display: inline-block;
@@ -1032,7 +1036,7 @@ article + article:not(.flex-column) {
     background-color: #8d0c0c; }
 
 .top-btn.left {
-  border-right: 2px solid #9f1414;
+  border-right: 2px solid #790606;
   display: inline-block;
   cursor: pointer;
   width: 100%; }
@@ -1335,8 +1339,9 @@ Page specific items.
 .shop-tile {
   background-color: white;
   position: relative;
-  border-bottom: 2px solid #9f1414 img;
-    border-bottom-display: block; }
+  border-bottom: 2px solid #790606; }
+  .shop-tile img {
+    display: block; }
   .shop-tile a {
     width: 100%;
     height: 100%;
@@ -1345,8 +1350,8 @@ Page specific items.
 .shop-tile.group {
   border-radius: 0;
   margin-top: 4rem;
-  border-left: 2px solid #9f1414;
-  border-right: 2px solid #9f1414; }
+  border-left: 2px solid #790606;
+  border-right: 2px solid #790606; }
   .shop-tile.group img {
     margin: -11% 0; }
   .shop-tile.group ul {
@@ -1362,8 +1367,12 @@ Page specific items.
   padding-bottom: 48px;
   font-size: 1.25rem; }
   .shop-tile.item::before {
+    z-index: 2;
     right: -9px;
     top: 5rem; }
+
+.shop-tile.sold img {
+  opacity: 0.5; }
 
 .shop-tile-header {
   width: 100%;
@@ -1528,11 +1537,11 @@ svg.item-tile-inner {
     width: 700px; }
     .modal.is-active-small .modal-close {
       right: calc(50% - 330px); } }
-.default-page .flex-container {
-  margin-top: 24px; }
 .default-page li {
   list-style: disc inside;
   padding-bottom: 5px; }
+.default-page p, .default-page ul {
+  margin-bottom: 24px; }
 
 .has-frame {
   border: 1px solid #e5e5e6;
@@ -1541,6 +1550,68 @@ svg.item-tile-inner {
 .has-frame-dark {
   border: 1px solid #424a57;
   padding: 2px; }
+
+.text-columns-1, .text-columns-2, .text-columns-3, .text-columns-4, .text-columns-5, .text-columns-6 {
+  -webkit-column-gap: 24px;
+  -webkit-column-rule: 1px solid #e5e5e6;
+  -moz-column-gap: 24px;
+  -moz-column-rule: 1px solid #e5e5e6;
+  column-gap: 24px;
+  column-rule: 1px solid #e5e5e6;
+  /*  @include jr-width(1,1);
+    margin: 0 jr-spacer(0.5) jr-spacer(0.5) jr-spacer(0.5);
+    //margin-bottom: jr-spacer(0.5);
+    @include jr-size(tablet) {
+      margin-bottom: jr-spacer();
+    }*/ }
+
+.text-columns-1 {
+  -webkit-columns: 900px 1;
+  -moz-columns: 900px 1;
+  columns: 900px 1; }
+  .text-columns-1 img {
+    width: 100%;
+    max-width: calc(900px - 24px); }
+
+.text-columns-2 {
+  -webkit-columns: 450px 2;
+  -moz-columns: 450px 2;
+  columns: 450px 2; }
+  .text-columns-2 img {
+    width: 100%;
+    max-width: calc(450px - 24px); }
+
+.text-columns-3 {
+  -webkit-columns: 300px 3;
+  -moz-columns: 300px 3;
+  columns: 300px 3; }
+  .text-columns-3 img {
+    width: 100%;
+    max-width: calc(300px - 24px); }
+
+.text-columns-4 {
+  -webkit-columns: 225px 4;
+  -moz-columns: 225px 4;
+  columns: 225px 4; }
+  .text-columns-4 img {
+    width: 100%;
+    max-width: calc(225px - 24px); }
+
+.text-columns-5 {
+  -webkit-columns: 180px 5;
+  -moz-columns: 180px 5;
+  columns: 180px 5; }
+  .text-columns-5 img {
+    width: 100%;
+    max-width: calc(180px - 24px); }
+
+.text-columns-6 {
+  -webkit-columns: 150px 6;
+  -moz-columns: 150px 6;
+  columns: 150px 6; }
+  .text-columns-6 img {
+    width: 100%;
+    max-width: calc(150px - 24px); }
 
 /*-- feedback -------------------------------------------------------------------------*/
 .testimonials p, .testimonials h4 {

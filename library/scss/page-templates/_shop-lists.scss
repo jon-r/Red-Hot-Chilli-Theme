@@ -4,7 +4,7 @@
   @extend %floating-button;
   background-color: white;
   position: relative;
-  border-bottom: $jr-border-red
+  border-bottom: $jr-border-red;
   img {
     display: block;
   }
@@ -40,9 +40,14 @@
   font-size: 1.25rem;
   @extend %has-icon-before;
   &::before {
+    z-index: 2;
     right:-9px;
     top: 5rem;
   }
+}
+
+.shop-tile.sold img {
+  opacity:0.5;
 }
 
 .shop-tile-header {

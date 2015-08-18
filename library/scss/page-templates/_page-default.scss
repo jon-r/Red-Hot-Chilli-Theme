@@ -1,10 +1,10 @@
 .default-page {
-  .flex-container {
-    margin-top: jr-spacer();
-  }
   li {
     list-style:disc inside;
     padding-bottom: 5px;
+  }
+  p, ul {
+    margin-bottom: jr-spacer();
   }
 }
 
@@ -16,4 +16,34 @@
 .has-frame-dark {
   border:$jr-border-dark;
   padding:2px;
+}
+
+%text-column-base {
+  -webkit-column-gap: jr-spacer();
+  -webkit-column-rule: $jr-border;
+     -moz-column-gap: jr-spacer();
+     -moz-column-rule: $jr-border;
+          column-gap: jr-spacer();
+          column-rule: $jr-border;
+/*  @include jr-width(1,1);
+  margin: 0 jr-spacer(0.5) jr-spacer(0.5) jr-spacer(0.5);
+  //margin-bottom: jr-spacer(0.5);
+  @include jr-size(tablet) {
+    margin-bottom: jr-spacer();
+  }*/
+}
+
+@for $i from 1 through 6 {
+  $width: 900px / $i;
+  $count: $i;
+  .text-columns-#{$i} {
+    @extend  %text-column-base;
+    -webkit-columns: $width $count;
+       -moz-columns: $width $count;
+            columns: $width $count;
+    img {
+      width: 100%;
+      max-width: calc(#{900px/$i} - #{jr-spacer()});
+    }
+  }
 }
