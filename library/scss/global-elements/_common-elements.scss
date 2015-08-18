@@ -47,6 +47,10 @@ button {
 /* title frames */
 .article-header {
   padding-left: jr-spacer(0.5);
+  a {
+    margin-right: jr-spacer(0.5);
+    color: $jr-emphasis;
+  }
 }
 
 .sub-header {

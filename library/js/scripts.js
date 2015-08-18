@@ -52,6 +52,10 @@ function hideSubMenu(row) {
 function hideAllMenus() {
   bigScreen = false;
   $navMain_li = $navMain_ul.find('li').removeClass('active-li');
+/*  setTimeout(function() {
+    $navMain_li = $navMain_ul.find('li').removeClass('active-li')
+    },300
+  )*/
 }
 
 //much simpler touch toggle for small screens

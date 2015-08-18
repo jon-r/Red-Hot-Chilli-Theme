@@ -814,6 +814,9 @@ button {
 /* title frames */
 .article-header {
   padding-left: 12px; }
+  .article-header a {
+    margin-right: 12px;
+    color: #9f1414; }
 
 .sub-header {
   position: relative;
@@ -1095,6 +1098,8 @@ article + article:not(.flex-column) {
   width: 100%; }
 
 .main-menu {
+  margin-top: -1.2rem;
+  padding-top: 1.2rem;
   position: relative; }
   @media only screen and (max-width: 481px) {
     .main-menu li {
@@ -1113,14 +1118,15 @@ article + article:not(.flex-column) {
   position: absolute;
   height: auto;
   background-color: white;
-  min-height: calc(100% + 3.5rem);
-  top: -3.2rem;
+  min-height: calc(100% + 2rem);
+  top: -2rem;
   left: 100%;
   transition: left 400ms ease;
   background-image: url(/rhc_online/images/icons/menu-base.jpg);
   background-size: 500px 375px;
   background-position: bottom right;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  padding: 1rem 0; }
   @media only screen and (min-width: 1031px) {
     .sub-menu {
       border: 1px solid #e5e5e6;
@@ -1174,15 +1180,12 @@ Page specific items.
   border-radius: 4px;
   box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
   position: relative;
-  height: 150px;
+  height: auto;
   overflow: hidden;
   background-color: #2b313b; }
-  @media only screen and (min-width: 1031px) {
-    .menu-featured li {
-      height: auto; } }
 .menu-featured h2 {
-  background: #2b313b;
-  background: linear-gradient(to bottom, #15181e, #424a57) top/200%;
+  background-color: #2b313b;
+  background-image: linear-gradient(to bottom, #2b313b, #424a57);
   color: #e5e5e6;
   text-align: center;
   position: absolute;
@@ -1192,11 +1195,8 @@ Page specific items.
   border-top: 1px solid #424a57; }
 .menu-featured img {
   position: relative;
-  margin-top: -25%;
-  object-fit: cover; }
-  @media only screen and (min-width: 1031px) {
-    .menu-featured img {
-      margin-top: 0; } }
+  object-fit: cover;
+  margin-bottom: 1rem; }
 .menu-featured a:hover h2 {
   background-position: bottom; }
 
