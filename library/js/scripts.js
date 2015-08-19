@@ -52,10 +52,6 @@ function hideSubMenu(row) {
 function hideAllMenus() {
   bigScreen = false;
   $navMain_li = $navMain_ul.find('li').removeClass('active-li');
-/*  setTimeout(function() {
-    $navMain_li = $navMain_ul.find('li').removeClass('active-li')
-    },300
-  )*/
 }
 
 //much simpler touch toggle for small screens
@@ -459,6 +455,14 @@ function formAjaxReply(data) {
   $form.find('.response').removeClass('loading').addClass($resultOutcome).html(result);
 }
 
+/* --- item page tabs -----------------------------------------------------------------*/
+$itemTabFrame = $('#js-tabs-frame');
+$itemTabToggle = $itemTabFrame.find('.tab-toggle');
+//$itemTabSection = $itemTabToggle.closest('section');
+
+$itemTabToggle.click(function() {
+  $(this).closest('section').toggleClass('active').siblings('section').removeClass('active');
+})
 
 
 

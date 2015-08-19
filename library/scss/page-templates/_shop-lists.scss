@@ -1,6 +1,6 @@
 /*-- default list Layout -----------------------------------------------------------*/
 
-.shop-tile {
+/*.shop-tile {
   @extend %floating-button;
   background-color: white;
   position: relative;
@@ -9,12 +9,10 @@
     display: block;
   }
   a {
-    width: 100%;
-    height: 100%;
     text-decoration: none;
   }
-}
-.shop-tile.group {
+}*/
+.list-group {
   border-radius: 0;
   margin-top: 4rem;
   border-left: $jr-border-red;
@@ -31,11 +29,11 @@
   }
 }
 
-.shop-tile.category {
+.list-category {
   background-color: $jr-bg-light;
 }
 
-.shop-tile.item {
+.list-item {
   padding-bottom: jr-spacer(2);
   font-size: 1.25rem;
   @extend %has-icon-before;
@@ -46,11 +44,11 @@
   }
 }
 
-.shop-tile.sold img {
+.list-item.sold img {
   opacity:0.5;
 }
 
-.shop-tile-header {
+/*.shop-tile-header {
   width: 100%;
   min-height: 3rem;
   padding: 5px;
@@ -67,7 +65,7 @@
     bottom: 0;
     border-top: $jr-border-dark;
   }
-}
+}*/
 
 .extra-brands {
   border-top: $jr-border-dark;

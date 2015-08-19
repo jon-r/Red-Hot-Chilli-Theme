@@ -251,6 +251,7 @@ $icons-before: (
   email-w,
   email,
   arrow,
+  arrow-w,
   arrow-r,
   arrow-r-w,
   arrow-l,
@@ -260,8 +261,7 @@ $icons-before: (
   tick-w,
   twitter,
   facebook,
-  expand-w,
-  cube
+  expand-w
 );
 
 @each $item-name in $icons-before {

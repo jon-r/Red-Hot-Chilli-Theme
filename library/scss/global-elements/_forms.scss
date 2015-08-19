@@ -144,16 +144,15 @@ form {
   .text-input {
     border-radius: 6px;
     width: calc(100% - 7rem);
-    @include jr-size(screen) {
-   //   width: calc(100% - 6rem);
-    }
+
   }
 
 }
 
 .search-out {
   position: absolute;
-  width:calc(100% - 5px);
+  width:calc(100% - 8rem);
+  left: 0.5rem;
   top: 5rem;
   z-index: 100;
 
@@ -172,7 +171,6 @@ form {
   }
   a {
     width:100%;
-    padding-left: jr-spacer(0.5);
     text-decoration: none;
   }
   a:hover, a:focus {

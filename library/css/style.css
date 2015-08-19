@@ -321,10 +321,10 @@ em.greater {
   font-style: normal; }
 
 /*-------------------------sprite layouts + settings ----------------------------------*/
-.text-icon, .text-icon-left, .loading, .primary-nav:only-child, .shop-tile.item, .btn-icon, .btn-icon-lrg, .btn-icon-small {
+.text-icon, .text-icon-left, .loading, .primary-nav:only-child, .list-item, .btn-icon, .btn-icon-lrg, .btn-icon-small {
   position: relative; }
 
-.text-icon::before, .text-icon-left::before, .loading::before, .primary-nav:only-child::before, .shop-tile.item::before {
+.text-icon::before, .text-icon-left::before, .loading::before, .primary-nav:only-child::before, .list-item::before {
   pointer-events: none;
   content: '';
   position: absolute;
@@ -480,6 +480,9 @@ em.greater {
 .arrow::before {
   background-position: -512px -128px; }
 
+.arrow-w::before {
+  background-position: -512px -384px; }
+
 .arrow-r::before {
   background-position: -768px -128px; }
 
@@ -510,9 +513,6 @@ em.greater {
 .expand-w::before {
   background-position: -640px -512px; }
 
-.cube::before {
-  background-position: -768px -256px; }
-
 /*--- grid ----------------------------------------------------------------------------*/
 .flex-container, .flex-column {
   display: flex;
@@ -530,16 +530,16 @@ em.greater {
     .flex-column {
       width: 50%; } }
 
-.flex-1, .flex-2, .flex-3, .flex-4, .menu-featured li, .flex-5, .flex-6 {
+.flex-1, .flex-2, .flex-3, .flex-4, .flex-5, .flex-6 {
   display: inline-block;
   width: calc(100% - 24px);
   margin: 0 12px 12px 12px; }
   @media only screen and (min-width: 482px) {
-    .flex-1, .flex-2, .flex-3, .flex-4, .menu-featured li, .flex-5, .flex-6 {
+    .flex-1, .flex-2, .flex-3, .flex-4, .flex-5, .flex-6 {
       margin-bottom: 24px; } }
 
 @media only screen and (min-width: 482px) {
-  .flex-2, .flex-3, .flex-4, .menu-featured li {
+  .flex-2, .flex-3, .flex-4 {
     display: inline-block;
     width: calc(50% - 24px); }
 
@@ -551,7 +551,7 @@ em.greater {
     display: inline-block;
     width: calc(33.33333% - 24px); }
 
-  .flex-4, .menu-featured li {
+  .flex-4 {
     display: inline-block;
     width: calc(25% - 24px); }
 
@@ -676,7 +676,8 @@ form label {
 
 .search-out {
   position: absolute;
-  width: calc(100% - 5px);
+  width: calc(100% - 8rem);
+  left: 0.5rem;
   top: 5rem;
   z-index: 100; }
   .search-out:empty {
@@ -690,7 +691,6 @@ form label {
     color: #66707f; }
   .search-out a {
     width: 100%;
-    padding-left: 12px;
     text-decoration: none; }
   .search-out a:hover, .search-out a:focus {
     background: #424a57;
@@ -788,25 +788,28 @@ button {
   padding: 6px; }
 
 /* floating buttons */
-.shop-tile, .gallery-nav, .shop-buttons > button {
+.tile-outer, .gallery-nav, .shop-buttons > button {
   box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
   border-radius: 4px; }
 
 /*tiles*/
-.dark-block, .white-block {
+.block {
   padding: 12px;
   box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
   border-radius: 4px; }
-  .dark-block header, .white-block header {
+  .block header {
     border-bottom: 1px solid #e5e5e6;
-    margin-bottom: 24px; }
-  .dark-block * + header, .white-block * + header {
-    margin-top: 24px;
+    margin-bottom: 12px; }
+  .block * + header {
+    margin-top: 12px;
     border-top: 1px solid #424a57; }
 
 .dark-block {
   background-color: #2b313b;
   color: #e5e5e6; }
+
+.grey-block {
+  background-color: #e5e5e6; }
 
 .white-block {
   background-color: white; }
@@ -969,7 +972,7 @@ body {
   min-width: 320px; }
 
 main {
-  background: url(/rhc_online/images/rhc/body-banner.jpg) no-repeat top/200%, #f2f2f2;
+  background: #f2f2f2;
   color: #15181e;
   box-shadow: 0 5px 10px #15181e;
   flex: 1 1 auto;
@@ -995,6 +998,55 @@ article + article:not(.flex-column) {
     .container {
       width: 1200px; } }
 
+.tile-outer {
+  background-color: white;
+  position: relative;
+  border-bottom: 2px solid #790606; }
+  .tile-outer > a {
+    text-decoration: none; }
+
+.tile-outer.dark {
+  background-color: #2b313b;
+  color: #e5e5e6;
+  border-bottom: solid 2px #15181e; }
+
+.tile-outer.padded {
+  padding: 12px; }
+
+.tile-inner {
+  position: relative;
+  margin-bottom: 12px;
+  background-color: #f2f2f2;
+  border: 1px solid #e5e5e6; }
+  .tile-inner > img {
+    display: block; }
+
+.tile-header {
+  min-height: 3rem; }
+  .tile-header.lined {
+    border-bottom: 1px solid #e5e5e6;
+    margin-bottom: 12px; }
+  .tile-header.red {
+    background-image: linear-gradient(#af1d1d, #640202);
+    background-color: #9f1414;
+    padding: 5px;
+    width: 100%;
+    color: #e5e5e6;
+    border-radius: 4px 4px 0 0;
+    text-align: center; }
+
+* + .tile-header {
+  margin-top: 12px;
+  border-top: 1px solid #424a57; }
+
+.tile-footer {
+  font-size: 1.1rem;
+  position: absolute;
+  bottom: 0;
+  border-top: 1px solid #424a57;
+  padding: 5px;
+  width: 100%; }
+
 /*- top menu parts ---------------------------------------------------------------*/
 .primary-nav {
   margin-bottom: 24px; }
@@ -1007,6 +1059,7 @@ article + article:not(.flex-column) {
   justify-content: center;
   position: relative;
   box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
+  z-index: 4;
   background-image: linear-gradient(#af1d1d, #640202);
   background-color: #9f1414; }
   @media only screen and (min-width: 482px) {
@@ -1177,12 +1230,8 @@ Page specific items.
 *********************/
 /*-- index page elements -----------------------------------------------------*/
 .menu-featured li {
-  border-radius: 4px;
-  box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5);
-  position: relative;
   height: auto;
-  overflow: hidden;
-  background-color: #2b313b; }
+  overflow: hidden; }
 .menu-featured h2 {
   background-color: #2b313b;
   background-image: linear-gradient(to bottom, #2b313b, #424a57);
@@ -1190,15 +1239,12 @@ Page specific items.
   text-align: center;
   position: absolute;
   bottom: 0;
-  line-height: 3rem;
+  line-height: 1.5;
   width: 100%;
   border-top: 1px solid #424a57; }
 .menu-featured img {
-  position: relative;
   object-fit: cover;
-  margin-bottom: 1rem; }
-.menu-featured a:hover h2 {
-  background-position: bottom; }
+  margin-bottom: 2rem; }
 
 .index-nav-tabs {
   background-color: white;
@@ -1336,60 +1382,63 @@ Page specific items.
   font-weight: bold; }
 
 /*-- default list Layout -----------------------------------------------------------*/
-.shop-tile {
+/*.shop-tile {
+  @extend %floating-button;
   background-color: white;
   position: relative;
-  border-bottom: 2px solid #790606; }
-  .shop-tile img {
-    display: block; }
-  .shop-tile a {
-    width: 100%;
-    height: 100%;
-    text-decoration: none; }
-
-.shop-tile.group {
+  border-bottom: $jr-border-red;
+  img {
+    display: block;
+  }
+  a {
+    text-decoration: none;
+  }
+}*/
+.list-group {
   border-radius: 0;
   margin-top: 4rem;
   border-left: 2px solid #790606;
   border-right: 2px solid #790606; }
-  .shop-tile.group img {
+  .list-group img {
     margin: -11% 0; }
-  .shop-tile.group ul {
+  .list-group ul {
     width: calc(100% - 1rem);
     max-width: 225px;
     margin-left: 0.5rem;
     margin-bottom: 0.5rem; }
 
-.shop-tile.category {
+.list-category {
   background-color: #f2f2f2; }
 
-.shop-tile.item {
+.list-item {
   padding-bottom: 48px;
   font-size: 1.25rem; }
-  .shop-tile.item::before {
+  .list-item::before {
     z-index: 2;
     right: -9px;
     top: 5rem; }
 
-.shop-tile.sold img {
+.list-item.sold img {
   opacity: 0.5; }
 
-.shop-tile-header {
+/*.shop-tile-header {
   width: 100%;
   min-height: 3rem;
-  padding: 5px; }
-  .shop-tile-header:first-child {
-    background-image: linear-gradient(#af1d1d, #640202);
-    background-color: #9f1414;
-    color: #e5e5e6;
+  padding: 5px;
+  &:first-child {
+ //   border-bottom: $jr-border-dark;
+    @include jr-red-grad;
+    color:$jr-text-light;
     border-radius: 4px 4px 0 0;
-    text-align: center; }
-  .shop-tile-header:last-child {
+    text-align: center;
+  }
+  &:last-child {
     font-size: 1.1rem;
     position: absolute;
     bottom: 0;
-    border-top: 1px solid #424a57; }
-
+    border-top: $jr-border-dark;
+  }
+}*/
 .extra-brands {
   border-top: 1px solid #424a57;
   padding: 24px; }
@@ -1406,14 +1455,25 @@ Page specific items.
   line-height: 1.2; }
 
 /*-- single item Layout ------------------------------------------------------*/
-.item-gallery {
-  padding: 24px; }
+.item-features li {
+  line-height: 2; }
 
 .item-info {
   font-size: 1.2rem; }
 
 .text-right {
   float: right; }
+
+.item-specs li {
+  padding: 5px; }
+  .item-specs li:nth-of-type(even) {
+    background-color: #e5e5e6; }
+
+.item-gallery header {
+  margin-bottom: 0;
+  border: none; }
+.item-gallery h1 {
+  padding-bottom: 0; }
 
 .gallery-nav {
   position: absolute;
@@ -1431,52 +1491,66 @@ Page specific items.
 .gallery-nav.arrow-r {
   right: -24px; }
 
-.item-dimensions li {
-  padding: 5px 24px; }
-  .item-dimensions li:nth-of-type(even) {
-    background-color: #e5e5e6; }
+.gallery-primary {
+  display: inline-block;
+  width: calc(100% - 24px); }
 
-.item-thumbs li {
+.item-thumb {
   display: inline-block;
   width: calc(50% - 24px);
-  margin-left: 12px;
-  margin-right: 12px;
-  cursor: zoom-in; }
-  .item-thumbs li:hover, .item-thumbs li:active {
-    border: 1px solid #424a57; }
+  cursor: pointer;
+  margin: 12px; }
   @media only screen and (min-width: 1031px) {
-    .item-thumbs li {
+    .item-thumb {
       display: inline-block;
       width: calc(25% - 24px); } }
 
 .item-tile-inner {
+  position: relative;
   margin-bottom: 12px;
-  position: relative; }
-  .item-tile-inner img {
-    display: block; }
+  height: calc(100% - 48px); }
   .item-tile-inner em {
     background: #e5e5e6;
     border-top: 1px solid #e5e5e6;
     width: 100%;
     display: block; }
-  .item-tile-inner a {
-    width: 100%; }
+  .item-tile-inner img {
+    display: block; }
+  .item-tile-inner li {
+    line-height: 2; }
 
 .white-block .item-tile-inner {
   border: 1px solid #e5e5e6;
   background-color: #f2f2f2; }
 
-svg.item-tile-inner {
-  display: block;
-  width: 100%; }
-
 .shop-buttons > button {
   margin: 12px 12px 0 0; }
 
-.item-features li {
-  line-height: 2; }
+/* -- responsive page tabs ----------------------------------------------------------*/
+.tab-toggle {
+  position: absolute;
+  right: 12px;
+  top: 0;
+  height: 3rem;
+  width: 100%; }
+  @media only screen and (min-width: 1031px) {
+    .tab-toggle {
+      display: none; } }
 
-/*modal popouts - enabled through js */
+.tabs-frame section {
+  height: 3rem;
+  overflow: hidden;
+  padding-top: 4px;
+  position: relative;
+  transition: height 300ms ease; }
+.tabs-frame .active {
+  height: 90vh;
+  padding-top: 12px; }
+@media only screen and (min-width: 1031px) {
+  .tabs-frame section, .tabs-frame .active {
+    height: auto; } }
+
+/* --- modal popouts - enabled through js ---------------------------------------------*/
 .modal {
   position: fixed;
   opacity: 0;
@@ -1485,7 +1559,33 @@ svg.item-tile-inner {
   top: 45vh;
   z-index: 100;
   transition: 300ms ease; }
+  .modal:not(.is-active):not(.is-active-small) {
+    pointer-events: none; }
 
+.modal.is-active,
+.modal.is-active-small {
+  left: 5%;
+  opacity: 1;
+  width: 90%;
+  height: 90%;
+  top: 5%; }
+  .modal.is-active::before,
+  .modal.is-active-small::before {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(21, 24, 30, 0.75);
+    z-index: -5; }
+
+@media only screen and (min-width: 1031px) {
+  .modal.is-active-small {
+    left: calc(50% - 350px);
+    width: 700px; }
+    .modal.is-active-small .modal-close {
+      right: calc(50% - 330px); } }
 .modal.image img {
   object-fit: contain;
   object-position: center; }
@@ -1513,30 +1613,6 @@ svg.item-tile-inner {
       width: 96px;
       height: 96px; } }
 
-.modal.is-active,
-.modal.is-active-small {
-  left: 5%;
-  opacity: 1;
-  width: 90%;
-  height: 90%;
-  top: 5%; }
-  .modal.is-active::before,
-  .modal.is-active-small::before {
-    content: "";
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background: rgba(21, 24, 30, 0.75);
-    z-index: -5; }
-
-@media only screen and (min-width: 1031px) {
-  .modal.is-active-small {
-    left: calc(50% - 350px);
-    width: 700px; }
-    .modal.is-active-small .modal-close {
-      right: calc(50% - 330px); } }
 .default-page li {
   list-style: disc inside;
   padding-bottom: 5px; }

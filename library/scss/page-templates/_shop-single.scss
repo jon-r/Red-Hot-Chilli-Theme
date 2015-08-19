@@ -1,8 +1,9 @@
 /*-- single item Layout ------------------------------------------------------*/
 
-
-.item-gallery {
-  padding: jr-spacer();
+.item-features {
+  li {
+    line-height: 2;
+  }
 }
 
 .item-info {
@@ -11,6 +12,29 @@
 
 .text-right {
   float: right;
+}
+
+.item-specs {
+  li {
+    padding:5px;
+    &:nth-of-type(even) {
+      background-color: $jr-bg-hover;
+    }
+  }
+}
+
+.item-scale {
+
+}
+
+.item-gallery {
+  header {
+    margin-bottom: 0;
+    border:none;
+  }
+  h1 {
+    padding-bottom: 0;
+  }
 }
 
 .gallery-nav {
@@ -33,46 +57,35 @@
   right:jr-spacer(-1);
 }
 
-.item-dimensions {
-  li {
-    padding: 5px jr-spacer();
-    &:nth-of-type(even) {
-      background-color: $jr-bg-hover;
-    }
+.gallery-primary {
+  @include jr-width(1,1);
+}
+
+.item-thumb {
+  @include jr-width(1,2);
+  cursor: pointer;
+  margin: jr-spacer(0.5);
+  @include jr-size(screen) {
+    @include jr-width(1,4);
   }
 }
 
-.item-thumbs {
-
-  li {
-    @include jr-width(1,2);
-    margin-left: jr-spacer(0.5);
-    margin-right: jr-spacer(0.5);
-    cursor: zoom-in;
-
-    &:hover, &:active {
-      border: $jr-border-dark;
-    }
-    @include jr-size(screen) {
-      @include jr-width(1,4);
-    }
-  }
-}
 
 .item-tile-inner {
-  margin-bottom: jr-spacer(0.5);
   position: relative;
-  img {
-    display: block;
-  }
+  margin-bottom: jr-spacer(0.5);
+  height: calc(100% - #{jr-spacer(2)});
   em {
     background: $jr-bg-hover;
     border-top: $jr-border;
     width:100%;
     display: block;
   }
-  a {
-    width:100%;
+  img {
+    display: block;
+  }
+  li {
+    line-height: 2;
   }
 }
 
@@ -81,27 +94,44 @@
   background-color: $jr-bg-light;
 }
 
-.dark-block .item-tile-inner {
-  //background-color: $jr-bg-dark;
-}
-
-svg.item-tile-inner  {
-  display: block;
-  width:100%;
-}
-
 .shop-buttons > button {
   @extend %floating-button;
   margin: jr-spacer(0.5) jr-spacer(0.5) 0 0;
 }
 
-.item-features {
-  li {
-    line-height: 2;
+/* -- responsive page tabs ----------------------------------------------------------*/
+
+.tab-toggle {
+  position: absolute;
+  right:jr-spacer(0.5);
+  top:0;
+  height:3rem;
+  width: 100%;
+  @include jr-size(screen) {
+    display: none;
   }
 }
 
-/*modal popouts - enabled through js */
+.tabs-frame {
+  section {
+    height: 3rem;
+    overflow: hidden;
+    padding-top: 4px;
+    position: relative;
+    transition: height 300ms ease;
+  }
+  .active {
+    height: 90vh;
+    padding-top: jr-spacer(0.5);
+  }
+  @include jr-size(screen) {
+    section, .active {
+      height: auto;
+    }
+  }
+}
+
+/* --- modal popouts - enabled through js ---------------------------------------------*/
 .modal {
   position: fixed;
   opacity: 0;
@@ -110,8 +140,38 @@ svg.item-tile-inner  {
   top: 45vh;
   z-index: 100;
   transition: 300ms ease;
- // overflow-y:auto;
+  &:not(.is-active):not(.is-active-small) {
+    pointer-events: none;
+  }
+}
 
+.modal.is-active,
+.modal.is-active-small {
+  left:5%;
+  opacity: 1;
+  width: 90%;
+  height: 90%;
+  top: 5%;
+  &::before {
+    content:"";
+    position: fixed;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    background:rgba(jr-grey(1), 0.75);
+    z-index: -5;
+  }
+}
+
+@include jr-size(screen) {
+  .modal.is-active-small {
+    left:calc(50% - 350px);
+    width:700px;
+    .modal-close {
+      right: calc(50% - 330px);
+    }
+  }
 }
 
 .modal.image {
@@ -147,34 +207,5 @@ svg.item-tile-inner  {
   @include jr-size(screen) {
     width: 96px;
     height:96px;
-  }
-}
-
-.modal.is-active,
-.modal.is-active-small {
-  left:5%;
-  opacity: 1;
-  width: 90%;
-  height: 90%;
-  top: 5%;
-  &::before {
-    content:"";
-    position: fixed;
-    left:0;
-    right:0;
-    top:0;
-    bottom:0;
-    background:rgba(jr-grey(1), 0.75);
-    z-index: -5;
-  }
-}
-
-@include jr-size(screen) {
-  .modal.is-active-small {
-    left:calc(50% - 350px);
-    width:700px;
-    .modal-close {
-      right: calc(50% - 330px);
-    }
   }
 }

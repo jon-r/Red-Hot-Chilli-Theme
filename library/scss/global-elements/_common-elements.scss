@@ -19,28 +19,33 @@ button {
 }
 
 /*tiles*/
-%block-base {
+.block {
   padding: jr-spacer(0.5);
   box-shadow: $jr-shadow;
   border-radius: 4px;
   header {
     border-bottom: $jr-border;
-    margin-bottom: jr-spacer();
+    margin-bottom: jr-spacer(0.5);
   }
   * + header {
-    margin-top: jr-spacer();
+    margin-top: jr-spacer(0.5);
     border-top: $jr-border-dark;
   }
 }
 
 .dark-block {
-  @extend %block-base;
+//  @extend %block-base;
   background-color: $jr-bg-dark;
   color: $jr-text-light;
 }
 
+.grey-block {
+//  @extend %block-base;
+  background-color: $jr-bg-hover;
+}
+
 .white-block {
-  @extend %block-base;
+ // @extend %block-base;
   background-color: white;
 }
 

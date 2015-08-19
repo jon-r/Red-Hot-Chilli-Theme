@@ -2,13 +2,8 @@
 
 .menu-featured {
   li {
-    @extend .flex-4;
-    border-radius: 4px;
-    box-shadow: $jr-shadow;
-    position: relative;
     height: auto;
     overflow: hidden;
-    background-color: $jr-bg-dark;
   }
   h2 {
     background-color: $jr-bg-dark;
@@ -17,17 +12,13 @@
     text-align: center;
     position:absolute;
     bottom:0;
-    line-height: 3rem;
+    line-height: 1.5;
     width: 100%;
     border-top: $jr-border-dark;
   }
   img {
-    position: relative;
     object-fit: cover;
-    margin-bottom: 1rem;
-  }
-  a:hover h2 {
-    background-position: bottom;
+    margin-bottom: 2rem;
   }
 }
 
