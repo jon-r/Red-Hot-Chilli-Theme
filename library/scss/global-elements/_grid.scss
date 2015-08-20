@@ -18,6 +18,10 @@
   width:100%;
 }
 
+.flex-container.centre {
+  justify-content: center;
+}
+
 .flex-column {
   @extend %flex-parent-base;
   width:100%;

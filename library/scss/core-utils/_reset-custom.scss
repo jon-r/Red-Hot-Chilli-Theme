@@ -12,6 +12,7 @@ ul, menu  {
 
 img.framed {
   width:100%;
+  display: block;
 }
 
 a {
@@ -20,6 +21,10 @@ a {
   &:hover {
     color: $jr-text-hover;
   }
+}
+
+button {
+  border: none;
 }
 
 //fixing wordpress empty paragraphs everywhere

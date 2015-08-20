@@ -270,7 +270,7 @@ $imgGalleryNext.click(function() {
 /* modal popups ---------------------------------------------------------------------- */
 // eg zoom and enhance
 var $imgGalleryModal  = $('#js-gallery-modal'),
-    $imgGalleryOpen   = $imgGalleryMain.find('.tile-hover.zoom'),
+    $imgGalleryOpen   = $('#js-gallery-zoom'),
     $imgGalleryClose  = $imgGalleryModal.find('.modal-close');
     $buyModal         = $('#js-buy-modal'),
     $buyModalOpen     = $('#js-buy-btn'),

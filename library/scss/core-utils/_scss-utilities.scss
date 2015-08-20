@@ -4,11 +4,6 @@
   @return hsl(0, $saturation, $lightness);
 }
 
-@mixin jr-red-grad {
-  background-image: linear-gradient(jr-red(4),jr-red(2));
-  background-color: $jr-emphasis;
-}
-
 @function jr-grey($n) {
   $lightness: 10% * ($n);
   $saturation: 2% * (10 - $n);
@@ -25,11 +20,15 @@ $jr-text-dark: jr-grey(1);
 $jr-text-light: jr-grey(9);
 $jr-text-hover: jr-grey(4.5);
 
-//@function jr-rhc-color($n) {
-//  $saturation: 10% * (10 - $n);
-//  $lightness: 10% * $n;
-//  @return hsl(0, $saturation, $lightness);
-//}
+@mixin jr-red-grad {
+  background-color: $jr-emphasis;
+  background-image: linear-gradient(jr-red(4),jr-red(2));
+}
+
+@mixin jr-grey-grad {
+  background-color: $jr-bg-dark;
+  background-image: linear-gradient(to bottom, jr-grey(3), jr-grey(2));
+}
 
 @mixin clearfix {
   &:after {
