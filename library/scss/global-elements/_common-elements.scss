@@ -219,6 +219,7 @@
   height: 64px;
   width:64px;
   right: calc(#{jr-spacer(1)} + 5%);
+  z-index:2;
   cursor: pointer;
   background: rgba($jr-bg-dark,0.5);
   @include jr-size(screen) {

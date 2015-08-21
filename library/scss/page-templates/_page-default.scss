@@ -18,6 +18,11 @@
   padding:2px;
 }
 
+.text-container {
+  padding:0 jr-spacer(0.5);
+  font-size: 1.2rem;
+}
+
 %text-column-base {
   -webkit-column-gap: jr-spacer();
   -webkit-column-rule: $jr-border;
@@ -25,12 +30,6 @@
      -moz-column-rule: $jr-border;
           column-gap: jr-spacer();
           column-rule: $jr-border;
-/*  @include jr-width(1,1);
-  margin: 0 jr-spacer(0.5) jr-spacer(0.5) jr-spacer(0.5);
-  //margin-bottom: jr-spacer(0.5);
-  @include jr-size(tablet) {
-    margin-bottom: jr-spacer();
-  }*/
 }
 
 @for $i from 1 through 6 {

@@ -528,7 +528,7 @@ em.greater {
   width: 100%; }
 
 .flex-container.centre {
-  justify-content: center; }
+  justify-content: space-between; }
 
 .flex-column {
   width: 100%;
@@ -746,6 +746,7 @@ em.greater {
   height: 64px;
   width: 64px;
   right: calc(24px + 5%);
+  z-index: 2;
   cursor: pointer;
   background: rgba(43, 49, 59, 0.5); }
   @media only screen and (min-width: 1031px) {
@@ -767,7 +768,8 @@ form label, .text-input, .form-output {
     display: none; }
 
 textarea {
-  resize: vertical; }
+  resize: vertical;
+  height: 7rem; }
 
 form label {
   text-align: right;
@@ -837,7 +839,7 @@ webkit-input-placeholder {
   width: 100%; }
   @media only screen and (min-width: 1031px) {
     .form-contact fieldset {
-      padding: 0 36px; } }
+      padding: 5px 36px; } }
 
 form .text-input {
   width: 100%;
@@ -925,7 +927,7 @@ fieldset.subform-active {
 
 .form-progress {
   position: absolute;
-  bottom: 0;
+  bottom: 5px;
   width: 300px;
   left: calc(50% - 150px); }
 
@@ -955,12 +957,15 @@ fieldset.subform-active {
   height: 0;
   overflow: hidden;
   transition: height 300ms ease;
-  padding: 0 12px; }
+  padding: 4px 12px; }
   .form-answer button {
     margin-top: 8px; }
 
 input[type=radio]:checked + .form-answer {
   height: 10rem; }
+
+input[type=radio]:checked + .form-answer.tall {
+  height: 35rem; }
 
 input[type=radio] {
   display: none; }
@@ -1019,23 +1024,21 @@ Default style for all pages
   border-bottom-width: 6px;
   background: url(/rhc_online/images/rhc/Head-Banner.jpg) top/cover; }
   .primary-header .container {
-    align-items: center;
-    padding-top: 24px; }
+    padding-top: 12px; }
   @media only screen and (min-width: 1240px) {
     .primary-header {
       background: url(/rhc_online/images/rhc/Head-Banner.jpg) center no-repeat, linear-gradient(to right, #20252d 25%, #5a6372 75%); }
       .primary-header .home {
-        height: 250px; } }
+        height: 250px;
+        padding-top: 24px; } }
 
-.not-home {
-  justify-content: space-between; }
-  .not-home .header-logo, .not-home .header-links {
-    margin-bottom: 0; }
-  .not-home .header-logo {
-    max-width: 350px; }
-  @media only screen and (max-width: 481px) {
-    .not-home h2 {
-      display: none; } }
+.not-home .header-logo, .not-home .header-links {
+  margin-bottom: 0; }
+.not-home .header-logo {
+  max-width: 300px; }
+@media only screen and (max-width: 481px) {
+  .not-home h2 {
+    display: none; } }
 
 /* -----------  footer  ---------------------------------------------------------------*/
 .primary-footer {
@@ -1547,19 +1550,17 @@ Page specific items.
   border: 1px solid #424a57;
   padding: 2px; }
 
+.text-container {
+  padding: 0 12px;
+  font-size: 1.2rem; }
+
 .text-columns-1, .text-columns-2, .text-columns-3, .text-columns-4, .text-columns-5, .text-columns-6 {
   -webkit-column-gap: 24px;
   -webkit-column-rule: 1px solid #e5e5e6;
   -moz-column-gap: 24px;
   -moz-column-rule: 1px solid #e5e5e6;
   column-gap: 24px;
-  column-rule: 1px solid #e5e5e6;
-  /*  @include jr-width(1,1);
-    margin: 0 jr-spacer(0.5) jr-spacer(0.5) jr-spacer(0.5);
-    //margin-bottom: jr-spacer(0.5);
-    @include jr-size(tablet) {
-      margin-bottom: jr-spacer();
-    }*/ }
+  column-rule: 1px solid #e5e5e6; }
 
 .text-columns-1 {
   -webkit-columns: 900px 1;

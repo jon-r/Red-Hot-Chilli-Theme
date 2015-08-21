@@ -17,6 +17,7 @@
 
 textarea {
   resize: vertical;
+  height: 7rem;
 }
 
 form label {
@@ -101,7 +102,7 @@ webkit-input-placeholder {
     display: inline-block;
     width:100%;
     @include jr-size(screen) {
-      padding: 0 jr-spacer(1.5);
+      padding: 5px jr-spacer(1.5);
     }
   }
 
@@ -224,7 +225,7 @@ fieldset.subform-active {
 
 .form-progress {
   position:absolute;
-  bottom:0;
+  bottom:5px;
   width:300px;
   left: calc(50% - 150px);
 }
@@ -259,13 +260,17 @@ fieldset.subform-active {
   height:0;
   overflow: hidden;
   transition: height 300ms ease;
-  padding: 0 jr-spacer(0.5);
+  padding: 4px jr-spacer(0.5);
   button {
     margin-top: 8px;
   }
 }
 input[type=radio]:checked + .form-answer {
   height: 10rem;
+}
+
+input[type=radio]:checked + .form-answer.tall {
+  height: 35rem;
 }
 
 input[type=radio] {

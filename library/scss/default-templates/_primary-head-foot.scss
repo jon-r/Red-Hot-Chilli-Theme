@@ -12,25 +12,24 @@
   border-bottom-width: 6px;
   background: url(#{$siteLink + '/images/rhc/Head-Banner.jpg'}) top/cover;
   .container {
-    align-items: center;
-    padding-top: jr-spacer();
+    padding-top: jr-spacer(0.5);
   }
   @include jr-size(screen-hd) {
     background: url(#{$siteLink + '/images/rhc/Head-Banner.jpg'}) center no-repeat,
       linear-gradient(to right, jr-grey(1.5) 25%, jr-grey(4) 75%);
     .home {
       height: 250px;
+      padding-top: jr-spacer(1);
     }
   }
 }
 
 .not-home {
-  justify-content: space-between;
   .header-logo, .header-links {
     margin-bottom: 0;
   }
   .header-logo {
-    max-width: 350px;
+    max-width: 300px;
   }
   @include jr-size(phoneOnly) {
     h2 {

@@ -345,8 +345,8 @@ function questionToText(data) {
 /* forms ------------------------------------------------------------------------------*/
 
 var $form = $('.js_contact_form'),
-    $formInputsReq = $form.find('input.req'),
-    $formInputsOptional = $form.find('input:not(.req)'),
+    $formInputsReq = $form.find('.req'),
+    $formInputsOptional = $form.find(':not(.req)'),
     $formNextBtn = $form.find('.js_nextBtn'),
     $formBackBtn = $form.find('.js_backBtn'),
     $formBlips = $form.next('.form-progress').find('.progress-blip'),
