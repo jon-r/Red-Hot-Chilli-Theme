@@ -1,4 +1,51 @@
 /*----- jquery menu aim ---------------------------------------------------------------*/
+
+/*region */
+var $navMain_ul = $('#js-main-list'),
+    $navMain_li = $navMain_ul.find('li'),
+    bigScreen = false;
+
+//redone in jquery
+var $carousel = $('#js-carousel-main'),
+    $slide = $carousel.find('.slide'),
+    $tabs = $('#js-carousel-blips > .blip');
+
+var slideCount = $slide.length - 1,
+    slideTime = 8000, // miliseconds
+    hoverLock = false,
+    timerLock = false,
+    tickerInt = 0;
+
+/* region */
+var MIN_LENGTH = 3;
+
+var $searchForm = $("#js-form-complete").find(".form-search"),
+    $searchIn = $searchForm.find(".search-in"),
+    $searchOut = $searchForm.find(".search-out");
+
+var $imgGalleryModal  = $('#js-gallery-modal'),
+    $imgGalleryOpen   = $('#js-gallery-zoom'),
+    $imgGalleryClose  = $imgGalleryModal.find('.modal-close');
+    $buyModal         = $('#js-buy-modal'),
+    $buyModalOpen     = $('#js-buy-btn'),
+    $buyModalClose    = $buyModal.find('.modal-close'),
+    $queryModal         = $('#js-query-modal'),
+    $queryModalOpen     = $('#js-query-btn'),
+    $queryModalClose    = $queryModal.find('.modal-close');
+
+var $queryModalInput = $("#js-question-in").find('option'),
+    //$queryOptions = $queryModalInput;
+    $queryModaloutput = $("#js-question-out");
+var $form = $('.js_contact_form'),
+    $formInputsReq = $form.find('.req'),
+    $formInputsOptional = $form.find(':not(.req)'),
+    $formNextBtn = $form.find('.js_nextBtn'),
+    $formBackBtn = $form.find('.js_backBtn'),
+    $formBlips = $form.next('.form-progress').find('.progress-blip'),
+    formErrorList = [],
+    $itemTabFrame = $('#js-tabs-frame'),
+    $itemTabToggle = $itemTabFrame.find('.tab-toggle');
+//$itemTabSection = $itemTabToggle.closest('section');
 /*region
 https://github.com/kamens/jQuery-menu-aim.git
 (minified)
@@ -12,51 +59,47 @@ https://github.com/kamens/jQuery-menu-aim.git
  * returns object with viewport dimensions to match css in width and height properties
  * ( source: http://andylangton.co.uk/blog/development/get-viewport-size-width-and-height-javascript )
 */
-
-function f01() {
+function updateViewportDimensions() {
 	var w=window,d=document,e=d.documentElement,g=d.getElementsByTagName('body')[0],x=w.innerWidth||e.clientWidth||g.clientWidth,y=w.innerHeight||e.clientHeight||g.clientHeight;
 	return { width:x,height:y }
 }
 
-
 /*-- main menu toggle -----------------------------------------------------------------*/
-/*region */
-var v01 = $('#js-main-list'),
-    v02 = v01.find('li'),
-    v03 = false,
-    v04 = f01();
+
 //menu aim for large screen
-v01.mouseenter( function() {
-  v04 = f01();
-  if ( v04.width >= 1030 ) {
-    v03 = true;
-    v01.menuAim({
-      activate: f02,
-      deactivate: f03,
-      exitMenu: f04
+$navMain_ul.mouseenter( function() {
+  vp = updateViewportDimensions();
+  if ( vp.width >= 1030 ) {
+    bigScreen = true;
+    $navMain_ul.menuAim({
+      activate: showSubMenu,
+      deactivate: hideSubMenu,
+      exitMenu: hideAllMenus
     })
   } else {
-    v03 = false;
+    bigScreen = false;
   }
 });
 
-function f02(r) {
-  if (v03) {
-    $(r).addClass('active-li');
+function showSubMenu(row) {
+  if (bigScreen) {
+    $row = $(row);
+    $row.addClass('active-li');
   }
 }
 
-function f03(r) {
-  $(r).removeClass('active-li');
+function hideSubMenu(row) {
+  $row = $(row);
+  $row.removeClass('active-li');
 }
 
-function f04() {
-  v03 = false;
-  v02.removeClass('active-li');
+function hideAllMenus() {
+  bigScreen = false;
+  $navMain_li = $navMain_ul.find('li').removeClass('active-li');
 }
 
 //much simpler touch toggle for small screens
-v02.click( function() {
+$navMain_li.click( function() {
   $(this).toggleClass('active-li')
 });
 
@@ -64,336 +107,325 @@ v02.click( function() {
 
 /*-- carousel scroller ----------------------------------------------------------------*/
 
-//redone in jquery
-var v05 = $('#js-carousel-main'),
-    v06 = v05.find('.slide'),
-    v07 = $('#js-carousel-blips > .blip'),
-    v08 = v06.length - 1,
-    v09 = 8000,
-    v10 = false,
-    v11 = false,
-    v12 = 0;
-
-if (v05.length > 0) {
-  var v13 = window.setInterval(f05, v09);
-  v05.mouseover(function() {
-    v10 = true;
+if ($carousel.length > 0) {
+  var carouselTimer = window.setInterval(ticker, slideTime);
+  $carousel.mouseover(function() {
+    hoverLock = true;
   })
-  v05.mouseout(function() {
-    v10 = false;
-    clearInterval(v13);
-    v13 = window.setInterval(f05, v09);
+  $carousel.mouseout(function() {
+    hoverLock = false;
+    clearInterval(carouselTimer);
+    carouselTimer = window.setInterval(ticker, slideTime);
   })
-  v07.mouseover(function() {
-    v10 = true;
+  $tabs.mouseover(function() {
+    hoverLock = true;
   })
-  v07.mouseout(function() {
-    v10 = false;
-    clearInterval(v13);
-    v13 = window.setInterval(f05, v09);
+  $tabs.mouseout(function() {
+    hoverLock = false;
+    clearInterval(carouselTimer);
+    carouselTimer = window.setInterval(ticker, slideTime);
   })
 }
 
-function f05() {
-  if (!v10 && !v11) {
-    v12 =  (v12 == v08) ? 0 : v12++;
-    v11 = true;
-    f06(v12);
+function ticker() {
+  console.log('tick');
+  if (!hoverLock && !timerLock) {
+    tickerInt = (tickerInt == slideCount) ? 0 : tickerInt + 1;
+    timerLock = true;
+    slideActivate(tickerInt);
   }
 }
 
-v07.click(function() {
-  if (v12 != $(this).index() && !v11) {
-    v11 = true;
-    v12 = $(this).index();
-    f06(v12);
+$tabs.click(function() {
+  if (timerLock == true) {
+    console.log('spam');
+  }
+  if (tickerInt != $(this).index() && !timerLock) {
+    timerLock = true;
+    tickerInt = $(this).index();
+    slideActivate(tickerInt);
   }
 });
 
-function f06(i) {
-  v05.find('.go-away').removeClass('is-active').removeClass('go-away');
-  v05.find('.is-active').addClass('go-away');
-  v06.eq(i).removeClass('go-away').addClass('is-active');
-  v07.removeClass('active').eq(i).addClass('active');
+function slideActivate(i) {
+  $carousel.find('.go-away').removeClass('is-active').removeClass('go-away');
+  $carousel.find('.is-active').addClass('go-away');
+  $slide.eq(i).removeClass('go-away').addClass('is-active');
+  $tabs.removeClass('active').eq(i).addClass('active');
   setTimeout(function () {
-    v11 = false;
+    timerLock = false;
   }, 600);
 }
 
 
 /* js + ajax auto complete ------------------------------------------------------------*/
 // takes categories + key brands.
-/* region */
-var v13 = $("#js-form-complete").find(".form-search"),
-    v14 = v13.find(".search-in"),
-    v15 = v13.find(".search-out");
 
-v14.keyup(function () {
-  v04 = f01();
-  if ( v04.width >= 1030 ) {
-    var v16 = $(this).val();
-    if (v16.length >= 3) {
+
+
+$searchIn.keyup(function () {
+  vp = updateViewportDimensions();
+  if ( vp.width >= 1030 ) {
+    var keyword = $(this).val();
+    if (keyword.length >= MIN_LENGTH) {
       $.get(fileSrc.admin, {
-        keyword: v16,
+        keyword: keyword,
         action: "jr_autocomplete"
-      }).done(f07);
+      }).done(searchToText);
     } else {
-      v15.html('');
+      $searchOut.html('');
     }
   }
 });
 
-function f07(d) {
-  var r = $.parseJSON(d);
-  v15.html('');
-  $(r).each(function (i) {
+function searchToText(data) {
+  var results = $.parseJSON(data);
+  $searchOut.html('');
+  $(results).each(function (i) {
     if (i < 4) {
-      var e = (this.filter == 'brand') ? '<span> - Brand</span>' : '<span> - Category</span>';
-      var o = '<li><a href="' + fileSrc.site + '/products/' + this.filter + '/' + this.url + '/' + '" >' + this.name + e + '</a></li>';
-      v15.append(o);
+      var link = fileSrc.site + '/products/' + this.filter + '/' + this.url + '/';
+      var extra = (this.filter == 'brand') ? '<span> - Brand</span>' : '<span> - Category</span>';
+      var output = '<li><a href="' + link + '" >' + this.name + extra + '</a></li>';
+      $searchOut.append(output);
     }
   })
 };
 
 //adds arrow movment to the options
-v14.on('keydown',function(e) {
-  r = v15.find('li > a');
-  if (e.keyCode == '40' && r.length > 0) {
+$searchIn.on('keydown',function(e) {
+
+  $results = $searchOut.find('li > a');
+  if (e.keyCode == '40' && $results.length > 0) {
     e.preventDefault();
-    f08('d', -1);
+    searchTraverse('down', -1);
   }
 });
 
-v15.on('keydown','li > a', function(e) {
+$searchOut.on('keydown','li > a', function(e) {
 
-  f = v15.find(':focus');
-  if (e.keyCode == '40' && f.length > 0) {
+  $focussed = $searchOut.find(':focus');
+  if (e.keyCode == '40' && $focussed.length > 0) {
     e.preventDefault();
     $i = $(this).parent('li').index();
-    f08('d', $i);
-  } else if (e.keyCode == '38' && f.length > 0) {
+    searchTraverse('down', $i);
+  } else if (e.keyCode == '38' && $focussed.length > 0) {
     e.preventDefault();
     $i = $(this).parent('li').index();
 
-    f08('u', $i);
+    searchTraverse('up', $i);
   }
 });
 
-function f08(d, i) {
-  r = v15.find('li > a');
-  rC = r.length;
-  if (d == 'd' && (i + 1) < rC) {
+function searchTraverse(direction, i) {
+  $results = $searchOut.find('li > a');
+  $resultCount = $results.length;
+  if (direction == 'down' && i < $resultCount - 1) {
     i++
-    t = r.eq(i);
-    tx = t.text();
-    v14.val(tx);
-  } else if (d == 'u') {
+    $target = $results.eq(i);
+    $text = $target.text();
+    $searchIn.val($text);
+  } else if (direction == 'up') {
     if (i > 0) {
       i--
-      t = r.eq(i);
-      tx = t.text();
-      v14.val(tx);
+      $target = $results.eq(i);
+      $text = $target.text();
+      $searchIn.val($text);
     } else {
-      t = v14;
+      $target = $searchIn;
     }
   }
-  t.focus();
+  $target.focus();
+  console.log(i);
 }
 /* endregion */
 /* item gallery buttons -------------------------------------------------------------- */
 
-var v16   = $('#js-gallery-primary'),
-    v17   = $('#js-gallery-thumbs'),
-    v18  = v17.find('li'),
-    v19   = $('#js-gallery-prev'),
-    v20   = $('#js-gallery-next'),
-    v21    = (v18.length) - 1;
+var $imgGalleryMain   = $('#js-gallery-primary'),
+    $imgGalleryFull   = $('#js-gallery-thumbs'),
+    $imgGalleryThumb  = $imgGalleryFull.find('li');
+    $imgGalleryPrev   = $('#js-gallery-prev'),
+    $imgGalleryNext   = $('#js-gallery-next');
+    $imgGalleryNum    = ($imgGalleryThumb.length) - 1;
 
 //"gallery switch"
 // checks first to see if the tile sized image exists (possibly wont), need to ajax call the php resize function
-v18.click(function() {
+$imgGalleryThumb.click(function() {
   i = $(this).index();
-  f09(i);
+  setMainImg(i);
 });
 
-function f09(i) {
-  t = v18.eq(i).find('img');
-  s = t.attr('src').replace('gallery-thumb', 'gallery').split('/').slice(-3).join('/');
-  f = '../' + s;
-  v16.addClass('loading');
-  if (t.data('tile') == 1) {
-    v16.removeClass('loading').find('img').attr('src', fileSrc.site + '/' + s);
+function setMainImg(i) {
+  $thumbImg = $imgGalleryThumb.eq(i).find('img');
+  $getThumbSrc = $thumbImg.attr('src').replace('gallery-thumb', 'gallery').split('/').slice(-3).join('/');
+  $fullThumbSrc = '../' + $getThumbSrc;
+  $imgGalleryMain.addClass('loading');
+  if ($thumbImg.data('tile') == 1) {
+    $imgGalleryMain.removeClass('loading').find('img').attr('src', fileSrc.site + '/' + $getThumbSrc);
   } else {
     $.get(fileSrc.admin, {
-      src: f,
+      src: $fullThumbSrc,
       size: 'tile',
       action: "jr_resize"
-    }, f10);
-    t.data('tile', 1);
+    }, replaceMainImg);
+    $thumbImg.data('tile', 1);
   }
 }
 
-function f10(d) {
-  var r = $.parseJSON(d);
-  n = r.replace('../', fileSrc.site +'/');
-  v16.removeClass('loading').find('img').attr('src',n);
+function replaceMainImg(data) {
+  var results = $.parseJSON(data);
+  $newSrc = results.replace('../', fileSrc.site +'/');
+  $imgGalleryMain.removeClass('loading').find('img').attr('src',$newSrc);
 }
 
-v19.click(function() {
-  if (v21 == 0) {
-    v21 = v18.length;
+$imgGalleryPrev.click(function() {
+  if ($imgGalleryNum == 0) {
+    $imgGalleryNum = $imgGalleryThumb.length;
   }
-  v21--
-  f09(v21);
+  $imgGalleryNum--
+  console.log($imgGalleryNum);
+  setMainImg($imgGalleryNum);
 })
 
-v20.click(function() {
-  if (v21 == (v18.length) - 1) {
-    v21 = -1;
+$imgGalleryNext.click(function() {
+  if ($imgGalleryNum == ($imgGalleryThumb.length) - 1) {
+    $imgGalleryNum = -1;
   }
-  v21++
-  f09(v21);
+  $imgGalleryNum++
+  console.log($imgGalleryNum);
+  setMainImg($imgGalleryNum);
 })
 
 /* modal popups ---------------------------------------------------------------------- */
 // eg zoom and enhance
-var v22 = $('#js-gallery-modal'),
-    v23 = v16.find('.tile-hover.zoom'),
-    v24 = v22.find('.modal-close');
-    v25 = $('#js-buy-modal'),
-    v26     = $('#js-buy-btn'),
-    v27    = v25.find('.modal-close'),
-    v28         = $('#js-query-modal'),
-    v29     = $('#js-query-btn'),
-    v30    = v28.find('.modal-close');
 
-
-function f11(e) {
+function modalOpen(e) {
+  e.addClass('is-active')
+}
+function modalOpenSmall(e) {
   e.addClass('is-active-small');
 }
-function f12(e) {
+function modalClose(e) {
   e.removeClass('is-active');
   e.removeClass('is-active-small');
 }
 
-v23.click(function() {
-  i = v16.find('img').attr('src');
-  b = i.replace('gallery-tile','gallery');
+$imgGalleryOpen.click(function() {
+  $getImgSrc = $imgGalleryMain.find('img').attr('src');
+  $bigImgSrc = $getImgSrc.replace('gallery-tile','gallery');
 
-  if (v22.find('img').length) {
+  if ($imgGalleryModal.find('img').length) {
 
-    v22.find('img').attr('src',b);
+    $imgGalleryModal.find('img').attr('src',$bigImgSrc);
   } else {
-    bN = '<img class="framed" src="' + b + '" >';
-    v22.append(bN);
+    $bigImgNew = '<img class="framed" src="' + $bigImgSrc + '" >';
+    $imgGalleryModal.append($bigImgNew);
   }
-  v22.addClass('is-active');
+  modalOpen($imgGalleryModal);
 });
 
-v24.click(function() {
-  f12(v22);
+$imgGalleryClose.click(function() {
+  modalClose($imgGalleryModal);
 });
-v26.click(function() {
-  f11(v25)
+
+$buyModalOpen.click(function() {
+  modalOpenSmall($buyModal)
 })
-v29.click(function() {
-  f11(v28)
+$queryModalOpen.click(function() {
+  modalOpenSmall($queryModal)
 })
-v27.click(function() {
-  f12(v25);
+$buyModalClose.click(function() {
+  modalClose($buyModal);
 });
-v30.click(function() {
-  f12(v28);
+$queryModalClose.click(function() {
+  modalClose($queryModal);
 });
 
 /* faq response -----------------------------------------------------------------------*/
 
-var v31 = $("#js-question-in").find('option'),
-    v32 = $("#js-question-out");
 
-v31.click(function () {
-  var q = $(this).val();
-  v32.addClass('loading');
+
+$queryModalInput.click(function () {
+  var question = $(this).val();
+  $queryModaloutput.addClass('loading');
   $.get(fileSrc.admin, {
-    keyword: q,
+    keyword: question,
     action: "jr_getAnswers"
-  }).done(f13);
+  }).done(questionToText);
 });
 
-function f13(d) {
-  var r = $.parseJSON(d);
-  v32.removeClass('loading').html(r.answer).next('button').html(r.next);
+function questionToText(data) {
+  var results = $.parseJSON(data);
+
+  $queryModaloutput.removeClass('loading').html(results.answer).next('button').html(results.next);
 };
 
 /* forms ------------------------------------------------------------------------------*/
 
-var v33 = $('.js_contact_form'),
-    v34 = v33.find('input.req'),
-    v35 = v33.find('input:not(.req)'),
-    v36 = v33.find('.js_nextBtn'),
-    v37 = v33.find('.js_backBtn'),
-    v38 = [];
+
 
 //turns off validation only if JS is available, since the script is trying to deal with it
-v33.attr('novalidate', '');
+$form.attr('novalidate', '');
 
-v33.submit(function (e) {
-  v38 = [];
-  v39 = $(this);
-  v40 = v39.find('.response');
+$form.submit(function (e) {
+  formErrorList = [];
+  $thisForm = $(this);
+  $response = $thisForm.find('.response');
 
   e.preventDefault();
-  v39.find(v34).each(function () {
+  $thisForm.find($formInputsReq).each(function () {
     $el = $(this);
-    f14($el);
+    formValidate($el);
   });
 
-  v40.removeClass('success').removeClass('error').empty();
+  $response.removeClass('success').removeClass('error').empty();
 
-  if (v38.length == 0) {
-    v40.addClass('loading');
+  if (formErrorList.length == 0) {
+    $response.addClass('loading');
     $.get(fileSrc.admin, {
-      keyword: v39.serialize(),
+      keyword: $thisForm.serialize(),
       action: "jr_formsubmit",
       url: window.location.href
-    }).done(f15);
+    }).done(formAjaxReply);
   } else {
-    //console.log(v38);
-    v40.addClass('error').html('Please fill in required items')
+    //console.log(formErrorList);
+    $response.addClass('error').html('Please fill in required items')
   }
 })
 
-v36.click(function(e) {
-  v41 = $(this).parent('p.subform-active');
-  v38 = [];
-  v40 = v41.find('.response');
+$formNextBtn.click(function(e) {
+  $thisSubForm = $(this).closest('fieldset.subform-active');
+  $subFormIndex = $thisSubForm.index();
+  formErrorList = [];
+  $response = $thisSubForm.find('.response');
 
-  v41.find(v34).each(function () {
+  $thisSubForm.find($formInputsReq).each(function () {
     $el = $(this);
-    f14($el);
+    formValidate($el);
   });
 
-  v40.removeClass('success').removeClass('error').empty();
-  console.log('click')
+  $response.removeClass('success').removeClass('error').empty();
 
-  if (v38.length == 0) {
-    v41.removeClass('subform-active').next('p').addClass('subform-active');
+  if (formErrorList.length == 0) {
+    $thisSubForm.removeClass('subform-active').next('fieldset').addClass('subform-active');
+    $formBlips.eq($subFormIndex).addClass('active');
   } else {
-    //console.log(v38);
-    v40.addClass('error').html('Please fill in required items')
+    $response.addClass('error').html('Please fill in required items')
   }
 });
 
-v37.click(function(e) {
-  $(this).parent('p.subform-active').removeClass('subform-active').prev('p').addClass('subform-active');
+$formBackBtn.click(function(e) {
+  $thisSubForm = $(this).closest('fieldset.subform-active');
+  $thisSubForm.removeClass('subform-active').prev('fieldset').addClass('subform-active');
+  $subFormIndex = $thisSubForm.index();
+  $formBlips.eq($subFormIndex - 1).removeClass('active');
 });
 
-v34.change(function (e) {
+$formInputsReq.change(function (e) {
   $el = $(this);
-  f14($el);
+  formValidate($el);
 });
 
-v35.change(function(e) {
+$formInputsOptional.change(function(e) {
   $el = $(this);
 
   if ($el.val().length > 0) {
@@ -403,36 +435,40 @@ v35.change(function(e) {
   }
 })
 
-function f14($el) {
-  var v42 = $el.val(),
-      v43 = $el.attr('name'),
-      v44 = $el.attr('type'),
-      v45 = v42.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/),
-      v46 = "";
+function formValidate($el) {
+  var value = $el.val(),
+    name = $el.attr('name'),
+    type = $el.attr('type'),
+    validEmail = value.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/);
+  var formError = "",
+      formIndex = $formInputsReq.index($el);
 
   $el.removeClass('error').removeClass('success').next('span').empty();
 
-  if (v44 == 'email' && !v45) {
-    v46 = 'Please enter a valid email address';
+  if (type == 'email' && !validEmail) {
+    formError = 'Please enter a valid email address';
     $el.addClass('error')
   }
-  if (v42.length < 1) {
-    v46 = 'Your ' + v43 + ' is required';
+  if (value.length < 1) {
+    formError = 'Your ' + name + ' is required';
   }
-  if (v46.length > 0) {
-    $el.addClass('error').next('span').text(v46);
-    v38.push(v46);
+  if (formError.length > 0) {
+    $el.addClass('error').next('span').text(formError);
+    formErrorList.push(formError);
   } else {
     $el.addClass('success');
   }
 }
 
-function f15(d) {
-  var r = $.parseJSON(d);
-  o = (r == "Form mailed successfully") ? 'success' : 'error';
-  v33.find('.response').removeClass('loading').addClass(o).html(r);
+function formAjaxReply(data) {
+  var result = $.parseJSON(data);
+  $resultOutcome = (result == "Form mailed successfully") ? 'success' : 'error';
+  $form.find('.response').removeClass('loading').addClass($resultOutcome).html(result);
 }
 
+/* --- item page tabs -----------------------------------------------------------------*/
 
 
-
+$itemTabToggle.click(function() {
+  $(this).closest('section').toggleClass('active').siblings('section').removeClass('active');
+})
