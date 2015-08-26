@@ -11,7 +11,7 @@
       <h2 class="text-icon-left phone-w"><?php echo jr_linkTo('phone') ?></h2>
       <h2 class="text-icon-left email-w"><?php echo jr_linkTo('eLink') ?></h2>
 
-    <?php echo do_shortcode( "[jr-shop id='search-bar' cached=true]"); ?>
+    <?php echo do_shortcode( "[jr-shop id='header-search' cached=true]"); ?>
 
   </menu>
 
