@@ -65,8 +65,8 @@ Default style for all pages
 Page specific items.
 *********************/
 
-//front page, including carousel banner
-@import "page-templates/index";
+//front page carousel
+@import "page-templates/carousel";
 //shop list, groups, categories
 @import "page-templates/shop-lists";
 //shop full (single item)

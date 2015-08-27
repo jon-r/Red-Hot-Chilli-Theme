@@ -1,46 +1,13 @@
-/*-- index page elements -----------------------------------------------------*/
-
-.index-nav-tabs {
-  background-color: white;
-  width: 100%;
-  height: 4rem;
-
-  li {
-    line-height: 4rem;
-    font-weight: bold;
-    border-right: $jr-border;
-    float:left;
-    cursor: pointer;
-    text-align:center;
-    transition: 400ms ease;
-    width: calc(100% /6);
-  //  display: block;
-    background-color: white;
-
-    &:hover {
-      background-color: $jr-emphasis;
-    }
-    &.active {
-      background-color: $jr-emphasis;
-      color:$jr-text-light;
-    }
-  }
-}
-
 /*-- Carousel -------------------------------------------------------------------------*/
 
 .carousel {
-//  display: none;
-  border-top: $jr-border;
-  margin-top: jr-spacer();
-  position: relative;
   overflow: hidden;
   white-space: nowrap;
   z-index: 0;
   &::before {
     content: "";
     display: block;
-    padding-top: 20%;
+    padding-top: calc(20% - #{jr-spacer(0.8)});
   }
 }
 
@@ -55,10 +22,6 @@
   @include jr-size(tablet) {
     font-size: 1.4rem;
   }
-  a {
-    padding:0;
-    width:100%;
-  }
 }
 
 .slide {
@@ -68,9 +31,7 @@
   bottom: 0;
   left:100%;
   transition: left 600ms ease;
-  a {
-    height: 100%;
-  }
+
 }
 
 .is-active {

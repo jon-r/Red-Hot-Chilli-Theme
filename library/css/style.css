@@ -1276,39 +1276,15 @@ article + article:not(.flex-column) {
 /*********************
 Page specific items.
 *********************/
-/*-- index page elements -----------------------------------------------------*/
-.index-nav-tabs {
-  background-color: white;
-  width: 100%;
-  height: 4rem; }
-  .index-nav-tabs li {
-    line-height: 4rem;
-    font-weight: bold;
-    border-right: 1px solid #e5e5e6;
-    float: left;
-    cursor: pointer;
-    text-align: center;
-    transition: 400ms ease;
-    width: calc(100% /6);
-    background-color: white; }
-    .index-nav-tabs li:hover {
-      background-color: #9f1414; }
-    .index-nav-tabs li.active {
-      background-color: #9f1414;
-      color: #e5e5e6; }
-
 /*-- Carousel -------------------------------------------------------------------------*/
 .carousel {
-  border-top: 1px solid #e5e5e6;
-  margin-top: 24px;
-  position: relative;
   overflow: hidden;
   white-space: nowrap;
   z-index: 0; }
   .carousel::before {
     content: "";
     display: block;
-    padding-top: 20%; }
+    padding-top: calc(20% - 19.2px); }
 
 .carousel-container {
   position: absolute;
@@ -1320,9 +1296,6 @@ Page specific items.
   @media only screen and (min-width: 482px) {
     .carousel-container {
       font-size: 1.4rem; } }
-  .carousel-container a {
-    padding: 0;
-    width: 100%; }
 
 .slide {
   position: absolute;
@@ -1331,8 +1304,6 @@ Page specific items.
   bottom: 0;
   left: 100%;
   transition: left 600ms ease; }
-  .slide a {
-    height: 100%; }
 
 .is-active {
   z-index: 2;
