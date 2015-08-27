@@ -1,4 +1,4 @@
-/*-- default list Layout -----------------------------------------------------------*/
+/*-- special list elements -----------------------------------------------------------*/
 
 .list-category, .list-item, .list-featured {
   padding: 0;
@@ -23,12 +23,7 @@
   opacity:0.5;
 }
 
-.list-featured {
-  overflow: hidden;
-}
-
 .extra-brands {
-  border-top: $jr-border-dark;
   padding: jr-spacer();
   a {
     margin-left: jr-spacer(0.5);
