@@ -1,29 +1,28 @@
 /*--- common page elements + defaults -------------------------------------------------*/
 
 /*button style*/
+.btn-red,
+.btn-grey,
+.btn-light {
+  cursor: pointer;
+  color: $jr-text-light;
+  height: jr-spacer(1.5);
+  @extend %floating-tile-base;
+}
 .btn-red {
   @include jr-red-grad;
-  color: $jr-text-light;
-  border-radius: 5px;
   border: $jr-border-red;
-  padding:6px;
+}
+.btn-grey {
+  @include jr-grey-grad;
+  border: 2px solid jr-grey(2);
+}
+.btn-light {
+  border: 2px solid jr-grey(7);
+  background-color: $jr-bg-light;
+  background-image: linear-gradient($jr-bg-light, #{jr-grey(8)})
 }
 
-/* title frames */
-.article-header {
-  padding-left: jr-spacer(0.5);
-  a {
-    margin-right: jr-spacer(0.5);
-    color: $jr-emphasis;
-  }
-}
-
-.sub-header {
-  position: relative;
-  border-bottom: 2px solid jr-grey(4.5);
-  padding:  2px jr-spacer(0.5);
-  color: $jr-text-hover;
-}
 
 .loading {
   @extend %loader-icon;
@@ -33,7 +32,7 @@
 
 %floating-tile-base {
   box-shadow: $jr-shadow;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 
 .tile-outer {
@@ -101,14 +100,9 @@
 
 /*little hover buttons*/
 .tile-float {
-  @extend %floating-tile-base;
-  background-color: $jr-bg-dark;
-  color:$jr-text-light;
   position:absolute;
-  cursor: pointer;
   bottom:jr-spacer(2.2);
-  left: jr-spacer(0.2);
-  height: 2.5rem;
+  left: jr-spacer(0.5);
   opacity: 0;
   display: none;
   h3 {
@@ -117,6 +111,7 @@
   }
   @include jr-size(tablet) {
     display: block;
+    left: jr-spacer(0.2);
   }
   @include jr-size(screen) {
     h3 {
@@ -125,20 +120,10 @@
   }
 }
 
-.tile-button {
-  @extend %floating-tile-base;
-  position:absolute;
-  background-color: $jr-bg-light;
-  cursor:pointer;
-  &:hover, &:active {
-    background-color: $jr-bg-hover;
-  }
-}
 
 .tile-button.arrow-l, .tile-button.arrow-r {
   top: 50%;
-  width: jr-spacer(1);
-  height: jr-spacer(1.5);
+  position:absolute;
 }
 
 .tile-button.arrow-l {
@@ -151,79 +136,5 @@
 .tile-outer:hover {
   .tile-float {
     opacity:1;
-  }
-}
-
-/* --- modal popouts - enabled through js ---------------------------------------------*/
-.modal {
-  position: fixed;
-  opacity: 0;
-  width: 5%;
-  height:5%;
-  top: 45vh;
-  z-index: 100;
-  transition: 300ms ease;
-  &:not(.is-active):not(.is-active-small) {
-    pointer-events: none;
-  }
-  & > img {
-    object-fit: contain;
-    object-position: center;
-    @supports (object-fit: contain) {
-      height: 100%;
-    }
-  }
-}
-
-.modal.right {
-  left:95%;
-}
-
-.modal.is-active,
-.modal.is-active-small {
-  left:5%;
-  opacity: 1;
-  width: 90%;
-  height: 90%;
-  top: 5%;
-  &::before {
-    content:"";
-    position: fixed;
-    left:0;
-    right:0;
-    top:0;
-    bottom:0;
-    background:rgba(jr-grey(1), 0.75);
-    z-index: -5;
-  }
-}
-
-@include jr-size(screen) {
-  .modal.is-active-small {
-    left:calc(50% - 350px);
-    width:700px;
-    .modal-close {
-      right: calc(50% - 330px);
-    }
-  }
-}
-
-.modal-spec {
-  position: relative;
-  width:calc(100% - 100px);
-  height: 10rem;
-}
-
-.modal-close {
-  position: fixed;
-  height: 64px;
-  width:64px;
-  right: calc(#{jr-spacer(1)} + 5%);
-  z-index:2;
-  cursor: pointer;
-  background: rgba($jr-bg-dark,0.5);
-  @include jr-size(screen) {
-    width: 96px;
-    height:96px;
   }
 }

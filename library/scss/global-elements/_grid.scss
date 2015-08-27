@@ -16,6 +16,9 @@
 .flex-container {
   @extend %flex-parent-base;
   width:100%;
+  & + .flex-container {
+    margin-top: jr-spacer();
+  }
 }
 
 .flex-container.centre {

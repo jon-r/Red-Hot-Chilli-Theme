@@ -21,8 +21,12 @@ main {
   }
 }
 
-article + article:not(.flex-column) {
-  margin-top: jr-spacer();
+.article-header {
+  padding-left: jr-spacer(0.5);
+  a {
+    margin-right: jr-spacer(0.5);
+    color: $jr-emphasis;
+  }
 }
 
 .container {

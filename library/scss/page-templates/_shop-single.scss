@@ -10,13 +10,9 @@
   font-size: 1.2rem;
 }
 
-.text-right {
-  float: right;
-}
-
 .item-specs {
   li {
-    padding:5px;
+    padding:4px;
     &:nth-of-type(even) {
       background-color: $jr-bg-hover;
     }
@@ -36,10 +32,6 @@
   }
 }
 
-.shop-buttons > button {
-  @extend %floating-tile-base;
-  margin: jr-spacer(0.5) jr-spacer(0.5) 0 0;
-}
 
 /* -- responsive page tabs ----------------------------------------------------------*/
 
