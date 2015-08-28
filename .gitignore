@@ -46,5 +46,6 @@ Temporary Items
 /library/scss/OLD/
 /.archive/
 /JR_Shop/JR_Development_Variables.php
-/library/.sass-cache/*
+/library/.sass-cache/
 *.scssc
+/node_modules/

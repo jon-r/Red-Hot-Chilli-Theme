@@ -1,3 +1,9 @@
+/*! Jon Richards 2015 | GPL-2.0+ | http://www.gnu.org/licenses/gpl-2.0.txt
+ * INCLUDES
+ * Jquery Menu Aim | https://github.com/kamens/jQuery-menu-aim
+ * Get Viewport Dimensions | http://andylangton.co.uk/blog/development/get-viewport-size-width-and-height-javascript
+!*/
+
 /*----- jquery menu aim ---------------------------------------------------------------*/
 /*region
 https://github.com/kamens/jQuery-menu-aim.git

@@ -1,0 +1,27 @@
+{
+  "name": "rhc-theme",
+  "version": "1.2.0",
+  "description": "theme for Red Hot Chilli Northwest",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^2.3.1",
+    "gulp-ruby-sass": "^1.4.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://jon-r:jonno93113@github.com/jon-r/Red-Hot-Chilli-Theme.git"
+  },
+  "author": "Jon Richards",
+  "license": "GPL-2.0+",
+  "bugs": {
+    "url": "https://github.com/jon-r/Red-Hot-Chilli-Theme/issues"
+  },
+  "homepage": "https://github.com/jon-r/Red-Hot-Chilli-Theme#readme"
+}
