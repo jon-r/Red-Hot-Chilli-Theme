@@ -52,15 +52,24 @@
     left:0;
     width:100%;
     border-bottom: $jr-border-red;
-    top: 4.5rem;
+    top: 0;
   }
   &.right {
+    display: none;
     right:0;
     background-color: jr-red(4);
-    padding: 5px jr-spacer() 0 jr-spacer();
+    padding: 2px jr-spacer() 0 jr-spacer();
     width:100%;
     h2 {
       display: none;
+    }
+  }
+  @include jr-size(tablet) {
+    &.left {
+      top: 4rem;
+    }
+    &.right {
+      display: block;
     }
   }
   @include jr-size(screen) {

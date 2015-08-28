@@ -23,6 +23,59 @@ function updateViewportDimensions() {
 	return { width:x,height:y }
 }
 
+/*-- Header scroll --------------------------------------------------------------------*/
+
+var stickyRight = document.getElementById('js-sticky-right'),
+    stickyLeft = document.getElementById('js-sticky-left');
+    titlePos = findTop(stickyLeft);
+
+function throttle(fn, threshhold, scope) {
+  threshhold || (threshhold = 250);
+  var last,
+      deferTimer;
+  return function () {
+    var context = scope || this;
+
+    var now = +new Date,
+        args = arguments;
+    if (last && now < last + threshhold) {
+      // hold on to it
+      clearTimeout(deferTimer);
+      deferTimer = setTimeout(function () {
+        last = now;
+        fn.apply(context, args);
+      }, threshhold);
+    } else {
+      last = now;
+      fn.apply(context, args);
+    }
+  };
+}
+
+window.onscroll = throttle(
+  function () {
+    console.log(titlePos);
+    scrollPos = window.scrollY;
+
+    if (scrollPos > titlePos + 100) {
+      stickyRight.classList.add('is-fixed');
+      stickyLeft.classList.add('is-fixed');
+    } else {
+      stickyRight.classList.remove('is-fixed');
+      stickyLeft.classList.remove('is-fixed');
+    }
+  }, 30);
+
+function findTop(obj) {
+  var curtop = 0;
+  if (obj.offsetParent) {
+    do {
+      curtop += obj.offsetTop;
+    } while (obj = obj.offsetParent);
+  }
+  return curtop;
+}
+
 /*-- main menu toggle -----------------------------------------------------------------*/
 /*region */
 var $navMain_ul = $('#js-main-list'),

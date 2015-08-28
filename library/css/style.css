@@ -526,9 +526,11 @@ Default style for all pages
 
 /* -----------  header fixed version --------------------------------------------------*/
 .is-fixed { top: 0; position: fixed; z-index: 10; font-size: 0.9; }
-.is-fixed.left { background-color: #9f1414; background-image: -webkit-linear-gradient(#af1d1d, #640202); background-image: linear-gradient(#af1d1d, #640202); box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); padding: 5px 5px 0 0; left: 0; width: 100%; border-bottom: 2px solid #790606; top: 4.5rem; }
-.is-fixed.right { right: 0; background-color: #af1d1d; padding: 5px 24px 0 24px; width: 100%; }
+.is-fixed.left { background-color: #9f1414; background-image: -webkit-linear-gradient(#af1d1d, #640202); background-image: linear-gradient(#af1d1d, #640202); box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); padding: 5px 5px 0 0; left: 0; width: 100%; border-bottom: 2px solid #790606; top: 0; }
+.is-fixed.right { display: none; right: 0; background-color: #af1d1d; padding: 2px 24px 0 24px; width: 100%; }
 .is-fixed.right h2 { display: none; }
+@media only screen and (min-width: 482px) { .is-fixed.left { top: 4rem; }
+  .is-fixed.right { display: block; } }
 @media only screen and (min-width: 1031px) { .is-fixed.left { top: 0; }
   .is-fixed.right { width: 40%; background: none; } }
 
