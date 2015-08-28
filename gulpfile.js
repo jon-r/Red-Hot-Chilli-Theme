@@ -27,5 +27,5 @@ gulp.task('compressJS', function() {
 gulp.task('default', ['sass','sass-min','compressJS']);
 
 gulp.task('sass:watch', function () {
-  gulp.watch('./sass/**/*.scss', ['sass','sass-min']);
+  gulp.watch('./library/scss/**/*.scss', ['sass','sass-min']);
 });

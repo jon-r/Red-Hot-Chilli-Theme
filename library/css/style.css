@@ -525,7 +525,12 @@ Default style for all pages
 @media only screen and (max-width: 481px) { .not-home h2 { display: none; } }
 
 /* -----------  header fixed version --------------------------------------------------*/
-.isfixed { position: fixed; height: 5rem; }
+.is-fixed { top: 0; position: fixed; z-index: 10; font-size: 0.9; }
+.is-fixed.left { background-color: #9f1414; background-image: -webkit-linear-gradient(#af1d1d, #640202); background-image: linear-gradient(#af1d1d, #640202); box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); padding: 5px 5px 0 0; left: 0; width: 100%; border-bottom: 2px solid #790606; top: 4.5rem; }
+.is-fixed.right { right: 0; background-color: #af1d1d; padding: 5px 24px 0 24px; width: 100%; }
+.is-fixed.right h2 { display: none; }
+@media only screen and (min-width: 1031px) { .is-fixed.left { top: 0; }
+  .is-fixed.right { width: 40%; background: none; } }
 
 /* -----------  footer  ---------------------------------------------------------------*/
 .primary-footer { border-top-width: 6px; background-color: #2b313b; padding-top: 24px; }
@@ -595,7 +600,7 @@ main { background: #f2f2f2; color: #15181e; box-shadow: 0 5px 10px #15181e; -web
 @media only screen and (min-width: 482px) and (max-width: 1030px) { .main-menu li { display: inline-block; width: calc(50% - 24px); display: inline-block; }
   .main-menu li:nth-of-type(even) { border-left: 1px solid #e5e5e6; } }
 
-.sub-menu { position: absolute; height: auto; background-color: white; min-height: calc(100% + 2rem); top: -2rem; left: 100%; -webkit-transition: left 400ms ease; transition: left 400ms ease; background-image: url(/rhc_online/images/icons/menu-base.jpg); background-size: 500px 375px; background-position: bottom right; background-repeat: no-repeat; padding: 1rem 0; }
+.sub-menu { position: absolute; height: auto; background-color: white; min-height: calc(100% + 3rem); top: -2.5rem; left: 100%; -webkit-transition: left 400ms ease; transition: left 400ms ease; background-image: url(/rhc_online/images/icons/menu-base.jpg); background-size: 500px 375px; background-position: bottom right; background-repeat: no-repeat; padding: 1rem 0; }
 @media only screen and (min-width: 1031px) { .sub-menu { border: 1px solid #e5e5e6; display: none; box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); width: 200%; z-index: 20; left: 98%; }
   .sub-menu li { width: 50%; } }
 

@@ -153,8 +153,8 @@
   position: absolute;
   height: auto;
   background-color: white;
-  min-height: calc(100% + 2rem);
-  top:-2rem;
+  min-height: calc(100% + 3rem);
+  top:-2.5rem;
   left: 100%;
   transition: left 400ms ease;
   background-image: url(#{$siteLink + '/images/icons/menu-base.jpg'});

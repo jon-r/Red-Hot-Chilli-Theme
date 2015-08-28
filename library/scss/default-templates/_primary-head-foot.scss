@@ -35,14 +35,43 @@
     h2 {
       display:none;
     }
-
   }
 }
 
 /* -----------  header fixed version --------------------------------------------------*/
-.isfixed {
+.is-fixed {
+  top:0;
   position: fixed;
-  height:5rem;
+  z-index: 10;
+  font-size: 0.9;
+
+  &.left {
+    @include jr-red-grad;
+    box-shadow: $jr-shadow;
+    padding: 5px 5px 0 0;
+    left:0;
+    width:100%;
+    border-bottom: $jr-border-red;
+    top: 4.5rem;
+  }
+  &.right {
+    right:0;
+    background-color: jr-red(4);
+    padding: 5px jr-spacer() 0 jr-spacer();
+    width:100%;
+    h2 {
+      display: none;
+    }
+  }
+  @include jr-size(screen) {
+    &.left {
+      top:0;
+    }
+    &.right {
+      width: 40%;
+      background: none;
+    }
+  }
 }
 
 /* -----------  footer  ---------------------------------------------------------------*/
