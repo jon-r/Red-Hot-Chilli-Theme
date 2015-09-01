@@ -1,5 +1,5 @@
 /* --- modal popouts - enabled through js ---------------------------------------------*/
-.modal {
+.modal-frame {
   position: fixed;
   opacity: 0;
   width: 5%;
@@ -19,12 +19,12 @@
   }
 }
 
-.modal.right {
+.modal-frame.right {
   left:95%;
 }
 
-.modal.is-active,
-.modal.is-active-small {
+.modal-frame.is-active,
+.modal-frame.is-active-small {
   left:5%;
   opacity: 1;
   width: 90%;
@@ -43,7 +43,7 @@
 }
 
 @include jr-size(screen) {
-  .modal.is-active-small {
+  .modal-frame.is-active-small {
     left:calc(50% - 350px);
     width:700px;
     .modal-close {

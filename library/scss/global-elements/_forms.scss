@@ -1,9 +1,5 @@
 
 /* --- form defaults ------------------------------------------------------------------*/
-%form-default {
-  display: block;
-  float:left;
-}
 
 .form-btn {
   display:block;
@@ -20,13 +16,6 @@ textarea {
   height: 10rem;
 }
 
-form label {
-  @extend %form-default;
-  text-align: right;
-  border-top: 2px solid jr-grey(3);
-  padding: 2px;
-}
-
 fieldset {
   border:none;
 }
@@ -39,7 +28,6 @@ label.required::before {
 
 
 .text-input {
-  @extend %form-default;
   padding:6px;
   font-size: 1.2rem;
   background-color: white;
@@ -47,7 +35,7 @@ label.required::before {
   color: $jr-text-dark;
   font-weight: bold;
   border: solid 2px jr-grey(3);
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.5rem;
   box-shadow: $jr-shadow;
   transition: border 200ms ease;
   &:focus {
@@ -69,15 +57,16 @@ label.required::before {
 }
 
 .form-output {
-  @extend %form-default;
+  width:100%;
+  float:left;
   font-size: 0.9rem;
   font-weight: bold;
-  margin-top: -1.2rem;
   height:1rem;
-  margin-left: 0.5rem;
+  padding-left: 0.5rem;
   background: none;
+  margin-top: -1.2rem;
   @include jr-size(screen) {
-    margin-left: 9.5rem;
+    padding-left: 9.5rem;
   }
   &.response {
     margin-top: jr-spacer(0.5);
@@ -108,13 +97,22 @@ webkit-input-placeholder {
 
 }
 
-form {
+.form-contact {
   .text-input {
+    float:left;
+    margin-bottom: 1.2rem;
     width:100%;
     border-radius:6px;
+    display: block;
   }
+
   label {
+    display: block;
+    text-align: right;
+    border-top: 2px solid jr-grey(3);
+    padding: 2px;
     width:100%;
+    float: left;
   }
   @include jr-size(screen) {
     .text-input {
@@ -145,7 +143,7 @@ form {
   .text-input {
     border-radius: 6px;
     width: calc(100% - 7rem);
-
+    margin-bottom: 0.5rem;
   }
 
 }
@@ -154,7 +152,6 @@ form {
   position: absolute;
   width:calc(100% - 7rem);
   left: 0.5rem;
-  top: 5rem;
   z-index: 100;
 
   &:empty {
@@ -182,7 +179,7 @@ form {
 
 /* modal (pop up) forms ---------------------------------------------------------------*/
 
-.form-modal {
+.form-contact.modal {
   margin-top: 6rem;
   height:calc(100% - 6rem);
   form {
@@ -193,7 +190,6 @@ form {
   }
   fieldset {
     left:100%;
-    width:100%;
     height:100%;
     position: absolute;
     transition: left 300ms ease;
@@ -205,77 +201,8 @@ form {
   }
 }
 
-fieldset.subform-active {
+.form-contact.modal .subform-active {
   left:0;
 }
-
-.form-question, .progress-blip {
-  border-radius: 4px;
-  background-color: jr-grey(2);
-  text-align: center;
-  border: 2px solid jr-grey(3);
-  padding: 2px;
-}
-
-.form-question {
-  width:100%;
-  background-image: linear-gradient(jr-grey(3), jr-grey(2));
-  margin-top: 2px;
-}
-
-.form-progress {
-  position:absolute;
-  bottom:5px;
-  width:300px;
-  left: calc(50% - 150px);
-}
-
-.progress-blip {
-  float:left;
-  width: 10px;
-  height:10px;
-  margin: jr-spacer(0.5) 45px;
-  position: relative;
-  & + .progress-blip:before {
-    content:"";
-    position:absolute;
-    width: 100px;
-    right: 90%;
-    top: 1px;
-    height:4px;
-    z-index: -1;
-    background: jr-grey(3);
-  }
-}
-
-.progress-blip.active {
-  border-color: #1d8314;
-  background-color: #126c0a;
-  &:before {
-    background-color: #1d8314;
-  }
-}
-
-.form-answer {
-  height:0;
-  overflow: hidden;
-  transition: height 300ms ease;
-  padding: 4px jr-spacer(0.5);
-  button {
-    margin-top: 8px;
-  }
-}
-input[type=radio]:checked + .form-answer {
-  height: 10rem;
-}
-
-input[type=radio]:checked + .form-answer.tall {
-  height: 35rem;
-}
-
-input[type=radio] {
-  display:none;
-}
-
 
 

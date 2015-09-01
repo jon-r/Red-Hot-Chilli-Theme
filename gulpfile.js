@@ -17,15 +17,23 @@ gulp.task('sass-min', function() {
     .pipe(gulp.dest('./library/css'));
 });
 
-gulp.task('compressJS', function() {
+gulp.task('minjs', function() {
   return gulp.src('./library/js/scripts.js')
     .pipe(uglify({preserveComments: 'some'}))
     .pipe(rename('scripts.min.js'))
     .pipe(gulp.dest('./library/js'));
 });
 
-gulp.task('default', ['sass','sass-min','compressJS']);
+gulp.task('default', ['sass','sass-min','minjs']);
 
-gulp.task('sass:watch', function () {
+gulp.task('sasswatch', function () {
   gulp.watch('./library/scss/**/*.scss', ['sass','sass-min']);
+});
+gulp.task('jswatch', function () {
+  gulp.watch('./library/js/scripts.js', ['minjs']);
+});
+
+gulp.task('watcher', function () {
+  gulp.watch('./library/scss/**/*.scss', ['sass','sass-min']);
+  gulp.watch('./library/js/scripts.js', ['minjs']);
 });

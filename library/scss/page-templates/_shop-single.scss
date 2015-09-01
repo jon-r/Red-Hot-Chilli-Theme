@@ -47,20 +47,29 @@
 }
 
 .tabs-frame {
+  > .flex-2 {
+    @include jr-width(1,1);
+  }
   > .tile-outer {
     height: 3rem;
     overflow: hidden;
+    margin-bottom: 4px;
     padding-top: 4px;
     position: relative;
-    transition: height 300ms ease;
+    transition: 300ms ease;
   }
   > .active {
-    height: 90vh;
+    height: 500px;
+    max-height: 80vh;
     padding-top: jr-spacer(0.5);
   }
   @include jr-size(screen) {
     > .tile-outer, > .active {
       height: auto;
+      margin-bottom: jr-spacer();
+    }
+    > .flex-2 {
+      @include jr-width(1,2);
     }
   }
   .tile-inner, .item-thumbs {

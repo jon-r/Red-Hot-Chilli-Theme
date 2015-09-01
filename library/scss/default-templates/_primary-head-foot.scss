@@ -39,6 +39,9 @@
 }
 
 /* -----------  header fixed version --------------------------------------------------*/
+
+
+
 .is-fixed {
   top:0;
   position: fixed;
@@ -58,15 +61,23 @@
     display: none;
     right:0;
     background-color: jr-red(4);
-    padding: 2px jr-spacer() 0 jr-spacer();
+    padding: 4px jr-spacer();
     width:100%;
+    &::before {
+      content: "Search";
+      position: absolute;
+      right:100%;
+      line-height: 2;
+      font-size: 1.5rem;
+      font-family: $serif;
+    }
     h2 {
       display: none;
     }
   }
   @include jr-size(tablet) {
     &.left {
-      top: 4rem;
+      top: 3.5rem;
     }
     &.right {
       display: block;
@@ -81,6 +92,11 @@
       background: none;
     }
   }
+}
+
+.js-filler {
+  display: block;
+  width: jr-spacer();
 }
 
 /* -----------  footer  ---------------------------------------------------------------*/

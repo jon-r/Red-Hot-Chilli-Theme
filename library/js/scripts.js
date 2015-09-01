@@ -26,8 +26,12 @@ function updateViewportDimensions() {
 /*-- Header scroll --------------------------------------------------------------------*/
 
 var stickyRight = document.getElementById('js-sticky-right'),
-    stickyLeft = document.getElementById('js-sticky-left');
-    titlePos = findTop(stickyLeft);
+    stickyLeft = document.getElementById('js-sticky-left'),
+    $stRight = $(stickyRight),
+    $stLeft = $(stickyLeft),
+    $fixedHeader = [$stRight,$stLeft],
+    titlePos = findTop(stickyLeft),
+    divFiller = '<div class="js-filler"></div>';
 
 function throttle(fn, threshhold, scope) {
   threshhold || (threshhold = 250);
@@ -54,17 +58,33 @@ function throttle(fn, threshhold, scope) {
 
 window.onscroll = throttle(
   function () {
-    console.log(titlePos);
+    //console.log(titlePos);
     scrollPos = window.scrollY;
 
-    if (scrollPos > titlePos + 100) {
-      stickyRight.classList.add('is-fixed');
-      stickyLeft.classList.add('is-fixed');
+    if (scrollPos > titlePos + 40) {
+      setFixed($fixedHeader);
     } else {
-      stickyRight.classList.remove('is-fixed');
-      stickyLeft.classList.remove('is-fixed');
+      unsetFixed($fixedHeader);
     }
-  }, 30);
+  }, 100);
+
+function setFixed($objArray) {
+  $objArray.forEach (function($obj) {
+    if ($obj.data('fixed') == 0) {
+      $objH = $obj.height();
+      $objW = $obj.width();
+      $obj.addClass('is-fixed').data('fixed', 1).after(divFiller).next('.js-filler').height($objH).width($objW);
+    }
+  });
+}
+
+function unsetFixed($objArray) {
+  $objArray.forEach (function($obj) {
+    if ($obj.data('fixed') == 1) {
+      $obj.removeClass('is-fixed').data('fixed', 0).next('.js-filler').remove();
+    }
+  });
+}
 
 function findTop(obj) {
   var curtop = 0;
@@ -154,7 +174,7 @@ if ($carousel.length > 0) {
 }
 
 function ticker() {
-  console.log('tick');
+  //console.log('tick');
   if (!hoverLock && !timerLock) {
     tickerInt = (tickerInt == slideCount) ? 0 : tickerInt + 1;
     timerLock = true;
@@ -164,7 +184,7 @@ function ticker() {
 
 $tabs.click(function() {
   if (timerLock == true) {
-    console.log('spam');
+    //console.log('spam');
   }
   if (tickerInt != $(this).index() && !timerLock) {
     timerLock = true;
@@ -266,7 +286,7 @@ function searchTraverse(direction, i) {
     }
   }
   $target.focus();
-  console.log(i);
+  //console.log(i);
 }
 /* endregion */
 /* item gallery buttons -------------------------------------------------------------- */
@@ -288,6 +308,8 @@ $imgGalleryThumb.click(function() {
 function setMainImg(i) {
   $thumbImg = $imgGalleryThumb.eq(i).find('img');
   $getThumbSrc = $thumbImg.attr('src').replace('gallery-thumb', 'gallery').split('/').slice(-3).join('/');
+  //console.log($thumbImg.attr('src'));
+  //console.log($getThumbSrc);
   $fullThumbSrc = '../' + $getThumbSrc;
   $imgGalleryMain.addClass('loading');
   if ($thumbImg.data('tile') == 1) {
@@ -313,7 +335,7 @@ $imgGalleryPrev.click(function() {
     $imgGalleryNum = $imgGalleryThumb.length;
   }
   $imgGalleryNum--
-  console.log($imgGalleryNum);
+  //console.log($imgGalleryNum);
   setMainImg($imgGalleryNum);
 })
 
@@ -322,7 +344,7 @@ $imgGalleryNext.click(function() {
     $imgGalleryNum = -1;
   }
   $imgGalleryNum++
-  console.log($imgGalleryNum);
+  //console.log($imgGalleryNum);
   setMainImg($imgGalleryNum);
 })
 
@@ -382,24 +404,24 @@ $queryModalClose.click(function() {
 
 /* faq response -----------------------------------------------------------------------*/
 
-var $queryModalInput = $("#js-question-in").find('option'),
-    //$queryOptions = $queryModalInput;
-    $queryModaloutput = $("#js-question-out");
-
-$queryModalInput.click(function () {
-  var question = $(this).val();
-  $queryModaloutput.addClass('loading');
-  $.get(fileSrc.admin, {
-    keyword: question,
-    action: "jr_getAnswers"
-  }).done(questionToText);
-});
-
-function questionToText(data) {
-  var results = $.parseJSON(data);
-
-  $queryModaloutput.removeClass('loading').html(results.answer).next('button').html(results.next);
-};
+//var $queryModalInput = $("#js-question-in").find('option'),
+//    //$queryOptions = $queryModalInput;
+//    $queryModaloutput = $("#js-question-out");
+//
+//$queryModalInput.click(function () {
+//  var question = $(this).val();
+//  $queryModaloutput.addClass('loading');
+//  $.get(fileSrc.admin, {
+//    keyword: question,
+//    action: "jr_getAnswers"
+//  }).done(questionToText);
+//});
+//
+//function questionToText(data) {
+//  var results = $.parseJSON(data);
+//
+//  $queryModaloutput.removeClass('loading').html(results.answer).next('button').html(results.next);
+//};
 
 /* forms ------------------------------------------------------------------------------*/
 
