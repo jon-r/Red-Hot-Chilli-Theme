@@ -225,9 +225,9 @@ em.greater { color: #9f1414; font-weight: 700; font-style: normal; }
 /*-------------------------sprite layouts + settings ----------------------------------*/
 .text-icon, .text-icon-left, .loading, .primary-nav:only-child, .list-item, .btn-icon, .btn-icon-lrg, .btn-icon-small { position: relative; }
 
-.text-icon::before, .text-icon-left::before, .loading::before, .primary-nav:only-child::before, .list-item::before { pointer-events: none; content: ''; position: absolute; background-image: url(/rhc_online/images/icons/RHC-Icons.min.svg); height: 128px; width: 128px; }
+.text-icon::before, .text-icon-left::before, .loading::before, .primary-nav:only-child::before, .list-item::before { pointer-events: none; content: ''; position: absolute; background-image: url(/rhc/images/icons/RHC-Icons.min.svg); height: 128px; width: 128px; }
 
-.btn-icon::after, .btn-icon-lrg::after, .btn-icon-small::after { pointer-events: none; content: ''; position: absolute; background-image: url(/rhc_online/images/icons/RHC-Icons.min.svg); height: 128px; width: 128px; }
+.btn-icon::after, .btn-icon-lrg::after, .btn-icon-small::after { pointer-events: none; content: ''; position: absolute; background-image: url(/rhc/images/icons/RHC-Icons.min.svg); height: 128px; width: 128px; }
 
 .text-icon { padding-right: 32px; }
 .text-icon::before { right: 0; -webkit-transform-origin: top right; -ms-transform-origin: top right; transform-origin: top right; }
@@ -490,9 +490,9 @@ Default style for all pages
 /*---header ---------------------------------------------------------------------------*/
 .primary-header, .primary-footer { position: relative; width: 100%; border: 0 solid #9f1414; color: #e5e5e6; box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); }
 
-.primary-header { border-bottom-width: 6px; background: url(/rhc_online/images/rhc/Head-Banner.jpg) top/cover; }
+.primary-header { border-bottom-width: 6px; background: url(/rhc/images/rhc/Head-Banner.jpg) top/cover; }
 .primary-header .container { padding-top: 12px; }
-@media only screen and (min-width: 1240px) { .primary-header { background: url(/rhc_online/images/rhc/Head-Banner.jpg) center no-repeat, -webkit-linear-gradient(left, #20252d 25%, #5a6372 75%); background: url(/rhc_online/images/rhc/Head-Banner.jpg) center no-repeat, linear-gradient(to right, #20252d 25%, #5a6372 75%); }
+@media only screen and (min-width: 1240px) { .primary-header { background: url(/rhc/images/rhc/Head-Banner.jpg) center no-repeat, -webkit-linear-gradient(left, #20252d 25%, #5a6372 75%); background: url(/rhc/images/rhc/Head-Banner.jpg) center no-repeat, linear-gradient(to right, #20252d 25%, #5a6372 75%); }
   .primary-header .home { height: 250px; padding-top: 24px; } }
 
 .not-home .header-logo, .not-home .header-links { margin-bottom: 0; }
@@ -580,7 +580,7 @@ main { background: #f2f2f2; color: #15181e; box-shadow: 0 5px 10px #15181e; -web
 @media only screen and (min-width: 482px) and (max-width: 1030px) { .main-menu li { display: inline-block; width: calc(50% - 24px); display: inline-block; }
   .main-menu li:nth-of-type(even) { border-left: 1px solid #e5e5e6; } }
 
-.sub-menu { position: absolute; height: auto; background-color: white; min-height: calc(100% + 3rem); top: -2.5rem; left: 100%; -webkit-transition: left 400ms ease; transition: left 400ms ease; background-image: url(/rhc_online/images/icons/menu-base.jpg); background-size: 500px 375px; background-position: bottom right; background-repeat: no-repeat; padding: 1rem 0; }
+.sub-menu { position: absolute; height: auto; background-color: white; min-height: calc(100% + 3rem); top: -2.5rem; left: 100%; -webkit-transition: left 400ms ease; transition: left 400ms ease; background-image: url(/rhc/images/icons/menu-base.jpg); background-size: 500px 375px; background-position: bottom right; background-repeat: no-repeat; padding: 1rem 0; }
 @media only screen and (min-width: 1031px) { .sub-menu { border: 1px solid #e5e5e6; display: none; box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); width: 200%; z-index: 20; left: 98%; }
   .sub-menu li { width: 50%; } }
 
