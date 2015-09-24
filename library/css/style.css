@@ -204,9 +204,9 @@ p:empty { display: none; }
 Add some global styling.
 *********************/
 /*-- typegraphy ----------------------------------------------------------------------*/
-h1, h2, h3, h4, p { margin: 0; padding: 0; color: inherit; }
+h1, h2, h3, p { margin: 0; padding: 0; color: inherit; }
 
-h1, h2, h3, h4 { font-family: "Kreon", Cambria, Times New Roman, Times, serif; display: block; }
+h1, h2, h3 { font-family: "Kreon", Cambria, Times New Roman, Times, serif; display: block; }
 
 p { font-family: "PT+Sans", Helvetica, Arial, sans-serif; display: inline-block; }
 
@@ -216,8 +216,6 @@ h2 { font-size: 1.75em; padding-bottom: 0.1em; font-weight: normal; }
 
 h3 { font-size: 1.25em; font-weight: normal; }
 
-h4 { font-size: 1.1em; text-align: center; font-weight: normal; }
-
 em.greater { color: #9f1414; font-weight: 700; font-style: normal; }
 
 .text-right { float: right; }
@@ -225,9 +223,9 @@ em.greater { color: #9f1414; font-weight: 700; font-style: normal; }
 /*-------------------------sprite layouts + settings ----------------------------------*/
 .text-icon, .text-icon-left, .loading, .primary-nav:only-child, .list-item, .btn-icon, .btn-icon-lrg, .btn-icon-small { position: relative; }
 
-.text-icon::before, .text-icon-left::before, .loading::before, .primary-nav:only-child::before, .list-item::before { pointer-events: none; content: ''; position: absolute; background-image: url(/rhc/images/icons/RHC-Icons.min.svg); height: 128px; width: 128px; }
+.text-icon::before, .text-icon-left::before, .loading::before, .primary-nav:only-child::before, .list-item::before { pointer-events: none; content: ''; position: absolute; background-image: url(/rhc_online/images/icons/RHC-Icons.min.svg); height: 128px; width: 128px; }
 
-.btn-icon::after, .btn-icon-lrg::after, .btn-icon-small::after { pointer-events: none; content: ''; position: absolute; background-image: url(/rhc/images/icons/RHC-Icons.min.svg); height: 128px; width: 128px; }
+.btn-icon::after, .btn-icon-lrg::after, .btn-icon-small::after { pointer-events: none; content: ''; position: absolute; background-image: url(/rhc_online/images/icons/RHC-Icons.min.svg); height: 128px; width: 128px; }
 
 .text-icon { padding-right: 32px; }
 .text-icon::before { right: 0; -webkit-transform-origin: top right; -ms-transform-origin: top right; transform-origin: top right; }
@@ -397,21 +395,20 @@ em.greater { color: #9f1414; font-weight: 700; font-style: normal; }
 .tile-outer:hover .tile-float { opacity: 1; }
 
 /* --- modal popouts - enabled through js ---------------------------------------------*/
-.modal-frame { position: fixed; opacity: 0; width: 5%; height: 5%; top: 45vh; z-index: 100; -webkit-transition: 300ms ease; transition: 300ms ease; }
+.modal-frame { position: fixed; opacity: 0; width: 5%; height: 5%; top: 45vh; z-index: 30; -webkit-transition: 300ms ease; transition: 300ms ease; }
 .modal-frame:not(.is-active):not(.is-active-small) { pointer-events: none; }
-.modal-frame > img { -o-object-fit: contain; object-fit: contain; -o-object-position: center; object-position: center; }
-@supports ((-o-object-fit: contain) or (object-fit: contain)) { .modal-frame > img { height: 100%; } }
+.modal-frame > img { -o-object-fit: contain; object-fit: contain; -o-object-position: center; object-position: center; height: 100%; }
 
 .modal-frame.right { left: 95%; }
 
 .modal-frame.is-active, .modal-frame.is-active-small { left: 5%; opacity: 1; width: 90%; height: 90%; top: 5%; }
-.modal-frame.is-active::before, .modal-frame.is-active-small::before { content: ""; position: fixed; left: 0; right: 0; top: 0; bottom: 0; background: rgba(21, 24, 30, 0.75); z-index: -5; }
+.modal-frame.is-active::before, .modal-frame.is-active-small::before { content: ""; position: fixed; left: 0; right: 0; top: 0; bottom: 0; background: rgba(21, 24, 30, 0.75); z-index: -1; }
 
 @media only screen and (min-width: 1031px) { .modal-frame.is-active-small { left: calc(50% - 350px); width: 700px; }
   .modal-frame.is-active-small .modal-close { right: calc(50% - 330px); } }
 .modal-spec { position: relative; width: calc(100% - 100px); height: 10rem; }
 
-.modal-close { position: fixed; height: 64px; width: 64px; right: calc(24px + 5%); z-index: 2; cursor: pointer; background: rgba(43, 49, 59, 0.5); }
+.modal-close { position: fixed; height: 64px; width: 64px; right: calc(24px + 5%); z-index: 10; cursor: pointer; background: rgba(43, 49, 59, 0.5); }
 @media only screen and (min-width: 1031px) { .modal-close { width: 96px; height: 96px; } }
 
 /* --- form defaults ------------------------------------------------------------------*/
@@ -455,7 +452,7 @@ webkit-input-placeholder { color: #9197a1; }
 .form-search { position: relative; }
 .form-search .text-input { border-radius: 6px; width: calc(100% - 7rem); margin-bottom: 0.5rem; }
 
-.search-out { position: absolute; width: calc(100% - 7rem); left: 0.5rem; z-index: 100; }
+.search-out { position: absolute; width: calc(100% - 7rem); left: 0.5rem; z-index: 20; }
 .search-out:empty { display: none; }
 .search-out li { border-bottom: 1px solid #424a57; font-size: 1.5rem; font-weight: bold; }
 .search-out span { font-size: 0.75rem; color: #66707f; }
@@ -490,9 +487,9 @@ Default style for all pages
 /*---header ---------------------------------------------------------------------------*/
 .primary-header, .primary-footer { position: relative; width: 100%; border: 0 solid #9f1414; color: #e5e5e6; box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); }
 
-.primary-header { border-bottom-width: 6px; background: url(/rhc/images/rhc/Head-Banner.jpg) top/cover; }
+.primary-header { border-bottom-width: 6px; background: url(/rhc_online/images/rhc/Head-Banner.jpg) top/cover; }
 .primary-header .container { padding-top: 12px; }
-@media only screen and (min-width: 1240px) { .primary-header { background: url(/rhc/images/rhc/Head-Banner.jpg) center no-repeat, -webkit-linear-gradient(left, #20252d 25%, #5a6372 75%); background: url(/rhc/images/rhc/Head-Banner.jpg) center no-repeat, linear-gradient(to right, #20252d 25%, #5a6372 75%); }
+@media only screen and (min-width: 1240px) { .primary-header { background: url(/rhc_online/images/rhc/Head-Banner.jpg) center no-repeat, -webkit-linear-gradient(left, #20252d 25%, #5a6372 75%); background: url(/rhc_online/images/rhc/Head-Banner.jpg) center no-repeat, linear-gradient(to right, #20252d 25%, #5a6372 75%); }
   .primary-header .home { height: 250px; padding-top: 24px; } }
 
 .not-home .header-logo, .not-home .header-links { margin-bottom: 0; }
@@ -500,7 +497,7 @@ Default style for all pages
 @media only screen and (max-width: 481px) { .not-home h2 { display: none; } }
 
 /* -----------  header fixed version --------------------------------------------------*/
-.is-fixed { top: 0; position: fixed; z-index: 10; font-size: 0.9; }
+.is-fixed { top: 0; position: fixed; z-index: 20; font-size: 0.9; }
 .is-fixed.left { background-color: #9f1414; background-image: -webkit-linear-gradient(#af1d1d, #640202); background-image: linear-gradient(#af1d1d, #640202); box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); padding: 5px 5px 0 0; left: 0; width: 100%; border-bottom: 2px solid #790606; top: 0; }
 .is-fixed.right { display: none; right: 0; background-color: #af1d1d; padding: 4px 24px; width: 100%; }
 .is-fixed.right::before { content: "Search"; position: absolute; right: 100%; line-height: 2; font-size: 1.5rem; font-family: "Kreon", Cambria, Times New Roman, Times, serif; }
@@ -541,7 +538,7 @@ main { background: #f2f2f2; color: #15181e; box-shadow: 0 5px 10px #15181e; -web
 .primary-nav:only-child { padding-bottom: 50vh; }
 .primary-nav:only-child::before { top: 5rem; }
 
-.nav-top { -webkit-box-pack: center; -webkit-justify-content: center; -ms-flex-pack: center; justify-content: center; position: relative; box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); z-index: 4; background-color: #9f1414; background-image: -webkit-linear-gradient(#af1d1d, #640202); background-image: linear-gradient(#af1d1d, #640202); }
+.nav-top { -webkit-box-pack: center; -webkit-justify-content: center; -ms-flex-pack: center; justify-content: center; position: relative; box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); z-index: 20; background-color: #9f1414; background-image: -webkit-linear-gradient(#af1d1d, #640202); background-image: linear-gradient(#af1d1d, #640202); }
 @media only screen and (min-width: 482px) { .nav-top { -webkit-box-pack: justify; -webkit-justify-content: space-between; -ms-flex-pack: justify; justify-content: space-between; } }
 @media only screen and (min-width: 1031px) { .nav-top { width: calc(100% + 1rem); margin: -4px -0.5rem 0 -0.5rem; } }
 
@@ -557,7 +554,7 @@ main { background: #f2f2f2; color: #15181e; box-shadow: 0 5px 10px #15181e; -web
 .top-btn.left { border-right: 2px solid #790606; display: inline-block; cursor: pointer; width: 100%; }
 @media only screen and (min-width: 482px) { .top-btn.left { width: 250px; } }
 
-.nav-left-menu { z-index: 5; box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); background-color: white; text-align: center; font-size: 1.3rem; position: absolute; left: 0; height: auto; display: none; top: 3rem; width: 100%; }
+.nav-left-menu { box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); background-color: white; text-align: center; font-size: 1.3rem; position: absolute; left: 0; height: auto; display: none; top: 3rem; width: 100%; }
 @media only screen and (min-width: 1031px) { .nav-left-menu { width: 250px; text-align: left; } }
 
 .toggle-check { display: none; }
@@ -580,19 +577,18 @@ main { background: #f2f2f2; color: #15181e; box-shadow: 0 5px 10px #15181e; -web
 @media only screen and (min-width: 482px) and (max-width: 1030px) { .main-menu li { display: inline-block; width: calc(50% - 24px); display: inline-block; }
   .main-menu li:nth-of-type(even) { border-left: 1px solid #e5e5e6; } }
 
-.sub-menu { position: absolute; height: auto; background-color: white; min-height: calc(100% + 3rem); top: -2.5rem; left: 100%; -webkit-transition: left 400ms ease; transition: left 400ms ease; background-image: url(/rhc/images/icons/menu-base.jpg); background-size: 500px 375px; background-position: bottom right; background-repeat: no-repeat; padding: 1rem 0; }
-@media only screen and (min-width: 1031px) { .sub-menu { border: 1px solid #e5e5e6; display: none; box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); width: 200%; z-index: 20; left: 98%; }
+.sub-menu { position: absolute; height: auto; background-color: white; min-height: calc(100% + 3rem); top: -2.5rem; left: 100%; -webkit-transition: left 400ms ease; transition: left 400ms ease; background-image: url(/rhc_online/images/icons/menu-base.jpg); background-size: 500px 375px; background-position: bottom right; background-repeat: no-repeat; padding-bottom: 1rem; }
+@media only screen and (min-width: 1031px) { .sub-menu { border: 1px solid #e5e5e6; display: none; box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); width: 200%; left: 98%; }
   .sub-menu li { width: 50%; } }
 
 .active-li .sub-menu { left: 0; }
 @media only screen and (min-width: 1031px) { .active-li .sub-menu { display: block; left: 98%; } }
 
-.nav-bottom { position: relative; border-bottom: 1px solid #e5e5e6; background-color: white; width: 100%; }
-
 .nav-breadcrumbs a, .nav-paginate a { display: inline-block; line-height: 2.5; padding: 0 24px; }
 .nav-breadcrumbs a:active, .nav-breadcrumbs a:hover, .nav-paginate a:active, .nav-paginate a:hover { background-color: #e5e5e6; }
 .nav-breadcrumbs a + a, .nav-paginate a + a { border-left: 1px solid #e5e5e6; }
 
+.nav-breadcrumbs { position: relative; border-bottom: 1px solid #e5e5e6; background-color: white; width: 100%; }
 .nav-breadcrumbs a { padding-right: 32px; }
 
 .nav-paginate { margin: 24px; }
@@ -602,7 +598,7 @@ main { background: #f2f2f2; color: #15181e; box-shadow: 0 5px 10px #15181e; -web
 Page specific items.
 *********************/
 /*-- Carousel -------------------------------------------------------------------------*/
-.carousel { overflow: hidden; white-space: nowrap; z-index: 0; }
+.carousel { overflow: hidden; white-space: nowrap; }
 .carousel::before { content: ""; display: block; padding-top: calc(20% - 19.2px); }
 
 .carousel-container { position: absolute; font-size: 1rem; left: 0; width: 100%; bottom: 0; top: 0; }
@@ -610,12 +606,12 @@ Page specific items.
 
 .slide { position: absolute; width: 100%; top: 0; bottom: 0; left: 100%; -webkit-transition: left 600ms ease; transition: left 600ms ease; }
 
-.is-active { z-index: 2; left: 0; }
-.is-active [class^='slider-'] { -webkit-transform: translateX(0); -ms-transform: translateX(0); transform: translateX(0); -webkit-transition-duration: 800ms; transition-duration: 800ms; -webkit-transition-timing-function: cubic-bezier(0, 0.5, 0.5, 1); transition-timing-function: cubic-bezier(0, 0.5, 0.5, 1); }
+.slide.is-active { z-index: 10; left: 0; }
+.slide.is-active [class^='slider-'] { -webkit-transform: translateX(0); -ms-transform: translateX(0); transform: translateX(0); -webkit-transition-duration: 800ms; transition-duration: 800ms; -webkit-transition-timing-function: cubic-bezier(0, 0.5, 0.5, 1); transition-timing-function: cubic-bezier(0, 0.5, 0.5, 1); }
 
 .go-away { left: -100%; }
 
-.carousel-blips { z-index: 6; position: absolute; bottom: 0; opacity: 0.5; }
+.carousel-blips { z-index: 10; position: absolute; bottom: 0; opacity: 0.5; }
 .carousel-blips:hover { opacity: 1; }
 
 .blip { float: left; height: 10px; width: 10px; border-radius: 5px; background: #e5e5e6; margin: 2px; cursor: pointer; }
@@ -651,8 +647,8 @@ Page specific items.
 
 .list-category { background-color: #E5DBDA; }
 
-.list-item { padding-bottom: 48px; font-size: 1.25rem; }
-.list-item::before { z-index: 2; right: -9px; top: 5rem; }
+.list-item { padding-bottom: 48px; }
+.list-item::before { z-index: 10; right: -9px; top: 5rem; }
 
 .list-item.sold img { opacity: 0.5; }
 
@@ -715,9 +711,9 @@ Page specific items.
 .text-columns-6 img { width: 100%; max-width: calc(150px - 24px); }
 
 /*-- feedback -------------------------------------------------------------------------*/
-.testimonials p, .testimonials h4 { width: 100%; margin-bottom: 24px; }
+.testimonials p, .testimonials h3 { width: 100%; margin-bottom: 24px; }
 .testimonials p { text-align: center; font-size: 1.25rem; }
-.testimonials h4 { text-align: right; }
+.testimonials h3 { text-align: right; font-style: italic; }
 
 /*-- map ------------------------------------------------------------------------------*/
 .map-container { margin-bottom: 24px; display: inline-block; width: calc(100% - 24px); }
@@ -726,5 +722,3 @@ Page specific items.
 
 .contact-map { width: 100%; height: 300px; border: none; }
 @media only screen and (min-width: 1031px) { .contact-map { height: 500px; } }
-
-

@@ -17,18 +17,17 @@
   justify-content: center;
   position: relative;
   box-shadow: $jr-shadow;
-  z-index: 4;
+  z-index: $z-menu;
   @include jr-red-grad;
   @include jr-size(tablet) {
     justify-content: space-between;
   }
   @include jr-size(screen) {
+
     width:calc(100% + 1rem);
     margin: -4px -0.5rem 0 -0.5rem;
   }
 }
-
-
 
 .nav-right-menu {
   display:inline-block;//non-flexbox fix
@@ -68,7 +67,6 @@
 }
 
 .nav-left-menu {
-  z-index: 5;
   box-shadow: $jr-shadow;
   background-color: white;
   text-align: center;
@@ -161,13 +159,12 @@
   background-size: 500px 375px;
   background-position: bottom right;
   background-repeat: no-repeat;
-  padding: 1rem 0;
+  padding-bottom:1rem;
   @include jr-size(screen) {
     border: $jr-border;
     display: none;
     box-shadow: $jr-shadow;
     width: 200%;
-    z-index: 20;
     left: 98%;
     li {
       width: 50%;
@@ -185,13 +182,6 @@
   }
 }
 
-.nav-bottom {
-  position: relative;
-  border-bottom: $jr-border;
-  background-color: white;
-  width:100%;
-}
-
 .nav-breadcrumbs,
 .nav-paginate {
   a {
@@ -207,6 +197,10 @@
   }
 }
 .nav-breadcrumbs {
+  position: relative;
+  border-bottom: $jr-border;
+  background-color: white;
+  width:100%;
   a {
     padding-right: 32px;
   }

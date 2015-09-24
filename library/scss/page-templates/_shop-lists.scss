@@ -10,10 +10,9 @@
 
 .list-item {
   padding-bottom: jr-spacer(2);
-  font-size: 1.25rem;
   @extend %has-icon-before;
   &::before {
-    z-index: 2;
+    z-index: $z-active;
     right:-9px;
     top: 5rem;
   }

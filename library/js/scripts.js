@@ -379,7 +379,7 @@ $imgGalleryOpen.click(function() {
 
     $imgGalleryModal.find('img').attr('src',$bigImgSrc);
   } else {
-    $bigImgNew = '<img class="framed" src="' + $bigImgSrc + '" >';
+    $bigImgNew = '<img src="' + $bigImgSrc + '" >';
     $imgGalleryModal.append($bigImgNew);
   }
   modalOpen($imgGalleryModal);

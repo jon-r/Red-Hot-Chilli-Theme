@@ -1,6 +1,6 @@
 /*-- feedback -------------------------------------------------------------------------*/
 .testimonials {
-  p, h4 {
+  p, h3 {
     width: 100%;
     margin-bottom: jr-spacer();
   }
@@ -8,8 +8,9 @@
     text-align: center;
     font-size: 1.25rem;
   }
-  h4 {
+  h3 {
     text-align: right;
+    font-style: italic;
   }
 }
 

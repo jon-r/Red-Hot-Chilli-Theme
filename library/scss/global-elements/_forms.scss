@@ -152,7 +152,7 @@ webkit-input-placeholder {
   position: absolute;
   width:calc(100% - 7rem);
   left: 0.5rem;
-  z-index: 100;
+  z-index: $z-menu;
 
   &:empty {
     display: none;
