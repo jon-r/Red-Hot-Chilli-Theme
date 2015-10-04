@@ -3,10 +3,14 @@
 .carousel {
   overflow: hidden;
   white-space: nowrap;
+  z-index: $z-bg;
   &::before {
     content: "";
     display: block;
     padding-top: calc(20% - #{jr-spacer(0.8)});
+  }
+  @include jr-size(phoneOnly) {
+    display: none;
   }
 }
 
@@ -18,7 +22,7 @@
   width:100%;
   bottom:0;
   top: 0;
-  @include jr-size(tablet) {
+  @include jr-size(screen) {
     font-size: 1.4rem;
   }
 }
@@ -39,12 +43,14 @@
 
   [class^='slider-'] {
     transform: translateX(0);
+    //these are split to account for delays of individual parts
     transition-duration: 800ms;
     transition-timing-function: cubic-bezier(0, .50, .50, 1);
+    //transition-property: left, translateX;
   }
 }
 
-.go-away {
+.slide.go-away {
   left:-100%;
 }
 
@@ -77,7 +83,7 @@
 /*-- customisable carousel parts -----------------------------------------------------*/
 
 %slide-all {
-  width:100%;
+  width:calc(100% - 3rem);
   position: absolute;
   transform: translateX(100%);
 }
@@ -89,14 +95,14 @@
 
 .slider-title {
   @extend %slide-all;
-  transition-delay: 300ms ;
-  top: 5%;
+  transition-delay: 300ms;
+  top: 1rem;
 }
 
 .slider-text {
   @extend %slide-all;
   transition-delay: 400ms ;
-  top: 25%;
+  top: 4rem;
   span {
     display: block;
   }
@@ -104,23 +110,23 @@
 
 .slider-link {
   @extend %slide-all;
-  bottom: 7%;
+  bottom: 1rem;
   text-decoration: underline;
-  transition-delay: 500ms ;
+  transition-delay: 500ms;
 }
 
 .go-left {
-  left:1rem;
+  left:3rem;
   text-align: left;
 }
 
 .go-mid {
-  left: 0;
+  left: 1.5rem;
   text-align: center;
 }
 
 .go-right {
-  right: 1rem;
+  right: 3rem;
   text-align: right;
 }
 
@@ -130,6 +136,15 @@
 
 .go-white {
   color:$jr-text-light;
+}
+
+.slide:hover {
+  .go-white {
+    color: jr-grey(6.5);
+  }
+  .go-red {
+    color: jr-red(2.5);
+  }
 }
 
 .go-bold {
