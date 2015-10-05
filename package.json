@@ -1,6 +1,6 @@
 {
   "name": "rhc-theme",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "theme for Red Hot Chilli Northwest",
   "main": "gulpfile.js",
   "dependencies": {
