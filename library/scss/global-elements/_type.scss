@@ -57,7 +57,13 @@ h3 {
 p {
   @extend %text-reset;
   @extend %p-font;
+
+  & + p {
+    margin-top: jr-spacer(0.5);
+  }
 }
+
+
 
 em.greater {
   color:$jr-emphasis;

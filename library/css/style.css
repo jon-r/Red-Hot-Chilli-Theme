@@ -216,6 +216,8 @@ h2 { font-size: 1.75em; padding-bottom: 0.1em; font-weight: normal; }
 
 h3 { font-size: 1.25em; font-weight: normal; }
 
+p + p { margin-top: 12px; }
+
 em.greater { color: #9f1414; font-weight: 700; font-style: normal; }
 
 .text-right { float: right; }
@@ -450,7 +452,7 @@ webkit-input-placeholder { color: #9197a1; }
 .form-search { position: relative; }
 .form-search .text-input { border-radius: 6px; width: calc(100% - 7rem); margin-bottom: 0.5rem; }
 
-.search-out { position: absolute; width: calc(100% - 7rem); left: 0.5rem; z-index: 20; }
+.search-out { position: absolute; width: calc(100% - 7rem); left: 0.5rem; z-index: 30; }
 .search-out:empty { display: none; }
 .search-out li { border-bottom: 1px solid #424a57; font-size: 1.5rem; font-weight: bold; }
 .search-out span { font-size: 0.75rem; color: #66707f; }
