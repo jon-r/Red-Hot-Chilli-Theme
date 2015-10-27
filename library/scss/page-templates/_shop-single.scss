@@ -53,10 +53,12 @@
   > .flex-2 {
     @include jr-width(1,1);
   }
+  > .btn-frame, > .tile-outer {
+    margin-bottom: 4px;
+  }
   > .tile-outer {
     height: 3rem;
     overflow: hidden;
-    margin-bottom: 4px;
     padding-top: 4px;
     position: relative;
     transition: 300ms ease;

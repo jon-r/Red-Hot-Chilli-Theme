@@ -2,7 +2,7 @@
 <div class="container flex-container centre <?php echo $headerType ?>">
 
   <a class="header-logo flex-2" href="<?php echo home_url(); ?>" rel="nofollow">
-    <img src="<?php echo site_url(jr_siteImg('rhc/RHC-Web.png')); ?>"
+    <img src="<?php echo jr_siteImg('rhc/RHC-Web.png'); ?>"
          class="framed" alt="Red Hot Chilli - Used Catering Equipment"/>
   </a>
 

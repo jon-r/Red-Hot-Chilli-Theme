@@ -234,7 +234,7 @@ function searchToText(data) {
   $searchOut.html('');
   $(results).each(function (i) {
     if (i < 4) {
-      var link = fileSrc.site + '/products/' + this.filter + '/' + this.url + '/';
+      var link = fileSrc.site + 'products/' + this.filter + '/' + this.url + '/';
       var extra = (this.filter == 'brand') ? '<span> - Brand</span>' : '<span> - Category</span>';
       var output = '<li><a href="' + link + '" >' + this.name + extra + '</a></li>';
       $searchOut.append(output);
@@ -307,16 +307,17 @@ $imgGalleryThumb.click(function() {
 
 function setMainImg(i) {
   $thumbImg = $imgGalleryThumb.eq(i).find('img');
-  $getThumbSrc = $thumbImg.attr('src').replace('gallery-thumb', 'gallery').split('/').slice(-3).join('/');
+  $getThumbSrc = $thumbImg.attr('src').replace('gallery-thumb', 'gallery');
+  $relSrc = $getThumbSrc;//.replace(fileSrc.site, '')
   //console.log($thumbImg.attr('src'));
   //console.log($getThumbSrc);
-  $fullThumbSrc = '../' + $getThumbSrc;
   $imgGalleryMain.addClass('loading');
   if ($thumbImg.data('tile') == 1) {
-    $imgGalleryMain.removeClass('loading').find('img').attr('src', fileSrc.site + '/' + $getThumbSrc);
+    $tileSrc = $getThumbSrc.replace('gallery', 'gallery-tile');
+    $imgGalleryMain.removeClass('loading').find('img').attr('src', $tileSrc);
   } else {
     $.get(fileSrc.admin, {
-      src: $fullThumbSrc,
+      src: $relSrc,
       size: 'tile',
       action: "jr_resize"
     }, replaceMainImg);
@@ -326,7 +327,7 @@ function setMainImg(i) {
 
 function replaceMainImg(data) {
   var results = $.parseJSON(data);
-  $newSrc = results.replace('../', fileSrc.site +'/');
+  $newSrc = results;
   $imgGalleryMain.removeClass('loading').find('img').attr('src',$newSrc);
 }
 

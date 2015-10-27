@@ -3,6 +3,7 @@ var sass = require('gulp-ruby-sass');
 var prefix = require('gulp-autoprefixer');
 var uglify = require('gulp-uglify');
 var rename = require("gulp-rename");
+var zip = require('gulp-zip');
 
 gulp.task('sass', function() {
   sass('./library/scss/style.scss', {sourcemap: true, style: 'compact'})
@@ -33,7 +34,13 @@ gulp.task('jswatch', function () {
   gulp.watch('./library/js/scripts.js', ['minjs']);
 });
 
-gulp.task('watcher', function () {
+gulp.task('watch', function () {
   gulp.watch('./library/scss/**/*.scss', ['sass','sass-min']);
   gulp.watch('./library/js/scripts.js', ['minjs']);
 });
+
+gulp.task('zip', function() {
+  return gulp.src(['../Red*/**', '!./node_modules/**'])
+      .pipe(zip('Red-Hot-Chilli-Theme-home.zip'))
+      .pipe(gulp.dest('../'));
+})

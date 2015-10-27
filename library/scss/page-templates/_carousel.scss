@@ -1,5 +1,4 @@
 /*-- Carousel -------------------------------------------------------------------------*/
-
 .carousel {
   overflow: hidden;
   white-space: nowrap;
@@ -9,6 +8,13 @@
     display: block;
     padding-top: calc(20% - #{jr-spacer(0.8)});
   }
+
+}
+.page-banner, .carousel {
+  font-size: 1rem;
+  @include jr-size(screen) {
+    font-size: 1.4rem;
+  }
   @include jr-size(phoneOnly) {
     display: none;
   }
@@ -17,14 +23,10 @@
 .carousel-container {
   position: absolute;
 
-  font-size: 1rem;
   left:0;
   width:100%;
   bottom:0;
   top: 0;
-  @include jr-size(screen) {
-    font-size: 1.4rem;
-  }
 }
 
 .slide {
@@ -34,7 +36,23 @@
   bottom: 0;
   left:100%;
   transition: left 600ms ease;
-
+}
+//using the carousel style to make matching banners on categories
+.page-banner {
+  padding:0;
+  h2, div {
+    position:absolute;
+    width:calc(100% - 3rem);
+  }
+  h2 {
+    top: 1rem;
+  }
+  div {
+    top: 4rem;
+  }
+  span {
+    display: block;
+  }
 }
 
 .slide.is-active {

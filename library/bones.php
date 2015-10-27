@@ -146,7 +146,7 @@ function bones_scripts_and_styles() {
 		//adding scripts file in the footer
 		wp_register_script( 'bones-js', get_stylesheet_directory_uri() . '/library/js/scripts.min.js', array( 'jquery' ), '', true );
         wp_localize_script( 'bones-js', 'fileSrc', ['admin' => admin_url( 'admin-ajax.php' ),
-                                                    'site' => site_url()]);
+                                                    'site' => site_url('/')]);
 
 		// enqueue styles and scripts
 		wp_enqueue_style( 'bones-stylesheet' );
