@@ -499,9 +499,9 @@ Default style for all pages
 @media only screen and (max-width: 481px) { .not-home h2 { display: none; } }
 
 /* -----------  header fixed version --------------------------------------------------*/
-.is-fixed { top: 0; position: fixed; z-index: 20; font-size: 0.9; }
-.is-fixed.left { background-color: #9f1414; background-image: -webkit-linear-gradient(#af1d1d, #640202); background-image: linear-gradient(#af1d1d, #640202); box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); padding: 5px 5px 0 0; left: 0; width: 100%; border-bottom: 2px solid #790606; top: 0; }
-.is-fixed.right { display: none; right: 0; background-color: #af1d1d; padding: 4px 24px; width: 100%; }
+.is-fixed { top: 0; position: fixed; font-size: 0.9; }
+.is-fixed.left { background-color: #9f1414; background-image: -webkit-linear-gradient(#af1d1d, #640202); background-image: linear-gradient(#af1d1d, #640202); box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); padding: 5px 5px 0 0; left: 0; width: 100%; border-bottom: 2px solid #790606; top: 0; z-index: 20; }
+.is-fixed.right { display: none; right: 0; background-color: #af1d1d; padding: 4px 24px; width: 100%; z-index: 30; }
 .is-fixed.right::before { content: "Search"; position: absolute; right: 100%; line-height: 2; font-size: 1.5rem; font-family: "Kreon", Cambria, Times New Roman, Times, serif; }
 .is-fixed.right h2 { display: none; }
 @media only screen and (min-width: 482px) { .is-fixed.left { top: 3.5rem; }
@@ -678,6 +678,9 @@ Page specific items.
 
 .item-specs li { padding: 4px; }
 .item-specs li:nth-of-type(even) { background-color: #e5e5e6; }
+
+.hot-chilli-filling { display: none; }
+@media only screen and (min-width: 1031px) { .hot-chilli-filling { display: block; } }
 
 .gallery-primary { display: inline-block; width: calc(100% - 24px); }
 

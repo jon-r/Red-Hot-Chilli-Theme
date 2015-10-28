@@ -45,7 +45,6 @@
 .is-fixed {
   top:0;
   position: fixed;
-  z-index: $z-menu;
   font-size: 0.9;
 
   &.left {
@@ -56,6 +55,7 @@
     width:100%;
     border-bottom: $jr-border-red;
     top: 0;
+    z-index: $z-menu;
   }
   &.right {
     display: none;
@@ -63,6 +63,7 @@
     background-color: jr-red(4);
     padding: 4px jr-spacer();
     width:100%;
+    z-index: $z-modal;
     &::before {
       content: "Search";
       position: absolute;
