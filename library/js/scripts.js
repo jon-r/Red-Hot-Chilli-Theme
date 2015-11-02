@@ -174,8 +174,8 @@ if ($carousel.length > 0) {
 }
 
 function ticker() {
-  //console.log('tick');
-  if (!hoverLock && !timerLock) {
+  vp = updateViewportDimensions(); //the carousel is inactive on little screens.
+  if (!hoverLock && !timerLock && vp.width >= 481) {
     tickerInt = (tickerInt == slideCount) ? 0 : tickerInt + 1;
     timerLock = true;
     slideActivate(tickerInt);
@@ -184,7 +184,6 @@ function ticker() {
 
 $tabs.click(function() {
   if (timerLock == true) {
-    //console.log('spam');
   }
   if (tickerInt != $(this).index() && !timerLock) {
     timerLock = true;
@@ -308,16 +307,15 @@ $imgGalleryThumb.click(function() {
 function setMainImg(i) {
   $thumbImg = $imgGalleryThumb.eq(i).find('img');
   $getThumbSrc = $thumbImg.attr('src').replace('gallery-thumb', 'gallery');
-  $relSrc = $getThumbSrc;//.replace(fileSrc.site, '')
-  //console.log($thumbImg.attr('src'));
-  //console.log($getThumbSrc);
+  //$relSrc = $getThumbSrc;
+
   $imgGalleryMain.addClass('loading');
   if ($thumbImg.data('tile') == 1) {
     $tileSrc = $getThumbSrc.replace('gallery', 'gallery-tile');
     $imgGalleryMain.removeClass('loading').find('img').attr('src', $tileSrc);
   } else {
     $.get(fileSrc.admin, {
-      src: $relSrc,
+      src: $getThumbSrc,
       size: 'tile',
       action: "jr_resize"
     }, replaceMainImg);
@@ -402,27 +400,6 @@ $buyModalClose.click(function() {
 $queryModalClose.click(function() {
   modalClose($queryModal);
 });
-
-/* faq response -----------------------------------------------------------------------*/
-
-//var $queryModalInput = $("#js-question-in").find('option'),
-//    //$queryOptions = $queryModalInput;
-//    $queryModaloutput = $("#js-question-out");
-//
-//$queryModalInput.click(function () {
-//  var question = $(this).val();
-//  $queryModaloutput.addClass('loading');
-//  $.get(fileSrc.admin, {
-//    keyword: question,
-//    action: "jr_getAnswers"
-//  }).done(questionToText);
-//});
-//
-//function questionToText(data) {
-//  var results = $.parseJSON(data);
-//
-//  $queryModaloutput.removeClass('loading').html(results.answer).next('button').html(results.next);
-//};
 
 /* forms ------------------------------------------------------------------------------*/
 
@@ -545,9 +522,4 @@ $itemTabToggle = $itemTabFrame.find('.tab-toggle');
 $itemTabToggle.click(function() {
   $(this).closest('section').toggleClass('active').siblings('section').removeClass('active');
 })
-
-
-
-
-
 

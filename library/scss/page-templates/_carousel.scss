@@ -11,7 +11,7 @@
 
 }
 .page-banner, .carousel {
-  font-size: 1rem;
+  font-size: 1.3rem;
   @include jr-size(screen) {
     font-size: 1.4rem;
   }
@@ -45,10 +45,10 @@
     width:calc(100% - 3rem);
   }
   h2 {
-    top: 1rem;
+    top: 2%;
   }
   div {
-    top: 4rem;
+    top: 10%;
   }
   span {
     display: block;
@@ -114,13 +114,13 @@
 .slider-title {
   @extend %slide-all;
   transition-delay: 300ms;
-  top: 1rem;
+  top: 0;
 }
 
 .slider-text {
   @extend %slide-all;
   transition-delay: 400ms ;
-  top: 4rem;
+  top: calc(50% - 3rem);
   span {
     display: block;
   }
@@ -128,7 +128,7 @@
 
 .slider-link {
   @extend %slide-all;
-  bottom: 1rem;
+  bottom: 5%;
   text-decoration: underline;
   transition-delay: 500ms;
 }

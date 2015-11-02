@@ -142,8 +142,11 @@ webkit-input-placeholder {
   position: relative;
   .text-input {
     border-radius: 6px;
-    width: calc(100% - 7rem);
+    width: calc(100% - 8rem);
     margin-bottom: 0.5rem;
+    @include jr-size(screen) {
+      width: calc(100% - 7rem);
+    }
   }
 
 }

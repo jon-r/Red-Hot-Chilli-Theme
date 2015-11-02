@@ -39,9 +39,6 @@
 }
 
 /* -----------  header fixed version --------------------------------------------------*/
-
-
-
 .is-fixed {
   top:0;
   position: fixed;
@@ -50,7 +47,7 @@
   &.left {
     @include jr-red-grad;
     box-shadow: $jr-shadow;
-    padding: 5px 5px 0 0;
+    padding-bottom: 5px;
     left:0;
     width:100%;
     border-bottom: $jr-border-red;
@@ -78,7 +75,7 @@
   }
   @include jr-size(tablet) {
     &.left {
-      top: 3.5rem;
+      top: 4rem;
     }
     &.right {
       display: block;
@@ -110,7 +107,6 @@
     margin-top: 0.5rem;
   }
   img {
-    max-width: 200px;
     display: inline
   }
   @include jr-size(phoneOnly) {

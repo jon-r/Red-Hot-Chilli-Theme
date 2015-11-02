@@ -57,12 +57,16 @@
 }
 
 .top-btn.left {
+  border-left: $jr-border-red;
   border-right: $jr-border-red;
-  display:inline-block;//non-flexbox fix
   cursor: pointer;
   width: 100%;
+  background-color: jr-red(2);
+  background-image: linear-gradient(jr-red(3), jr-red(1));
   @include jr-size(tablet) {
-    width: 250px;
+    width: 200px;
+    border-radius:0 0 8px 8px;
+    margin: 0 5px;
   }
 }
 
@@ -79,6 +83,7 @@
   width: 100%;
   @include jr-size(screen) {
     width: 250px;
+    left:5px;
     text-align: left;
   }
 }
@@ -206,7 +211,8 @@
   }
 }
 .nav-paginate {
-  margin: jr-spacer();
+  margin: jr-spacer(0.5);
+  padding: 0 jr-spacer(0.5);
   .active {
     background-color: $jr-bg-hover;
   }
