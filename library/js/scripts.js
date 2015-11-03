@@ -523,3 +523,20 @@ $itemTabToggle.click(function() {
   $(this).closest('section').toggleClass('active').siblings('section').removeClass('active');
 })
 
+/* copy paste specs -------------------------------------------------------------------*/
+//copys the specs list into a pastable string of text, rather than the list
+//mostly for internal use, perhaps others could use
+
+$itemSpecsBox = $('#js-specs-list');
+$itemSpecsBtn = $('#js-specs-copy');
+
+$itemSpecsBtn.click(function() {
+  replaceTxt()
+  $itemSpecsBtn.remove();
+})
+
+function replaceTxt() {
+  content = $itemSpecsBox.html().replace(/(<li>)|(\s\s+)|(<img.*alt=")|("><a.*<\/a>)/g,"");
+  fix = content.replace(/<\/li>/g,'<br>');
+  $itemSpecsBox.html(fix);
+}

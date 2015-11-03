@@ -680,6 +680,8 @@ Page specific items.
 .item-specs li { padding: 4px; }
 .item-specs li:nth-of-type(even) { background-color: #e5e5e6; }
 
+.specs-hover { position: absolute; top: 12px; right: 12px; color: #9ca3b0; cursor: pointer; }
+
 .hot-chilli-filling { display: none; }
 @media only screen and (min-width: 1031px) { .hot-chilli-filling { display: block; } }
 

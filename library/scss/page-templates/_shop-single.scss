@@ -19,6 +19,14 @@
   }
 }
 
+.specs-hover {
+  position: absolute;
+  top: jr-spacer(0.5);
+  right: jr-spacer(0.5);
+  color: lighten($jr-text-hover, 20%);
+  cursor: pointer;
+}
+
 //filler only shown on large screens, when a smaller number of thumbnails means a big gap.
 .hot-chilli-filling {
   display: none;
