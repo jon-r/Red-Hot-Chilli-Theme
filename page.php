@@ -13,16 +13,13 @@
 
   <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-  <article class="flex-container">
+  <article class="flex-container default-page">
     <header class="article-header flex-1">
       <h1><?php the_title(); ?></h1>
     </header>
 
-    <section class="flex-1 white-block default-page">
+    <?php the_content(); ?>
 
-      <?php the_content(); ?>
-
-    </section>
   </article>
 
   <?php endwhile; else : ?>
