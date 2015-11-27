@@ -98,7 +98,8 @@ function findTop(obj) {
 
 /*-- main menu toggle -----------------------------------------------------------------*/
 /*region */
-var $navMain_ul = $('#js-main-list'),
+var $menuToggle = $('#menu-toggle'),
+    $navMain_ul = $('#js-main-list'),
     $navMain_li = $navMain_ul.find('li'),
     bigScreen = false;
 //menu aim for large screen
@@ -138,7 +139,15 @@ $navMain_li.click( function() {
   $(this).toggleClass('active-li')
 });
 
-/*endregion*/
+$navMain_ul.mouseleave( function() {
+  window.setTimeout(closeMainMenu,300);
+})
+
+function closeMainMenu() {
+  //console.log($navMain_ul.prev());
+  $menuToggle.attr('checked', false);
+}
+
 
 /*-- carousel scroller ----------------------------------------------------------------*/
 
