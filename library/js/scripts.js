@@ -6,9 +6,18 @@
 
 
 angular.module('redHotChilli', [])
-  .controller('carouselCtrl', '$interval', function($interval) {
 
-  });
+  .controller('carouselCtrl', ['elementRotate', '$interval', function(elementRotate, $interval) {
+    var slideFrame = document.getElementById('js-carousel-main');
+    var slides = slideFrame.children;
+    return $interval(elementRotate, 1000);
+  }])
+
+  .factory('elementRotate', [function($interval) {
+    return function(e) {
+      //console.log(e);
+    }
+  }]);
 
 
 
