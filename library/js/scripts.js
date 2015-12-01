@@ -145,7 +145,7 @@ $navMain_ul.mouseleave( function() {
 
 function closeMainMenu() {
   //console.log($navMain_ul.prev());
-  $menuToggle.attr('checked', false);
+  $menuToggle .attr('checked', false);
 }
 
 
@@ -442,7 +442,8 @@ $form.submit(function (e) {
       keyword: $thisForm.serialize(),
       action: "jr_formsubmit",
       url: window.location.href
-    }).done(formAjaxReply);
+    }).done(formAjaxReply($thisForm));
+    //formAjaxReply('Form mailed successfully');
   } else {
     //console.log(formErrorList);
     $response.addClass('error').html('Please fill in required items')
@@ -517,10 +518,23 @@ function formValidate($el) {
   }
 }
 
-function formAjaxReply(data) {
-  var result = $.parseJSON(data);
-  $resultOutcome = (result == "Form mailed successfully") ? 'success' : 'error';
-  $form.find('.response').removeClass('loading').addClass($resultOutcome).html(result);
+function formAjaxReply(el) {
+
+  return function(data) {
+    var result = $.parseJSON(data);
+    //$resultOutcome = (result.success) ? 'success' : 'error';
+    console.log (el);
+
+    if (result.success) {
+      el.parents('.modal-frame').addClass('modal-finished');
+      output = document.createElement('span');
+      output.textContent = result.output;
+      output.className = 'form-output success';
+      el.empty().append(output);
+    } else {
+      el.find('.response').removeClass('loading').addClass('error').html(result.output);
+    }
+  }
 }
 
 /* --- item page tabs -----------------------------------------------------------------*/

@@ -50,6 +50,11 @@
   }
 }
 
+.modal-frame.modal-finished {
+  height: 15%;
+  top:40%;
+}
+
 .modal-spec {
   position: relative;
   width:calc(100% - 100px);
