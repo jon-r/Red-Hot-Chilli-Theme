@@ -212,7 +212,7 @@ function bones_theme_support() {
 	// registering wp3+ menus
 	register_nav_menus(
 		array(
-			'services-menu' => __( 'Services Menu links', 'bonestheme'),
+			//'services-menu' => __( 'Services Menu links', 'bonestheme'),
 			'header-bar' => __( 'Header Bar Links', 'bonestheme'),
 			'footer-other' => __( 'Footer Other Links', 'bonestheme' ),
 			'footer-shop' => __( 'Footer Shop Links', 'bonestheme' )
