@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html <?php language_attributes(); ?> >
+<html <?php language_attributes(); ?> ng-app="redHotChilli">
 
 <head>
   <meta charset="utf-8">

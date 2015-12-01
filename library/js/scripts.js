@@ -4,6 +4,14 @@
  * Get Viewport Dimensions | http://andylangton.co.uk/blog/development/get-viewport-size-width-and-height-javascript
 !*/
 
+
+angular.module('redHotChilli', [])
+  .controller('carouselCtrl', '$interval', function($interval) {
+
+  });
+
+
+
 /*----- jquery menu aim ---------------------------------------------------------------*/
 /*region
 https://github.com/kamens/jQuery-menu-aim.git
