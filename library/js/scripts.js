@@ -4,21 +4,46 @@
  * Get Viewport Dimensions | http://andylangton.co.uk/blog/development/get-viewport-size-width-and-height-javascript
 !*/
 
+var slideFrame = document.getElementById('js-carousel-main'),
+    slides = slideFrame.children,
+    slideNum = slides.length,
+    slideActivate = new Array(slideNum);
 
 angular.module('redHotChilli', [])
 
-  .controller('carouselCtrl', ['elementRotate', '$interval', function(elementRotate, $interval) {
-    var slideFrame = document.getElementById('js-carousel-main');
-    var slides = slideFrame.children;
-    return $interval(elementRotate, 1000);
-  }])
+.controller('carouselCtrl', ['slideService', '$interval', '$scope', function(slideService, $interval, $scope) {
 
-  .factory('elementRotate', [function($interval) {
-    return function(e) {
-      //console.log(e);
+  $scope.sl1 = 'is-active'; //showing the first at the start
+
+  return $interval(function() {
+    slideService.next($scope);
+    //slideService.apply($scope);
+  }, 2000);
+
+}])
+
+.service('slideService',  [function() {
+  n = 0;
+  var slideService = {
+    next: function(scope) {
+      s = scope;
+      n = (n < (slideNum - 1)) ? n+1 : 0;
+      slideService.apply();
+    },
+    set: function(input) {
+      //return function(input) {
+      n = input;
+      slideService.apply();
+    },
+    apply: function() {
+      for (i=0;i<slideNum;i++) {
+        s['sl' + i] = (s['sl' + i] == 'is-active') ? 'go-away' : '';
+      }
+      s['sl' + n] = 'is-active';
     }
-  }]);
-
+  }
+  return slideService;
+}])
 
 
 /*----- jquery menu aim ---------------------------------------------------------------*/
@@ -166,7 +191,7 @@ function closeMainMenu() {
 }
 
 
-/*-- carousel scroller ----------------------------------------------------------------*/
+/*-- carousel scroller ----------------------------------------------------------------
 
 //redone in jquery
 var $carousel = $('#js-carousel-main'),
@@ -227,7 +252,7 @@ function slideActivate(i) {
     timerLock = false;
   }, 600);
 }
-
+*/
 
 /* js + ajax auto complete ------------------------------------------------------------*/
 // takes categories + key brands.
