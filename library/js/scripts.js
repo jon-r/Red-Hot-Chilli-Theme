@@ -4,46 +4,38 @@
  * Get Viewport Dimensions | http://andylangton.co.uk/blog/development/get-viewport-size-width-and-height-javascript
 !*/
 
-var slideFrame = document.getElementById('js-carousel-main'),
-    slides = slideFrame.children,
-    slideNum = slides.length,
-    slideActivate = new Array(slideNum);
+
 
 angular.module('redHotChilli', [])
 
-.controller('carouselCtrl', ['slideService', '$interval', '$scope', function(slideService, $interval, $scope) {
+.controller('carouselCtrl', ['$interval', '$scope', function ($interval, $scope) {
+  var slideNum = document.getElementById('js-carousel-main').children.length,
+    carousel = $scope,
+    n = 0;
 
-  $scope.sl1 = 'is-active'; //showing the first at the start
+  carousel.sl0 = 'is-active';
 
-  return $interval(function() {
-    slideService.next($scope);
-    //slideService.apply($scope);
-  }, 2000);
+  carousel.go = function (index) {
+    n = index;
+    push();
+  };
 
-}])
-
-.service('slideService',  [function() {
-  n = 0;
-  var slideService = {
-    next: function(scope) {
-      s = scope;
-      n = (n < (slideNum - 1)) ? n+1 : 0;
-      slideService.apply();
-    },
-    set: function(input) {
-      //return function(input) {
-      n = input;
-      slideService.apply();
-    },
-    apply: function() {
-      for (i=0;i<slideNum;i++) {
-        s['sl' + i] = (s['sl' + i] == 'is-active') ? 'go-away' : '';
-      }
-      s['sl' + n] = 'is-active';
+  return $interval(function () {
+    if (!carousel.slidePause) {
+      n = (n < slideNum - 1) ? n + 1 : 0;
+      console.log(n);
+      push();
     }
+  }, 8000);
+
+  function push() {
+    for (i = 0; i < slideNum; i++) {
+      carousel['sl' + i] = (carousel['sl' + i] == 'is-active') ? 'go-away' : '';
+    }
+    carousel['sl' + n] = 'is-active';
   }
-  return slideService;
-}])
+
+}]);
 
 
 /*----- jquery menu aim ---------------------------------------------------------------*/

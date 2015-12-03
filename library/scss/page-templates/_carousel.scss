@@ -22,7 +22,6 @@
 
 .carousel-container {
   position: absolute;
-
   left:0;
   width:100%;
   bottom:0;
@@ -93,7 +92,7 @@
   &:hover {
     background: jr-grey(7);
   }
-  &.active {
+  &.is-active {
     background: $jr-emphasis;
   }
 }

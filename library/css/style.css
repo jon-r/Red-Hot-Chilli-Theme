@@ -633,7 +633,7 @@ Page specific items.
 
 .blip { float: left; height: 10px; width: 10px; border-radius: 5px; background: #e5e5e6; margin: 2px; cursor: pointer; }
 .blip:hover { background: #aeb1b7; }
-.blip.active { background: #9f1414; }
+.blip.is-active { background: #9f1414; }
 
 /*-- customisable carousel parts -----------------------------------------------------*/
 .slider-title, .slider-text, .slider-link { width: calc(100% - 3rem); position: absolute; -webkit-transform: translateX(100%); -ms-transform: translateX(100%); transform: translateX(100%); }
