@@ -23,7 +23,6 @@ angular.module('redHotChilli', [])
   return $interval(function () {
     if (!carousel.slidePause) {
       n = (n < slideNum - 1) ? n + 1 : 0;
-      console.log(n);
       push();
     }
   }, 8000);
@@ -35,8 +34,40 @@ angular.module('redHotChilli', [])
     carousel['sl' + n] = 'is-active';
   }
 
-}]);
+}])
 
+.directive('isSticky', function ($window) {
+  return function (scope, element, attrs) {
+    var _theMenuBar = document.getElementById('theMenu');
+    console.log(_theMenuBar.getBoundingClientRect());
+    $window.onscroll=function(e){
+      if (_theMenuBar.getBoundingClientRect().top < 0) {
+        //THROTTLE THIS
+        scope.scrollCheck = true;
+      }
+      //need to put the placehold box in again
+    }
+  }
+
+})
+
+
+.service('throttle', function() {
+  //https://dzone.com/articles/throttling-input-angularjs
+  /*can set to :
+    - throttle clicking carousel.
+    - throttle scroller
+    - throttle autocomplete
+    */
+})
+
+/*.controller('searchCtrl', ['$scope', function($scope) {
+  //placeholder for the search autocomplete
+}])
+
+.controller('menuCtrl', ['$scope', function($scope) {
+//placeholder for meun aim
+}])*/
 
 /*----- jquery menu aim ---------------------------------------------------------------*/
 /*region
@@ -57,7 +88,7 @@ function updateViewportDimensions() {
 	return { width:x,height:y }
 }
 
-/*-- Header scroll --------------------------------------------------------------------*/
+/*-- Header scroll --------------------------------------------------------------------
 
 var stickyRight = document.getElementById('js-sticky-right'),
     stickyLeft = document.getElementById('js-sticky-left'),
@@ -129,6 +160,7 @@ function findTop(obj) {
   }
   return curtop;
 }
+*/
 
 /*-- main menu toggle -----------------------------------------------------------------*/
 /*region */
