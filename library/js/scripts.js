@@ -8,7 +8,7 @@
 
 angular.module('redHotChilli', [])
 
-.controller('carouselCtrl', ['$interval', '$scope', function ($interval, $scope) {
+.controller('carouselCtrl', ['$interval','$scope','throttled', function ($interval, $scope,throttled) {
   var slideNum = document.getElementById('js-carousel-main').children.length,
     carousel = $scope,
     n = 0;
@@ -23,7 +23,7 @@ angular.module('redHotChilli', [])
   return $interval(function () {
     if (!carousel.slidePause) {
       n = (n < slideNum - 1) ? n + 1 : 0;
-      push();
+      throttled(push, 1000);
     }
   }, 8000);
 
@@ -36,39 +36,62 @@ angular.module('redHotChilli', [])
 
 }])
 
-.directive('isSticky', function ($window) {
-  return function (scope, element, attrs) {
-    var _theMenuBar = document.getElementById('theMenu');
-    console.log(_theMenuBar.getBoundingClientRect());
-    $window.onscroll=function(e){
-      if (_theMenuBar.getBoundingClientRect().top < 0) {
-        //THROTTLE THIS
-        scope.scrollCheck = true;
+.directive('isSticky', function ($window, throttled) {
+  return true;
+  /* to work on later
+
+  var menuBar = document.getElementById('theMenu');
+
+  return {
+    restrict: 'A',
+    link: function (scope, element, attrs) {
+      console.log(menuBar)
+      $window.onscroll = function () {
+
+        throttled(function (e) {
+          if (menuBar.getBoundingClientRect().top < -40) {
+            scope.scrollCheck = true;
+          } else {
+            scope.scrollCheck = false;
+          }
+        }, 50);
       }
-      //need to put the placehold box in again
     }
-  }
+  }*/
 
 })
 
 
-.service('throttle', function() {
-  //https://dzone.com/articles/throttling-input-angularjs
+.service('throttled', function ($timeout) {
+  var wait;
+  return function (fn, delay = 300) {
+    if (!wait) {
+      fn.call();
+      wait = true;
+      $timeout(function () {
+        wait = false
+      }, delay);
+    }
+  }
+})
   /*can set to :
     - throttle clicking carousel.
     - throttle scroller
     - throttle autocomplete
     */
-})
 
-/*.controller('searchCtrl', ['$scope', function($scope) {
+
+.controller('searchCtrl', ['$scope', function($scope) {
+  $scope.position = 'right';
   //placeholder for the search autocomplete
 }])
 
 .controller('menuCtrl', ['$scope', function($scope) {
+  $scope.position = 'left';
 //placeholder for meun aim
-}])*/
+}]);
 
+if (window.jQuery) {
 /*----- jquery menu aim ---------------------------------------------------------------*/
 /*region
 https://github.com/kamens/jQuery-menu-aim.git
@@ -88,7 +111,7 @@ function updateViewportDimensions() {
 	return { width:x,height:y }
 }
 
-/*-- Header scroll --------------------------------------------------------------------
+/*-- Header scroll --------------------------------------------------------------------*/
 
 var stickyRight = document.getElementById('js-sticky-right'),
     stickyLeft = document.getElementById('js-sticky-left'),
@@ -160,7 +183,7 @@ function findTop(obj) {
   }
   return curtop;
 }
-*/
+//*/
 
 /*-- main menu toggle -----------------------------------------------------------------*/
 /*region */
@@ -628,4 +651,5 @@ function replaceTxt() {
   content = $itemSpecsBox.html().replace(/(<li>)|(\s\s+)|(<img.*alt=")|("><a.*<\/a>)/g,"");
   fix = content.replace(/<\/li>/g,'<br>');
   $itemSpecsBox.html(fix);
+}
 }
