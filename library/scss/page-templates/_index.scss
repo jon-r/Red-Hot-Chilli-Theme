@@ -169,3 +169,10 @@
   font-weight: bold;
 }
 
+/* featured menu ----------------------------------------------------------------------*/
+
+article.featured {
+  @include jr-size(screen) {
+    padding-left: calc(100%/3);
+  }
+}

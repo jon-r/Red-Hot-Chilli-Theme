@@ -547,19 +547,21 @@ $itemTabToggle.click(function() {
 })
 
 /* copy paste specs -------------------------------------------------------------------*/
-//copys the specs list into a pastable string of text, rather than the list
+//copys the specs list into a pastable string of text, rather than the annoying list/table that exists currently
 //mostly for internal use, perhaps others could use
 
 $itemSpecsBox = $('#js-specs-list');
 $itemSpecsBtn = $('#js-specs-copy');
 
 $itemSpecsBtn.click(function() {
-  replaceTxt()
+  fix = $itemSpecsBox.html().replace(/(<li>)|(\s\s+)|(<img.*alt=")|("><a.*<\/a>)/g,"").replace(/<\/li>/g,'<br>');
+  el = document.createElement('p');
+  el.className = "item-dimensions tile-inner";
+  el.innerHTML = fix;
+  $itemSpecsBox.after(el);
+  $itemSpecsBox.remove();
   $itemSpecsBtn.remove();
 })
 
-function replaceTxt() {
-  content = $itemSpecsBox.html().replace(/(<li>)|(\s\s+)|(<img.*alt=")|("><a.*<\/a>)/g,"");
-  fix = content.replace(/<\/li>/g,'<br>');
-  $itemSpecsBox.html(fix);
-}
+/* homepage force open ---------------------------------------------------------------*/
+//when doing angular REMEMBER the little bit on the page template

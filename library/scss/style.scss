@@ -67,8 +67,8 @@ Default style for all pages
 Page specific items.
 *********************/
 
-//front page carousel
-@import "page-templates/carousel";
+//front page
+@import "page-templates/index";
 //shop list, groups, categories
 @import "page-templates/shop-lists";
 //shop full (single item)
@@ -77,5 +77,6 @@ Page specific items.
 @import "page-templates/page-default";
 //contact bar
 @import "page-templates/_contact";
+
 
 

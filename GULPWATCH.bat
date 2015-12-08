@@ -1,1 +1,1 @@
-gulp watcher
+gulp watch

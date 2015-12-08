@@ -494,8 +494,9 @@ Default style for all pages
 /*---header ---------------------------------------------------------------------------*/
 .primary-header, .primary-footer { position: relative; width: 100%; border: 0 solid #9f1414; color: #e5e5e6; box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); }
 
-.primary-header { border-bottom-width: 6px; background: url(/rhc/images/rhc/Head-Banner.jpg) top/cover; }
+.primary-header { background: url(/rhc/images/rhc/Head-Banner.jpg) top/cover; }
 .primary-header .container { padding-top: 12px; }
+@media only screen and (min-width: 1031px) { .primary-header { border-bottom-width: 6px; } }
 @media only screen and (min-width: 1240px) { .primary-header { background: url(/rhc/images/rhc/Head-Banner.jpg) center no-repeat, -webkit-linear-gradient(left, #20252d 25%, #5a6372 75%); background: url(/rhc/images/rhc/Head-Banner.jpg) center no-repeat, linear-gradient(to right, #20252d 25%, #5a6372 75%); }
   .primary-header .home { height: 250px; padding-top: 24px; } }
 
@@ -505,12 +506,12 @@ Default style for all pages
 
 /* -----------  header fixed version --------------------------------------------------*/
 .is-fixed { top: 0; position: fixed; font-size: 0.9; }
-.is-fixed.left { background-color: #9f1414; background-image: -webkit-linear-gradient(#af1d1d, #640202); background-image: linear-gradient(#af1d1d, #640202); box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); padding-bottom: 5px; left: 0; width: 100%; border-bottom: 2px solid #790606; top: 0; z-index: 20; }
+.is-fixed.left { background-color: #9f1414; background-image: -webkit-linear-gradient(#af1d1d, #640202); background-image: linear-gradient(#af1d1d, #640202); box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); padding-bottom: 5px; left: 0; width: 100%; border-bottom: 2px solid #790606; z-index: 20; }
 .is-fixed.right { display: none; right: 0; background-color: #af1d1d; padding: 4px 24px; width: 100%; z-index: 30; }
 .is-fixed.right::before { content: "Search"; position: absolute; right: 100%; line-height: 2; font-size: 1.5rem; font-family: "Kreon", Cambria, Times New Roman, Times, serif; }
 .is-fixed.right h2 { display: none; }
 @media only screen and (min-width: 482px) { .is-fixed.left { top: 4rem; }
-  .is-fixed.right { display: block; } }
+  .is-fixed.right { display: block; height: 4rem; } }
 @media only screen and (min-width: 1031px) { .is-fixed.left { top: 0; }
   .is-fixed.right { width: 40%; background: none; } }
 
@@ -547,7 +548,7 @@ main { background: #f2f2f2; color: #15181e; box-shadow: 0 5px 10px #15181e; -web
 
 .nav-top { -webkit-box-pack: center; -webkit-justify-content: center; -ms-flex-pack: center; justify-content: center; position: relative; box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); z-index: 20; background-color: #9f1414; background-image: -webkit-linear-gradient(#af1d1d, #640202); background-image: linear-gradient(#af1d1d, #640202); }
 @media only screen and (min-width: 482px) { .nav-top { -webkit-box-pack: justify; -webkit-justify-content: space-between; -ms-flex-pack: justify; justify-content: space-between; } }
-@media only screen and (min-width: 1031px) { .nav-top { width: calc(100% + 1rem); margin: -4px -0.5rem 0 -0.5rem; } }
+@media only screen and (min-width: 1031px) { .nav-top { width: calc(100% + 1rem); margin: -4px -6px 0 -0.5rem; } }
 
 .nav-right-menu { display: inline-block; }
 .nav-right-menu li { float: left; }
@@ -566,7 +567,7 @@ main { background: #f2f2f2; color: #15181e; box-shadow: 0 5px 10px #15181e; -web
 
 .toggle-check { display: none; }
 
-.toggle-check:checked + .nav-left-menu { display: block; }
+.toggle-check:checked + .nav-left-menu, .forceOpen { display: block; }
 
 .nav-btn, .touch-toggle { width: 100%; cursor: pointer; }
 
@@ -661,6 +662,9 @@ Page specific items.
 .slide:hover .go-red { color: #790606; }
 
 .go-bold { font-weight: bold; }
+
+/* featured menu ----------------------------------------------------------------------*/
+@media only screen and (min-width: 1031px) { article.featured { padding-left: calc(100%/3); } }
 
 /*-- special list elements -----------------------------------------------------------*/
 .list-category, .list-item, .list-featured { padding: 0; }

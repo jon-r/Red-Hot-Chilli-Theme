@@ -25,7 +25,7 @@
   @include jr-size(screen) {
 
     width:calc(100% + 1rem);
-    margin: -4px -0.5rem 0 -0.5rem;
+    margin: -4px -6px 0 -0.5rem;
   }
 }
 
@@ -92,7 +92,7 @@
   display:none
 }
 
-.toggle-check:checked + .nav-left-menu {
+.toggle-check:checked + .nav-left-menu, .nav-left-menu.forceOpen {
 
   display:block;
 }
