@@ -75,15 +75,41 @@ function setFixed($objArray) {
       $objW = $obj.width();
       $obj.addClass('is-fixed').data('fixed', 1).after(divFiller).next('.js-filler').height($objH).width($objW);
     }
-  });
+  })
+  if (isIndex) {
+    closeMainMenu();
+    moveMenu('in');
+  }
 }
 
 function unsetFixed($objArray) {
-  $objArray.forEach (function($obj) {
+  $objArray.forEach(function ($obj) {
     if ($obj.data('fixed') == 1) {
       $obj.removeClass('is-fixed').data('fixed', 0).next('.js-filler').remove();
     }
   });
+  if (isIndex) {
+    moveMenu('out');
+  }
+}
+
+function moveMenu(direction) {
+  var theMenu = document.getElementById('primary-menu'),
+    theFrame = document.getElementById('js-sticky-left'),
+    vp = updateViewportDimensions();
+
+
+  if (vp.width >= 481) {
+    if (direction == 'in') {
+      theFrame.appendChild(theMenu);
+    } else if (direction == 'out') {
+      theFrame.parentElement.insertBefore(theMenu, theFrame.nextElementSibling);
+    }
+  }
+}
+
+if (isIndex) {
+  moveMenu('out');
 }
 
 function findTop(obj) {
@@ -144,8 +170,7 @@ $navMain_ul.mouseleave( function() {
 })
 
 function closeMainMenu() {
-  //console.log($navMain_ul.prev());
-  $menuToggle .attr('checked', false);
+  $menuToggle.attr('checked', false);
 }
 
 

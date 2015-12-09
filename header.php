@@ -67,6 +67,8 @@
 
     </script>
   <?php // end analytics ?>
+  <?php //moves menu to a fixed position on the front page, without double cache ?>
+  <script type="text/javascript" > var isIndex = <?php echo is_front_page() ? 'true' : 'false'; ?></script>
 
   <header class="primary-header" role="banner">
 
