@@ -47,7 +47,7 @@ $jr-shadow: 0 4px 4px rgba(jr-grey(1),0.5);
 
 
 @function jr-spacer($n:1) {
-  @return 24px * $n;
+  @return 2rem * $n;
 }
 
 // z-indexes ----------------------------------------------------------------------------

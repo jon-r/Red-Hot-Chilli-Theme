@@ -20,12 +20,6 @@ fieldset {
   border:none;
 }
 
-label.required::before {
-  color: jr-red(5);
-  font-size: 1.1rem;
-  content: "*";
-}
-
 .text-input {
   padding:6px;
   font-size: 1.2rem;
@@ -108,26 +102,12 @@ webkit-input-placeholder {
     display: block;
   }
 
-  label {
-    display: block;
-    text-align: right;
-    border-top: 2px solid jr-grey(3);
-    padding: 2px;
-    width:100%;
-    float: left;
-  }
   @include jr-size(screen) {
     .text-input {
       width: calc(100% - 9rem);
       border-radius: 0 6px 6px 0;
     }
-    label {
-      width:9rem;
-      font-size: 0.9rem;
-      border-top-left-radius: 8px;
-    }
   }
-
 }
 
 @include jr-size(tablet) {
@@ -138,6 +118,46 @@ webkit-input-placeholder {
   }
 }
 
+.input-tag {
+  display: block;
+  text-align: right;
+  border-top: 2px solid jr-grey(3);
+  padding: 2px;
+  width: 100%;
+  float: left;
+  @include jr-size(screen) {
+    width: 9rem;
+    font-size: 0.9rem;
+    border-top-left-radius: 5px;
+  }
+}
+
+.input-tag.required::before {
+  color: jr-red(5);
+  font-size: 1.1rem;
+  content: "*";
+}
+
+/* --- contact form: manager's special extras -----------------------------------------*/
+
+.form-radio {
+  input {
+    display: none;
+  }
+  label {
+    color: $jr-text-dark;
+    padding: jr-spacer(0.5);
+    text-align: center;
+  }
+  label:hover {
+    border-color: #e0a24e;
+  }
+  input:checked + label {
+    background-color: #c4d6c2;
+    background-image: linear-gradient(#c4d6c2, #29931f);
+    //color: #29931f;
+  }
+}
 
 /* --- search form --------------------------------------------------------------------*/
 
