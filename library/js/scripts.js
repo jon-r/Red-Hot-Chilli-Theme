@@ -71,9 +71,7 @@ window.onscroll = throttle(
 function setFixed($objArray) {
   $objArray.forEach (function($obj) {
     if ($obj.data('fixed') == 0) {
-      $objH = $obj.height();
-      $objW = $obj.width();
-      $obj.addClass('is-fixed').data('fixed', 1).after(divFiller).next('.js-filler').height($objH).width($objW);
+      $obj.addClass('is-fixed').data('fixed', 1).after(divFiller).next('.js-filler').height($obj.height()).width($obj.width());
     }
   })
   if (isIndex) {
@@ -98,14 +96,12 @@ function moveMenu(direction) {
     theFrame = document.getElementById('js-sticky-left'),
     vp = updateViewportDimensions();
 
-
-  if (vp.width >= 481) {
     if (direction == 'in') {
       theFrame.appendChild(theMenu);
-    } else if (direction == 'out') {
+    } else if (direction == 'out' && vp.width >= 481) {
       theFrame.parentElement.insertBefore(theMenu, theFrame.nextElementSibling);
     }
-  }
+
 }
 
 if (isIndex) {
@@ -547,8 +543,6 @@ function formAjaxReply(el) {
 
   return function(data) {
     var result = $.parseJSON(data);
-    //$resultOutcome = (result.success) ? 'success' : 'error';
-    console.log (el);
 
     if (result.success) {
       el.parents('.modal-frame').addClass('modal-finished');
