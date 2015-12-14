@@ -271,7 +271,7 @@ em.greater { color: #9f1414; font-weight: 700; font-style: normal; }
 
 .fridge-freezer::after { background-position: -896px -640px; }
 
-.linkedin::after { background-position: -256px -896px; }
+.gplus::after { background-position: -256px -896px; }
 
 .twitter::after { background-position: -128px -896px; }
 
@@ -362,7 +362,7 @@ em.greater { color: #9f1414; font-weight: 700; font-style: normal; }
 button.full-width { width: 100%; }
 
 /* -- page tile elements --------------------------------------------------------------*/
-.btn-red, .btn-grey, .btn-light, .tile-outer { box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); border-radius: 5px; }
+.btn-red, .btn-grey, .btn-light, .tile-outer, label[class^="radio"] { box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); border-radius: 5px; }
 
 .tile-outer { background-color: white; position: relative; border-bottom: 2px solid #790606; padding: 1rem; }
 .tile-outer > a { text-decoration: none; }
@@ -451,20 +451,30 @@ webkit-input-placeholder { color: #9197a1; }
 
 @media only screen and (min-width: 482px) { .form-contact.wider fieldset { float: left; width: 50%; padding: 2rem; } }
 .input-tag { display: block; text-align: right; border-top: 2px solid #424a57; padding: 2px; width: 100%; float: left; }
-@media only screen and (min-width: 1031px) { .input-tag { width: 9rem; font-size: 0.9rem; border-top-left-radius: 5px; } }
+@media only screen and (min-width: 1031px) { .input-tag { width: 9rem; font-size: 0.9rem; border-top-left-radius: 8px; } }
 
 .input-tag.required::before { color: #cc3333; font-size: 1.1rem; content: "*"; }
 
-/* --- contact form: manager's special extras -----------------------------------------*/
-.form-radio input { display: none; }
-.form-radio label { color: #15181e; padding: 1rem; text-align: center; }
-.form-radio label:hover { border-color: #e0a24e; }
-.form-radio input:checked + label { background-color: #c4d6c2; background-image: -webkit-linear-gradient(#c4d6c2, #29931f); background-image: linear-gradient(#c4d6c2, #29931f); }
+/* --- contact form: surveys ----------------------------------------------------------*/
+.form-survey { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -webkit-justify-content: center; -ms-flex-pack: center; justify-content: center; -webkit-flex-wrap: wrap; -ms-flex-wrap: wrap; flex-wrap: wrap; }
+.form-survey input { display: none; }
+.form-survey textarea { max-width: 600px; border-radius: 8px; }
+
+label[class^="radio"] { text-align: center; border: 2px solid #424a57; background: -webkit-linear-gradient(#5a6372, #2b313b); background: linear-gradient(#5a6372, #2b313b); position: relative; margin: 0.5rem 1%; cursor: pointer; }
+label[class^="radio"]:hover { border-color: #e0a24e; }
+
+label.radio-text { width: 150px; padding: 1rem; }
+
+input:checked + [class^="radio"] { background-color: #9f1414; background-image: -webkit-linear-gradient(#af1d1d, #640202); background-image: linear-gradient(#af1d1d, #640202); border: 2px solid #790606; }
+
+input:checked + .radio-num::before { content: ""; height: 1rem; position: absolute; right: 1rem; top: 1rem; background-color: #9f1414; }
+
+label.radio-num { width: 3rem; line-height: 3rem; border-radius: 2rem; }
 
 /* --- search form --------------------------------------------------------------------*/
 .form-search { position: relative; }
-.form-search .text-input { border-radius: 6px; width: calc(100% - 8rem); margin-bottom: 0.5rem; }
-@media only screen and (min-width: 1031px) { .form-search .text-input { width: calc(100% - 7rem); } }
+.form-search .text-input { border-radius: 6px; width: calc(100% - 9rem); margin-bottom: 0.5rem; }
+@media only screen and (min-width: 1031px) { .form-search .text-input { width: calc(100% - 8rem); } }
 
 .search-out { position: absolute; width: calc(100% - 7rem); left: 0.5rem; z-index: 30; }
 .search-out:empty { display: none; }

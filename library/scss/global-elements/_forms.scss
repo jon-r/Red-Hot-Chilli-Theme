@@ -46,7 +46,7 @@ fieldset {
 .success {
   background-color: #c4d6c2;
   background-image: linear-gradient(#c4d6c2, white 3rem);
-  color: #29931f;
+  color: $jr-success;
 }
 
 .form-output {
@@ -128,7 +128,7 @@ webkit-input-placeholder {
   @include jr-size(screen) {
     width: 9rem;
     font-size: 0.9rem;
-    border-top-left-radius: 5px;
+    border-top-left-radius: 8px;
   }
 }
 
@@ -138,26 +138,59 @@ webkit-input-placeholder {
   content: "*";
 }
 
-/* --- contact form: manager's special extras -----------------------------------------*/
+/* --- contact form: surveys ----------------------------------------------------------*/
 
-.form-radio {
+.form-survey {
+  //max-width: 800px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   input {
     display: none;
   }
-  label {
-    color: $jr-text-dark;
-    padding: jr-spacer(0.5);
-    text-align: center;
-  }
-  label:hover {
-    border-color: #e0a24e;
-  }
-  input:checked + label {
-    background-color: #c4d6c2;
-    background-image: linear-gradient(#c4d6c2, #29931f);
-    //color: #29931f;
+  textarea {
+    max-width: 600px;
+    border-radius: 8px;
   }
 }
+
+label[class^="radio"] {
+  @extend %floating-tile-base;
+  text-align: center;
+  border: 2px solid jr-grey(3);
+  background: linear-gradient(jr-grey(4),jr-grey(2));
+  position: relative;
+  margin: 0.5rem 1%;
+  cursor: pointer;
+  &:hover {
+    border-color: #e0a24e;
+  }
+}
+label.radio-text {
+  width: 150px;
+  padding: jr-spacer(0.5);
+}
+input:checked + [class^="radio"] {
+  @include jr-red-grad;
+  border: $jr-border-red;
+}
+
+input:checked + .radio-num::before {
+  content: "";
+  height: 1rem;
+  position: absolute;
+  right:1rem;
+  top:1rem;
+  background-color: $jr-emphasis;
+//  z-index: -1;
+}
+
+label.radio-num {
+  width:3rem;
+  line-height:3rem;
+  border-radius: 2rem;
+}
+
 
 /* --- search form --------------------------------------------------------------------*/
 
@@ -165,13 +198,12 @@ webkit-input-placeholder {
   position: relative;
   .text-input {
     border-radius: 6px;
-    width: calc(100% - 8rem);
+    width: calc(100% - 9rem);
     margin-bottom: 0.5rem;
     @include jr-size(screen) {
-      width: calc(100% - 7rem);
+      width: calc(100% - 8rem);
     }
   }
-
 }
 
 .search-out {

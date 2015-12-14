@@ -71,7 +71,8 @@ window.onscroll = throttle(
 function setFixed($objArray) {
   $objArray.forEach (function($obj) {
     if ($obj.data('fixed') == 0) {
-      $obj.addClass('is-fixed').data('fixed', 1).after(divFiller).next('.js-filler').height($obj.height()).width($obj.width());
+      var h = $obj.height(), w = $obj.width();
+      $obj.addClass('is-fixed').data('fixed', 1).after(divFiller).next('.js-filler').height(h).width(w);
     }
   })
   if (isIndex) {
