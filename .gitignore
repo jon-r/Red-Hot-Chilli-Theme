@@ -42,7 +42,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# maunally ignored
+# manually ignored
 /library/scss/OLD/
 /.archive/
 /JR_Shop/JR_Development_Variables.php

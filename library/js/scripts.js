@@ -584,4 +584,6 @@ $itemSpecsBtn.click(function() {
 })
 
 /* homepage force open ---------------------------------------------------------------*/
-//when doing angular REMEMBER the little bit on the page template
+//when doing angular REMEMBER the little bit on the header template
+
+//feedback form - session storage??
