@@ -159,19 +159,42 @@ window.onscroll = throttle(
 function setFixed($objArray) {
   $objArray.forEach (function($obj) {
     if ($obj.data('fixed') == 0) {
-      $objH = $obj.height();
-      $objW = $obj.width();
-      $obj.addClass('is-fixed').data('fixed', 1).after(divFiller).next('.js-filler').height($objH).width($objW);
+      var h = $obj.height(), w = $obj.width();
+      $obj.addClass('is-fixed').data('fixed', 1).after(divFiller).next('.js-filler').height(h).width(w);
     }
-  });
+  })
+  if (isIndex) {
+    closeMainMenu();
+    moveMenu('in');
+  }
 }
 
 function unsetFixed($objArray) {
-  $objArray.forEach (function($obj) {
+  $objArray.forEach(function ($obj) {
     if ($obj.data('fixed') == 1) {
       $obj.removeClass('is-fixed').data('fixed', 0).next('.js-filler').remove();
     }
   });
+  if (isIndex) {
+    moveMenu('out');
+  }
+}
+
+function moveMenu(direction) {
+  var theMenu = document.getElementById('primary-menu'),
+    theFrame = document.getElementById('js-sticky-left'),
+    vp = updateViewportDimensions();
+
+    if (direction == 'in') {
+      theFrame.appendChild(theMenu);
+    } else if (direction == 'out' && vp.width >= 481) {
+      theFrame.parentElement.insertBefore(theMenu, theFrame.nextElementSibling);
+    }
+
+}
+
+if (isIndex) {
+  moveMenu('out');
 }
 
 function findTop(obj) {
@@ -233,8 +256,7 @@ $navMain_ul.mouseleave( function() {
 })
 
 function closeMainMenu() {
-  //console.log($navMain_ul.prev());
-  $menuToggle .attr('checked', false);
+  $menuToggle.attr('checked', false);
 }
 
 
@@ -611,8 +633,6 @@ function formAjaxReply(el) {
 
   return function(data) {
     var result = $.parseJSON(data);
-    //$resultOutcome = (result.success) ? 'success' : 'error';
-    console.log (el);
 
     if (result.success) {
       el.parents('.modal-frame').addClass('modal-finished');
@@ -636,20 +656,24 @@ $itemTabToggle.click(function() {
 })
 
 /* copy paste specs -------------------------------------------------------------------*/
-//copys the specs list into a pastable string of text, rather than the list
+//copys the specs list into a pastable string of text, rather than the annoying list/table that exists currently
 //mostly for internal use, perhaps others could use
 
 $itemSpecsBox = $('#js-specs-list');
 $itemSpecsBtn = $('#js-specs-copy');
 
 $itemSpecsBtn.click(function() {
-  replaceTxt()
+  fix = $itemSpecsBox.html().replace(/(<li>)|(\s\s+)|(<img.*alt=")|("><a.*<\/a>)/g,"").replace(/<\/li>/g,'<br>');
+  el = document.createElement('p');
+  el.className = "item-dimensions tile-inner";
+  el.innerHTML = fix;
+  $itemSpecsBox.after(el);
+  $itemSpecsBox.remove();
   $itemSpecsBtn.remove();
 })
 
-function replaceTxt() {
-  content = $itemSpecsBox.html().replace(/(<li>)|(\s\s+)|(<img.*alt=")|("><a.*<\/a>)/g,"");
-  fix = content.replace(/<\/li>/g,'<br>');
-  $itemSpecsBox.html(fix);
-}
-}
+/* homepage force open ---------------------------------------------------------------*/
+//when doing angular REMEMBER the little bit on the header template
+
+//feedback form - session storage??
+

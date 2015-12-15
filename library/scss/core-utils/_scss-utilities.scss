@@ -11,6 +11,7 @@
 }
 
 $jr-emphasis: jr-red(3.5);
+$jr-success: #29931f;
 
 $jr-bg-dark: jr-grey(2);
 $jr-bg-light: jr-grey(9.5);
@@ -47,7 +48,7 @@ $jr-shadow: 0 4px 4px rgba(jr-grey(1),0.5);
 
 
 @function jr-spacer($n:1) {
-  @return 24px * $n;
+  @return 2rem * $n;
 }
 
 // z-indexes ----------------------------------------------------------------------------

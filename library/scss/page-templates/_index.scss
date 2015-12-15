@@ -168,3 +168,33 @@
   font-weight: bold;
 }
 
+/* featured menu ----------------------------------------------------------------------*/
+
+article.featured {
+  //padding-top: 10%;
+  @include jr-size(tabletOnly) {
+    margin-top: 15rem;
+  }
+  @include jr-size(screen) {
+    padding-left: calc(100%/3);
+  }
+}
+
+.list-featured {
+  a {
+    position: absolute;
+    height:100%;
+    width:100%;
+    top:0;
+    padding:5px;
+  }
+  h2 {
+    text-decoration: underline;
+  }
+  span {
+    color: $jr-text-dark;
+  }
+  img {
+    border-radius: inherit;
+  }
+}

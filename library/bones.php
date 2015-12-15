@@ -158,7 +158,11 @@ function bones_scripts_and_styles() {
 		wp_deregister_script( 'jquery' );
         //wp_register_script( 'jquery', ( 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js' ), ['angular'], null, true );
 		wp_enqueue_script( 'bones-js' );
+<<<<<<< HEAD
         wp_enqueue_script('angular', get_template_directory_uri()."/node_modules/angular/angular.js" ,null,'1.4.8');
+=======
+    //wp_enqueue_script('angular', get_template_directory_uri()."/node_modules/angular/angular.js" ,null,'1.4.8');
+>>>>>>> refs/remotes/origin/master
 	}
 }
 

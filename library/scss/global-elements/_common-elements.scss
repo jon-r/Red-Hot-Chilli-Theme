@@ -6,7 +6,7 @@
 .btn-light {
   cursor: pointer;
   color: $jr-text-light;
-  height: jr-spacer(1.5);
+  min-height: jr-spacer(1.5);
   margin-right: jr-spacer(0.5);
   @extend %floating-tile-base;
 }
@@ -23,6 +23,7 @@
   background-color: $jr-bg-light;
   background-image: linear-gradient($jr-bg-light, #{jr-grey(8)})
 }
+
 button.full-width {
   width:100%;
 }

@@ -25,12 +25,13 @@
   @include jr-size(screen) {
 
     width:calc(100% + 1rem);
-    margin: -4px -0.5rem 0 -0.5rem;
+    margin: -4px -6px 0 -0.5rem;
   }
 }
 
 .nav-right-menu {
   display:inline-block;//non-flexbox fix
+  float:right;
   li {
     float: left;
   }
@@ -72,30 +73,32 @@
 
 .nav-left-menu {
   box-shadow: $jr-shadow;
-  background-color: white;
+  //background-color: white;
+  background: url(#{$siteLink + '/images/icons/menu-base.jpg'}) no-repeat bottom right/contain, white;
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   position: absolute;
   left: 0;
-  //height: auto;
-  display:none;
   top:3rem;
   width: 100%;
   @include jr-size(screen) {
-    width: 250px;
-    left:5px;
+    width: calc(100%/3 - 1rem);
+    border-bottom-right-radius:8px;
+    left:4px;
     text-align: left;
   }
 }
 
 .toggle-check {
-  display:none
+  display:none;
+  & + .nav-left-menu {
+    display:none;
+  }
+  &:checked + .nav-left-menu {
+    display: block;
+  }
 }
 
-.toggle-check:checked + .nav-left-menu {
-
-  display:block;
-}
 
 .nav-btn,
 .touch-toggle {
@@ -112,7 +115,7 @@
   }
   @include jr-size(screen) {
     padding: jr-spacer(0.25) jr-spacer(0.5);
-    font-size: 1.2rem;
+   // font-size: 1.2rem;
   }
 }
 
@@ -130,12 +133,13 @@
 .sub-menu {
   width: 100%;
   @include jr-size(screen) {
-    border: $jr-border;
+   // border: $jr-border;
+    border-left: 3px solid $jr-emphasis;
   }
 }
 
 .main-menu {
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   position: relative;
   @include jr-size(phoneOnly) {
     li {
@@ -170,10 +174,10 @@
   background-repeat: no-repeat;
   @include jr-size(screen) {
     padding:1rem 0;
-    border: $jr-border;
+    border-radius: 5px;
     display: none;
     box-shadow: $jr-shadow;
-    width: 200%;
+    width: 150%;
     top: -0.5rem;
     left: 98%;
     li {

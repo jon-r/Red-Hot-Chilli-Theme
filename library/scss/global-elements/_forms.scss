@@ -20,12 +20,6 @@ fieldset {
   border:none;
 }
 
-label.required::before {
-  color: jr-red(5);
-  font-size: 1.1rem;
-  content: "*";
-}
-
 .text-input {
   padding:6px;
   font-size: 1.2rem;
@@ -52,7 +46,7 @@ label.required::before {
 .success {
   background-color: #c4d6c2;
   background-image: linear-gradient(#c4d6c2, white 3rem);
-  color: #29931f;
+  color: $jr-success;
 }
 
 .form-output {
@@ -108,26 +102,12 @@ webkit-input-placeholder {
     display: block;
   }
 
-  label {
-    display: block;
-    text-align: right;
-    border-top: 2px solid jr-grey(3);
-    padding: 2px;
-    width:100%;
-    float: left;
-  }
   @include jr-size(screen) {
     .text-input {
       width: calc(100% - 9rem);
       border-radius: 0 6px 6px 0;
     }
-    label {
-      width:9rem;
-      font-size: 0.9rem;
-      border-top-left-radius: 8px;
-    }
   }
-
 }
 
 @include jr-size(tablet) {
@@ -138,6 +118,79 @@ webkit-input-placeholder {
   }
 }
 
+.input-tag {
+  display: block;
+  text-align: right;
+  border-top: 2px solid jr-grey(3);
+  padding: 2px;
+  width: 100%;
+  float: left;
+  @include jr-size(screen) {
+    width: 9rem;
+    font-size: 0.9rem;
+    border-top-left-radius: 8px;
+  }
+}
+
+.input-tag.required::before {
+  color: jr-red(5);
+  font-size: 1.1rem;
+  content: "*";
+}
+
+/* --- contact form: surveys ----------------------------------------------------------*/
+
+.form-survey {
+  //max-width: 800px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  input {
+    display: none;
+  }
+  textarea {
+    max-width: 600px;
+    border-radius: 8px;
+  }
+}
+
+label[class^="radio"] {
+  @extend %floating-tile-base;
+  text-align: center;
+  border: 2px solid jr-grey(3);
+  background: linear-gradient(jr-grey(4),jr-grey(2));
+  position: relative;
+  margin: 0.5rem 1%;
+  cursor: pointer;
+  &:hover {
+    border-color: #e0a24e;
+  }
+}
+label.radio-text {
+  width: 150px;
+  padding: jr-spacer(0.5);
+}
+input:checked + [class^="radio"] {
+  @include jr-red-grad;
+  border: $jr-border-red;
+}
+
+input:checked + .radio-num::before {
+  content: "";
+  height: 1rem;
+  position: absolute;
+  right:1rem;
+  top:1rem;
+  background-color: $jr-emphasis;
+//  z-index: -1;
+}
+
+label.radio-num {
+  width:3rem;
+  line-height:3rem;
+  border-radius: 2rem;
+}
+
 
 /* --- search form --------------------------------------------------------------------*/
 
@@ -145,13 +198,12 @@ webkit-input-placeholder {
   position: relative;
   .text-input {
     border-radius: 6px;
-    width: calc(100% - 8rem);
+    width: calc(100% - 9rem);
     margin-bottom: 0.5rem;
     @include jr-size(screen) {
-      width: calc(100% - 7rem);
+      width: calc(100% - 8rem);
     }
   }
-
 }
 
 .search-out {
