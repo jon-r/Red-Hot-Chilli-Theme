@@ -74,7 +74,8 @@
 .nav-left-menu {
   box-shadow: $jr-shadow;
   //background-color: white;
-  background: url(#{$siteLink + '/images/icons/menu-base.jpg'}) no-repeat bottom right/contain, white;
+  //background: url(#{$siteLink + '/images/icons/menu-base2.jpg'}) no-repeat bottom right/contain, white;
+  background: linear-gradient(to bottom right, jr-red(4), jr-red(2));
   text-align: center;
   font-size: 1.2rem;
   position: absolute;
@@ -109,9 +110,9 @@
 .nav-btn {
   display: inline-block;
   padding: jr-spacer(0.5);
-  border-bottom: $jr-border;
+  border-bottom: solid 1px jr-red(2);
   &:active, &:hover {
-    background-color: $jr-bg-hover;
+    background-color: rgba($jr-emphasis, 0.5);
   }
   @include jr-size(screen) {
     padding: jr-spacer(0.25) jr-spacer(0.5);
@@ -134,13 +135,39 @@
   width: 100%;
   @include jr-size(screen) {
    // border: $jr-border;
-    border-left: 3px solid $jr-emphasis;
+    border-left: 3px solid jr-red(2);
   }
 }
 
 .main-menu {
+  color: $jr-bg-light;
   padding: 0.5rem 0;
   position: relative;
+  @include jr-size(tabletOnly) {
+   // min-height: 22rem;
+    li {
+      @include jr-width(1, 2);
+      display: inline-block;
+      &:nth-of-type(even) {
+        border-left: 1px solid jr-red(2);
+      }
+    }
+  }
+}
+
+.sub-menu {
+  color: $jr-text-dark;
+  position: absolute;
+  height: auto;
+  background-color: white;
+  min-height: calc(100% + 3rem);
+  top:-3rem;
+  left: 100%;
+  transition: left 400ms ease;
+  background-image: url(#{$siteLink + '/images/icons/menu-base.jpg'});
+  background-size: 500px 375px;
+  background-position: bottom right;
+  background-repeat: no-repeat;
   @include jr-size(phoneOnly) {
     li {
       margin:0 auto;
@@ -148,30 +175,6 @@
       max-width: 250px;
     }
   }
-  @include jr-size(tabletOnly) {
-   // min-height: 22rem;
-    li {
-      @include jr-width(1, 2);
-      display: inline-block;
-      &:nth-of-type(even) {
-        border-left: $jr-border;
-      }
-    }
-  }
-}
-
-.sub-menu {
-  position: absolute;
-  height: auto;
-  background-color: white;
-  min-height: calc(100% + 1rem);
-  top:0;
-  left: 100%;
-  transition: left 400ms ease;
-  background-image: url(#{$siteLink + '/images/icons/menu-base.jpg'});
-  background-size: 500px 375px;
-  background-position: bottom right;
-  background-repeat: no-repeat;
   @include jr-size(screen) {
     padding:1rem 0;
     border-radius: 5px;

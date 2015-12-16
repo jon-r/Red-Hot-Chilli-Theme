@@ -23,7 +23,7 @@
   font-size: 1.2rem;
 }
 
-%text-column-base {
+p[class^="text-columns"] {
   -webkit-column-gap: jr-spacer();
   -webkit-column-rule: $jr-border;
      -moz-column-gap: jr-spacer();
@@ -36,13 +36,8 @@
   $width: 900px / $i;
   $count: $i;
   .text-columns-#{$i} {
-    @extend  %text-column-base;
     -webkit-columns: $width $count;
        -moz-columns: $width $count;
             columns: $width $count;
-    img {
-      width: 100%;
-      max-width: calc(#{900px/$i} - #{jr-spacer()});
-    }
   }
 }
