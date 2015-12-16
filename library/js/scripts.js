@@ -5,91 +5,62 @@
 !*/
 
 
-
 angular.module('redHotChilli', [])
 
-.controller('carouselCtrl', ['$interval','$scope','throttled', function ($interval, $scope,throttled) {
-  var slideNum = document.getElementById('js-carousel-main').children.length,
-    carousel = $scope,
-    n = 0;
+  .controller('carouselCtrl', ['$interval', '$scope', 'throttled', function ($interval, $scope, throttled) {
+    var slideNum = document.getElementById('js-carousel-main').children.length,
+      carousel = $scope,
+      n = 0;
 
-  carousel.sl0 = 'is-active';
-
-  carousel.go = function (index) {
-    n = index;
-    push();
-  };
-
-  return $interval(function () {
-    if (!carousel.slidePause) {
-      n = (n < slideNum - 1) ? n + 1 : 0;
-      throttled(push, 1000);
+    function push() {
+      for (i = 0; i < slideNum; i++) {
+        carousel['sl' + i] = (carousel['sl' + i] == 'is-active') ? 'go-away' : '';
+      }
+      carousel['sl' + n] = 'is-active';
     }
-  }, 8000);
 
-  function push() {
-    for (i = 0; i < slideNum; i++) {
-      carousel['sl' + i] = (carousel['sl' + i] == 'is-active') ? 'go-away' : '';
-    }
-    carousel['sl' + n] = 'is-active';
-  }
+    carousel.sl0 = 'is-active';
 
-}])
+    carousel.go = function (index) {
+      n = index;
+      push();
+    };
 
-.directive('isSticky', function ($window, throttled) {
-  return true;
-  /* to work on later
+    return $interval(function () {
+      if (!carousel.slidePause) {
+        n = (n < slideNum - 1) ? n + 1 : 0;
+        throttled(push, 1000);
+      }
+    }, 8000);
 
-  var menuBar = document.getElementById('theMenu');
+  }])
 
-  return {
-    restrict: 'A',
-    link: function (scope, element, attrs) {
-      console.log(menuBar)
-      $window.onscroll = function () {
-
-        throttled(function (e) {
-          if (menuBar.getBoundingClientRect().top < -40) {
-            scope.scrollCheck = true;
-          } else {
-            scope.scrollCheck = false;
-          }
-        }, 50);
+  .service('throttled', function ($timeout) {
+    var wait;
+    return function (fn, delay = 300) {
+      if (!wait) {
+        fn.call();
+        wait = true;
+        $timeout(function () {
+          wait = false;
+        }, delay);
       }
     }
-  }*/
-
-})
-
-
-.service('throttled', function ($timeout) {
-  var wait;
-  return function (fn, delay = 300) {
-    if (!wait) {
-      fn.call();
-      wait = true;
-      $timeout(function () {
-        wait = false
-      }, delay);
-    }
-  }
-})
-  /*can set to :
-    - throttle clicking carousel.
-    - throttle scroller
-    - throttle autocomplete
-    */
+  })
+    /*can set to :
+      - throttle clicking carousel.
+      - throttle scroller
+      - throttle autocomplete
+      */
 
 
-.controller('searchCtrl', ['$scope', function($scope) {
-  $scope.position = 'right';
-  //placeholder for the search autocomplete
-}])
+  .controller('searchCtrl', ['$scope', function($scope) {
+    //placeholder for the search autocomplete
+  }])
 
-.controller('menuCtrl', ['$scope', function($scope) {
-  $scope.position = 'left';
-//placeholder for meun aim
-}]);
+  .controller('menuCtrl', ['$scope', function($scope) {
+  //placeholder for meun aim
+  }]);
 
 if (window.jQuery) {
 /*----- jquery menu aim ---------------------------------------------------------------*/
@@ -676,4 +647,4 @@ $itemSpecsBtn.click(function() {
 //when doing angular REMEMBER the little bit on the header template
 
 //feedback form - session storage??
-
+}
