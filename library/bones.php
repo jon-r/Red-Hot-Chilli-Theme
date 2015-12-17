@@ -145,7 +145,7 @@ function bones_scripts_and_styles() {
 
 		//adding scripts file in the footer
 
-		wp_register_script( 'bones-js', get_stylesheet_directory_uri() . '/library/js/scripts.min.js', array( 'jquery' ), false, true );
+		wp_register_script( 'bones-js', get_stylesheet_directory_uri() . '/library/js/scripts.js', array( 'angular' ), false, true );
         wp_localize_script( 'bones-js', 'fileSrc', ['admin' => admin_url( 'admin-ajax.php' ),
                                                     'site' => home_url('/')]);
 

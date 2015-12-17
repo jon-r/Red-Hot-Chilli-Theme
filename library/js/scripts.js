@@ -7,37 +7,41 @@
 
 angular.module('redHotChilli', [])
 
-  .controller('carouselCtrl', ['$interval', '$scope', 'throttled', function ($interval, $scope, throttled) {
-    var slideNum = document.getElementById('js-carousel-main').children.length,
-      carousel = $scope,
-      n = 0;
+.controller('carouselCtrl', ['$interval', '$scope', 'throttled', function ($interval, $scope, throttled) {
+  var slideNum = document.getElementById('js-carousel-main').children.length,
+    carousel = $scope,
+    n = 0;
 
-    function push() {
+  function push() {
+    return throttled(function() {
       for (i = 0; i < slideNum; i++) {
         carousel['sl' + i] = (carousel['sl' + i] == 'is-active') ? 'go-away' : '';
       }
       carousel['sl' + n] = 'is-active';
-    }
+    }, 1000);
 
-    carousel.sl0 = 'is-active';
+  }
 
-    carousel.go = function (index) {
-      n = index;
+  carousel.sl0 = 'is-active';
+
+  carousel.go = function (index) {
+    n = index;
+    push();
+  };
+
+  return $interval(function () {
+    if (!carousel.slidePause) {
+      n = (n < slideNum - 1) ? n + 1 : 0;
       push();
-    };
+    }
+  }, 8000);
 
-    return $interval(function () {
-      if (!carousel.slidePause) {
-        n = (n < slideNum - 1) ? n + 1 : 0;
-        throttled(push, 1000);
-      }
-    }, 8000);
+}])
 
-  }])
-
-  .service('throttled', function ($timeout) {
-    var wait;
-    return function (fn, delay = 300) {
+.service('throttled', function ($timeout) {
+    var wait = false;
+    return function (fn, delay) {
+      delay = typeof delay !== 'indefinded' ? delay : 300;
       if (!wait) {
         fn.call();
         wait = true;
@@ -47,20 +51,20 @@ angular.module('redHotChilli', [])
       }
     }
   })
-    /*can set to :
-      - throttle clicking carousel.
-      - throttle scroller
-      - throttle autocomplete
-      */
+  /*can set to :
+    - throttle clicking carousel.
+    - throttle scroller
+    - throttle autocomplete
+    */
 
 
-  .controller('searchCtrl', ['$scope', function($scope) {
-    //placeholder for the search autocomplete
-  }])
+.controller('searchCtrl', ['$scope', function ($scope) {
+  //placeholder for the search autocomplete
+}])
 
-  .controller('menuCtrl', ['$scope', function($scope) {
+.controller('menuCtrl', ['$scope', function ($scope) {
   //placeholder for meun aim
-  }]);
+}]);
 
 if (window.jQuery) {
 /*----- jquery menu aim ---------------------------------------------------------------*/
