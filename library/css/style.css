@@ -361,6 +361,7 @@ em.greater { color: #9f1414; font-weight: 700; font-style: normal; }
 
 button.full-width { width: 100%; }
 
+@media only screen and (max-width: 481px) { .hide-mobile { display: none; } }
 /* -- page tile elements --------------------------------------------------------------*/
 .btn-red, .btn-grey, .btn-light, .tile-outer, label[class^="radio"] { box-shadow: 0 4px 4px rgba(21, 24, 30, 0.5); border-radius: 5px; }
 
@@ -629,7 +630,6 @@ Page specific items.
 
 .page-banner, .carousel { font-size: 1.3rem; }
 @media only screen and (min-width: 1031px) { .page-banner, .carousel { font-size: 1.4rem; } }
-@media only screen and (max-width: 481px) { .page-banner, .carousel { display: none; } }
 
 .carousel-container { position: absolute; left: 0; width: 100%; bottom: 0; top: 0; }
 
@@ -714,9 +714,6 @@ Page specific items.
 
 .specs-hover { position: absolute; top: 1rem; right: 1rem; color: #9ca3b0; cursor: pointer; }
 
-.hot-chilli-filling { display: none; }
-@media only screen and (min-width: 1031px) { .hot-chilli-filling { display: block; } }
-
 .gallery-primary { display: inline-block; width: calc(100% - 2rem); }
 
 .item-thumb { display: inline-block; width: calc(50% - 2rem); cursor: pointer; margin: 1rem; }
@@ -734,7 +731,7 @@ Page specific items.
 .tabs-frame > .active { height: 500px; max-height: 80vh; padding-top: 1rem; }
 @media only screen and (min-width: 1031px) { .tabs-frame > .tile-outer, .tabs-frame > .active { height: auto; margin-bottom: 2rem; }
   .tabs-frame > .flex-2 { display: inline-block; width: calc(50% - 2rem); } }
-.tabs-frame .tile-inner, .tabs-frame .item-thumbs { overflow-y: auto; height: calc(100% - 4.5rem); }
+.tabs-frame .tile-inner { overflow-y: auto; height: calc(100% - 4.5rem); }
 
 .default-page li { list-style: disc inside; padding-bottom: 5px; }
 .default-page p, .default-page ul { margin-bottom: 2rem; }

@@ -33,6 +33,12 @@ button.full-width {
   @extend %loader-icon;
 }
 
+@include jr-size(phoneOnly) {
+  .hide-mobile {
+    display:none;
+  }
+}
+
 /* -- page tile elements --------------------------------------------------------------*/
 
 %floating-tile-base {

@@ -15,9 +15,6 @@
   @include jr-size(screen) {
     font-size: 1.4rem;
   }
-  @include jr-size(phoneOnly) {
-    display: none;
-  }
 }
 
 .carousel-container {

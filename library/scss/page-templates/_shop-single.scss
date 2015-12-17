@@ -27,14 +27,6 @@
   cursor: pointer;
 }
 
-//filler only shown on large screens, when a smaller number of thumbnails means a big gap.
-.hot-chilli-filling {
-  display: none;
-  @include jr-size(screen) {
-    display: block;
-  }
-}
-
 .gallery-primary {
   @include jr-width(1,1);
 }
@@ -93,7 +85,7 @@
       @include jr-width(1,2);
     }
   }
-  .tile-inner, .item-thumbs {
+  .tile-inner {
     overflow-y: auto;
     height: calc(100% - 4.5rem);
   }
