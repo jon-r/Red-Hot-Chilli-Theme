@@ -5,66 +5,130 @@
 !*/
 
 
-angular.module('redHotChilli', [])
+var app = angular.module('redHotChilli', []);
 
-.controller('carouselCtrl', ['$interval', '$scope', 'throttled', function ($interval, $scope, throttled) {
+/* -- controllers ---------------------------------------------------------------------*/
+
+app.controller('carouselCtrl', ['$interval', '$scope', 'throttled', function ($interval, $scope, throttled) {
   var slideNum = document.getElementById('js-carousel-main').children.length,
-    carousel = $scope,
     n = 0;
 
   function push() {
-    return throttled(function() {
+    return throttled(function () {
       for (i = 0; i < slideNum; i++) {
-        carousel['sl' + i] = (carousel['sl' + i] == 'is-active') ? 'go-away' : '';
+        $scope['sl' + i] = ($scope['sl' + i] === 'is-active') ? 'go-away' : '';
       }
-      carousel['sl' + n] = 'is-active';
+      $scope['sl' + n] = 'is-active';
     }, 1000);
 
   }
 
-  carousel.sl0 = 'is-active';
+  $scope.sl0 = 'is-active';
 
-  carousel.go = function (index) {
+  $scope.go = function (index) {
     n = index;
     push();
   };
 
   return $interval(function () {
-    if (!carousel.slidePause) {
+    if (!$scope.slidePause) {
       n = (n < slideNum - 1) ? n + 1 : 0;
       push();
     }
   }, 8000);
 
+}]);
+
+app.controller('masterCtrl', ['$scope', '$window', 'stickify', function($scope, $window, stickify) {
+  $scope.scroller = {};
+  $window.onscroll = function() {
+    stickify.get($scope);
+  };
 }])
 
-.service('throttled', function ($timeout) {
-    var wait = false;
-    return function (fn, delay) {
-      delay = typeof delay !== 'indefinded' ? delay : 300;
-      if (!wait) {
-        fn.call();
-        wait = true;
-        $timeout(function () {
-          wait = false;
-        }, delay);
-      }
+
+app.controller('searchCtrl', ['$scope', 'searchResults', function ($scope, searchResults) {
+
+  $scope.searchValue = '';
+
+  $scope.$watch('searchValue', function(input) {
+    if (input.length > 2) {
+      $scope.results = searchResults(input);
     }
   })
-  /*can set to :
-    - throttle clicking carousel.
-    - throttle scroller
-    - throttle autocomplete
-    */
+
+/*  searchResults.then(function(data) {
+    $scope.results = data;
+  })*/
 
 
-.controller('searchCtrl', ['$scope', function ($scope) {
-  //placeholder for the search autocomplete
-}])
 
-.controller('menuCtrl', ['$scope', function ($scope) {
-  //placeholder for meun aim
 }]);
+
+app.controller('menuCtrl', ['$scope', function ($scope) {
+  //placeholder for meun aim
+  //console.log(this);
+//  $scope.scroller = {};
+
+ //$scope.scrollCheck =
+
+}]);
+
+
+  /* -- services ------------------------------------------------------------------------*/
+
+app.service('throttled', function ($timeout) {
+  var wait = false;
+  return function (fn, delay) {
+    delay = typeof delay !== 'undefined' ? delay : 300;
+    if (!wait) {
+      fn.call();
+      wait = true;
+      $timeout(function () {
+        wait = false;
+      }, delay);
+    }
+  };
+});
+
+app.service('stickify', function (throttled) {
+  var marker = document.getElementById('scrollLock'),
+    check = false,
+    output = function(scope) {
+        console.log(scope.scroller);
+        return throttled(function () {
+          scope.scroller.fix = marker.getBoundingClientRect().top < 40;
+          //scope.scroller.filler =
+        },50);
+      }
+
+  return output;
+});
+
+app.service('searchResults', ['$http', function ($http) {
+  return function (searchIn) {
+    return $http.get(fileSrc.admin, {
+      params: {keyword: searchIn, action: "jr_autocomplete"}
+    }).then(function success(response) {
+      return response.data;
+    }, function error(err) {
+      console.log(err)
+    })
+  }
+}]);
+
+/*      if ( vp.width >= 1030 ) {
+    var keyword = $(this).val();
+    if (keyword.length >= MIN_LENGTH) {
+      $.get(fileSrc.admin, {
+        keyword: keyword,
+        action: "jr_autocomplete"
+      }).done(searchToText);
+    } else {
+      $searchOut.html('');
+    }*/
+/* -- directives ----------------------------------------------------------------------*/
+//?
 
 if (window.jQuery) {
 /*----- jquery menu aim ---------------------------------------------------------------*/

@@ -53,7 +53,7 @@
 
 </head>
 
-<body>
+<body ng-controller="masterCtrl">
 
     <?php //Google Analytics ?>
     <script>
