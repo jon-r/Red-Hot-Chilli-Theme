@@ -42,24 +42,34 @@ app.controller('carouselCtrl', ['$interval', '$scope', 'throttled', function ($i
 app.controller('masterCtrl', ['$scope', '$window', 'stickify', function($scope, $window, stickify) {
   $scope.scroller = {};
   $window.onscroll = function() {
-    stickify.get($scope);
+    stickify($scope);
   };
 }])
 
 
-app.controller('searchCtrl', ['$scope', 'searchResults', function ($scope, searchResults) {
-
+app.controller('searchCtrl', ['$scope', 'search', 'vp', function ($scope, search, vp) {
+  var screen = null;
   $scope.searchValue = '';
-
-  $scope.$watch('searchValue', function(input) {
+  $scope.results = {};
+  $scope.$watch('searchValue', function (input) {
+    //screen = vp();
     if (input.length > 2) {
-      $scope.results = searchResults(input);
+      search(input).then(function (response) {
+        $scope.results = response.data;
+      }, function (err) {
+        console.log(err)
+      });
+    } else {
+      $scope.results = {};
+      //console.log(screen);
     }
   })
 
-/*  searchResults.then(function(data) {
-    $scope.results = data;
-  })*/
+
+
+  /*  searchResults.then(function(data) {
+      $scope.results = data;
+    })*/
 
 
 
@@ -94,39 +104,62 @@ app.service('throttled', function ($timeout) {
 app.service('stickify', function (throttled) {
   var marker = document.getElementById('scrollLock'),
     check = false,
-    output = function(scope) {
-        console.log(scope.scroller);
-        return throttled(function () {
-          scope.scroller.fix = marker.getBoundingClientRect().top < 40;
-          //scope.scroller.filler =
-        },50);
-      }
+    output = function (scope) {
+
+      return throttled(function () {
+        scope.scroller.fix = marker.getBoundingClientRect().top < 40;
+      }, 50);
+
+    }
 
   return output;
 });
 
-app.service('searchResults', ['$http', function ($http) {
+app.service('search', function ($http) {
   return function (searchIn) {
-    return $http.get(fileSrc.admin, {
-      params: {keyword: searchIn, action: "jr_autocomplete"}
-    }).then(function success(response) {
-      return response.data;
-    }, function error(err) {
-      console.log(err)
+    return $http({
+      method: 'GET',
+      url: fileSrc.admin,
+      params: {
+        keyword: searchIn,
+        action: "jr_autocomplete"
+      }
     })
   }
-}]);
+});
 
-/*      if ( vp.width >= 1030 ) {
-    var keyword = $(this).val();
-    if (keyword.length >= MIN_LENGTH) {
-      $.get(fileSrc.admin, {
-        keyword: keyword,
-        action: "jr_autocomplete"
-      }).done(searchToText);
-    } else {
-      $searchOut.html('');
-    }*/
+app.service('vp', function ($window) {
+  var w = $window;
+  return {
+    h : w.innerHeight,
+    w : w.innerWidth,
+  }
+});
+
+
+/*function updateViewportDimensions() {
+  var w = window,
+    d = document,
+    e = d.documentElement,
+    g = d.getElementsByTagName('body')[0],
+    x = w.innerWidth || e.clientWidth || g.clientWidth,
+    y = w.innerHeight || e.clientHeight || g.clientHeight;
+  return {
+    width: x,
+    height: y
+  }
+}*/
+
+/*
+ * Get Viewport Dimensions
+ * returns object with viewport dimensions to match css in width and height properties
+ * ( source: http://andylangton.co.uk/blog/development/get-viewport-size-width-and-height-javascript )
+
+function updateViewportDimensions() {
+	var w=window,d=document,e=d.documentElement,g=d.getElementsByTagName('body')[0],x=w.innerWidth||e.clientWidth||g.clientWidth,y=w.innerHeight||e.clientHeight||g.clientHeight;
+	return { width:x,height:y }
+}*/
+
 /* -- directives ----------------------------------------------------------------------*/
 //?
 

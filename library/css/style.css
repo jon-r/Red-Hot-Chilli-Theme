@@ -477,11 +477,10 @@ label.radio-num { width: 3rem; line-height: 3rem; border-radius: 2rem; }
 .form-search .text-input { border-radius: 6px; width: calc(100% - 9rem); margin-bottom: 0.5rem; }
 @media only screen and (min-width: 1031px) { .form-search .text-input { width: calc(100% - 8rem); } }
 
-.search-out { position: absolute; width: calc(100% - 7rem); left: 0.5rem; z-index: 30; }
-.search-out:empty { display: none; }
-.search-out li { border-bottom: 1px solid #424a57; font-size: 1.5rem; font-weight: bold; }
+.search-out { position: absolute; width: 100%; z-index: 30; /*  &:empty { display: none; }*/ }
+.search-out li { border-bottom: 1px solid #424a57; font-size: 1.5rem; font-weight: bold; width: 100%; }
 .search-out span { font-size: 0.75rem; color: #66707f; }
-.search-out a { width: 100%; text-decoration: none; }
+.search-out a { display: block; text-decoration: none; padding: 5px; }
 .search-out a:hover, .search-out a:focus { background: #424a57; color: white; }
 
 /* modal (pop up) forms ---------------------------------------------------------------*/
