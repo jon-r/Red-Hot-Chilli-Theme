@@ -7,7 +7,28 @@
 
 var app = angular.module('redHotChilli', []);
 
+/*angular TO DO:
+
+  - menu aim
+  - scrolling filler
+  - main menu to stay open on index
+  - using arrow keys in auto complete
+  - modal popouts
+  - gallery prev/next (with thumbs gen ajax)
+  - contact form prev/next + validate/submit
+  - tabbed item page (on small screens)
+
+*/
+
+
 /* -- controllers ---------------------------------------------------------------------*/
+
+app.controller('masterCtrl', ['$scope', '$window', 'stickify', function($scope, $window, stickify) {
+  $scope.scroller = {};
+  $window.onscroll = function() {
+    stickify($scope);
+  };
+}])
 
 app.controller('carouselCtrl', ['$interval', '$scope', 'throttled', function ($interval, $scope, throttled) {
   var slideNum = document.getElementById('js-carousel-main').children.length,
@@ -20,7 +41,6 @@ app.controller('carouselCtrl', ['$interval', '$scope', 'throttled', function ($i
       }
       $scope['sl' + n] = 'is-active';
     }, 1000);
-
   }
 
   $scope.sl0 = 'is-active';
@@ -39,21 +59,13 @@ app.controller('carouselCtrl', ['$interval', '$scope', 'throttled', function ($i
 
 }]);
 
-app.controller('masterCtrl', ['$scope', '$window', 'stickify', function($scope, $window, stickify) {
-  $scope.scroller = {};
-  $window.onscroll = function() {
-    stickify($scope);
-  };
-}])
-
-
-app.controller('searchCtrl', ['$scope', 'search', 'vp', function ($scope, search, vp) {
-  var screen = null;
+app.controller('searchCtrl', ['$scope', 'search', 'vp', 'traverse', function ($scope, search, vp, traverse) {
+  var page = {};
   $scope.searchValue = '';
   $scope.results = {};
   $scope.$watch('searchValue', function (input) {
-    //screen = vp();
-    if (input.length > 2) {
+    page = vp();
+    if (input.length > 2 && page.w > 1030) {
       search(input).then(function (response) {
         $scope.results = response.data;
       }, function (err) {
@@ -65,23 +77,23 @@ app.controller('searchCtrl', ['$scope', 'search', 'vp', function ($scope, search
     }
   })
 
-
-
-  /*  searchResults.then(function(data) {
-      $scope.results = data;
-    })*/
-
+  $scope.searchList = function(index,e) {
+    if ($scope.searchValue.length > 0) {
+      if (e.keyCode == '40') {
+        e.preventDefault();
+        traverse.down(index);
+      } else if (e.keyCode == '38') {
+        e.preventDefault();
+        traverse.up(index);
+      }
+    }
+  }
 
 
 }]);
 
 app.controller('menuCtrl', ['$scope', function ($scope) {
   //placeholder for meun aim
-  //console.log(this);
-//  $scope.scroller = {};
-
- //$scope.scrollCheck =
-
 }]);
 
 
@@ -103,16 +115,12 @@ app.service('throttled', function ($timeout) {
 
 app.service('stickify', function (throttled) {
   var marker = document.getElementById('scrollLock'),
-    check = false,
-    output = function (scope) {
-
+    check = false;
+    return function (scope) {
       return throttled(function () {
         scope.scroller.fix = marker.getBoundingClientRect().top < 40;
       }, 50);
-
     }
-
-  return output;
 });
 
 app.service('search', function ($http) {
@@ -128,37 +136,52 @@ app.service('search', function ($http) {
   }
 });
 
+app.service('traverse', function() {
+  var out = {
+    down : function(index) {
+      console.log('down from' + index);
+    },
+    up : function(index) {
+      console.log('up from' + index);
+    }
+  }
+  return out;
+})
+
+/*
+function searchTraverse(direction, i) {
+  $results = $searchOut.find('li > a');
+  $resultCount = $results.length;
+  if (direction == 'down' && i < $resultCount - 1) {
+    i++
+    $target = $results.eq(i);
+    $text = $target.text();
+    $searchIn.val($text);
+  } else if (direction == 'up') {
+    if (i > 0) {
+      i--
+      $target = $results.eq(i);
+      $text = $target.text();
+      $searchIn.val($text);
+    } else {
+      $target = $searchIn;
+    }
+  }
+  $target.focus();
+  //console.log(i);
+}*/
+
 app.service('vp', function ($window) {
-  var w = $window;
-  return {
-    h : w.innerHeight,
-    w : w.innerWidth,
+  var win = $window;
+  return function() {
+    return {
+      h : win.innerHeight,
+      w : win.innerWidth
+    }
   }
 });
 
 
-/*function updateViewportDimensions() {
-  var w = window,
-    d = document,
-    e = d.documentElement,
-    g = d.getElementsByTagName('body')[0],
-    x = w.innerWidth || e.clientWidth || g.clientWidth,
-    y = w.innerHeight || e.clientHeight || g.clientHeight;
-  return {
-    width: x,
-    height: y
-  }
-}*/
-
-/*
- * Get Viewport Dimensions
- * returns object with viewport dimensions to match css in width and height properties
- * ( source: http://andylangton.co.uk/blog/development/get-viewport-size-width-and-height-javascript )
-
-function updateViewportDimensions() {
-	var w=window,d=document,e=d.documentElement,g=d.getElementsByTagName('body')[0],x=w.innerWidth||e.clientWidth||g.clientWidth,y=w.innerHeight||e.clientHeight||g.clientHeight;
-	return { width:x,height:y }
-}*/
 
 /* -- directives ----------------------------------------------------------------------*/
 //?
