@@ -60,9 +60,10 @@ app.controller('carouselCtrl', ['$interval', '$scope', 'throttled', function ($i
 }]);
 
 app.controller('searchCtrl', ['$scope', 'search', 'vp', 'traverse', function ($scope, search, vp, traverse) {
-  var page = {};
+  var page = {}, searchContainer = document.getElementById('search-box');
   $scope.searchValue = '';
   $scope.results = {};
+  $scope.focus = NaN;
   $scope.$watch('searchValue', function (input) {
     page = vp();
     if (input.length > 2 && page.w > 1030) {
@@ -78,13 +79,16 @@ app.controller('searchCtrl', ['$scope', 'search', 'vp', 'traverse', function ($s
   })
 
   $scope.searchList = function(index,e) {
-    if ($scope.searchValue.length > 0) {
-      if (e.keyCode == '40') {
+    var list = $scope.searchValue.length;
+    if (list > 0) {
+      console.log(angular.element(searchContainer).find("li").length);
+      //traverse.set($scope.searchValue.length);
+      if (e.keyCode == '40' && index < list) {
         e.preventDefault();
-        traverse.down(index);
-      } else if (e.keyCode == '38') {
+        traverse.down(index,$scope);
+      } else if (e.keyCode == '38' && index > -1) {
         e.preventDefault();
-        traverse.up(index);
+        traverse.up(index,$scope);
       }
     }
   }
@@ -138,11 +142,15 @@ app.service('search', function ($http) {
 
 app.service('traverse', function() {
   var out = {
-    down : function(index) {
-      console.log('down from' + index);
+    down : function(index,scope) {
+        scope.focus = index++
+        console.log(scope);
+
     },
-    up : function(index) {
-      console.log('up from' + index);
+    up : function(index,scope) {
+
+      scope.focus = index--
+     // console.log('up from ' + index);
     }
   }
   return out;
@@ -184,7 +192,57 @@ app.service('vp', function ($window) {
 
 
 /* -- directives ----------------------------------------------------------------------*/
-//?
+
+/*app.directive('searchList', [function () {
+    return function (scope, elem, attrs) {
+        var atomSelector = attrs.searchFocus;
+
+        elem.bind('keyup', function (e) {
+            var atoms = elem.find(atomSelector),
+                toAtom = null;
+          console.log(atoms.length);
+            for (var i = atoms.length - 1; i >= 0; i--) {
+                if (atoms[i] === e.target) {
+                    if (e.keyCode === 38) {
+                        toAtom = atoms[i - 1];
+                    } else if (e.keyCode === 40) {
+                        toAtom = atoms[i + 1];
+                    }
+                    break;
+                }
+            }
+
+            if (toAtom) toAtom.focus();
+
+        });
+
+        elem.bind('keydown', function (e) {
+            if (e.keyCode === 38 || e.keyCode === 40)
+                e.preventDefault();
+        });
+
+    };
+  */
+
+/*  return {
+    restrict: 'A',
+    link: function(scope, elem, attrs) {
+      elem.bind('keyup', function (e) {
+        // up arrow
+
+        if (e.keyCode == 38) {
+          console.log(scope);
+     //       elem[0].previousElementSibling.focus();
+        }
+        // down arrow
+        else if (e.keyCode == 40) {
+     //       elem[0].nextElementSibling.focus();
+        }
+      });
+    }
+  };
+}]);*/
+
 
 if (window.jQuery) {
 /*----- jquery menu aim ---------------------------------------------------------------*/
