@@ -4,7 +4,6 @@ var prefix = require('gulp-autoprefixer');
 var uglify = require('gulp-uglify');
 var rename = require("gulp-rename");
 var zip = require('gulp-zip');
-var critical = require('critical');
 
 gulp.task('sass', function() {
   sass('./library/scss/style.scss', {sourcemap: true, style: 'compact'})
@@ -45,23 +44,3 @@ gulp.task('zip', function() {
       .pipe(zip('Red-Hot-Chilli-Theme-home.zip'))
       .pipe(gulp.dest('../'));
 })
-
-//http://fourkitchens.com/blog/article/use-gulp-automate-your-critical-path-css
-gulp.task('critical', function (cb) {
-  critical.generate({
-    base: 'includes/criticalCss/',
-    src: 'rhc.htm',
-    css: ['./library/css/style.min.css'],
-    dimensions: [{
-      width: 320,
-      height: 480
-    },{
-      width: 1300,
-      height: 768
-    }],
-    dest: 'includes/criticalCss/critical.css',
-    minify: true,
-    extract: false,
-    ignore: ['@import']
-  });
-});

@@ -24,8 +24,5 @@
   "bugs": {
     "url": "https://github.com/jon-r/Red-Hot-Chilli-Theme/issues"
   },
-  "homepage": "https://github.com/jon-r/Red-Hot-Chilli-Theme#readme",
-  "dependencies": {
-    "critical": "^0.7.0"
-  }
+  "homepage": "https://github.com/jon-r/Red-Hot-Chilli-Theme#readme"
 }

@@ -149,7 +149,7 @@ function bones_scripts_and_styles() {
                                                     'site' => home_url('/')]);
 
 		// enqueue styles and scripts
-	//	wp_enqueue_style( 'bones-stylesheet' );
+		wp_enqueue_style( 'bones-stylesheet' );
 		/*
 		I recommend using a plugin to call jQuery
 		using the google cdn. That way it stays cached

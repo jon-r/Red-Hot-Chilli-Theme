@@ -5,7 +5,6 @@
     </footer>
   <?php // all js scripts are loaded in library/bones.php ?>
   <?php wp_footer(); ?>
-  <?php include is_front_page() ? 'includes/criticalCss/criticalcssFoot.php' : null; ?>
 
   </body>
 
