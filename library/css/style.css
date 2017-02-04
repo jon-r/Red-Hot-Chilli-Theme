@@ -711,6 +711,8 @@ Page specific items.
 
 .ss-length { position: absolute; padding: 0 5px; bottom: 5rem; right: -0.5rem; border-radius: 2px; line-height: 1.2; }
 
+.old-price { font-size: 0.7em; font-weight: 300; text-decoration: line-through; color: #5a6372; }
+
 /*-- single item Layout ------------------------------------------------------*/
 .item-features li { line-height: 2; }
 

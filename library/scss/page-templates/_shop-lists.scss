@@ -38,3 +38,10 @@
   border-radius: 2px;
   line-height: 1.2;
 }
+
+.old-price {
+    font-size: 0.7em;
+    font-weight: 300;
+    text-decoration: line-through;
+    color: jr-grey(4);
+}
