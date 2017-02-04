@@ -225,9 +225,9 @@ em.greater { color: #9f1414; font-weight: 700; font-style: normal; }
 /*-------------------------sprite layouts + settings ----------------------------------*/
 .text-icon, .text-icon-left, .loading, .primary-nav:only-child, .list-item, .btn-icon, .btn-icon-lrg, .btn-icon-small { position: relative; }
 
-.text-icon::before, .text-icon-left::before, .loading::before, .primary-nav:only-child::before, .list-item::before { pointer-events: none; content: ''; position: absolute; background-image: url(/rhc/images/icons/RHC-Icons.min.svg); height: 128px; width: 128px; }
+.text-icon::before, .text-icon-left::before, .loading::before, .primary-nav:only-child::before, .list-item::before { pointer-events: none; content: ''; position: absolute; background-image: url("../img/RHC-Icons.min.svg"); background-size: 1024px; height: 128px; width: 128px; }
 
-.btn-icon::after, .btn-icon-lrg::after, .btn-icon-small::after { pointer-events: none; content: ''; position: absolute; background-image: url(/rhc/images/icons/RHC-Icons.min.svg); height: 128px; width: 128px; }
+.btn-icon::after, .btn-icon-lrg::after, .btn-icon-small::after { pointer-events: none; content: ''; position: absolute; background-image: url("../img/RHC-Icons.min.svg"); background-size: 1024px; height: 128px; width: 128px; }
 
 .text-icon { padding-right: 32px; }
 .text-icon::before { right: 0; -webkit-transform-origin: top right; transform-origin: top right; }
@@ -265,6 +265,8 @@ em.greater { color: #9f1414; font-weight: 700; font-style: normal; }
 
 .dual-fuel::after { background-position: -512px -640px; }
 
+.domestic::after { background-position: -512px -768px; }
+
 .freezer::after { background-position: -640px -640px; }
 
 .fridge::after { background-position: -768px -640px; }
@@ -277,6 +279,8 @@ em.greater { color: #9f1414; font-weight: 700; font-style: normal; }
 
 .facebook::after { background-position: 0px -896px; }
 
+.play-w::after { background-position: -896px 0px; }
+
 .quote-l::after { background-position: -256px 0px; }
 
 .close-w::after { background-position: 0px -384px; }
@@ -284,6 +288,8 @@ em.greater { color: #9f1414; font-weight: 700; font-style: normal; }
 .sale::before { background-position: 0px -768px; }
 
 .sold::before { background-position: -128px -768px; }
+
+.reserved::before { background-position: -256px -768px; }
 
 .new::before { background-position: -384px -768px; }
 
