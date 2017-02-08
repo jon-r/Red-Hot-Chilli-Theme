@@ -639,7 +639,7 @@ Page specific items.
 
 .carousel-container { position: absolute; left: 0; width: 100%; bottom: 0; top: 0; }
 
-.slide { position: absolute; width: 100%; top: 0; bottom: 0; left: 100%; -webkit-transition: left 600ms ease; transition: left 600ms ease; }
+.slide { position: absolute; width: 100%; top: 0; bottom: 0; left: 0; -webkit-transform: translateX(100%); transform: translateX(100%); -webkit-transition: -webkit-transform 600ms ease; transition: transform 600ms ease; }
 
 .page-banner { padding: 0; }
 .page-banner h2, .page-banner div { position: absolute; width: calc(100% - 3rem); }
@@ -647,10 +647,10 @@ Page specific items.
 .page-banner div { top: 10%; }
 .page-banner span { display: block; }
 
-.slide.is-active { z-index: 10; left: 0; }
+.slide.is-active { z-index: 10; -webkit-transform: translateX(0); transform: translateX(0); }
 .slide.is-active [class^='slider-'] { -webkit-transform: translateX(0); transform: translateX(0); -webkit-transition-duration: 800ms; transition-duration: 800ms; -webkit-transition-timing-function: cubic-bezier(0, 0.5, 0.5, 1); transition-timing-function: cubic-bezier(0, 0.5, 0.5, 1); }
 
-.slide.go-away { left: -100%; }
+.slide.go-away { -webkit-transform: translateX(-100%); transform: translateX(-100%); }
 
 .carousel-blips { z-index: 10; position: absolute; bottom: 0; opacity: 0.5; }
 .carousel-blips:hover { opacity: 1; }
