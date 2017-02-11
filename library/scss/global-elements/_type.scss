@@ -10,11 +10,13 @@ $serif: "Kreon", Cambria, Times New Roman, Times, serif;
   margin: 0;
   padding: 0;
   color: inherit;
+  font-weight: normal;
 }
 
 %h-font {
   font-family: $serif;
   display: block;
+
 }
 
 %p-font {
@@ -35,23 +37,26 @@ h2  {
   @extend %h-font;
   font-size: 1.75em;
   padding-bottom: 0.1em;
-  font-weight: normal;
+
 }
 
 h3 {
   @extend %text-reset;
   @extend %h-font;
   font-size: 1.25em;
-  font-weight: normal;
 }
 
-//h4 {
-//  @extend %text-reset;
-//  @extend %h-font;
-//  font-size: 1.1em;
-//  text-align: center;
-//  font-weight: normal;
-//  }
+h4 {
+  @extend %text-reset;
+  @extend %h-font;
+  font-size: 1.1em;
+}
+
+h5, h6 {
+  @extend %text-reset;
+  @extend %h-font;
+  font-size: 1em;
+}
 
 
 p {
@@ -65,13 +70,36 @@ p {
 
 
 
-em.greater {
+strong.greater {
   color:$jr-emphasis;
-  font-weight: 700;
-  font-style: normal;
 }
 
 .text-right {
   float: right;
+}
+
+//special formatting for markdown elements
+.content-format {
+  ul {
+    padding-left: jr-spacer();
+    list-style: disc outside;
+  }
+
+  ol {
+    padding-left: jr-spacer();
+    list-style: decimal outside;
+  }
+
+  blockquote {
+    margin-left: 0;
+    margin-right: 0;
+    padding: jr-spacer(0.25);
+    background-color: jr-grey(9.5);
+    border-left: solid jr-spacer(0.25) jr-grey(8);
+  }
+
+  & > * + * {
+    margin-top: jr-spacer(0.5);
+  }
 }
 

@@ -31,12 +31,16 @@
   @include jr-width(1,1);
 }
 
-.item-thumb {
+.item-inner-list {
   @include jr-width(1,2);
   cursor: pointer;
   margin: jr-spacer(0.5);
   @include jr-size(screen) {
     @include jr-width(1,4);
+  }
+
+  .old-price {
+    display: block;
   }
 }
 

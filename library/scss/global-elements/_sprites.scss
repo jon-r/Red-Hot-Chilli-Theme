@@ -171,6 +171,18 @@ $iconMap: (
   }
 }
 
+.btn-icon-play {
+  @extend %btn-icon-base;
+
+  &::after {
+    background-position: -12.5% 1.5%;
+    width: 100%;
+    height: 100%;
+    background-size: 1024%;
+  }
+
+}
+
 .btn-icon-lrg {
   @extend %btn-icon-base;
   &::after {

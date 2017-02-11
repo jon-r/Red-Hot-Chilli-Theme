@@ -61,15 +61,17 @@ fieldset {
   &.success {
     font-size: 1.5rem;
   }
-}
-input + .form-output {
-  font-size: 0.9rem;
-  height:1rem;
-  margin-top: -1.2rem;
-  @include jr-size(screen) {
-    margin-left: 9.5rem;
-    width:calc(90% - 9.5rem);
+
+  input + &, textarea + & {
+    font-size: 0.9rem;
+    height:1rem;
+    margin-top: -1.2rem;
+    @include jr-size(screen) {
+      margin-left: 9.5rem;
+      width:calc(90% - 9.5rem);
+    }
   }
+
 }
 
 webkit-input-placeholder {

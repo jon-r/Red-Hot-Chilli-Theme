@@ -204,30 +204,39 @@ p:empty { display: none; }
 Add some global styling.
 *********************/
 /*-- typegraphy ----------------------------------------------------------------------*/
-h1, h2, h3, p { margin: 0; padding: 0; color: inherit; }
+h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; color: inherit; font-weight: normal; }
 
-h1, h2, h3 { font-family: "Kreon", Cambria, Times New Roman, Times, serif; display: block; }
+h1, h2, h3, h4, h5, h6 { font-family: "Kreon", Cambria, Times New Roman, Times, serif; display: block; }
 
 p { font-family: "PT+Sans", Helvetica, Arial, sans-serif; display: inline-block; }
 
 h1 { font-size: 2.5em; padding-bottom: 0.25em; font-weight: bold; }
 
-h2 { font-size: 1.75em; padding-bottom: 0.1em; font-weight: normal; }
+h2 { font-size: 1.75em; padding-bottom: 0.1em; }
 
-h3 { font-size: 1.25em; font-weight: normal; }
+h3 { font-size: 1.25em; }
+
+h4 { font-size: 1.1em; }
+
+h5, h6 { font-size: 1em; }
 
 p + p { margin-top: 1rem; }
 
-em.greater { color: #9f1414; font-weight: 700; font-style: normal; }
+strong.greater { color: #9f1414; }
 
 .text-right { float: right; }
 
+.content-format ul { padding-left: 2rem; list-style: disc outside; }
+.content-format ol { padding-left: 2rem; list-style: decimal outside; }
+.content-format blockquote { margin-left: 0; margin-right: 0; padding: 0.5rem; background-color: #f2f2f2; border-left: solid 0.5rem #caccce; }
+.content-format > * + * { margin-top: 1rem; }
+
 /*-------------------------sprite layouts + settings ----------------------------------*/
-.text-icon, .text-icon-left, .loading, .primary-nav:only-child, .list-item, .btn-icon, .btn-icon-lrg, .btn-icon-small { position: relative; }
+.text-icon, .text-icon-left, .loading, .primary-nav:only-child, .list-item, .btn-icon, .btn-icon-play, .btn-icon-lrg, .btn-icon-small { position: relative; }
 
 .text-icon::before, .text-icon-left::before, .loading::before, .primary-nav:only-child::before, .list-item::before { pointer-events: none; content: ''; position: absolute; background-image: url("../img/RHC-Icons.min.svg"); background-size: 1024px; height: 128px; width: 128px; }
 
-.btn-icon::after, .btn-icon-lrg::after, .btn-icon-small::after { pointer-events: none; content: ''; position: absolute; background-image: url("../img/RHC-Icons.min.svg"); background-size: 1024px; height: 128px; width: 128px; }
+.btn-icon::after, .btn-icon-play::after, .btn-icon-lrg::after, .btn-icon-small::after { pointer-events: none; content: ''; position: absolute; background-image: url("../img/RHC-Icons.min.svg"); background-size: 1024px; height: 128px; width: 128px; }
 
 .text-icon { padding-right: 32px; }
 .text-icon::before { right: 0; -webkit-transform-origin: top right; transform-origin: top right; }
@@ -238,10 +247,12 @@ em.greater { color: #9f1414; font-weight: 700; font-style: normal; }
 .text-icon, .text-icon-left { line-height: 1.2; }
 .text-icon::before, .text-icon-left::before { top: calc(50% - 12px); -webkit-transform: scale(0.1875); transform: scale(0.1875); }
 
-.btn-icon::after, .btn-icon-lrg::after, .btn-icon-small::after { -webkit-transform-origin: bottom right; transform-origin: bottom right; bottom: 0; right: 0; }
+.btn-icon::after, .btn-icon-play::after, .btn-icon-lrg::after, .btn-icon-small::after { -webkit-transform-origin: bottom right; transform-origin: bottom right; bottom: 0; right: 0; }
 
 .btn-icon::after { -webkit-transform: scale(0.5); transform: scale(0.5); }
 @media only screen and (min-width: 1031px) { .btn-icon::after { -webkit-transform: scale(0.75); transform: scale(0.75); } }
+
+.btn-icon-play::after { background-position: -12.5% 1.5%; width: 100%; height: 100%; background-size: 1024%; }
 
 .btn-icon-lrg::after { -webkit-transform: scale(0.75); transform: scale(0.75); }
 @media only screen and (min-width: 1031px) { .btn-icon-lrg::after { -webkit-transform: scale(1); transform: scale(1); } }
@@ -406,7 +417,8 @@ button.full-width { width: 100%; }
 /* --- modal popouts - enabled through js ---------------------------------------------*/
 .modal-frame { position: fixed; opacity: 0; width: 5%; height: 5%; top: 45vh; z-index: 30; -webkit-transition: 300ms ease; transition: 300ms ease; }
 .modal-frame:not(.is-active):not(.is-active-small) { pointer-events: none; }
-.modal-frame > img { -o-object-fit: contain; object-fit: contain; -o-object-position: center; object-position: center; height: 100%; }
+.modal-frame > img { max-height: 100%; max-width: 100%; margin: auto; display: block; }
+.modal-frame > iframe { width: 100%; height: 100%; }
 
 .modal-frame.right { left: 95%; }
 
@@ -440,9 +452,8 @@ fieldset { border: none; }
 .form-output { width: 90%; float: left; font-weight: bold; padding-left: 0.5rem; background: none; }
 .form-output.response { margin-top: 1rem; }
 .form-output.success { font-size: 1.5rem; }
-
-input + .form-output { font-size: 0.9rem; height: 1rem; margin-top: -1.2rem; }
-@media only screen and (min-width: 1031px) { input + .form-output { margin-left: 9.5rem; width: calc(90% - 9.5rem); } }
+input + .form-output, textarea + .form-output { font-size: 0.9rem; height: 1rem; margin-top: -1.2rem; }
+@media only screen and (min-width: 1031px) { input + .form-output, textarea + .form-output { margin-left: 9.5rem; width: calc(90% - 9.5rem); } }
 
 webkit-input-placeholder { color: #9197a1; }
 
@@ -725,8 +736,9 @@ Page specific items.
 
 .gallery-primary { display: inline-block; width: calc(100% - 2rem); }
 
-.item-thumb { display: inline-block; width: calc(50% - 2rem); cursor: pointer; margin: 1rem; }
-@media only screen and (min-width: 1031px) { .item-thumb { display: inline-block; width: calc(25% - 2rem); } }
+.item-inner-list { display: inline-block; width: calc(50% - 2rem); cursor: pointer; margin: 1rem; }
+@media only screen and (min-width: 1031px) { .item-inner-list { display: inline-block; width: calc(25% - 2rem); } }
+.item-inner-list .old-price { display: block; }
 
 .shop-buttons { margin-top: 1rem; }
 
