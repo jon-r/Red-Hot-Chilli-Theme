@@ -31,17 +31,16 @@
   @include jr-width(1,1);
 }
 
-.item-inner-list {
+.item-thumb {
   @include jr-width(1,2);
   cursor: pointer;
   margin: jr-spacer(0.5);
   @include jr-size(screen) {
     @include jr-width(1,4);
   }
-
-  .old-price {
-    display: block;
-  }
+}
+.product-video img {
+  opacity: 0.75
 }
 
 .shop-buttons {

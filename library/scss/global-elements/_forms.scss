@@ -61,7 +61,6 @@ fieldset {
   &.success {
     font-size: 1.5rem;
   }
-
   input + &, textarea + & {
     font-size: 0.9rem;
     height:1rem;
@@ -71,7 +70,6 @@ fieldset {
       width:calc(90% - 9.5rem);
     }
   }
-
 }
 
 webkit-input-placeholder {
