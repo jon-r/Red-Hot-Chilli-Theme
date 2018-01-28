@@ -19,8 +19,10 @@
 
   <?php // copyright and page info ?>
   <meta content="Red Hot Chilli Northwest Ltd (c) <?php echo date('Y') ?>" name="copyright">
+
+  <meta content="<?php echo $GLOBALS['jr_page']->seo ?: "Buying and selling used commercial items in the northwest. Purchasers and suppliers of second hand catering equipment." ?>" name="description">
+
   <meta content="Jonathan Richards - github.com/jon-r (c) <?php echo date('Y') ?>" name="author">
-  <meta content="Buying and selling used commercial items in the northwest. Purchasers and suppliers of second hand catering equipment." name="description">
 
   <?php // many many favicons. courtesy http://realfavicongenerator.net ?>
   <link rel="apple-touch-icon" sizes="57x57" href="<?php echo site_url('images/favicon/apple-touch-icon-57x57.png') ?>" >
@@ -75,4 +77,3 @@
     <?php include('includes/header-bar.php'); ?>
 
   </header>
-
