@@ -432,6 +432,24 @@ $queryModalClose.click(function() {
   modalClose($queryModal);
 });
 
+
+  var $imgGalleryVideo  = $imgGalleryFull.find('.product-video');
+
+  function setVideo(data) {
+    $imgGalleryModal.append($.parseJSON(data));
+  }
+
+  $imgGalleryVideo.click(function (e) {
+    var $getVideo = $(this).data('video');
+
+    $.get(fileSrc.admin, {
+      src: $getVideo,
+      action: "jr_getVid"
+    }, setVideo);
+
+    modalOpen($imgGalleryModal);
+});
+
 /* forms ------------------------------------------------------------------------------*/
 
 var $form = $('.js_contact_form'),
